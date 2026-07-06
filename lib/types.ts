@@ -24,6 +24,16 @@ export interface SourceLink {
   url: string;
 }
 
+export interface TimelineEvent {
+  date: string;
+  event: string;
+}
+
+export interface WordOfTheDay {
+  term: string;
+  definition: string;
+}
+
 export interface Story {
   headline: string;
   slug: string;
@@ -36,6 +46,7 @@ export interface Story {
   whyToday: string;
   whyCare: string;
   whatNext: string;
+  timeline?: TimelineEvent[];
   keyNumbers: KeyNumber[];
   knowledgeChain: string[];
   ifYoureWondering: WonderingItem[];
@@ -63,6 +74,8 @@ export interface Edition {
   numberValue: string;
   numberLabel: string;
   numberTrend: Trend;
+  wordOfTheDay?: WordOfTheDay;
+  podcastNotes?: string;
   stories: Story[];
   vocabulary: VocabularyItem[];
   questions: QAItem[];

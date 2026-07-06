@@ -1,7 +1,7 @@
 import { getLatestEdition } from "@/lib/getData";
 import Hero from "@/components/Hero";
 import Top10List from "@/components/Top10List";
-import AskWhyTodayAI from "@/components/AskWhyTodayAI";
+
 
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
 
@@ -24,7 +24,6 @@ export default async function Home() {
         <Top10List stories={edition.stories} />
       </div>
 
-      <AskWhyTodayAI />
     </main>
   );
 }
