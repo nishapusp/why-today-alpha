@@ -1,0 +1,45 @@
+{
+  "date": "2026-07-06",
+  "slug": "2026-07-06",
+  "themeTitle": "Digital Trust",
+  "themeDescription": "Why banks are investing heavily in AI, cybersecurity, and digital identity.",
+  "themeIcon": "shield",
+  "numberValue": "₹66.7 Lakh",
+  "numberLabel": "RBI penalty imposed on Bank of Baroda for regulatory non-compliance.",
+  "numberTrend": "up",
+  "vocabulary": [
+    {
+      "term": "Periodic KYC Review",
+      "definition": "A scheduled re-verification of a customer's identity and details, done at intervals set by risk category."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Why did RBI impose the penalty?",
+      "answer": "For failing to complete periodic KYC updates within the required timeline for a segment of customer accounts."
+    }
+  ],
+  "stories": [
+    {
+      "headline": "RBI issues new guidelines on periodic KYC review",
+      "slug": "rbi-periodic-kyc-review-guidelines",
+      "category": "Banking",
+      "summary": "What it means for banks and customers.",
+      "readMinutes": 6,
+      "sentiment": "caution",
+      "quickRead": "RBI tightened the timeline banks must follow for re-verifying customer identity.",
+      "understandRead": "RBI has shortened the window banks get to complete periodic KYC reviews, especially for higher-risk accounts.",
+      "deepDiveRead": "## Background\nKYC review cycles in India are risk-tiered.\n\n## What changes\nBanks must now show an auditable trail.",
+      "whatHappened": "RBI tightened enforcement of periodic KYC review timelines.",
+      "whyToday": "The penalty was disclosed today alongside a fresh RBI circular.",
+      "whyCare": "You may be asked to re-verify your KYC sooner than expected.",
+      "whatNext": "Expect other banks to announce KYC catch-up drives.",
+      "keyNumbers": [{ "label": "Penalty amount", "value": "₹66.7 Lakh" }],
+      "knowledgeChain": ["KYC Compliance", "Regulatory Risk", "Bank Reputation"],
+      "ifYoureWondering": [
+        { "q": "Does this mean my bank is unsafe?", "a": "No — this is a process penalty, not a solvency issue." }
+      ],
+      "officialSources": [{ "label": "RBI Press Release", "url": "https://rbi.org.in" }]
+    }
+  ]
+}

@@ -1,45 +1,30 @@
-export default function Home() {
+import { getLatestEdition } from "@/lib/getData";
+import Hero from "@/components/Hero";
+import Top10List from "@/components/Top10List";
+import AskWhyTodayAI from "@/components/AskWhyTodayAI";
+
+export const revalidate = 300; // re-check Airtable at most every 5 minutes
+
+export default async function Home() {
+  const edition = await getLatestEdition();
+
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="max-w-2xl mx-auto px-4 py-6 space-y-4">
+      <Hero edition={edition} streakDays={12} />
 
-      {/* Hero Section */}
-
-      <section className="max-w-6xl mx-auto px-6 py-16">
-
-        <p className="text-blue-600 font-semibold">
-          🌍 WHY TODAY
-        </p>
-
-        <h1 className="text-5xl font-bold mt-4 leading-tight">
-          Understand today's world,
-          <br />
-          not just today's news.
-        </h1>
-
-        <p className="mt-6 text-xl text-gray-600 max-w-2xl">
-          Every morning, Why Today helps you understand
-          the stories shaping our world through context,
-          curiosity and clarity.
-        </p>
-
-        <div className="mt-10 flex gap-4">
-
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition">
-
-            Start Today's Journey
-
-          </button>
-
-          <button className="border px-6 py-3 rounded-xl">
-
-            Explore Archive
-
-          </button>
-
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-display text-lg text-[var(--text-primary)]">
+            Today's top {Math.min(edition.stories.length, 10)}
+          </h2>
+          <span className="text-xs text-[var(--text-secondary)]">
+            {edition.numberValue} · {edition.themeTitle}
+          </span>
         </div>
+        <Top10List stories={edition.stories} />
+      </div>
 
-      </section>
-
+      <AskWhyTodayAI />
     </main>
   );
 }
