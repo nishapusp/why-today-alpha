@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ReadingLevel, Story } from "@/lib/types";
+import { getCategoryStyle } from "@/lib/categoryStyle";
 import WonderingBlock from "./WonderingBlock";
 import KnowledgeChain from "./KnowledgeChain";
 
@@ -13,19 +14,21 @@ const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
 
 export default function ReadingLevelToggle({ story }: { story: Story }) {
   const [level, setLevel] = useState<ReadingLevel>("understand");
+  const cat = getCategoryStyle(story.category);
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-6 p-1 bg-[var(--border)]/40 rounded-full w-fit">
+      <div className="flex items-center gap-1 mb-6 p-1 rounded-full w-fit" style={{ background: cat.tint }}>
         {LEVELS.map((l) => (
           <button
             key={l.key}
             onClick={() => setLevel(l.key)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+            style={
               level === l.key
-                ? "bg-[var(--navy)] text-white shadow-sm"
-                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
+                ? { background: cat.accent, color: "#fff" }
+                : { color: cat.deep }
+            }
           >
             {l.label}
             <span className="ml-1.5 text-xs opacity-70">{l.minutes}</span>
@@ -41,10 +44,10 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
 
       {level === "understand" && (
         <div className="space-y-5">
-          <StructuredBlock label="What happened?" text={story.whatHappened} />
-          <StructuredBlock label="Why today?" text={story.whyToday} />
-          <StructuredBlock label="Why should I care?" text={story.whyCare} />
-          <StructuredBlock label="What happens next?" text={story.whatNext} />
+          <StructuredBlock label="What happened?" text={story.whatHappened} color={cat.deep} />
+          <StructuredBlock label="Why today?" text={story.whyToday} color={cat.deep} />
+          <StructuredBlock label="Why should I care?" text={story.whyCare} color={cat.deep} />
+          <StructuredBlock label="What happens next?" text={story.whatNext} color={cat.deep} />
         </div>
       )}
 
@@ -52,7 +55,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
         <div className="prose-custom space-y-4 text-[var(--text-primary)] leading-relaxed">
           {story.deepDiveRead.split("\n\n").map((block, i) =>
             block.startsWith("## ") ? (
-              <h3 key={i} className="font-display text-xl mt-6 mb-1 text-[var(--navy)]">
+              <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
                 {block.replace("## ", "")}
               </h3>
             ) : (
@@ -63,20 +66,26 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
       )}
 
       <div className="mt-8 pt-6 border-t border-[var(--border)]">
-        <KnowledgeChain chain={story.knowledgeChain} variant="full" />
+        <KnowledgeChain
+          chain={story.knowledgeChain}
+          variant="full"
+          accent={cat.accent}
+          tint={cat.tint}
+          deep={cat.deep}
+        />
       </div>
 
       <div className="mt-6">
-        <WonderingBlock items={story.ifYoureWondering} />
+        <WonderingBlock items={story.ifYoureWondering} accent={cat.accent} tint={cat.tint} deep={cat.deep} />
       </div>
     </div>
   );
 }
 
-function StructuredBlock({ label, text }: { label: string; text: string }) {
+function StructuredBlock({ label, text, color }: { label: string; text: string; color: string }) {
   return (
     <div>
-      <p className="text-xs font-mono uppercase tracking-wide text-[var(--soft-blue)] mb-1">
+      <p className="text-xs font-mono uppercase tracking-wide mb-1" style={{ color }}>
         {label}
       </p>
       <p className="text-[15px] leading-relaxed text-[var(--text-primary)]">{text}</p>

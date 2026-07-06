@@ -5,15 +5,25 @@ import { useState } from "react";
 interface KnowledgeChainProps {
   chain: string[];
   variant?: "teaser" | "full";
+  accent?: string;
+  tint?: string;
+  deep?: string;
 }
 
 /**
  * The visual proof of the Bible's "no concept exists in isolation" principle.
  * Teaser: compact, used on homepage story cards.
  * Full: interactive, used on the story page — clicking a node reveals a
- * one-line explanation of *why* that link exists.
+ * one-line explanation of *why* that link exists. Colored by the story's
+ * category so each story page feels distinct rather than uniformly navy.
  */
-export default function KnowledgeChain({ chain, variant = "teaser" }: KnowledgeChainProps) {
+export default function KnowledgeChain({
+  chain,
+  variant = "teaser",
+  accent = "var(--navy)",
+  tint = "var(--border)",
+  deep = "var(--navy)",
+}: KnowledgeChainProps) {
   const [active, setActive] = useState<number | null>(null);
 
   if (variant === "teaser") {
@@ -39,31 +49,38 @@ export default function KnowledgeChain({ chain, variant = "teaser" }: KnowledgeC
   }
 
   return (
-    <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
-      <p className="text-xs font-mono uppercase tracking-wide text-[var(--text-secondary)] mb-4">
+    <div className="rounded-2xl p-6" style={{ background: tint }}>
+      <p className="text-xs font-mono uppercase tracking-wide mb-4" style={{ color: deep }}>
         Knowledge Chain — tap a concept
       </p>
       <div className="flex flex-wrap items-center gap-2">
-        {chain.map((node, i) => (
-          <span key={node} className="flex items-center gap-2">
-            <button
-              onClick={() => setActive(active === i ? null : i)}
-              className={`text-sm font-mono px-3 py-1.5 rounded-full border transition-colors ${
-                active === i
-                  ? "bg-[var(--navy)] text-white border-[var(--navy)]"
-                  : "border-[var(--border)] text-[var(--text-primary)] hover:border-[var(--navy)]"
-              }`}
-            >
-              {node}
-            </button>
-            {i < chain.length - 1 && (
-              <span className="text-[var(--text-secondary)]">→</span>
-            )}
-          </span>
-        ))}
+        {chain.map((node, i) => {
+          const isActive = active === i;
+          return (
+            <span key={node} className="flex items-center gap-2 max-w-full">
+              <button
+                onClick={() => setActive(isActive ? null : i)}
+                className="text-sm font-mono px-3 py-1.5 rounded-full border transition-colors break-words"
+                style={
+                  isActive
+                    ? { background: accent, color: "#fff", borderColor: accent }
+                    : { borderColor: "rgba(0,0,0,0.1)", color: "var(--text-primary)", background: "rgba(255,255,255,0.55)" }
+                }
+              >
+                {node}
+              </button>
+              {i < chain.length - 1 && (
+                <span className="shrink-0" style={{ color: accent }}>→</span>
+              )}
+            </span>
+          );
+        })}
       </div>
       {active !== null && (
-        <div className="mt-4 text-sm text-[var(--text-secondary)] border-t border-[var(--border)] pt-3 animate-in fade-in duration-200">
+        <div
+          className="mt-4 text-sm text-[var(--text-secondary)] pt-3 animate-in fade-in duration-200"
+          style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}
+        >
           <strong className="text-[var(--text-primary)]">{chain[active]}</strong>{" "}
           connects to this story because changes here ripple forward into{" "}
           {chain[active + 1] ? <strong>{chain[active + 1]}</strong> : "the wider economy"}

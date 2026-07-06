@@ -1,17 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLatestEdition, getStoryBySlug } from "@/lib/getData";
+import { getCategoryStyle } from "@/lib/categoryStyle";
 import ReadingLevelToggle from "@/components/ReadingLevelToggle";
 import DataCardGrid from "@/components/DataCard";
-
-const CATEGORY_ICON: Record<string, string> = {
-  Banking: "🏦",
-  Economy: "📊",
-  Technology: "🔷",
-  World: "🌐",
-  Policy: "📋",
-  Corporate: "🏢",
-};
 
 export const revalidate = 300;
 
@@ -32,37 +24,44 @@ export default async function StoryPage({
     notFound();
   }
 
+  const cat = getCategoryStyle(story.category);
+
   return (
-    <main className="max-w-2xl mx-auto px-4 py-6 space-y-6 overflow-x-hidden">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+    <main className="max-w-2xl mx-auto pb-10 overflow-x-hidden">
+      {/* Colorful hero band, tinted by the story's category */}
+      <div
+        className="px-4 pt-6 pb-8 md:rounded-b-3xl relative overflow-hidden"
+        style={{ background: `linear-gradient(150deg, ${cat.deep}, ${cat.accent})` }}
       >
-        ← Back to today&apos;s edition
-      </Link>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.08] to-transparent" />
+        <div className="relative">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-sm text-white/85 hover:text-white transition-colors bg-white/10 rounded-full px-3 py-1.5 mb-5"
+          >
+            ← Back to today
+          </Link>
 
-      <article className={`sentiment-${story.sentiment}`}>
-        <div className="flex items-center gap-2 mb-3">
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "var(--accent)" }}
-          />
-          <span className="text-xs font-mono uppercase tracking-wide text-[var(--text-secondary)]">
-            {CATEGORY_ICON[story.category]} {story.category}
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-white/90 bg-white/15 rounded-full px-2.5 py-1 mb-3">
+            {cat.icon} {story.category}
           </span>
-          <span className="text-xs text-[var(--text-secondary)] ml-auto">
-            {story.readMinutes} min read
-          </span>
+
+          <h1 className="font-display text-2xl md:text-3xl leading-snug text-white mb-3 break-words">
+            {story.headline}
+          </h1>
+
+          <div className="flex items-center gap-3 text-xs text-white/80">
+            <span>{story.readMinutes} min read</span>
+          </div>
         </div>
+      </div>
 
-        <h1 className="font-display text-2xl md:text-3xl leading-snug text-[var(--text-primary)] mb-3">
-          {story.headline}
-        </h1>
+      <article className="px-4 pt-6">
         <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">
           {story.summary}
         </p>
 
-        <DataCardGrid numbers={story.keyNumbers} />
+        <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} />
 
         <ReadingLevelToggle story={story} />
 
@@ -78,7 +77,8 @@ export default async function StoryPage({
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[var(--soft-blue)] hover:underline break-words"
+                    className="text-sm hover:underline break-words"
+                    style={{ color: cat.accent }}
                   >
                     {source.label} ↗
                   </a>
