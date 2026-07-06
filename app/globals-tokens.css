@@ -1,39 +1,36 @@
-/* Merge these into your existing globals.css.
-   If you already import Tailwind, keep that import above this block. */
-@import "./globals-tokens.css";
+/* Imported once from globals.css — do not import this file from itself. */
 
 :root {
-  /* Section 10 of the Bible, given exact hex values */
-  --navy: #0b1e3d;
+  --navy: #0b1a33;
+  --navy-deep: #060f21;
+  --navy-light: #16294d;
   /* Trust */
   --slate: #475569;
   /* Professionalism */
   --white: #ffffff;
   /* Clarity */
-  --emerald: #10b981;
+  --emerald: #0e9d6e;
   /* Positive movement */
-  --amber: #f59e0b;
-  /* Watch carefully */
-  --crimson: #dc2626;
+  --amber: #c8952f;
+  /* Watch carefully / premium gold accent */
+  --gold: #c8952f;
+  --gold-light: #e0b768;
+  --crimson: #c93b3b;
   /* Critical alerts */
-  --soft-blue: #3b82f6;
+  --soft-blue: #3767c9;
   /* Learning */
 
-  --bg: #fafbfc;
+  --bg: #faf7f2;
   --surface: #ffffff;
-  --border: #e6e9ee;
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --border: #e8e3d9;
+  --text-primary: #12161f;
+  --text-secondary: #5b6472;
 }
 
 .dark {
-  --bg: #0a1526;
-  --surface: #0f1f38;
-  --border: #1c2f4d;
+  --bg: #070f1f;
+  --surface: #0f1c33;
+  --border: #1f2f4d;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
 }
@@ -63,19 +60,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-/* Add to tailwind.config.ts under theme.extend:
-fontFamily: {
-  display: ["var(--font-display)"],
-  body: ["var(--font-body)"],
-  mono: ["var(--font-mono)"],
-},
-colors: {
-  navy: "var(--navy)",
-  slate: "var(--slate)",
-  emerald: "var(--emerald)",
-  amber: "var(--amber)",
-  crimson: "var(--crimson)",
-  "soft-blue": "var(--soft-blue)",
-}
-*/

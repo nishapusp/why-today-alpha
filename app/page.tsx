@@ -9,15 +9,15 @@ export default async function Home() {
   const edition = await getLatestEdition();
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-6 space-y-4">
+    <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
       <Hero edition={edition} streakDays={12} />
 
       <div>
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="font-display text-lg text-[var(--text-primary)]">
             Today's top {Math.min(edition.stories.length, 10)}
           </h2>
-          <span className="text-xs text-[var(--text-secondary)]">
+          <span className="text-xs text-[var(--text-secondary)] truncate sm:text-right">
             {edition.numberValue} · {edition.themeTitle}
           </span>
         </div>
