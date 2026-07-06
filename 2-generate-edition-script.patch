@@ -1,0 +1,245 @@
+diff --git a/scripts/generate-edition.js b/scripts/generate-edition.js
+new file mode 100644
+index 0000000..9f2461a
+--- /dev/null
++++ b/scripts/generate-edition.js
+@@ -0,0 +1,239 @@
++#!/usr/bin/env node
++/**
++ * scripts/generate-edition.js
++ *
++ * One-command daily edition generation:
++ *   1. Calls the "Why Today Studio" agent via Direct Line
++ *   2. Handles the agent's "which format?" clarifying question automatically
++ *   3. Retrieves the JSON (whether sent as a file attachment or inline text)
++ *   4. Validates it against the schema and length floors
++ *   5. Prints a human-readable review
++ *   6. Asks for confirmation before writing data/edition.json and pushing
++ *
++ * Usage:
++ *   DIRECT_LINE_SECRET="..." node scripts/generate-edition.js
++ *
++ * Nothing is written or pushed without you confirming at the prompt.
++ */
++
++const fs = require("fs");
++const path = require("path");
++const readline = require("readline");
++const { execSync } = require("child_process");
++
++const DIRECT_LINE_BASE = "https://directline.botframework.com/v3/directline";
++const SECRET = process.env.DIRECT_LINE_SECRET;
++const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
++const TRIGGER_MESSAGE = "generate today's full edition, all 10 stories, full length";
++const OVERALL_TIMEOUT_MS = 3 * 60 * 1000; // full editions can take 1-2+ minutes
++const POLL_INTERVAL_MS = 3000;
++
++const REQUIRED_STORY_FIELDS = [
++  "headline", "slug", "category", "summary", "quickRead", "whatHappened",
++  "whyToday", "whyCare", "whatNext", "deepDiveRead", "keyNumbers",
++  "knowledgeChain", "ifYoureWondering", "officialSources", "readMinutes", "sentiment",
++];
++const REQUIRED_EDITION_FIELDS = ["date", "themeTitle", "numberValue", "stories"];
++const WORD_FLOORS = {
++  quickRead: 90, whatHappened: 90, whyToday: 90, whyCare: 90, whatNext: 80,
++};
++
++function wordCount(str) {
++  return (str || "").trim().split(/\s+/).filter(Boolean).length;
++}
++
++function ask(question) {
++  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
++  return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
++}
++
++async function directLineRequest(url, options = {}) {
++  const res = await fetch(url, options);
++  if (!res.ok) throw new Error(`Direct Line request failed: ${res.status} ${await res.text()}`);
++  return res.json();
++}
++
++async function sendMessage(conversationId, token, text) {
++  await fetch(`${DIRECT_LINE_BASE}/conversations/${conversationId}/activities`, {
++    method: "POST",
++    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
++    body: JSON.stringify({ type: "message", from: { id: "edition-generator" }, text }),
++  });
++}
++
++async function pollForNewActivities(conversationId, token, sinceWatermark) {
++  const url = sinceWatermark
++    ? `${DIRECT_LINE_BASE}/conversations/${conversationId}/activities?watermark=${sinceWatermark}`
++    : `${DIRECT_LINE_BASE}/conversations/${conversationId}/activities`;
++  const data = await directLineRequest(url, { headers: { Authorization: `Bearer ${token}` } });
++  const botActivities = (data.activities || []).filter((a) => a.from?.id !== "edition-generator" && a.type === "message");
++  return { botActivities, watermark: data.watermark };
++}
++
++async function fetchAttachmentJson(attachment, token) {
++  const res = await fetch(attachment.contentUrl, {
++    headers: attachment.contentUrl.includes("directline.botframework.com")
++      ? { Authorization: `Bearer ${token}` }
++      : {},
++  });
++  const text = await res.text();
++  return JSON.parse(text);
++}
++
++function looksLikeClarifyingQuestion(text) {
++  return /which format|full edition.*compact|top 3|top 5|options?:/i.test(text || "");
++}
++
++function extractJsonFromText(text) {
++  const match = text.match(/\{[\s\S]*\}/);
++  if (!match) return null;
++  try {
++    return JSON.parse(match[0]);
++  } catch {
++    return null;
++  }
++}
++
++function validateEdition(edition) {
++  const issues = [];
++  for (const field of REQUIRED_EDITION_FIELDS) {
++    if (!(field in edition)) issues.push(`Missing top-level field: ${field}`);
++  }
++  if (!Array.isArray(edition.stories)) {
++    issues.push("`stories` is not an array — cannot validate further.");
++    return issues;
++  }
++  if (edition.stories.length !== 10) {
++    issues.push(`Expected 10 stories, got ${edition.stories.length}.`);
++  }
++  edition.stories.forEach((story, i) => {
++    const label = `Story ${i + 1} ("${story.headline || "no headline"}")`;
++    for (const field of REQUIRED_STORY_FIELDS) {
++      if (!(field in story)) issues.push(`${label}: missing field "${field}"`);
++    }
++    for (const [field, floor] of Object.entries(WORD_FLOORS)) {
++      if (story[field] && wordCount(story[field]) < floor) {
++        issues.push(`${label}: "${field}" is ${wordCount(story[field])} words, below the ${floor}-word floor`);
++      }
++    }
++    if (story.deepDiveRead) {
++      const dd = wordCount(story.deepDiveRead);
++      if (dd < 700) issues.push(`${label}: deepDiveRead is only ${dd} words (floor is 900-1400)`);
++      const headers = ["What Changed", "The Backstory", "Why It Matters", "Broader Connections", "Alternative View"];
++      for (const h of headers) {
++        if (!story.deepDiveRead.includes(h)) issues.push(`${label}: deepDiveRead is missing the "${h}" section`);
++      }
++    }
++    // Heuristic check for leaked citation markers, e.g. "...attractive.1 The shift"
++    if (/[a-z]\.\d+\s/.test(story.whatHappened || "") || /[a-z]\.\d+\s/.test(story.deepDiveRead || "")) {
++      issues.push(`${label}: possible leaked citation marker detected (a number stuck right after a sentence).`);
++    }
++    if (/\bstory\s*\d+\b/i.test(story.headline || "")) {
++      issues.push(`${label}: headline appears to contain a story number.`);
++    }
++  });
++  return issues;
++}
++
++async function main() {
++  if (!SECRET) {
++    console.error("Set DIRECT_LINE_SECRET first:\n  DIRECT_LINE_SECRET=\"...\" node scripts/generate-edition.js");
++    process.exit(1);
++  }
++
++  console.log("Starting conversation with Why Today Studio...");
++  const { conversationId, token } = await directLineRequest(`${DIRECT_LINE_BASE}/conversations`, {
++    method: "POST",
++    headers: { Authorization: `Bearer ${SECRET}` },
++  });
++  const authToken = token || SECRET;
++
++  console.log(`Sending: "${TRIGGER_MESSAGE}"`);
++  await sendMessage(conversationId, authToken, TRIGGER_MESSAGE);
++
++  let watermark = null;
++  let finalJson = null;
++  let askedFormat = false;
++  const deadline = Date.now() + OVERALL_TIMEOUT_MS;
++
++  console.log("Waiting for a response (full editions can take 1-2+ minutes)...");
++  while (Date.now() < deadline && !finalJson) {
++    await new Promise((r) => setTimeout(r, POLL_INTERVAL_MS));
++    const { botActivities, watermark: newWatermark } = await pollForNewActivities(conversationId, authToken, watermark);
++    watermark = newWatermark;
++    process.stdout.write(".");
++
++    for (const activity of botActivities) {
++      // Case 1: JSON delivered as a file attachment
++      const jsonAttachment = (activity.attachments || []).find(
++        (a) => a.contentType?.includes("json") || a.name?.endsWith(".json")
++      );
++      if (jsonAttachment) {
++        console.log("\nReceived a JSON file attachment. Downloading...");
++        finalJson = await fetchAttachmentJson(jsonAttachment, authToken);
++        break;
++      }
++
++      // Case 2: agent asked which format — auto-pick "full edition"
++      if (!askedFormat && looksLikeClarifyingQuestion(activity.text)) {
++        console.log("\nAgent asked for a format — requesting the full 10-story JSON file...");
++        askedFormat = true;
++        await sendMessage(conversationId, authToken, "1. Full 10-story JSON file");
++        continue;
++      }
++
++      // Case 3: JSON pasted inline as text
++      const inlineJson = extractJsonFromText(activity.text);
++      if (inlineJson && Array.isArray(inlineJson.stories)) {
++        console.log("\nReceived inline JSON text.");
++        finalJson = inlineJson;
++        break;
++      }
++    }
++  }
++
++  if (!finalJson) {
++    console.error("\n\nNo usable edition JSON received within the timeout. Try again, or check the agent in the Preview tab directly.");
++    process.exit(1);
++  }
++
++  console.log("\n=== VALIDATION ===");
++  const issues = validateEdition(finalJson);
++  if (issues.length === 0) {
++    console.log("No issues found.");
++  } else {
++    console.log(`${issues.length} issue(s) found:`);
++    issues.forEach((issue) => console.log(`  - ${issue}`));
++  }
++
++  console.log("\n=== TODAY'S HEADLINES ===");
++  (finalJson.stories || []).forEach((s, i) => {
++    console.log(`  ${i + 1}. [${s.category || "?"}] ${s.headline || "(no headline)"}`);
++  });
++
++  console.log(`\nNumber of the day: ${finalJson.numberValue || "?"} — ${finalJson.themeTitle || "?"}`);
++
++  const proceed = await ask("\nWrite this to data/edition.json and push to GitHub? (y/n): ");
++  if (proceed.trim().toLowerCase() !== "y") {
++    console.log("Not written. Nothing changed.");
++    process.exit(0);
++  }
++
++  fs.writeFileSync(EDITION_PATH, JSON.stringify(finalJson, null, 2));
++  console.log(`Written to ${EDITION_PATH}`);
++
++  try {
++    execSync("git add data/edition.json", { stdio: "inherit", cwd: path.join(__dirname, "..") });
++    execSync(`git commit -m "Daily edition: ${finalJson.date || "update"}"`, { stdio: "inherit", cwd: path.join(__dirname, "..") });
++    execSync("git push", { stdio: "inherit", cwd: path.join(__dirname, "..") });
++    console.log("\nPushed. Netlify will redeploy automatically.");
++  } catch (err) {
++    console.error("\nGit commit/push failed — the file is written locally, but you'll need to commit and push manually.");
++    console.error(err.message);
++  }
++}
++
++main().catch((err) => {
++  console.error("\nScript failed:", err.message);
++  process.exit(1);
++});
