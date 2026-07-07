@@ -6,6 +6,7 @@ import { ReadingLevel, Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import WonderingBlock from "./WonderingBlock";
 import KnowledgeChain from "./KnowledgeChain";
+import AudioReader from "./AudioReader";
 
 const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
   { key: "quick", label: "Quick", minutes: "1–2 min" },
@@ -93,6 +94,10 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
         ))}
       </div>
 
+      <div className="mb-5">
+        <AudioReader text={getSpokenText(story, level, deepDiveText)} accent={cat.accent} />
+      </div>
+
       {level === "quick" && (
         <p className="text-lg leading-relaxed font-body text-[var(--text-primary)]">
           {story.quickRead}
@@ -150,6 +155,21 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
       </div>
     </div>
   );
+}
+
+function getSpokenText(story: Story, level: ReadingLevel, liveDeepDive: string): string {
+  if (level === "quick") return `${story.headline}. ${story.quickRead}`;
+  if (level === "understand") {
+    return [
+      story.headline,
+      story.whatHappened,
+      story.whyToday,
+      story.whyCare,
+      story.whatNext,
+    ].join(". ");
+  }
+  // deep — strip "## " markdown headers so they aren't read aloud literally
+  return `${story.headline}. ${liveDeepDive.replace(/##\s*/g, "")}`;
 }
 
 function StructuredBlock({ label, text, color }: { label: string; text: string; color: string }) {

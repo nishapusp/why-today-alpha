@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
+import AudioReader from "./AudioReader";
 
 export default function Top10List({ stories }: { stories: Story[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -55,6 +56,14 @@ export default function Top10List({ stories }: { stories: Story[] }) {
                 <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-3">
                   {story.summary}
                 </p>
+
+                <div className="mb-3.5">
+                  <AudioReader
+                    text={`${story.headline}. ${story.summary}`}
+                    label="Listen"
+                    accent={cat.accent}
+                  />
+                </div>
 
                 {story.knowledgeChain?.length > 0 && (
                   <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2 mb-3.5">
