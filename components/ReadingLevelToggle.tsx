@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
 import { ReadingLevel, Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import WonderingBlock from "./WonderingBlock";
@@ -13,8 +14,64 @@ const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
 ];
 
 export default function ReadingLevelToggle({ story }: { story: Story }) {
+  const { isSignedIn } = useUser();
   const [level, setLevel] = useState<ReadingLevel>("understand");
   const cat = getCategoryStyle(story.category);
+
+  // Load the signed-in user's saved reading-level preference once.
+  useEffect(() => {
+    if (!isSignedIn) return;
+    fetch("/api/preferences")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.defaultReadingLevel) setLevel(data.defaultReadingLevel);
+      })
+      .catch(() => {});
+  }, [isSignedIn]);
+
+  // Live-generated Deep Dive content, fetched on first tap of that tab.
+  const [liveDeepDive, setLiveDeepDive] = useState<string | null>(null);
+  const [deepDiveStatus, setDeepDiveStatus] = useState<"idle" | "loading" | "error">("idle");
+
+  async function handleSelectLevel(key: ReadingLevel) {
+    setLevel(key);
+
+    if (isSignedIn) {
+      fetch("/api/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ defaultReadingLevel: key }),
+      }).catch(() => {});
+    }
+
+    if (key === "deep" && liveDeepDive === null && deepDiveStatus === "idle") {
+      setDeepDiveStatus("loading");
+      try {
+        const res = await fetch("/api/expand-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            field: "deepDiveRead",
+            slug: story.slug,
+            headline: story.headline,
+            summary: story.summary,
+            category: story.category,
+          }),
+        });
+        const data = await res.json();
+        if (res.ok && data.content) {
+          setLiveDeepDive(data.content);
+          setDeepDiveStatus("idle");
+        } else {
+          setDeepDiveStatus("error");
+        }
+      } catch {
+        setDeepDiveStatus("error");
+      }
+    }
+  }
+
+  const deepDiveText = liveDeepDive ?? story.deepDiveRead;
 
   return (
     <div>
@@ -22,7 +79,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
         {LEVELS.map((l) => (
           <button
             key={l.key}
-            onClick={() => setLevel(l.key)}
+            onClick={() => handleSelectLevel(l.key)}
             className="px-4 py-2 rounded-full text-sm font-medium transition-all"
             style={
               level === l.key
@@ -53,15 +110,27 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
 
       {level === "deep" && (
         <div className="prose-custom space-y-4 text-[var(--text-primary)] leading-relaxed">
-          {story.deepDiveRead.split("\n\n").map((block, i) =>
-            block.startsWith("## ") ? (
-              <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
-                {block.replace("## ", "")}
-              </h3>
-            ) : (
-              <p key={i}>{block}</p>
-            )
+          {deepDiveStatus === "loading" && (
+            <div className="flex items-center gap-2 text-sm" style={{ color: cat.deep }}>
+              <span className="inline-block w-3.5 h-3.5 rounded-full border-2 border-current border-t-transparent animate-spin" />
+              Generating a fresh deep dive on this story…
+            </div>
           )}
+          {deepDiveStatus === "error" && (
+            <p className="text-sm" style={{ color: cat.deep }}>
+              Couldn&apos;t reach the live agent just now — showing the saved version instead.
+            </p>
+          )}
+          {deepDiveStatus !== "loading" &&
+            deepDiveText.split("\n\n").map((block, i) =>
+              block.startsWith("## ") ? (
+                <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
+                  {block.replace("## ", "")}
+                </h3>
+              ) : (
+                <p key={i}>{block}</p>
+              )
+            )}
         </div>
       )}
 
@@ -72,6 +141,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
           accent={cat.accent}
           tint={cat.tint}
           deep={cat.deep}
+          story={story}
         />
       </div>
 

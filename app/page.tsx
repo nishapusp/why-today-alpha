@@ -1,4 +1,6 @@
 import { getLatestEdition } from "@/lib/getData";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { recordVisitAndGetStreak } from "@/lib/preferences";
 import Hero from "@/components/Hero";
 import Top10List from "@/components/Top10List";
 
@@ -8,9 +10,19 @@ export const revalidate = 300; // re-check Airtable at most every 5 minutes
 export default async function Home() {
   const edition = await getLatestEdition();
 
+  const { userId } = await auth();
+  let streakDays: number | undefined;
+  let userName: string | undefined;
+
+  if (userId) {
+    streakDays = await recordVisitAndGetStreak(userId);
+    const user = await currentUser();
+    userName = user?.firstName ?? undefined;
+  }
+
   return (
     <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
-      <Hero edition={edition} streakDays={12} />
+      <Hero edition={edition} streakDays={streakDays} userName={userName} />
 
       <div>
         <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">

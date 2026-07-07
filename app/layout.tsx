@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
+import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -32,13 +33,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col overflow-x-hidden">
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
+      >
+        <body className="min-h-full flex flex-col overflow-x-hidden">
+          <div className="max-w-2xl mx-auto w-full px-4 pt-3 flex justify-end">
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="text-sm font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white">
+                  Sign in
+                </button>
+              </SignInButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
+          </div>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
