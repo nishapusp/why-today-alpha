@@ -86,6 +86,19 @@ function wordCount(str) {
   return (str || "").trim().split(/\s+/).filter(Boolean).length;
 }
 
+function extractJson(text) {
+  // Strip ```json ... ``` or ``` ... ``` fences if the model wrapped the output in one.
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) return fenceMatch[1].trim();
+  // Otherwise, grab from the first { to the last } — handles any stray text before/after.
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start !== -1 && end !== -1 && end > start) {
+    return text.slice(start, end + 1);
+  }
+  return text;
+}
+
 function ask(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
@@ -149,7 +162,6 @@ async function main() {
       tools: [{ google_search: {} }],
       generationConfig: {
         maxOutputTokens: 65536,
-        responseMimeType: "application/json",
       },
     }),
   });
@@ -174,7 +186,7 @@ async function main() {
   const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
   let finalJson;
   try {
-    finalJson = JSON.parse(text);
+    finalJson = JSON.parse(extractJson(text));
   } catch (err) {
     console.error("\nCouldn't parse Gemini's response as JSON:", err.message);
     console.error("\nRaw response (first 2000 chars):\n", text.slice(0, 2000));

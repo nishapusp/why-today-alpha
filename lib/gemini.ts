@@ -1,7 +1,6 @@
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
 export interface GeminiCallOptions {
-  jsonMode?: boolean; // request response_mime_type: application/json
   maxOutputTokens?: number;
 }
 
@@ -9,6 +8,11 @@ export interface GeminiCallOptions {
  * Calls the Gemini API with Google Search grounding enabled — this is
  * what replaced the Copilot Studio agent. One HTTP call, no conversation
  * state, no "which format would you like" back-and-forth.
+ *
+ * Note: Gemini's API does not currently support combining tool use
+ * (Google Search here) with forced JSON response mode — that combination
+ * returns a 400 error. So callers that need JSON must request it via the
+ * prompt itself and parse the text response, not via responseMimeType.
  */
 export async function generateWithGemini(
   systemInstruction: string,
@@ -24,7 +28,6 @@ export async function generateWithGemini(
     tools: [{ google_search: {} }],
     generationConfig: {
       maxOutputTokens: options.maxOutputTokens ?? 8192,
-      ...(options.jsonMode ? { responseMimeType: "application/json" } : {}),
     },
   };
 

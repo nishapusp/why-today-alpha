@@ -44,6 +44,17 @@ Return ONLY valid JSON matching this shape:
   "sentiment" (positive|caution|critical|neutral)
 }`;
 
+function extractJson(text) {
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) return fenceMatch[1].trim();
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start !== -1 && end !== -1 && end > start) {
+    return text.slice(start, end + 1);
+  }
+  return text;
+}
+
 function ask(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
@@ -82,7 +93,7 @@ async function main() {
       system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
       contents: [{ role: "user", parts: [{ text: userPrompt }] }],
       tools: [{ google_search: {} }],
-      generationConfig: { maxOutputTokens: 8192, responseMimeType: "application/json" },
+      generationConfig: { maxOutputTokens: 8192 },
     }),
   });
 
@@ -101,7 +112,7 @@ async function main() {
   const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
   let newStory;
   try {
-    newStory = JSON.parse(text);
+    newStory = JSON.parse(extractJson(text));
   } catch (err) {
     console.error("\nCouldn't parse response as JSON:", err.message);
     console.error(text.slice(0, 1500));
