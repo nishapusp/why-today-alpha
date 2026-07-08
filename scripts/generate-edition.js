@@ -205,6 +205,7 @@ async function main() {
         maxOutputTokens: 65536,
       },
     }),
+    signal: AbortSignal.timeout(360000), // 6 minutes — generous margin above the expected 1-3 min
   });
 
   if (!res.ok) {
