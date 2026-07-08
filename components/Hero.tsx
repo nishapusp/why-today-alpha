@@ -17,58 +17,28 @@ export default function Hero({
   streakDays?: number;
 }) {
   const dateLabel = new Date(edition.date).toLocaleDateString("en-IN", {
-    weekday: "long",
+    weekday: "short",
     day: "numeric",
-    month: "long",
-    year: "numeric",
+    month: "short",
   });
 
   return (
-    <section className="rounded-3xl bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy)] to-[var(--navy-light)] text-white p-8 md:p-10 relative overflow-hidden ring-1 ring-white/10 shadow-xl shadow-black/20">
-      {/* subtle top sheen for a premium, glassy edge */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/[0.06] to-transparent" />
-
-      <div className="relative z-10">
-        <p className="text-sm text-white/60 mb-2 tracking-wide">
-          {greeting()}, {userName} 👋
-        </p>
-        <h1 className="font-display text-3xl md:text-4xl mb-3 tracking-tight">
-          {dateLabel}
-        </h1>
-        <p className="text-white/70 max-w-md mb-6 leading-relaxed">
-          A {edition.stories.length}-story skim of what actually matters
-          today — go deeper on any story only if it grabs you.
-        </p>
-
-        <div className="flex flex-wrap gap-2.5">
-          <Pill>📖 {edition.stories.length} Stories</Pill>
-          <Pill>⏱ 2 min skim</Pill>
-          <Pill>✨ AI-Powered</Pill>
-          {streakDays ? (
-            <Pill accent>🔥 Day {streakDays} of understanding</Pill>
-          ) : null}
+    <section className="rounded-2xl bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy)] to-[var(--navy-light)] text-white px-5 py-4 relative overflow-hidden ring-1 ring-white/10">
+      <div className="relative z-10 flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[13px] text-white/60 truncate">
+            {greeting()}, {userName} 👋 · {dateLabel}
+          </p>
+          <p className="text-[13px] text-white/85 mt-0.5">
+            {edition.stories.length} stories today, worth a 2 min skim
+          </p>
         </div>
-      </div>
-
-      {/* ambient background mark — quiet, not decorative-for-its-own-sake:
-          a faint version of the Knowledge Chain arrow motif */}
-      <div className="absolute -right-6 -bottom-6 text-[140px] leading-none opacity-[0.05] font-mono select-none">
-        →
+        {streakDays ? (
+          <span className="shrink-0 text-[12px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm border bg-[var(--gold)]/15 text-[var(--gold-light)] border-[var(--gold)]/40">
+            🔥 Day {streakDays}
+          </span>
+        ) : null}
       </div>
     </section>
-  );
-}
-
-function Pill({ children, accent }: { children: React.ReactNode; accent?: boolean }) {
-  return (
-    <span
-      className={`text-sm px-3.5 py-1.5 rounded-full backdrop-blur-sm border ${
-        accent
-          ? "bg-[var(--gold)]/15 text-[var(--gold-light)] border-[var(--gold)]/40"
-          : "bg-white/[0.06] text-white/85 border-white/10"
-      }`}
-    >
-      {children}
-    </span>
   );
 }

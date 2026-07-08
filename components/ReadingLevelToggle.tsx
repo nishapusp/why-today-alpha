@@ -9,9 +9,9 @@ import KnowledgeChain from "./KnowledgeChain";
 import AudioReader from "./AudioReader";
 
 const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
-  { key: "quick", label: "Quick", minutes: "1–2 min" },
-  { key: "understand", label: "Understand", minutes: "5–7 min" },
-  { key: "deep", label: "Deep Dive", minutes: "10–30 min" },
+  { key: "quick", label: "Quick", minutes: "1-2m" },
+  { key: "understand", label: "Understand", minutes: "5-7m" },
+  { key: "deep", label: "Deep Dive", minutes: "10-30m" },
 ];
 
 export default function ReadingLevelToggle({ story }: { story: Story }) {
@@ -76,12 +76,12 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-1.5 mb-6 p-1 rounded-full" style={{ background: cat.tint }}>
+      <div className="flex items-center gap-1 mb-6 p-1 rounded-full overflow-x-auto no-scrollbar" style={{ background: cat.tint }}>
         {LEVELS.map((l) => (
           <button
             key={l.key}
             onClick={() => handleSelectLevel(l.key)}
-            className="px-3.5 py-2 rounded-full text-[13px] sm:text-sm font-medium transition-all whitespace-nowrap"
+            className="px-3 py-2 rounded-full text-[13px] font-medium transition-all whitespace-nowrap shrink-0"
             style={
               level === l.key
                 ? { background: cat.accent, color: "#fff" }
@@ -89,7 +89,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
             }
           >
             {l.label}
-            <span className="ml-1 text-[11px] sm:text-xs opacity-70">{l.minutes}</span>
+            <span className="ml-1 text-[11px] opacity-70">{l.minutes}</span>
           </button>
         ))}
       </div>
