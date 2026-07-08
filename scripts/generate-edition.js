@@ -19,7 +19,7 @@ const readline = require("readline");
 const { execSync } = require("child_process");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-pro"; // stronger model — this runs once/day, quality matters more than speed here
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
@@ -56,6 +56,9 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 ## knowledgeChain
 3-6 word labels, each explained in "Broader Connections".
 
+## Before returning output, verify — do not skip this step
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); deepDiveRead is 900-1400 words with all 5 headers and a Fast Facts bullet list; readMinutes matches the actual word count. If ANY field fails these checks, rewrite that specific field before finalizing your response. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+
 ## Schema (exact field names, always all 15 stories)
 Return ONLY valid JSON matching this shape:
 {
@@ -72,8 +75,12 @@ Return ONLY valid JSON matching this shape:
  }]
 }`;
 
-const USER_PROMPT =
-  "Generate today's full Why Today edition: 15 stories covering the most important Indian financial, banking, and policy news from the last 24-48 hours. Follow every rule in your instructions exactly, especially the length floors and Deep Dive formatting.";
+function getTodayISO() {
+  // IST, matching how editions are dated throughout the site
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+}
+
+const USER_PROMPT = `Today's actual date is ${getTodayISO()}. Generate today's full Why Today edition dated ${getTodayISO()}: 15 stories covering the most important Indian financial, banking, and policy news from the last 24-48 hours (i.e. roughly ${getTodayISO()} and the day or two before it — use Google Search to confirm what's actually current, don't guess). Follow every rule in your instructions exactly, especially the length floors, the "Before returning output, verify" checklist, and the Deep Dive formatting.`;
 
 function wordCount(str) {
   return (str || "").trim().split(/\s+/).filter(Boolean).length;
