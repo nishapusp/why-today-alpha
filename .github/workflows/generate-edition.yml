@@ -1,0 +1,36 @@
+name: Generate Daily Edition
+
+on:
+  # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
+  workflow_dispatch: {}
+
+  # Runs automatically every day at 8:30 AM IST.
+  # Cron is in UTC — 8:30 AM IST = 3:00 AM UTC.
+  schedule:
+    - cron: "0 3 * * *"
+
+permissions:
+  contents: write # needed so the script can git push the updated edition.json
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Why Today Bot"
+          git config user.email "actions@github.com"
+
+      - name: Generate today's edition
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: node scripts/generate-edition.js

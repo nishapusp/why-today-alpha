@@ -262,10 +262,21 @@ async function main() {
 
   console.log(`\nNumber of the day: ${finalJson.numberValue || "?"} — ${finalJson.themeTitle || "?"}`);
 
-  const proceed = await ask("\nWrite this to data/edition.json and push to GitHub? (y/n): ");
-  if (proceed.trim().toLowerCase() !== "y") {
-    console.log("Not written. Nothing changed.");
-    process.exit(0);
+  const isCI = process.env.CI === "true";
+
+  if (isCI) {
+    if (issues.length > 0) {
+      console.error(`\n${issues.length} validation issue(s) found — NOT auto-publishing in CI mode.`);
+      console.error("Run this manually to review, or fix the prompt and try again.");
+      process.exit(1); // fails the GitHub Actions run visibly, nothing gets pushed
+    }
+    console.log("\nValidation clean — auto-publishing (CI mode).");
+  } else {
+    const proceed = await ask("\nWrite this to data/edition.json and push to GitHub? (y/n): ");
+    if (proceed.trim().toLowerCase() !== "y") {
+      console.log("Not written. Nothing changed.");
+      process.exit(0);
+    }
   }
 
   fs.writeFileSync(EDITION_PATH, JSON.stringify(finalJson, null, 2));
@@ -279,6 +290,7 @@ async function main() {
   } catch (err) {
     console.error("\nGit commit/push failed — the file is written locally, but you'll need to commit and push manually.");
     console.error(err.message);
+    if (isCI) process.exit(1);
   }
 }
 
