@@ -78,7 +78,7 @@ export default async function StoryPage({
       </div>
 
       <article className="px-4 pt-6">
-        <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6">
+        <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6 text-justify">
           {story.summary}
         </p>
 
