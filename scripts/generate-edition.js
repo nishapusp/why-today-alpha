@@ -36,7 +36,14 @@ const WORD_FLOORS = {
 // Keep this in sync with lib/prompts.ts's DAILY_EDITION_SYSTEM_PROMPT.
 // (Duplicated here rather than imported since this script runs as plain
 // Node/CommonJS, not through Next.js's TypeScript build.)
-const SYSTEM_PROMPT = `You produce one daily "edition" as JSON for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Goal: explain WHY, in plain language, not just headlines.
+//
+// This is now a function of storyCount because generation happens in
+// BATCHES (see BATCH_SIZES below) — a single request asking for all 15
+// full stories was hitting Gemini's output token ceiling and returning a
+// truncated, unparseable response. Splitting into smaller batches keeps
+// each individual response comfortably under that limit.
+function buildSystemPrompt(storyCount) {
+  return `You produce part of a daily "edition" as JSON for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Goal: explain WHY, in plain language, not just headlines.
 
 ## Voice — this is the difference between useful and boring
 Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title (banned patterns: "X Continues Y", "Government Relaxes Z", "X Maintains Y Pace"). Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
@@ -45,9 +52,9 @@ Write like a sharp friend explaining why something matters over chai, not like a
 Use Google Search to check 4-6 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
 
 ## Recency is mandatory, not a preference
-Every one of the 15 stories must be about something that was reported or happened within the last 24-48 hours specifically — not a general/recurring topic dressed up as news. When searching, use date-qualified queries: include words like "today," "this week," the actual current date, or "latest" in your search terms rather than generic topic searches, which tend to surface older, more established articles instead of breaking ones.
+Every one of the ${storyCount} stories must be about something that was reported or happened within the last 24-48 hours specifically — not a general/recurring topic dressed up as news. When searching, use date-qualified queries: include words like "today," "this week," the actual current date, or "latest" in your search terms rather than generic topic searches, which tend to surface older, more established articles instead of breaking ones.
 Reject any story candidate that is really an evergreen or recurring theme (e.g. "RBI's ongoing approach to liquidity management" without a specific new trigger event) — if you can't find a genuinely fresh news hook for a topic, search again with different terms or pick a different story entirely. It is better to search harder than to include a stale story.
-If it's very early in the day and today's news cycle hasn't produced 15 fresh stories yet, prioritize the most recent 24 hours available (including late the previous evening) rather than reaching back multiple days.
+If it's very early in the day and today's news cycle hasn't produced ${storyCount} fresh stories yet, prioritize the most recent 24 hours available (including late the previous evening) rather than reaching back multiple days.
 
 ## Output rules (strict)
 No citation markers, footnote numbers, brackets, or "(Source)" text inline anywhere — sources go ONLY in officialSources. No story position/number inside any text field. Every field = complete sentences. Explain every technical term in plain words the first time it's used. Write for someone with zero finance background.
@@ -62,9 +69,9 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); deepDiveRead is 900-1400 words with all 5 headers and a Fast Facts bullet list; readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 900-1400 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker per section in at least 3 sections; a paragraph starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
-## Schema (exact field names, always all 15 stories)
+## Schema (exact field names, always exactly ${storyCount} stories in this response)
 Return ONLY valid JSON matching this shape:
 {
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
@@ -79,13 +86,19 @@ Return ONLY valid JSON matching this shape:
    "sentiment" (positive|caution|critical|neutral)
  }]
 }`;
+}
 
 function getTodayISO() {
   // IST, matching how editions are dated throughout the site
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 }
 
-const USER_PROMPT = `Today's actual date is ${getTodayISO()}. Generate today's full Why Today edition dated ${getTodayISO()}: 15 stories covering the most important Indian financial, banking, and policy NEWS FROM TODAY AND YESTERDAY SPECIFICALLY (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme. Follow every rule in your instructions exactly, especially the length floors, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting.`;
+function buildUserPrompt(storyCount, excludeHeadlines) {
+  const exclusionNote = excludeHeadlines?.length
+    ? ` Do NOT repeat or overlap with these already-covered stories from the same edition: ${excludeHeadlines.map((h) => `"${h}"`).join(", ")}. Find ${storyCount} completely different fresh stories.`
+    : "";
+  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, and policy NEWS FROM TODAY AND YESTERDAY SPECIFICALLY (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote} Follow every rule in your instructions exactly, especially the length floors, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
+}
 
 function wordCount(str) {
   return (str || "").trim().split(/\s+/).filter(Boolean).length;
@@ -140,9 +153,54 @@ async function fetchPexelsImage(story, apiKey) {
   }
 }
 
-function ask(question) {
+async function ask(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
+}
+
+// Splitting into two batches instead of one 15-story call — a single call
+// asking for all 15 full stories was hitting Gemini's output token ceiling
+// and returning a truncated, unparseable response (confirmed in practice,
+// not just theoretical). Each batch stays comfortably under that limit.
+const BATCH_SIZES = [8, 7];
+
+async function generateBatch(storyCount, excludeHeadlines) {
+  const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
+    method: "POST",
+    headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: buildSystemPrompt(storyCount) }] },
+      contents: [{ role: "user", parts: [{ text: buildUserPrompt(storyCount, excludeHeadlines) }] }],
+      tools: [{ google_search: {} }],
+      generationConfig: {
+        maxOutputTokens: 40000, // ~half the old ceiling, generous margin for a ~8-story batch
+      },
+    }),
+    signal: AbortSignal.timeout(360000), // 6 minutes — generous margin above the expected 1-3 min
+  });
+
+  if (!res.ok) {
+    throw new Error(`Gemini API error (${res.status}): ${await res.text()}`);
+  }
+
+  const data = await res.json();
+  const candidate = data.candidates?.[0];
+
+  if (!candidate) {
+    throw new Error(`No candidates returned: ${JSON.stringify(data)}`);
+  }
+  if (candidate.finishReason === "MAX_TOKENS") {
+    throw new Error(
+      `Response was cut off even at ${storyCount} stories — try reducing BATCH_SIZES further in this script (e.g. [5, 5, 5]).`
+    );
+  }
+
+  const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+  try {
+    return JSON.parse(extractJson(text));
+  } catch (err) {
+    throw new Error(`Couldn't parse batch response as JSON (${err.message}). Raw response (first 1000 chars): ${text.slice(0, 1000)}`);
+  }
 }
 
 function validateEdition(edition) {
@@ -175,6 +233,8 @@ function validateEdition(edition) {
         if (!story.deepDiveRead.includes(h)) issues.push(`${label}: deepDiveRead is missing the "${h}" section`);
       }
       if (!story.deepDiveRead.includes("- ")) issues.push(`${label}: deepDiveRead has no Fast Facts bullet list`);
+      if (!story.deepDiveRead.includes("**")) issues.push(`${label}: deepDiveRead has no bold (**) emphasis markers`);
+      if (!/Then vs\.? now:|Compared to/i.test(story.deepDiveRead)) issues.push(`${label}: deepDiveRead has no "Then vs. now:" comparison paragraph`);
     }
     if (/[a-z]\.\d+\s/.test(story.whatHappened || "") || /[a-z]\.\d+\s/.test(story.deepDiveRead || "")) {
       issues.push(`${label}: possible leaked citation marker detected.`);
@@ -192,46 +252,29 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`Calling Gemini (${MODEL}) with Google Search grounding — this can take 1-3 minutes for 15 full stories...`);
+  const totalStories = BATCH_SIZES.reduce((a, b) => a + b, 0);
+  console.log(`Calling Gemini (${MODEL}) with Google Search grounding, in ${BATCH_SIZES.length} batches (${BATCH_SIZES.join(" + ")} = ${totalStories} stories total)...`);
 
-  const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
-    method: "POST",
-    headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: [{ role: "user", parts: [{ text: USER_PROMPT }] }],
-      tools: [{ google_search: {} }],
-      generationConfig: {
-        maxOutputTokens: 65536,
-      },
-    }),
-    signal: AbortSignal.timeout(360000), // 6 minutes — generous margin above the expected 1-3 min
-  });
+  let finalJson = null;
+  const seenHeadlines = [];
 
-  if (!res.ok) {
-    console.error(`\nGemini API error (${res.status}):`, await res.text());
-    process.exit(1);
+  for (let i = 0; i < BATCH_SIZES.length; i++) {
+    const count = BATCH_SIZES[i];
+    console.log(`\nBatch ${i + 1}/${BATCH_SIZES.length}: requesting ${count} stories...`);
+    const batch = await generateBatch(count, seenHeadlines);
+    const batchStories = Array.isArray(batch.stories) ? batch.stories : [];
+    console.log(`Batch ${i + 1} returned ${batchStories.length} stories.`);
+    batchStories.forEach((s) => s.headline && seenHeadlines.push(s.headline));
+
+    if (finalJson === null) {
+      finalJson = batch; // first batch supplies the top-level theme/number fields
+    } else {
+      finalJson.stories = [...(finalJson.stories || []), ...batchStories];
+    }
   }
 
-  const data = await res.json();
-  const candidate = data.candidates?.[0];
-
-  if (!candidate) {
-    console.error("\nNo candidates returned:", JSON.stringify(data, null, 2));
-    process.exit(1);
-  }
-  if (candidate.finishReason === "MAX_TOKENS") {
-    console.error("\nResponse was cut off (hit the token limit). Try again — if it keeps happening, this script's maxOutputTokens may need raising.");
-    process.exit(1);
-  }
-
-  const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
-  let finalJson;
-  try {
-    finalJson = JSON.parse(extractJson(text));
-  } catch (err) {
-    console.error("\nCouldn't parse Gemini's response as JSON:", err.message);
-    console.error("\nRaw response (first 2000 chars):\n", text.slice(0, 2000));
+  if (!finalJson) {
+    console.error("\nNo batches succeeded — nothing to publish.");
     process.exit(1);
   }
 

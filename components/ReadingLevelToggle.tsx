@@ -159,35 +159,87 @@ function renderInlineBold(text: string): React.ReactNode[] {
   );
 }
 
+type DeepDiveBlock =
+  | { type: "header"; content: string }
+  | { type: "bullets"; content: string[] }
+  | { type: "paragraph"; content: string };
+
+/**
+ * Line-by-line parser — deliberately NOT a naive `split("\n\n")`. That
+ * approach silently swallowed bullet lists into the preceding header
+ * whenever Gemini wrote them with no blank line in between (e.g.
+ * "## What Changed\n- fact one\n- fact two" — completely natural
+ * markdown, but blank-line splitting treated the whole chunk as one
+ * header block and the bullets never rendered as a list at all).
+ */
+function parseDeepDiveBlocks(text: string): DeepDiveBlock[] {
+  const lines = text.split("\n");
+  const blocks: DeepDiveBlock[] = [];
+  let paragraphBuffer: string[] = [];
+
+  const flushParagraph = () => {
+    if (paragraphBuffer.length) {
+      blocks.push({ type: "paragraph", content: paragraphBuffer.join(" ").trim() });
+      paragraphBuffer = [];
+    }
+  };
+
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i].trim();
+
+    if (!line) {
+      flushParagraph();
+      i++;
+      continue;
+    }
+    if (line.startsWith("## ")) {
+      flushParagraph();
+      blocks.push({ type: "header", content: line.replace("## ", "") });
+      i++;
+      continue;
+    }
+    if (line.startsWith("- ")) {
+      flushParagraph();
+      const bulletLines: string[] = [];
+      while (i < lines.length && lines[i].trim().startsWith("- ")) {
+        bulletLines.push(lines[i].trim().replace(/^-\s*/, ""));
+        i++;
+      }
+      blocks.push({ type: "bullets", content: bulletLines });
+      continue;
+    }
+    paragraphBuffer.push(line);
+    i++;
+  }
+  flushParagraph();
+
+  return blocks;
+}
+
 function renderDeepDive(text: string, cat: ReturnType<typeof getCategoryStyle>): React.ReactNode {
-  const blocks = text.split("\n\n");
+  const blocks = parseDeepDiveBlocks(text);
 
   return blocks.map((block, i) => {
-    const trimmed = block.trim();
-
-    // Header
-    if (trimmed.startsWith("## ")) {
+    if (block.type === "header") {
       return (
         <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
-          {trimmed.replace("## ", "")}
+          {block.content}
         </h3>
       );
     }
 
-    // Bullet list (e.g. the "Fast Facts" block) — render as a tinted callout
-    const lines = trimmed.split("\n").filter(Boolean);
-    const isBulletList = lines.length > 1 && lines.every((l) => l.trim().startsWith("- "));
-    if (isBulletList) {
+    if (block.type === "bullets") {
       return (
         <ul
           key={i}
           className="rounded-xl p-4 my-3 space-y-1.5 list-none"
           style={{ background: cat.tint }}
         >
-          {lines.map((line, j) => (
+          {block.content.map((line, j) => (
             <li key={j} className="text-[14.5px] flex gap-2">
               <span style={{ color: cat.accent }}>●</span>
-              <span>{renderInlineBold(line.replace(/^-\s*/, ""))}</span>
+              <span>{renderInlineBold(line)}</span>
             </li>
           ))}
         </ul>
@@ -195,20 +247,20 @@ function renderDeepDive(text: string, cat: ReturnType<typeof getCategoryStyle>):
     }
 
     // Comparison paragraph — visually set apart with a left border
-    if (/^(Then vs\.? now:|Compared to)/i.test(trimmed)) {
+    if (/^(Then vs\.? now:|Compared to)/i.test(block.content)) {
       return (
         <p
           key={i}
           className="pl-4 my-3 italic text-[15px]"
           style={{ borderLeft: `3px solid ${cat.accent}`, color: "var(--text-primary)" }}
         >
-          {renderInlineBold(trimmed)}
+          {renderInlineBold(block.content)}
         </p>
       );
     }
 
     // Ordinary paragraph, with inline bold support
-    return <p key={i}>{renderInlineBold(trimmed)}</p>;
+    return <p key={i}>{renderInlineBold(block.content)}</p>;
   });
 }
 
