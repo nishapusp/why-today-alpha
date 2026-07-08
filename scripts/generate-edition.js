@@ -283,5 +283,14 @@ async function main() {
 
 main().catch((err) => {
   console.error("\nScript failed:", err.message);
+  if (err.cause) {
+    console.error("Underlying cause:", err.cause.message || err.cause);
+  }
+  if (err.message === "fetch failed") {
+    console.error("\nThis is a network-level failure — the request never reached Google's servers.");
+    console.error("Try: (1) running again, (2) checking your internet connection,");
+    console.error("(3) trying a different network if you're on a work/office connection");
+    console.error("that might block this domain, (4) testing https://generativelanguage.googleapis.com directly in a browser.");
+  }
   process.exit(1);
 });
