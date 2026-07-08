@@ -53,36 +53,90 @@ export default function Top10List({
             className="rounded-2xl overflow-hidden transition-shadow"
             style={{ background: cat.tint, border: "1px solid rgba(0,0,0,0.04)" }}
           >
-            <button
-              onClick={() => {
-                const opening = !isOpen;
-                setOpenIndex(opening ? i : null);
-                if (opening) markRead(story.slug);
-              }}
-              className="w-full flex items-center gap-3 py-3.5 px-4 text-left min-w-0"
-            >
-              <span
-                className="font-mono text-[11px] font-semibold shrink-0 w-5"
-                style={{ color: cat.deep }}
+            {i === 0 && story.headlineImage ? (
+              <button
+                onClick={() => {
+                  const opening = !isOpen;
+                  setOpenIndex(opening ? i : null);
+                  if (opening) markRead(story.slug);
+                }}
+                className="relative w-full text-left block"
+                style={{ aspectRatio: "4 / 3" }}
               >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-base shrink-0">{cat.icon}</span>
-              <span className="text-[14px] leading-snug flex-1 min-w-0 text-[var(--text-primary)] font-medium break-words">
-                {story.headline}
-              </span>
-              {isRead && (
-                <span className="text-[10px] shrink-0" style={{ color: cat.accent }} title="Won't show next visit">
-                  ✓
+                <img
+                  src={story.headlineImage.url}
+                  alt={story.headlineImage.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover absolute inset-0"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.82) 100%)",
+                  }}
+                />
+                <span
+                  className="absolute top-2.5 right-3 text-[9px] text-white/75"
+                  style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                >
+                  📷 {story.headlineImage.credit}
                 </span>
-              )}
-              <span
-                className="text-xs shrink-0 ml-1"
-                style={{ color: cat.deep }}
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span className="text-[11px] font-bold text-white rounded-full px-2.5 py-1" style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(6px)" }}>
+                    01
+                  </span>
+                  <span className="text-[10.5px] font-bold uppercase tracking-wide text-white rounded-full px-2.5 py-1" style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(6px)" }}>
+                    {cat.icon} {story.category}
+                  </span>
+                </div>
+                <div className="absolute left-0 right-0 bottom-0 p-4">
+                  <h3 className="font-display font-semibold text-white text-[17px] leading-snug mb-1" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}>
+                    {story.headline}
+                  </h3>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] text-white/75">{story.readMinutes} min read</span>
+                    <span
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white"
+                      style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(6px)" }}
+                    >
+                      {isOpen ? "▾" : "›"}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  const opening = !isOpen;
+                  setOpenIndex(opening ? i : null);
+                  if (opening) markRead(story.slug);
+                }}
+                className="w-full flex items-center gap-3 py-3.5 px-4 text-left min-w-0"
               >
-                {isOpen ? "▾" : "›"}
-              </span>
-            </button>
+                <span
+                  className="font-mono text-[11px] font-semibold shrink-0 w-5"
+                  style={{ color: cat.deep }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base shrink-0">{cat.icon}</span>
+                <span className="text-[14px] leading-snug flex-1 min-w-0 text-[var(--text-primary)] font-medium break-words">
+                  {story.headline}
+                </span>
+                {isRead && (
+                  <span className="text-[10px] shrink-0" style={{ color: cat.accent }} title="Won't show next visit">
+                    ✓
+                  </span>
+                )}
+                <span
+                  className="text-xs shrink-0 ml-1"
+                  style={{ color: cat.deep }}
+                >
+                  {isOpen ? "▾" : "›"}
+                </span>
+              </button>
+            )}
 
             {isOpen && (
               <div className="px-4 pb-4">

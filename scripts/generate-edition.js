@@ -44,6 +44,11 @@ Write like a sharp friend explaining why something matters over chai, not like a
 ## Sourcing
 Use Google Search to check 4-6 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
 
+## Recency is mandatory, not a preference
+Every one of the 15 stories must be about something that was reported or happened within the last 24-48 hours specifically — not a general/recurring topic dressed up as news. When searching, use date-qualified queries: include words like "today," "this week," the actual current date, or "latest" in your search terms rather than generic topic searches, which tend to surface older, more established articles instead of breaking ones.
+Reject any story candidate that is really an evergreen or recurring theme (e.g. "RBI's ongoing approach to liquidity management" without a specific new trigger event) — if you can't find a genuinely fresh news hook for a topic, search again with different terms or pick a different story entirely. It is better to search harder than to include a stale story.
+If it's very early in the day and today's news cycle hasn't produced 15 fresh stories yet, prioritize the most recent 24 hours available (including late the previous evening) rather than reaching back multiple days.
+
 ## Output rules (strict)
 No citation markers, footnote numbers, brackets, or "(Source)" text inline anywhere — sources go ONLY in officialSources. No story position/number inside any text field. Every field = complete sentences. Explain every technical term in plain words the first time it's used. Write for someone with zero finance background.
 
@@ -57,7 +62,7 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); deepDiveRead is 900-1400 words with all 5 headers and a Fast Facts bullet list; readMinutes matches the actual word count. If ANY field fails these checks, rewrite that specific field before finalizing your response. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); deepDiveRead is 900-1400 words with all 5 headers and a Fast Facts bullet list; readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
 ## Schema (exact field names, always all 15 stories)
 Return ONLY valid JSON matching this shape:
@@ -80,7 +85,7 @@ function getTodayISO() {
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 }
 
-const USER_PROMPT = `Today's actual date is ${getTodayISO()}. Generate today's full Why Today edition dated ${getTodayISO()}: 15 stories covering the most important Indian financial, banking, and policy news from the last 24-48 hours (i.e. roughly ${getTodayISO()} and the day or two before it — use Google Search to confirm what's actually current, don't guess). Follow every rule in your instructions exactly, especially the length floors, the "Before returning output, verify" checklist, and the Deep Dive formatting.`;
+const USER_PROMPT = `Today's actual date is ${getTodayISO()}. Generate today's full Why Today edition dated ${getTodayISO()}: 15 stories covering the most important Indian financial, banking, and policy NEWS FROM TODAY AND YESTERDAY SPECIFICALLY (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme. Follow every rule in your instructions exactly, especially the length floors, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting.`;
 
 function wordCount(str) {
   return (str || "").trim().split(/\s+/).filter(Boolean).length;
@@ -97,6 +102,42 @@ function extractJson(text) {
     return text.slice(start, end + 1);
   }
   return text;
+}
+
+// Maps our story categories to search terms that actually return good photos
+// on a stock site — "Economy" alone returns vague results, "stock market
+// trading India" returns something real.
+const CATEGORY_SEARCH_TERMS = {
+  Banking: "bank building finance india",
+  Economy: "stock market trading india",
+  Technology: "technology digital india startup",
+  World: "world map global trade",
+  Policy: "indian parliament government",
+  Corporate: "business office india corporate",
+};
+
+async function fetchPexelsImage(story, apiKey) {
+  const query = CATEGORY_SEARCH_TERMS[story.category] || "business finance india";
+  try {
+    const res = await fetch(
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=5&orientation=landscape`,
+      { headers: { Authorization: apiKey } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data.photos?.length) return null;
+    // Pick randomly among the top results so same-category stories on the
+    // same day don't all get the identical photo.
+    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    return {
+      url: photo.src.large,
+      alt: photo.alt || story.headline,
+      credit: photo.photographer,
+      creditUrl: photo.photographer_url,
+    };
+  } catch {
+    return null; // Non-fatal — a story with no image just renders without one.
+  }
 }
 
 function ask(question) {
@@ -191,6 +232,17 @@ async function main() {
     console.error("\nCouldn't parse Gemini's response as JSON:", err.message);
     console.error("\nRaw response (first 2000 chars):\n", text.slice(0, 2000));
     process.exit(1);
+  }
+
+  if (process.env.PEXELS_API_KEY && Array.isArray(finalJson.stories)) {
+    console.log(`\nFetching ${finalJson.stories.length} headline images from Pexels...`);
+    for (const story of finalJson.stories) {
+      story.headlineImage = await fetchPexelsImage(story, process.env.PEXELS_API_KEY);
+    }
+    const found = finalJson.stories.filter((s) => s.headlineImage).length;
+    console.log(`Got images for ${found}/${finalJson.stories.length} stories.`);
+  } else if (Array.isArray(finalJson.stories)) {
+    console.log("\nPEXELS_API_KEY not set — skipping headline images (stories will have none).");
   }
 
   console.log("\n=== VALIDATION ===");

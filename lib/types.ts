@@ -34,6 +34,13 @@ export interface WordOfTheDay {
   definition: string;
 }
 
+export interface HeadlineImage {
+  url: string;
+  alt: string;
+  credit: string; // photographer name, shown small even though Pexels doesn't require it
+  creditUrl: string;
+}
+
 export interface Story {
   headline: string;
   slug: string;
@@ -53,6 +60,7 @@ export interface Story {
   officialSources: SourceLink[];
   readMinutes: number;
   sentiment: Sentiment;
+  headlineImage?: HeadlineImage; // every story gets one, fetched from Pexels at generation time
 }
 
 export interface VocabularyItem {
