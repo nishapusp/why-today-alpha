@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
+import Script from "next/script";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -32,12 +33,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <ClerkProvider>
       <html
         lang="en"
         className={`${fraunces.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
       >
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        )}
         <body className="min-h-full flex flex-col overflow-x-hidden">
           <div className="max-w-2xl mx-auto w-full px-4 pt-3 flex justify-end">
             <Show when="signed-out">

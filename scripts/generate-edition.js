@@ -2,16 +2,13 @@
 /**
  * scripts/generate-edition.js
  *
- * One-command daily edition generation:
- *   1. Calls the "Why Today Studio" agent via Direct Line
- *   2. Handles the agent's "which format?" clarifying question automatically
- *   3. Retrieves the JSON (whether sent as a file attachment or inline text)
- *   4. Validates it against the schema and length floors
- *   5. Prints a human-readable review
- *   6. Asks for confirmation before writing data/edition.json and pushing
+ * One-command daily edition generation via the Gemini API (replaces the
+ * earlier Copilot Studio / Direct Line version — one HTTP call instead
+ * of a multi-turn conversation, no "which format?" handling needed since
+ * Gemini's JSON mode returns structured output directly).
  *
  * Usage:
- *   DIRECT_LINE_SECRET="..." node scripts/generate-edition.js
+ *   GEMINI_API_KEY="..." node scripts/generate-edition.js
  *
  * Nothing is written or pushed without you confirming at the prompt.
  */
@@ -21,12 +18,10 @@ const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
 
-const DIRECT_LINE_BASE = "https://directline.botframework.com/v3/directline";
-const SECRET = process.env.DIRECT_LINE_SECRET;
+const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
-const TRIGGER_MESSAGE = "generate today's full edition, all 10 stories, full length";
-const OVERALL_TIMEOUT_MS = 3 * 60 * 1000; // full editions can take 1-2+ minutes
-const POLL_INTERVAL_MS = 3000;
 
 const REQUIRED_STORY_FIELDS = [
   "headline", "slug", "category", "summary", "quickRead", "whatHappened",
@@ -35,8 +30,50 @@ const REQUIRED_STORY_FIELDS = [
 ];
 const REQUIRED_EDITION_FIELDS = ["date", "themeTitle", "numberValue", "stories"];
 const WORD_FLOORS = {
-  quickRead: 90, whatHappened: 90, whyToday: 90, whyCare: 90, whatNext: 80,
+  quickRead: 180, whatHappened: 220, whyToday: 220, whyCare: 220, whatNext: 180,
 };
+
+// Keep this in sync with lib/prompts.ts's DAILY_EDITION_SYSTEM_PROMPT.
+// (Duplicated here rather than imported since this script runs as plain
+// Node/CommonJS, not through Next.js's TypeScript build.)
+const SYSTEM_PROMPT = `You produce one daily "edition" as JSON for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Goal: explain WHY, in plain language, not just headlines.
+
+## Voice — this is the difference between useful and boring
+Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title (banned patterns: "X Continues Y", "Government Relaxes Z", "X Maintains Y Pace"). Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
+
+## Sourcing
+Use Google Search to check 4-6 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
+
+## Output rules (strict)
+No citation markers, footnote numbers, brackets, or "(Source)" text inline anywhere — sources go ONLY in officialSources. No story position/number inside any text field. Every field = complete sentences. Explain every technical term in plain words the first time it's used. Write for someone with zero finance background.
+
+## Length floors (minimums)
+summary: 2+ sentences (35-45 words). quickRead: 180-260 words. whatHappened, whyToday, whyCare: 220-280 words each, each including at least one concrete comparison. whatNext: 180-220 words with a timeframe if known. deepDiveRead: 900-1400 words total across 5 headers: ## What Changed (150-250w), ## The Backstory (150-250w), ## Why It Matters (200-300w), ## Broader Connections (150-250w), ## Alternative View (150-200w).
+
+## Deep Dive must feel immersive, not a wall of paragraphs
+Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concrete number). Use **bold** around the single most important number per section. Include a "Then vs. now:" or "Compared to [X]:" comparison paragraph. Vary sentence rhythm — mix short punchy sentences with longer ones. In Alternative View, frame it as a real disagreement ("Not everyone reads this the same way.").
+
+## knowledgeChain
+3-6 word labels, each explained in "Broader Connections".
+
+## Schema (exact field names, always all 15 stories)
+Return ONLY valid JSON matching this shape:
+{
+ "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
+ "stories":[{
+   "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
+   "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
+   "keyNumbers":[{"label","value"}],
+   "knowledgeChain":["..."],
+   "ifYoureWondering":[{"q","a"}],
+   "officialSources":[{"label","url"}],
+   "readMinutes" (integer = word_count/200, rounded up),
+   "sentiment" (positive|caution|critical|neutral)
+ }]
+}`;
+
+const USER_PROMPT =
+  "Generate today's full Why Today edition: 15 stories covering the most important Indian financial, banking, and policy news from the last 24-48 hours. Follow every rule in your instructions exactly, especially the length floors and Deep Dive formatting.";
 
 function wordCount(str) {
   return (str || "").trim().split(/\s+/).filter(Boolean).length;
@@ -45,53 +82,6 @@ function wordCount(str) {
 function ask(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
-}
-
-async function directLineRequest(url, options = {}) {
-  const res = await fetch(url, options);
-  if (!res.ok) throw new Error(`Direct Line request failed: ${res.status} ${await res.text()}`);
-  return res.json();
-}
-
-async function sendMessage(conversationId, token, text) {
-  await fetch(`${DIRECT_LINE_BASE}/conversations/${conversationId}/activities`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ type: "message", from: { id: "edition-generator" }, text }),
-  });
-}
-
-async function pollForNewActivities(conversationId, token, sinceWatermark) {
-  const url = sinceWatermark
-    ? `${DIRECT_LINE_BASE}/conversations/${conversationId}/activities?watermark=${sinceWatermark}`
-    : `${DIRECT_LINE_BASE}/conversations/${conversationId}/activities`;
-  const data = await directLineRequest(url, { headers: { Authorization: `Bearer ${token}` } });
-  const botActivities = (data.activities || []).filter((a) => a.from?.id !== "edition-generator" && a.type === "message");
-  return { botActivities, watermark: data.watermark };
-}
-
-async function fetchAttachmentJson(attachment, token) {
-  const res = await fetch(attachment.contentUrl, {
-    headers: attachment.contentUrl.includes("directline.botframework.com")
-      ? { Authorization: `Bearer ${token}` }
-      : {},
-  });
-  const text = await res.text();
-  return JSON.parse(text);
-}
-
-function looksLikeClarifyingQuestion(text) {
-  return /which format|full edition.*compact|top 3|top 5|options?:/i.test(text || "");
-}
-
-function extractJsonFromText(text) {
-  const match = text.match(/\{[\s\S]*\}/);
-  if (!match) return null;
-  try {
-    return JSON.parse(match[0]);
-  } catch {
-    return null;
-  }
 }
 
 function validateEdition(edition) {
@@ -103,8 +93,8 @@ function validateEdition(edition) {
     issues.push("`stories` is not an array — cannot validate further.");
     return issues;
   }
-  if (edition.stories.length !== 10) {
-    issues.push(`Expected 10 stories, got ${edition.stories.length}.`);
+  if (edition.stories.length !== 15) {
+    issues.push(`Expected 15 stories, got ${edition.stories.length}.`);
   }
   edition.stories.forEach((story, i) => {
     const label = `Story ${i + 1} ("${story.headline || "no headline"}")`;
@@ -123,10 +113,10 @@ function validateEdition(edition) {
       for (const h of headers) {
         if (!story.deepDiveRead.includes(h)) issues.push(`${label}: deepDiveRead is missing the "${h}" section`);
       }
+      if (!story.deepDiveRead.includes("- ")) issues.push(`${label}: deepDiveRead has no Fast Facts bullet list`);
     }
-    // Heuristic check for leaked citation markers, e.g. "...attractive.1 The shift"
     if (/[a-z]\.\d+\s/.test(story.whatHappened || "") || /[a-z]\.\d+\s/.test(story.deepDiveRead || "")) {
-      issues.push(`${label}: possible leaked citation marker detected (a number stuck right after a sentence).`);
+      issues.push(`${label}: possible leaked citation marker detected.`);
     }
     if (/\bstory\s*\d+\b/i.test(story.headline || "")) {
       issues.push(`${label}: headline appears to contain a story number.`);
@@ -136,64 +126,51 @@ function validateEdition(edition) {
 }
 
 async function main() {
-  if (!SECRET) {
-    console.error("Set DIRECT_LINE_SECRET first:\n  DIRECT_LINE_SECRET=\"...\" node scripts/generate-edition.js");
+  if (!API_KEY) {
+    console.error("Set GEMINI_API_KEY first:\n  GEMINI_API_KEY=\"...\" node scripts/generate-edition.js");
     process.exit(1);
   }
 
-  console.log("Starting conversation with Why Today Studio...");
-  const { conversationId, token } = await directLineRequest(`${DIRECT_LINE_BASE}/conversations`, {
+  console.log(`Calling Gemini (${MODEL}) with Google Search grounding — this can take 1-3 minutes for 15 full stories...`);
+
+  const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${SECRET}` },
+    headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      contents: [{ role: "user", parts: [{ text: USER_PROMPT }] }],
+      tools: [{ google_search: {} }],
+      generationConfig: {
+        maxOutputTokens: 65536,
+        responseMimeType: "application/json",
+      },
+    }),
   });
-  const authToken = token || SECRET;
 
-  console.log(`Sending: "${TRIGGER_MESSAGE}"`);
-  await sendMessage(conversationId, authToken, TRIGGER_MESSAGE);
-
-  let watermark = null;
-  let finalJson = null;
-  let askedFormat = false;
-  const deadline = Date.now() + OVERALL_TIMEOUT_MS;
-
-  console.log("Waiting for a response (full editions can take 1-2+ minutes)...");
-  while (Date.now() < deadline && !finalJson) {
-    await new Promise((r) => setTimeout(r, POLL_INTERVAL_MS));
-    const { botActivities, watermark: newWatermark } = await pollForNewActivities(conversationId, authToken, watermark);
-    watermark = newWatermark;
-    process.stdout.write(".");
-
-    for (const activity of botActivities) {
-      // Case 1: JSON delivered as a file attachment
-      const jsonAttachment = (activity.attachments || []).find(
-        (a) => a.contentType?.includes("json") || a.name?.endsWith(".json")
-      );
-      if (jsonAttachment) {
-        console.log("\nReceived a JSON file attachment. Downloading...");
-        finalJson = await fetchAttachmentJson(jsonAttachment, authToken);
-        break;
-      }
-
-      // Case 2: agent asked which format — auto-pick "full edition"
-      if (!askedFormat && looksLikeClarifyingQuestion(activity.text)) {
-        console.log("\nAgent asked for a format — requesting the full 10-story JSON file...");
-        askedFormat = true;
-        await sendMessage(conversationId, authToken, "1. Full 10-story JSON file");
-        continue;
-      }
-
-      // Case 3: JSON pasted inline as text
-      const inlineJson = extractJsonFromText(activity.text);
-      if (inlineJson && Array.isArray(inlineJson.stories)) {
-        console.log("\nReceived inline JSON text.");
-        finalJson = inlineJson;
-        break;
-      }
-    }
+  if (!res.ok) {
+    console.error(`\nGemini API error (${res.status}):`, await res.text());
+    process.exit(1);
   }
 
-  if (!finalJson) {
-    console.error("\n\nNo usable edition JSON received within the timeout. Try again, or check the agent in the Preview tab directly.");
+  const data = await res.json();
+  const candidate = data.candidates?.[0];
+
+  if (!candidate) {
+    console.error("\nNo candidates returned:", JSON.stringify(data, null, 2));
+    process.exit(1);
+  }
+  if (candidate.finishReason === "MAX_TOKENS") {
+    console.error("\nResponse was cut off (hit the token limit). Try again — if it keeps happening, this script's maxOutputTokens may need raising.");
+    process.exit(1);
+  }
+
+  const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+  let finalJson;
+  try {
+    finalJson = JSON.parse(text);
+  } catch (err) {
+    console.error("\nCouldn't parse Gemini's response as JSON:", err.message);
+    console.error("\nRaw response (first 2000 chars):\n", text.slice(0, 2000));
     process.exit(1);
   }
 

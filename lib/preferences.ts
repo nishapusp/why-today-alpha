@@ -4,11 +4,13 @@ export interface UserPreferences {
   defaultReadingLevel?: "quick" | "understand" | "deep";
   streakCount: number;
   lastVisitDate: string; // YYYY-MM-DD, in IST
+  readSlugs: string[]; // stories the user has opened — hidden from the feed once read
 }
 
 const DEFAULTS: UserPreferences = {
   streakCount: 0,
   lastVisitDate: "",
+  readSlugs: [],
 };
 
 function store() {
@@ -33,6 +35,14 @@ export async function getPreferences(userId: string): Promise<UserPreferences> {
 export async function savePreferences(userId: string, prefs: Partial<UserPreferences>): Promise<UserPreferences> {
   const current = await getPreferences(userId);
   const updated = { ...current, ...prefs };
+  await store().set(userId, JSON.stringify(updated));
+  return updated;
+}
+
+export async function markStoryRead(userId: string, slug: string): Promise<UserPreferences> {
+  const current = await getPreferences(userId);
+  if (current.readSlugs.includes(slug)) return current;
+  const updated = { ...current, readSlugs: [...current.readSlugs, slug] };
   await store().set(userId, JSON.stringify(updated));
   return updated;
 }

@@ -1,6 +1,6 @@
 import { getLatestEdition } from "@/lib/getData";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { recordVisitAndGetStreak } from "@/lib/preferences";
+import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
 import Hero from "@/components/Hero";
 import Top10List from "@/components/Top10List";
 
@@ -13,11 +13,14 @@ export default async function Home() {
   const { userId } = await auth();
   let streakDays: number | undefined;
   let userName: string | undefined;
+  let readSlugs: string[] = [];
 
   if (userId) {
     streakDays = await recordVisitAndGetStreak(userId);
     const user = await currentUser();
     userName = user?.firstName ?? undefined;
+    const prefs = await getPreferences(userId);
+    readSlugs = prefs.readSlugs;
   }
 
   return (
@@ -27,13 +30,13 @@ export default async function Home() {
       <div>
         <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="font-display text-lg text-[var(--text-primary)]">
-            Today's top {Math.min(edition.stories.length, 10)}
+            Today's stories ({Math.min(edition.stories.length, 15)})
           </h2>
           <span className="text-xs text-[var(--text-secondary)] truncate sm:text-right">
             {edition.numberValue} · {edition.themeTitle}
           </span>
         </div>
-        <Top10List stories={edition.stories} />
+        <Top10List stories={edition.stories} readSlugs={readSlugs} />
       </div>
 
     </main>

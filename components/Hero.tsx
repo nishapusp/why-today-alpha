@@ -36,15 +36,13 @@ export default function Hero({
           {dateLabel}
         </h1>
         <p className="text-white/70 max-w-md mb-6 leading-relaxed">
-          {edition.stories.length} stories, 1 number, and insights to make you
-          smarter today.
+          A {edition.stories.length}-story skim of what actually matters
+          today — go deeper on any story only if it grabs you.
         </p>
 
         <div className="flex flex-wrap gap-2.5">
           <Pill>📖 {edition.stories.length} Stories</Pill>
-          <Pill>
-            ⏱ {edition.stories.reduce((a, s) => a + s.readMinutes, 0)} min read
-          </Pill>
+          <Pill>⏱ 2 min skim</Pill>
           <Pill>✨ AI-Powered</Pill>
           {streakDays ? (
             <Pill accent>🔥 Day {streakDays} of understanding</Pill>

@@ -4,6 +4,7 @@ import { getLatestEdition, getStoryBySlug } from "@/lib/getData";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import ReadingLevelToggle from "@/components/ReadingLevelToggle";
 import DataCardGrid from "@/components/DataCard";
+import StoryFeedback from "@/components/StoryFeedback";
 
 export const revalidate = 300;
 
@@ -64,6 +65,14 @@ export default async function StoryPage({
         <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} />
 
         <ReadingLevelToggle story={story} />
+
+        <StoryFeedback
+          slug={story.slug}
+          headline={story.headline}
+          accent={cat.accent}
+          tint={cat.tint}
+          deep={cat.deep}
+        />
 
         {story.officialSources?.length > 0 && (
           <div className="mt-8 pt-6 border-t border-[var(--border)]">

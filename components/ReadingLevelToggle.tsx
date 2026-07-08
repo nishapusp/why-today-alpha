@@ -126,16 +126,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
               Couldn&apos;t reach the live agent just now — showing the saved version instead.
             </p>
           )}
-          {deepDiveStatus !== "loading" &&
-            deepDiveText.split("\n\n").map((block, i) =>
-              block.startsWith("## ") ? (
-                <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
-                  {block.replace("## ", "")}
-                </h3>
-              ) : (
-                <p key={i}>{block}</p>
-              )
-            )}
+          {deepDiveStatus !== "loading" && renderDeepDive(deepDiveText, cat)}
         </div>
       )}
 
@@ -157,6 +148,70 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
   );
 }
 
+function renderInlineBold(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i}>{part.slice(2, -2)}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
+function renderDeepDive(text: string, cat: ReturnType<typeof getCategoryStyle>): React.ReactNode {
+  const blocks = text.split("\n\n");
+
+  return blocks.map((block, i) => {
+    const trimmed = block.trim();
+
+    // Header
+    if (trimmed.startsWith("## ")) {
+      return (
+        <h3 key={i} className="font-display text-xl mt-6 mb-1" style={{ color: cat.deep }}>
+          {trimmed.replace("## ", "")}
+        </h3>
+      );
+    }
+
+    // Bullet list (e.g. the "Fast Facts" block) — render as a tinted callout
+    const lines = trimmed.split("\n").filter(Boolean);
+    const isBulletList = lines.length > 1 && lines.every((l) => l.trim().startsWith("- "));
+    if (isBulletList) {
+      return (
+        <ul
+          key={i}
+          className="rounded-xl p-4 my-3 space-y-1.5 list-none"
+          style={{ background: cat.tint }}
+        >
+          {lines.map((line, j) => (
+            <li key={j} className="text-[14.5px] flex gap-2">
+              <span style={{ color: cat.accent }}>●</span>
+              <span>{renderInlineBold(line.replace(/^-\s*/, ""))}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Comparison paragraph — visually set apart with a left border
+    if (/^(Then vs\.? now:|Compared to)/i.test(trimmed)) {
+      return (
+        <p
+          key={i}
+          className="pl-4 my-3 italic text-[15px]"
+          style={{ borderLeft: `3px solid ${cat.accent}`, color: "var(--text-primary)" }}
+        >
+          {renderInlineBold(trimmed)}
+        </p>
+      );
+    }
+
+    // Ordinary paragraph, with inline bold support
+    return <p key={i}>{renderInlineBold(trimmed)}</p>;
+  });
+}
+
 function getSpokenText(story: Story, level: ReadingLevel, liveDeepDive: string): string {
   if (level === "quick") return `${story.headline}. ${story.quickRead}`;
   if (level === "understand") {
@@ -168,8 +223,11 @@ function getSpokenText(story: Story, level: ReadingLevel, liveDeepDive: string):
       story.whatNext,
     ].join(". ");
   }
-  // deep — strip "## " markdown headers so they aren't read aloud literally
-  return `${story.headline}. ${liveDeepDive.replace(/##\s*/g, "")}`;
+  // deep — strip markdown syntax so it isn't read aloud literally
+  return `${story.headline}. ${liveDeepDive
+    .replace(/##\s*/g, "")
+    .replace(/\*\*/g, "")
+    .replace(/^-\s*/gm, "")}`;
 }
 
 function StructuredBlock({ label, text, color }: { label: string; text: string; color: string }) {

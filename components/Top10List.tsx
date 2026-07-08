@@ -6,15 +6,46 @@ import { Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import AudioReader from "./AudioReader";
 
-export default function Top10List({ stories }: { stories: Story[] }) {
+export default function Top10List({
+  stories,
+  readSlugs = [],
+}: {
+  stories: Story[];
+  readSlugs?: string[];
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const top10 = stories.slice(0, 10);
+  const [newlyRead, setNewlyRead] = useState<Set<string>>(new Set());
+  const [showRead, setShowRead] = useState(false);
+
+  const all = stories.slice(0, 15);
+  const alreadyReadSet = new Set(readSlugs);
+  const hiddenCount = all.filter((s) => alreadyReadSet.has(s.slug)).length;
+
+  // Stories read in a PAST session are hidden by default (feed feels fresh).
+  // Stories opened just now, in THIS session, stay visible with a ✓ badge —
+  // never yanked out from under someone actively reading it.
+  const visible = showRead ? all : all.filter((s) => !alreadyReadSet.has(s.slug));
+
+  async function markRead(slug: string) {
+    if (newlyRead.has(slug)) return;
+    setNewlyRead((prev) => new Set(prev).add(slug));
+    try {
+      await fetch("/api/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ markRead: slug }),
+      });
+    } catch {
+      // Non-fatal — worst case it just doesn't persist as read for next visit.
+    }
+  }
 
   return (
     <div className="flex flex-col gap-3">
-      {top10.map((story, i) => {
+      {visible.map((story, i) => {
         const isOpen = openIndex === i;
         const cat = getCategoryStyle(story.category);
+        const isRead = newlyRead.has(story.slug);
 
         return (
           <div
@@ -23,7 +54,11 @@ export default function Top10List({ stories }: { stories: Story[] }) {
             style={{ background: cat.tint, border: "1px solid rgba(0,0,0,0.04)" }}
           >
             <button
-              onClick={() => setOpenIndex(isOpen ? null : i)}
+              onClick={() => {
+                const opening = !isOpen;
+                setOpenIndex(opening ? i : null);
+                if (opening) markRead(story.slug);
+              }}
               className="w-full flex items-center gap-3 py-3.5 px-4 text-left min-w-0"
             >
               <span
@@ -36,6 +71,11 @@ export default function Top10List({ stories }: { stories: Story[] }) {
               <span className="text-[14px] leading-snug flex-1 min-w-0 text-[var(--text-primary)] font-medium break-words">
                 {story.headline}
               </span>
+              {isRead && (
+                <span className="text-[10px] shrink-0" style={{ color: cat.accent }} title="Won't show next visit">
+                  ✓
+                </span>
+              )}
               <span
                 className="text-xs shrink-0 ml-1"
                 style={{ color: cat.deep }}
@@ -87,6 +127,7 @@ export default function Top10List({ stories }: { stories: Story[] }) {
 
                 <Link
                   href={`/story/${story.slug}`}
+                  onClick={() => markRead(story.slug)}
                   className="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 py-2 rounded-full text-white transition-transform active:scale-[0.97]"
                   style={{ background: cat.accent }}
                 >
@@ -97,6 +138,23 @@ export default function Top10List({ stories }: { stories: Story[] }) {
           </div>
         );
       })}
+
+      {hiddenCount > 0 && !showRead && (
+        <button
+          onClick={() => setShowRead(true)}
+          className="text-xs text-[var(--text-secondary)] underline py-2 text-center"
+        >
+          {hiddenCount} already read today · Show them
+        </button>
+      )}
+      {showRead && hiddenCount > 0 && (
+        <button
+          onClick={() => setShowRead(false)}
+          className="text-xs text-[var(--text-secondary)] underline py-2 text-center"
+        >
+          Hide already-read stories
+        </button>
+      )}
     </div>
   );
 }
