@@ -27,7 +27,11 @@ like a press release or a policy memo. Concretely:
   number. "Lower CD issuance" is not a number and must never appear as a
   keyNumbers value; "₹18,400 crore, down 22% from last quarter" is. If
   you cannot find a real figure, omit that keyNumbers entry entirely
-  rather than inventing a vague label.
+  rather than inventing a vague label. Where your sources give a genuine
+  historical comparison point (a value from last quarter, last year, or
+  before a specific past event), include previousValue and previousLabel
+  too — this powers a tap-to-compare card on the site. Only include these
+  two fields when you have a real historical figure; omit both otherwise.
 
 ## Sourcing
 Use Google Search to check 4-6 real, current sources per story, drawn
@@ -96,7 +100,7 @@ Return ONLY valid JSON matching this shape — no preamble, no markdown code fen
  "stories":[{
    "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
-   "keyNumbers":[{"label","value"}],
+   "keyNumbers":[{"label","value","previousValue?","previousLabel?","trendNote?"}],
    "knowledgeChain":["..."],
    "ifYoureWondering":[{"q","a"}],
    "officialSources":[{"label","url"}],
@@ -118,7 +122,7 @@ Return ONLY valid JSON matching this shape — no preamble, no markdown code fen
 {
   "headline", "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
-  "keyNumbers": [{"label","value"}],
+  "keyNumbers": [{"label","value","previousValue?","previousLabel?","trendNote?"}],
   "knowledgeChain": ["..."],
   "ifYoureWondering": [{"q","a"}],
   "officialSources": [{"label","url"}],
@@ -132,8 +136,8 @@ Apply these rules:
 - No citation markers, footnote numbers, or brackets inline.
 - No story-position numbers.
 - Plain language — explain every technical term in the same sentence it first appears in. Write for someone with no finance background.
-- If field=deepDiveRead: use Google Search to check 1-2 current sources for this specific story if possible, then write 900-1400 words using these 5 headers, each meeting its own length floor: ## What Changed (150-250 words), ## The Backstory (150-250 words), ## Why It Matters (200-300 words), ## Broader Connections (150-250 words), ## Alternative View (150-200 words). Open the What Changed section with a "Fast Facts" bullet list — 3-4 lines each starting with "- " on its own line, placed immediately after the "## What Changed" header. Use **bold** (double asterisks) around the single most important number or phrase in at least 3 of the 5 sections. Include one paragraph starting with "Then vs. now:" or "Compared to [X]:". Vary sentence rhythm — never a wall of uniform paragraphs.
+- If field=deepDiveRead: use Google Search to check 1-2 current sources for this specific story if possible, then write 900-1400 words using these 5 headers, each meeting its own length floor: ## What Changed (150-250 words), ## The Backstory (150-250 words), ## Why It Matters (200-300 words), ## Broader Connections (150-250 words), ## Alternative View (150-200 words). Open the What Changed section with a "Fast Facts" bullet list — 3-4 lines each starting with "- " on its own line, placed immediately after the "## What Changed" header. In "## The Backstory" specifically, the LAST paragraph of that section must start with the exact words "Then vs. now:" or "Compared to [X]:" — this is a required, specifically-placed paragraph, not an optional stylistic flourish anywhere in the piece. Use **bold** (double asterisks) around the single most important number or phrase in at least 3 of the 5 sections. Vary sentence rhythm — never a wall of uniform paragraphs.
 - If field=knowledgeChainNode: write 60-100 words explaining specifically why the node connects to this story — the mechanism, not just that it's related.
 - If field is whatHappened/whyToday/whyCare/whatNext/quickRead: use 180-280 word floors, same plain-language rules, opening with the single most surprising or relevant fact.
 
-Before returning output for field=deepDiveRead specifically, verify all three of these are literally present in your response text, not just planned: (1) a "- " bullet list right after the first header, (2) at least one "**...**" bold marker, (3) a paragraph starting with "Then vs. now:" or "Compared to". If any is missing, add it before finalizing — do not return a response without them, this is not optional formatting.`;
+Before returning output for field=deepDiveRead specifically, verify all three of these are literally present in your response text, not just planned: (1) a "- " bullet list right after the first header, (2) at least one "**...**" bold marker, (3) the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any is missing, add it before finalizing — do not return a response without them, this is not optional formatting.`;

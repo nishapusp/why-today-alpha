@@ -63,13 +63,13 @@ No citation markers, footnote numbers, brackets, or "(Source)" text inline anywh
 summary: 2+ sentences (35-45 words). quickRead: 180-260 words. whatHappened, whyToday, whyCare: 220-280 words each, each including at least one concrete comparison. whatNext: 180-220 words with a timeframe if known. deepDiveRead: 900-1400 words total across 5 headers: ## What Changed (150-250w), ## The Backstory (150-250w), ## Why It Matters (200-300w), ## Broader Connections (150-250w), ## Alternative View (150-200w).
 
 ## Deep Dive must feel immersive, not a wall of paragraphs
-Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concrete number). Use **bold** around the single most important number per section. Include a "Then vs. now:" or "Compared to [X]:" comparison paragraph. Vary sentence rhythm — mix short punchy sentences with longer ones. In Alternative View, frame it as a real disagreement ("Not everyone reads this the same way.").
+Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concrete number). In "## The Backstory" specifically, the LAST paragraph of that section must start with the exact words "Then vs. now:" or "Compared to [X]:" — a required, specifically-placed paragraph, not an optional flourish anywhere in the piece. Use **bold** around the single most important number per section. Vary sentence rhythm — mix short punchy sentences with longer ones. In Alternative View, frame it as a real disagreement ("Not everyone reads this the same way.").
 
 ## knowledgeChain
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 900-1400 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker per section in at least 3 sections; a paragraph starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 220-280 words (not shorter — a one-sentence field is an automatic failure); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 900-1400 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker per section in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
 ## Schema (exact field names, always exactly ${storyCount} stories in this response)
 Return ONLY valid JSON matching this shape:
@@ -78,7 +78,7 @@ Return ONLY valid JSON matching this shape:
  "stories":[{
    "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
-   "keyNumbers":[{"label","value"}],
+   "keyNumbers":[{"label","value","previousValue?","previousLabel?","trendNote?"}],
    "knowledgeChain":["..."],
    "ifYoureWondering":[{"q","a"}],
    "officialSources":[{"label","url"}],

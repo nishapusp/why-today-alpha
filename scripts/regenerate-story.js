@@ -36,7 +36,7 @@ Return ONLY valid JSON matching this shape:
 {
   "headline", "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
-  "keyNumbers": [{"label","value"}],
+  "keyNumbers": [{"label","value","previousValue?","previousLabel?","trendNote?"}],
   "knowledgeChain": ["..."],
   "ifYoureWondering": [{"q","a"}],
   "officialSources": [{"label","url"}],

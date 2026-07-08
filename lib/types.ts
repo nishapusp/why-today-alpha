@@ -12,6 +12,9 @@ export type Category =
 export interface KeyNumber {
   label: string;
   value: string;
+  previousValue?: string; // for tap-to-compare — e.g. "6.25%"
+  previousLabel?: string; // e.g. "3 months ago", "Same period last year"
+  trendNote?: string; // one short sentence of context on the change
 }
 
 export interface WonderingItem {

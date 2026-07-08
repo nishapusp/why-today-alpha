@@ -82,7 +82,7 @@ export default async function StoryPage({
           {story.summary}
         </p>
 
-        <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} />
+        <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
 
         <ReadingLevelToggle story={story} />
 
