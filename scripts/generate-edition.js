@@ -19,7 +19,7 @@ const readline = require("readline");
 const { execSync } = require("child_process");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-pro"; // stronger model — this runs once/day, quality matters more than speed here
+const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash"; // Pro is paid-only now (confirmed: free tier limit is 0) — Flash + the fixes below should carry the quality
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
