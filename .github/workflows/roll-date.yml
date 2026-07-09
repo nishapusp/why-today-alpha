@@ -1,0 +1,33 @@
+name: Roll Edition Date
+
+on:
+  # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
+  workflow_dispatch: {}
+
+  # Runs automatically every day at 00:00 IST.
+  # Cron is in UTC — 00:00 IST = 18:30 UTC the previous day.
+  schedule:
+    - cron: "30 18 * * *"
+
+permissions:
+  contents: write # needed so the script can git push the updated edition.json
+
+jobs:
+  roll-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Why Today Bot"
+          git config user.email "actions@github.com"
+
+      - name: Roll edition date to today
+        run: node scripts/roll-date.js

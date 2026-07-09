@@ -4,10 +4,19 @@ on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
   workflow_dispatch: {}
 
-  # Runs automatically every day at 8:30 AM IST.
-  # Cron is in UTC — 8:30 AM IST = 3:00 AM UTC.
+  # Runs three times a day so a run that stops early (rate limits, a bad
+  # batch) gets topped up later the same day instead of staying incomplete
+  # until tomorrow. generate-edition.js resumes automatically — a run that
+  # finds the day's target already met just exits immediately, so these
+  # extra triggers cost nothing when the morning run already finished.
+  # Cron is in UTC:
+  #   6:00 AM IST  = 00:30 UTC
+  #   1:00 PM IST  = 07:30 UTC
+  #   4:00 PM IST  = 10:30 UTC
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "30 0 * * *"
+    - cron: "30 7 * * *"
+    - cron: "30 10 * * *"
 
 permissions:
   contents: write # needed so the script can git push the updated edition.json
@@ -33,4 +42,8 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          # 9 stories for now (was 15) — comfortably inside the Gemini
+          # free-tier daily quota. Raise this back up once billing is on.
+          STORY_TARGET: "9"
         run: node scripts/generate-edition.js
+

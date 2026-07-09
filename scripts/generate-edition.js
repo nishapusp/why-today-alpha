@@ -39,10 +39,10 @@ const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
-// 15 stories total, generated 3 at a time. Each 3-story batch is a small,
-// fast request that stays far below Gemini's output token ceiling, and each
-// one is published the moment it succeeds.
-const TOTAL_STORIES = parseInt(process.env.STORY_TARGET || "15", 10);
+// 9 stories total for now (was 15) — keeps each day comfortably inside the
+// Gemini free-tier daily quota. Bump back up later via STORY_TARGET env var
+// once billing is enabled, without needing a code change.
+const TOTAL_STORIES = parseInt(process.env.STORY_TARGET || "9", 10);
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || "3", 10);
 
 const REQUIRED_STORY_FIELDS = [
@@ -178,7 +178,20 @@ async function ask(question) {
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
 }
 
-async function generateBatch(storyCount, excludeHeadlines, maxRetries = 2) {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Pulls the server-suggested wait time out of a 429 error body, if present
+// (Gemini returns retryDelay in seconds, e.g. "20s"). Falls back to a safe
+// default so we never hammer the API immediately after a rate-limit hit.
+function extractRetryDelayMs(errBody, fallbackMs) {
+  const match = (errBody || "").match(/"retryDelay"\s*:\s*"(\d+)s"/);
+  if (match) return (parseInt(match[1], 10) + 2) * 1000; // +2s buffer
+  return fallbackMs;
+}
+
+async function generateBatch(storyCount, excludeHeadlines, maxRetries = 1) {
   let attempt = 0;
 
   while (attempt <= maxRetries) {
@@ -191,9 +204,13 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 2) {
           contents: [{ role: "user", parts: [{ text: buildUserPrompt(storyCount, excludeHeadlines) }] }],
           tools: [{ google_search: {} }],
           generationConfig: {
-            responseMimeType: "application/json",
-            // A 3-story batch at the new lengths is ~5-7k tokens of output;
-            // 16k leaves a very comfortable margin.
+            // NOTE: responseMimeType: "application/json" is deliberately NOT
+            // set here — Gemini rejects that combined with the google_search
+            // tool (400 INVALID_ARGUMENT: "Tool use with a response mime
+            // type ... is unsupported"). We rely on the prompt's "Return
+            // ONLY valid JSON" instruction plus extractJson()'s fence-
+            // stripping fallback instead. Do not re-add responseMimeType
+            // while google_search is in tools.
             maxOutputTokens: 16000,
           },
         }),
@@ -201,7 +218,11 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 2) {
       });
 
       if (!res.ok) {
-        throw new Error(`Gemini API error (${res.status}): ${await res.text()}`);
+        const bodyText = await res.text();
+        const err = new Error(`Gemini API error (${res.status}): ${bodyText}`);
+        err.status = res.status;
+        err.body = bodyText;
+        throw err;
       }
 
       const data = await res.json();
@@ -222,9 +243,15 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 2) {
     } catch (err) {
       attempt++;
       if (attempt > maxRetries) {
-        throw new Error(`Batch failed after ${maxRetries + 1} attempts (${err.message}).`);
+        throw err; // preserves err.status so main() can detect quota exhaustion and stop the whole run
       }
-      console.warn(`\nBatch attempt ${attempt} failed (${err.message}). Retrying...`);
+      if (err.status === 429) {
+        const waitMs = extractRetryDelayMs(err.body, 20000);
+        console.warn(`\nBatch attempt ${attempt} hit a rate limit. Waiting ${Math.round(waitMs / 1000)}s before retrying (per Gemini's own retry-after)...`);
+        await sleep(waitMs);
+      } else {
+        console.warn(`\nBatch attempt ${attempt} failed (${err.message}). Retrying...`);
+      }
     }
   }
 }
@@ -325,17 +352,29 @@ async function main() {
   // --- Resume support -----------------------------------------------------
   let edition = loadExistingEdition();
   const seenHeadlines = [];
-  if (edition) {
+
+  // If the midnight date-roll script already bumped `date` to today while
+  // carrying over yesterday's stories (edition.stale === true), those
+  // stories don't count toward today's target — the FIRST successful batch
+  // below replaces them outright rather than appending to them.
+  let staleCarryover = !!(edition && edition.stale);
+
+  if (edition && !staleCarryover) {
     edition.stories.forEach((s) => s.headline && seenHeadlines.push(s.headline));
     console.log(`Found existing edition for ${today} with ${edition.stories.length} stories — resuming.`);
+  } else if (edition && staleCarryover) {
+    console.log(`Edition for ${today} is carrying over ${edition.stories.length} stale stories from yesterday (date was rolled at midnight) — generating fresh ones now.`);
   } else {
     console.log(`Starting a fresh edition for ${today}.`);
   }
 
-  const alreadyHave = edition ? edition.stories.length : 0;
-  const remaining = TOTAL_STORIES - alreadyHave;
+  // publishedCount tracks how many of TODAY's real stories exist — NOT
+  // edition.stories.length, since that still holds yesterday's carried-over
+  // count until the first fresh batch overwrites it.
+  let publishedCount = staleCarryover ? 0 : (edition ? edition.stories.length : 0);
+  const remaining = TOTAL_STORIES - publishedCount;
   if (remaining <= 0) {
-    console.log(`Edition already has ${alreadyHave}/${TOTAL_STORIES} stories — nothing to do.`);
+    console.log(`Edition already has ${publishedCount}/${TOTAL_STORIES} stories — nothing to do.`);
     process.exit(0);
   }
 
@@ -357,7 +396,7 @@ async function main() {
   const allSoftIssues = [];
 
   for (let b = 0; b < numBatches; b++) {
-    const count = Math.min(BATCH_SIZE, TOTAL_STORIES - (edition ? edition.stories.length : 0));
+    const count = Math.min(BATCH_SIZE, TOTAL_STORIES - publishedCount);
     if (count <= 0) break;
     console.log(`\n=== Batch ${b + 1}/${numBatches}: requesting ${count} stories ===`);
 
@@ -366,6 +405,13 @@ async function main() {
       batch = await generateBatch(count, seenHeadlines);
     } catch (err) {
       failedBatches++;
+      if (err.status === 429 && /free_tier|RESOURCE_EXHAUSTED/i.test(err.body || err.message)) {
+        console.error(`\nBatch ${b + 1} failed: Gemini's free-tier quota is exhausted for now.`);
+        console.error("Stopping here instead of burning the rest of today's quota on batches that would also fail.");
+        console.error("Stories published so far stay live. Wait for the quota to reset (per-minute limits reset within a minute; daily limits reset at midnight Pacific time), then re-run — it will resume from where it left off.");
+        console.error("If this keeps happening, the free tier (5 req/min, ~20 req/day for gemini-2.5-flash) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
+        break; // stop the loop entirely — further batches will just fail the same way
+      }
       console.error(`Batch ${b + 1} failed permanently: ${err.message}`);
       console.error("Moving on — stories published so far stay live. Re-run the script later to fill the rest.");
       continue;
@@ -378,7 +424,7 @@ async function main() {
       continue;
     }
 
-    const { hard, soft } = validateStories(batchStories, edition ? edition.stories.length : 0);
+    const { hard, soft } = validateStories(batchStories, publishedCount);
     soft.forEach((s) => allSoftIssues.push(s));
     if (hard.length > 0) {
       failedBatches++;
@@ -400,35 +446,47 @@ async function main() {
 
     batchStories.forEach((s) => s.headline && seenHeadlines.push(s.headline));
 
-    if (!edition) {
-      // First batch of the day supplies the top-level theme/number fields.
+    if (!edition || staleCarryover) {
+      // First fresh batch of the day — supplies top-level theme/number
+      // fields and, if there was stale carryover, REPLACES it outright.
       edition = { ...batch, date: today, stories: batchStories };
+      delete edition.stale;
       for (const f of REQUIRED_EDITION_FIELDS) {
         if (!(f in edition)) console.warn(`Warning: edition is missing top-level field "${f}".`);
       }
+      staleCarryover = false;
     } else {
       edition.stories = [...edition.stories, ...batchStories];
     }
+    publishedCount += batchStories.length;
 
     console.log(`Batch ${b + 1} stories:`);
     batchStories.forEach((s) => console.log(`  - [${s.category || "?"}] ${s.headline || "(no headline)"}`));
 
     writeAndPush(edition, `batch ${b + 1}`, isCI);
     publishedBatches++;
+
+    // Space out requests to stay under Gemini's free-tier per-minute cap
+    // (5 requests/min) even when every batch succeeds on the first try.
+    const isLastBatch = b === numBatches - 1 || publishedCount >= TOTAL_STORIES;
+    if (!isLastBatch) {
+      const spacingMs = parseInt(process.env.BATCH_SPACING_MS || "15000", 10);
+      console.log(`Waiting ${Math.round(spacingMs / 1000)}s before the next batch (rate-limit spacing)...`);
+      await sleep(spacingMs);
+    }
   }
 
   // --- Summary -------------------------------------------------------------
   console.log("\n=== SUMMARY ===");
-  const total = edition ? edition.stories.length : 0;
-  console.log(`Stories live: ${total}/${TOTAL_STORIES}  |  batches published: ${publishedBatches}, failed: ${failedBatches}`);
+  console.log(`Stories live: ${publishedCount}/${TOTAL_STORIES}  |  batches published: ${publishedBatches}, failed: ${failedBatches}`);
   if (edition) {
     console.log(`Number of the day: ${edition.numberValue || "?"} — ${edition.themeTitle || "?"}`);
   }
   if (allSoftIssues.length > 0) {
     console.log(`${allSoftIssues.length} minor quality issue(s) were logged above — consider regenerate-story.js for specific stories.`);
   }
-  if (total < TOTAL_STORIES) {
-    console.log(`Edition is partial — re-run this script to generate the remaining ${TOTAL_STORIES - total} (it will resume, not restart).`);
+  if (publishedCount < TOTAL_STORIES) {
+    console.log(`Edition is partial — re-run this script (or wait for the next scheduled run) to generate the remaining ${TOTAL_STORIES - publishedCount}; it will resume, not restart.`);
     // Non-zero exit in CI so the run shows as needing attention — but note
     // everything generated so far is ALREADY live.
     if (isCI) process.exit(1);
