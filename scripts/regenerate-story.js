@@ -28,7 +28,7 @@ Write like a sharp friend explaining why something matters over chai, not a pres
 
 Use Google Search to check current sources before writing. No citation markers or story-position numbers in any text field.
 
-Length floors: summary 35-45 words, quickRead 180-260 words, whatHappened/whyToday/whyCare 220-280 words each with a concrete comparison, whatNext 180-220 words, deepDiveRead 900-1400 words across 5 headers (## What Changed, ## The Backstory, ## Why It Matters, ## Broader Connections, ## Alternative View), opening with a "Fast Facts" bullet list and using **bold** on key numbers.
+Length rules (both floors AND ceilings — do not exceed them): summary 30-40 words, quickRead 100-150 words, whatHappened/whyToday/whyCare 120-160 words each with a concrete comparison, whatNext 80-120 words, deepDiveRead 500-800 words across 5 headers (## What Changed, ## The Backstory, ## Why It Matters, ## Broader Connections, ## Alternative View), opening with a "Fast Facts" bullet list and using **bold** on key numbers. Tight and specific beats long and padded.
 
 If the user describes what was wrong with the original, fix that specific issue first.
 

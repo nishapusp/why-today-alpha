@@ -9,9 +9,9 @@ import KnowledgeChain from "./KnowledgeChain";
 import AudioReader from "./AudioReader";
 
 const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
-  { key: "quick", label: "Quick", minutes: "1-2m" },
-  { key: "understand", label: "Understand", minutes: "5-7m" },
-  { key: "deep", label: "Deep Dive", minutes: "10-30m" },
+  { key: "quick", label: "Quick", minutes: "1m" },
+  { key: "understand", label: "Understand", minutes: "3m" },
+  { key: "deep", label: "Deep Dive", minutes: "8m" },
 ];
 
 export default function ReadingLevelToggle({ story }: { story: Story }) {

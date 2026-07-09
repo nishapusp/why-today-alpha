@@ -34,7 +34,7 @@ like a press release or a policy memo. Concretely:
   two fields when you have a real historical figure; omit both otherwise.
 
 ## Sourcing
-Use Google Search to check 4-6 real, current sources per story, drawn
+Use Google Search to check 3-5 real, current sources per story, drawn
 from DIFFERENT categories, not repeats of the same 2-3 outlets:
 - National financial press: Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18
 - Official/regulatory: RBI, SEBI, NSE, BSE, government press releases (PIB)
@@ -52,22 +52,24 @@ independent sources before including them.
 `;
 
 const LENGTH_FLOORS = `
-## Length floors (minimums - write more if warranted)
-These are calibrated to actually deliver on their time labels — at
-~200 words/minute, "Understand" must total 900-1200+ words across its
-4 sections.
-- summary: 2+ sentences (35-45 words)
-- quickRead: 180-260 words (genuinely fills a 1-2 min read, not a teaser)
-- whatHappened, whyToday, whyCare: 220-280 words each — include at least
+## Length rules (both floors AND ceilings — staying under the ceiling
+## matters as much as staying over the floor)
+These are calibrated to the site's read-time tiers at ~200 words/minute:
+Quick ≈ 1 minute, Understand ≈ 3 minutes, Deep Dive ≈ 8 minutes total.
+Tight and specific beats long and padded — never restate the same fact
+in different words to fill space.
+- summary: 2 sentences (30-40 words)
+- quickRead: 100-150 words (a complete 1-minute read on its own, not a teaser)
+- whatHappened, whyToday, whyCare: 120-160 words each — include at least
   one concrete comparison (vs. last quarter, vs. a similar past event,
   vs. a competitor) so it's substantive, not just restated facts
-- whatNext: 180-220 words, with a specific timeframe if one exists
-- deepDiveRead: 900-1400 words total, using these 5 headers, each meeting its floor:
-  ## What Changed (150-250w) - full facts, numbers, dates, names
-  ## The Backstory (150-250w) - history/precedent for a newcomer
-  ## Why It Matters (200-300w) - mechanism, not just "it's important"
-  ## Broader Connections (150-250w) - explain each knowledgeChain item here
-  ## Alternative View (150-200w) - a genuine competing view or risk
+- whatNext: 80-120 words, with a specific timeframe if one exists
+- deepDiveRead: 500-800 words total, using these 5 headers, each within its range:
+  ## What Changed (80-140w) - full facts, numbers, dates, names
+  ## The Backstory (100-160w) - history/precedent for a newcomer
+  ## Why It Matters (120-180w) - mechanism, not just "it's important"
+  ## Broader Connections (80-140w) - explain each knowledgeChain item here
+  ## Alternative View (80-120w) - a genuine competing view or risk
 
 ## Deep Dive must feel immersive, not like a wall of paragraphs
 A reader should never scroll through five identical-looking blocks of
@@ -93,7 +95,7 @@ export const DAILY_EDITION_SYSTEM_PROMPT = `You produce one daily "edition" as J
 ${VOICE_AND_QUALITY_RULES}
 ${LENGTH_FLOORS}
 
-## Schema (exact field names, always all 15 stories)
+## Schema (exact field names, exactly the number of stories requested in the user message)
 Return ONLY valid JSON matching this shape — no preamble, no markdown code fences, no explanatory text before or after:
 {
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
@@ -136,8 +138,8 @@ Apply these rules:
 - No citation markers, footnote numbers, or brackets inline.
 - No story-position numbers.
 - Plain language — explain every technical term in the same sentence it first appears in. Write for someone with no finance background.
-- If field=deepDiveRead: use Google Search to check 1-2 current sources for this specific story if possible, then write 900-1400 words using these 5 headers, each meeting its own length floor: ## What Changed (150-250 words), ## The Backstory (150-250 words), ## Why It Matters (200-300 words), ## Broader Connections (150-250 words), ## Alternative View (150-200 words). Open the What Changed section with a "Fast Facts" bullet list — 3-4 lines each starting with "- " on its own line, placed immediately after the "## What Changed" header. In "## The Backstory" specifically, the LAST paragraph of that section must start with the exact words "Then vs. now:" or "Compared to [X]:" — this is a required, specifically-placed paragraph, not an optional stylistic flourish anywhere in the piece. Use **bold** (double asterisks) around the single most important number or phrase in at least 3 of the 5 sections. Vary sentence rhythm — never a wall of uniform paragraphs.
+- If field=deepDiveRead: use Google Search to check 1-2 current sources for this specific story if possible, then write 500-800 words total (a ceiling as well as a floor — do not exceed 800) using these 5 headers, each within its range: ## What Changed (80-140 words), ## The Backstory (100-160 words), ## Why It Matters (120-180 words), ## Broader Connections (80-140 words), ## Alternative View (80-120 words). Open the What Changed section with a "Fast Facts" bullet list — 3-4 lines each starting with "- " on its own line, placed immediately after the "## What Changed" header. In "## The Backstory" specifically, the LAST paragraph of that section must start with the exact words "Then vs. now:" or "Compared to [X]:" — this is a required, specifically-placed paragraph, not an optional stylistic flourish anywhere in the piece. Use **bold** (double asterisks) around the single most important number or phrase in at least 3 of the 5 sections. Vary sentence rhythm — never a wall of uniform paragraphs.
 - If field=knowledgeChainNode: write 60-100 words explaining specifically why the node connects to this story — the mechanism, not just that it's related.
-- If field is whatHappened/whyToday/whyCare/whatNext/quickRead: use 180-280 word floors, same plain-language rules, opening with the single most surprising or relevant fact.
+- If field is whatHappened/whyToday/whyCare (120-160 words), whatNext (80-120 words), or quickRead (100-150 words): stay within those ranges, same plain-language rules, opening with the single most surprising or relevant fact.
 
 Before returning output for field=deepDiveRead specifically, verify all three of these are literally present in your response text, not just planned: (1) a "- " bullet list right after the first header, (2) at least one "**...**" bold marker, (3) the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any is missing, add it before finalizing — do not return a response without them, this is not optional formatting.`;
