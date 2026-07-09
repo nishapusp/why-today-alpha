@@ -100,8 +100,22 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
   return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, and policy NEWS FROM TODAY AND YESTERDAY SPECIFICALLY (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote} Follow every rule in your instructions exactly, especially the length floors, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
+// Coerce any value Gemini might return (number, object, array, null) into a
+// plain string. Objects/arrays get JSON-stringified so validation can still
+// inspect them and report what was actually there.
+function asText(v) {
+  if (v === null || v === undefined) return "";
+  if (typeof v === "string") return v;
+  if (typeof v === "number" || typeof v === "boolean") return String(v);
+  try {
+    return JSON.stringify(v);
+  } catch {
+    return String(v);
+  }
+}
+
 function wordCount(str) {
-  return (str || "").trim().split(/\s+/).filter(Boolean).length;
+  return asText(str).trim().split(/\s+/).filter(Boolean).length;
 }
 
 function extractJson(text) {
@@ -216,30 +230,41 @@ function validateEdition(edition) {
     issues.push(`Expected 15 stories, got ${edition.stories.length}.`);
   }
   edition.stories.forEach((story, i) => {
-    const label = `Story ${i + 1} ("${story.headline || "no headline"}")`;
+    if (story === null || typeof story !== "object" || Array.isArray(story)) {
+      issues.push(`Story ${i + 1}: is not an object (got ${Array.isArray(story) ? "array" : typeof story}) — skipping its field checks.`);
+      return;
+    }
+    const label = `Story ${i + 1} ("${asText(story.headline) || "no headline"}")`;
     for (const field of REQUIRED_STORY_FIELDS) {
-      if (!(field in story)) issues.push(`${label}: missing field "${field}"`);
+      if (!(field in story)) {
+        issues.push(`${label}: missing field "${field}"`);
+      } else if (story[field] !== null && story[field] !== undefined && typeof story[field] !== "string") {
+        // Gemini occasionally returns a number/object where a string belongs.
+        // Name the field so the Actions log says exactly what drifted.
+        issues.push(`${label}: field "${field}" is ${typeof story[field]}, expected string (value: ${asText(story[field]).slice(0, 80)})`);
+      }
     }
     for (const [field, floor] of Object.entries(WORD_FLOORS)) {
       if (story[field] && wordCount(story[field]) < floor) {
         issues.push(`${label}: "${field}" is ${wordCount(story[field])} words, below the ${floor}-word floor`);
       }
     }
-    if (story.deepDiveRead) {
-      const dd = wordCount(story.deepDiveRead);
+    const deepDive = asText(story.deepDiveRead);
+    if (deepDive) {
+      const dd = wordCount(deepDive);
       if (dd < 700) issues.push(`${label}: deepDiveRead is only ${dd} words (floor is 900-1400)`);
       const headers = ["What Changed", "The Backstory", "Why It Matters", "Broader Connections", "Alternative View"];
       for (const h of headers) {
-        if (!story.deepDiveRead.includes(h)) issues.push(`${label}: deepDiveRead is missing the "${h}" section`);
+        if (!deepDive.includes(h)) issues.push(`${label}: deepDiveRead is missing the "${h}" section`);
       }
-      if (!story.deepDiveRead.includes("- ")) issues.push(`${label}: deepDiveRead has no Fast Facts bullet list`);
-      if (!story.deepDiveRead.includes("**")) issues.push(`${label}: deepDiveRead has no bold (**) emphasis markers`);
-      if (!/Then vs\.? now:|Compared to/i.test(story.deepDiveRead)) issues.push(`${label}: deepDiveRead has no "Then vs. now:" comparison paragraph`);
+      if (!deepDive.includes("- ")) issues.push(`${label}: deepDiveRead has no Fast Facts bullet list`);
+      if (!deepDive.includes("**")) issues.push(`${label}: deepDiveRead has no bold (**) emphasis markers`);
+      if (!/Then vs\.? now:|Compared to/i.test(deepDive)) issues.push(`${label}: deepDiveRead has no "Then vs. now:" comparison paragraph`);
     }
-    if (/[a-z]\.\d+\s/.test(story.whatHappened || "") || /[a-z]\.\d+\s/.test(story.deepDiveRead || "")) {
+    if (/[a-z]\.\d+\s/.test(asText(story.whatHappened)) || /[a-z]\.\d+\s/.test(deepDive)) {
       issues.push(`${label}: possible leaked citation marker detected.`);
     }
-    if (/\bstory\s*\d+\b/i.test(story.headline || "")) {
+    if (/\bstory\s*\d+\b/i.test(asText(story.headline))) {
       issues.push(`${label}: headline appears to contain a story number.`);
     }
   });
