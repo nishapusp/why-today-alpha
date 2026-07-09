@@ -120,15 +120,15 @@ function wordCount(str) {
 
 function extractJson(text) {
   // Strip ```json ... ``` or ``` ... ``` fences if the model wrapped the output in one.
-  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenceMatch) return fenceMatch[1].trim();
+  let cleaned = text.replace(/```(?:json)?\s*([\s\S]*?)```/gi, "$1").trim();
+  
   // Otherwise, grab from the first { to the last } — handles any stray text before/after.
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
+  const start = cleaned.indexOf("{");
+  const end = cleaned.lastIndexOf("}");
   if (start !== -1 && end !== -1 && end > start) {
-    return text.slice(start, end + 1);
+    return cleaned.slice(start, end + 1);
   }
-  return text;
+  return cleaned;
 }
 
 // Maps our story categories to search terms that actually return good photos
@@ -178,42 +178,52 @@ async function ask(question) {
 // not just theoretical). Each batch stays comfortably under that limit.
 const BATCH_SIZES = [8, 7];
 
-async function generateBatch(storyCount, excludeHeadlines) {
-  const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
-    method: "POST",
-    headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      system_instruction: { parts: [{ text: buildSystemPrompt(storyCount) }] },
-      contents: [{ role: "user", parts: [{ text: buildUserPrompt(storyCount, excludeHeadlines) }] }],
-      tools: [{ google_search: {} }],
-      generationConfig: {
-        maxOutputTokens: 40000, // ~half the old ceiling, generous margin for a ~8-story batch
-      },
-    }),
-    signal: AbortSignal.timeout(360000), // 6 minutes — generous margin above the expected 1-3 min
-  });
+async function generateBatch(storyCount, excludeHeadlines, maxRetries = 2) {
+  let attempt = 0;
+  
+  while (attempt <= maxRetries) {
+    try {
+      const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
+        method: "POST",
+        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: buildSystemPrompt(storyCount) }] },
+          contents: [{ role: "user", parts: [{ text: buildUserPrompt(storyCount, excludeHeadlines) }] }],
+          tools: [{ google_search: {} }],
+          generationConfig: {
+            responseMimeType: "application/json",
+            maxOutputTokens: 40000, // ~half the old ceiling, generous margin for a ~8-story batch
+          },
+        }),
+        signal: AbortSignal.timeout(360000), // 6 minutes — generous margin above the expected 1-3 min
+      });
 
-  if (!res.ok) {
-    throw new Error(`Gemini API error (${res.status}): ${await res.text()}`);
-  }
+      if (!res.ok) {
+        throw new Error(`Gemini API error (${res.status}): ${await res.text()}`);
+      }
 
-  const data = await res.json();
-  const candidate = data.candidates?.[0];
+      const data = await res.json();
+      const candidate = data.candidates?.[0];
 
-  if (!candidate) {
-    throw new Error(`No candidates returned: ${JSON.stringify(data)}`);
-  }
-  if (candidate.finishReason === "MAX_TOKENS") {
-    throw new Error(
-      `Response was cut off even at ${storyCount} stories — try reducing BATCH_SIZES further in this script (e.g. [5, 5, 5]).`
-    );
-  }
+      if (!candidate) {
+        throw new Error(`No candidates returned: ${JSON.stringify(data)}`);
+      }
+      if (candidate.finishReason === "MAX_TOKENS") {
+        throw new Error(
+          `Response was cut off even at ${storyCount} stories — try reducing BATCH_SIZES further in this script (e.g. [5, 5, 5]).`
+        );
+      }
 
-  const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
-  try {
-    return JSON.parse(extractJson(text));
-  } catch (err) {
-    throw new Error(`Couldn't parse batch response as JSON (${err.message}). Raw response (first 1000 chars): ${text.slice(0, 1000)}`);
+      const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      
+      return JSON.parse(extractJson(text));
+    } catch (err) {
+      attempt++;
+      if (attempt > maxRetries) {
+        throw new Error(`Couldn't parse batch response as JSON after ${maxRetries + 1} attempts (${err.message}).`);
+      }
+      console.warn(`\nBatch request attempt ${attempt} failed to parse JSON. Retrying batch...`);
+    }
   }
 }
 
