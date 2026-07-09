@@ -9,9 +9,13 @@ import AudioReader from "./AudioReader";
 export default function Top10List({
   stories,
   readSlugs = [],
+  linkBase = "/story",
+  trackReads = true,
 }: {
   stories: Story[];
   readSlugs?: string[];
+  linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
+  trackReads?: boolean; // false for archived days — no point marking old stories "read" against today's streak
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [newlyRead, setNewlyRead] = useState<Set<string>>(new Set());
@@ -27,6 +31,7 @@ export default function Top10List({
   const visible = showRead ? all : all.filter((s) => !alreadyReadSet.has(s.slug));
 
   async function markRead(slug: string) {
+    if (!trackReads) return;
     if (newlyRead.has(slug)) return;
     setNewlyRead((prev) => new Set(prev).add(slug));
     try {
@@ -180,7 +185,7 @@ export default function Top10List({
                 )}
 
                 <Link
-                  href={`/story/${story.slug}`}
+                  href={`${linkBase}/${story.slug}`}
                   onClick={() => markRead(story.slug)}
                   className="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 py-2 rounded-full text-white transition-transform active:scale-[0.97]"
                   style={{ background: cat.accent }}

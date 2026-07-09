@@ -1,5 +1,7 @@
 import { Category, Edition, Sentiment, Story, Trend } from "./types";
 import editionDataRaw from "@/data/edition.json";
+import fs from "fs";
+import path from "path";
 
 const VALID_TRENDS: Trend[] = ["up", "down", "flat"];
 const VALID_SENTIMENTS: Sentiment[] = ["positive", "caution", "critical", "neutral"];
@@ -81,4 +83,48 @@ export async function getLatestEdition(): Promise<Edition> {
 export async function getStoryBySlug(slug: string): Promise<Story | undefined> {
   const edition = await getLatestEdition();
   return edition.stories.find((s) => s.slug === slug);
+}
+
+// --- Archive -----------------------------------------------------------
+// data/archive/index.json + data/archive/YYYY-MM-DD.json are written by
+// scripts/roll-date.js at midnight IST (see that script for details). All
+// reads here run at BUILD time (generateStaticParams / page render during
+// `next build`), which has full filesystem access — the resulting pages
+// are then fully static, so none of this runs at request time.
+
+export interface ArchiveIndexEntry {
+  date: string; // YYYY-MM-DD
+  themeTitle: string;
+  numberValue: string;
+  numberLabel: string;
+  storyCount: number;
+}
+
+const ARCHIVE_DIR = path.join(process.cwd(), "data", "archive");
+const ARCHIVE_INDEX_PATH = path.join(ARCHIVE_DIR, "index.json");
+
+export async function getArchiveIndex(): Promise<ArchiveIndexEntry[]> {
+  try {
+    const raw = fs.readFileSync(ARCHIVE_INDEX_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as ArchiveIndexEntry[]) : [];
+  } catch {
+    return []; // no archive yet — fine, e.g. brand-new deployment
+  }
+}
+
+export async function getArchivedEdition(date: string): Promise<Edition | null> {
+  // Guard against path traversal — date must be a plain YYYY-MM-DD.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  try {
+    const raw = fs.readFileSync(path.join(ARCHIVE_DIR, `${date}.json`), "utf8");
+    return normalizeEdition(JSON.parse(raw) as Record<string, unknown>);
+  } catch {
+    return null;
+  }
+}
+
+export async function getArchivedStoryBySlug(date: string, slug: string): Promise<Story | undefined> {
+  const edition = await getArchivedEdition(date);
+  return edition?.stories.find((s) => s.slug === slug);
 }
