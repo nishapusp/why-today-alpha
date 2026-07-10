@@ -7,6 +7,7 @@ import { getCategoryStyle } from "@/lib/categoryStyle";
 import WonderingBlock from "./WonderingBlock";
 import KnowledgeChain from "./KnowledgeChain";
 import AudioReader from "./AudioReader";
+import StoryQuiz from "./StoryQuiz";
 
 const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
   { key: "quick", label: "Quick", minutes: "1m" },
@@ -128,6 +129,10 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
           )}
           {deepDiveStatus !== "loading" && renderDeepDive(deepDiveText, cat)}
         </div>
+      )}
+
+      {level !== "quick" && story.quiz && story.quiz.length > 0 && (
+        <StoryQuiz quiz={story.quiz} accent={cat.accent} tint={cat.tint} deep={cat.deep} />
       )}
 
       <div className="mt-8 pt-6 border-t border-[var(--border)]">

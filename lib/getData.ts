@@ -45,6 +45,8 @@ function normalizeStory(raw: Record<string, unknown>): Story {
     readMinutes: Number.isFinite(Number(raw.readMinutes)) ? Number(raw.readMinutes) : 3,
     sentiment,
     headlineImage: raw.headlineImage as Story["headlineImage"],
+    generatedAt: typeof raw.generatedAt === "string" ? raw.generatedAt : undefined,
+    quiz: Array.isArray(raw.quiz) ? (raw.quiz as Story["quiz"]) : undefined,
   };
 }
 

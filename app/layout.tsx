@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import Script from "next/script";
@@ -22,6 +22,12 @@ const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // maximumScale intentionally NOT set to 1 — pinch-zoom stays available for accessibility
+};
 
 export const metadata: Metadata = {
   title: "Why Today — Understand today's world, not just today's news",

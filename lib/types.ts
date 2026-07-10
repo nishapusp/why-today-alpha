@@ -44,6 +44,19 @@ export interface HeadlineImage {
   creditUrl: string;
 }
 
+export interface QuizQuestion {
+  question: string;
+  options: string[]; // exactly 4
+  answerIndex: number; // 0-3
+  explanation?: string; // 1-2 sentences shown after answering
+}
+
+export interface GlossaryEntry {
+  term: string;
+  definition: string;
+  dateAdded: string; // YYYY-MM-DD of the edition that introduced it
+}
+
 export interface Story {
   headline: string;
   slug: string;
@@ -65,6 +78,7 @@ export interface Story {
   sentiment: Sentiment;
   headlineImage?: HeadlineImage; // every story gets one, fetched from Pexels at generation time
   generatedAt?: string; // ISO timestamp stamped by generate-edition.js; older editions lack it
+  quiz?: QuizQuestion[]; // 3-4 comprehension MCQs; older stories lack them
 }
 
 export interface VocabularyItem {

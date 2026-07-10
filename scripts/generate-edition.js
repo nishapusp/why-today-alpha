@@ -88,10 +88,17 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 ## Before returning output, verify — do not skip this step
 Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
+## Quiz (per story)
+Each story must include "quiz": exactly 3 multiple-choice questions testing whether a reader UNDERSTOOD the story (not trivia recall). Each has "question" (one sentence), "options" (exactly 4 short strings, one correct + three plausible-but-wrong distractors that reflect common misconceptions), "answerIndex" (integer 0-3, position of the correct option — vary it across questions, don't always use 0), and "explanation" (1-2 sentences on why the answer is right, reinforcing the concept). Question 1 should test the core fact, question 2 the "why it matters" reasoning, question 3 a concept/term the story relies on.
+
+## Vocabulary (edition level)
+Include a top-level "vocabulary" array of exactly 5 items: the 5 most useful banking/finance/policy terms appearing in this batch's stories, each as {"term","definition"} with the definition in 20-40 words of plain language a UPSC aspirant or new banker would actually benefit from. Prefer terms a general reader wouldn't know (e.g. "MPBF", "repo corridor") over everyday words.
+
 ## Schema (exact field names, always exactly ${storyCount} stories in this response)
 Return ONLY valid JSON matching this shape:
 {
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
+ "vocabulary":[{"term","definition"}],
  "stories":[{
    "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
@@ -99,6 +106,7 @@ Return ONLY valid JSON matching this shape:
    "knowledgeChain":["..."],
    "ifYoureWondering":[{"q","a"}],
    "officialSources":[{"label","url"}],
+   "quiz":[{"question","options","answerIndex","explanation"}],
    "readMinutes" (integer = word_count/200, rounded up),
    "sentiment" (positive|caution|critical|neutral)
  }]
@@ -380,6 +388,23 @@ function validateStories(stories, startIndex = 0) {
     if (/\bstory\s*\d+\b/i.test(asText(story.headline))) {
       soft.push(`${label}: headline appears to contain a story number.`);
     }
+
+    // Quiz is soft-only: a story without a valid quiz still publishes (the
+    // UI simply hides the quiz block), but we log it so quality is visible.
+    if (!Array.isArray(story.quiz) || story.quiz.length < 3) {
+      soft.push(`${label}: quiz missing or has fewer than 3 questions.`);
+    } else {
+      story.quiz = story.quiz.filter(
+        (q) =>
+          q && typeof q.question === "string" &&
+          Array.isArray(q.options) && q.options.length === 4 &&
+          Number.isInteger(q.answerIndex) && q.answerIndex >= 0 && q.answerIndex <= 3
+      );
+      if (story.quiz.length < 3) soft.push(`${label}: some quiz questions were malformed and dropped (${story.quiz.length} remain).`);
+      if (story.quiz.length > 0 && story.quiz.every((q) => q.answerIndex === story.quiz[0].answerIndex)) {
+        soft.push(`${label}: all quiz answers are in the same position (${story.quiz[0].answerIndex}).`);
+      }
+    }
   });
   return { hard, soft };
 }
@@ -404,7 +429,7 @@ function writeAndPush(edition, batchLabel, isCI) {
   console.log(`Written to ${EDITION_PATH} (${edition.stories.length}/${TOTAL_STORIES} stories).`);
   try {
     const cwd = path.join(__dirname, "..");
-    execSync("git add data/edition.json data/photo-history.json", { stdio: "inherit", cwd });
+    execSync("git add data/edition.json data/photo-history.json data/glossary.json", { stdio: "inherit", cwd });
     execSync(`git commit -m "Daily edition ${edition.date}: ${batchLabel} (${edition.stories.length}/${TOTAL_STORIES} stories)"`, { stdio: "inherit", cwd });
     execSync("git push", { stdio: "inherit", cwd });
     console.log("Pushed — Netlify will redeploy with the stories so far.");
@@ -544,6 +569,33 @@ async function main() {
       edition.stories = [...edition.stories, ...batchStories];
     }
     publishedCount += batchStories.length;
+
+    // Fold this batch's vocabulary into the cumulative glossary
+    // (data/glossary.json) — the edition keeps today's 5 terms, the glossary
+    // keeps everything ever taught, deduped case-insensitively by term.
+    if (Array.isArray(batch.vocabulary) && batch.vocabulary.length) {
+      const glossaryPath = path.join(__dirname, "..", "data", "glossary.json");
+      let glossary = [];
+      try { glossary = JSON.parse(fs.readFileSync(glossaryPath, "utf8")); } catch { /* first run */ }
+      const known = new Set(glossary.map((g) => String(g.term).toLowerCase().trim()));
+      let added = 0;
+      for (const v of batch.vocabulary) {
+        if (!v || !v.term || !v.definition) continue;
+        const key = String(v.term).toLowerCase().trim();
+        if (known.has(key)) continue;
+        glossary.push({ term: String(v.term).trim(), definition: String(v.definition).trim(), dateAdded: today });
+        known.add(key);
+        added++;
+      }
+      if (added > 0) {
+        fs.writeFileSync(glossaryPath, JSON.stringify(glossary, null, 1));
+        console.log(`Glossary: +${added} new term(s), ${glossary.length} total.`);
+      }
+      // Keep the edition's own vocabulary field populated too (first batch wins).
+      if (!Array.isArray(edition.vocabulary) || edition.vocabulary.length === 0) {
+        edition.vocabulary = batch.vocabulary;
+      }
+    }
 
     console.log(`Batch ${b + 1} stories:`);
     batchStories.forEach((s) => console.log(`  - [${s.category || "?"}] ${s.headline || "(no headline)"}`));

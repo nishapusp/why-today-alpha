@@ -27,3 +27,10 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
 }
+
+/* Mobile fit: never let a stray wide element force horizontal scroll or a
+   zoomed-out initial view. Works with the explicit viewport in layout.tsx. */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
