@@ -151,17 +151,94 @@ const CATEGORY_SEARCH_TERMS = {
   Corporate: "business office india corporate",
 };
 
-async function fetchPexelsImage(story, apiKey) {
-  const query = CATEGORY_SEARCH_TERMS[story.category] || "business finance india";
+// Turn a headline into a Pexels-friendly 2-3 keyword query, so different
+// stories search for different photos instead of all sharing one fixed
+// category query. Falls back to the category term when the headline yields
+// nothing usable (Pexels has no photos of "MPBF" anyway).
+const PEXELS_STOPWORDS = new Set([
+  "the","a","an","of","in","on","at","to","for","with","and","or","as","by",
+  "its","is","are","was","were","be","new","amid","amidst","after","before",
+  "over","under","from","into","up","down","out","off","how","why","what",
+  "rbi","sebi","nbfc","nbfcs","msme","msmes","mpc","gst","pmi","q1","q2","q3","q4",
+  "crore","lakh","cent","per","says","unveils","announces","launches","boosts",
+  "maintains","keeps","holds","surges","soars","fuels","eases","tightens",
+]);
+
+function headlineToQuery(story) {
+  const words = String(story.headline || "")
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 3 && !PEXELS_STOPWORDS.has(w));
+  if (words.length < 2) return null;
+  return words.slice(0, 3).join(" ");
+}
+
+// Rolling memory of recently used Pexels photo IDs so the same stock photos
+// don't repeat day after day (Pexels returns results in a fixed popularity
+// order, so without memory the top photo wins every time). Committed along
+// with edition.json.
+const PHOTO_HISTORY_PATH = path.join(__dirname, "..", "data", "photo-history.json");
+const PHOTO_HISTORY_MAX = 400; // ~3-4 weeks at 15 stories/day
+
+function loadPhotoHistory() {
   try {
-    const res = await fetch(
-      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=5&orientation=landscape`,
-      { headers: { Authorization: apiKey } }
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (!data.photos?.length) return null;
-    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    const ids = JSON.parse(fs.readFileSync(PHOTO_HISTORY_PATH, "utf8"));
+    return Array.isArray(ids) ? ids : [];
+  } catch {
+    return [];
+  }
+}
+
+function savePhotoHistory(ids) {
+  try {
+    fs.writeFileSync(PHOTO_HISTORY_PATH, JSON.stringify(ids.slice(-PHOTO_HISTORY_MAX)));
+  } catch {
+    /* history is best-effort */
+  }
+}
+
+let photoHistory = loadPhotoHistory();
+const photoHistorySet = new Set(photoHistory);
+
+async function searchPexels(query, apiKey) {
+  const res = await fetch(
+    `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=20&orientation=landscape`,
+    { headers: { Authorization: apiKey } }
+  );
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.photos || [];
+}
+
+async function fetchPexelsImage(story, apiKey) {
+  try {
+    // 1. Story-specific search first, category fallback second.
+    const queries = [headlineToQuery(story), CATEGORY_SEARCH_TERMS[story.category] || "business finance india"]
+      .filter(Boolean);
+    let candidates = [];
+    for (const q of queries) {
+      candidates = await searchPexels(q, apiKey);
+      // A headline query with a decent pool is good enough — don't fall
+      // through to the (repetitive) category query unless we have to.
+      if (candidates.length >= 3) break;
+    }
+    if (candidates.length === 0) return null;
+
+    // 2. Prefer a photo not used recently (this edition or past weeks);
+    //    if literally everything has been used, take the least-recent one.
+    let photo = candidates.find((p) => !photoHistorySet.has(p.id));
+    if (!photo) {
+      candidates.sort((a, b) => photoHistory.indexOf(a.id) - photoHistory.indexOf(b.id));
+      photo = candidates[0];
+    }
+
+    // 3. Remember it.
+    photoHistory = photoHistory.filter((id) => id !== photo.id);
+    photoHistory.push(photo.id);
+    photoHistorySet.add(photo.id);
+    savePhotoHistory(photoHistory);
+
     return {
       url: photo.src.large,
       alt: photo.alt || story.headline,
@@ -327,7 +404,7 @@ function writeAndPush(edition, batchLabel, isCI) {
   console.log(`Written to ${EDITION_PATH} (${edition.stories.length}/${TOTAL_STORIES} stories).`);
   try {
     const cwd = path.join(__dirname, "..");
-    execSync("git add data/edition.json", { stdio: "inherit", cwd });
+    execSync("git add data/edition.json data/photo-history.json", { stdio: "inherit", cwd });
     execSync(`git commit -m "Daily edition ${edition.date}: ${batchLabel} (${edition.stories.length}/${TOTAL_STORIES} stories)"`, { stdio: "inherit", cwd });
     execSync("git push", { stdio: "inherit", cwd });
     console.log("Pushed — Netlify will redeploy with the stories so far.");
