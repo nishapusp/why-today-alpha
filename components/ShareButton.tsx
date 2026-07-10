@@ -6,23 +6,37 @@ import { useState } from "react";
  * Share a story to WhatsApp (or anywhere, via the native share sheet).
  *
  * Strategy, best first:
- * 1. Web Share API WITH the pre-rendered card image (/cards/<slug>.png) —
- *    on Android/iOS this opens the share sheet and WhatsApp receives the
- *    actual 1080x1350 branded card plus the link.
- * 2. Web Share API text-only — if the browser can't share files.
- * 3. wa.me deep link with headline + URL — desktop / older browsers. The
+ * 1. Web Share API with BOTH pre-rendered cards — the headline card
+ *    (/cards/<slug>.png) plus the Time Machine card (/cards/<slug>-tm.png)
+ *    when the story has one. WhatsApp receives them as an image pair.
+ * 2. If the platform can't share two files, share just the headline card.
+ * 3. Web Share API text-only — if the browser can't share files at all.
+ * 4. wa.me deep link with headline + URL — desktop / older browsers. The
  *    link preview still shows the card because og:image points at it.
  */
 export default function ShareButton({
   slug,
   headline,
   accent,
+  hasTimeMachine,
 }: {
   slug: string;
   headline: string;
   accent?: string;
+  hasTimeMachine?: boolean;
 }) {
   const [busy, setBusy] = useState(false);
+
+  async function fetchCard(path: string, name: string): Promise<File | null> {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) return null;
+      const blob = await res.blob();
+      return new File([blob], name, { type: "image/png" });
+    } catch {
+      return null;
+    }
+  }
 
   async function share() {
     if (busy) return;
@@ -30,29 +44,32 @@ export default function ShareButton({
     const url = `${window.location.origin}/story/${slug}`;
     const text = `${headline}\n\nRead why it matters on Why Today:`;
     try {
-      // 1. Try sharing the actual card image.
+      // 1. Try sharing the actual card image(s).
       if (navigator.share) {
         let files: File[] | undefined;
-        try {
-          const res = await fetch(`/cards/${slug}.png`);
-          if (res.ok) {
-            const blob = await res.blob();
-            const file = new File([blob], `why-today-${slug}.png`, {
-              type: "image/png",
-            });
-            if (!navigator.canShare || navigator.canShare({ files: [file] })) {
-              files = [file];
-            }
+        const main = await fetchCard(`/cards/${slug}.png`, `why-today-${slug}.png`);
+        const tm = hasTimeMachine
+          ? await fetchCard(`/cards/${slug}-tm.png`, `why-today-${slug}-time-machine.png`)
+          : null;
+
+        // Prefer the pair; drop to one card, then to text-only, as the
+        // platform allows.
+        const candidates: File[][] = [];
+        if (main && tm) candidates.push([main, tm]);
+        if (main) candidates.push([main]);
+        for (const c of candidates) {
+          if (!navigator.canShare || navigator.canShare({ files: c })) {
+            files = c;
+            break;
           }
-        } catch {
-          /* card missing — fall through to text share */
         }
+
         await navigator.share(
           files ? { files, text: `${text} ${url}` } : { title: headline, text, url }
         );
         return;
       }
-      // 3. No Web Share API at all — WhatsApp web deep link.
+      // 4. No Web Share API at all — WhatsApp web deep link.
       window.open(
         `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`,
         "_blank",

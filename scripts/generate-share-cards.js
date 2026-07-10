@@ -273,10 +273,204 @@ function buildCardTree(story, editionDate, photoUri) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Time Machine card — a SECOND card per story (<slug>-tm.png).
+//
+// Six timeline steps can't share a card with the photo + key number and stay
+// readable at WhatsApp preview size, so the Time Machine gets its own
+// dedicated dark card: headline up top, then the full spine from "10 years
+// ago" to "What happens next?". ShareButton sends both cards together.
+// ---------------------------------------------------------------------------
+
+const TM_STEPS = [
+  { key: "tenYearsAgo", label: "10 YEARS AGO" },
+  { key: "lastYear", label: "LAST YEAR" },
+  { key: "lastMonth", label: "LAST MONTH" },
+  { key: "yesterday", label: "YESTERDAY" },
+  { key: "today", label: "TODAY" },
+  { key: "future", label: "WHAT HAPPENS NEXT?" },
+];
+
+// Clip to ~N chars at a word boundary so no step overflows its 2-line box.
+function clipWords(str, max = 110) {
+  const s = String(str || "").trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut) + "…";
+}
+
+function tmStepRow(step, text, cat, isLast) {
+  const isToday = step.key === "today";
+  const isFuture = step.key === "future";
+  const dotSize = isToday ? 26 : 18;
+  return el(
+    "div",
+    { style: { display: "flex", flexDirection: "row" } },
+    // spine column: dot + connector line
+    el(
+      "div",
+      {
+        style: {
+          display: "flex", flexDirection: "column", alignItems: "center",
+          width: "44px", marginRight: "26px",
+        },
+      },
+      el("div", {
+        style: {
+          width: `${dotSize}px`, height: `${dotSize}px`, borderRadius: "999px",
+          marginTop: isToday ? "2px" : "6px", display: "flex",
+          backgroundColor: isFuture ? "transparent" : cat.accent,
+          border: isFuture ? `3px solid ${cat.accent}` : "none",
+          opacity: isToday || isFuture ? 1 : 0.55,
+        },
+      }),
+      isLast
+        ? null
+        : el("div", {
+            style: {
+              width: "3px", flexGrow: 1, marginTop: "6px", marginBottom: "6px",
+              backgroundColor: cat.accent, opacity: isToday ? 0.9 : 0.3,
+              display: "flex",
+            },
+          })
+    ),
+    // text column
+    el(
+      "div",
+      {
+        style: {
+          display: "flex", flexDirection: "column", flexGrow: 1,
+          paddingBottom: isLast ? "0px" : "30px", width: "880px",
+        },
+      },
+      el("span", {
+        style: {
+          fontSize: isToday ? "28px" : "24px", fontWeight: isToday ? 800 : 600,
+          letterSpacing: "3px", display: "flex",
+          color: isToday ? cat.accent : "rgba(255,255,255,0.55)",
+        },
+      }, step.label),
+      el("span", {
+        style: {
+          marginTop: "8px", fontSize: isToday ? "31px" : "28px",
+          fontWeight: isToday ? 600 : 400, lineHeight: 1.35,
+          color: isToday ? "#FFFFFF" : "rgba(255,255,255,0.82)",
+          display: "block", lineClamp: 2,
+          fontStyle: isFuture ? "italic" : "normal",
+        },
+      }, clipWords(text, isToday ? 120 : 105))
+    )
+  );
+}
+
+function buildTimeMachineCardTree(story, editionDate) {
+  const cat = catStyle(story.category);
+  const dateLabel = formatDate(story.generatedAt || editionDate);
+  const headline = String(story.whatsappHeadline || story.headline || "").trim();
+  const tm = story.timeMachine || {};
+  const steps = TM_STEPS.filter((s) => String(tm[s.key] || "").trim());
+
+  return el(
+    "div",
+    {
+      style: {
+        width: `${W}px`, height: `${H}px`,
+        display: "flex", flexDirection: "column",
+        backgroundImage: `linear-gradient(160deg, ${cat.dark} 0%, #0B1220 55%, #0B1220 100%)`,
+        fontFamily: "Inter", color: "#FFFFFF", position: "relative",
+      },
+    },
+    // thin accent line at the very top (matches the main card)
+    el("div", {
+      style: {
+        position: "absolute", top: 0, left: 0, width: `${W}px`, height: "14px",
+        backgroundColor: cat.accent, display: "flex",
+      },
+    }),
+
+    headerRow(story, cat, dateLabel),
+
+    // headline (compact — the main card already carries the big version)
+    el("span", {
+      style: {
+        margin: "36px 64px 0 64px", fontSize: "46px", fontWeight: 800,
+        lineHeight: 1.2, letterSpacing: "-0.5px", display: "block", lineClamp: 2,
+      },
+    }, headline),
+
+    // Time Machine eyebrow
+    el(
+      "div",
+      {
+        style: {
+          display: "flex", alignItems: "center",
+          margin: "34px 64px 30px 64px", paddingBottom: "22px",
+          borderBottom: "2px solid rgba(255,255,255,0.12)",
+        },
+      },
+      el("span", {
+        style: {
+          fontSize: "30px", fontWeight: 800, letterSpacing: "4px",
+          color: cat.accent, display: "flex",
+        },
+      }, "⏳ TIME MACHINE"),
+      el("span", {
+        style: {
+          fontSize: "25px", color: "rgba(255,255,255,0.5)",
+          marginLeft: "22px", display: "flex",
+        },
+      }, "How we got here")
+    ),
+
+    // the spine
+    el(
+      "div",
+      {
+        style: {
+          display: "flex", flexDirection: "column", flexGrow: 1,
+          padding: "0 64px",
+        },
+      },
+      steps.map((s, i) => tmStepRow(s, tm[s.key], cat, i === steps.length - 1))
+    ),
+
+    // Footer (matches the main card)
+    el(
+      "div",
+      {
+        style: {
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          margin: "30px 0 0 0", padding: "32px 64px",
+          borderTop: "2px solid rgba(255,255,255,0.12)",
+        },
+      },
+      el(
+        "div",
+        { style: { display: "flex", flexDirection: "column" } },
+        el("span", { style: { fontSize: "38px", fontWeight: 800, display: "flex" } }, "Why Today"),
+        el("span", {
+          style: { fontSize: "25px", color: "rgba(255,255,255,0.55)", marginTop: "4px", display: "flex" },
+        }, "The why behind India's financial news")
+      ),
+      el("span", {
+        style: { fontSize: "30px", fontWeight: 600, color: cat.accent, display: "flex" },
+      }, SITE_URL)
+    )
+  );
+}
+
+// How many usable steps a story's timeMachine has — below 4 the card looks
+// sparse and sad, so we skip rendering it.
+function tmStepCount(story) {
+  const tm = story && story.timeMachine;
+  if (!tm || typeof tm !== "object") return 0;
+  return TM_STEPS.filter((s) => String(tm[s.key] || "").trim()).length;
+}
+
 async function main() {
   const satori = (await import("satori")).default;
   const { Resvg } = await import("@resvg/resvg-js");
-
   const edition = JSON.parse(fs.readFileSync(EDITION_PATH, "utf8"));
   const stories = Array.isArray(edition.stories) ? edition.stories : [];
   if (stories.length === 0) {
@@ -293,43 +487,62 @@ async function main() {
   fs.rmSync(OUT_DIR, { recursive: true, force: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  let ok = 0, withPhoto = 0;
+  let ok = 0, tmOk = 0, withPhoto = 0;
   const manifest = {};
+  const tmManifest = {};
+
+  const satoriOptions = {
+    width: W, height: H, fonts,
+    loadAdditionalAsset: async (code, segment) => {
+      if (code === "emoji") {
+        try {
+          const cp = [...segment].map((c) => c.codePointAt(0).toString(16)).join("-");
+          const res = await fetch(`https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg/${cp}.svg`);
+          if (res.ok) {
+            const body = await res.text();
+            return `data:image/svg+xml;base64,${Buffer.from(body).toString("base64")}`;
+          }
+        } catch { /* icon is optional */ }
+      }
+      return "";
+    },
+  };
+
+  const renderPng = async (tree, outName) => {
+    const svg = await satori(tree, satoriOptions);
+    const png = new Resvg(svg, { fitTo: { mode: "width", value: W } }).render().asPng();
+    fs.writeFileSync(path.join(OUT_DIR, outName), png);
+  };
+
   for (const story of stories) {
     if (!story.slug) continue;
     try {
       const photoUri = await fetchImageDataUri(story.headlineImage && story.headlineImage.url);
       if (photoUri) withPhoto++;
-      const svg = await satori(buildCardTree(story, edition.date, photoUri), {
-        width: W, height: H, fonts,
-        loadAdditionalAsset: async (code, segment) => {
-          if (code === "emoji") {
-            try {
-              const cp = [...segment].map((c) => c.codePointAt(0).toString(16)).join("-");
-              const res = await fetch(`https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg/${cp}.svg`);
-              if (res.ok) {
-                const body = await res.text();
-                return `data:image/svg+xml;base64,${Buffer.from(body).toString("base64")}`;
-              }
-            } catch { /* icon is optional */ }
-          }
-          return "";
-        },
-      });
-      const png = new Resvg(svg, { fitTo: { mode: "width", value: W } }).render().asPng();
-      fs.writeFileSync(path.join(OUT_DIR, `${story.slug}.png`), png);
+      await renderPng(buildCardTree(story, edition.date, photoUri), `${story.slug}.png`);
       manifest[story.slug] = `/cards/${story.slug}.png`;
       ok++;
     } catch (err) {
       console.warn(`Card failed for "${story.slug}": ${err.message} — skipping.`);
     }
+
+    // Time Machine companion card — its failure never affects the main card.
+    if (tmStepCount(story) >= 4) {
+      try {
+        await renderPng(buildTimeMachineCardTree(story, edition.date), `${story.slug}-tm.png`);
+        tmManifest[story.slug] = `/cards/${story.slug}-tm.png`;
+        tmOk++;
+      } catch (err) {
+        console.warn(`Time Machine card failed for "${story.slug}": ${err.message} — main card still fine.`);
+      }
+    }
   }
 
   fs.writeFileSync(
     path.join(OUT_DIR, "manifest.json"),
-    JSON.stringify({ date: edition.date, cards: manifest }, null, 2)
+    JSON.stringify({ date: edition.date, cards: manifest, timeMachineCards: tmManifest }, null, 2)
   );
-  console.log(`Share cards: ${ok}/${stories.length} rendered (${withPhoto} with photos) to public/cards/.`);
+  console.log(`Share cards: ${ok}/${stories.length} rendered (${withPhoto} with photos), ${tmOk} Time Machine cards, to public/cards/.`);
 }
 
 main().catch((err) => {

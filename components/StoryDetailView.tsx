@@ -79,7 +79,7 @@ export default function StoryDetailView({
             <span>{story.readMinutes} min read</span>
             {story.headlineImage && <span>· 📷 {story.headlineImage.credit}</span>}
             <span className="ml-auto">
-              <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} />
+              <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} hasTimeMachine={!!story.timeMachine} />
             </span>
           </div>
         </div>
