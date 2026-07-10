@@ -72,7 +72,7 @@ const DEEP_DIVE_FLOOR = 400; // target range is 500-800; hard-fail only below 40
 
 // Keep this in sync with lib/prompts.ts's DAILY_EDITION_SYSTEM_PROMPT.
 function buildSystemPrompt(storyCount) {
-  return `You produce part of a daily "edition" as JSON for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Goal: explain WHY, in plain language, not just headlines. Be CONCISE — every sentence must earn its place. No padding, no restating the same fact in different words.
+  return `You produce part of a daily "edition" as JSON for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and quarterly results of major listed companies (including banks), market-moving developments, and technology events that affect the economic landscape. Goal: explain WHY, in plain language, not just headlines. Be CONCISE — every sentence must earn its place. No padding, no restating the same fact in different words.
 
 ## Voice — this is the difference between useful and boring
 Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title (banned patterns: "X Continues Y", "Government Relaxes Z", "X Maintains Y Pace"). Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
@@ -104,7 +104,7 @@ Re-read every prose field and confirm: no stray numbers/citations inline; no sto
 Each story must include "quiz": exactly 3 multiple-choice questions testing whether a reader UNDERSTOOD the story (not trivia recall). Each has "question" (one sentence), "options" (exactly 4 short strings, one correct + three plausible-but-wrong distractors that reflect common misconceptions), "answerIndex" (integer 0-3, position of the correct option — vary it across questions, don't always use 0), and "explanation" (1-2 sentences on why the answer is right, reinforcing the concept). Question 1 should test the core fact, question 2 the "why it matters" reasoning, question 3 a concept/term the story relies on.
 
 ## Vocabulary (edition level)
-Include a top-level "vocabulary" array of exactly 5 items: the 5 most useful banking/finance/policy terms appearing in this batch's stories, each as {"term","definition"} with the definition in 20-40 words of plain language a UPSC aspirant or new banker would actually benefit from. Prefer terms a general reader wouldn't know (e.g. "MPBF", "repo corridor") over everyday words.
+Include a top-level "vocabulary" array of exactly 5 items: the 5 most useful banking/finance/policy terms appearing in this batch's stories, each as {"term","definition"} with the definition in 20-40 words of plain language a general reader new to finance would actually benefit from. Prefer terms a general reader wouldn't know (e.g. "MPBF", "repo corridor") over everyday words.
 
 ## Schema (exact field names, always exactly ${storyCount} stories in this response)
 Return ONLY valid JSON matching this shape:
@@ -134,7 +134,7 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
   const exclusionNote = excludeHeadlines?.length
     ? ` Do NOT repeat or overlap with these already-covered stories from the same edition: ${excludeHeadlines.map((h) => `"${h}"`).join(", ")}. Find ${storyCount} completely different fresh stories.`
     : "";
-  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, and policy NEWS FROM TODAY AND YESTERDAY SPECIFICALLY (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
+  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
 function asText(v) {
@@ -650,9 +650,15 @@ async function main() {
   }
   if (publishedCount < TOTAL_STORIES) {
     console.log(`Edition is partial — re-run this script (or wait for the next scheduled run) to generate the remaining ${TOTAL_STORIES - publishedCount}; it will resume, not restart.`);
-    // Non-zero exit in CI so the run shows as needing attention — but note
-    // everything generated so far is ALREADY live.
-    if (isCI) process.exit(1);
+    // Only mark the CI run red when the day is BADLY short (<80% of target).
+    // A 12/15 or 13/15 day is a healthy edition that the next scheduled run
+    // will top up — flagging it as a failure was just alert noise. Everything
+    // generated so far is ALREADY live either way.
+    const healthyFloor = Math.ceil(TOTAL_STORIES * 0.8);
+    if (isCI && publishedCount < healthyFloor) process.exit(1);
+    if (isCI) {
+      console.log(`(${publishedCount} >= ${healthyFloor} healthy floor — exiting green; next run tops up the rest.)`);
+    }
   }
 }
 

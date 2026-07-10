@@ -22,7 +22,7 @@ const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
-const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Do not produce top-level edition fields — only the one story object.
+const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
 
 Write like a sharp friend explaining why something matters over chai, not a press release. Open every field with the single most surprising or relevant fact. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title. Every keyNumbers value must be an actual figure (₹ amount, %, date, count), never a vague phrase — omit the entry if you don't have a real number.
 

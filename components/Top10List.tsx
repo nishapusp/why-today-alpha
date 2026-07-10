@@ -59,12 +59,11 @@ export default function Top10List({
             style={{ background: cat.tint, border: "1px solid rgba(0,0,0,0.04)" }}
           >
             {i === 0 && story.headlineImage ? (
-              <button
-                onClick={() => {
-                  const opening = !isOpen;
-                  setOpenIndex(opening ? i : null);
-                  if (opening) markRead(story.slug);
-                }}
+              // Tapping the hero photo goes straight to the full story —
+              // the image itself is the doorway, no separate button needed.
+              <Link
+                href={`${linkBase}/${story.slug}`}
+                onClick={() => markRead(story.slug)}
                 className="relative w-full text-left block"
                 style={{ aspectRatio: "4 / 3" }}
               >
@@ -105,11 +104,11 @@ export default function Top10List({
                       className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white"
                       style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(6px)" }}
                     >
-                      {isOpen ? "▾" : "›"}
+                      →
                     </span>
                   </div>
                 </div>
-              </button>
+              </Link>
             ) : (
               <button
                 onClick={() => {
@@ -145,6 +144,40 @@ export default function Top10List({
 
             {isOpen && (
               <div className="px-4 pb-4">
+                {/* Photo lives on the main page now — hidden while the row is
+                    collapsed, revealed on tap. Tapping the photo itself opens
+                    the full story. (Skip for #1, whose hero already shows it.) */}
+                {story.headlineImage && i !== 0 && (
+                  <Link
+                    href={`${linkBase}/${story.slug}`}
+                    onClick={() => markRead(story.slug)}
+                    className="relative block rounded-xl overflow-hidden mb-3 active:scale-[0.99] transition-transform"
+                    style={{ aspectRatio: "16 / 9" }}
+                  >
+                    <img
+                      src={story.headlineImage.url}
+                      alt={story.headlineImage.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover absolute inset-0"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%)" }}
+                    />
+                    <span
+                      className="absolute top-2 right-2.5 text-[9px] text-white/75"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                    >
+                      📷 {story.headlineImage.credit}
+                    </span>
+                    <span
+                      className="absolute bottom-2 right-2.5 text-[11px] font-semibold text-white rounded-full px-2.5 py-1"
+                      style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(4px)" }}
+                    >
+                      Tap for full story →
+                    </span>
+                  </Link>
+                )}
                 <span
                   className="inline-block text-[10.5px] font-semibold uppercase tracking-wide rounded-full px-2.5 py-1 mb-3"
                   style={{ background: "rgba(255,255,255,0.65)", color: cat.deep }}

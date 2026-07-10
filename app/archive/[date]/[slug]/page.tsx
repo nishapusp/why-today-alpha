@@ -26,11 +26,21 @@ export default async function ArchivedStoryPage({
     notFound();
   }
 
+  const edition = await getArchivedEdition(date);
+  const idx = edition ? edition.stories.findIndex((s) => s.slug === slug) : -1;
+  const prevStory = edition && idx > 0 ? edition.stories[idx - 1] : undefined;
+  const nextStory =
+    edition && idx >= 0 && idx < edition.stories.length - 1
+      ? edition.stories[idx + 1]
+      : undefined;
+
   return (
     <StoryDetailView
       story={story}
       backHref={`/archive/${date}`}
       backLabel={`Back to ${date}`}
+      prev={prevStory && { href: `/archive/${date}/${prevStory.slug}`, headline: prevStory.headline }}
+      next={nextStory && { href: `/archive/${date}/${nextStory.slug}`, headline: nextStory.headline }}
     />
   );
 }

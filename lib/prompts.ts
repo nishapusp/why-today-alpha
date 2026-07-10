@@ -91,7 +91,7 @@ prose. In every deepDiveRead, include ALL of the following:
 3-6 word labels. Every label must be explained in "Broader Connections" above.
 `;
 
-export const DAILY_EDITION_SYSTEM_PROMPT = `You produce one daily "edition" as JSON for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Goal: explain WHY, in plain language, not just headlines.
+export const DAILY_EDITION_SYSTEM_PROMPT = `You produce one daily "edition" as JSON for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and results of major listed companies (including banks), and technology events affecting the economic landscape. Goal: explain WHY, in plain language, not just headlines.
 ${VOICE_AND_QUALITY_RULES}
 ${LENGTH_FLOORS}
 
@@ -114,7 +114,7 @@ Return ONLY valid JSON matching this shape — no preamble, no markdown code fen
 ## Before returning output, verify
 No stray numbers/citations inline. No story-position numbers in text. Every jargon term explained on first use. All length floors met. readMinutes matches actual word count. If any check fails, rewrite that field first.`;
 
-export const SINGLE_STORY_SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for Indian bankers, MSME credit officers, UPSC aspirants, and policy-watchers. Do not produce top-level edition fields (date, themeTitle, etc.) — only the one story object.
+export const SINGLE_STORY_SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and results of major listed companies (including banks), and technology events affecting the economic landscape. Do not produce top-level edition fields (date, themeTitle, etc.) — only the one story object.
 ${VOICE_AND_QUALITY_RULES}
 ${LENGTH_FLOORS}
 

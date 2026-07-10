@@ -7,14 +7,23 @@ import { formatStoryDate } from "@/lib/storyDate";
 import DataCardGrid from "@/components/DataCard";
 import StoryFeedback from "@/components/StoryFeedback";
 
+export interface StoryNeighbor {
+  href: string;
+  headline: string;
+}
+
 export default function StoryDetailView({
   story,
   backHref,
   backLabel,
+  prev,
+  next,
 }: {
   story: Story;
   backHref: string;
   backLabel: string;
+  prev?: StoryNeighbor; // previous story in the same edition
+  next?: StoryNeighbor; // next story in the same edition
 }) {
   const cat = getCategoryStyle(story.category);
 
@@ -112,6 +121,44 @@ export default function StoryDetailView({
               ))}
             </ul>
           </div>
+        )}
+
+        {(prev || next) && (
+          <nav
+            aria-label="More stories in this edition"
+            className="mt-8 pt-6 border-t border-[var(--border)] grid grid-cols-2 gap-3"
+          >
+            {prev ? (
+              <Link
+                href={prev.href}
+                className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-3.5 hover:border-[var(--accent)] transition-colors min-w-0"
+              >
+                <span className="block text-[10px] font-mono uppercase tracking-wide text-[var(--text-secondary)] mb-1">
+                  ← Previous story
+                </span>
+                <span className="block text-[13px] font-medium leading-snug text-[var(--text-primary)] break-words">
+                  {prev.headline.length > 70 ? `${prev.headline.slice(0, 70)}…` : prev.headline}
+                </span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {next ? (
+              <Link
+                href={next.href}
+                className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-3.5 hover:border-[var(--accent)] transition-colors text-right min-w-0"
+              >
+                <span className="block text-[10px] font-mono uppercase tracking-wide text-[var(--text-secondary)] mb-1">
+                  Next story →
+                </span>
+                <span className="block text-[13px] font-medium leading-snug text-[var(--text-primary)] break-words">
+                  {next.headline.length > 70 ? `${next.headline.slice(0, 70)}…` : next.headline}
+                </span>
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         )}
       </article>
     </main>

@@ -49,5 +49,20 @@ export default async function StoryPage({
     notFound();
   }
 
-  return <StoryDetailView story={story} backHref="/" backLabel="Back to today" />;
+  // Left/right story connect: neighbors within today's edition order.
+  const edition = await getLatestEdition();
+  const idx = edition.stories.findIndex((s) => s.slug === slug);
+  const prevStory = idx > 0 ? edition.stories[idx - 1] : undefined;
+  const nextStory =
+    idx >= 0 && idx < edition.stories.length - 1 ? edition.stories[idx + 1] : undefined;
+
+  return (
+    <StoryDetailView
+      story={story}
+      backHref="/"
+      backLabel="Back to today"
+      prev={prevStory && { href: `/story/${prevStory.slug}`, headline: prevStory.headline }}
+      next={nextStory && { href: `/story/${nextStory.slug}`, headline: nextStory.headline }}
+    />
+  );
 }

@@ -8,7 +8,7 @@ export const revalidate = 300;
 export const metadata = {
   title: "Glossary — Why Today",
   description:
-    "Every banking, finance, and policy term Why Today has explained — a growing plain-language glossary for bankers and UPSC aspirants.",
+    "Every banking, finance, and policy term Why Today has explained — a growing plain-language glossary for anyone following India's economy and markets.",
 };
 
 function loadGlossary(): GlossaryEntry[] {
