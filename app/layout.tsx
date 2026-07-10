@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import Script from "next/script";
@@ -23,7 +23,16 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // maximumScale intentionally NOT set to 1 — pinch-zoom stays available for accessibility
+};
+
 export const metadata: Metadata = {
+  // Absolute base for og:image / twitter card URLs — without this, the
+  // share-card image paths stay relative and WhatsApp link previews break.
+  metadataBase: new URL("https://whytoday.in"),
   title: "Why Today — Understand today's world, not just today's news",
   description:
     "A modern knowledge platform that helps readers understand the context behind today's headlines through curated data, storytelling, and AI-powered explanations.",

@@ -4,6 +4,7 @@ import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
 import Hero from "@/components/Hero";
 import Top10List from "@/components/Top10List";
 import ArchiveDrawer from "@/components/ArchiveDrawer";
+import Link from "next/link";
 
 
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
@@ -38,6 +39,14 @@ export default async function Home() {
             <span className="text-xs text-[var(--text-secondary)] truncate">
               {edition.numberValue} · {edition.themeTitle}
             </span>
+            <Link
+              href="/glossary"
+              aria-label="Glossary"
+              title="Glossary"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[15px] hover:border-[var(--accent)] transition-colors"
+            >
+              📖
+            </Link>
             <ArchiveDrawer recentDays={archiveIndex.slice(0, 10)} />
           </div>
         </div>
