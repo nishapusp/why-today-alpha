@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Story } from "@/lib/types";
+import { formatStoryDate, isFromEarlierDay } from "@/lib/storyDate";
 import KnowledgeChain from "./KnowledgeChain";
 
 const CATEGORY_ICON: Record<string, string> = {
@@ -12,6 +13,8 @@ const CATEGORY_ICON: Record<string, string> = {
 };
 
 export default function StoryCard({ story }: { story: Story }) {
+  const dateLabel = formatStoryDate(story.generatedAt);
+  const earlier = isFromEarlierDay(story.generatedAt);
   return (
     <Link
       href={`/story/${story.slug}`}
@@ -28,6 +31,18 @@ export default function StoryCard({ story }: { story: Story }) {
         <span className="text-xs text-[var(--text-secondary)] ml-auto">
           {story.readMinutes} min read
         </span>
+        {dateLabel && (
+          <span
+            className={
+              earlier
+                ? "text-[10px] font-semibold uppercase tracking-wide rounded-full px-2 py-0.5 bg-amber-100 text-amber-800"
+                : "text-xs text-[var(--text-secondary)]"
+            }
+            title={earlier ? "Published on an earlier day" : undefined}
+          >
+            {dateLabel}
+          </span>
+        )}
       </div>
 
       <h3 className="font-display text-lg leading-snug text-[var(--text-primary)] mb-1.5 group-hover:text-[var(--navy)] transition-colors">

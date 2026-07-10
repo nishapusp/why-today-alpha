@@ -64,6 +64,7 @@ export interface Story {
   readMinutes: number;
   sentiment: Sentiment;
   headlineImage?: HeadlineImage; // every story gets one, fetched from Pexels at generation time
+  generatedAt?: string; // ISO timestamp stamped by generate-edition.js; older editions lack it
 }
 
 export interface VocabularyItem {

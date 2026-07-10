@@ -437,6 +437,14 @@ async function main() {
       soft.forEach((i) => console.warn(`  - ${i}`));
     }
 
+    // Stamp every fresh story with its generation time so the UI can show
+    // publication dates and flag carryovers from a previous day. Carryover
+    // stories keep their original stamp (this loop only touches new ones).
+    const stampedAt = new Date().toISOString();
+    batchStories.forEach((s) => {
+      s.generatedAt = stampedAt;
+    });
+
     // Fetch images for JUST this batch's stories.
     if (process.env.PEXELS_API_KEY) {
       for (const story of batchStories) {

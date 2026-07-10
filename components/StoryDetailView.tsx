@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import ReadingLevelToggle from "@/components/ReadingLevelToggle";
+import ShareButton from "@/components/ShareButton";
+import { formatStoryDate } from "@/lib/storyDate";
 import DataCardGrid from "@/components/DataCard";
 import StoryFeedback from "@/components/StoryFeedback";
 
@@ -60,8 +62,14 @@ export default function StoryDetailView({
           </h1>
 
           <div className="flex items-center gap-3 text-xs text-white/80">
+            {formatStoryDate(story.generatedAt) && (
+              <span>{formatStoryDate(story.generatedAt)}</span>
+            )}
             <span>{story.readMinutes} min read</span>
             {story.headlineImage && <span>· 📷 {story.headlineImage.credit}</span>}
+            <span className="ml-auto">
+              <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} />
+            </span>
           </div>
         </div>
       </div>
