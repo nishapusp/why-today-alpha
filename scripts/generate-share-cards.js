@@ -91,6 +91,74 @@ async function fetchImageDataUri(url) {
   }
 }
 
+/**
+ * QR code linking straight to the story — the one part of the card that
+ * survives being forwarded without the share text. Rendered as an inline
+ * SVG data URI; any failure returns null and the footer simply omits it.
+ */
+async function makeQrDataUri(storyUrl) {
+  try {
+    const QRCode = require("qrcode");
+    const svg = await QRCode.toString(storyUrl, {
+      type: "svg",
+      errorCorrectionLevel: "M",
+      margin: 1,
+      color: { dark: "#0B1220", light: "#FFFFFF" },
+    });
+    return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
+// Shared footer for both card designs: brand on the left, scan-to-read QR
+// on the right (falls back to the plain site URL when QR generation fails).
+function footerRow(cat, qrUri) {
+  return el(
+    "div",
+    {
+      style: {
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        margin: "30px 0 0 0", padding: "26px 64px",
+        borderTop: "2px solid rgba(255,255,255,0.12)",
+      },
+    },
+    el(
+      "div",
+      { style: { display: "flex", flexDirection: "column" } },
+      el("span", { style: { fontSize: "38px", fontWeight: 800, display: "flex" } }, "Why Today"),
+      el("span", {
+        style: { fontSize: "25px", color: "rgba(255,255,255,0.55)", marginTop: "4px", display: "flex" },
+      }, "The why behind India's financial news")
+    ),
+    el(
+      "div",
+      { style: { display: "flex", alignItems: "center" } },
+      el(
+        "div",
+        { style: { display: "flex", flexDirection: "column", alignItems: "flex-end", marginRight: qrUri ? "22px" : "0px" } },
+        el("span", {
+          style: { fontSize: "30px", fontWeight: 600, color: cat.accent, display: "flex" },
+        }, SITE_URL),
+        qrUri
+          ? el("span", {
+              style: { fontSize: "22px", color: "rgba(255,255,255,0.5)", marginTop: "4px", display: "flex" },
+            }, "Scan to read the full story")
+          : null
+      ),
+      qrUri
+        ? el("img", {
+            src: qrUri, width: 160, height: 160,
+            style: {
+              width: "160px", height: "160px", borderRadius: "16px",
+              border: "6px solid #FFFFFF",
+            },
+          })
+        : null
+    )
+  );
+}
+
 function headerRow(story, cat, dateLabel) {
   return el(
     "div",
@@ -127,7 +195,7 @@ function headerRow(story, cat, dateLabel) {
   );
 }
 
-function buildCardTree(story, editionDate, photoUri) {
+function buildCardTree(story, editionDate, photoUri, qrUri) {
   const cat = catStyle(story.category);
   const keyNum = pickKeyNumber(story);
   const dateLabel = formatDate(story.generatedAt || editionDate);
@@ -249,27 +317,7 @@ function buildCardTree(story, editionDate, photoUri) {
       : null,
 
     // Footer
-    el(
-      "div",
-      {
-        style: {
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          margin: "40px 0 0 0", padding: "32px 64px",
-          borderTop: "2px solid rgba(255,255,255,0.12)",
-        },
-      },
-      el(
-        "div",
-        { style: { display: "flex", flexDirection: "column" } },
-        el("span", { style: { fontSize: "38px", fontWeight: 800, display: "flex" } }, "Why Today"),
-        el("span", {
-          style: { fontSize: "25px", color: "rgba(255,255,255,0.55)", marginTop: "4px", display: "flex" },
-        }, "The why behind India's financial news")
-      ),
-      el("span", {
-        style: { fontSize: "30px", fontWeight: 600, color: cat.accent, display: "flex" },
-      }, SITE_URL)
-    )
+    footerRow(cat, qrUri)
   );
 }
 
@@ -364,7 +412,7 @@ function tmStepRow(step, text, cat, isLast) {
   );
 }
 
-function buildTimeMachineCardTree(story, editionDate) {
+function buildTimeMachineCardTree(story, editionDate, qrUri) {
   const cat = catStyle(story.category);
   const dateLabel = formatDate(story.generatedAt || editionDate);
   const headline = String(story.whatsappHeadline || story.headline || "").trim();
@@ -436,27 +484,7 @@ function buildTimeMachineCardTree(story, editionDate) {
     ),
 
     // Footer (matches the main card)
-    el(
-      "div",
-      {
-        style: {
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          margin: "30px 0 0 0", padding: "32px 64px",
-          borderTop: "2px solid rgba(255,255,255,0.12)",
-        },
-      },
-      el(
-        "div",
-        { style: { display: "flex", flexDirection: "column" } },
-        el("span", { style: { fontSize: "38px", fontWeight: 800, display: "flex" } }, "Why Today"),
-        el("span", {
-          style: { fontSize: "25px", color: "rgba(255,255,255,0.55)", marginTop: "4px", display: "flex" },
-        }, "The why behind India's financial news")
-      ),
-      el("span", {
-        style: { fontSize: "30px", fontWeight: 600, color: cat.accent, display: "flex" },
-      }, SITE_URL)
-    )
+    footerRow(cat, qrUri)
   );
 }
 
@@ -518,8 +546,9 @@ async function main() {
     if (!story.slug) continue;
     try {
       const photoUri = await fetchImageDataUri(story.headlineImage && story.headlineImage.url);
+      var qrUri = await makeQrDataUri(`https://${SITE_URL}/story/${story.slug}`);
       if (photoUri) withPhoto++;
-      await renderPng(buildCardTree(story, edition.date, photoUri), `${story.slug}.png`);
+      await renderPng(buildCardTree(story, edition.date, photoUri, qrUri), `${story.slug}.png`);
       manifest[story.slug] = `/cards/${story.slug}.png`;
       ok++;
     } catch (err) {
@@ -529,7 +558,7 @@ async function main() {
     // Time Machine companion card — its failure never affects the main card.
     if (tmStepCount(story) >= 4) {
       try {
-        await renderPng(buildTimeMachineCardTree(story, edition.date), `${story.slug}-tm.png`);
+        await renderPng(buildTimeMachineCardTree(story, edition.date, qrUri), `${story.slug}-tm.png`);
         tmManifest[story.slug] = `/cards/${story.slug}-tm.png`;
         tmOk++;
       } catch (err) {
