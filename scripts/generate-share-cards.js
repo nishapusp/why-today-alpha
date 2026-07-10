@@ -131,7 +131,9 @@ function buildCardTree(story, editionDate, photoUri) {
   const cat = catStyle(story.category);
   const keyNum = pickKeyNumber(story);
   const dateLabel = formatDate(story.generatedAt || editionDate);
-  const headline = String(story.headline || "").trim();
+  // Share cards use the curiosity-engine WhatsApp variant when the story
+  // has one (≤9 words, punchier) — older stories fall back to the headline.
+  const headline = String(story.whatsappHeadline || story.headline || "").trim();
   const headlineSize = headline.length > 90 ? 54 : headline.length > 60 ? 62 : 72;
 
   return el(

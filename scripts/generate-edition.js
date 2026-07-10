@@ -75,7 +75,14 @@ function buildSystemPrompt(storyCount) {
   return `You produce part of a daily "edition" as JSON for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and quarterly results of major listed companies (including banks), market-moving developments, and technology events that affect the economic landscape. Goal: explain WHY, in plain language, not just headlines. Be CONCISE — every sentence must earn its place. No padding, no restating the same fact in different words.
 
 ## Voice — this is the difference between useful and boring
-Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title (banned patterns: "X Continues Y", "Government Relaxes Z", "X Maintains Y Pace"). Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
+Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
+
+## Headlines — the Curiosity Engine (act as Chief Editor)
+Your job is not to write headlines. Your job is to create irresistible curiosity while remaining completely truthful.
+Rules for "headline": maximum 11 words; language a Class 8 student understands; must make the reader think "Wait… why?"; create surprise, curiosity, or a direct personal stake; NEVER clickbait — the story must fully deliver what the headline promises; no newspaper/bulletin language, no jargon (banned patterns: "X Continues Y", "Government Relaxes Z", "X Maintains Y Pace", "X Signals Y"). Before finalizing, score your headline on curiosity out of 10 — if it scores below 9, rewrite it until it does.
+Also include per story:
+- "whatsappHeadline": the version someone forwards to a group — max 9 words, punchier, may include exactly one emoji, still 100% truthful.
+- "notificationHeadline": max 7 words, hook first — reads like a push notification you would actually tap.
 
 ## Sourcing
 Use Google Search to check 3-5 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
@@ -98,7 +105,20 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; every headline is 11 words or fewer AND would score 9/10 on curiosity; every story has all six timeMachine keys, each specific to that story's thread; every chart (if present) has real sourced values in matching label/value counts — delete any chart you are not certain about; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+
+## timeMachine (per story, required) — the signature feature
+"timeMachine" places today's news in time so a reader sees the full arc, not just today's blip. Six keys, each 1-2 plain sentences (15-35 words), with a REAL fact or figure wherever possible — use Google Search for the historical steps, not memory alone:
+- "yesterday": the immediate setup — what the situation was in the days just before this news broke.
+- "lastMonth": where this issue/number stood roughly a month ago.
+- "lastYear": where it stood about a year ago — a real figure or a named event.
+- "tenYearsAgo": the long view — what this landscape looked like roughly a decade ago (an approximate era is fine, e.g. "Back in 2016, ...").
+- "today": what changed today, in one crisp line.
+- "future": the single most likely next development, with a timeframe if known.
+Each step must be specific to THIS story's thread, so reading top to bottom feels like time travel toward today. If you cannot verify a genuine fact for a step, write honest general context for that era — never invent precise figures.
+
+## chart (per story, OPTIONAL — include only when genuinely numeric)
+If and only if the story centers on a measurable series (repo rate, inflation, forex reserves, deposits, profits, prices), include "chart": {"title", "unit" (e.g. "%", "₹ lakh crore" — optional), "labels" (3-6 short strings like "FY22" or "Jan"), "values" (same count of plain numbers, no commas/symbols), "takeaway" (one sentence: what the chart proves)}. Values must be real figures from your sources, in consistent units, in chronological order. If you do not have 3+ real comparable numbers, OMIT "chart" entirely — a story without a chart is fine; a fabricated chart is a failure.
 
 ## Quiz (per story)
 Each story must include "quiz": exactly 3 multiple-choice questions testing whether a reader UNDERSTOOD the story (not trivia recall). Each has "question" (one sentence), "options" (exactly 4 short strings, one correct + three plausible-but-wrong distractors that reflect common misconceptions), "answerIndex" (integer 0-3, position of the correct option — vary it across questions, don't always use 0), and "explanation" (1-2 sentences on why the answer is right, reinforcing the concept). Question 1 should test the core fact, question 2 the "why it matters" reasoning, question 3 a concept/term the story relies on.
@@ -112,8 +132,11 @@ Return ONLY valid JSON matching this shape:
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
  "vocabulary":[{"term","definition"}],
  "stories":[{
-   "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
+   "headline","whatsappHeadline","notificationHeadline",
+   "slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
+   "timeMachine":{"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
+   "chart":{"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
    "keyNumbers":[{"label","value","previousValue?","previousLabel?","trendNote?"}],
    "knowledgeChain":["..."],
    "ifYoureWondering":[{"q","a"}],
@@ -309,7 +332,9 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
             // ONLY valid JSON" instruction plus extractJson()'s fence-
             // stripping fallback instead. Do not re-add responseMimeType
             // while google_search is in tools.
-            maxOutputTokens: 16000,
+            // 20000 (was 16000): timeMachine + extra headlines + optional
+            // chart add ~500 output tokens per story (~1500/batch of 3).
+            maxOutputTokens: 20000,
           },
         }),
         signal: AbortSignal.timeout(240000), // 4 min — 3-story batches usually finish well under 2
@@ -413,6 +438,45 @@ function validateStories(stories, startIndex = 0) {
     }
     if (/\bstory\s*\d+\b/i.test(asText(story.headline))) {
       soft.push(`${label}: headline appears to contain a story number.`);
+    }
+
+    // Curiosity-engine + Time Machine + chart checks — ALL soft-only, so a
+    // model hiccup on a new field never blocks the batch from going live.
+    if (story.headline && wordCount(story.headline) > 11) {
+      soft.push(`${label}: headline is ${wordCount(story.headline)} words (curiosity-engine max is 11).`);
+    }
+    if (!story.whatsappHeadline) soft.push(`${label}: missing whatsappHeadline (share cards will fall back to headline).`);
+    if (!story.notificationHeadline) soft.push(`${label}: missing notificationHeadline.`);
+
+    const TM_KEYS = ["yesterday", "lastMonth", "lastYear", "tenYearsAgo", "today", "future"];
+    if (!story.timeMachine || typeof story.timeMachine !== "object" || Array.isArray(story.timeMachine)) {
+      soft.push(`${label}: missing timeMachine (UI will hide the Time Machine block).`);
+      delete story.timeMachine;
+    } else {
+      const missing = TM_KEYS.filter((k) => !asText(story.timeMachine[k]).trim());
+      if (missing.length > 0) soft.push(`${label}: timeMachine missing/empty step(s): ${missing.join(", ")}.`);
+      if (missing.length >= 4) {
+        soft.push(`${label}: timeMachine too incomplete — dropping it for this story.`);
+        delete story.timeMachine;
+      }
+    }
+
+    // A malformed chart is worse than no chart — sanitize hard, drop on any doubt.
+    if (story.chart !== undefined && story.chart !== null) {
+      const c = story.chart;
+      const ok =
+        c && typeof c === "object" && !Array.isArray(c) &&
+        typeof c.title === "string" && c.title.trim() &&
+        Array.isArray(c.labels) && Array.isArray(c.values) &&
+        c.labels.length >= 3 && c.labels.length <= 6 &&
+        c.labels.length === c.values.length &&
+        c.values.every((v) => typeof v === "number" && Number.isFinite(v));
+      if (!ok) {
+        soft.push(`${label}: chart present but malformed — dropped.`);
+        delete story.chart;
+      }
+    } else {
+      delete story.chart; // normalize explicit null away
     }
 
     // Quiz is soft-only: a story without a valid quiz still publishes (the

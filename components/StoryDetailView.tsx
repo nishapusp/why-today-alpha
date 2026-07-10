@@ -6,6 +6,8 @@ import ShareButton from "@/components/ShareButton";
 import { formatStoryDate } from "@/lib/storyDate";
 import DataCardGrid from "@/components/DataCard";
 import StoryFeedback from "@/components/StoryFeedback";
+import StoryChart from "@/components/StoryChart";
+import TimeMachine from "@/components/TimeMachine";
 
 export interface StoryNeighbor {
   href: string;
@@ -89,6 +91,10 @@ export default function StoryDetailView({
         </p>
 
         <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
+
+        <StoryChart chart={story.chart} cat={cat} />
+
+        <TimeMachine data={story.timeMachine} cat={cat} />
 
         <ReadingLevelToggle story={story} />
 

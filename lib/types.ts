@@ -44,6 +44,29 @@ export interface HeadlineImage {
   creditUrl: string;
 }
 
+// Six steps of temporal context per story — reads top-to-bottom like time
+// travel toward today. Generated with Search grounding; steps are 1-2
+// sentences each. Older stories lack this entirely.
+export interface TimeMachine {
+  yesterday: string;
+  lastMonth: string;
+  lastYear: string;
+  tenYearsAgo: string;
+  today: string;
+  future: string; // "What happens next?"
+}
+
+// Optional per-story mini chart — only present when the story centers on a
+// real measurable series. labels/values are same-length and chronological;
+// generate-edition.js drops anything malformed before it reaches the UI.
+export interface StoryChart {
+  title: string;
+  unit?: string; // e.g. "%", "₹ lakh crore"
+  labels: string[]; // 3-6 short labels
+  values: number[]; // same count as labels
+  takeaway: string; // one sentence: what the chart proves
+}
+
 export interface QuizQuestion {
   question: string;
   options: string[]; // exactly 4
@@ -59,6 +82,8 @@ export interface GlossaryEntry {
 
 export interface Story {
   headline: string;
+  whatsappHeadline?: string; // curiosity-engine share variant, ≤9 words; older stories lack it
+  notificationHeadline?: string; // push-style variant, ≤7 words; older stories lack it
   slug: string;
   category: Category;
   summary: string;
@@ -79,6 +104,8 @@ export interface Story {
   headlineImage?: HeadlineImage; // every story gets one, fetched from Pexels at generation time
   generatedAt?: string; // ISO timestamp stamped by generate-edition.js; older editions lack it
   quiz?: QuizQuestion[]; // 3-4 comprehension MCQs; older stories lack them
+  timeMachine?: TimeMachine; // six-step temporal context; older stories lack it
+  chart?: StoryChart; // optional "one chart explains everything" data block
 }
 
 export interface VocabularyItem {

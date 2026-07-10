@@ -24,7 +24,13 @@ const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
 
-Write like a sharp friend explaining why something matters over chai, not a press release. Open every field with the single most surprising or relevant fact. Headlines must create curiosity or state a direct stake — never sound like a government bulletin title. Every keyNumbers value must be an actual figure (₹ amount, %, date, count), never a vague phrase — omit the entry if you don't have a real number.
+Write like a sharp friend explaining why something matters over chai, not a press release. Open every field with the single most surprising or relevant fact. Every keyNumbers value must be an actual figure (₹ amount, %, date, count), never a vague phrase — omit the entry if you don't have a real number.
+
+Headlines — the Curiosity Engine: "headline" max 11 words, language a Class 8 student understands, must make the reader think "Wait… why?" — surprise, curiosity, or a direct stake; NEVER clickbait (the story must deliver everything the headline promises); no bulletin language or jargon. Score it on curiosity /10 — rewrite until it's at least 9. Also include "whatsappHeadline" (max 9 words, punchier, at most one emoji, truthful) and "notificationHeadline" (max 7 words, hook first).
+
+timeMachine (required): six keys, each 1-2 plain sentences (15-35 words) with a real searched fact where possible — "yesterday" (immediate setup), "lastMonth", "lastYear" (real figure or named event), "tenYearsAgo" (approximate era fine), "today" (one crisp line), "future" (most likely next step, with timeframe if known). Never invent precise figures — honest era context beats a fake number.
+
+chart (OPTIONAL — only when the story centers on a measurable series): {"title","unit?","labels" (3-6 short strings),"values" (same count of plain numbers, consistent units, chronological),"takeaway" (one sentence)}. All values must be real, from your sources. If you don't have 3+ real comparable numbers, OMIT chart entirely.
 
 Use Google Search to check current sources before writing. No citation markers or story-position numbers in any text field.
 
@@ -34,8 +40,11 @@ If the user describes what was wrong with the original, fix that specific issue 
 
 Return ONLY valid JSON matching this shape:
 {
-  "headline", "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
+  "headline", "whatsappHeadline", "notificationHeadline",
+  "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
+  "timeMachine": {"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
+  "chart": {"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
   "keyNumbers": [{"label","value","previousValue?","previousLabel?","trendNote?"}],
   "knowledgeChain": ["..."],
   "ifYoureWondering": [{"q","a"}],
