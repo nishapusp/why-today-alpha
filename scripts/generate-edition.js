@@ -18,6 +18,13 @@
  *       full read        ≈ 3 minutes (whatHappened/whyToday/whyCare
  *                                     120-160w each, whatNext 80-120w)
  *       deep dive        ≈ 8 minutes total (deepDiveRead 500-800 words)
+ *  4. Resilient retries — up to 3 retries per batch (was 1). 429s wait on
+ *     Gemini's own retry-after; 500/503 (overload) get our own exponential
+ *     backoff since Gemini gives no retry-after for those. Every retryable
+ *     failure also ALTERNATES between GEMINI_MODEL and GEMINI_FALLBACK_MODEL
+ *     (default gemini-2.5-flash-lite) — a different model draws from a
+ *     separate capacity/quota pool, so it's often unstuck when the primary
+ *     model is either overloaded or quota-exhausted for the day.
  *
  * NOTE: keep lib/prompts.ts's DAILY_EDITION_SYSTEM_PROMPT in sync with the
  * new length floors below, and regenerate-story.js if it has its own copy.
@@ -36,6 +43,11 @@ const { execSync } = require("child_process");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+// Used when the primary model comes back 429/500/503. A different model
+// name draws from a SEPARATE capacity/quota pool on Google's side, so
+// switching is often more effective than waiting and re-hitting the same
+// overloaded or quota-exhausted model.
+const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-2.5-flash-lite";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
@@ -88,10 +100,17 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 ## Before returning output, verify — do not skip this step
 Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
+## Quiz (per story)
+Each story must include "quiz": exactly 3 multiple-choice questions testing whether a reader UNDERSTOOD the story (not trivia recall). Each has "question" (one sentence), "options" (exactly 4 short strings, one correct + three plausible-but-wrong distractors that reflect common misconceptions), "answerIndex" (integer 0-3, position of the correct option — vary it across questions, don't always use 0), and "explanation" (1-2 sentences on why the answer is right, reinforcing the concept). Question 1 should test the core fact, question 2 the "why it matters" reasoning, question 3 a concept/term the story relies on.
+
+## Vocabulary (edition level)
+Include a top-level "vocabulary" array of exactly 5 items: the 5 most useful banking/finance/policy terms appearing in this batch's stories, each as {"term","definition"} with the definition in 20-40 words of plain language a UPSC aspirant or new banker would actually benefit from. Prefer terms a general reader wouldn't know (e.g. "MPBF", "repo corridor") over everyday words.
+
 ## Schema (exact field names, always exactly ${storyCount} stories in this response)
 Return ONLY valid JSON matching this shape:
 {
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
+ "vocabulary":[{"term","definition"}],
  "stories":[{
    "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
@@ -99,6 +118,7 @@ Return ONLY valid JSON matching this shape:
    "knowledgeChain":["..."],
    "ifYoureWondering":[{"q","a"}],
    "officialSources":[{"label","url"}],
+   "quiz":[{"question","options","answerIndex","explanation"}],
    "readMinutes" (integer = word_count/200, rounded up),
    "sentiment" (positive|caution|critical|neutral)
  }]
@@ -151,17 +171,94 @@ const CATEGORY_SEARCH_TERMS = {
   Corporate: "business office india corporate",
 };
 
-async function fetchPexelsImage(story, apiKey) {
-  const query = CATEGORY_SEARCH_TERMS[story.category] || "business finance india";
+// Turn a headline into a Pexels-friendly 2-3 keyword query, so different
+// stories search for different photos instead of all sharing one fixed
+// category query. Falls back to the category term when the headline yields
+// nothing usable (Pexels has no photos of "MPBF" anyway).
+const PEXELS_STOPWORDS = new Set([
+  "the","a","an","of","in","on","at","to","for","with","and","or","as","by",
+  "its","is","are","was","were","be","new","amid","amidst","after","before",
+  "over","under","from","into","up","down","out","off","how","why","what",
+  "rbi","sebi","nbfc","nbfcs","msme","msmes","mpc","gst","pmi","q1","q2","q3","q4",
+  "crore","lakh","cent","per","says","unveils","announces","launches","boosts",
+  "maintains","keeps","holds","surges","soars","fuels","eases","tightens",
+]);
+
+function headlineToQuery(story) {
+  const words = String(story.headline || "")
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 3 && !PEXELS_STOPWORDS.has(w));
+  if (words.length < 2) return null;
+  return words.slice(0, 3).join(" ");
+}
+
+// Rolling memory of recently used Pexels photo IDs so the same stock photos
+// don't repeat day after day (Pexels returns results in a fixed popularity
+// order, so without memory the top photo wins every time). Committed along
+// with edition.json.
+const PHOTO_HISTORY_PATH = path.join(__dirname, "..", "data", "photo-history.json");
+const PHOTO_HISTORY_MAX = 400; // ~3-4 weeks at 15 stories/day
+
+function loadPhotoHistory() {
   try {
-    const res = await fetch(
-      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=5&orientation=landscape`,
-      { headers: { Authorization: apiKey } }
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (!data.photos?.length) return null;
-    const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
+    const ids = JSON.parse(fs.readFileSync(PHOTO_HISTORY_PATH, "utf8"));
+    return Array.isArray(ids) ? ids : [];
+  } catch {
+    return [];
+  }
+}
+
+function savePhotoHistory(ids) {
+  try {
+    fs.writeFileSync(PHOTO_HISTORY_PATH, JSON.stringify(ids.slice(-PHOTO_HISTORY_MAX)));
+  } catch {
+    /* history is best-effort */
+  }
+}
+
+let photoHistory = loadPhotoHistory();
+const photoHistorySet = new Set(photoHistory);
+
+async function searchPexels(query, apiKey) {
+  const res = await fetch(
+    `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=20&orientation=landscape`,
+    { headers: { Authorization: apiKey } }
+  );
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.photos || [];
+}
+
+async function fetchPexelsImage(story, apiKey) {
+  try {
+    // 1. Story-specific search first, category fallback second.
+    const queries = [headlineToQuery(story), CATEGORY_SEARCH_TERMS[story.category] || "business finance india"]
+      .filter(Boolean);
+    let candidates = [];
+    for (const q of queries) {
+      candidates = await searchPexels(q, apiKey);
+      // A headline query with a decent pool is good enough — don't fall
+      // through to the (repetitive) category query unless we have to.
+      if (candidates.length >= 3) break;
+    }
+    if (candidates.length === 0) return null;
+
+    // 2. Prefer a photo not used recently (this edition or past weeks);
+    //    if literally everything has been used, take the least-recent one.
+    let photo = candidates.find((p) => !photoHistorySet.has(p.id));
+    if (!photo) {
+      candidates.sort((a, b) => photoHistory.indexOf(a.id) - photoHistory.indexOf(b.id));
+      photo = candidates[0];
+    }
+
+    // 3. Remember it.
+    photoHistory = photoHistory.filter((id) => id !== photo.id);
+    photoHistory.push(photo.id);
+    photoHistorySet.add(photo.id);
+    savePhotoHistory(photoHistory);
+
     return {
       url: photo.src.large,
       alt: photo.alt || story.headline,
@@ -191,12 +288,13 @@ function extractRetryDelayMs(errBody, fallbackMs) {
   return fallbackMs;
 }
 
-async function generateBatch(storyCount, excludeHeadlines, maxRetries = 1) {
+async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
   let attempt = 0;
+  let currentModel = MODEL;
 
   while (attempt <= maxRetries) {
     try {
-      const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
+      const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
         method: "POST",
         headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -219,7 +317,7 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 1) {
 
       if (!res.ok) {
         const bodyText = await res.text();
-        const err = new Error(`Gemini API error (${res.status}): ${bodyText}`);
+        const err = new Error(`Gemini API error (${res.status}) on ${currentModel}: ${bodyText}`);
         err.status = res.status;
         err.body = bodyText;
         throw err;
@@ -247,10 +345,23 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 1) {
       }
       if (err.status === 429) {
         const waitMs = extractRetryDelayMs(err.body, 20000);
-        console.warn(`\nBatch attempt ${attempt} hit a rate limit. Waiting ${Math.round(waitMs / 1000)}s before retrying (per Gemini's own retry-after)...`);
+        console.warn(`\nBatch attempt ${attempt} hit a rate limit on ${currentModel}. Waiting ${Math.round(waitMs / 1000)}s before retrying (per Gemini's own retry-after)...`);
+        await sleep(waitMs);
+      } else if (err.status === 503 || err.status === 500) {
+        // Gemini gives no retry-after for overload/server errors, so back
+        // off ourselves: 5s, 15s, 45s (capped), plus jitter so a batch that
+        // fires right after another job's retry doesn't collide with it.
+        const waitMs = Math.min(5000 * 3 ** (attempt - 1), 45000) + Math.random() * 2000;
+        console.warn(`\nBatch attempt ${attempt} hit a ${err.status} (server overload) on ${currentModel}. Waiting ${Math.round(waitMs / 1000)}s before retrying...`);
         await sleep(waitMs);
       } else {
         console.warn(`\nBatch attempt ${attempt} failed (${err.message}). Retrying...`);
+      }
+      // On any retryable server-side error, alternate models for the next
+      // attempt — a fresh capacity/quota pool beats re-hitting the same
+      // overloaded or exhausted one.
+      if (err.status === 429 || err.status === 503 || err.status === 500) {
+        currentModel = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
       }
     }
   }
@@ -303,6 +414,23 @@ function validateStories(stories, startIndex = 0) {
     if (/\bstory\s*\d+\b/i.test(asText(story.headline))) {
       soft.push(`${label}: headline appears to contain a story number.`);
     }
+
+    // Quiz is soft-only: a story without a valid quiz still publishes (the
+    // UI simply hides the quiz block), but we log it so quality is visible.
+    if (!Array.isArray(story.quiz) || story.quiz.length < 3) {
+      soft.push(`${label}: quiz missing or has fewer than 3 questions.`);
+    } else {
+      story.quiz = story.quiz.filter(
+        (q) =>
+          q && typeof q.question === "string" &&
+          Array.isArray(q.options) && q.options.length === 4 &&
+          Number.isInteger(q.answerIndex) && q.answerIndex >= 0 && q.answerIndex <= 3
+      );
+      if (story.quiz.length < 3) soft.push(`${label}: some quiz questions were malformed and dropped (${story.quiz.length} remain).`);
+      if (story.quiz.length > 0 && story.quiz.every((q) => q.answerIndex === story.quiz[0].answerIndex)) {
+        soft.push(`${label}: all quiz answers are in the same position (${story.quiz[0].answerIndex}).`);
+      }
+    }
   });
   return { hard, soft };
 }
@@ -327,7 +455,7 @@ function writeAndPush(edition, batchLabel, isCI) {
   console.log(`Written to ${EDITION_PATH} (${edition.stories.length}/${TOTAL_STORIES} stories).`);
   try {
     const cwd = path.join(__dirname, "..");
-    execSync("git add data/edition.json", { stdio: "inherit", cwd });
+    execSync("git add data/edition.json data/photo-history.json data/glossary.json", { stdio: "inherit", cwd });
     execSync(`git commit -m "Daily edition ${edition.date}: ${batchLabel} (${edition.stories.length}/${TOTAL_STORIES} stories)"`, { stdio: "inherit", cwd });
     execSync("git push", { stdio: "inherit", cwd });
     console.log("Pushed — Netlify will redeploy with the stories so far.");
@@ -437,6 +565,14 @@ async function main() {
       soft.forEach((i) => console.warn(`  - ${i}`));
     }
 
+    // Stamp every fresh story with its generation time so the UI can show
+    // publication dates and flag carryovers from a previous day. Carryover
+    // stories keep their original stamp (this loop only touches new ones).
+    const stampedAt = new Date().toISOString();
+    batchStories.forEach((s) => {
+      s.generatedAt = stampedAt;
+    });
+
     // Fetch images for JUST this batch's stories.
     if (process.env.PEXELS_API_KEY) {
       for (const story of batchStories) {
@@ -459,6 +595,33 @@ async function main() {
       edition.stories = [...edition.stories, ...batchStories];
     }
     publishedCount += batchStories.length;
+
+    // Fold this batch's vocabulary into the cumulative glossary
+    // (data/glossary.json) — the edition keeps today's 5 terms, the glossary
+    // keeps everything ever taught, deduped case-insensitively by term.
+    if (Array.isArray(batch.vocabulary) && batch.vocabulary.length) {
+      const glossaryPath = path.join(__dirname, "..", "data", "glossary.json");
+      let glossary = [];
+      try { glossary = JSON.parse(fs.readFileSync(glossaryPath, "utf8")); } catch { /* first run */ }
+      const known = new Set(glossary.map((g) => String(g.term).toLowerCase().trim()));
+      let added = 0;
+      for (const v of batch.vocabulary) {
+        if (!v || !v.term || !v.definition) continue;
+        const key = String(v.term).toLowerCase().trim();
+        if (known.has(key)) continue;
+        glossary.push({ term: String(v.term).trim(), definition: String(v.definition).trim(), dateAdded: today });
+        known.add(key);
+        added++;
+      }
+      if (added > 0) {
+        fs.writeFileSync(glossaryPath, JSON.stringify(glossary, null, 1));
+        console.log(`Glossary: +${added} new term(s), ${glossary.length} total.`);
+      }
+      // Keep the edition's own vocabulary field populated too (first batch wins).
+      if (!Array.isArray(edition.vocabulary) || edition.vocabulary.length === 0) {
+        edition.vocabulary = batch.vocabulary;
+      }
+    }
 
     console.log(`Batch ${b + 1} stories:`);
     batchStories.forEach((s) => console.log(`  - [${s.category || "?"}] ${s.headline || "(no headline)"}`));

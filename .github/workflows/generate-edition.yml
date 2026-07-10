@@ -4,19 +4,23 @@ on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
   workflow_dispatch: {}
 
-  # Runs three times a day so a run that stops early (rate limits, a bad
-  # batch) gets topped up later the same day instead of staying incomplete
-  # until tomorrow. generate-edition.js resumes automatically — a run that
-  # finds the day's target already met just exits immediately, so these
-  # extra triggers cost nothing when the morning run already finished.
+  # Runs four times a day so a run that stops early (rate limits, a bad
+  # batch, a Gemini 503 overload) gets topped up later the same day instead
+  # of staying incomplete until tomorrow. generate-edition.js resumes
+  # automatically — a run that finds the day's target already met just
+  # exits immediately, so these extra triggers cost nothing when an earlier
+  # run already finished. The 8:30 PM slot exists purely as a safety net to
+  # mop up whatever the 4 PM run didn't finish.
   # Cron is in UTC:
   #   6:00 AM IST  = 00:30 UTC
   #   1:00 PM IST  = 07:30 UTC
   #   4:00 PM IST  = 10:30 UTC
+  #   8:30 PM IST  = 15:00 UTC
   schedule:
     - cron: "30 0 * * *"
     - cron: "30 7 * * *"
     - cron: "30 10 * * *"
+    - cron: "0 15 * * *"
 
 permissions:
   contents: write # needed so the script can git push the updated edition.json
