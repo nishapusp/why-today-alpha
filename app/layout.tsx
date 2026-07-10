@@ -30,6 +30,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  // Absolute base for og:image / twitter card URLs — without this, the
+  // share-card image paths stay relative and WhatsApp link previews break.
+  metadataBase: new URL("https://whytoday.in"),
   title: "Why Today — Understand today's world, not just today's news",
   description:
     "A modern knowledge platform that helps readers understand the context behind today's headlines through curated data, storytelling, and AI-powered explanations.",
