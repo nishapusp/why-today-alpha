@@ -268,7 +268,7 @@ function buildRssAddendum(items) {
   const list = items
     .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
     .join("\n");
-  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
+  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. QUIZ RULE: vary the position of the correct quiz answer across questions — do not put every correct answer in position 1. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
 }
 
 function asText(v) {
@@ -718,19 +718,42 @@ function loadExistingEdition() {
 function writeAndPush(edition, batchLabel, isCI) {
   fs.writeFileSync(EDITION_PATH, JSON.stringify(edition, null, 2));
   console.log(`Written to ${EDITION_PATH} (${edition.stories.length}/${TOTAL_STORIES} stories).`);
+  const cwd = path.join(__dirname, "..");
   try {
-    const cwd = path.join(__dirname, "..");
     execSync("git add data/edition.json data/photo-history.json data/glossary.json", { stdio: "inherit", cwd });
     execSync(`git commit -m "Daily edition ${edition.date}: ${batchLabel} (${edition.stories.length}/${TOTAL_STORIES} stories)"`, { stdio: "inherit", cwd });
-    execSync("git push", { stdio: "inherit", cwd });
-    console.log("Pushed — Netlify will redeploy with the stories so far.");
-    return true;
   } catch (err) {
-    console.error("Git commit/push failed — file is written locally; commit and push manually.");
+    console.error("Git commit failed — file is written locally; commit and push manually.");
     console.error(err.message);
     if (isCI) process.exit(1);
     return false;
   }
+  // Push with rebase-and-retry: the remote routinely moves under us (code
+  // pushes, overlapping cron runs, roll-date job), and a plain `git push`
+  // dying on non-fast-forward used to lose the whole batch. `-X theirs`
+  // during rebase keeps OUR replayed data-file commit if the same files
+  // changed upstream — our version is strictly newer (it contains the
+  // upstream stories plus this batch, since we re-read edition.json at
+  // startup and only append).
+  for (let tryNum = 1; tryNum <= 3; tryNum++) {
+    try {
+      execSync("git push", { stdio: "inherit", cwd });
+      console.log("Pushed — Netlify will redeploy with the stories so far.");
+      return true;
+    } catch {
+      console.warn(`git push rejected (attempt ${tryNum}/3) — rebasing on latest main and retrying...`);
+      try {
+        execSync("git pull --rebase -X theirs origin main", { stdio: "inherit", cwd });
+      } catch (rebaseErr) {
+        console.error(`Rebase failed: ${rebaseErr.message}`);
+        try { execSync("git rebase --abort", { stdio: "inherit", cwd }); } catch { /* nothing to abort */ }
+      }
+    }
+  }
+  // Batch stories stay in this process's memory and edition.json on disk —
+  // do NOT exit: later batches will retry the push with this batch included.
+  console.error("Git push failed after 3 rebase attempts — continuing; a later batch's push (or the next run) will carry these stories.");
+  return false;
 }
 
 async function main() {
