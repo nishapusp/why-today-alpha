@@ -161,6 +161,88 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
   return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
+// ---------------------------------------------------------------------------
+// RSS fallback grounding.
+// When Google Search grounding is quota-blocked (the 3.x free tier gates it,
+// unlike 2.5), we fetch real fresh headlines ourselves from Google News RSS
+// and hand them to the model as context — same recency guarantee, zero
+// grounding quota. Mode is controlled by GROUNDING_MODE=auto|search|rss.
+// ---------------------------------------------------------------------------
+
+const RSS_QUERIES = [
+  'RBI OR "monetary policy" when:2d',
+  "India banking news when:2d",
+  "India economy inflation OR GDP when:2d",
+  'India "quarterly results" OR earnings when:2d',
+  "India stock market Sensex OR Nifty when:2d",
+  "India fintech OR technology business when:2d",
+];
+
+function decodeXml(s) {
+  return (s || "")
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ").trim();
+}
+
+function pickTag(block, tag) {
+  const m = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
+  return m ? decodeXml(m[1]) : "";
+}
+
+let rssCache = null;
+async function fetchRssHeadlines() {
+  if (rssCache) return rssCache;
+  const items = [];
+  const seen = new Set();
+  const cutoff = Date.now() - 48 * 3600 * 1000;
+  for (const q of RSS_QUERIES) {
+    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`;
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const xml = await res.text();
+      let count = 0;
+      for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
+        if (count >= 8) break;
+        const block = m[1];
+        const title = pickTag(block, "title");
+        if (!title) continue;
+        const key = title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 60);
+        if (seen.has(key)) continue;
+        const pub = Date.parse(pickTag(block, "pubDate") || "");
+        if (!Number.isNaN(pub) && pub < cutoff) continue;
+        seen.add(key);
+        count++;
+        items.push({
+          title,
+          link: pickTag(block, "link"),
+          source: pickTag(block, "source"),
+          pubDate: pickTag(block, "pubDate"),
+          snippet: pickTag(block, "description").slice(0, 220),
+        });
+      }
+    } catch (e) {
+      console.warn(`RSS feed failed for query "${q}": ${e.message} — continuing with other feeds.`);
+    }
+  }
+  if (items.length < 6) {
+    throw new Error(`RSS fallback could only fetch ${items.length} fresh headlines — not enough to ground an edition safely.`);
+  }
+  console.log(`RSS fallback: fetched ${items.length} fresh headlines from Google News.`);
+  rssCache = items;
+  return items;
+}
+
+function buildRssAddendum(items) {
+  const list = items
+    .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
+    .join("\n");
+  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 48 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones not already excluded. Combine each headline with your background knowledge to explain WHY it matters. Do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. For each story's sources array, use the matching link(s) from the list.\n\nFRESH HEADLINES:\n${list}`;
+}
+
 function asText(v) {
   if (v === null || v === undefined) return "";
   if (typeof v === "string") return v;
@@ -345,10 +427,15 @@ function describeQuotaViolations(errBody) {
   };
 }
 
-async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
+async function generateBatch(storyCount, excludeHeadlines, mode = "search", maxRetries = 3) {
   let attempt = 0;
   let currentModel = MODEL;
   const deadModels = new Set(); // models Google has retired (404) this run
+
+  let userPrompt = buildUserPrompt(storyCount, excludeHeadlines);
+  if (mode === "rss") {
+    userPrompt += buildRssAddendum(await fetchRssHeadlines());
+  }
 
   while (attempt <= maxRetries) {
     try {
@@ -357,8 +444,12 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
         headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({
           system_instruction: { parts: [{ text: buildSystemPrompt(storyCount) }] },
-          contents: [{ role: "user", parts: [{ text: buildUserPrompt(storyCount, excludeHeadlines) }] }],
-          tools: [{ google_search: {} }],
+          contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+          // RSS mode drops the google_search tool entirely (that's the whole
+          // point — the tool is what trips the grounding quota). With no
+          // tool present, responseMimeType JSON is allowed again, which
+          // makes output parsing far more reliable.
+          ...(mode === "rss" ? {} : { tools: [{ google_search: {} }] }),
           generationConfig: {
             // NOTE: responseMimeType: "application/json" is deliberately NOT
             // set here — Gemini rejects that combined with the google_search
@@ -370,6 +461,7 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
             // 20000 (was 16000): timeMachine + extra headlines + optional
             // chart add ~500 output tokens per story (~1500/batch of 3).
             maxOutputTokens: 20000,
+            ...(mode === "rss" ? { responseMimeType: "application/json" } : {}),
           },
         }),
         signal: AbortSignal.timeout(240000), // 4 min — 3-story batches usually finish well under 2
@@ -438,6 +530,15 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
         }
         if (quota.isLongWindow) {
           throw err; // daily/monthly quota — won't reset in 20s, stop the run cleanly
+        }
+        // A 429 with NO violation details AND no retryDelay hint (like the
+        // ones we saw on 3.x grounded calls) means Google isn't telling us
+        // when to retry — it's an effectively-zero quota, not a momentary
+        // per-minute limit. Waiting 20s three times is pure waste; throw now
+        // so main() can fall back to RSS mode immediately.
+        if (!quota.joined && !/"retryDelay"/.test(err.body || "")) {
+          err.noQuotaDetail = true;
+          throw err;
         }
         const waitMs = extractRetryDelayMs(err.body, 20000);
         console.warn(`\nBatch attempt ${attempt} hit a rate limit on ${currentModel}. Waiting ${Math.round(waitMs / 1000)}s before retrying (per Gemini's own retry-after)...`);
@@ -658,18 +759,47 @@ async function main() {
   let publishedBatches = 0;
   let failedBatches = 0;
   const allSoftIssues = [];
+  // GROUNDING_MODE: 'search' (google_search tool only), 'rss' (RSS headlines
+  // only), or 'auto' (default): try search, fall back to RSS for the rest of
+  // the run the first time a grounded call is quota-blocked.
+  const GROUNDING_MODE = (process.env.GROUNDING_MODE || "auto").toLowerCase();
+  let effectiveMode = GROUNDING_MODE === "rss" ? "rss" : "search";
 
   for (let b = 0; b < numBatches; b++) {
     const count = Math.min(BATCH_SIZE, TOTAL_STORIES - publishedCount);
     if (count <= 0) break;
-    console.log(`\n=== Batch ${b + 1}/${numBatches}: requesting ${count} stories ===`);
+    console.log(`\n=== Batch ${b + 1}/${numBatches}: requesting ${count} stories (${effectiveMode} mode) ===`);
 
     let batch;
     try {
-      batch = await generateBatch(count, seenHeadlines);
+      batch = await generateBatch(count, seenHeadlines, effectiveMode);
     } catch (err) {
-      failedBatches++;
-      if (err.status === 429 && /free_tier|RESOURCE_EXHAUSTED/i.test(err.body || err.message)) {
+      // First quota block on a grounded call in auto mode → switch this run
+      // to RSS grounding and retry the SAME batch before giving up.
+      if (
+        effectiveMode === "search" &&
+        GROUNDING_MODE === "auto" &&
+        err.status === 429
+      ) {
+        console.warn("\nGrounded (google_search) request is quota-blocked. Falling back to RSS-grounded mode for the rest of this run — fresh headlines fetched directly from Google News, no grounding quota needed.");
+        effectiveMode = "rss";
+        try {
+          batch = await generateBatch(count, seenHeadlines, "rss");
+        } catch (err2) {
+          failedBatches++;
+          if (err2.status === 429) {
+            console.error(`\nBatch ${b + 1} failed in BOTH modes: even ungrounded requests are quota-blocked.`);
+            console.error("That means the API key's project has no usable free-tier quota at all right now — not just grounding.");
+            console.error("Fixes: (1) create a fresh API key in a NEW Google AI Studio project (aistudio.google.com → Get API key) and update the GEMINI_API_KEY secret in the repo settings, or (2) enable billing on the current project.");
+            break;
+          }
+          console.error(`Batch ${b + 1} failed in RSS mode too: ${err2.message}`);
+          console.error("Moving on — stories published so far stay live. Re-run the script later to fill the rest.");
+          continue;
+        }
+      } else {
+        failedBatches++;
+        if (err.status === 429 && /free_tier|RESOURCE_EXHAUSTED/i.test(err.body || err.message)) {
         console.error(`\nBatch ${b + 1} failed: Gemini's free-tier quota is exhausted for now.`);
         if (err.isGroundingQuota) {
           console.error("SPECIFICALLY: the Google Search GROUNDING quota tripped — this is a project-level quota shared across all models, which is why the model fallback couldn't route around it.");
@@ -679,10 +809,11 @@ async function main() {
         console.error("Stories published so far stay live. Wait for the quota to reset (per-minute limits reset within a minute; daily limits reset at midnight Pacific time), then re-run — it will resume from where it left off.");
         console.error("If this keeps happening, the free tier (15 req/min, 1,500 req/day for gemini-3.5-flash; 5,000 grounded prompts/month on Gemini 3.x) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
         break; // stop the loop entirely — further batches will just fail the same way
+        }
+        console.error(`Batch ${b + 1} failed permanently: ${err.message}`);
+        console.error("Moving on — stories published so far stay live. Re-run the script later to fill the rest.");
+        continue;
       }
-      console.error(`Batch ${b + 1} failed permanently: ${err.message}`);
-      console.error("Moving on — stories published so far stay live. Re-run the script later to fill the rest.");
-      continue;
     }
 
     const batchStories = (Array.isArray(batch.stories) ? batch.stories : []).slice(0, count);
