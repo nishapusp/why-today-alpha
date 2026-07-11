@@ -1,4 +1,6 @@
-name: Generate Daily Edition
+name: Generate Daily Edition concurrency:
+  group: generate-edition
+  cancel-in-progress: false
 
 on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
