@@ -1,4 +1,5 @@
-name: Generate Daily Edition concurrency:
+name: Generate Daily Edition 
+concurrency:
   group: generate-edition
   cancel-in-progress: false
 
