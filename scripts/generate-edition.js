@@ -312,6 +312,39 @@ function extractRetryDelayMs(errBody, fallbackMs) {
   return fallbackMs;
 }
 
+// Digs the specific violated quota IDs out of a 429 body so the log tells
+// us WHICH limit tripped (per-minute vs per-day vs the project-level Search
+// grounding quota) instead of a bare "rate limit" that could mean anything.
+function describeQuotaViolations(errBody) {
+  const ids = [];
+  try {
+    const parsed = JSON.parse(errBody || "{}");
+    for (const d of parsed.error?.details || []) {
+      for (const v of d.violations || []) {
+        if (v.quotaId) ids.push(v.quotaId);
+        else if (v.subject || v.description) ids.push(v.description || v.subject);
+      }
+    }
+  } catch {
+    // Body wasn't JSON — fall through to regex scraping below.
+  }
+  if (ids.length === 0) {
+    const rx = /"quotaId"\s*:\s*"([^"]+)"/g;
+    let m;
+    while ((m = rx.exec(errBody || "")) !== null) ids.push(m[1]);
+  }
+  const joined = ids.join(", ");
+  return {
+    ids,
+    joined,
+    // Daily/monthly quotas won't reset in 20s — retrying is pure waste.
+    isLongWindow: /perday|daily|permonth|monthly/i.test(joined),
+    // Grounding quota is PROJECT-level and shared across models, so model
+    // alternation can't route around it.
+    isGrounding: /grounding|websearch|web_search|searchtool/i.test(joined),
+  };
+}
+
 async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
   let attempt = 0;
   let currentModel = MODEL;
@@ -391,6 +424,21 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
         throw err; // preserves err.status so main() can detect quota exhaustion and stop the whole run
       }
       if (err.status === 429) {
+        const quota = describeQuotaViolations(err.body);
+        if (quota.joined) {
+          console.warn(`\n429 quota violation detail: ${quota.joined}`);
+        } else {
+          // No structured details — dump the raw body once so we're never
+          // blind about WHICH limit tripped again.
+          console.warn(`\n429 raw body: ${(err.body || "").slice(0, 600)}`);
+        }
+        if (quota.isGrounding) {
+          err.isGroundingQuota = true;
+          throw err; // project-level + shared across models — retrying/alternating can't help
+        }
+        if (quota.isLongWindow) {
+          throw err; // daily/monthly quota — won't reset in 20s, stop the run cleanly
+        }
         const waitMs = extractRetryDelayMs(err.body, 20000);
         console.warn(`\nBatch attempt ${attempt} hit a rate limit on ${currentModel}. Waiting ${Math.round(waitMs / 1000)}s before retrying (per Gemini's own retry-after)...`);
         await sleep(waitMs);
@@ -623,6 +671,10 @@ async function main() {
       failedBatches++;
       if (err.status === 429 && /free_tier|RESOURCE_EXHAUSTED/i.test(err.body || err.message)) {
         console.error(`\nBatch ${b + 1} failed: Gemini's free-tier quota is exhausted for now.`);
+        if (err.isGroundingQuota) {
+          console.error("SPECIFICALLY: the Google Search GROUNDING quota tripped — this is a project-level quota shared across all models, which is why the model fallback couldn't route around it.");
+          console.error("Options: (1) wait for the quota window to reset (daily quotas reset at midnight Pacific = 12:30 PM IST), or (2) enable billing on the project — Gemini 3.x grounding includes 5,000 free grounded prompts/month, ~30x this pipeline's usage.");
+        }
         console.error("Stopping here instead of burning the rest of today's quota on batches that would also fail.");
         console.error("Stories published so far stay live. Wait for the quota to reset (per-minute limits reset within a minute; daily limits reset at midnight Pacific time), then re-run — it will resume from where it left off.");
         console.error("If this keeps happening, the free tier (15 req/min, 1,500 req/day for gemini-3.5-flash; 5,000 grounded prompts/month on Gemini 3.x) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
