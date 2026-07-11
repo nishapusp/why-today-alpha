@@ -170,13 +170,37 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
 // ---------------------------------------------------------------------------
 
 const RSS_QUERIES = [
-  'RBI OR "monetary policy" when:2d',
-  "India banking news when:2d",
-  "India economy inflation OR GDP when:2d",
-  'India "quarterly results" OR earnings when:2d',
-  "India stock market Sensex OR Nifty when:2d",
-  "India fintech OR technology business when:2d",
+  '(RBI OR "monetary policy" OR "reserve bank") when:2d',
+  "(India banking OR NPA OR lending) when:2d",
+  "(India economy OR inflation OR GDP OR fiscal) when:2d",
+  '(India "quarterly results" OR earnings OR listed) when:2d',
+  "(India Sensex OR Nifty OR SEBI OR IPO) when:2d",
+  "(India fintech OR UPI OR semiconductor OR technology policy) when:2d",
 ];
+
+// Fuzzy headline matching — two headlines describe the same underlying event
+// when they share most of their significant words. Exact-string exclusion is
+// useless against models that reword ("Keeps Interest Rates Steady" vs
+// "Keeps Rates Steady"), which is exactly how batch 4 duplicated batch 2.
+const STOPWORDS = new Set("the a an of in on to for with and or as at by from into over after amid amidst its their this that is are was were will be has have new says said".split(" "));
+function significantTokens(headline) {
+  return new Set(
+    (headline || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length > 2 && !STOPWORDS.has(w))
+  );
+}
+function isSameEvent(headlineA, headlineB) {
+  const a = significantTokens(headlineA);
+  const b = significantTokens(headlineB);
+  if (a.size === 0 || b.size === 0) return false;
+  let shared = 0;
+  for (const t of a) if (b.has(t)) shared++;
+  const overlap = shared / Math.min(a.size, b.size);
+  return overlap >= 0.6;
+}
 
 function decodeXml(s) {
   return (s || "")
@@ -197,7 +221,7 @@ async function fetchRssHeadlines() {
   if (rssCache) return rssCache;
   const items = [];
   const seen = new Set();
-  const cutoff = Date.now() - 48 * 3600 * 1000;
+  const cutoff = Date.now() - 36 * 3600 * 1000;
   for (const q of RSS_QUERIES) {
     const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`;
     try {
@@ -212,8 +236,10 @@ async function fetchRssHeadlines() {
         if (!title) continue;
         const key = title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 60);
         if (seen.has(key)) continue;
+        // Freshness is the entire point — an item with no parseable date is
+        // not trustworthy enough to ground a "today's news" story on.
         const pub = Date.parse(pickTag(block, "pubDate") || "");
-        if (!Number.isNaN(pub) && pub < cutoff) continue;
+        if (Number.isNaN(pub) || pub < cutoff) continue;
         seen.add(key);
         count++;
         items.push({
@@ -221,6 +247,7 @@ async function fetchRssHeadlines() {
           link: pickTag(block, "link"),
           source: pickTag(block, "source"),
           pubDate: pickTag(block, "pubDate"),
+          pubMs: pub,
           snippet: pickTag(block, "description").slice(0, 220),
         });
       }
@@ -228,6 +255,7 @@ async function fetchRssHeadlines() {
       console.warn(`RSS feed failed for query "${q}": ${e.message} — continuing with other feeds.`);
     }
   }
+  items.sort((a, b) => b.pubMs - a.pubMs);
   if (items.length < 6) {
     throw new Error(`RSS fallback could only fetch ${items.length} fresh headlines — not enough to ground an edition safely.`);
   }
@@ -240,7 +268,7 @@ function buildRssAddendum(items) {
   const list = items
     .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
     .join("\n");
-  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 48 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones not already excluded. Combine each headline with your background knowledge to explain WHY it matters. Do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. For each story's sources array, use the matching link(s) from the list.\n\nFRESH HEADLINES:\n${list}`;
+  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
 }
 
 function asText(v) {
@@ -816,7 +844,18 @@ async function main() {
       }
     }
 
-    const batchStories = (Array.isArray(batch.stories) ? batch.stories : []).slice(0, count);
+    const rawBatchStories = (Array.isArray(batch.stories) ? batch.stories : []).slice(0, count);
+    // Safety net regardless of mode: drop any story that covers the same
+    // underlying EVENT as one already published, even if the model reworded
+    // the headline. This is what actually stops batch-N duplicating batch-M.
+    const batchStories = rawBatchStories.filter((s) => {
+      const dupOf = seenHeadlines.find((h) => isSameEvent(s.headline, h));
+      if (dupOf) {
+        console.warn(`Dropping duplicate story "${s.headline}" — same event as already-published "${dupOf}".`);
+        return false;
+      }
+      return true;
+    });
     if (batchStories.length === 0) {
       failedBatches++;
       console.error(`Batch ${b + 1} returned no stories — skipping.`);
@@ -852,6 +891,11 @@ async function main() {
     }
 
     batchStories.forEach((s) => s.headline && seenHeadlines.push(s.headline));
+    // In RSS mode, also remove the items these stories were based on so the
+    // next batch's headline menu doesn't tempt the model back to them.
+    if (rssCache) {
+      rssCache = rssCache.filter((it) => !batchStories.some((s) => isSameEvent(s.headline, it.title)));
+    }
 
     if (!edition || staleCarryover) {
       // First fresh batch of the day — supplies top-level theme/number

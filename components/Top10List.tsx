@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
+import { formatStoryDate, isFromEarlierDay } from "@/lib/storyDate";
 import AudioReader from "./AudioReader";
 
 export default function Top10List({
@@ -184,6 +185,19 @@ export default function Top10List({
                 >
                   {cat.icon} {story.category}
                 </span>
+                {formatStoryDate(story.generatedAt) && (
+                  <span
+                    className="inline-block text-[10.5px] font-semibold rounded-full px-2.5 py-1 mb-3 ml-1.5"
+                    style={
+                      isFromEarlierDay(story.generatedAt)
+                        ? { background: "rgba(245,158,11,0.15)", color: "#92400e" }
+                        : { background: "rgba(255,255,255,0.65)", color: cat.deep }
+                    }
+                  >
+                    {isFromEarlierDay(story.generatedAt) ? "↺ from " : "🗓 "}
+                    {formatStoryDate(story.generatedAt)}
+                  </span>
+                )}
 
                 <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed mb-3">
                   {story.summary}
