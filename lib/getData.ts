@@ -47,6 +47,21 @@ function normalizeStory(raw: Record<string, unknown>): Story {
     headlineImage: raw.headlineImage as Story["headlineImage"],
     generatedAt: typeof raw.generatedAt === "string" ? raw.generatedAt : undefined,
     quiz: Array.isArray(raw.quiz) ? (raw.quiz as Story["quiz"]) : undefined,
+    // Fields below were once silently stripped here (same bug class that
+    // previously ate generatedAt and quiz): anything the generator writes
+    // MUST be listed or the UI never sees it, even though it's in the JSON.
+    timeMachine:
+      raw.timeMachine && typeof raw.timeMachine === "object"
+        ? (raw.timeMachine as Story["timeMachine"])
+        : undefined,
+    chart:
+      raw.chart && typeof raw.chart === "object"
+        ? (raw.chart as Story["chart"])
+        : undefined,
+    notificationHeadline:
+      typeof raw.notificationHeadline === "string" ? raw.notificationHeadline : undefined,
+    whatsappHeadline:
+      typeof raw.whatsappHeadline === "string" ? raw.whatsappHeadline : undefined,
   };
 }
 
