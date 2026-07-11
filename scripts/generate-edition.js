@@ -190,6 +190,11 @@ function significantTokens(headline) {
       .replace(/[^a-z0-9\s]/g, " ")
       .split(/\s+/)
       .filter((w) => w.length > 2 && !STOPWORDS.has(w))
+      // Crude stemming so "banks/bank", "signalling/signal", "launched/launch"
+      // count as the same token — batch runs kept slipping dupes past exact
+      // token matching purely on inflection.
+      .map((w) => w.replace(/(ing|ed|es|s)$/, ""))
+      .filter((w) => w.length > 2)
   );
 }
 function isSameEvent(headlineA, headlineB) {
@@ -199,7 +204,7 @@ function isSameEvent(headlineA, headlineB) {
   let shared = 0;
   for (const t of a) if (b.has(t)) shared++;
   const overlap = shared / Math.min(a.size, b.size);
-  return overlap >= 0.6;
+  return overlap >= 0.5;
 }
 
 function decodeXml(s) {
@@ -234,6 +239,10 @@ async function fetchRssHeadlines() {
         const block = m[1];
         const title = pickTag(block, "title");
         if (!title) continue;
+        // Explainers, opinion pieces, and recaps are articles ABOUT events
+        // (often old ones), not events — the EUV-lithography evergreen and
+        // year-old deal stories all entered through this door.
+        if (/\b(explained|explainer|opinion|analysis|editorial|recap|wrap-?up|week in review|what to know|all you need|top \d+|listicle|throwback|history of)\b/i.test(title)) continue;
         const key = title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 60);
         if (seen.has(key)) continue;
         // Freshness is the entire point — an item with no parseable date is
@@ -268,7 +277,7 @@ function buildRssAddendum(items) {
   const list = items
     .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
     .join("\n");
-  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. QUIZ RULE: vary the position of the correct quiz answer across questions — do not put every correct answer in position 1. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
+  return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. TOPIC DIVERSITY RULE: at most ONE story per company, project, institution-action, or theme across the WHOLE edition — if the exclusion list already covers a semiconductor plant, a specific bank's deal, or a data release, do not write another story about that same plant, deal, or release even from a different angle or with different vocabulary. FRESH DEVELOPMENT RULE: a headline qualifies only if it reports a NEW development (announcement, inauguration, data release, deal milestone, decision) — skip explainers, opinion pieces, retrospectives, and background features about older events, no matter how interesting. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. QUIZ RULE: vary the position of the correct quiz answer across questions — do not put every correct answer in position 1. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
 }
 
 function asText(v) {

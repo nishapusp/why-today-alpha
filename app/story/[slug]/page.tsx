@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation";
-import { getLatestEdition, getStoryBySlug } from "@/lib/getData";
+import { notFound, permanentRedirect } from "next/navigation";
+import { getLatestEdition, getStoryBySlug, getArchiveIndex, getArchivedEdition } from "@/lib/getData";
 import StoryDetailView from "@/components/StoryDetailView";
 
 export const revalidate = 300;
@@ -46,6 +46,21 @@ export default async function StoryPage({
   const story = await getStoryBySlug(slug);
 
   if (!story) {
+    // Yesterday's shared links must never die: when the date rolls, a
+    // story's canonical home moves to /archive/[date]/[slug]. Search the
+    // archive (newest first) and redirect — WhatsApp shares and Google
+    // index entries keep working forever.
+    const index = await getArchiveIndex();
+    const dates = index
+      .map((e) => e.date)
+      .sort()
+      .reverse();
+    for (const date of dates) {
+      const archived = await getArchivedEdition(date);
+      if (archived?.stories.some((s) => s.slug === slug)) {
+        permanentRedirect(`/archive/${date}/${slug}`);
+      }
+    }
     notFound();
   }
 
