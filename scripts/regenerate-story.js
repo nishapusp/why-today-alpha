@@ -18,7 +18,7 @@ const readline = require("readline");
 const { execSync } = require("child_process");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 

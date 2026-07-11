@@ -22,7 +22,7 @@
  *     Gemini's own retry-after; 500/503 (overload) get our own exponential
  *     backoff since Gemini gives no retry-after for those. Every retryable
  *     failure also ALTERNATES between GEMINI_MODEL and GEMINI_FALLBACK_MODEL
- *     (default gemini-2.5-flash-lite) — a different model draws from a
+ *     (default gemini-3.1-flash-lite) — a different model draws from a
  *     separate capacity/quota pool, so it's often unstuck when the primary
  *     model is either overloaded or quota-exhausted for the day.
  *
@@ -42,12 +42,12 @@ const readline = require("readline");
 const { execSync } = require("child_process");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 // Used when the primary model comes back 429/500/503. A different model
 // name draws from a SEPARATE capacity/quota pool on Google's side, so
 // switching is often more effective than waiting and re-hitting the same
 // overloaded or quota-exhausted model.
-const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-2.5-flash-lite";
+const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3.1-flash-lite";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
@@ -315,6 +315,7 @@ function extractRetryDelayMs(errBody, fallbackMs) {
 async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
   let attempt = 0;
   let currentModel = MODEL;
+  const deadModels = new Set(); // models Google has retired (404) this run
 
   while (attempt <= maxRetries) {
     try {
@@ -365,6 +366,26 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
 
       return JSON.parse(extractJson(text));
     } catch (err) {
+      // A 404 means Google has RETIRED this model entirely (they've been
+      // pulling models ahead of documented shutdown dates — 2.5 Flash/Lite
+      // started 404ing in July 2026, months before the Oct 16 date). Never
+      // retry a dead model; switch to the other one immediately, and if
+      // both are dead, fail with an actionable message instead of burning
+      // the retry budget.
+      if (err.status === 404) {
+        deadModels.add(currentModel);
+        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        if (deadModels.has(other)) {
+          throw new Error(
+            `Both ${MODEL} and ${FALLBACK_MODEL} return 404 — Google has retired them. ` +
+            `Set GEMINI_MODEL / GEMINI_FALLBACK_MODEL in the workflow to current model names ` +
+            `(check https://ai.google.dev/gemini-api/docs/models).`
+          );
+        }
+        console.warn(`\n${currentModel} has been retired by Google (404). Switching to ${other} for the rest of this run.`);
+        currentModel = other;
+        continue; // doesn't consume a retry — nothing was actually attempted against a live model
+      }
       attempt++;
       if (attempt > maxRetries) {
         throw err; // preserves err.status so main() can detect quota exhaustion and stop the whole run
@@ -385,9 +406,11 @@ async function generateBatch(storyCount, excludeHeadlines, maxRetries = 3) {
       }
       // On any retryable server-side error, alternate models for the next
       // attempt — a fresh capacity/quota pool beats re-hitting the same
-      // overloaded or exhausted one.
+      // overloaded or exhausted one. Never alternate onto a model we've
+      // already seen 404.
       if (err.status === 429 || err.status === 503 || err.status === 500) {
-        currentModel = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        if (!deadModels.has(other)) currentModel = other;
       }
     }
   }
@@ -602,7 +625,7 @@ async function main() {
         console.error(`\nBatch ${b + 1} failed: Gemini's free-tier quota is exhausted for now.`);
         console.error("Stopping here instead of burning the rest of today's quota on batches that would also fail.");
         console.error("Stories published so far stay live. Wait for the quota to reset (per-minute limits reset within a minute; daily limits reset at midnight Pacific time), then re-run — it will resume from where it left off.");
-        console.error("If this keeps happening, the free tier (5 req/min, ~20 req/day for gemini-2.5-flash) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
+        console.error("If this keeps happening, the free tier (15 req/min, 1,500 req/day for gemini-3.5-flash; 5,000 grounded prompts/month on Gemini 3.x) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
         break; // stop the loop entirely — further batches will just fail the same way
       }
       console.error(`Batch ${b + 1} failed permanently: ${err.message}`);

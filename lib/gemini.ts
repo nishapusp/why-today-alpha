@@ -20,7 +20,7 @@ export async function generateWithGemini(
   apiKey: string,
   options: GeminiCallOptions = {}
 ): Promise<string> {
-  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const model = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 
   const body: Record<string, unknown> = {
     system_instruction: { parts: [{ text: systemInstruction }] },
