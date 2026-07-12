@@ -47,7 +47,13 @@ export default function SwipeNavigator({
   function insideHorizontalScroller(el: EventTarget | null): boolean {
     let node = el as HTMLElement | null;
     while (node && node !== document.body) {
-      if (node.scrollWidth > node.clientWidth + 4) return true;
+      // Only a container that can actually scroll sideways counts.
+      // Merely overflowing (e.g. main/body with overflow-x-hidden) must
+      // NOT swallow the gesture — that bug made every swipe a no-op.
+      if (node.scrollWidth > node.clientWidth + 4) {
+        const ox = window.getComputedStyle(node).overflowX;
+        if (ox === "auto" || ox === "scroll") return true;
+      }
       node = node.parentElement;
     }
     return false;
