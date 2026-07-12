@@ -1,0 +1,75 @@
+name: Verify Edition Facts
+concurrency:
+  group: verify-edition
+  cancel-in-progress: false
+
+on:
+  # Run from the Actions tab (or GitHub mobile app). Leave "date" blank to
+  # verify today's live edition (data/edition.json); enter a date like
+  # 2026-07-10 to verify that archived edition instead.
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Archived edition date (YYYY-MM-DD), or blank for today's edition"
+        required: false
+        default: ""
+      slugs:
+        description: "Optional comma-separated story slugs to verify (blank = all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write # to commit the verification report
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run verifier
+        id: verify
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            ARGS="--file data/archive/${{ github.event.inputs.date }}.json"
+          fi
+          if [ -n "${{ github.event.inputs.slugs }}" ]; then
+            ARGS="$ARGS --slugs ${{ github.event.inputs.slugs }}"
+          fi
+          # Don't fail the job on FAIL verdicts — we still want the report
+          # committed so it can be read from mobile. Exit code is recorded.
+          set +e
+          node scripts/verify-edition.js $ARGS
+          echo "exitcode=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Commit report
+        run: |
+          git config user.name "why-today-bot"
+          git config user.email "actions@github.com"
+          git add data/verification/
+          git diff --cached --quiet && echo "No report changes." && exit 0
+          git commit -m "chore(verify): fact-check report ($(date -u +%F))"
+          for i in 1 2 3; do
+            git push && break
+            git pull --rebase && sleep 3
+          done
+
+      - name: Surface verdict
+        run: |
+          CODE="${{ steps.verify.outputs.exitcode }}"
+          if [ "$CODE" = "1" ]; then
+            echo "::warning::One or more stories FAILED fact-checking — read data/verification/ report."
+          elif [ "$CODE" = "2" ]; then
+            echo "::warning::Grounding quota exhausted mid-run — report is partial. Re-run after quota reset."
+          else
+            echo "All verified stories passed (or warned only)."
+          fi
