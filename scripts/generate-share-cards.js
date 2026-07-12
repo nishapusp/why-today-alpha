@@ -439,13 +439,21 @@ function buildTimeMachineCardTree(story, editionDate, qrUri) {
 
     headerRow(story, cat, dateLabel),
 
-    // headline (compact — the main card already carries the big version)
-    el("span", {
-      style: {
-        margin: "36px 64px 0 64px", fontSize: "46px", fontWeight: 800,
-        lineHeight: 1.2, letterSpacing: "-0.5px", display: "block", lineClamp: 2,
-      },
-    }, headline),
+    // headline (compact — the main card already carries the big version).
+    // Rendered as flex text, NOT display:block + lineClamp: satori mis-measures
+    // block height when the text contains an emoji (e.g. a flag) and wraps,
+    // which made the TIME MACHINE eyebrow overlap the headline's second line.
+    // clipWords keeps it to ≤2 lines instead.
+    el(
+      "div",
+      { style: { display: "flex", margin: "36px 64px 0 64px" } },
+      el("span", {
+        style: {
+          fontSize: "46px", fontWeight: 800,
+          lineHeight: 1.2, letterSpacing: "-0.5px", display: "flex",
+        },
+      }, clipWords(headline, 76))
+    ),
 
     // Time Machine eyebrow
     el(
