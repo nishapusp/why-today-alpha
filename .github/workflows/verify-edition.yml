@@ -17,6 +17,14 @@ on:
         description: "Optional comma-separated story slugs to verify (blank = all)"
         required: false
         default: ""
+      mode:
+        description: "Verification mode"
+        required: false
+        default: "source"
+        type: choice
+        options:
+          - source
+          - grounded
 
 permissions:
   contents: write # to commit the verification report
@@ -45,6 +53,7 @@ jobs:
           if [ -n "${{ github.event.inputs.slugs }}" ]; then
             ARGS="$ARGS --slugs ${{ github.event.inputs.slugs }}"
           fi
+          ARGS="$ARGS --mode ${{ github.event.inputs.mode || 'source' }}"
           # Don't fail the job on FAIL verdicts — we still want the report
           # committed so it can be read from mobile. Exit code is recorded.
           set +e
