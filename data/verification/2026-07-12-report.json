@@ -1,111 +1,289 @@
 {
   "date": "2026-07-12",
-  "generatedAt": "2026-07-12T13:04:12.155Z",
+  "generatedAt": "2026-07-12T13:17:33.122Z",
   "results": [
     {
       "slug": "sbi-funds-ipo-trimmed",
       "headline": "Why is SBI Funds shrinking its massive upcoming market debut?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted — story not verified."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "india-uk-trade-deal",
       "headline": "Why is the incoming UK trade deal a massive win for India?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "dmart-q1-results",
       "headline": "Why is DMart making more money but growing slightly slower?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "milky-mist-ipo-plans",
       "headline": "Why is south India's favorite curd maker rushing to the stock market?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "upi-linkage-new-zealand",
       "headline": "Why is India's pocket-friendly UPI system packing its bags for New Zealand?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "rbi-currency-unwind-forex",
       "headline": "Why is the RBI quietly unwinding a massive $100 billion currency pile?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "dr-reddys-semaglutide-setback",
       "headline": "Why did one of India's biggest pharma companies just have its worst week?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "google-tripura-ai-agreement",
       "headline": "Why is Google building an AI empire in a tiny state?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "arohan-financial-secures-funding",
       "headline": "Why are global investors pouring millions into this microfinance firm?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "indian-bank-npa-recovery",
       "headline": "Why is a century-old Indian bank hunting for lost cash?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Indian Bank has set a highly ambitious target of recovering ₹5,500 crore from non-performing assets during the 2027 fiscal year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information about Indian Bank or its recovery targets.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Indian Bank is a Chennai-based public sector lender.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Indian Bank.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Indian Bank has a legacy of 119 years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Indian Bank's age or history.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Indian Bank reported a gross NPA ratio of under 4% last year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Indian Bank's NPA ratio.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The central event of the story—Indian Bank aiming to recover ₹5,500 crore in FY27—is completely missing from the provided source text, which appears to be a generic list of headlines from the Business Standard website rather than the actual article content."
     },
     {
       "slug": "tcs-ai-engineers-acquisition-strategy",
       "headline": "Why is India’s tech giant weaponizing 8,900 special AI engineers?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "india-russian-crude-record-june",
       "headline": "Why did India just buy more Russian oil than ever before?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "indian-bank-bad-loan-recovery",
       "headline": "Why is Indian Bank chasing ₹5,500 crore from its past?",
-      "verdict": "SKIPPED",
+      "verdict": "ERROR",
       "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "error": "Expected ',' or ']' after array element in JSON at position 2574"
     },
     {
       "slug": "oecd-report-india-fastest-growing-economy",
       "headline": "Why does the OECD say India is leading global growth?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Saturday, July 11, 2026, the OECD published its comprehensive economic outlook, declaring India as the fastest-growing major economy in the world.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information about an OECD report, its publication on July 11, 2026, or any declarations regarding India's economic growth.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Capital Expenditure Budget = ₹11.11 lakh crore (previous: ₹10 lakh crore — FY24 Capex)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention India's capital expenditure budget or any figures related to it.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Compared to 2013, when India was labeled one of the 'fragile five' economies...",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention India's 2013 economic status or the 'fragile five' label.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The central event of the story—the OECD releasing a report declaring India the fastest-growing major economy—is completely absent from the provided source texts. The sources only discuss local ministerial activities and unrelated news bulletins, making the entire story fabricated based on the provided text."
     },
     {
       "slug": "mrai-aluminium-scrap-duty-abolition",
       "headline": "Why is the metal industry fighting a 2.5% scrap tax?",
-      "verdict": "SKIPPED",
-      "issues": [],
-      "notes": "Grounding quota exhausted earlier in this run."
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Sunday, July 12, 2026, the Metal Recycling Association of India officially petitioned the finance ministry to eliminate the existing 2.5% basic customs duty on imported aluminium scrap.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any petition submitted by MRAI on July 12, 2026, nor does it mention a 2.5% basic customs duty on imported aluminium scrap.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "95%: The amount of energy saved by recycling aluminium compared to primary production.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any statistics regarding energy savings from recycling aluminium.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "50%: Approximate share of India's total aluminium consumption supplied by recycled metal.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the share of India's aluminium consumption supplied by recycled metal.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "In 2025, India imported over 1.5 million tonnes of aluminium scrap to feed its growing automotive alloy plants.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention aluminium scrap import figures for 2025. It only mentions non-ferrous metal scrap imports of 0.95 million tonnes in 2013-14 and 1.1 million tonnes for another period.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "For India to meet its national pledge of reaching net-zero carbon emissions by 2070...",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's net-zero carbon emissions pledge or the year 2070.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The central event of the story—MRAI petitioning the finance ministry on July 12, 2026, to abolish a 2.5% import duty on aluminium scrap—is completely absent from the provided source text. The source text is merely a general homepage for the MRAI and does not support any of the specific contemporary figures or policy claims in the story."
     }
   ]
 }
