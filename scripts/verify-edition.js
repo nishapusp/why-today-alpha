@@ -21,10 +21,21 @@
  * is gone, it stops — an ungrounded model checking its own hallucinations
  * is worse than no check at all.
  *
+ * Two verification modes:
+ *   --mode source   (DEFAULT) Fetches each story's own source articles,
+ *                   extracts their text, and asks Gemini — in a PLAIN,
+ *                   UNGROUNDED call (zero grounding quota) — whether every
+ *                   figure/date/event in the story is supported by that
+ *                   text. Claims absent from sources are flagged. Stricter
+ *                   than search: "plausible but unsourced" always surfaces.
+ *   --mode grounded Original behavior: google_search grounding per story.
+ *                   Uses grounding quota; catches things sources missed.
+ *
  * Usage:
  *   node scripts/verify-edition.js                        # verifies data/edition.json
  *   node scripts/verify-edition.js --file data/archive/2026-07-10.json
  *   node scripts/verify-edition.js --slugs sbi-funds-ipo,dmart-q1-results
+ *   node scripts/verify-edition.js --mode grounded
  *
  * Env: GEMINI_API_KEY (required), GEMINI_MODEL / GEMINI_FALLBACK_MODEL
  *      (same defaults as generate-edition.js), VERIFY_SPACING_MS (default
@@ -80,6 +91,180 @@ function describeQuotaViolations(errBody) {
     isLongWindow: /perday|daily|permonth|monthly/i.test(joined),
     isGrounding: /grounding|websearch|web_search|searchtool/i.test(joined),
   };
+}
+
+// ---------- source fetching (mode: source) ----------
+
+// Google News RSS links (/rss/articles/CBMi...) base64-encode the real
+// publisher URL in their path segment. Decode it so we can fetch the
+// actual article instead of Google's redirect shell.
+function decodeGoogleNewsUrl(url) {
+  const m = /\/rss\/articles\/([^?/]+)/.exec(url || "");
+  if (!m) return null;
+  try {
+    const pad = "=".repeat((4 - (m[1].length % 4)) % 4);
+    const raw = Buffer.from(m[1].replace(/-/g, "+").replace(/_/g, "/") + pad, "base64");
+    const um = /https?:\/\/[\x20-\x7e]+?(?=[\x00-\x1f]|$)/.exec(raw.toString("latin1"));
+    return um ? um[0] : null;
+  } catch { return null; }
+}
+
+// Crude but dependency-free article text extraction: drop scripts/styles/
+// tags, decode common entities, collapse whitespace, cap length.
+function htmlToText(html, cap = 7000) {
+  let t = html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<header[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&quot;/g, '"')
+    .replace(/&#8217;|&rsquo;/g, "'").replace(/&#8220;|&#8221;|&ldquo;|&rdquo;/g, '"')
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+  return t.slice(0, cap);
+}
+
+async function fetchUrlText(url) {
+  try {
+    const res = await fetch(url, {
+      redirect: "follow",
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; WhyTodayVerifier/1.0)" },
+      signal: AbortSignal.timeout(20000),
+    });
+    if (!res.ok) return null;
+    const ct = res.headers.get("content-type") || "";
+    if (!/html|text/i.test(ct)) return null;
+    return htmlToText(await res.text());
+  } catch { return null; }
+}
+
+// Gather source texts for a story: decode Google News links where needed,
+// fetch each, return [{url, text}]. Silently skips unfetchable sources.
+async function fetchStorySources(story) {
+  const out = [];
+  const seen = new Set();
+  for (const src of story.officialSources || []) {
+    let url = src.url || "";
+    if (/news\.google\.com\/rss\/articles\//.test(url)) {
+      url = decodeGoogleNewsUrl(url) || url;
+    }
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    const text = await fetchUrlText(url);
+    if (text && text.length > 300) out.push({ url, label: src.label || "", text });
+    if (out.length >= 3) break; // 3 sources is plenty of context
+  }
+  return out;
+}
+
+const VERIFY_SYSTEM_SOURCE = `You are a rigorous financial fact-checker for an Indian financial news publication read by bankers and finance professionals. Wrong figures destroy the publication's credibility.
+
+You will receive one news story's claims, the date it was published, and the TEXT OF ITS OWN CITED SOURCE ARTICLES. Your job: check whether every specific factual claim in the story — numbers, amounts, percentages, dates, deadlines, rankings, named events, who-did-what statements — is supported by the source texts. You have NO other information; do not rely on your own memory of events. Editorial opinion and generic background do not need checking.
+
+For each specific claim, classify it:
+- VERIFIED: the source texts state it (allow small rounding and paraphrase).
+- WRONG: the source texts state something that contradicts it. Provide the correct value per the sources.
+- UNVERIFIABLE: the claim does not appear in the source texts at all. This includes plausible-sounding figures the sources never mention — those are exactly the dangerous ones.
+
+Then give one overall verdict:
+- "PASS": every specific claim VERIFIED.
+- "WARN": no WRONG claims, but at least one UNVERIFIABLE.
+- "FAIL": at least one WRONG claim.
+- "FABRICATED": the story's central event itself is not described by any source text.
+
+Respond in JSON with exactly this shape:
+{
+  "verdict": "PASS" | "WARN" | "FAIL" | "FABRICATED",
+  "centralEventConfirmed": true | false,
+  "issues": [
+    {
+      "claim": "the claim text as it appears",
+      "status": "WRONG" | "UNVERIFIABLE",
+      "detail": "what the sources actually say, or that they say nothing",
+      "correction": "corrected wording/value per the sources, else null",
+      "source": "which source supports the correction, else null"
+    }
+  ],
+  "notes": "one or two sentences of overall assessment"
+}
+List ONLY problem claims in "issues". Be strict.`;
+
+async function verifyStoryAgainstSources(story, editionDate, sources, maxRetries = 3) {
+  let attempt = 0;
+  let currentModel = MODEL;
+  const deadModels = new Set();
+
+  const srcBlock = sources
+    .map((s, i) => `SOURCE ${i + 1} (${s.label} — ${s.url}):\n${s.text}`)
+    .join("\n\n----\n\n");
+  const userPrompt =
+    `Publication date of this story: ${editionDate}\n\n` +
+    `SOURCE TEXTS:\n\n${srcBlock}\n\n====\n\n` +
+    `Story claims to verify:\n\n${buildClaimDigest(story)}`;
+
+  while (attempt <= maxRetries) {
+    try {
+      const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
+        method: "POST",
+        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: VERIFY_SYSTEM_SOURCE }] },
+          contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+          // NO tools — this is the whole point: zero grounding quota, and
+          // JSON response mode is allowed again.
+          generationConfig: {
+            maxOutputTokens: 8000,
+            responseMimeType: "application/json",
+            temperature: 0,
+          },
+        }),
+        signal: AbortSignal.timeout(120000),
+      });
+      if (!res.ok) {
+        const bodyText = await res.text();
+        const err = new Error(`Gemini API error (${res.status}) on ${currentModel}: ${bodyText.slice(0, 300)}`);
+        err.status = res.status;
+        err.body = bodyText;
+        throw err;
+      }
+      const data = await res.json();
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      const parsed = JSON.parse(extractJson(text));
+      if (!parsed.verdict) throw new Error("Verifier returned JSON without a verdict field");
+      parsed.issues = Array.isArray(parsed.issues) ? parsed.issues : [];
+      return parsed;
+    } catch (err) {
+      if (err.status === 404) {
+        deadModels.add(currentModel);
+        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        if (deadModels.has(other)) throw new Error(`Both ${MODEL} and ${FALLBACK_MODEL} return 404 — set GEMINI_MODEL to a current model.`);
+        currentModel = other;
+        continue;
+      }
+      attempt++;
+      if (attempt > maxRetries) throw err;
+      if (err.status === 429) {
+        const quota = describeQuotaViolations(err.body);
+        if (quota.isLongWindow) { err.isGroundingQuota = true; throw err; }
+        const waitMs = extractRetryDelayMs(err.body, 20000);
+        console.warn(`  rate-limited — waiting ${Math.round(waitMs / 1000)}s...`);
+        await sleep(waitMs);
+      } else if (err.status === 503 || err.status === 500) {
+        const waitMs = Math.min(5000 * 3 ** (attempt - 1), 45000) + Math.random() * 2000;
+        console.warn(`  ${err.status} server error — waiting ${Math.round(waitMs / 1000)}s...`);
+        await sleep(waitMs);
+      } else {
+        console.warn(`  attempt ${attempt} failed (${err.message}) — retrying...`);
+      }
+      if (err.status === 429 || err.status === 503 || err.status === 500) {
+        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        if (!deadModels.has(other)) currentModel = other;
+      }
+    }
+  }
 }
 
 // ---------- claim digest ----------
@@ -284,6 +469,12 @@ async function main() {
   const editionFile = fileIdx !== -1 ? args[fileIdx + 1] : "data/edition.json";
   const slugsIdx = args.indexOf("--slugs");
   const onlySlugs = slugsIdx !== -1 ? new Set(args[slugsIdx + 1].split(",").map((s) => s.trim())) : null;
+  const modeIdx = args.indexOf("--mode");
+  const mode = modeIdx !== -1 ? args[modeIdx + 1] : "source";
+  if (!["source", "grounded"].includes(mode)) {
+    console.error(`Unknown --mode "${mode}" — use "source" or "grounded".`);
+    process.exit(1);
+  }
 
   const edition = JSON.parse(fs.readFileSync(editionFile, "utf8"));
   const editionDate = edition.date || path.basename(editionFile, ".json");
@@ -291,7 +482,9 @@ async function main() {
   if (onlySlugs) stories = stories.filter((s) => onlySlugs.has(s.slug));
 
   console.log(`Verifying ${stories.length} stories from ${editionFile} (edition ${editionDate}).`);
-  console.log(`Grounded verification via ${MODEL} (fallback ${FALLBACK_MODEL}), ${SPACING_MS / 1000}s between stories.\n`);
+  console.log(`Mode: ${mode} — ${mode === "source"
+    ? "fetching each story's own sources; plain Gemini calls, ZERO grounding quota"
+    : "google_search grounding (uses grounding quota)"} via ${MODEL} (fallback ${FALLBACK_MODEL}), ${SPACING_MS / 1000}s between stories.\n`);
 
   const results = [];
   let quotaExhausted = false;
@@ -305,7 +498,24 @@ async function main() {
     }
     console.log(`${label} — verifying...`);
     try {
-      const v = await verifyStory(story, editionDate);
+      let v;
+      if (mode === "source") {
+        const sources = await fetchStorySources(story);
+        if (sources.length === 0) {
+          results.push({ slug: story.slug, headline: story.headline, verdict: "WARN", issues: [{
+            claim: "(entire story)", status: "UNVERIFIABLE",
+            detail: "None of the story's cited source links could be fetched — nothing to verify against.",
+            correction: null, source: null,
+          }], notes: "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually." });
+          console.log(`${label} — WARN (no fetchable sources)`);
+          if (i < stories.length - 1) await sleep(SPACING_MS);
+          continue;
+        }
+        console.log(`  fetched ${sources.length} source(s)`);
+        v = await verifyStoryAgainstSources(story, editionDate, sources);
+      } else {
+        v = await verifyStory(story, editionDate);
+      }
       results.push({ slug: story.slug, headline: story.headline, verdict: v.verdict, centralEventConfirmed: v.centralEventConfirmed, issues: v.issues, notes: v.notes });
       console.log(`${label} — ${v.verdict}${v.issues.length ? ` (${v.issues.length} issue(s))` : ""}`);
     } catch (err) {
