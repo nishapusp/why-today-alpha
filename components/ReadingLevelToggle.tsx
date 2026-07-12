@@ -5,7 +5,6 @@ import { useUser } from "@clerk/nextjs";
 import { ReadingLevel, Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
 import WonderingBlock from "./WonderingBlock";
-import KnowledgeChain from "./KnowledgeChain";
 import AudioReader from "./AudioReader";
 import StoryQuiz from "./StoryQuiz";
 
@@ -134,17 +133,6 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
       {level !== "quick" && story.quiz && story.quiz.length > 0 && (
         <StoryQuiz quiz={story.quiz} accent={cat.accent} tint={cat.tint} deep={cat.deep} />
       )}
-
-      <div className="mt-8 pt-6 border-t border-[var(--border)]">
-        <KnowledgeChain
-          chain={story.knowledgeChain}
-          variant="full"
-          accent={cat.accent}
-          tint={cat.tint}
-          deep={cat.deep}
-          story={story}
-        />
-      </div>
 
       <div className="mt-6">
         <WonderingBlock items={story.ifYoureWondering} accent={cat.accent} tint={cat.tint} deep={cat.deep} />

@@ -68,7 +68,15 @@ export default function RootLayout({
           </>
         )}
         <body className="min-h-full flex flex-col overflow-x-hidden">
-          <div className="max-w-2xl mx-auto w-full px-4 pt-3 flex items-center justify-between">
+          {/* Sticky so the wordmark = one-tap Home from any depth of any page */}
+          <header
+            className="sticky top-0 z-50 backdrop-blur-md border-b"
+            style={{
+              borderColor: "var(--border)",
+              background: "color-mix(in srgb, var(--bg) 86%, transparent)",
+            }}
+          >
+          <div className="max-w-2xl mx-auto w-full px-4 py-2.5 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full" style={{ background: "var(--gold)" }} />
               <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: "var(--navy)" }}>
@@ -86,6 +94,7 @@ export default function RootLayout({
               <UserButton />
             </Show>
           </div>
+          </header>
           {children}
         </body>
       </html>

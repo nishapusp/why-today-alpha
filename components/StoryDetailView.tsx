@@ -8,6 +8,9 @@ import DataCardGrid from "@/components/DataCard";
 import StoryFeedback from "@/components/StoryFeedback";
 import StoryChart from "@/components/StoryChart";
 import TimeMachine from "@/components/TimeMachine";
+import BeforeYouRead from "@/components/BeforeYouRead";
+import SwipeNavigator from "@/components/SwipeNavigator";
+import type { TermDefinition } from "@/lib/glossaryLookup";
 
 export interface StoryNeighbor {
   href: string;
@@ -20,17 +23,27 @@ export default function StoryDetailView({
   backLabel,
   prev,
   next,
+  terms,
+  position,
 }: {
   story: Story;
   backHref: string;
   backLabel: string;
   prev?: StoryNeighbor; // previous story in the same edition
   next?: StoryNeighbor; // next story in the same edition
+  terms?: TermDefinition[]; // knowledge-chain terms + glossary definitions
+  position?: { index: number; total: number }; // place in edition, for the swipe pill
 }) {
   const cat = getCategoryStyle(story.category);
 
   return (
-    <main className="max-w-2xl mx-auto pb-10 overflow-x-hidden">
+    <main className="max-w-2xl mx-auto pb-16 overflow-x-hidden">
+    <SwipeNavigator
+      prevHref={prev?.href}
+      nextHref={next?.href}
+      position={position}
+      accent={cat.accent}
+    >
       {/* Hero: the story's actual photo when available, category gradient otherwise */}
       <div
         className="px-4 pt-6 pb-8 md:rounded-b-3xl relative overflow-hidden"
@@ -86,6 +99,10 @@ export default function StoryDetailView({
       </div>
 
       <article className="px-4 pt-6">
+        {terms && terms.length > 0 && (
+          <BeforeYouRead terms={terms} accent={cat.accent} tint={cat.tint} deep={cat.deep} />
+        )}
+
         <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6 text-justify">
           {story.summary}
         </p>
@@ -167,6 +184,7 @@ export default function StoryDetailView({
           </nav>
         )}
       </article>
+    </SwipeNavigator>
     </main>
   );
 }

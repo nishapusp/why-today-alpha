@@ -1,6 +1,7 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { getLatestEdition, getStoryBySlug, getArchiveIndex, getArchivedEdition } from "@/lib/getData";
 import StoryDetailView from "@/components/StoryDetailView";
+import { getTermDefinitions } from "@/lib/glossaryLookup";
 
 export const revalidate = 300;
 
@@ -78,6 +79,8 @@ export default async function StoryPage({
       backLabel="Back to today"
       prev={prevStory && { href: `/story/${prevStory.slug}`, headline: prevStory.headline }}
       next={nextStory && { href: `/story/${nextStory.slug}`, headline: nextStory.headline }}
+      terms={getTermDefinitions(story.knowledgeChain)}
+      position={idx >= 0 ? { index: idx + 1, total: edition.stories.length } : undefined}
     />
   );
 }

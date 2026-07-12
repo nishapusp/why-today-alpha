@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getArchiveIndex, getArchivedEdition, getArchivedStoryBySlug } from "@/lib/getData";
 import StoryDetailView from "@/components/StoryDetailView";
+import { getTermDefinitions } from "@/lib/glossaryLookup";
 
 export async function generateStaticParams() {
   const index = await getArchiveIndex();
@@ -41,6 +42,8 @@ export default async function ArchivedStoryPage({
       backLabel={`Back to ${date}`}
       prev={prevStory && { href: `/archive/${date}/${prevStory.slug}`, headline: prevStory.headline }}
       next={nextStory && { href: `/archive/${date}/${nextStory.slug}`, headline: nextStory.headline }}
+      terms={getTermDefinitions(story.knowledgeChain)}
+      position={edition && idx >= 0 ? { index: idx + 1, total: edition.stories.length } : undefined}
     />
   );
 }
