@@ -51,15 +51,23 @@ const RSS_QUERIES = [
 ];
 
 const DIRECT_FEEDS = [
-  { source: "Business Standard", url: "https://www.business-standard.com/rss/economy-102.rss" },
-  { source: "Business Standard", url: "https://www.business-standard.com/rss/finance-103.rss" },
-  { source: "Business Standard", url: "https://www.business-standard.com/rss/markets-106.rss" },
-  { source: "Business Standard", url: "https://www.business-standard.com/rss/external-affairs-defence-security-227.rss" },
-  { source: "Business Standard", url: "https://www.business-standard.com/rss/world-news-221.rss" },
-  { source: "LiveMint", url: "https://www.livemint.com/rss/news" },
-  { source: "Economic Times", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms" },
-  { source: "BBC World", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+  { source: "Business Standard", category: "Economy", url: "https://www.business-standard.com/rss/economy-102.rss" },
+  { source: "Business Standard", category: "Economy", url: "https://www.business-standard.com/rss/finance-103.rss" },
+  { source: "Business Standard", category: "Economy", url: "https://www.business-standard.com/rss/markets-106.rss" },
+  { source: "Business Standard", category: "World", url: "https://www.business-standard.com/rss/external-affairs-defence-security-227.rss" },
+  { source: "Business Standard", category: "World", url: "https://www.business-standard.com/rss/world-news-221.rss" },
+  { source: "LiveMint", category: "Economy", url: "https://www.livemint.com/rss/news" },
+  { source: "Economic Times", category: "Economy", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms" },
+  { source: "BBC World", category: "World", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
 ];
+
+// Minimum World/geopolitics stories we'd like in a day's 15 — see README
+// note in generate-edition.js's buildUserPrompt() for how this is used.
+// Purely a soft nudge: if a matured World candidate exists and today's
+// edition has fewer than this many World stories, the triggered run asks
+// Gemini to favor World stories for that batch specifically — it never
+// forces a weak story in just to hit the number.
+const MIN_WORLD_STORIES = 3;
 
 function decodeXml(s) {
   return (s || "")
@@ -100,7 +108,7 @@ async function fetchFeed(url) {
       const block = m[1];
       const title = pickTag(block, "title");
       if (!title) continue;
-      items.push({ title, pubDate: pickTag(block, "pubDate") });
+      items.push({ title, pubDate: pickTag(block, "pubDate"), rssSource: pickTag(block, "source") });
     }
     return items;
   } catch (e) {
@@ -121,18 +129,21 @@ function saveState(state) {
   fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 }
 
-function todaysStoryCount() {
+function todaysEditionStats() {
   try {
     const edition = JSON.parse(fs.readFileSync(EDITION_PATH, "utf8"));
     const todayISO = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
-    if (edition.date !== todayISO) return 0; // yesterday's file hasn't rolled yet
-    return (edition.stories || []).length;
+    if (edition.date !== todayISO) return { total: 0, byCategory: {} }; // yesterday's file hasn't rolled yet
+    const stories = edition.stories || [];
+    const byCategory = {};
+    for (const s of stories) byCategory[s.category] = (byCategory[s.category] || 0) + 1;
+    return { total: stories.length, byCategory };
   } catch {
-    return 0;
+    return { total: 0, byCategory: {} };
   }
 }
 
-async function triggerGeneration() {
+async function triggerGeneration(focusCategory) {
   const repo = process.env.GITHUB_REPOSITORY; // "owner/name", auto-set in Actions
   const token = process.env.GITHUB_TOKEN;
   if (!repo || !token) {
@@ -146,7 +157,7 @@ async function triggerGeneration() {
       Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ ref: "main" }),
+    body: JSON.stringify({ ref: "main", inputs: { focus_category: focusCategory || "" } }),
   });
   if (!res.ok) {
     console.warn(`poll-rss: dispatch failed — HTTP ${res.status} ${await res.text()}`);
@@ -159,23 +170,37 @@ async function main() {
   const state = loadState();
   const now = Date.now();
 
-  if (todaysStoryCount() >= 15) {
+  const statsAtStart = todaysEditionStats();
+  if (statsAtStart.total >= 15) {
     console.log("poll-rss: today's edition is already full (15/15) — polling for tomorrow's queue but won't trigger.");
   }
 
-  // 1. Fetch everything, note first-seen time for anything new.
-  const allUrls = [
-    ...RSS_QUERIES.map((q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`),
-    ...DIRECT_FEEDS.map((f) => f.url),
+  // 1. Fetch everything. Google News queries are all finance-flavored by
+  // construction; DIRECT_FEEDS carry their own category. Track EVERY
+  // source that reports an event, not just the first — corroboration
+  // across independent outlets is itself a signal a story is both real
+  // and has enough material for a genuine deep dive.
+  const feedsToFetch = [
+    ...RSS_QUERIES.map((q) => ({
+      url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`,
+      source: "Google News",
+      category: "Economy",
+    })),
+    ...DIRECT_FEEDS,
   ];
   let newCount = 0;
-  for (const url of allUrls) {
-    const items = await fetchFeed(url);
+  for (const feed of feedsToFetch) {
+    const items = await fetchFeed(feed.url);
     for (const item of items) {
       const key = eventKey(item.title);
-      if (!key || state.seen[key]) continue;
-      state.seen[key] = { firstSeenMs: now, title: item.title };
-      newCount++;
+      if (!key) continue;
+      const label = item.rssSource || feed.source;
+      if (!state.seen[key]) {
+        state.seen[key] = { firstSeenMs: now, title: item.title, category: feed.category, sources: [label] };
+        newCount++;
+      } else if (!state.seen[key].sources.includes(label)) {
+        state.seen[key].sources.push(label); // corroborated by another outlet
+      }
     }
   }
   console.log(`poll-rss: ${newCount} newly-seen headlines this run (${Object.keys(state.seen).length} tracked total).`);
@@ -185,20 +210,45 @@ async function main() {
     if (now - v.firstSeenMs > 24 * 3600 * 1000) delete state.seen[key];
   }
 
-  // 3. Maturity gate — anything seen long enough ago and not yet promoted?
+  // 3. Maturity gate. A story corroborated by 2+ independent outlets has
+  // already demonstrated it has real substance and isn't a single-source
+  // rumor, so it doesn't need the full wait — but we still hold it for a
+  // floor of 15 min so at least one round of follow-up reporting lands.
+  const CORROBORATED_MATURITY_MINUTES = 15;
+  function requiredMaturityMs(entry) {
+    const minutes = entry.sources.length >= 2 ? CORROBORATED_MATURITY_MINUTES : MATURITY_MINUTES;
+    return minutes * 60 * 1000;
+  }
   const matured = Object.entries(state.seen).filter(
-    ([key, v]) => now - v.firstSeenMs >= MATURITY_MINUTES * 60 * 1000 && !state.promoted[key]
+    ([key, v]) => now - v.firstSeenMs >= requiredMaturityMs(v) && !state.promoted[key]
   );
 
   const cooldownOk = now - (state.lastTriggerMs || 0) >= COOLDOWN_MINUTES * 60 * 1000;
-  const editionFull = todaysStoryCount() >= 15;
+  const stats = todaysEditionStats();
+  const editionFull = stats.total >= 15;
 
   if (matured.length > 0 && cooldownOk && !editionFull) {
-    console.log(`poll-rss: ${matured.length} matured storie(s), triggering generate-edition.yml. First: "${matured[0][1].title}"`);
-    const ok = await triggerGeneration();
+    // Prefer a matured World candidate if today's edition is short on that
+    // category — otherwise trigger normally (Gemini picks freely, same as
+    // the fixed-schedule runs always have).
+    const worldCount = stats.byCategory["World"] || 0;
+    const worldCandidate = matured.find(([, v]) => v.category === "World");
+    const useCandidate = worldCount < MIN_WORLD_STORIES && worldCandidate ? worldCandidate : matured[0];
+    const focusCategory = useCandidate === worldCandidate && worldCandidate ? "World" : "";
+
+    console.log(
+      `poll-rss: ${matured.length} matured storie(s) (${matured.filter(([, v]) => v.sources.length >= 2).length} corroborated). ` +
+        `Triggering${focusCategory ? ` with focus_category=${focusCategory}` : ""}: "${useCandidate[1].title}" ` +
+        `[${useCandidate[1].sources.join(", ")}]`
+    );
+    const ok = await triggerGeneration(focusCategory);
     if (ok) {
       state.lastTriggerMs = now;
-      for (const [key] of matured) state.promoted[key] = now;
+      // Only the triggering story is marked promoted — others stay
+      // eligible for the NEXT run rather than all being consumed at once,
+      // since one generation run can't guarantee covering every matured
+      // headline anyway (Gemini picks what's actually most significant).
+      state.promoted[useCandidate[0]] = now;
     }
   } else if (matured.length > 0) {
     console.log(`poll-rss: ${matured.length} matured but not triggering (cooldownOk=${cooldownOk}, editionFull=${editionFull}).`);

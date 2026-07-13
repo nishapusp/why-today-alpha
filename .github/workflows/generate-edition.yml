@@ -5,7 +5,12 @@ concurrency:
 
 on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      focus_category:
+        description: "Optional: bias this batch toward a category (e.g. World) that's under-represented today. Leave blank for normal behavior."
+        required: false
+        default: ""
 
   # Trimmed from 4 runs/day to 2 (2026-07-13) — the 4-run schedule was
   # quietly self-defeating. Gemini's free-tier daily quota resets on a
@@ -66,5 +71,6 @@ jobs:
           # Slightly wider than the default 15s now that we're pushing more
           # batches/day — extra margin against the 5-requests/minute cap.
           BATCH_SPACING_MS: "20000"
+          FOCUS_CATEGORY: ${{ github.event.inputs.focus_category }}
         run: node scripts/generate-edition.js
 
