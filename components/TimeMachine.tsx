@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { TimeMachine as TimeMachineData } from "@/lib/types";
 import { CategoryStyle } from "@/lib/categoryStyle";
 
@@ -9,8 +12,10 @@ import { CategoryStyle } from "@/lib/categoryStyle";
  * the future. The spine + node structure is meaningful, not decorative —
  * this content genuinely IS a sequence.
  *
- * Server component: no interactivity, renders nothing if data is absent
- * (older stories) so archive pages stay clean.
+ * Renders nothing if data is absent (older stories) so archive pages stay
+ * clean. Now client-side (was server component) because it owns its own
+ * on-demand share button for the -tm.png card — see ShareButton.tsx for
+ * why that card isn't bundled into the default story share anymore.
  */
 
 const STEPS: { key: keyof TimeMachineData; label: string }[] = [
@@ -25,13 +30,54 @@ const STEPS: { key: keyof TimeMachineData; label: string }[] = [
 export default function TimeMachine({
   data,
   cat,
+  slug,
 }: {
   data?: TimeMachineData;
   cat: CategoryStyle;
+  slug: string;
 }) {
+  const [busy, setBusy] = useState(false);
+
   if (!data) return null;
   const steps = STEPS.filter((s) => (data[s.key] || "").trim());
   if (steps.length < 3) return null; // too sparse to feel like a timeline
+
+  async function shareTimeline() {
+    if (busy) return;
+    setBusy(true);
+    const url = `${window.location.origin}/story/${slug}`;
+    const text = "How this story evolved over time — via Why Today:";
+    try {
+      if (navigator.share) {
+        let file: File | null = null;
+        try {
+          const res = await fetch(`/cards/${slug}-tm.png`);
+          if (res.ok) {
+            const blob = await res.blob();
+            file = new File([blob], `why-today-${slug}-time-machine.png`, { type: "image/png" });
+          }
+        } catch {
+          // fall through to text-only share below
+        }
+        const canShareFile = file && (!navigator.canShare || navigator.canShare({ files: [file] }));
+        await navigator.share(
+          canShareFile
+            ? { files: [file as File], text: `${text} ${url}` }
+            : { title: "Time Machine", text, url }
+        );
+        return;
+      }
+      window.open(
+        `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`,
+        "_blank",
+        "noopener"
+      );
+    } catch {
+      // user closed the share sheet — not an error
+    } finally {
+      setBusy(false);
+    }
+  }
 
   return (
     <section
@@ -39,10 +85,19 @@ export default function TimeMachine({
       className="rounded-2xl border border-[var(--border)] p-5 mb-8 overflow-hidden"
       style={{ background: cat.tint }}
     >
-      <div className="flex items-baseline gap-2 mb-1">
+      <div className="flex items-baseline justify-between gap-2 mb-1">
         <p className="text-xs font-mono uppercase tracking-wide" style={{ color: cat.deep }}>
           ⏳ Time Machine
         </p>
+        <button
+          onClick={shareTimeline}
+          disabled={busy}
+          aria-label="Share this timeline"
+          className="text-[11px] font-semibold rounded-full px-2.5 py-1 shrink-0 disabled:opacity-60"
+          style={{ background: "rgba(255,255,255,0.55)", color: cat.deep }}
+        >
+          {busy ? "Sharing…" : "↗ Share timeline"}
+        </button>
       </div>
       <p className="text-[13px] mb-5" style={{ color: cat.deep, opacity: 0.75 }}>
         How today&rsquo;s news fits into the bigger picture
