@@ -1,7 +1,7 @@
 import { getLatestEdition, getArchiveIndex, getHomeStories } from "@/lib/getData";
 import { getTermOfTheDay } from "@/lib/termOfDay";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
+import { recordVisitAndGetStreak, getPreferences, computeLearningScore } from "@/lib/preferences";
 import Hero from "@/components/Hero";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
@@ -21,6 +21,7 @@ export default async function Home() {
   let streakDays: number | undefined;
   let userName: string | undefined;
   let readSlugs: string[] = [];
+  let learningScore: number | undefined;
 
   if (userId) {
     streakDays = await recordVisitAndGetStreak(userId);
@@ -28,11 +29,12 @@ export default async function Home() {
     userName = user?.firstName ?? undefined;
     const prefs = await getPreferences(userId);
     readSlugs = prefs.readSlugs;
+    learningScore = computeLearningScore(prefs);
   }
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
-      <Hero edition={edition} streakDays={streakDays} userName={userName} />
+      <Hero edition={edition} streakDays={streakDays} userName={userName} learningScore={learningScore} />
 
       {termOfDay && <TermOfTheDay entry={termOfDay} />}
 

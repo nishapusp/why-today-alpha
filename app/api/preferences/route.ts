@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import { getPreferences, savePreferences, markStoryRead } from "@/lib/preferences";
+import {
+  getPreferences,
+  savePreferences,
+  markStoryRead,
+  recordReadingLevel,
+  recordQuizResult,
+} from "@/lib/preferences";
 
 export async function GET() {
   const { userId } = await auth();
@@ -19,7 +25,17 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
 
   if (body.markRead) {
-    const updated = await markStoryRead(userId, body.markRead);
+    const updated = await markStoryRead(userId, body.markRead, body.terms);
+    return NextResponse.json(updated);
+  }
+
+  if (body.readingLevel?.slug && body.readingLevel?.level) {
+    const updated = await recordReadingLevel(userId, body.readingLevel.slug, body.readingLevel.level);
+    return NextResponse.json(updated);
+  }
+
+  if (body.quizResult && typeof body.quizResult.correct === "number" && typeof body.quizResult.total === "number") {
+    const updated = await recordQuizResult(userId, body.quizResult.correct, body.quizResult.total);
     return NextResponse.json(updated);
   }
 

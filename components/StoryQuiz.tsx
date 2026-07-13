@@ -14,11 +14,13 @@ export default function StoryQuiz({
   accent,
   tint,
   deep,
+  onComplete,
 }: {
   quiz: QuizQuestion[];
   accent: string;
   tint: string;
   deep: string;
+  onComplete?: (correct: number, total: number) => void;
 }) {
   const [current, setCurrent] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -39,6 +41,7 @@ export default function StoryQuiz({
   function next() {
     if (isLast) {
       setFinished(true);
+      onComplete?.(score, quiz.length);
     } else {
       setCurrent((c) => c + 1);
       setPicked(null);

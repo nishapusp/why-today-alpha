@@ -85,8 +85,8 @@ export default function RootLayout({
             </Link>
             <Show when="signed-out">
               <SignInButton mode="modal">
-                <button className="text-sm font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white">
-                  Sign in
+                <button className="text-[13px] font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white whitespace-nowrap">
+                  Track your learning →
                 </button>
               </SignInButton>
             </Show>

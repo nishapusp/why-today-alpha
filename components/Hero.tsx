@@ -11,10 +11,12 @@ export default function Hero({
   edition,
   userName = "there",
   streakDays,
+  learningScore,
 }: {
   edition: Edition;
   userName?: string;
   streakDays?: number;
+  learningScore?: number;
 }) {
   const dateLabel = new Date(edition.date).toLocaleDateString("en-IN", {
     weekday: "short",
@@ -33,11 +35,18 @@ export default function Hero({
             {edition.stories.length} stories today, worth a 2 min skim
           </p>
         </div>
-        {streakDays ? (
-          <span className="shrink-0 text-[12px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm border bg-[var(--gold)]/15 text-[var(--gold-light)] border-[var(--gold)]/40">
-            🔥 Day {streakDays}
-          </span>
-        ) : null}
+        <div className="shrink-0 flex flex-col items-end gap-1">
+          {streakDays ? (
+            <span className="text-[12px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm border bg-[var(--gold)]/15 text-[var(--gold-light)] border-[var(--gold)]/40">
+              🔥 Day {streakDays}
+            </span>
+          ) : null}
+          {typeof learningScore === "number" ? (
+            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/10 text-white/75">
+              🧠 {learningScore} pts
+            </span>
+          ) : null}
+        </div>
       </div>
     </section>
   );

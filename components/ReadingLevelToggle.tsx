@@ -43,6 +43,11 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ defaultReadingLevel: key }),
       }).catch(() => {});
+      fetch("/api/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ readingLevel: { slug: story.slug, level: key } }),
+      }).catch(() => {});
     }
 
     if (key === "deep" && liveDeepDive === null && deepDiveStatus === "idle") {
@@ -131,7 +136,20 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
       )}
 
       {level !== "quick" && story.quiz && story.quiz.length > 0 && (
-        <StoryQuiz quiz={story.quiz} accent={cat.accent} tint={cat.tint} deep={cat.deep} />
+        <StoryQuiz
+          quiz={story.quiz}
+          accent={cat.accent}
+          tint={cat.tint}
+          deep={cat.deep}
+          onComplete={(correct, total) => {
+            if (!isSignedIn) return;
+            fetch("/api/preferences", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ quizResult: { correct, total } }),
+            }).catch(() => {});
+          }}
+        />
       )}
 
       <div className="mt-6">

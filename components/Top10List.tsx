@@ -31,7 +31,7 @@ export default function Top10List({
   // never yanked out from under someone actively reading it.
   const visible = showRead ? all : all.filter((s) => !alreadyReadSet.has(s.slug));
 
-  async function markRead(slug: string) {
+  async function markRead(slug: string, terms?: string[]) {
     if (!trackReads) return;
     if (newlyRead.has(slug)) return;
     setNewlyRead((prev) => new Set(prev).add(slug));
@@ -39,7 +39,7 @@ export default function Top10List({
       await fetch("/api/preferences", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markRead: slug }),
+        body: JSON.stringify({ markRead: slug, terms }),
       });
     } catch {
       // Non-fatal — worst case it just doesn't persist as read for next visit.
@@ -64,7 +64,7 @@ export default function Top10List({
               // the image itself is the doorway, no separate button needed.
               <Link
                 href={`${linkBase}/${story.slug}`}
-                onClick={() => markRead(story.slug)}
+                onClick={() => markRead(story.slug, story.knowledgeChain)}
                 className="relative w-full text-left block"
                 style={{ aspectRatio: "4 / 3" }}
               >
@@ -115,7 +115,7 @@ export default function Top10List({
                 onClick={() => {
                   const opening = !isOpen;
                   setOpenIndex(opening ? i : null);
-                  if (opening) markRead(story.slug);
+                  if (opening) markRead(story.slug, story.knowledgeChain);
                 }}
                 className="w-full flex items-center gap-3 py-3.5 px-4 text-left min-w-0"
               >
@@ -151,7 +151,7 @@ export default function Top10List({
                 {story.headlineImage && i !== 0 && (
                   <Link
                     href={`${linkBase}/${story.slug}`}
-                    onClick={() => markRead(story.slug)}
+                    onClick={() => markRead(story.slug, story.knowledgeChain)}
                     className="relative block rounded-xl overflow-hidden mb-3 active:scale-[0.99] transition-transform"
                     style={{ aspectRatio: "16 / 9" }}
                   >
@@ -233,7 +233,7 @@ export default function Top10List({
 
                 <Link
                   href={`${linkBase}/${story.slug}`}
-                  onClick={() => markRead(story.slug)}
+                  onClick={() => markRead(story.slug, story.knowledgeChain)}
                   className="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 py-2 rounded-full text-white transition-transform active:scale-[0.97]"
                   style={{ background: cat.accent }}
                 >
