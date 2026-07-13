@@ -1,4 +1,4 @@
-import { getLatestEdition, getArchiveIndex } from "@/lib/getData";
+import { getLatestEdition, getArchiveIndex, getHomeStories } from "@/lib/getData";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
 import Hero from "@/components/Hero";
@@ -12,6 +12,7 @@ export const revalidate = 300; // re-check Airtable at most every 5 minutes
 export default async function Home() {
   const edition = await getLatestEdition();
   const archiveIndex = await getArchiveIndex();
+  const homeStories = await getHomeStories();
 
   const { userId } = await auth();
   let streakDays: number | undefined;
@@ -33,7 +34,7 @@ export default async function Home() {
       <div>
         <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="font-display text-lg text-[var(--text-primary)]">
-            Today&apos;s stories ({Math.min(edition.stories.length, 15)})
+            Today&apos;s stories ({homeStories.length})
           </h2>
           <div className="flex items-center gap-2 shrink-0">
             <span className="text-xs text-[var(--text-secondary)] truncate">
@@ -50,7 +51,7 @@ export default async function Home() {
             <ArchiveDrawer recentDays={archiveIndex.slice(0, 10)} />
           </div>
         </div>
-        <Top10List stories={edition.stories} readSlugs={readSlugs} />
+        <Top10List stories={homeStories} readSlugs={readSlugs} />
       </div>
 
     </main>

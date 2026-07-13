@@ -102,6 +102,39 @@ export async function getStoryBySlug(slug: string): Promise<Story | undefined> {
   return edition.stories.find((s) => s.slug === slug);
 }
 
+/**
+ * Homepage feed with yesterday's leftovers filling the gap.
+ *
+ * Early in the day only a few of the day's ~15 stories have been generated
+ * (the pipeline runs in batches), so the feed would otherwise look sparse.
+ * Instead we fill remaining slots with yesterday's stories that haven't
+ * been replaced yet — same slug appearing in today's edition means it WAS
+ * replaced, so it's excluded here to avoid a duplicate.
+ *
+ * Carried-over stories keep their original `generatedAt`, which is what
+ * Top10List already uses to render the "↺ from <date>" badge — no new
+ * field needed, and no risk of a carried story being mistaken for new.
+ * As later batches land in edition.json, they push carry-overs out
+ * automatically once the total reaches 15.
+ */
+export async function getHomeStories(): Promise<Story[]> {
+  const edition = await getLatestEdition();
+  const todaysStories = edition.stories.slice(0, 15);
+  if (todaysStories.length >= 15) return todaysStories;
+
+  const archiveIndex = await getArchiveIndex();
+  const yesterdayEntry = archiveIndex.find((e) => e.date !== edition.date);
+  if (!yesterdayEntry) return todaysStories;
+
+  const yesterdayEdition = await getArchivedEdition(yesterdayEntry.date);
+  if (!yesterdayEdition) return todaysStories;
+
+  const todaySlugs = new Set(todaysStories.map((s) => s.slug));
+  const carryOver = yesterdayEdition.stories.filter((s) => !todaySlugs.has(s.slug));
+
+  return [...todaysStories, ...carryOver].slice(0, 15);
+}
+
 // --- Archive -----------------------------------------------------------
 // data/archive/index.json + data/archive/YYYY-MM-DD.json are written by
 // scripts/roll-date.js at midnight IST (see that script for details). All
