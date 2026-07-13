@@ -179,6 +179,30 @@ const RSS_QUERIES = [
   "(India fintech OR UPI OR semiconductor OR technology policy) when:2d",
 ];
 
+// Direct publisher RSS feeds, fetched alongside the Google News queries
+// above. Google News re-crawls and re-indexes these same publishers, so it
+// lags the source by anywhere from a few minutes to a couple hours; going
+// straight to the publisher closes that gap for genuinely breaking stories.
+// Each entry's `source` is used as a label since these feeds (unlike
+// Google News RSS) don't carry a <source> tag of their own.
+// URLs sourced 2026-07-13 — the Business Standard ones were copied
+// directly from their live RSS listing page; LiveMint/Economic Times/BBC
+// came from a current aggregator listing, not independently fetch-tested.
+// pullFeed() already logs+skips a feed that 404s or errors rather than
+// failing the run, so a stale URL here degrades gracefully — but worth
+// checking the Action's logs after the first run to confirm all 8 are
+// actually returning items, not silently skipping.
+const DIRECT_FEEDS = [
+  { source: "Business Standard", url: "https://www.business-standard.com/rss/economy-102.rss" },
+  { source: "Business Standard", url: "https://www.business-standard.com/rss/finance-103.rss" },
+  { source: "Business Standard", url: "https://www.business-standard.com/rss/markets-106.rss" },
+  { source: "Business Standard", url: "https://www.business-standard.com/rss/external-affairs-defence-security-227.rss" },
+  { source: "Business Standard", url: "https://www.business-standard.com/rss/world-news-221.rss" },
+  { source: "LiveMint", url: "https://www.livemint.com/rss/news" },
+  { source: "Economic Times", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms" },
+  { source: "BBC World", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+];
+
 // Fuzzy headline matching — two headlines describe the same underlying event
 // when they share most of their significant words. Exact-string exclusion is
 // useless against models that reword ("Keeps Interest Rates Steady" vs
@@ -228,8 +252,10 @@ async function fetchRssHeadlines() {
   const items = [];
   const seen = new Set();
   const cutoff = Date.now() - 36 * 3600 * 1000;
-  for (const q of RSS_QUERIES) {
-    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`;
+
+  // One shared parser for both the Google News search feeds and the direct
+  // publisher feeds below — both are standard RSS 2.0 <item> blocks.
+  async function pullFeed(url, fallbackSource) {
     try {
       const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -255,21 +281,30 @@ async function fetchRssHeadlines() {
         items.push({
           title,
           link: pickTag(block, "link"),
-          source: pickTag(block, "source"),
+          source: pickTag(block, "source") || fallbackSource,
           pubDate: pickTag(block, "pubDate"),
           pubMs: pub,
           snippet: pickTag(block, "description").slice(0, 220),
         });
       }
     } catch (e) {
-      console.warn(`RSS feed failed for query "${q}": ${e.message} — continuing with other feeds.`);
+      console.warn(`RSS feed failed for ${fallbackSource} (${url}): ${e.message} — continuing with other feeds.`);
     }
   }
+
+  for (const q of RSS_QUERIES) {
+    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-IN&gl=IN&ceid=IN:en`;
+    await pullFeed(url, "Google News");
+  }
+  for (const { source, url } of DIRECT_FEEDS) {
+    await pullFeed(url, source);
+  }
+
   items.sort((a, b) => b.pubMs - a.pubMs);
   if (items.length < 6) {
     throw new Error(`RSS fallback could only fetch ${items.length} fresh headlines — not enough to ground an edition safely.`);
   }
-  console.log(`RSS fallback: fetched ${items.length} fresh headlines from Google News.`);
+  console.log(`RSS fallback: fetched ${items.length} fresh headlines from ${RSS_QUERIES.length} Google News queries + ${DIRECT_FEEDS.length} direct publisher feeds.`);
   rssCache = items;
   return items;
 }
