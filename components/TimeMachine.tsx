@@ -59,12 +59,16 @@ export default function TimeMachine({
         } catch {
           // fall through to text-only share below
         }
-        const canShareFile = file && (!navigator.canShare || navigator.canShare({ files: [file] }));
-        await navigator.share(
-          canShareFile
-            ? { files: [file as File], text: `${text} ${url}` }
-            : { title: "Time Machine", text, url }
-        );
+        if (file) {
+          try {
+            await navigator.share({ files: [file], text: `${text} ${url}` });
+            return;
+          } catch (err) {
+            if (err instanceof DOMException && err.name === "AbortError") return;
+            // fall through to text-only share below
+          }
+        }
+        await navigator.share({ title: "Time Machine", text, url });
         return;
       }
       window.open(

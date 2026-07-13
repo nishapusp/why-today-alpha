@@ -44,19 +44,32 @@ export default function ShareButton({
     const url = `${window.location.origin}/story/${slug}`;
     const text = `${headline}\n\nRead why it matters on Why Today:`;
     try {
-      // 1. Try sharing the actual card image.
       if (navigator.share) {
         const main = await fetchCard(`/cards/${slug}.png`, `why-today-${slug}.png`);
-        const canShareFile = main && (!navigator.canShare || navigator.canShare({ files: [main] }));
 
-        await navigator.share(
-          canShareFile
-            ? { files: [main as File], text: `${text} ${url}` }
-            : { title: headline, text, url }
-        );
+        // Prefer the actual card. canShare() is known to be unreliably
+        // conservative on some mobile browsers — it can report false even
+        // when share() with files would have worked — so we attempt the
+        // real share first and only drop to text on a genuine failure,
+        // rather than pre-filtering on canShare() and silently skipping
+        // the image.
+        if (main) {
+          try {
+            await navigator.share({ files: [main], text: `${text} ${url}` });
+            return;
+          } catch (err) {
+            // AbortError = user closed the share sheet themselves — don't
+            // retry, that's not a failure to fall back from.
+            if (err instanceof DOMException && err.name === "AbortError") return;
+            // Any other error (unsupported file share, in-app-browser
+            // restriction, etc.) — fall through to the text-only share.
+          }
+        }
+
+        await navigator.share({ title: headline, text, url });
         return;
       }
-      // 3. No Web Share API at all — WhatsApp web deep link.
+      // No Web Share API at all — WhatsApp web deep link.
       window.open(
         `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`,
         "_blank",
