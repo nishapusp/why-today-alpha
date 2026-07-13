@@ -76,7 +76,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-6 p-1 rounded-full overflow-x-auto no-scrollbar" style={{ background: cat.tint }}>
+      <div className="flex items-center gap-1 mb-6 p-1 rounded-full overflow-x-auto no-scrollbar" style={{ background: cat.tint, touchAction: "pan-x" }}>
         {LEVELS.map((l) => (
           <button
             key={l.key}
@@ -84,8 +84,8 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
             className="px-3 py-2 rounded-full text-[13px] font-medium transition-all whitespace-nowrap shrink-0"
             style={
               level === l.key
-                ? { background: cat.accent, color: "#fff" }
-                : { color: cat.deep }
+                ? { background: cat.accent, color: "#fff", touchAction: "manipulation" }
+                : { color: cat.deep, touchAction: "manipulation" }
             }
           >
             {l.label}
