@@ -1,7 +1,9 @@
 import { getLatestEdition, getArchiveIndex, getHomeStories } from "@/lib/getData";
+import { getTermOfTheDay } from "@/lib/termOfDay";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
 import Hero from "@/components/Hero";
+import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
 import ArchiveDrawer from "@/components/ArchiveDrawer";
 import Link from "next/link";
@@ -13,6 +15,7 @@ export default async function Home() {
   const edition = await getLatestEdition();
   const archiveIndex = await getArchiveIndex();
   const homeStories = await getHomeStories();
+  const termOfDay = getTermOfTheDay();
 
   const { userId } = await auth();
   let streakDays: number | undefined;
@@ -30,6 +33,8 @@ export default async function Home() {
   return (
     <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
       <Hero edition={edition} streakDays={streakDays} userName={userName} />
+
+      {termOfDay && <TermOfTheDay entry={termOfDay} />}
 
       <div>
         <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
