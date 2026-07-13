@@ -7,23 +7,29 @@ on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
   workflow_dispatch: {}
 
-  # Runs four times a day so a run that stops early (rate limits, a bad
-  # batch, a Gemini 503 overload) gets topped up later the same day instead
-  # of staying incomplete until tomorrow. generate-edition.js resumes
-  # automatically — a run that finds the day's target already met just
-  # exits immediately, so these extra triggers cost nothing when an earlier
-  # run already finished. The 8:30 PM slot exists purely as a safety net to
-  # mop up whatever the 4 PM run didn't finish.
+  # Trimmed from 4 runs/day to 2 (2026-07-13) — the 4-run schedule was
+  # quietly self-defeating. Gemini's free-tier daily quota resets on a
+  # FIXED CLOCK TIME (midnight Pacific = ~12:30 PM IST), not per-run and
+  # not on a rolling basis. Under the old schedule, the 1 PM/4 PM/8:30 PM
+  # runs all drew from the SAME quota bucket that opens at 12:30 PM IST —
+  # and so did the NEXT DAY's 6 AM run, since 6 AM IST is still hours
+  # before the following reset. So the "safety net" top-ups were spending
+  # tomorrow morning's quota tonight, which is exactly backwards for a
+  # product whose main readership arrives at 6 AM.
+  #
+  # Now: one run right at 6 AM (fresh bucket, minus whatever leaked from
+  # the previous day — should be ~nothing since nothing else fires
+  # overnight), and exactly one top-up at 1:15 PM — 45 minutes AFTER the
+  # ~12:30 PM IST reset, so it always gets a clean bucket rather than
+  # competing with the morning run. generate-edition.js exits immediately
+  # if the day's target is already met, so the 1:15 PM run costs nothing
+  # on a day the 6 AM run already finished.
   # Cron is in UTC:
   #   6:00 AM IST  = 00:30 UTC
-  #   1:00 PM IST  = 07:30 UTC
-  #   4:00 PM IST  = 10:30 UTC
-  #   8:30 PM IST  = 15:00 UTC
+  #   1:15 PM IST  = 07:45 UTC  (quota resets ~07:00 UTC / 12:30 PM IST)
   schedule:
     - cron: "30 0 * * *"
-    - cron: "30 7 * * *"
-    - cron: "30 10 * * *"
-    - cron: "0 15 * * *"
+    - cron: "45 7 * * *"
 
 permissions:
   contents: write # needed so the script can git push the updated edition.json
