@@ -1,0 +1,58 @@
+name: Poll RSS Feeds
+
+# Runs frequently and cheaply — pure RSS fetches, zero Gemini quota used.
+# Its only job is deciding WHEN generate-edition.yml should run, via
+# workflow_dispatch, once a story has matured past scripts/poll-rss.js's
+# MATURITY_MINUTES threshold. See that file's header for the full design
+# and — importantly — how to roll this back (delete this file; nothing
+# else changes).
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "*/20 * * * *" # every 20 minutes
+
+concurrency:
+  group: poll-rss
+  cancel-in-progress: false
+
+permissions:
+  contents: write # to commit data/rss-watch.json
+  actions: write # to dispatch generate-edition.yml
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Configure git identity
+        run: |
+          git config user.name "why-today-bot"
+          git config user.email "actions@github.com"
+
+      - name: Poll feeds and maybe trigger generation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/poll-rss.js
+
+      - name: Commit updated watch state (if changed)
+        run: |
+          if ! git diff --quiet -- data/rss-watch.json; then
+            git add data/rss-watch.json
+            git commit -m "poll-rss: update watch state [skip ci]"
+            for tryNum in 1 2 3; do
+              if git push; then break; fi
+              echo "push rejected (attempt $tryNum/3) — rebasing and retrying..."
+              git fetch origin main
+              git rebase origin/main
+            done
+          else
+            echo "No change to watch state."
+          fi
