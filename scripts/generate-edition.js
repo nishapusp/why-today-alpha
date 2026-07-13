@@ -40,6 +40,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
+const { fetchStorySources, verifyStoryAgainstSources } = require("./verify-edition.js");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
@@ -880,7 +881,7 @@ async function main() {
     // Safety net regardless of mode: drop any story that covers the same
     // underlying EVENT as one already published, even if the model reworded
     // the headline. This is what actually stops batch-N duplicating batch-M.
-    const batchStories = rawBatchStories.filter((s) => {
+    let batchStories = rawBatchStories.filter((s) => {
       const dupOf = seenHeadlines.find((h) => isSameEvent(s.headline, h));
       if (dupOf) {
         console.warn(`Dropping duplicate story "${s.headline}" — same event as already-published "${dupOf}".`);
@@ -905,6 +906,64 @@ async function main() {
     if (soft.length > 0) {
       console.warn(`Batch ${b + 1} has ${soft.length} minor issue(s) (publishing anyway):`);
       soft.forEach((i) => console.warn(`  - ${i}`));
+    }
+
+    // --- Fact verification gate --------------------------------------------
+    // Every story's OWN cited sources are fetched and its claims checked
+    // against them — plain ungrounded Gemini calls, zero grounding quota
+    // (see scripts/verify-edition.js, --mode source). A story whose central
+    // event can't be confirmed, or that contains a claim its own sources
+    // contradict, is held back and NEVER published — this is what stops a
+    // fabricated story (like the SBI Q1 "results" that never happened) or a
+    // wrong figure (wrong IPO dates, invented growth numbers) from reaching
+    // the site. WARN (unverifiable but not contradicted) and PASS stories
+    // publish normally; WARNs are logged for visibility.
+    console.log(`Verifying ${batchStories.length} stor${batchStories.length === 1 ? "y" : "ies"} against their own sources before publishing...`);
+    const verifiedStories = [];
+    for (const story of batchStories) {
+      const shortHeadline = (story.headline || "(no headline)").slice(0, 65);
+      try {
+        const sources = await fetchStorySources(story);
+        if (sources.length === 0) {
+          console.warn(`  WARN  "${shortHeadline}" — no fetchable sources, publishing but flagged for manual check.`);
+          allSoftIssues.push(`"${story.headline}": published with no fetchable sources to verify against.`);
+          verifiedStories.push(story);
+          continue;
+        }
+        const result = await verifyStoryAgainstSources(story, today, sources);
+        if (result.verdict === "FAIL" || result.verdict === "FABRICATED") {
+          console.error(`  ${result.verdict}  "${shortHeadline}" — HELD BACK, not published.`);
+          if (result.notes) console.error(`         ${result.notes}`);
+          (result.issues || []).forEach((iss) =>
+            console.error(`         - [${iss.status}] ${iss.claim}${iss.detail ? ` — ${iss.detail}` : ""}`)
+          );
+          continue; // dropped — never enters verifiedStories
+        }
+        if (result.verdict === "WARN") {
+          console.warn(`  WARN  "${shortHeadline}" — ${(result.issues || []).length} unverifiable claim(s), publishing.`);
+          allSoftIssues.push(`"${story.headline}": verification WARN — ${(result.issues || []).length} unverifiable claim(s) (not contradicted, just unconfirmed).`);
+        } else {
+          console.log(`  PASS  "${shortHeadline}"`);
+        }
+        verifiedStories.push(story);
+      } catch (err) {
+        // Verification itself errored (network hiccup, malformed JSON, etc.)
+        // — publish rather than silently dropping a possibly-fine story, but
+        // flag it loudly so it gets a human look.
+        console.warn(`  ERROR verifying "${shortHeadline}" (${err.message}) — publishing unverified, flagged.`);
+        allSoftIssues.push(`"${story.headline}": verification step errored (${err.message}) — published WITHOUT fact-checking.`);
+        verifiedStories.push(story);
+      }
+      // Gentle spacing between per-story verification calls within a batch —
+      // these are ungrounded calls (no grounding-quota risk) but still count
+      // against the per-minute request cap.
+      await sleep(3000);
+    }
+    batchStories = verifiedStories;
+    if (batchStories.length === 0) {
+      failedBatches++;
+      console.error(`Batch ${b + 1}: every story failed verification — nothing to publish from this batch.`);
+      continue;
     }
 
     // Stamp every fresh story with its generation time so the UI can show

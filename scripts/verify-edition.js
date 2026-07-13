@@ -545,7 +545,20 @@ async function main() {
   process.exit(quotaExhausted ? 2 : bad.length ? 1 : 0);
 }
 
-main().catch((err) => {
-  console.error("Fatal:", err.message);
-  process.exit(1);
-});
+// Only auto-run when invoked directly (`node scripts/verify-edition.js`).
+// generate-edition.js requires fetchStorySources/verifyStoryAgainstSources
+// as a pre-publish gate — requiring this file must NOT also kick off a full
+// CLI verification run (and must NOT call process.exit on the parent).
+if (require.main === module) {
+  main().catch((err) => {
+    console.error("Fatal:", err.message);
+    process.exit(1);
+  });
+}
+
+module.exports = {
+  fetchStorySources,
+  verifyStoryAgainstSources,
+  decodeGoogleNewsUrl,
+  buildClaimDigest,
+};
