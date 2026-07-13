@@ -44,7 +44,7 @@ jobs:
 
       - name: Commit updated watch state (if changed)
         run: |
-          if ! git diff --quiet -- data/rss-watch.json; then
+          if [ -n "$(git status --porcelain -- data/rss-watch.json)" ]; then
             git add data/rss-watch.json
             git commit -m "poll-rss: update watch state [skip ci]"
             for tryNum in 1 2 3; do
