@@ -1,4 +1,5 @@
 import { Edition } from "@/lib/types";
+import Link from "next/link";
 
 function greeting() {
   const hour = new Date().getHours();
@@ -42,9 +43,12 @@ export default function Hero({
             </span>
           ) : null}
           {typeof learningScore === "number" ? (
-            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/10 text-white/75">
-              🧠 {learningScore} pts
-            </span>
+            <Link
+              href="/progress"
+              className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/10 text-white/75 hover:bg-white/15 transition-colors"
+            >
+              🧠 {learningScore} pts ›
+            </Link>
           ) : null}
         </div>
       </div>

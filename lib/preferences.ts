@@ -97,7 +97,20 @@ export async function recordQuizResult(userId: string, correct: number, total: n
  * formula — legibility matters more than precision for a motivational
  * number like this.
  */
-export function computeLearningScore(prefs: UserPreferences): number {
+export interface LearningScoreBreakdown {
+  total: number;
+  depthPoints: number;
+  storiesRead: number;
+  quizPoints: number;
+  quizCorrect: number;
+  quizTotal: number;
+  streakPoints: number;
+  streakCount: number;
+  termsPoints: number;
+  termsCount: number;
+}
+
+export function computeLearningScoreBreakdown(prefs: UserPreferences): LearningScoreBreakdown {
   const depthPoints = Object.values(prefs.readLevels).reduce(
     (sum, level) => sum + { quick: 2, understand: 5, deep: 10 }[level],
     0
@@ -105,7 +118,22 @@ export function computeLearningScore(prefs: UserPreferences): number {
   const quizPoints = prefs.quizCorrect * 3;
   const streakPoints = prefs.streakCount * 5;
   const termsPoints = prefs.termsEncountered.length * 1;
-  return depthPoints + quizPoints + streakPoints + termsPoints;
+  return {
+    total: depthPoints + quizPoints + streakPoints + termsPoints,
+    depthPoints,
+    storiesRead: Object.keys(prefs.readLevels).length,
+    quizPoints,
+    quizCorrect: prefs.quizCorrect,
+    quizTotal: prefs.quizTotal,
+    streakPoints,
+    streakCount: prefs.streakCount,
+    termsPoints,
+    termsCount: prefs.termsEncountered.length,
+  };
+}
+
+export function computeLearningScore(prefs: UserPreferences): number {
+  return computeLearningScoreBreakdown(prefs).total;
 }
 
 /**

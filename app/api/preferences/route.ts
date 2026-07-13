@@ -6,6 +6,7 @@ import {
   markStoryRead,
   recordReadingLevel,
   recordQuizResult,
+  computeLearningScoreBreakdown,
 } from "@/lib/preferences";
 
 export async function GET() {
@@ -14,7 +15,7 @@ export async function GET() {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
   const prefs = await getPreferences(userId);
-  return NextResponse.json(prefs);
+  return NextResponse.json({ ...prefs, scoreBreakdown: computeLearningScoreBreakdown(prefs) });
 }
 
 export async function POST(req: NextRequest) {
