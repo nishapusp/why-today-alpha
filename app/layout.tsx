@@ -4,6 +4,8 @@ import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import Script from "next/script";
 import Link from "next/link";
 import BottomNav from "@/components/BottomNav";
+import HamburgerMenu from "@/components/HamburgerMenu";
+import AppDownloadBanner from "@/components/AppDownloadBanner";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -92,13 +94,16 @@ export default function RootLayout({
               background: "color-mix(in srgb, var(--bg) 86%, transparent)",
             }}
           >
-          <div className="max-w-2xl mx-auto w-full px-4 py-2.5 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full" style={{ background: "var(--gold)" }} />
-              <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: "var(--navy)" }}>
-                Why Today
-              </span>
-            </Link>
+          <div className="max-w-2xl mx-auto w-full px-4 py-2.5 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <HamburgerMenu />
+              <Link href="/" className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full" style={{ background: "var(--gold)" }} />
+                <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: "var(--navy)" }}>
+                  Why Today
+                </span>
+              </Link>
+            </div>
             <Show when="signed-out">
               <SignInButton mode="modal">
                 <button className="text-[13px] font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white whitespace-nowrap">
@@ -111,6 +116,7 @@ export default function RootLayout({
             </Show>
           </div>
           </header>
+          <AppDownloadBanner />
           {children}
           <BottomNav />
           <Script id="sw-register" strategy="afterInteractive">

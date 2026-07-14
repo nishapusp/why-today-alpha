@@ -73,29 +73,11 @@ function GlossaryIcon({ active }: { active: boolean }) {
   );
 }
 
-function ProgressIcon({ active }: { active: boolean }) {
-  const c = active ? "var(--navy)" : "var(--text-secondary)";
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M4 4v16.5h16" stroke={c} strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" />
-      <path
-        d="M6.5 15.5l4-3 3.2 2.4L18 8.5"
-        stroke={c}
-        strokeWidth={STROKE}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M14.5 8.5H18v3.5" stroke={c} strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 const TABS: Tab[] = [
   { href: "/", label: "Home", match: (p) => p === "/", icon: (a) => <HomeIcon active={a} /> },
   { href: "/archive", label: "Archive", match: (p) => p.startsWith("/archive"), icon: (a) => <ArchiveIcon active={a} /> },
   { href: "/search", label: "Search", match: (p) => p.startsWith("/search"), icon: (a) => <SearchIcon active={a} /> },
   { href: "/glossary", label: "Glossary", match: (p) => p.startsWith("/glossary"), icon: (a) => <GlossaryIcon active={a} /> },
-  { href: "/progress", label: "Progress", match: (p) => p.startsWith("/progress"), icon: (a) => <ProgressIcon active={a} /> },
 ];
 
 export default function BottomNav() {
@@ -107,7 +89,7 @@ export default function BottomNav() {
       style={{ borderColor: "var(--border)", background: "white" }}
       aria-label="Primary"
     >
-      <div className="max-w-2xl mx-auto grid grid-cols-5">
+      <div className="max-w-2xl mx-auto grid grid-cols-4">
         {TABS.map((tab) => {
           const active = tab.match(pathname);
           return (
