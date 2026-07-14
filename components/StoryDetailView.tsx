@@ -10,6 +10,7 @@ import StoryChart from "@/components/StoryChart";
 import TimeMachine from "@/components/TimeMachine";
 import BeforeYouRead from "@/components/BeforeYouRead";
 import SwipeNavigator from "@/components/SwipeNavigator";
+import SignInPrompt from "@/components/SignInPrompt";
 import type { TermDefinition } from "@/lib/glossaryLookup";
 
 export interface StoryNeighbor {
@@ -38,6 +39,7 @@ export default function StoryDetailView({
 
   return (
     <main className="max-w-2xl mx-auto pb-16 overflow-x-hidden">
+    <SignInPrompt slug={story.slug} />
     <SwipeNavigator
       prevHref={prev?.href}
       nextHref={next?.href}
