@@ -1,15 +1,25 @@
 import { getLatestEdition, getArchiveIndex, getHomeStories } from "@/lib/getData";
 import { getTermOfTheDay } from "@/lib/termOfDay";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { recordVisitAndGetStreak, getPreferences, computeLearningScore } from "@/lib/preferences";
-import Hero from "@/components/Hero";
+import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
+import JourneyStrip from "@/components/JourneyStrip";
+import ThreadBanner from "@/components/ThreadBanner";
+import ContinueLearning from "@/components/ContinueLearning";
+import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
 import ArchiveDrawer from "@/components/ArchiveDrawer";
 import Link from "next/link";
 
-
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
+
+function greeting(): string {
+  const hour = new Date().toLocaleString("en-IN", { hour: "numeric", hour12: false, timeZone: "Asia/Kolkata" });
+  const h = parseInt(hour, 10);
+  if (h < 12) return "Good morning";
+  if (h < 17) return "Good afternoon";
+  return "Good evening";
+}
 
 export default async function Home() {
   const edition = await getLatestEdition();
@@ -18,49 +28,77 @@ export default async function Home() {
   const termOfDay = getTermOfTheDay();
 
   const { userId } = await auth();
-  let streakDays: number | undefined;
   let userName: string | undefined;
   let readSlugs: string[] = [];
-  let learningScore: number | undefined;
 
   if (userId) {
-    streakDays = await recordVisitAndGetStreak(userId);
+    await recordVisitAndGetStreak(userId); // side effect: updates streak — JourneyStrip reads the result independently
     const user = await currentUser();
     userName = user?.firstName ?? undefined;
     const prefs = await getPreferences(userId);
     readSlugs = prefs.readSlugs;
-    learningScore = computeLearningScore(prefs);
   }
 
+  const dateLabel = new Date(edition.date).toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const storiesBySlug = Object.fromEntries(
+    homeStories.map((s) => [s.slug, { headline: s.headline, slug: s.slug }])
+  );
+
   return (
-    <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
-      <Hero edition={edition} streakDays={streakDays} userName={userName} learningScore={learningScore} />
+    <>
+      <JourneyStrip />
 
-      {termOfDay && <TermOfTheDay entry={termOfDay} />}
-
-      <div>
-        <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="font-display text-lg text-[var(--text-primary)]">
-            Today&apos;s stories ({homeStories.length})
-          </h2>
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs text-[var(--text-secondary)] truncate">
-              {edition.numberValue} · {edition.themeTitle}
-            </span>
-            <Link
-              href="/glossary"
-              aria-label="Glossary"
-              title="Glossary"
-              className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[15px] hover:border-[var(--accent)] transition-colors"
-            >
-              📖
-            </Link>
-            <ArchiveDrawer recentDays={archiveIndex.slice(0, 10)} />
-          </div>
+      <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
+        <div>
+          <p className="text-[14px] font-medium" style={{ color: "var(--text-secondary)" }}>
+            {greeting()}
+            {userName ? `, ${userName}` : ""}
+          </p>
+          <p className="font-mono text-[11px] mt-0.5" style={{ color: "var(--text-secondary)" }}>
+            {dateLabel}
+          </p>
         </div>
-        <Top10List stories={homeStories} readSlugs={readSlugs} />
-      </div>
 
-    </main>
+        <ThreadBanner themeTitle={edition.themeTitle} themeDescription={edition.themeDescription} />
+
+        {termOfDay && <TermOfTheDay entry={termOfDay} />}
+
+        <div>
+          <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="font-display text-lg text-[var(--text-primary)]">
+              Today&apos;s stories ({homeStories.length})
+            </h2>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs text-[var(--text-secondary)] truncate">
+                {edition.numberValue} · {edition.themeTitle}
+              </span>
+              <Link
+                href="/glossary"
+                aria-label="Glossary"
+                title="Glossary"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[15px] hover:border-[var(--accent)] transition-colors"
+              >
+                📖
+              </Link>
+              <ArchiveDrawer recentDays={archiveIndex.slice(0, 10)} />
+            </div>
+          </div>
+          <Top10List stories={homeStories} readSlugs={readSlugs} />
+        </div>
+
+        {homeStories.length > 0 && (
+          <div className="space-y-3">
+            <ContinueLearning storiesBySlug={storiesBySlug} />
+            <ListenNow slug={homeStories[0].slug} />
+          </div>
+        )}
+      </main>
+    </>
   );
 }
