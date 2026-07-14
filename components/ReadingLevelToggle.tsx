@@ -16,7 +16,7 @@ const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
 
 export default function ReadingLevelToggle({ story }: { story: Story }) {
   const { isSignedIn } = useUser();
-  const [level, setLevel] = useState<ReadingLevel>("understand");
+  const [level, setLevel] = useState<ReadingLevel>("quick");
   const cat = getCategoryStyle(story.category);
 
   // Load the signed-in user's saved reading-level preference once.
