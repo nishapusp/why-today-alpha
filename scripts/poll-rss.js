@@ -48,6 +48,9 @@ const RSS_QUERIES = [
   '(India "quarterly results" OR earnings OR listed) when:2d',
   "(India Sensex OR Nifty OR SEBI OR IPO) when:2d",
   "(India fintech OR UPI OR semiconductor OR technology policy) when:2d",
+  '(India IPO OR "public issue" OR DRHP OR "stock market debut") when:2d',
+  '(India startup OR fintech OR "funding round" OR unicorn) when:2d',
+  '(India "artificial intelligence" OR AI OR "machine learning" OR chatbot) when:2d',
 ];
 
 const DIRECT_FEEDS = [

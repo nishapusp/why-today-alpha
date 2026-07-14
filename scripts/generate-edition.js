@@ -73,7 +73,7 @@ const DEEP_DIVE_FLOOR = 400; // target range is 500-800; hard-fail only below 40
 
 // Keep this in sync with lib/prompts.ts's DAILY_EDITION_SYSTEM_PROMPT.
 function buildSystemPrompt(storyCount) {
-  return `You produce part of a daily "edition" as JSON for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and quarterly results of major listed companies (including banks), market-moving developments, and technology events that affect the economic landscape. Goal: explain WHY, in plain language, not just headlines. Be CONCISE — every sentence must earn its place. No padding, no restating the same fact in different words.
+  return `You produce part of a daily "edition" as JSON for readers who follow India's economy, markets, banking, and business — professionals, investors, and curious general readers. Coverage spans banking and policy, corporate news and quarterly results of major listed companies (including banks), market-moving developments, technology events that affect the economic landscape, IPOs and primary market listings, startup and fintech funding/developments, and AI and other emerging technology news with a business or economic angle. Goal: explain WHY, in plain language, not just headlines. Be CONCISE — every sentence must earn its place. No padding, no restating the same fact in different words.
 
 ## Voice — this is the difference between useful and boring
 Write like a sharp friend explaining why something matters over chai, not like a press release or a policy memo. Open every field with the single most surprising or relevant fact — never a throat-clearing lead-in. Every keyNumbers value must be an actual figure (₹ amount, %, date, count) — never a vague phrase. Omit a keyNumbers entry entirely rather than inventing one without a real figure.
@@ -84,6 +84,9 @@ Rules for "headline": maximum 11 words; language a Class 8 student understands; 
 Also include per story:
 - "whatsappHeadline": the version someone forwards to a group — max 9 words, punchier, may include exactly one emoji, still 100% truthful.
 - "notificationHeadline": max 7 words, hook first — reads like a push notification you would actually tap.
+
+## New category guidance
+Use "IPO" only for primary-market news with a genuine fresh trigger (a new listing, subscription/GMP status, SEBI approval, DRHP filing) — not general market commentary. Use "Startups" for funding rounds, fintech product launches, or startup-specific policy/regulatory news — not large-cap corporate results (those stay "Corporate"). Use "AI" only when artificial intelligence or a comparable emerging technology (not routine IT/digital-policy news) is the actual subject with a business or economic angle — general technology-sector news that isn't AI-specific stays "Technology". These three are conditional, not mandatory, categories: include a story in one of them only when a real, fresh, well-sourced trigger exists — never force a weak story in just to fill the category.
 
 ## Sourcing
 Use Google Search to check 3-5 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
@@ -135,7 +138,7 @@ Return ONLY valid JSON matching this shape:
  "vocabulary":[{"term","definition"}],
  "stories":[{
    "headline","whatsappHeadline","notificationHeadline",
-   "slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
+   "slug","category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
    "timeMachine":{"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
    "chart":{"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
@@ -168,7 +171,7 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
   const focusNote = focusCategory
     ? ` PRIORITY FOR THIS BATCH: today's edition is short on the "${focusCategory}" category — of the ${storyCount} stories in this batch, favor genuine ${focusCategory === "World" ? "geopolitics/world-affairs stories with a clear India angle (trade, markets, security, diaspora impact)" : focusCategory} stories wherever a real fresh trigger exists, without forcing a weak or stale story into that category just to fill it.`
     : "";
-  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${focusNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
+  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, IPO/primary-market, startup/fintech, AI, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${focusNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -186,6 +189,9 @@ const RSS_QUERIES = [
   '(India "quarterly results" OR earnings OR listed) when:2d',
   "(India Sensex OR Nifty OR SEBI OR IPO) when:2d",
   "(India fintech OR UPI OR semiconductor OR technology policy) when:2d",
+  '(India IPO OR "public issue" OR DRHP OR "stock market debut") when:2d',
+  '(India startup OR fintech OR "funding round" OR unicorn) when:2d',
+  '(India "artificial intelligence" OR AI OR "machine learning" OR chatbot) when:2d',
 ];
 
 // Direct publisher RSS feeds, fetched alongside the Google News queries
@@ -380,6 +386,9 @@ const CATEGORY_SEARCH_TERMS = {
   World: "world map global trade",
   Policy: "indian parliament government",
   Corporate: "business office india corporate",
+  IPO: "stock exchange listing bell india",
+  Startups: "startup office team india fintech",
+  AI: "artificial intelligence technology digital",
 };
 
 // Turn a headline into a Pexels-friendly 2-3 keyword query, so different
