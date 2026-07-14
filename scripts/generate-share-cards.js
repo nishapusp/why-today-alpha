@@ -39,6 +39,27 @@ const CATEGORY_STYLE = {
   Corporate: { icon: "🏢", accent: "#C287AE", deep: "#5C3850", dark: "#1E1019" },
 };
 
+// Cuts a summary to its first complete sentence rather than truncating
+// mid-sentence with lineClamp's "...". [.!?] must be followed by
+// whitespace-or-end to count as a sentence boundary — this is what keeps
+// decimal numbers ("4.38%", "₹1.10 lakh crore") from being mistaken for
+// one, since the digit right after those periods is never whitespace.
+// Falls back past a too-short match (an abbreviation like "U.S." tripping
+// the same rule) to the next real boundary, and to the full text if
+// nothing reasonable is found — original truncate-with-ellipsis behavior
+// stays as the final safety net for that rare case.
+function firstSentence(text) {
+  const s = String(text || "").trim();
+  if (!s) return s;
+  const boundary = /[.!?](?=\s|$)/g;
+  let m;
+  while ((m = boundary.exec(s))) {
+    const candidate = s.slice(0, m.index + 1).trim();
+    if (candidate.length >= 20) return candidate;
+  }
+  return s;
+}
+
 function catStyle(category) {
   return CATEGORY_STYLE[category] || CATEGORY_STYLE.Policy;
 }
@@ -315,9 +336,9 @@ function buildCardTree(story, editionDate, photoUri, storyTerm) {
         ? el("span", {
             style: {
               marginTop: "24px", fontSize: "31px", lineHeight: 1.42,
-              color: "rgba(255,255,255,0.78)", display: "block", lineClamp: 3,
+              color: "rgba(255,255,255,0.78)", display: "block", lineClamp: 2,
             },
-          }, String(story.summary).trim())
+          }, firstSentence(story.summary))
         : null
     ),
 
