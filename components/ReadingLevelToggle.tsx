@@ -30,10 +30,6 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
       .catch(() => {});
   }, [isSignedIn]);
 
-  // Live-generated Deep Dive content, fetched on first tap of that tab.
-  const [liveDeepDive, setLiveDeepDive] = useState<string | null>(null);
-  const [deepDiveStatus, setDeepDiveStatus] = useState<"idle" | "loading" | "error">("idle");
-
   async function handleSelectLevel(key: ReadingLevel) {
     setLevel(key);
 
@@ -49,35 +45,17 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
         body: JSON.stringify({ readingLevel: { slug: story.slug, level: key } }),
       }).catch(() => {});
     }
-
-    if (key === "deep" && liveDeepDive === null && deepDiveStatus === "idle") {
-      setDeepDiveStatus("loading");
-      try {
-        const res = await fetch("/api/expand-content", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            field: "deepDiveRead",
-            slug: story.slug,
-            headline: story.headline,
-            summary: story.summary,
-            category: story.category,
-          }),
-        });
-        const data = await res.json();
-        if (res.ok && data.content) {
-          setLiveDeepDive(data.content);
-          setDeepDiveStatus("idle");
-        } else {
-          setDeepDiveStatus("error");
-        }
-      } catch {
-        setDeepDiveStatus("error");
-      }
-    }
   }
 
-  const deepDiveText = liveDeepDive ?? story.deepDiveRead;
+  // deepDiveRead is a REQUIRED field, already generated + validated (500-800
+  // words, specific section headers, fact-checked) during the daily batch —
+  // there is nothing to fetch. An earlier version of this component called
+  // /api/expand-content to regenerate it live on first tap, which was pure
+  // waste (an extra Gemini call for content that already existed) and a
+  // real source of "Deep Dive isn't working": if that redundant call failed
+  // under quota pressure, readers saw an error message instead of the
+  // perfectly good content sitting in story.deepDiveRead the whole time.
+  const deepDiveText = story.deepDiveRead;
 
   return (
     <div>
@@ -120,18 +98,7 @@ export default function ReadingLevelToggle({ story }: { story: Story }) {
 
       {level === "deep" && (
         <div className="prose-custom space-y-4 text-[var(--text-primary)] leading-relaxed">
-          {deepDiveStatus === "loading" && (
-            <div className="flex items-center gap-2 text-sm" style={{ color: cat.deep }}>
-              <span className="inline-block w-3.5 h-3.5 rounded-full border-2 border-current border-t-transparent animate-spin" />
-              Generating a fresh deep dive on this story…
-            </div>
-          )}
-          {deepDiveStatus === "error" && (
-            <p className="text-sm" style={{ color: cat.deep }}>
-              Couldn&apos;t reach the live agent just now — showing the saved version instead.
-            </p>
-          )}
-          {deepDiveStatus !== "loading" && renderDeepDive(deepDiveText, cat)}
+          {renderDeepDive(deepDiveText, cat)}
         </div>
       )}
 

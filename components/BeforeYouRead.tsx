@@ -41,7 +41,7 @@ export default function BeforeYouRead({
         To understand this story
       </p>
 
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap gap-2">
         {terms.map((t, i) => {
           const expandable = t.definition.length > 0;
           const isOpen = open === i;
@@ -52,12 +52,13 @@ export default function BeforeYouRead({
               disabled={!expandable}
               aria-expanded={isOpen}
               onClick={() => setOpen(isOpen ? null : i)}
-              className="text-[12px] font-medium px-2.5 py-1 rounded-full border transition-colors disabled:cursor-default"
-              style={
-                isOpen
+              className="text-[13px] font-medium px-3.5 py-2.5 min-h-[40px] rounded-full border transition-colors disabled:cursor-default"
+              style={{
+                touchAction: "manipulation",
+                ...(isOpen
                   ? { background: accent, borderColor: accent, color: "#fff" }
-                  : { borderColor: tint, color: "var(--text-primary)", background: "var(--surface)" }
-              }
+                  : { borderColor: tint, color: "var(--text-primary)", background: "var(--surface)" }),
+              }}
             >
               {t.term}
               {expandable && <span className="ml-1 opacity-60">{isOpen ? "−" : "+"}</span>}
