@@ -5,7 +5,7 @@ import path from "path";
 
 const VALID_TRENDS: Trend[] = ["up", "down", "flat"];
 const VALID_SENTIMENTS: Sentiment[] = ["positive", "caution", "critical", "neutral"];
-const VALID_CATEGORIES: Category[] = ["Banking", "Economy", "Technology", "World", "Policy", "Corporate"];
+const VALID_CATEGORIES: Category[] = ["Banking", "Economy", "Technology", "World", "Policy", "Corporate", "IPO", "Startups", "AI"];
 
 /**
  * edition.json is generated fresh by Gemini every morning — it's real

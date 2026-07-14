@@ -41,7 +41,7 @@ If the user describes what was wrong with the original, fix that specific issue 
 Return ONLY valid JSON matching this shape:
 {
   "headline", "whatsappHeadline", "notificationHeadline",
-  "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
+  "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
   "timeMachine": {"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
   "chart": {"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),

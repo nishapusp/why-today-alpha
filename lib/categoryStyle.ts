@@ -49,6 +49,24 @@ export const CATEGORY_STYLE: Record<Category, CategoryStyle> = {
     tint: "#F5EDF2",
     deep: "#5C3850",
   },
+  IPO: {
+    icon: "🔔",
+    accent: "#B08628",
+    tint: "#FBF2DF",
+    deep: "#82611B",
+  },
+  Startups: {
+    icon: "🚀",
+    accent: "#2E7D6B",
+    tint: "#E6F3EE",
+    deep: "#1F594B",
+  },
+  AI: {
+    icon: "✨",
+    accent: "#4A5FBF",
+    tint: "#ECEFFB",
+    deep: "#333F8C",
+  },
 };
 
 export function getCategoryStyle(category: Category | string): CategoryStyle {

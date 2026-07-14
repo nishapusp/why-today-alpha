@@ -100,7 +100,7 @@ Return ONLY valid JSON matching this shape — no preamble, no markdown code fen
 {
  "date","themeTitle","themeDescription","numberValue","numberLabel","numberTrend",
  "stories":[{
-   "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate),
+   "headline","slug","category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
    "keyNumbers":[{"label","value","previousValue?","previousLabel?","trendNote?"}],
    "knowledgeChain":["..."],
@@ -122,7 +122,7 @@ If the user described what was wrong with the original version, fix that specifi
 
 Return ONLY valid JSON matching this shape — no preamble, no markdown code fences:
 {
-  "headline", "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate),
+  "headline", "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
   "keyNumbers": [{"label","value","previousValue?","previousLabel?","trendNote?"}],
   "knowledgeChain": ["..."],
