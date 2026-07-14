@@ -67,8 +67,6 @@ export default async function Home() {
 
         <ThreadBanner themeTitle={edition.themeTitle} themeDescription={edition.themeDescription} />
 
-        {termOfDay && <TermOfTheDay entry={termOfDay} />}
-
         <div>
           <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="font-display text-lg text-[var(--text-primary)]">
@@ -92,10 +90,15 @@ export default async function Home() {
           <Top10List stories={homeStories} readSlugs={readSlugs} />
         </div>
 
-        {homeStories.length > 0 && (
+        {(termOfDay || homeStories.length > 0) && (
           <div className="space-y-3">
-            <ContinueLearning storiesBySlug={storiesBySlug} />
-            <ListenNow slug={homeStories[0].slug} />
+            {termOfDay && <TermOfTheDay entry={termOfDay} />}
+            {homeStories.length > 0 && (
+              <>
+                <ContinueLearning storiesBySlug={storiesBySlug} />
+                <ListenNow slug={homeStories[0].slug} />
+              </>
+            )}
           </div>
         )}
       </main>
