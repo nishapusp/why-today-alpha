@@ -792,30 +792,34 @@ function loadExistingEdition() {
   return null;
 }
 
-function writeAndPush(edition, batchLabel, isCI) {
+function writeAndCommit(edition, batchLabel, isCI) {
   fs.writeFileSync(EDITION_PATH, JSON.stringify(edition, null, 2));
   console.log(`Written to ${EDITION_PATH} (${edition.stories.length}/${TOTAL_STORIES} stories).`);
   const cwd = path.join(__dirname, "..");
   try {
     execSync("git add data/edition.json data/photo-history.json data/glossary.json", { stdio: "inherit", cwd });
     execSync(`git commit -m "Daily edition ${edition.date}: ${batchLabel} (${edition.stories.length}/${TOTAL_STORIES} stories)"`, { stdio: "inherit", cwd });
+    return true;
   } catch (err) {
     console.error("Git commit failed — file is written locally; commit and push manually.");
     console.error(err.message);
     if (isCI) process.exit(1);
     return false;
   }
-  // Push with rebase-and-retry: the remote routinely moves under us (code
-  // pushes, overlapping cron runs, roll-date job), and a plain `git push`
-  // dying on non-fast-forward used to lose the whole batch. `-X theirs`
-  // during rebase keeps OUR replayed data-file commit if the same files
-  // changed upstream — our version is strictly newer (it contains the
-  // upstream stories plus this batch, since we re-read edition.json at
-  // startup and only append).
+}
+
+// Pushed ONCE per run (not once per batch — 2026-07-14 decision to cut
+// Netlify deploy/credit spend, since each push triggers a full deploy: 15
+// credits on Netlify's credit-based plans, up to 5x a run before this).
+// Each batch above still commits locally as it completes, so mid-run
+// resilience is unchanged — if a later batch fails, everything up to that
+// point is already committed and this still pushes it. What changes is
+// WHEN it reaches Netlify: once, after the run's last batch, not per batch.
+function pushPending(cwd) {
   for (let tryNum = 1; tryNum <= 3; tryNum++) {
     try {
       execSync("git push", { stdio: "inherit", cwd });
-      console.log("Pushed — Netlify will redeploy with the stories so far.");
+      console.log("Pushed — Netlify will redeploy with all of this run's stories at once.");
       return true;
     } catch {
       console.warn(`git push rejected (attempt ${tryNum}/3) — rebasing on latest main and retrying...`);
@@ -827,9 +831,7 @@ function writeAndPush(edition, batchLabel, isCI) {
       }
     }
   }
-  // Batch stories stay in this process's memory and edition.json on disk —
-  // do NOT exit: later batches will retry the push with this batch included.
-  console.error("Git push failed after 3 rebase attempts — continuing; a later batch's push (or the next run) will carry these stories.");
+  console.error("Git push failed after 3 rebase attempts — commits are staged locally; the next run's push (or a manual `git push`) will carry them.");
   return false;
 }
 
@@ -872,12 +874,12 @@ async function main() {
   }
 
   const numBatches = Math.ceil(remaining / BATCH_SIZE);
-  console.log(`Generating ${remaining} more stories in ${numBatches} batch(es) of up to ${BATCH_SIZE}, publishing after EACH batch.`);
+  console.log(`Generating ${remaining} more stories in ${numBatches} batch(es) of up to ${BATCH_SIZE}, committing after each batch and pushing once at the end.`);
 
   // Confirm once up front (locally). Every clean batch after this pushes
   // automatically — no per-batch prompts.
   if (!isCI) {
-    const proceed = await ask("\nEach successful batch will be committed and pushed immediately. Continue? (y/n): ");
+    const proceed = await ask("\nEach successful batch will be committed locally; everything pushes together once the run finishes. Continue? (y/n): ");
     if (proceed.trim().toLowerCase() !== "y") {
       console.log("Aborted. Nothing changed.");
       process.exit(0);
@@ -1099,7 +1101,7 @@ async function main() {
     console.log(`Batch ${b + 1} stories:`);
     batchStories.forEach((s) => console.log(`  - [${s.category || "?"}] ${s.headline || "(no headline)"}`));
 
-    writeAndPush(edition, `batch ${b + 1}`, isCI);
+    writeAndCommit(edition, `batch ${b + 1}`, isCI);
     publishedBatches++;
 
     // Space out requests to stay under Gemini's free-tier per-minute cap
@@ -1110,6 +1112,15 @@ async function main() {
       console.log(`Waiting ${Math.round(spacingMs / 1000)}s before the next batch (rate-limit spacing)...`);
       await sleep(spacingMs);
     }
+  }
+
+  // --- Single push for the whole run ---------------------------------------
+  // Every batch above committed locally; nothing has reached Netlify yet.
+  // This covers both a normal finish and an early `break` (e.g. quota
+  // exhaustion) — both fall through to here, and whatever got committed
+  // so far still goes out in one deploy.
+  if (publishedBatches > 0) {
+    pushPending(path.join(__dirname, ".."));
   }
 
   // --- Summary -------------------------------------------------------------
@@ -1146,6 +1157,11 @@ main().catch((err) => {
     console.error("(3) trying a different network if you're on a work/office connection,");
     console.error("(4) testing https://generativelanguage.googleapis.com directly in a browser.");
   }
-  console.error("\nAny batches that already published are still live — re-running will resume from there.");
+  console.error("\nAny batches that already published are still committed locally — attempting to push them now...");
+  try {
+    pushPending(path.join(__dirname, ".."));
+  } catch (pushErr) {
+    console.error("Push-on-crash also failed:", pushErr.message, "— commits remain local; the next run's push will carry them.");
+  }
   process.exit(1);
 });

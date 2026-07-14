@@ -68,6 +68,7 @@ jobs:
           # errors come back on a NORMAL run (not every batch instantly
           # failing), drop this back to 9 or enable billing.
           STORY_TARGET: "15"
+          BATCH_SIZE: "8"
           # Slightly wider than the default 15s now that we're pushing more
           # batches/day — extra margin against the 5-requests/minute cap.
           BATCH_SPACING_MS: "20000"
