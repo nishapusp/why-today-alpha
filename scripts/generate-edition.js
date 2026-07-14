@@ -40,7 +40,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
-const { fetchStorySources, verifyStoryAgainstSources } = require("./verify-edition.js");
+const { fetchStorySources, verifyStoryAgainstSources, enrichStoryWithSourceFigures } = require("./verify-edition.js");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
@@ -1014,6 +1014,30 @@ async function main() {
         } else {
           console.log(`  PASS  "${shortHeadline}"`);
         }
+
+        // --- Figure enrichment (RSS mode only) -----------------------------
+        // RSS mode has no live search tool, so the story was deliberately
+        // written to avoid inventing figures it couldn't verify at write
+        // time — see the RSS-mode prompt override's "describe qualitatively
+        // instead" instruction. Now that this story's own sources are
+        // fetched in full for the fact-check above, that same text can fill
+        // in real figures the writer had to skip. Only ever uses text
+        // that's already been fetched and verified against — same
+        // discipline as the fact-check itself, just adding instead of
+        // subtracting.
+        if (effectiveMode === "rss") {
+          try {
+            const changes = await enrichStoryWithSourceFigures(story, sources);
+            if (changes && Object.keys(changes).length > 0) {
+              Object.assign(story, changes);
+              console.log(`  ENRICHED  "${shortHeadline}" — added real figures to: ${Object.keys(changes).join(", ")}`);
+            }
+          } catch {
+            // Enrichment is a nice-to-have — never block publishing over it.
+          }
+          await sleep(2000);
+        }
+
         verifiedStories.push(story);
       } catch (err) {
         // Verification itself errored (network hiccup, malformed JSON, etc.)

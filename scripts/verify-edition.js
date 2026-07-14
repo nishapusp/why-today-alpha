@@ -556,9 +556,111 @@ if (require.main === module) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Enrichment: fill real figures into vague sentences, using ONLY the
+// already-fetched source text — never the model's memory.
+//
+// Why this exists: RSS-fallback mode (no live search tool) is deliberately
+// instructed to write around a number it can't verify rather than risk
+// inventing one ("describe qualitatively instead" — see generate-edition.js's
+// RSS-mode override). That's the right call at WRITE time, since the model
+// genuinely has nothing but a short headline/snippet to go on then. But by
+// the time verifyStoryAgainstSources() runs, the story's own cited source
+// articles have already been fetched in full — and that source text often
+// DOES contain the figure the snippet lacked. This pass gives the vague
+// sentence a second chance using that now-available text, with the same
+// "only what's in a fetched document, never invented" discipline that keeps
+// verifyStoryAgainstSources() safe.
+//
+// Runs on already-VERIFIED stories only (call this after a PASS/WARN
+// verdict) — enriching an unverified claim would be adding risk, not
+// removing it.
+const ENRICH_SYSTEM_PROMPT = `You improve financial news story text by replacing vague qualitative language with real, specific figures — but ONLY when that figure is explicitly present in the provided source article text. You are not searching or recalling from memory; the source texts are your only allowed evidence.
+
+You will receive several text fields from one story, plus the full text of its cited source articles. For each field:
+- If it contains a vague/qualitative statement about a number, amount, percentage, or comparison (e.g. "a significant increase", "a large sum", "sharply higher") AND the source texts state the actual figure, rewrite that specific phrase to include the real figure — change as little else as possible, keep the same length and tone.
+- If a field has no such vague statement, or the real figure genuinely isn't in the source texts, leave that field UNCHANGED — do not paraphrase, tighten, or otherwise touch it. Return null for it in the output, not a copy.
+- NEVER introduce a figure that isn't verbatim (or a simple unit conversion of) something stated in the source texts. Fabricating one here is worse than the vagueness this exists to fix.
+
+Respond in JSON with exactly this shape:
+{
+  "summary": "<revised text or null>",
+  "whatHappened": "<revised text or null>",
+  "whyToday": "<revised text or null>",
+  "whyCare": "<revised text or null>",
+  "whatNext": "<revised text or null>",
+  "deepDiveRead": "<revised text or null>"
+}`;
+
+async function enrichStoryWithSourceFigures(story, sources, maxRetries = 2) {
+  if (!sources || sources.length === 0) return null;
+
+  const srcBlock = sources
+    .map((s, i) => `SOURCE ${i + 1} (${s.label} — ${s.url}):\n${s.text}`)
+    .join("\n\n----\n\n");
+  const fields = ["summary", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead"];
+  const fieldBlock = fields.map((f) => `${f}: ${story[f] || ""}`).join("\n\n");
+  const userPrompt = `SOURCE TEXTS:\n\n${srcBlock}\n\n====\n\nSTORY FIELDS:\n\n${fieldBlock}`;
+
+  let attempt = 0;
+  let currentModel = MODEL;
+  const deadModels = new Set();
+  while (attempt <= maxRetries) {
+    try {
+      const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
+        method: "POST",
+        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: ENRICH_SYSTEM_PROMPT }] },
+          contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+          generationConfig: { maxOutputTokens: 4000, responseMimeType: "application/json", temperature: 0 },
+        }),
+        signal: AbortSignal.timeout(90000),
+      });
+      if (!res.ok) {
+        const bodyText = await res.text();
+        const err = new Error(`Gemini API error (${res.status}) on ${currentModel}: ${bodyText.slice(0, 300)}`);
+        err.status = res.status;
+        err.body = bodyText;
+        throw err;
+      }
+      const data = await res.json();
+      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      const parsed = JSON.parse(extractJson(text));
+      const changes = {};
+      for (const f of fields) {
+        if (typeof parsed[f] === "string" && parsed[f].trim() && parsed[f].trim() !== (story[f] || "").trim()) {
+          changes[f] = parsed[f].trim();
+        }
+      }
+      return changes;
+    } catch (err) {
+      if (err.status === 404) {
+        deadModels.add(currentModel);
+        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        if (deadModels.has(other)) return null; // enrichment is a nice-to-have — never block publishing over it
+        currentModel = other;
+        continue;
+      }
+      attempt++;
+      if (attempt > maxRetries) return null; // same reasoning — fail open, story publishes as-is
+      if (err.status === 429) {
+        const waitMs = extractRetryDelayMs(err.body, 15000);
+        await sleep(waitMs);
+      } else if (err.status === 503 || err.status === 500) {
+        await sleep(5000);
+      } else {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
 module.exports = {
   fetchStorySources,
   verifyStoryAgainstSources,
+  enrichStoryWithSourceFigures,
   decodeGoogleNewsUrl,
   buildClaimDigest,
 };
