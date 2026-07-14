@@ -43,6 +43,25 @@ function catStyle(category) {
   return CATEGORY_STYLE[category] || CATEGORY_STYLE.Policy;
 }
 
+// Mirrors lib/termOfDay.ts's algorithm EXACTLY (same hash, same IST date
+// string) so the share card and the website widget always show the same
+// term on a given day — they must never disagree.
+function getTermOfDay() {
+  let glossary;
+  try {
+    glossary = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "glossary.json"), "utf8"));
+  } catch {
+    return null;
+  }
+  if (!Array.isArray(glossary) || glossary.length === 0) return null;
+  const todayISO = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  let hash = 0;
+  for (let i = 0; i < todayISO.length; i++) {
+    hash = (hash * 31 + todayISO.charCodeAt(i)) >>> 0;
+  }
+  return glossary[hash % glossary.length];
+}
+
 function formatDate(iso) {
   const d = new Date(iso);
   if (isNaN(d)) return "";
@@ -195,7 +214,7 @@ function headerRow(story, cat, dateLabel) {
   );
 }
 
-function buildCardTree(story, editionDate, photoUri, qrUri) {
+function buildCardTree(story, editionDate, photoUri, termOfDay) {
   const cat = catStyle(story.category);
   const keyNum = pickKeyNumber(story);
   const dateLabel = formatDate(story.generatedAt || editionDate);
@@ -262,7 +281,25 @@ function buildCardTree(story, editionDate, photoUri, qrUri) {
     }),
 
     // ---- CONTENT (stacked over the backgrounds) ----
-    headerRow(story, cat, dateLabel),
+    // Header: brand name + date. 2026-07-14 redesign moved branding off a
+    // bottom strip/QR footer (illegible at WhatsApp thumbnail size) onto
+    // the header + bottom corners instead — see bottom corners below for
+    // the other half. Category badge was dropped from this row as part of
+    // that redesign; flagged as a known trade-off, easy to reinstate if
+    // it's missed.
+    el(
+      "div",
+      { style: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "40px 64px 0 64px" } },
+      el("span", {
+        style: { fontSize: "34px", fontWeight: 800, color: "#FFFFFF", display: "flex", textShadow: "0 1px 6px rgba(0,0,0,0.5)" },
+      }, "Why Today"),
+      el("span", {
+        style: {
+          fontSize: "28px", color: "#FFFFFF", fontWeight: 600, display: "flex",
+          backgroundColor: "rgba(10,14,24,0.55)", borderRadius: "999px", padding: "12px 24px",
+        },
+      }, dateLabel)
+    ),
 
     // spacer pushing the headline down onto the photo/panel seam
     el("div", { style: { display: "flex", flexGrow: 1 } }),
@@ -280,7 +317,7 @@ function buildCardTree(story, editionDate, photoUri, qrUri) {
       story.summary
         ? el("span", {
             style: {
-              marginTop: "30px", fontSize: "33px", lineHeight: 1.45,
+              marginTop: "24px", fontSize: "31px", lineHeight: 1.42,
               color: "rgba(255,255,255,0.78)", display: "block", lineClamp: 3,
             },
           }, String(story.summary).trim())
@@ -293,18 +330,18 @@ function buildCardTree(story, editionDate, photoUri, qrUri) {
           {
             style: {
               display: "flex", flexDirection: "column",
-              margin: "40px 64px 0 64px", padding: "34px 44px",
-              borderRadius: "28px",
+              margin: "30px 64px 0 64px", padding: "28px 40px",
+              borderRadius: "26px",
               backgroundColor: "rgba(255,255,255,0.06)",
-              borderLeft: `12px solid ${cat.accent}`,
+              borderLeft: `10px solid ${cat.accent}`,
             },
           },
           el("span", {
-            style: { fontSize: "72px", fontWeight: 800, color: cat.accent, display: "flex" },
+            style: { fontSize: "58px", fontWeight: 800, color: cat.accent, display: "flex" },
           }, String(keyNum.value)),
           el("span", {
             style: {
-              marginTop: "8px", fontSize: "31px",
+              marginTop: "6px", fontSize: "25px",
               color: "rgba(255,255,255,0.8)", display: "block", lineClamp: 2,
             },
           },
@@ -316,8 +353,41 @@ function buildCardTree(story, editionDate, photoUri, qrUri) {
         )
       : null,
 
-    // Footer
-    footerRow(cat, qrUri)
+    // Term of the Day — plain white text in the same flow as the
+    // headline/summary above, no border/box (2026-07-14 decision: it
+    // should read as part of the card, not a bolted-on UI widget). Same
+    // term for every story on a given day.
+    termOfDay
+      ? el(
+          "div",
+          { style: { display: "flex", flexDirection: "column", margin: "30px 64px 0 64px" } },
+          el("span", {
+            style: { fontSize: "24px", fontWeight: 600, color: "rgba(255,255,255,0.55)", letterSpacing: "2px", display: "flex" },
+          }, "\ud83d\udcd6  TERM OF THE DAY"),
+          el("span", {
+            style: { marginTop: "10px", fontSize: "38px", fontWeight: 800, color: "#FFFFFF", display: "flex" },
+          }, termOfDay.term),
+          el("span", {
+            style: { marginTop: "8px", fontSize: "26px", lineHeight: 1.4, color: "rgba(255,255,255,0.8)", display: "flex" },
+          }, termOfDay.definition)
+        )
+      : null,
+
+    el("div", { style: { display: "flex", flexGrow: 1 } }),
+
+    // Bottom corners: whytoday.in on both sides, no strip/box/QR — sharp,
+    // high-contrast, reads as a signature. Left in white, right in the
+    // category accent color.
+    el(
+      "div",
+      { style: { display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 56px 48px 56px" } },
+      el("span", {
+        style: { fontSize: "30px", fontWeight: 800, color: "#FFFFFF", letterSpacing: "0.5px", display: "flex", textShadow: "0 1px 4px rgba(0,0,0,0.6)" },
+      }, "whytoday.in"),
+      el("span", {
+        style: { fontSize: "30px", fontWeight: 800, color: cat.accent, letterSpacing: "0.5px", display: "flex", textShadow: "0 1px 4px rgba(0,0,0,0.6)" },
+      }, "whytoday.in")
+    )
   );
 }
 
@@ -526,6 +596,12 @@ async function main() {
   let ok = 0, tmOk = 0, withPhoto = 0;
   const manifest = {};
   const tmManifest = {};
+  const termOfDay = getTermOfDay();
+  if (termOfDay) {
+    console.log(`Term of the Day for cards: "${termOfDay.term}"`);
+  } else {
+    console.log("No Term of the Day available (empty/missing glossary) — cards render without it.");
+  }
 
   const satoriOptions = {
     width: W, height: H, fonts,
@@ -556,7 +632,7 @@ async function main() {
       const photoUri = await fetchImageDataUri(story.headlineImage && story.headlineImage.url);
       var qrUri = await makeQrDataUri(`https://${SITE_URL}/story/${story.slug}`);
       if (photoUri) withPhoto++;
-      await renderPng(buildCardTree(story, edition.date, photoUri, qrUri), `${story.slug}.png`);
+      await renderPng(buildCardTree(story, edition.date, photoUri, termOfDay), `${story.slug}.png`);
       manifest[story.slug] = `/cards/${story.slug}.png`;
       ok++;
     } catch (err) {
