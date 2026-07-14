@@ -92,7 +92,16 @@ function pickKeyNumber(story) {
   const nums = Array.isArray(story.keyNumbers) ? story.keyNumbers : [];
   const usable = nums.filter((n) => n && n.value && n.label);
   if (usable.length === 0) return null;
-  return usable.find((n) => n.previousValue) || usable[0];
+  // Prefer a number showing a REAL change (previousValue differs from
+  // value) over one where they're identical — e.g. "150% -> 150%,
+  // expected to fall gradually" has no actual reported movement yet,
+  // while "£38 billion -> £100 billion" is a genuine delta and makes a
+  // much stronger card stat. Only fall back to "any previousValue" (then
+  // to the first usable number) if nothing shows real movement.
+  const withRealChange = usable.find(
+    (n) => n.previousValue && String(n.previousValue).trim() !== String(n.value).trim()
+  );
+  return withRealChange || usable.find((n) => n.previousValue) || usable[0];
 }
 
 function el(type, props = {}, ...children) {
