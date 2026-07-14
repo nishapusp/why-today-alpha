@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useUser, SignOutButton } from "@clerk/nextjs";
 
@@ -30,7 +31,64 @@ function FeedbackIcon() {
 
 export default function HamburgerMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { isSignedIn } = useUser();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const drawer = open && (
+    <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
+      <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+      <div className="absolute top-0 left-0 bottom-0 w-[78%] max-w-xs bg-white shadow-xl flex flex-col">
+        <div
+          className="flex items-center justify-between px-4 py-3.5 border-b"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <span className="font-display font-semibold text-[16px]" style={{ color: "var(--navy)" }}>
+            Menu
+          </span>
+          <button aria-label="Close menu" onClick={() => setOpen(false)} className="w-8 h-8 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 5l14 14M19 5L5 19" stroke="var(--text-secondary)" strokeWidth={1.8} strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <nav className="flex-1 px-2 py-2">
+          <Link
+            href="/progress"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
+            style={{ color: "var(--text-primary)" }}
+          >
+            <ProgressIcon />
+            Progress
+          </Link>
+          <Link
+            href="/feedback"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
+            style={{ color: "var(--text-primary)" }}
+          >
+            <FeedbackIcon />
+            Send feedback
+          </Link>
+        </nav>
+
+        {isSignedIn && (
+          <div className="px-4 py-4 border-t" style={{ borderColor: "var(--border)" }}>
+            <SignOutButton>
+              <button className="text-[13.5px] font-medium" style={{ color: "var(--text-secondary)" }}>
+                Sign out
+              </button>
+            </SignOutButton>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -44,57 +102,7 @@ export default function HamburgerMenu() {
         </svg>
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute top-0 left-0 bottom-0 w-[78%] max-w-xs bg-white shadow-xl flex flex-col">
-            <div
-              className="flex items-center justify-between px-4 py-3.5 border-b"
-              style={{ borderColor: "var(--border)" }}
-            >
-              <span className="font-display font-semibold text-[16px]" style={{ color: "var(--navy)" }}>
-                Menu
-              </span>
-              <button aria-label="Close menu" onClick={() => setOpen(false)} className="w-8 h-8 flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 5l14 14M19 5L5 19" stroke="var(--text-secondary)" strokeWidth={1.8} strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="flex-1 px-2 py-2">
-              <Link
-                href="/progress"
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
-                style={{ color: "var(--text-primary)" }}
-              >
-                <ProgressIcon />
-                Progress
-              </Link>
-              <Link
-                href="/feedback"
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
-                style={{ color: "var(--text-primary)" }}
-              >
-                <FeedbackIcon />
-                Send feedback
-              </Link>
-            </nav>
-
-            {isSignedIn && (
-              <div className="px-4 py-4 border-t" style={{ borderColor: "var(--border)" }}>
-                <SignOutButton>
-                  <button className="text-[13.5px] font-medium" style={{ color: "var(--text-secondary)" }}>
-                    Sign out
-                  </button>
-                </SignOutButton>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {mounted && drawer ? createPortal(drawer, document.body) : null}
     </>
   );
 }
