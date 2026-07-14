@@ -9,6 +9,7 @@ import StoryFeedback from "@/components/StoryFeedback";
 import StoryChart from "@/components/StoryChart";
 import TimeMachine from "@/components/TimeMachine";
 import BeforeYouRead from "@/components/BeforeYouRead";
+import KnowledgeChain from "@/components/KnowledgeChain";
 import SwipeNavigator from "@/components/SwipeNavigator";
 import SignInPrompt from "@/components/SignInPrompt";
 import type { TermDefinition } from "@/lib/glossaryLookup";
@@ -108,6 +109,19 @@ export default function StoryDetailView({
         <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-6 text-justify">
           {story.summary}
         </p>
+
+        {story.knowledgeChain?.length > 0 && (
+          <div className="mb-6">
+            <KnowledgeChain
+              chain={story.knowledgeChain}
+              variant="full"
+              accent={cat.accent}
+              tint={cat.tint}
+              deep={cat.deep}
+              story={story}
+            />
+          </div>
+        )}
 
         <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
 
