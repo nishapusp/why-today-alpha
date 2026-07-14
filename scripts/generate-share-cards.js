@@ -43,23 +43,20 @@ function catStyle(category) {
   return CATEGORY_STYLE[category] || CATEGORY_STYLE.Policy;
 }
 
-// Mirrors lib/termOfDay.ts's algorithm EXACTLY (same hash, same IST date
-// string) so the share card and the website widget always show the same
-// term on a given day — they must never disagree.
-function getTermOfDay() {
-  let glossary;
-  try {
-    glossary = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "glossary.json"), "utf8"));
-  } catch {
-    return null;
+// A story's OWN term, not a global one — the card should never show a
+// term unrelated to the story it's attached to (e.g. a trade-compliance
+// term on a vaccine-trial story). Matches the story's knowledgeChain
+// (3-6 terms specific to that story) against the cumulative glossary;
+// returns null if none of them are in the glossary yet, rather than
+// falling back to something irrelevant. This intentionally means not
+// every card gets a Term of the Day section — a missing one is honest,
+// a mismatched one isn't.
+function getStoryTerm(story, glossaryMap) {
+  for (const label of story.knowledgeChain || []) {
+    const match = glossaryMap.get(String(label).toLowerCase().trim());
+    if (match) return match;
   }
-  if (!Array.isArray(glossary) || glossary.length === 0) return null;
-  const todayISO = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
-  let hash = 0;
-  for (let i = 0; i < todayISO.length; i++) {
-    hash = (hash * 31 + todayISO.charCodeAt(i)) >>> 0;
-  }
-  return glossary[hash % glossary.length];
+  return null;
 }
 
 function formatDate(iso) {
@@ -214,7 +211,7 @@ function headerRow(story, cat, dateLabel) {
   );
 }
 
-function buildCardTree(story, editionDate, photoUri, termOfDay) {
+function buildCardTree(story, editionDate, photoUri, storyTerm) {
   const cat = catStyle(story.category);
   const keyNum = pickKeyNumber(story);
   const dateLabel = formatDate(story.generatedAt || editionDate);
@@ -357,7 +354,7 @@ function buildCardTree(story, editionDate, photoUri, termOfDay) {
     // headline/summary above, no border/box (2026-07-14 decision: it
     // should read as part of the card, not a bolted-on UI widget). Same
     // term for every story on a given day.
-    termOfDay
+    storyTerm
       ? el(
           "div",
           { style: { display: "flex", flexDirection: "column", margin: "30px 64px 0 64px" } },
@@ -366,10 +363,10 @@ function buildCardTree(story, editionDate, photoUri, termOfDay) {
           }, "\ud83d\udcd6  TERM OF THE DAY"),
           el("span", {
             style: { marginTop: "10px", fontSize: "38px", fontWeight: 800, color: "#FFFFFF", display: "flex" },
-          }, termOfDay.term),
+          }, storyTerm.term),
           el("span", {
             style: { marginTop: "8px", fontSize: "26px", lineHeight: 1.4, color: "rgba(255,255,255,0.8)", display: "flex" },
-          }, termOfDay.definition)
+          }, storyTerm.definition)
         )
       : null,
 
@@ -593,14 +590,23 @@ async function main() {
   fs.rmSync(OUT_DIR, { recursive: true, force: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  let ok = 0, tmOk = 0, withPhoto = 0;
+  let ok = 0, tmOk = 0, withPhoto = 0, termMatched = 0;
   const manifest = {};
   const tmManifest = {};
-  const termOfDay = getTermOfDay();
-  if (termOfDay) {
-    console.log(`Term of the Day for cards: "${termOfDay.term}"`);
-  } else {
-    console.log("No Term of the Day available (empty/missing glossary) — cards render without it.");
+
+  // Per-story term matching (2026-07-14 fix — a single shared daily term
+  // was showing up on stories it had nothing to do with, e.g.
+  // "Self-Certification" on a vaccine-trial story). Glossary is loaded
+  // once here; getStoryTerm() matches each story's OWN knowledgeChain
+  // against it individually.
+  let glossaryMap = new Map();
+  try {
+    const glossary = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "glossary.json"), "utf8"));
+    if (Array.isArray(glossary)) {
+      glossaryMap = new Map(glossary.map((g) => [String(g.term).toLowerCase().trim(), g]));
+    }
+  } catch {
+    // No glossary yet — cards just render without a Term of the Day section.
   }
 
   const satoriOptions = {
@@ -632,7 +638,9 @@ async function main() {
       const photoUri = await fetchImageDataUri(story.headlineImage && story.headlineImage.url);
       var qrUri = await makeQrDataUri(`https://${SITE_URL}/story/${story.slug}`);
       if (photoUri) withPhoto++;
-      await renderPng(buildCardTree(story, edition.date, photoUri, termOfDay), `${story.slug}.png`);
+      const storyTerm = getStoryTerm(story, glossaryMap);
+      if (storyTerm) termMatched++;
+      await renderPng(buildCardTree(story, edition.date, photoUri, storyTerm), `${story.slug}.png`);
       manifest[story.slug] = `/cards/${story.slug}.png`;
       ok++;
     } catch (err) {
@@ -655,7 +663,7 @@ async function main() {
     path.join(OUT_DIR, "manifest.json"),
     JSON.stringify({ date: edition.date, cards: manifest, timeMachineCards: tmManifest }, null, 2)
   );
-  console.log(`Share cards: ${ok}/${stories.length} rendered (${withPhoto} with photos), ${tmOk} Time Machine cards, to public/cards/.`);
+  console.log(`Share cards: ${ok}/${stories.length} rendered (${withPhoto} with photos, ${termMatched} with a matched Term of the Day), ${tmOk} Time Machine cards, to public/cards/.`);
 }
 
 main().catch((err) => {
