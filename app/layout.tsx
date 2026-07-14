@@ -3,6 +3,7 @@ import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import Script from "next/script";
 import Link from "next/link";
+import BottomNav from "@/components/BottomNav";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -27,6 +28,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   // maximumScale intentionally NOT set to 1 — pinch-zoom stays available for accessibility
+  themeColor: "#0b1a33",
 };
 
 export const metadata: Metadata = {
@@ -36,6 +38,20 @@ export const metadata: Metadata = {
   title: "Why Today — Understand today's world, not just today's news",
   description:
     "A modern knowledge platform that helps readers understand the context behind today's headlines through curated data, storytelling, and AI-powered explanations.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Why Today",
+  },
+  icons: {
+    icon: [
+      { url: "/icons/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
@@ -67,7 +83,7 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        <body className="min-h-full flex flex-col overflow-x-hidden">
+        <body className="min-h-full flex flex-col overflow-x-hidden pb-16">
           {/* Sticky so the wordmark = one-tap Home from any depth of any page */}
           <header
             className="sticky top-0 z-50 backdrop-blur-md border-b"
@@ -96,6 +112,16 @@ export default function RootLayout({
           </div>
           </header>
           {children}
+          <BottomNav />
+          <Script id="sw-register" strategy="afterInteractive">
+            {`
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                  navigator.serviceWorker.register('/sw.js').catch(function () {});
+                });
+              }
+            `}
+          </Script>
         </body>
       </html>
     </ClerkProvider>

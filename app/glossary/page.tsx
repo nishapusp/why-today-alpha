@@ -75,7 +75,8 @@ export default function GlossaryPage() {
               {entries.map((entry) => (
                 <div
                   key={entry.term}
-                  className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4"
+                  id={encodeURIComponent(entry.term)}
+                  className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 scroll-mt-20"
                 >
                   <dt className="font-semibold text-[15px] text-[var(--text-primary)] mb-1">
                     {entry.term}
