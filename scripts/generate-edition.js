@@ -217,18 +217,32 @@ const DIRECT_FEEDS = [
 // useless against models that reword ("Keeps Interest Rates Steady" vs
 // "Keeps Rates Steady"), which is exactly how batch 4 duplicated batch 2.
 const STOPWORDS = new Set("the a an of in on to for with and or as at by from into over after amid amidst its their this that is are was were will be has have new says said".split(" "));
+// Words so common across finance headlines that they dilute the overlap
+// ratio without helping distinguish one event from another — "RBI" and
+// "India" appear in a third of any day's headlines, so two UNRELATED
+// stories sharing them looked more similar than two stories about the
+// SAME event phrased in different styles ("Why did inflation break its
+// streak?" vs "Inflation Hits 4.38%, Breaching RBI Target" — confirmed
+// via today's real duplicates, which shared almost no tokens once the
+// house-style "Why..." headline was compared to a wire-style rewrite of
+// the identical release).
+const GENERIC_FINANCE = new Set([
+  "india", "indian", "rbi", "bank", "banks", "banking", "market", "markets",
+  "government", "why", "sudden", "suddenly", "did", "just", "new", "major",
+  "massive", "amid", "amidst",
+]);
 function significantTokens(headline) {
   return new Set(
     (headline || "")
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, " ")
       .split(/\s+/)
-      .filter((w) => w.length > 2 && !STOPWORDS.has(w))
+      .filter((w) => w.length > 2 && !STOPWORDS.has(w) && !GENERIC_FINANCE.has(w))
       // Crude stemming so "banks/bank", "signalling/signal", "launched/launch"
       // count as the same token — batch runs kept slipping dupes past exact
       // token matching purely on inflection.
       .map((w) => w.replace(/(ing|ed|es|s)$/, ""))
-      .filter((w) => w.length > 2)
+      .filter((w) => w.length > 2 && !GENERIC_FINANCE.has(w))
   );
 }
 function isSameEvent(headlineA, headlineB) {
@@ -238,7 +252,16 @@ function isSameEvent(headlineA, headlineB) {
   let shared = 0;
   for (const t of a) if (b.has(t)) shared++;
   const overlap = shared / Math.min(a.size, b.size);
-  return overlap >= 0.5;
+  // Lowered from 0.5 — tested against 2026-07-14's real duplicate cluster
+  // (inflation story published 3x, Hormuz story published 2x under
+  // different headlines) plus known-different headline pairs from the
+  // same edition: 0.35 catches more real duplicates with zero false
+  // positives in that test set. NOT a complete fix — keyword overlap has
+  // a real ceiling for headlines this differently styled (house "Why..."
+  // framing vs a wire-style rewrite can share almost no words even when
+  // reporting the identical release). See the batch-merge TODO below for
+  // the actual fix this points toward: an LLM-judged semantic pass.
+  return overlap >= 0.35;
 }
 
 function decodeXml(s) {
