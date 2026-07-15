@@ -1352,22 +1352,38 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error("\nScript failed:", err.message);
-  if (err.cause) {
-    console.error("Underlying cause:", err.cause.message || err.cause);
-  }
-  if (err.message === "fetch failed") {
-    console.error("\nThis is a network-level failure — the request never reached Google's servers.");
-    console.error("Try: (1) running again, (2) checking your internet connection,");
-    console.error("(3) trying a different network if you're on a work/office connection,");
-    console.error("(4) testing https://generativelanguage.googleapis.com directly in a browser.");
-  }
-  console.error("\nAny batches that already published are still committed locally — attempting to push them now...");
-  try {
-    pushPending(path.join(__dirname, ".."));
-  } catch (pushErr) {
-    console.error("Push-on-crash also failed:", pushErr.message, "— commits remain local; the next run's push will carry them.");
-  }
-  process.exit(1);
-});
+// Guarded so this file can be safely require()'d by other scripts (e.g.
+// generate-quick-reads.js, which reuses fetchRssHeadlines/fetchPexelsImage
+// below rather than duplicating ~150 lines of RSS-fetch/dedup logic —
+// exactly the kind of drift that caused DIRECT_FEEDS to go out of sync
+// between this file and poll-rss.js earlier). Without this guard,
+// require()-ing this file for its exports would trigger the entire
+// edition-generation pipeline, including real Gemini API calls.
+if (require.main === module) {
+  main().catch((err) => {
+    console.error("\nScript failed:", err.message);
+    if (err.cause) {
+      console.error("Underlying cause:", err.cause.message || err.cause);
+    }
+    if (err.message === "fetch failed") {
+      console.error("\nThis is a network-level failure — the request never reached Google's servers.");
+      console.error("Try: (1) running again, (2) checking your internet connection,");
+      console.error("(3) trying a different network if you're on a work/office connection,");
+      console.error("(4) testing https://generativelanguage.googleapis.com directly in a browser.");
+    }
+    console.error("\nAny batches that already published are still committed locally — attempting to push them now...");
+    try {
+      pushPending(path.join(__dirname, ".."));
+    } catch (pushErr) {
+      console.error("Push-on-crash also failed:", pushErr.message, "— commits remain local; the next run's push will carry them.");
+    }
+    process.exit(1);
+  });
+}
+
+module.exports = {
+  fetchRssHeadlines,
+  fetchPexelsImage,
+  CATEGORY_SEARCH_TERMS,
+  isSameEvent,
+};

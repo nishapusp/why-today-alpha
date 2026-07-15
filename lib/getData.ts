@@ -178,3 +178,9 @@ export async function getArchivedStoryBySlug(date: string, slug: string): Promis
   const edition = await getArchivedEdition(date);
   return edition?.stories.find((s) => s.slug === slug);
 }
+
+// Quick Reads / Pulse feed is served by app/api/quick-reads/route.ts,
+// reading from Netlify Blobs — not from a file here, since (per the
+// 2026-07-15 redesign) that content updates independently of deploys and
+// no longer exists as a committed file. The swipe UI fetches that route
+// directly rather than going through getData.ts.
