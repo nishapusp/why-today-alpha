@@ -57,19 +57,61 @@ function quickReadsStore() {
   return getStore({ name: "why-today-quick-reads", siteID, token });
 }
 
-// Lightweight keyword classifier — Quick Reads don't go through the LLM at
-// all, so there's no model to assign a category. This only needs to be
-// good enough to pick a sane Pexels fallback query and a display badge,
-// not to match the flagship pipeline's accuracy.
+// Strict keyword classifier — REDESIGNED 2026-07-15 per explicit scope:
+// "only geopolitical and very big news which can potentially affect
+// economy/finance/banking, global as well as local." The original version
+// had two problems, both found by auditing the first real run: (1) "World"
+// matched on bare "global"/"world"/"us "/"china" with no requirement that
+// the story actually be economically relevant, which is how a Bangkok bar
+// fire and an Argentina-England World Cup match got in; (2) unmatched
+// items fell through to a default "Economy" category rather than being
+// dropped, which is how an Ebola outbreak and a CBSE exam-marking dispute
+// ended up mislabeled as financial content rather than excluded outright.
+// Both fixed here: every category now requires an actual, specific
+// financial/economic/banking signal (no bare "world"/"government"), and
+// there is NO default — an item matching nothing is dropped from the pool
+// in main(), not waved through under a fallback label.
 const CATEGORY_KEYWORDS = {
-  Banking: ["bank", "rbi", "npa", "lending", "deposit", "loan", "credit"],
-  IPO: ["ipo", "listing", "drhp", "public issue", "subscri"],
-  Startups: ["startup", "funding round", "unicorn", "seed round", "venture capital"],
-  AI: ["artificial intelligence", " ai ", "machine learning", "chatbot", "llm"],
-  Corporate: ["quarterly", "results", "earnings", "profit", "revenue", "merger", "acquisition"],
-  Policy: ["government", "parliament", "ministry", "policy", "regulation", "bill "],
-  World: ["global", "world", "us ", "china", "trade war", "sanctions"],
-  Economy: [], // fallback
+  Banking: ["bank", "rbi", "npa", "lending", "deposit", "loan", "credit", "nbfc", "cooperative bank"],
+  IPO: ["ipo", "drhp", "public issue", "gmp", "listing gain", "listing premium", "subscri", "stock market debut"],
+  Startups: ["startup", "funding round", "unicorn", "seed round", "series a", "series b", "venture capital", "venture funding"],
+  AI: ["artificial intelligence funding", "ai startup", "ai investment", "ai regulation", "ai chip", "generative ai", "ai university", "sovereign ai"],
+  Corporate: [
+    "quarterly result", "q1 result", "q2 result", "q3 result", "q4 result", "earnings", "net profit", "revenue",
+    "merger", "acquisition", "shares surge", "shares jump", "shares fall", "stock price",
+    // Capital investment / expansion news — missed "Dalmia Bharat lays
+    // foundation stone for ₹3100 cr second plant" in testing; a large
+    // crore-denominated capex commitment is real corporate/economic news
+    // even without a quarterly-earnings frame.
+    "crore investment", "cr investment", "foundation stone", "capex", "expansion plan", "new plant",
+  ],
+  // Requires an actual economic-policy signal — bare "government" or
+  // "bill" (which also matches e.g. a citizen-services bill) is too loose.
+  Policy: ["monetary policy", "fiscal policy", "union budget", "gst", "tax reform", "trade policy", "rbi policy", "mpc decision", "divestment", "disinvestment", "sebi"],
+  // Geopolitical ONLY when tied to a clear economic/market-impact signal
+  // OR a major conflict/flashpoint region — wars and military escalation
+  // are near-universally market-moving (oil, defense stocks, currency,
+  // trade routes) even when a specific headline doesn't use financial
+  // vocabulary itself. Testing against the real 07-15 run caught this:
+  // a Trump/Iran bombing-threat story was wrongly dropped under the
+  // original narrower list — exactly the "big geopolitical news that can
+  // affect economy" case this whole redesign exists for.
+  World: [
+    "sanctions", "tariff", "trade war", "embargo", "oil price", "opec", "supply chain", "blockade",
+    "central bank", "federal reserve", "interest rate decision", "global recession", "energy crisis",
+    "currency crisis", "shipping route", "strait of hormuz",
+    "iran", "israel", "gaza", "ukraine", "russia", "ceasefire", "military strike", "invasion",
+    "conflict escalation", "diplomatic crisis", "missile strike",
+  ],
+  Economy: [
+    "inflation", "gdp", "trade deficit", "forex", "rupee", "sensex", "nifty", "stock market", "stocks",
+    "economic growth", "recession", "unemployment rate", "fiscal deficit", "current account",
+    "repo rate", "wholesale price", "consumer price",
+    // Stock-movement vocabulary — near-exclusively financial in headline
+    // usage; missed "Glenmark Pharmaceuticals Ltd soars 0.08%" without
+    // these. "buzzing stocks" already covered by "stocks" above.
+    "soars", "surges", "rallies", "plunges", "tumbles", "slips",
+  ],
 };
 
 function guessCategory(text) {
@@ -77,7 +119,7 @@ function guessCategory(text) {
   for (const [cat, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
     if (keywords.some((kw) => lower.includes(kw))) return cat;
   }
-  return "Economy";
+  return null; // no confident match — dropped by the caller, not defaulted
 }
 
 // Google News RSS titles bake the publisher name onto the end (e.g.
@@ -154,16 +196,27 @@ async function main() {
 
   const filtered = pool.filter((item) => !flagshipHeadlines.some((h) => isSameEvent(item.title, h)));
 
+  // Attach category now (not later per-item in the loop) so the
+  // no-confident-match items can be dropped BEFORE the LIMIT cap — a
+  // story that doesn't clearly affect economy/finance/banking shouldn't
+  // occupy one of the 40 slots just because it happened to rank high on
+  // corroboration; dropping it here lets a genuinely relevant item further
+  // down the pool take that slot instead.
+  const categorized = filtered
+    .map((item) => ({ ...item, category: guessCategory(`${item.title} ${item.snippet || ""}`) }))
+    .filter((item) => item.category !== null);
+  console.log(`${filtered.length} events after flagship-dedup -> ${categorized.length} with a confident financial/economic/banking or market-relevant-geopolitical match (dropped ${filtered.length - categorized.length} with no clear relevance).`);
+
   // Rank: multi-outlet corroboration first (the "major" signal), then
   // recency as the tiebreaker within each corroboration tier.
-  filtered.sort((a, b) => {
+  categorized.sort((a, b) => {
     const corrA = (a.sources || [a.source]).length;
     const corrB = (b.sources || [b.source]).length;
     if (corrB !== corrA) return corrB - corrA;
     return b.pubMs - a.pubMs;
   });
 
-  const selected = filtered.slice(0, LIMIT);
+  const selected = categorized.slice(0, LIMIT);
   console.log(`Selected top ${selected.length} (by corroboration, then recency) for image-fetch + publish.`);
 
   const pexelsKey = process.env.PEXELS_API_KEY;
@@ -173,7 +226,7 @@ async function main() {
   const items = [];
   for (const item of selected) {
     const id = slugify(item.title, item.link || item.title);
-    const category = guessCategory(`${item.title} ${item.snippet || ""}`);
+    const category = item.category;
 
     // Skip re-fetching an image for an item we already have from a
     // previous run (same id = same link) — keeps repeat runs cheap on
