@@ -10,12 +10,25 @@ import type { QuickReadsFeed } from "@/lib/types";
  * the runtime context — no explicit credentials needed here, unlike the
  * generator script (which runs in GitHub Actions and does need them).
  *
+ * force-dynamic is required, not optional: this GET handler takes no
+ * params and reads no request-specific data, so Next.js's default
+ * heuristics can try to statically execute it AT BUILD TIME to cache a
+ * response. Netlify Blobs' own docs are explicit that getStore() only
+ * works inside an actual invoked Function/request — calling it during a
+ * build's static-generation pass throws MissingBlobsEnvironmentError,
+ * which would fail the whole Netlify build, not just this route. Every
+ * other API route in this app is POST-only (inherently dynamic, no
+ * static-execution risk) — this is the first GET-only Blobs route, so
+ * this is the first place that risk was actually live.
+ *
  * Cache-Control: short edge cache (2 min) + stale-while-revalidate (5 min)
  * so this doesn't hit Blobs on every single page view — decoupling
  * refresh cadence from deploy credits was the whole point of moving off
  * a committed JSON file, but every read still costs a little compute, so
  * this keeps that cost bounded regardless of traffic.
  */
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const store = getStore("why-today-quick-reads");
