@@ -85,7 +85,7 @@ async function enrichWithSummaries(items) {
     .join("\n");
 
   const prompt = `For each of the ${items.length} Indian financial/economic news items below, write:
-1. "blurb": a genuine 3-4 sentence summary, approximately 50 words (no fewer than 45, no more than 70) — Inshorts-style: crisp, factual, plain English, NOT a repeat or rewording of the headline. Give enough real substance to stand alone as a quick read — who/what/how much/why it matters — not just a single thin restatement. Base it on the headline and existing snippet; if the existing snippet is thin, use your knowledge of the topic and typical context to write a sensible, cautious summary — do not invent specific numbers/figures not implied by the headline or snippet.
+1. "blurb": a genuine 4-6 sentence summary, approximately 85 words (no fewer than 65, no more than 120) — Inshorts-style: crisp, factual, plain English, NOT a repeat or rewording of the headline. Give enough real substance to stand alone as a complete quick read — who/what/how much/why it matters/what happens next — not just a single thin restatement. Base it on the headline and existing snippet; if the existing snippet is thin, use your knowledge of the topic and typical context to write a sensible, cautious summary — do not invent specific numbers/figures not implied by the headline or snippet.
 2. "imageQuery": 2-4 words for a stock-photo search that will find a photo genuinely relevant to the STORY'S SUBJECT (a company, an industry, a place, a financial concept) — never pick words that are literally true of the headline's phrasing but would mislead an image search (e.g. avoid "toll" from "death toll", "baker" from a company named "Baker Hughes", "live" from "Live updates"). When the headline doesn't suggest a clear concrete visual, use a safe generic financial term (e.g. "stock market india", "indian rupee currency", "bank building finance").
 
 Items:
@@ -102,7 +102,7 @@ Return ONLY a JSON object of the exact shape {"items": [...]}, where "items" is 
         headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ role: "user", parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: Math.min(65536, items.length * 220 + 2000), responseMimeType: "application/json" },
+          generationConfig: { maxOutputTokens: Math.min(65536, items.length * 300 + 2000), responseMimeType: "application/json" },
         }),
         signal: AbortSignal.timeout(120000),
       });

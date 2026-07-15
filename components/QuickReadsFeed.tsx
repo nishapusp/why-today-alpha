@@ -147,7 +147,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
           a given headline/snippet actually is (the "goes out of screen"
           fix — clamping, not just resizing, since content length varies
           per story). */}
-      <div className="relative h-[42%] w-full shrink-0 overflow-hidden">
+      <div className="relative h-[36%] w-full shrink-0 overflow-hidden">
         {item.image ? (
           <img
             src={item.image.url}
@@ -213,13 +213,16 @@ function QuickReadCard({ item }: { item: QuickRead }) {
             Rather than rendering nothing in that case (which left a
             blank gap under the headline), fall back to a short
             source+category line so every card always shows *some*
-            description. line-clamp-6 (not 2) is deliberate: the
-            enrichment prompt targets ~50-70 words / 3-4 sentences, and
-            the panel has real room for that — clamping to 2 lines was
-            cutting the blurb short AND leaving the rest of the panel's
-            height empty, which is what caused the "blank space" look. */}
+            description. line-clamp-10 (not 2, and not the earlier
+            interim value of 6) is deliberate: the enrichment prompt now
+            targets ~85 words (up to 120), and the panel — widened to
+            64% of the screen after also shrinking the image to 36% —
+            has real room for that. Clamping too tight was cutting the
+            blurb short AND leaving the panel's remaining height empty,
+            which is what caused the "blank space" look in the first
+            place. */}
         <p
-          className="text-[13.5px] leading-relaxed line-clamp-6 mt-1.5 shrink-0"
+          className="text-[13.5px] leading-relaxed line-clamp-10 mt-1.5 shrink-0"
           style={{ color: "var(--text-secondary)" }}
         >
           {item.snippet || `More on this ${item.category.toLowerCase()} story from ${item.source}.`}
