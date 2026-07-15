@@ -49,14 +49,27 @@ export default async function Home() {
   return (
     <>
       <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
-        <div>
-          <p className="text-[14px] font-medium" style={{ color: "var(--text-secondary)" }}>
+        <div
+          className="relative overflow-hidden rounded-2xl px-5 py-5 -mx-1"
+          style={{ background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%)" }}
+        >
+          {/* Single contained "bold" moment on the page — everything else
+              stays on the light background per the locked design system;
+              this hero banner is the deliberate exception, not a new
+              pattern spreading elsewhere. Subtle gold glow, not a solid
+              color block competing with it. */}
+          <div
+            className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20"
+            style={{ background: "var(--gold)", filter: "blur(30px)" }}
+          />
+          <p className="relative font-display text-[22px] leading-tight text-white">
             {greeting()}
             {userName ? `, ${userName}` : ""}
           </p>
-          <p className="font-mono text-[11px] mt-0.5" style={{ color: "var(--text-secondary)" }}>
-            {dateLabel}
-          </p>
+          <div className="relative flex items-center gap-2 mt-2">
+            <span className="h-px w-5" style={{ background: "var(--gold)" }} />
+            <p className="font-mono text-[11px] tracking-wide text-white/70">{dateLabel}</p>
+          </div>
         </div>
 
         <div>

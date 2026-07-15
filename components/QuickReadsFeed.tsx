@@ -227,7 +227,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
             fewer characters per line, so the same ~85-120 word blurb
             needs MORE lines to display in full at this size, not fewer. */}
         <p
-          className="text-[15.5px] leading-relaxed line-clamp-12 mt-1.5 shrink-0"
+          className="text-[15.5px] leading-relaxed line-clamp-12 mt-1.5 shrink-0 text-justify"
           style={{ color: "var(--text-secondary)" }}
         >
           {item.snippet || `More on this ${item.category.toLowerCase()} story from ${item.source}.`}
