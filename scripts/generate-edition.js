@@ -316,6 +316,11 @@ function decodeXml(s) {
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
     .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, " ")
+    // Numeric character references (e.g. &#8377; or &#x20B9; for ₹) —
+    // the named-entity replacements above don't cover these, and some
+    // feeds use them instead of raw UTF-8 bytes for non-ASCII characters.
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
     .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ").trim();
 }
@@ -338,7 +343,15 @@ async function fetchRssHeadlines() {
     try {
       const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const xml = await res.text();
+      // Force UTF-8 decoding from raw bytes rather than res.text(), which
+      // trusts the response's Content-Type charset — some of these feeds
+      // (confirmed: at least one direct publisher feed, not just Google
+      // News) declare or imply a non-UTF-8 charset while actually serving
+      // UTF-8 bytes, which res.text() then mis-decodes as Latin-1 (the
+      // classic "₹" -> "â‚¹" mojibake pattern). Nearly all RSS in the wild
+      // is genuinely UTF-8 today regardless of what a stale Content-Type
+      // header claims, so forcing it here is the robust fix.
+      const xml = Buffer.from(await res.arrayBuffer()).toString("utf8");
       let count = 0;
       for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
         if (count >= 8) break;

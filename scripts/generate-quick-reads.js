@@ -80,6 +80,20 @@ function guessCategory(text) {
   return "Economy";
 }
 
+// Google News RSS titles bake the publisher name onto the end (e.g.
+// "SBI Funds IPO subscribed 1.25x - India Infoline") — redundant since
+// `source` already carries that, and it looks broken in a headline. Only
+// strips when the suffix matches the item's own `source` field (allowing
+// for minor punctuation like a trailing ".com"), so a genuine title
+// ending in " - Details" or similar (seen on direct-publisher feeds,
+// which don't have this problem) is never touched.
+function stripSourceSuffix(headline, source) {
+  if (!source) return headline;
+  const escaped = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\\\.com$/, "(\\.com)?");
+  const re = new RegExp(`\\s*-\\s*${escaped}\\s*$`, "i");
+  return headline.replace(re, "").trim();
+}
+
 function slugify(title, link) {
   const base = title
     .toLowerCase()
@@ -169,10 +183,19 @@ async function main() {
       image = await fetchPexelsImage({ headline: item.title, category }, pexelsKey);
     }
 
+    const headline = stripSourceSuffix(item.title, item.source);
+    let snippet = stripSourceSuffix(cleanSnippet(item.snippet), item.source);
+    // Google News RSS descriptions are frequently just the title again —
+    // showing that as a "snippet" is redundant, not a real extra line.
+    const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (!snippet || normalize(snippet) === normalize(headline) || normalize(headline).startsWith(normalize(snippet))) {
+      snippet = "";
+    }
+
     items.push({
       id,
-      headline: item.title,
-      snippet: cleanSnippet(item.snippet),
+      headline,
+      snippet,
       category,
       source: item.source || "News",
       corroboratedBy: (item.sources || [item.source]).filter((s, i, arr) => arr.indexOf(s) === i),
