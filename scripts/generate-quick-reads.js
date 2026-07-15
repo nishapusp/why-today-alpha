@@ -91,7 +91,7 @@ async function enrichWithSummaries(items) {
 Items:
 ${numbered}
 
-Return ONLY a JSON array of ${items.length} objects, in the same order as the items above, each with exactly "blurb" and "imageQuery" string fields. No other text, no markdown fences.`;
+Return ONLY a JSON object of the exact shape {"items": [...]}, where "items" is an array of ${items.length} objects in the same order as the items above, each with exactly "blurb" and "imageQuery" string fields. No other text, no markdown fences.`;
 
   const models = [MODEL, FALLBACK_MODEL];
   let lastErr;
@@ -112,9 +112,19 @@ Return ONLY a JSON array of ${items.length} objects, in the same order as the it
       // Same thought-part filter as the flagship pipeline — gemini-3.5-flash
       // can return a "thought": true part alongside the real JSON answer.
       const text = candidate?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
-      const parsed = JSON.parse(extractJson(text));
+      const parsedRaw = JSON.parse(extractJson(text));
+      // extractJson (shared with the flagship pipeline) finds the first
+      // "{" and balance-matches to its "}" — it's built for object-shaped
+      // responses. A bare top-level array's first "{" is actually inside
+      // its first element, so extractJson would silently return just that
+      // one item, not the whole array (confirmed by reproducing this
+      // exact failure against the real function before fixing it) — that
+      // is why the prompt above asks for {"items": [...]} instead of a
+      // bare array. Still handles a bare array leniently here in case a
+      // model ignores the wrapping instruction anyway.
+      const parsed = Array.isArray(parsedRaw) ? parsedRaw : parsedRaw?.items;
       if (!Array.isArray(parsed) || parsed.length !== items.length) {
-        throw new Error(`Expected an array of ${items.length}, got ${Array.isArray(parsed) ? parsed.length : typeof parsed}`);
+        throw new Error(`Expected ${items.length} items, got ${Array.isArray(parsed) ? parsed.length : typeof parsed}`);
       }
       return parsed;
     } catch (e) {
