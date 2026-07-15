@@ -114,8 +114,25 @@ function QuickReadCard({ item }: { item: QuickRead }) {
   const style = getCategoryStyle(item.category);
   const corroborated = item.corroboratedBy.length >= 2;
 
+  // Whole card opens the source link now (matches the flagship
+  // StoryCard's existing whole-card-tappable pattern, per explicit
+  // request — was previously only the small "Read full story" button).
+  // The button below stops propagation so tapping it directly doesn't
+  // also fire this handler and open a second tab.
+  const open = () => {
+    if (item.link) window.open(item.link, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <section className="h-screen w-full snap-start relative flex flex-col overflow-hidden bg-white">
+    <section
+      className="h-screen w-full snap-start relative flex flex-col overflow-hidden bg-white cursor-pointer"
+      onClick={open}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") open();
+      }}
+    >
       {/* Top: image (or a category-tinted gradient + icon fallback when
           no image was fetchable — never a blank state). Reduced from the
           first version's 52% to 42% — the panel below needed more room
@@ -205,6 +222,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="shrink-0 inline-flex items-center gap-1 text-[12.5px] font-semibold px-4 py-2 rounded-full"
               style={{ background: "var(--gold)", color: "white" }}
             >

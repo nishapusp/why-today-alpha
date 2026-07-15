@@ -588,8 +588,12 @@ async function searchPexels(query, apiKey) {
 
 async function fetchPexelsImage(story, apiKey) {
   try {
-    // 1. Story-specific search first, category fallback second.
-    const queries = [headlineToQuery(story), CATEGORY_SEARCH_TERMS[story.category] || "business finance india"]
+    // 1. A pre-computed query takes priority when supplied (e.g. Quick
+    //    Reads' enrichWithSummaries asks the model for a query it already
+    //    knows avoids literal-but-misleading terms) — falls through to
+    //    headline-keyword-extraction, then the category default, exactly
+    //    as before when no override is given.
+    const queries = [story.imageQueryOverride, headlineToQuery(story), CATEGORY_SEARCH_TERMS[story.category] || "business finance india"]
       .filter(Boolean);
     let candidates = [];
     for (const q of queries) {
@@ -1414,4 +1418,9 @@ module.exports = {
   fetchPexelsImage,
   CATEGORY_SEARCH_TERMS,
   isSameEvent,
+  extractJson,
+  GEMINI_API_BASE,
+  MODEL,
+  FALLBACK_MODEL,
+  API_KEY,
 };

@@ -7,16 +7,22 @@ on:
   # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
   workflow_dispatch:
 
-  # Unlike generate-edition.yml, this does NOT touch Gemini quota (no LLM
-  # call at all — see scripts/generate-quick-reads.js) and does NOT touch
-  # Netlify deploy credits (writes to Blobs, not a committed file — see
-  # the same file's header comment for the full 2026-07-15 redesign
-  # rationale). So it can run much more often than the flagship pipeline's
-  # 2x/day without competing for either scarce budget. Every 20 minutes
-  # is a starting point — tune QUICK_READS the same way BATCH_SIZE etc.
-  # were tuned for the flagship pipeline, by watching real usage.
+  # UPDATED 2026-07-15 (second pass): this run now DOES touch Gemini
+  # quota — enrichWithSummaries() in generate-quick-reads.js adds one
+  # batched, ungrounded LLM call per run to write real Inshorts-style
+  # blurbs and smarter image-search queries (the original zero-LLM
+  # design was too thin/duplicate-of-headline too often in practice).
+  # Still doesn't touch Netlify deploy credits (writes to Blobs, not a
+  # committed file). Reduced from every 20 min to every 60 min
+  # specifically to bound this new quota exposure to something modest
+  # and predictable (24 calls/day) rather than unbounded (72/day) —
+  # the enrichment call is ungrounded so it's cheap per-call, but it's
+  # still a new draw on the same free-tier daily REQUEST budget the
+  # flagship pipeline has been fighting all session. Revisit this
+  # cadence if actual daily quota usage (watch the flagship pipeline's
+  # own logs for 429s) suggests it needs to come down further.
   schedule:
-    - cron: "*/20 * * * *"
+    - cron: "0 * * * *"
 
 jobs:
   generate:
@@ -35,6 +41,7 @@ jobs:
 
       - name: Generate Quick Reads
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

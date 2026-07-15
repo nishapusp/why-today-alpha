@@ -1,28 +1,44 @@
 #!/usr/bin/env node
 /**
  * Writes to Netlify Blobs (store "why-today-quick-reads", key "feed") —
- * the "Pulse" swipe feed: a much larger pool of near-1-minute-read cards,
- * distinct from the 10-12 flagship deep-dive stories in data/edition.json.
+ * the Quick Reads swipe feed: a much larger pool of near-1-minute-read
+ * cards, distinct from the 10-12 flagship deep-dive stories in
+ * data/edition.json.
  *
  * REDESIGNED 2026-07-15 from an earlier git-committed-JSON version: that
  * approach meant every refresh was a full Netlify deploy (15 credits
  * each), competing directly with the flagship pipeline for the same
  * ~1,000 credit/month Personal-tier budget the flagship 2x/day schedule
  * already spends ~900 of. Blobs decouples this feed's refresh cadence
- * entirely from deploy credits — it can run every 15-20 minutes for a
- * small compute cost instead, without touching the flagship budget at
- * all. Served to the site via app/api/quick-reads/route.ts, which reads
- * from the SAME store using Netlify's auto-injected runtime context (no
- * explicit siteID/token needed there, unlike here).
+ * entirely from deploy credits. Served to the site via
+ * app/api/quick-reads/route.ts, which reads from the SAME store using
+ * Netlify's auto-injected runtime context (no explicit siteID/token
+ * needed there, unlike here).
  *
- * DESIGN PRINCIPLE (per 2026-07-15 discussion): this must not compete with
- * the flagship stories for Gemini quota either. It reuses fetchRssHeadlines()
- * from generate-edition.js — the SAME cross-outlet-deduped pool already
- * built for RSS-seeding — and is extractive by default: headline + RSS
- * snippet, no LLM call at all. corroboratedBy (how many outlets
- * independently covered it) is the ranking signal for "major", reusing
- * data that's already computed for free rather than needing a new
- * heuristic.
+ * ENRICHMENT (added 2026-07-15, second pass): the original version was
+ * purely extractive — headline + raw RSS snippet, no LLM call — to avoid
+ * competing with the flagship pipeline for Gemini's scarce free-tier
+ * daily REQUEST quota. Real-world testing showed RSS snippets are too
+ * thin/duplicate-of-headline too often to give genuine "quick read"
+ * value (Inshorts-style — a real few-sentence summary, not just a
+ * retitled headline). Added ONE batched, ungrounded Gemini call per run
+ * (enrichWithSummaries below) that writes a short blurb AND a smarter
+ * image-search query for the whole selected batch together — same
+ * per-batch-not-per-story cost reasoning already established for the
+ * flagship pipeline's RSS-seeded search mode. This DOES reopen shared
+ * quota exposure that the original zero-LLM design avoided, which is
+ * why the workflow's run frequency was reduced from every 20 min to
+ * every 60 min in the same change (see generate-quick-reads.yml) —
+ * bounds it to a modest, predictable daily add rather than an unbounded
+ * one. Fails open: if this call fails for any reason (quota, network),
+ * the run still publishes using the plain extractive snippet and the
+ * keyword-based image query exactly as before, rather than blocking.
+ *
+ * DESIGN PRINCIPLE (unchanged): reuses fetchRssHeadlines() from
+ * generate-edition.js — the SAME cross-outlet-deduped pool already built
+ * for RSS-seeding. corroboratedBy (how many outlets independently
+ * covered it) is the ranking signal for "major", reusing data that's
+ * already computed for free rather than needing a new heuristic.
  *
  * Deliberately excludes anything already covered by today's flagship
  * edition (via isSameEvent) — a reader shouldn't see the same event once
@@ -31,17 +47,83 @@
  *
  * Usage: node scripts/generate-quick-reads.js
  * Env: PEXELS_API_KEY (optional — items without a fetchable image still
- *      publish, just without a picture), QUICK_READS_LIMIT (default 40),
- *      NETLIFY_SITE_ID + NETLIFY_AUTH_TOKEN (required — this script runs
- *      in GitHub Actions, not on Netlify's own infra, so Blobs needs
- *      explicit credentials here; see the Netlify docs on getStore()
- *      outside a Function/Edge Function context for why).
+ *      publish, just without a picture), GEMINI_API_KEY (optional — items
+ *      still publish with the plain extractive snippet if unset or the
+ *      call fails), QUICK_READS_LIMIT (default 40), NETLIFY_SITE_ID +
+ *      NETLIFY_AUTH_TOKEN (required — this script runs in GitHub Actions,
+ *      not on Netlify's own infra, so Blobs needs explicit credentials
+ *      here; see the Netlify docs on getStore() outside a Function/Edge
+ *      Function context for why).
  */
 
 const fs = require("fs");
 const path = require("path");
 const { getStore } = require("@netlify/blobs");
-const { fetchRssHeadlines, fetchPexelsImage, isSameEvent } = require("./generate-edition.js");
+const {
+  fetchRssHeadlines,
+  fetchPexelsImage,
+  isSameEvent,
+  extractJson,
+  GEMINI_API_BASE,
+  MODEL,
+  FALLBACK_MODEL,
+  API_KEY,
+} = require("./generate-edition.js");
+
+// Batched enrichment: one ungrounded Gemini call per run writes a short
+// Inshorts-style blurb (2-3 plain sentences, not a repeated headline) and
+// a smarter 2-4 word image-search query for EVERY selected item together
+// — same per-batch cost as one item, not per-item cost. No search tool
+// needed (all context is already in hand from RSS), so responseMimeType
+// JSON mode is available directly, unlike the flagship pipeline's
+// search-grounded calls.
+async function enrichWithSummaries(items) {
+  if (!API_KEY) throw new Error("GEMINI_API_KEY not set");
+
+  const numbered = items
+    .map((it, i) => `${i}. HEADLINE: ${it.title}\n   EXISTING SNIPPET: ${it.snippet || "(none)"}`)
+    .join("\n");
+
+  const prompt = `For each of the ${items.length} Indian financial/economic news items below, write:
+1. "blurb": a genuine 2-3 sentence, ~40-60 word summary in your own words — Inshorts-style: crisp, factual, plain English, NOT a repeat or rewording of the headline. Base it on the headline and existing snippet; if the existing snippet is thin, use your knowledge of the topic and typical context to write a sensible, cautious summary — do not invent specific numbers/figures not implied by the headline or snippet.
+2. "imageQuery": 2-4 words for a stock-photo search that will find a photo genuinely relevant to the STORY'S SUBJECT (a company, an industry, a place, a financial concept) — never pick words that are literally true of the headline's phrasing but would mislead an image search (e.g. avoid "toll" from "death toll", "baker" from a company named "Baker Hughes", "live" from "Live updates"). When the headline doesn't suggest a clear concrete visual, use a safe generic financial term (e.g. "stock market india", "indian rupee currency", "bank building finance").
+
+Items:
+${numbered}
+
+Return ONLY a JSON array of ${items.length} objects, in the same order as the items above, each with exactly "blurb" and "imageQuery" string fields. No other text, no markdown fences.`;
+
+  const models = [MODEL, FALLBACK_MODEL];
+  let lastErr;
+  for (const model of models) {
+    try {
+      const res = await fetch(`${GEMINI_API_BASE}/${model}:generateContent`, {
+        method: "POST",
+        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: Math.min(65536, items.length * 220 + 2000), responseMimeType: "application/json" },
+        }),
+        signal: AbortSignal.timeout(120000),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
+      const data = await res.json();
+      const candidate = data.candidates?.[0];
+      // Same thought-part filter as the flagship pipeline — gemini-3.5-flash
+      // can return a "thought": true part alongside the real JSON answer.
+      const text = candidate?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
+      const parsed = JSON.parse(extractJson(text));
+      if (!Array.isArray(parsed) || parsed.length !== items.length) {
+        throw new Error(`Expected an array of ${items.length}, got ${Array.isArray(parsed) ? parsed.length : typeof parsed}`);
+      }
+      return parsed;
+    } catch (e) {
+      lastErr = e;
+      console.warn(`enrichWithSummaries failed on ${model}: ${e.message}`);
+    }
+  }
+  throw lastErr;
+}
 
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 const LIMIT = parseInt(process.env.QUICK_READS_LIMIT || "40", 10);
@@ -217,47 +299,77 @@ async function main() {
   });
 
   const selected = categorized.slice(0, LIMIT);
-  console.log(`Selected top ${selected.length} (by corroboration, then recency) for image-fetch + publish.`);
+  console.log(`Selected top ${selected.length} (by corroboration, then recency) for enrichment + image-fetch + publish.`);
+
+  // One batched call for the whole selection — same per-batch-not-per-
+  // item cost reasoning as the flagship pipeline's RSS-seeded search.
+  // Fails open: enrichment is a quality improvement, not a hard
+  // dependency, so any failure here (missing key, quota, network, a
+  // malformed response) falls back to the plain extractive snippet and
+  // keyword-based image query for every item, exactly as before this
+  // enrichment step existed — never blocks the run.
+  let enrichment = null;
+  if (process.env.GEMINI_API_KEY && selected.length > 0) {
+    try {
+      enrichment = await enrichWithSummaries(selected);
+      console.log(`Enrichment succeeded: ${enrichment.length} blurbs + image queries.`);
+    } catch (e) {
+      console.warn(`Enrichment unavailable this run (${e.message}) — falling back to plain extractive snippets and keyword-based image queries.`);
+    }
+  } else {
+    console.log("GEMINI_API_KEY not set — skipping enrichment, using plain extractive snippets.");
+  }
 
   const pexelsKey = process.env.PEXELS_API_KEY;
   const existing = await loadExistingQuickReads(store);
   const existingById = new Map((existing.items || []).map((it) => [it.id, it]));
 
   const items = [];
-  for (const item of selected) {
+  for (let idx = 0; idx < selected.length; idx++) {
+    const item = selected[idx];
     const id = slugify(item.title, item.link || item.title);
     const category = item.category;
+    const enriched = enrichment?.[idx];
 
     // Skip re-fetching an image for an item we already have from a
     // previous run (same id = same link) — keeps repeat runs cheap on
     // the Pexels quota, only new items cost a fetch.
     let image = existingById.get(id)?.image ?? null;
     if (!image && pexelsKey) {
-      image = await fetchPexelsImage({ headline: item.title, category }, pexelsKey);
+      image = await fetchPexelsImage(
+        { headline: item.title, category, imageQueryOverride: enriched?.imageQuery },
+        pexelsKey
+      );
     }
 
     const headline = stripSourceSuffix(item.title, item.source);
-    let snippet = stripSourceSuffix(cleanSnippet(item.snippet), item.source);
-    // Google News RSS descriptions are frequently just the title again,
-    // sometimes with a trailing source name or fragment tacked on (e.g.
-    // headline + " Outlook..." from an incompletely-stripped suffix) —
-    // showing that as a "snippet" is redundant, not a real extra line.
-    // Checks BOTH directions (previously only caught headline-starts-
-    // with-snippet, missing the more common snippet-starts-with-headline-
-    // plus-junk case) via a substring/overlap check rather than requiring
-    // an exact match.
-    const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-    const normHeadline = normalize(headline);
-    const normSnippet = normalize(snippet);
-    const tooSimilar =
-      !normSnippet ||
-      normHeadline === normSnippet ||
-      normHeadline.startsWith(normSnippet) ||
-      normSnippet.startsWith(normHeadline) ||
-      // Snippet is short and almost entirely contained within the
-      // headline's own text (a near-duplicate, not just a shared prefix).
-      (normSnippet.length < normHeadline.length * 1.3 && normHeadline.includes(normSnippet.slice(0, Math.floor(normSnippet.length * 0.85))));
-    if (tooSimilar) snippet = "";
+    let snippet;
+    if (enriched?.blurb) {
+      // The model was explicitly instructed not to repeat the headline,
+      // so a genuine LLM-written blurb is trusted directly — no need for
+      // the extractive path's redundancy check below.
+      snippet = String(enriched.blurb).trim();
+    } else {
+      snippet = stripSourceSuffix(cleanSnippet(item.snippet), item.source);
+      // Google News RSS descriptions are frequently just the title again,
+      // sometimes with a trailing source name or fragment tacked on (e.g.
+      // headline + " Outlook..." from an incompletely-stripped suffix) —
+      // showing that as a "snippet" is redundant, not a real extra line.
+      // Checks BOTH directions (previously only caught headline-starts-
+      // with-snippet, missing the more common snippet-starts-with-
+      // headline-plus-junk case) via a substring/overlap check rather
+      // than requiring an exact match.
+      const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const normHeadline = normalize(headline);
+      const normSnippet = normalize(snippet);
+      const tooSimilar =
+        !normSnippet ||
+        normHeadline === normSnippet ||
+        normHeadline.startsWith(normSnippet) ||
+        normSnippet.startsWith(normHeadline) ||
+        (normSnippet.length < normHeadline.length * 1.3 && normHeadline.includes(normSnippet.slice(0, Math.floor(normSnippet.length * 0.85))));
+      if (tooSimilar) snippet = "";
+    }
 
     items.push({
       id,
