@@ -1,16 +1,28 @@
 #!/usr/bin/env node
 /**
- * Generates data/quick-reads.json — the "Pulse" swipe feed: a much larger
- * pool of near-1-minute-read cards, distinct from the 10-12 flagship
- * deep-dive stories in data/edition.json.
+ * Writes to Netlify Blobs (store "why-today-quick-reads", key "feed") —
+ * the "Pulse" swipe feed: a much larger pool of near-1-minute-read cards,
+ * distinct from the 10-12 flagship deep-dive stories in data/edition.json.
+ *
+ * REDESIGNED 2026-07-15 from an earlier git-committed-JSON version: that
+ * approach meant every refresh was a full Netlify deploy (15 credits
+ * each), competing directly with the flagship pipeline for the same
+ * ~1,000 credit/month Personal-tier budget the flagship 2x/day schedule
+ * already spends ~900 of. Blobs decouples this feed's refresh cadence
+ * entirely from deploy credits — it can run every 15-20 minutes for a
+ * small compute cost instead, without touching the flagship budget at
+ * all. Served to the site via app/api/quick-reads/route.ts, which reads
+ * from the SAME store using Netlify's auto-injected runtime context (no
+ * explicit siteID/token needed there, unlike here).
  *
  * DESIGN PRINCIPLE (per 2026-07-15 discussion): this must not compete with
- * the flagship stories for Gemini quota. It reuses fetchRssHeadlines() from
- * generate-edition.js — the SAME cross-outlet-deduped pool already built
- * for RSS-seeding — and is extractive by default: headline + RSS snippet,
- * no LLM call at all. corroboratedBy (how many outlets independently
- * covered it) is the ranking signal for "major", reusing data that's
- * already computed for free rather than needing a new heuristic.
+ * the flagship stories for Gemini quota either. It reuses fetchRssHeadlines()
+ * from generate-edition.js — the SAME cross-outlet-deduped pool already
+ * built for RSS-seeding — and is extractive by default: headline + RSS
+ * snippet, no LLM call at all. corroboratedBy (how many outlets
+ * independently covered it) is the ranking signal for "major", reusing
+ * data that's already computed for free rather than needing a new
+ * heuristic.
  *
  * Deliberately excludes anything already covered by today's flagship
  * edition (via isSameEvent) — a reader shouldn't see the same event once
@@ -19,16 +31,31 @@
  *
  * Usage: node scripts/generate-quick-reads.js
  * Env: PEXELS_API_KEY (optional — items without a fetchable image still
- *      publish, just without a picture), QUICK_READS_LIMIT (default 40).
+ *      publish, just without a picture), QUICK_READS_LIMIT (default 40),
+ *      NETLIFY_SITE_ID + NETLIFY_AUTH_TOKEN (required — this script runs
+ *      in GitHub Actions, not on Netlify's own infra, so Blobs needs
+ *      explicit credentials here; see the Netlify docs on getStore()
+ *      outside a Function/Edge Function context for why).
  */
 
 const fs = require("fs");
 const path = require("path");
+const { getStore } = require("@netlify/blobs");
 const { fetchRssHeadlines, fetchPexelsImage, isSameEvent } = require("./generate-edition.js");
 
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
-const QUICK_READS_PATH = path.join(__dirname, "..", "data", "quick-reads.json");
 const LIMIT = parseInt(process.env.QUICK_READS_LIMIT || "40", 10);
+
+function quickReadsStore() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+  if (!siteID || !token) {
+    throw new Error(
+      "NETLIFY_SITE_ID and NETLIFY_AUTH_TOKEN must be set — Blobs needs explicit credentials when called from outside Netlify's own Functions/Edge runtime (e.g. from GitHub Actions, as this script does)."
+    );
+  }
+  return getStore({ name: "why-today-quick-reads", siteID, token });
+}
 
 // Lightweight keyword classifier — Quick Reads don't go through the LLM at
 // all, so there's no model to assign a category. This only needs to be
@@ -77,9 +104,10 @@ function loadFlagshipHeadlines() {
   }
 }
 
-function loadExistingQuickReads() {
+async function loadExistingQuickReads(store) {
   try {
-    return JSON.parse(fs.readFileSync(QUICK_READS_PATH, "utf8"));
+    const raw = await store.get("feed", { type: "text" });
+    return raw ? JSON.parse(raw) : { generatedAt: null, items: [] };
   } catch {
     return { generatedAt: null, items: [] };
   }
@@ -101,6 +129,8 @@ function cleanSnippet(raw) {
 }
 
 async function main() {
+  const store = quickReadsStore();
+
   console.log("Fetching RSS pool (reusing generate-edition.js's cross-outlet-deduped fetch)...");
   const pool = await fetchRssHeadlines();
   console.log(`Pool: ${pool.length} distinct events.`);
@@ -123,7 +153,7 @@ async function main() {
   console.log(`Selected top ${selected.length} (by corroboration, then recency) for image-fetch + publish.`);
 
   const pexelsKey = process.env.PEXELS_API_KEY;
-  const existing = loadExistingQuickReads();
+  const existing = await loadExistingQuickReads(store);
   const existingById = new Map((existing.items || []).map((it) => [it.id, it]));
 
   const items = [];
@@ -157,8 +187,8 @@ async function main() {
     items,
   };
 
-  fs.writeFileSync(QUICK_READS_PATH, JSON.stringify(output, null, 2));
-  console.log(`Wrote ${items.length} Quick Reads to ${QUICK_READS_PATH}.`);
+  await store.set("feed", JSON.stringify(output));
+  console.log(`Wrote ${items.length} Quick Reads to Netlify Blobs (store: why-today-quick-reads, key: feed).`);
   console.log(`Corroborated by 2+ outlets: ${items.filter((i) => i.corroboratedBy.length >= 2).length}/${items.length}`);
   console.log(`With image: ${items.filter((i) => i.image).length}/${items.length}`);
 }
