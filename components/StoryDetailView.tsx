@@ -116,19 +116,6 @@ export default function StoryDetailView({
           </p>
         )}
 
-        {story.knowledgeChain && story.knowledgeChain.length > 0 && (
-          <div className="mb-6">
-            <KnowledgeChain
-              chain={story.knowledgeChain}
-              variant="full"
-              story={story}
-              accent={cat.accent}
-              tint={cat.tint}
-              deep={cat.deep}
-            />
-          </div>
-        )}
-
         <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
 
         <StoryChart chart={story.chart} cat={cat} />
@@ -165,6 +152,19 @@ export default function StoryDetailView({
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {story.knowledgeChain && story.knowledgeChain.length > 0 && (
+          <div className="mt-8 pt-6 border-t border-[var(--border)]">
+            <KnowledgeChain
+              chain={story.knowledgeChain}
+              variant="full"
+              story={story}
+              accent={cat.accent}
+              tint={cat.tint}
+              deep={cat.deep}
+            />
           </div>
         )}
 
