@@ -456,11 +456,34 @@ function wordCount(str) {
 function extractJson(text) {
   let cleaned = text.replace(/```(?:json)?\s*([\s\S]*?)```/gi, "$1").trim();
   const start = cleaned.indexOf("{");
-  const end = cleaned.lastIndexOf("}");
-  if (start !== -1 && end !== -1 && end > start) {
-    return cleaned.slice(start, end + 1);
+  if (start === -1) return cleaned;
+  // Balanced-brace scan from the first "{" instead of a naive
+  // lastIndexOf("}") — the naive version is fooled by any stray "}" in
+  // content that trails the real JSON (e.g. leftover thought-summary text
+  // concatenated in from the API response — see the thought-part filter
+  // below), which is exactly what caused "Unexpected non-whitespace
+  // character after JSON" on 2026-07-15's rerun despite the response
+  // otherwise containing perfectly valid JSON.
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < cleaned.length; i++) {
+    const ch = cleaned[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) return cleaned.slice(start, i + 1);
+    }
   }
-  return cleaned;
+  // Unbalanced — likely genuinely truncated. Fall back to the old
+  // last-brace behavior so existing truncation error messages still fire
+  // downstream rather than silently returning something unparseable.
+  const end = cleaned.lastIndexOf("}");
+  return end > start ? cleaned.slice(start, end + 1) : cleaned;
 }
 
 const CATEGORY_SEARCH_TERMS = {
@@ -709,7 +732,14 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
         );
       }
 
-      const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      // Gemini 3.x models think by default and can include a "thought":
+      // true summary part alongside the real answer part — naively
+      // concatenating ALL parts' .text mixes thought-summary prose into
+      // what's supposed to be pure JSON, which is what actually caused
+      // 2026-07-15's "Unexpected non-whitespace character after JSON"
+      // failure (confirmed against Gemini's documented response shape:
+      // thought parts carry "thought": true). Filter them out here.
+      const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
 
       return JSON.parse(extractJson(text));
     } catch (err) {

@@ -57,11 +57,29 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function extractJson(text) {
   const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenced) return fenced[1].trim();
-  const first = text.indexOf("{");
-  const last = text.lastIndexOf("}");
-  if (first !== -1 && last > first) return text.slice(first, last + 1);
-  return text.trim();
+  let cleaned = fenced ? fenced[1].trim() : text.trim();
+  const start = cleaned.indexOf("{");
+  if (start === -1) return cleaned;
+  // Balanced-brace scan — see generate-edition.js's extractJson for the
+  // full rationale. Immune to a stray "}" in trailing content (e.g. a
+  // leftover thought-summary part) fooling a naive lastIndexOf("}").
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < cleaned.length; i++) {
+    const ch = cleaned[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\") { escape = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) return cleaned.slice(start, i + 1);
+    }
+  }
+  const end = cleaned.lastIndexOf("}");
+  return end > start ? cleaned.slice(start, end + 1) : cleaned;
 }
 
 function extractRetryDelayMs(errBody, fallbackMs) {
@@ -311,7 +329,7 @@ async function verifyStoryAgainstSources(story, editionDate, sources, maxRetries
         throw err;
       }
       const data = await res.json();
-      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      const text = data.candidates?.[0]?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
       const parsed = JSON.parse(extractJson(text));
       if (!parsed.verdict) throw new Error("Verifier returned JSON without a verdict field");
       parsed.issues = Array.isArray(parsed.issues) ? parsed.issues : [];
@@ -456,7 +474,7 @@ async function verifyStory(story, editionDate, maxRetries = 3) {
       const data = await res.json();
       const candidate = data.candidates?.[0];
       if (!candidate) throw new Error(`No candidates returned`);
-      const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
       const parsed = JSON.parse(extractJson(text));
       if (!parsed.verdict) throw new Error("Verifier returned JSON without a verdict field");
       parsed.issues = Array.isArray(parsed.issues) ? parsed.issues : [];
@@ -705,7 +723,7 @@ async function enrichStoryWithSourceFigures(story, sources, maxRetries = 2) {
         throw err;
       }
       const data = await res.json();
-      const text = data.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") ?? "";
+      const text = data.candidates?.[0]?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
       const parsed = JSON.parse(extractJson(text));
       const changes = {};
       for (const f of fields) {
