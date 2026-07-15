@@ -111,6 +111,41 @@ function decodeGoogleNewsUrl(url) {
 
 // Crude but dependency-free article text extraction: drop scripts/styles/
 // tags, decode common entities, collapse whitespace, cap length.
+// Extract a publish date from raw HTML before it gets stripped to plain
+// text — htmlToText() below discards all tags (including <meta>/<time>),
+// so this must run on the raw response body. Tries, in order of
+// reliability: OpenGraph/article meta tags, JSON-LD structured data, then
+// a bare <time datetime> attribute. Returns a Date or null — a page using
+// none of these formats yields null, which callers must treat as
+// "unknown", not "old" (see checkSourceRecency's fail-open handling).
+function extractPublishDate(html) {
+  const metaPatterns = [
+    /<meta[^>]+property=["']article:published_time["'][^>]+content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']article:published_time["']/i,
+    /<meta[^>]+name=["']publish-?date["'][^>]+content=["']([^"']+)["']/i,
+    /<meta[^>]+name=["']date["'][^>]+content=["']([^"']+)["']/i,
+    /<meta[^>]+itemprop=["']datePublished["'][^>]+content=["']([^"']+)["']/i,
+  ];
+  for (const re of metaPatterns) {
+    const m = re.exec(html);
+    if (m) {
+      const d = new Date(m[1]);
+      if (!Number.isNaN(d.getTime())) return d;
+    }
+  }
+  const jsonLd = /"datePublished"\s*:\s*"([^"]+)"/i.exec(html);
+  if (jsonLd) {
+    const d = new Date(jsonLd[1]);
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+  const timeTag = /<time[^>]+datetime=["']([^"']+)["']/i.exec(html);
+  if (timeTag) {
+    const d = new Date(timeTag[1]);
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+  return null;
+}
+
 function htmlToText(html, cap = 7000) {
   let t = html
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -137,7 +172,8 @@ async function fetchUrlText(url) {
     if (!res.ok) return null;
     const ct = res.headers.get("content-type") || "";
     if (!/html|text/i.test(ct)) return null;
-    return htmlToText(await res.text());
+    const html = await res.text();
+    return { text: htmlToText(html), publishedAt: extractPublishDate(html) };
   } catch { return null; }
 }
 
@@ -153,11 +189,55 @@ async function fetchStorySources(story) {
     }
     if (!url || seen.has(url)) continue;
     seen.add(url);
-    const text = await fetchUrlText(url);
-    if (text && text.length > 300) out.push({ url, label: src.label || "", text });
+    const fetched = await fetchUrlText(url);
+    if (fetched && fetched.text && fetched.text.length > 300) {
+      out.push({ url, label: src.label || "", text: fetched.text, publishedAt: fetched.publishedAt });
+    }
     if (out.length >= 3) break; // 3 sources is plenty of context
   }
   return out;
+}
+
+// Code-level recency gate — the missing piece that let stories like a
+// 3-month-old "Operation SAKSHM" or old News on AIR reposts pass into
+// editions despite the prompt's recency instructions. Prompt instructions
+// tell the model what to search for at write time, but nothing previously
+// checked the actual publish date of what it wrote about — this does that,
+// against the story's own cited sources, independent of the model.
+//
+// Fail-open by design when dates can't be extracted: many Indian publisher
+// pages don't expose clean date metadata, and hard-rejecting every story
+// whose sources lack it would silently gut the edition rather than catch
+// staleness. Only a story where every source has a KNOWN, parseable date —
+// and all of them are older than the threshold — gets hard-rejected here.
+// Unknown-date stories are passed through but flagged (`unverifiable:
+// true`) so they surface as a soft issue for manual visibility instead of
+// disappearing either way.
+const MAX_STORY_AGE_DAYS = Number(process.env.RECENCY_MAX_AGE_DAYS || 4);
+
+function checkSourceRecency(sources, editionDate) {
+  const reference = editionDate ? new Date(editionDate) : new Date();
+  const maxAgeMs = MAX_STORY_AGE_DAYS * 24 * 3600 * 1000;
+  const dated = (sources || []).filter((s) => s.publishedAt instanceof Date && !Number.isNaN(s.publishedAt.getTime()));
+
+  if (dated.length === 0) {
+    return { ok: true, unverifiable: true, reason: "no publish date could be extracted from any cited source" };
+  }
+
+  const newest = dated.reduce((a, b) => (a.publishedAt > b.publishedAt ? a : b));
+  const ageMs = reference.getTime() - newest.publishedAt.getTime();
+
+  if (ageMs > maxAgeMs) {
+    const ageDays = (ageMs / (24 * 3600 * 1000)).toFixed(1);
+    return {
+      ok: false,
+      unverifiable: false,
+      reason: `newest dated source (${newest.url}) is ${ageDays} days old — exceeds the ${MAX_STORY_AGE_DAYS}-day recency threshold`,
+      newestDate: newest.publishedAt.toISOString(),
+    };
+  }
+
+  return { ok: true, unverifiable: false, newestDate: newest.publishedAt.toISOString() };
 }
 
 const VERIFY_SYSTEM_SOURCE = `You are a rigorous financial fact-checker for an Indian financial news publication read by bankers and finance professionals. Wrong figures destroy the publication's credibility.
@@ -663,4 +743,5 @@ module.exports = {
   enrichStoryWithSourceFigures,
   decodeGoogleNewsUrl,
   buildClaimDigest,
+  checkSourceRecency,
 };
