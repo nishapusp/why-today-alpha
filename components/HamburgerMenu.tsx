@@ -51,6 +51,25 @@ function GlossaryIcon() {
   );
 }
 
+function ArchiveIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="13" r="8" stroke="var(--navy)" strokeWidth={1.6} />
+      <path d="M12 13V8.5" stroke="var(--navy)" strokeWidth={1.6} strokeLinecap="round" />
+      <path d="M12 13l3.6 1.6" stroke="var(--navy)" strokeWidth={1.6} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="10.5" cy="10.5" r="6.5" stroke="var(--navy)" strokeWidth={1.6} />
+      <line x1="15.3" y1="15.3" x2="20.5" y2="20.5" stroke="var(--navy)" strokeWidth={1.84} strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function HamburgerMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -79,6 +98,24 @@ export default function HamburgerMenu() {
         </div>
 
         <nav className="flex-1 px-2 py-2">
+          <Link
+            href="/search"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
+            style={{ color: "var(--text-primary)" }}
+          >
+            <SearchIcon />
+            Search
+          </Link>
+          <Link
+            href="/archive"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3 px-3 py-3 rounded-lg text-[14.5px] font-medium hover:bg-[var(--surface)] transition-colors"
+            style={{ color: "var(--text-primary)" }}
+          >
+            <ArchiveIcon />
+            Archive
+          </Link>
           <Link
             href="/glossary"
             onClick={() => setOpen(false)}

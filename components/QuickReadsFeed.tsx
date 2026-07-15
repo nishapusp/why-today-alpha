@@ -6,20 +6,22 @@ import { getCategoryStyle } from "@/lib/categoryStyle";
 import type { QuickRead } from "@/lib/types";
 
 /**
- * "Pulse" — the Quick Reads swipe feed. Deliberately a different register
- * from the flagship story pages: extractive, not verified/deep-dived (see
- * scripts/generate-quick-reads.js), so it's visually distinct on purpose —
- * no Knowledge Chain, no deep-dive CTA, no "Verified against sources"
- * badge, just a headline, the outlets covering it, and a link out. Keeping
- * that boundary honest was the whole point of building this as a separate
- * surface rather than folding it into the flagship list.
+ * Quick Reads — the swipe feed (was "Pulse", renamed 2026-07-15 to match
+ * the /api/quick-reads route it already read from). Deliberately a
+ * different register from the flagship story pages: extractive, not
+ * verified/deep-dived (see scripts/generate-quick-reads.js), so it's
+ * visually distinct on purpose — no Knowledge Chain, no deep-dive CTA, no
+ * "Verified against sources" badge, just a headline, a short blurb, the
+ * outlets covering it, and a link out. Keeping that boundary honest was
+ * the whole point of building this as a separate surface rather than
+ * folding it into the flagship list.
  *
  * Swipe-up-for-next is native CSS scroll-snap on a full-height container —
  * no gesture library needed, works identically on touch, wheel, and
  * keyboard, and respects the user's own scroll physics rather than
  * fighting it with custom JS.
  */
-export default function PulseFeed() {
+export default function QuickReadsFeed() {
   const [items, setItems] = useState<QuickRead[] | null>(null);
   const [error, setError] = useState(false);
   const [active, setActive] = useState(0);
@@ -46,7 +48,7 @@ export default function PulseFeed() {
   if (error) {
     return (
       <EmptyState
-        title="Pulse is taking a breather"
+        title="Quick Reads is taking a breather"
         body="Couldn't load the feed just now. Check your connection and try again."
       />
     );
@@ -64,7 +66,7 @@ export default function PulseFeed() {
     return (
       <EmptyState
         title="Nothing here yet"
-        body="Pulse refreshes through the day as major financial and market-moving stories break. Check back soon."
+        body="Quick Reads refreshes through the day as major financial and market-moving stories break. Check back soon."
       />
     );
   }
@@ -75,16 +77,15 @@ export default function PulseFeed() {
       className="h-dvh overflow-y-scroll snap-y snap-mandatory no-scrollbar overscroll-y-contain"
     >
       {items.map((item) => (
-        <PulseCard key={item.id} item={item} />
+        <QuickReadCard key={item.id} item={item} />
       ))}
 
       {/* Progress ticks — reuses the bottom nav's gold-hairline active
-          indicator language rather than inventing a new motif, so this
-          feature reads as part of the same product. Positioned within
-          the image region (not vertically centered across the whole
-          screen) since the bottom half is now a white info panel, where
-          light ticks wouldn't read against a light background. */}
-      <div className="fixed right-2.5 top-[24%] flex flex-col gap-1.5 z-20">
+          indicator language rather than inventing a new motif. Positioned
+          within the image region, not vertically centered across the
+          whole screen, since the bottom portion is now a white panel
+          where light ticks wouldn't read against a light background. */}
+      <div className="fixed right-2.5 top-[20%] flex flex-col gap-1.5 z-20">
         {items.map((_, i) => (
           <div
             key={i}
@@ -109,15 +110,21 @@ export default function PulseFeed() {
   );
 }
 
-function PulseCard({ item }: { item: QuickRead }) {
+function QuickReadCard({ item }: { item: QuickRead }) {
   const style = getCategoryStyle(item.category);
   const corroborated = item.corroboratedBy.length >= 2;
 
   return (
     <section className="h-dvh w-full snap-start relative flex flex-col overflow-hidden bg-white">
-      {/* Top half: image (or a category-tinted gradient + icon fallback
-          when no image was fetchable — never a blank state). */}
-      <div className="relative h-[52%] w-full shrink-0 overflow-hidden">
+      {/* Top: image (or a category-tinted gradient + icon fallback when
+          no image was fetchable — never a blank state). Reduced from the
+          first version's 52% to 42% — the panel below needed more room
+          once the snippet came back, and every element in it is now
+          line-clamped so total height is bounded regardless of how long
+          a given headline/snippet actually is (the "goes out of screen"
+          fix — clamping, not just resizing, since content length varies
+          per story). */}
+      <div className="relative h-[42%] w-full shrink-0 overflow-hidden">
         {item.image ? (
           <img
             src={item.image.url}
@@ -126,37 +133,34 @@ function PulseCard({ item }: { item: QuickRead }) {
           />
         ) : (
           <div
-            className="absolute inset-0 flex items-center justify-center text-[100px] opacity-25"
+            className="absolute inset-0 flex items-center justify-center text-[90px] opacity-25"
             style={{ background: `linear-gradient(180deg, ${style.tint}, ${style.accent})` }}
           >
             {style.icon}
           </div>
         )}
-        {/* Soft fade at the seam so the photo doesn't cut off harshly
-            against the white panel below. */}
         <div
-          className="absolute inset-x-0 bottom-0 h-16"
+          className="absolute inset-x-0 bottom-0 h-14"
           style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.95))" }}
         />
       </div>
 
-      {/* Bottom half: white info panel, matching the rest of the app's
-          light design rather than a dark overlay-on-photo look — keeps
-          Pulse feeling like part of the same product, not a bolted-on
-          dark-mode feature. Deliberately minimal: badges, headline,
-          source + CTA. No snippet by default — "little information" per
-          the 2026-07-15 redesign request. */}
-      <div className="relative flex-1 flex flex-col px-5 pt-4 pb-6 -mt-4 rounded-t-3xl bg-white z-10">
-        <div className="flex items-center gap-2 flex-wrap mb-3">
+      {/* Bottom: white info panel, matching the app's own light design
+          system. min-h-0 + overflow-hidden on this flex child, combined
+          with line-clamp on the text elements below, is what actually
+          guarantees the panel never exceeds its allotted space no matter
+          how long a real headline or snippet turns out to be. */}
+      <div className="relative flex-1 min-h-0 overflow-hidden flex flex-col px-5 pt-4 pb-4 -mt-4 rounded-t-3xl bg-white z-10">
+        <div className="flex items-center gap-2 flex-wrap mb-2.5 shrink-0">
           <span
-            className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-1 rounded-full"
+            className="inline-flex items-center gap-1 text-[10.5px] font-mono font-medium px-2.5 py-1 rounded-full"
             style={{ background: style.tint, color: style.deep }}
           >
             {style.icon} {item.category}
           </span>
           {corroborated && (
             <span
-              className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-1 rounded-full"
+              className="inline-flex items-center gap-1 text-[10.5px] font-mono font-medium px-2.5 py-1 rounded-full"
               style={{ background: "var(--surface)", color: "var(--text-secondary)", border: "1px solid var(--border)" }}
             >
               ✓ {item.corroboratedBy.length} outlets
@@ -164,14 +168,38 @@ function PulseCard({ item }: { item: QuickRead }) {
           )}
         </div>
 
-        <h2 className="font-display text-[22px] leading-[1.25] font-semibold" style={{ color: "var(--navy)" }}>
+        {/* Headline — regular weight, not bold, matching the flagship
+            story page's own h1 (which also doesn't set a bold weight
+            class) rather than the punchier semibold this had before.
+            Serif display face at a normal weight is what reads as
+            "serious and premium" rather than a heavy attention-grabbing
+            weight. line-clamp-3 bounds it regardless of length. */}
+        <h2
+          className="font-display text-[20px] leading-[1.32] font-normal line-clamp-3 shrink-0"
+          style={{ color: "var(--navy)" }}
+        >
           {item.headline}
         </h2>
 
-        <div className="flex-1" />
+        {/* Short blurb — a genuine "quick read" alongside the headline,
+            not just a bare title. Sourced from the same RSS snippet
+            already fetched for free (see generate-quick-reads.js) — no
+            new cost. Only renders when the pipeline actually kept a
+            snippet (many get nulled there when it's just the headline
+            repeated, which is common for Google News items). */}
+        {item.snippet && (
+          <p
+            className="text-[13.5px] leading-relaxed line-clamp-2 mt-1.5 shrink-0"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            {item.snippet}
+          </p>
+        )}
 
-        <div className="flex items-center justify-between gap-3 pt-3">
-          <span className="text-[13px] font-medium truncate" style={{ color: "var(--text-secondary)" }}>
+        <div className="flex-1 min-h-1.5" />
+
+        <div className="flex items-center justify-between gap-3 shrink-0">
+          <span className="text-[12.5px] font-medium truncate" style={{ color: "var(--text-secondary)" }}>
             {item.source}
           </span>
           {item.link && (
@@ -179,7 +207,7 @@ function PulseCard({ item }: { item: QuickRead }) {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-1 text-[13px] font-semibold px-4 py-2 rounded-full"
+              className="shrink-0 inline-flex items-center gap-1 text-[12.5px] font-semibold px-4 py-2 rounded-full"
               style={{ background: "var(--gold)", color: "white" }}
             >
               Read full story ↗
@@ -190,7 +218,7 @@ function PulseCard({ item }: { item: QuickRead }) {
         {/* Safe-area padding for iOS/Android gesture bar — the bottom nav
             is hidden on this route, so this card owns its own bottom
             inset instead. */}
-        <div style={{ height: "env(safe-area-inset-bottom, 0px)" }} />
+        <div className="shrink-0" style={{ height: "env(safe-area-inset-bottom, 0px)" }} />
       </div>
     </section>
   );
