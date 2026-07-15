@@ -393,6 +393,23 @@ function buildRssAddendum(items) {
   return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. TOPIC DIVERSITY RULE: at most ONE story per company, project, institution-action, or theme across the WHOLE edition — if the exclusion list already covers a semiconductor plant, a specific bank's deal, or a data release, do not write another story about that same plant, deal, or release even from a different angle or with different vocabulary. FRESH DEVELOPMENT RULE: a headline qualifies only if it reports a NEW development (announcement, inauguration, data release, deal milestone, decision) — skip explainers, opinion pieces, retrospectives, and background features about older events, no matter how interesting. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. QUIZ RULE: vary the position of the correct quiz answer across questions — do not put every correct answer in position 1. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
 }
 
+// RSS-SEEDED search mode: unlike buildRssAddendum() above (which removes
+// the search tool entirely for the no-quota fallback path), this runs
+// WITH google_search still attached. The RSS list becomes the primary
+// candidate pool — feeding in real headlines from many established
+// sources up front, rather than leaving topic selection entirely to the
+// model's own open-ended search — while search is still used to verify
+// and flesh out each one from authentic full-length coverage instead of
+// writing off a thin snippet. The model can still go beyond this list
+// when a headline lacks depth or something bigger and more urgent has
+// broken since the feeds were fetched.
+function buildRssSeedAddendum(items) {
+  const list = items
+    .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}`)
+    .join("\n");
+  return `\n\nRSS SEED LIST — you DO have live web search available for this run; use it. The headlines below were fetched minutes ago from Google News and direct publisher RSS feeds (last 36 hours, many established Indian and international outlets) and should be your PRIMARY candidate pool for what to cover. For each one you select, use google_search to find the full story and verify every specific figure, date, and claim against AUTHENTIC, ESTABLISHED sources — major wire services (Reuters, PTI), major Indian financial publishers (Business Standard, LiveMint, Economic Times, Moneycontrol, Financial Express, Hindu BusinessLine), or official/regulator sources corroborated by at least one independent outlet (RBI/SEBI/PIB releases repeated only in a single blog or an uncorroborated wire pickup are NOT sufficient). Do not rely on the headline/snippet alone — search and confirm. You are not restricted to this list: if a headline here doesn't have enough real depth to support a full story, or a bigger and more urgent development has broken since these feeds were fetched, search beyond it — but exhaust this list's genuinely strong candidates first rather than defaulting to an open search. Apply the same de-duplication, topic-diversity, fresh-development, and date-honesty rules from the instructions above to whichever headlines — listed or found via further search — you end up choosing.\n\nRSS SEED HEADLINES (newest first):\n${list}`;
+}
+
 function asText(v) {
   if (v === null || v === undefined) return "";
   if (typeof v === "string") return v;
@@ -588,6 +605,18 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
   let userPrompt = buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines);
   if (mode === "rss") {
     userPrompt += buildRssAddendum(await fetchRssHeadlines());
+  } else if (mode === "search") {
+    // Seed the model's own live search with real headlines from the 11
+    // RSS sources first, rather than leaving topic discovery entirely
+    // open-ended — see buildRssSeedAddendum(). Fails open: if RSS fetch
+    // itself has a problem (all feeds down, network issue), the batch
+    // still proceeds as a plain open search rather than failing outright
+    // over what's meant to be a quality improvement, not a hard dependency.
+    try {
+      userPrompt += buildRssSeedAddendum(await fetchRssHeadlines());
+    } catch (e) {
+      console.warn(`RSS seeding unavailable for this batch (${e.message}) — proceeding with open search, no seed list.`);
+    }
   }
 
   while (attempt <= maxRetries) {
