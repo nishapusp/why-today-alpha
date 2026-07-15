@@ -221,8 +221,13 @@ function QuickReadCard({ item }: { item: QuickRead }) {
             blurb short AND leaving the panel's remaining height empty,
             which is what caused the "blank space" look in the first
             place. */}
+        {/* Font raised from 13.5px to 15.5px per explicit request, to help
+            fill the remaining space at a given word count. line-clamp
+            raised to 12 (not lowered) to compensate — a bigger font fits
+            fewer characters per line, so the same ~85-120 word blurb
+            needs MORE lines to display in full at this size, not fewer. */}
         <p
-          className="text-[13.5px] leading-relaxed line-clamp-10 mt-1.5 shrink-0"
+          className="text-[15.5px] leading-relaxed line-clamp-12 mt-1.5 shrink-0"
           style={{ color: "var(--text-secondary)" }}
         >
           {item.snippet || `More on this ${item.category.toLowerCase()} story from ${item.source}.`}
