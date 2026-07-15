@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useUser, SignOutButton } from "@clerk/nextjs";
+import JourneyStrip from "@/components/JourneyStrip";
+import editionData from "@/data/edition.json";
 
 function HomeIcon() {
   return (
@@ -104,6 +106,18 @@ export default function HamburgerMenu() {
               <path d="M5 5l14 14M19 5L5 19" stroke="var(--text-secondary)" strokeWidth={1.8} strokeLinecap="round" />
             </svg>
           </button>
+        </div>
+
+        {/* Progress strip and theme line — relocated here from the home
+            page (per explicit request: home page now goes straight from
+            greeting to today's stories, nothing else competing for top
+            billing). JourneyStrip's own internal max-w-2xl just means it
+            won't exceed that width; it shrinks to fit the drawer fine. */}
+        <JourneyStrip />
+        <div className="px-4 py-2.5 border-b" style={{ borderColor: "var(--border)" }}>
+          <p className="text-[12px] font-mono" style={{ color: "var(--text-secondary)" }}>
+            {editionData.numberValue} · {editionData.themeTitle}
+          </p>
         </div>
 
         <nav className="flex-1 px-2 py-2">

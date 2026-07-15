@@ -1,14 +1,12 @@
-import { getLatestEdition, getArchiveIndex, getHomeStories } from "@/lib/getData";
+import { getLatestEdition, getHomeStories } from "@/lib/getData";
 import { getTermOfTheDay } from "@/lib/termOfDay";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
-import JourneyStrip from "@/components/JourneyStrip";
 import ThreadBanner from "@/components/ThreadBanner";
 import ContinueLearning from "@/components/ContinueLearning";
 import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
-import ArchiveDrawer from "@/components/ArchiveDrawer";
 
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
 
@@ -22,7 +20,6 @@ function greeting(): string {
 
 export default async function Home() {
   const edition = await getLatestEdition();
-  const archiveIndex = await getArchiveIndex();
   const homeStories = await getHomeStories();
   const termOfDay = getTermOfTheDay();
 
@@ -31,7 +28,7 @@ export default async function Home() {
   let readSlugs: string[] = [];
 
   if (userId) {
-    await recordVisitAndGetStreak(userId); // side effect: updates streak — JourneyStrip reads the result independently
+    await recordVisitAndGetStreak(userId); // side effect: updates streak — JourneyStrip (now in the hamburger menu) reads the result independently
     const user = await currentUser();
     userName = user?.firstName ?? undefined;
     const prefs = await getPreferences(userId);
@@ -51,8 +48,6 @@ export default async function Home() {
 
   return (
     <>
-      <JourneyStrip />
-
       <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
         <div>
           <p className="text-[14px] font-medium" style={{ color: "var(--text-secondary)" }}>
@@ -65,17 +60,9 @@ export default async function Home() {
         </div>
 
         <div>
-          <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="font-display text-lg text-[var(--text-primary)]">
-              Today&apos;s stories ({homeStories.length})
-            </h2>
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-xs text-[var(--text-secondary)] truncate">
-                {edition.numberValue} · {edition.themeTitle}
-              </span>
-              <ArchiveDrawer recentDays={archiveIndex.slice(0, 10)} />
-            </div>
-          </div>
+          <h2 className="font-display text-lg text-[var(--text-primary)] mb-3">
+            Today&apos;s stories ({homeStories.length})
+          </h2>
           <Top10List stories={homeStories} readSlugs={readSlugs} />
         </div>
 
@@ -91,10 +78,11 @@ export default async function Home() {
           </div>
         )}
 
-        {/* Moved to the bottom of the page (was directly under the
-            greeting, eating space above the fold alongside JourneyStrip
-            per explicit feedback) — still present, just no longer
-            competing with today's stories for top billing. */}
+        {/* Theme line and archive access moved into the hamburger menu
+            (per explicit request — home page now goes straight from
+            greeting to today's stories, nothing else competing for top
+            billing). ThreadBanner (the fuller theme writeup) stays here
+            at the bottom, same placement as before. */}
         <ThreadBanner themeTitle={edition.themeTitle} themeDescription={edition.themeDescription} />
       </main>
     </>
