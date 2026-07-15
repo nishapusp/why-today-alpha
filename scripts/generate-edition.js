@@ -524,12 +524,27 @@ const PEXELS_STOPWORDS = new Set([
   "maintains","keeps","holds","surges","soars","fuels","eases","tightens",
 ]);
 
+// Words that are common, meaningful vocabulary IN a financial headline but
+// read as unrelated literal imagery to a naive keyword-based image search —
+// confirmed by real mismatches: "death toll ... fire" pulled a literal
+// toll-road sign image, "Baker Hughes" (a company name) pulled a literal
+// baker kneading dough. headlineToQuery skips these rather than picking
+// them, falling through to the next eligible word (or the category
+// fallback if too few good words remain) instead of risking a picture
+// that's technically keyword-matched but obviously wrong to a reader.
+const PEXELS_LITERAL_RISK_WORDS = new Set([
+  "toll","drag","wave","crash","blast","strike","dead","death","fire","bull",
+  "bear","war","live","today","morning","evening","night","gains","losses",
+  "retreat","rally","strips","baker","bridge","bomb","attack","kill","killed",
+  "flood","storm","quake","collapse","explosion","hostage","shooting",
+]);
+
 function headlineToQuery(story) {
   const words = String(story.headline || "")
     .toLowerCase()
     .replace(/[^a-z\s]/g, " ")
     .split(/\s+/)
-    .filter((w) => w.length > 3 && !PEXELS_STOPWORDS.has(w));
+    .filter((w) => w.length > 3 && !PEXELS_STOPWORDS.has(w) && !PEXELS_LITERAL_RISK_WORDS.has(w));
   if (words.length < 2) return null;
   return words.slice(0, 3).join(" ");
 }

@@ -238,12 +238,26 @@ async function main() {
 
     const headline = stripSourceSuffix(item.title, item.source);
     let snippet = stripSourceSuffix(cleanSnippet(item.snippet), item.source);
-    // Google News RSS descriptions are frequently just the title again —
+    // Google News RSS descriptions are frequently just the title again,
+    // sometimes with a trailing source name or fragment tacked on (e.g.
+    // headline + " Outlook..." from an incompletely-stripped suffix) —
     // showing that as a "snippet" is redundant, not a real extra line.
+    // Checks BOTH directions (previously only caught headline-starts-
+    // with-snippet, missing the more common snippet-starts-with-headline-
+    // plus-junk case) via a substring/overlap check rather than requiring
+    // an exact match.
     const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-    if (!snippet || normalize(snippet) === normalize(headline) || normalize(headline).startsWith(normalize(snippet))) {
-      snippet = "";
-    }
+    const normHeadline = normalize(headline);
+    const normSnippet = normalize(snippet);
+    const tooSimilar =
+      !normSnippet ||
+      normHeadline === normSnippet ||
+      normHeadline.startsWith(normSnippet) ||
+      normSnippet.startsWith(normHeadline) ||
+      // Snippet is short and almost entirely contained within the
+      // headline's own text (a near-duplicate, not just a shared prefix).
+      (normSnippet.length < normHeadline.length * 1.3 && normHeadline.includes(normSnippet.slice(0, Math.floor(normSnippet.length * 0.85))));
+    if (tooSimilar) snippet = "";
 
     items.push({
       id,

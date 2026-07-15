@@ -56,7 +56,7 @@ export default function QuickReadsFeed() {
 
   if (items === null) {
     return (
-      <div className="h-dvh flex items-center justify-center bg-[var(--navy-deep)]">
+      <div className="h-screen flex items-center justify-center bg-[var(--navy-deep)]">
         <div className="w-6 h-6 rounded-full border-2 border-white/20 border-t-white/70 animate-spin" />
       </div>
     );
@@ -74,7 +74,7 @@ export default function QuickReadsFeed() {
   return (
     <div
       ref={containerRef}
-      className="h-dvh overflow-y-scroll snap-y snap-mandatory no-scrollbar overscroll-y-contain"
+      className="h-screen overflow-y-scroll snap-y snap-mandatory no-scrollbar overscroll-y-contain"
     >
       {items.map((item) => (
         <QuickReadCard key={item.id} item={item} />
@@ -115,7 +115,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
   const corroborated = item.corroboratedBy.length >= 2;
 
   return (
-    <section className="h-dvh w-full snap-start relative flex flex-col overflow-hidden bg-white">
+    <section className="h-screen w-full snap-start relative flex flex-col overflow-hidden bg-white">
       {/* Top: image (or a category-tinted gradient + icon fallback when
           no image was fetchable — never a blank state). Reduced from the
           first version's 52% to 42% — the panel below needed more room
@@ -196,9 +196,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
           </p>
         )}
 
-        <div className="flex-1 min-h-1.5" />
-
-        <div className="flex items-center justify-between gap-3 shrink-0">
+        <div className="flex items-center justify-between gap-3 mt-4 shrink-0">
           <span className="text-[12.5px] font-medium truncate" style={{ color: "var(--text-secondary)" }}>
             {item.source}
           </span>
@@ -226,7 +224,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
 
 function EmptyState({ title, body }: { title: string; body: string }) {
   return (
-    <div className="h-dvh flex flex-col items-center justify-center text-center px-8 bg-[var(--navy-deep)]">
+    <div className="h-screen flex flex-col items-center justify-center text-center px-8 bg-[var(--navy-deep)]">
       <p className="font-display text-xl text-white mb-2">{title}</p>
       <p className="text-[14px] text-white/60 max-w-xs mb-6">{body}</p>
       <Link
