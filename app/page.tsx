@@ -77,6 +77,14 @@ export default async function Home() {
                 {edition.numberValue} · {edition.themeTitle}
               </span>
               <Link
+                href="/pulse"
+                aria-label="Pulse — quick reads"
+                title="Pulse — quick reads"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[15px] hover:border-[var(--accent)] transition-colors"
+              >
+                ⚡
+              </Link>
+              <Link
                 href="/glossary"
                 aria-label="Glossary"
                 title="Glossary"
