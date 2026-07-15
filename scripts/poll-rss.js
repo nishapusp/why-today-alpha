@@ -65,6 +65,8 @@ const DIRECT_FEEDS = [
   { source: "Moneycontrol", category: "Economy", url: "http://www.moneycontrol.com/rss/latestnews.xml" },
   { source: "Financial Express", category: "Economy", url: "https://www.financialexpress.com/feed/" },
   { source: "Hindu BusinessLine", category: "Economy", url: "https://www.thehindubusinessline.com/feeder/default.rss" },
+  { source: "NDTV Business", category: "Economy", url: "https://feeds.feedburner.com/NDTV-Business?format=xml" },
+  { source: "Zee Business", category: "Economy", url: "http://zeenews.india.com/rss/business.xml" },
 ];
 
 // Minimum World/geopolitics stories we'd like in a day's 15 — see README

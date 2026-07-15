@@ -235,14 +235,14 @@ const RSS_QUERIES = [
 // Each entry's `source` is used as a label since these feeds (unlike
 // Google News RSS) don't carry a <source> tag of their own.
 // URLs sourced 2026-07-13 (BBC/LiveMint/ET/Business Standard) and
-// 2026-07-15 (Moneycontrol/Financial Express/Hindu BusinessLine, added to
-// widen source diversity) — the newer three came from a maintained
-// curated RSS directory (plenaryapp/awesome-rss-feeds), not independently
-// fetch-tested against live traffic. pullFeed() already logs+skips a feed
-// that 404s or errors rather than failing the run, so a stale URL here
-// degrades gracefully — but worth checking the Action's logs after the
-// first run to confirm all 11 are actually returning items, not silently
-// skipping.
+// 2026-07-15 (Moneycontrol/Financial Express/Hindu BusinessLine/NDTV
+// Business/Zee Business, added to widen source diversity) — everything
+// past the original 8 came from a maintained curated RSS directory
+// (plenaryapp/awesome-rss-feeds), not independently fetch-tested against
+// live traffic. pullFeed() already logs+skips a feed that 404s or errors
+// rather than failing the run, so a stale URL here degrades gracefully —
+// but worth checking the Action's logs after the first run to confirm all
+// 13 are actually returning items, not silently skipping.
 const DIRECT_FEEDS = [
   { source: "Business Standard", url: "https://www.business-standard.com/rss/economy-102.rss" },
   { source: "Business Standard", url: "https://www.business-standard.com/rss/finance-103.rss" },
@@ -255,6 +255,8 @@ const DIRECT_FEEDS = [
   { source: "Moneycontrol", url: "http://www.moneycontrol.com/rss/latestnews.xml" },
   { source: "Financial Express", url: "https://www.financialexpress.com/feed/" },
   { source: "Hindu BusinessLine", url: "https://www.thehindubusinessline.com/feeder/default.rss" },
+  { source: "NDTV Business", url: "https://feeds.feedburner.com/NDTV-Business?format=xml" },
+  { source: "Zee Business", url: "http://zeenews.india.com/rss/business.xml" },
 ];
 
 // Fuzzy headline matching — two headlines describe the same underlying event
@@ -378,17 +380,43 @@ async function fetchRssHeadlines() {
   }
 
   items.sort((a, b) => b.pubMs - a.pubMs);
-  if (items.length < 6) {
-    throw new Error(`RSS fallback could only fetch ${items.length} fresh headlines — not enough to ground an edition safely.`);
+
+  // Cross-outlet dedup: the `seen` set above only catches EXACT title
+  // matches within a single feed's own pull, so the same wire story
+  // (PTI/Reuters syndication, or just several outlets covering the same
+  // release) still shows up once per outlet that ran it — bloating the
+  // seed list with redundant coverage of one event rather than a diverse
+  // set of distinct events. Reuses the same fuzzy matcher that already
+  // catches same-event duplicates at the story level. Keeps the newest
+  // (items are pre-sorted newest-first) and drops the rest; a dropped
+  // item's source is folded into the kept item's `sources` list so the
+  // model can still see it was multi-outlet corroborated, which is a
+  // genuine signal of authenticity.
+  const deduped = [];
+  for (const item of items) {
+    const dupOf = deduped.find((d) => isSameEvent(item.title, d.title));
+    if (dupOf) {
+      dupOf.sources = dupOf.sources || [dupOf.source];
+      if (!dupOf.sources.includes(item.source)) dupOf.sources.push(item.source);
+      continue;
+    }
+    deduped.push(item);
   }
-  console.log(`RSS fallback: fetched ${items.length} fresh headlines from ${RSS_QUERIES.length} Google News queries + ${DIRECT_FEEDS.length} direct publisher feeds.`);
-  rssCache = items;
-  return items;
+  if (deduped.length < items.length) {
+    console.log(`RSS cross-outlet dedup: ${items.length} raw items -> ${deduped.length} distinct events.`);
+  }
+
+  if (deduped.length < 6) {
+    throw new Error(`RSS fallback could only fetch ${deduped.length} fresh headlines — not enough to ground an edition safely.`);
+  }
+  console.log(`RSS fallback: fetched ${deduped.length} distinct fresh headlines from ${RSS_QUERIES.length} Google News queries + ${DIRECT_FEEDS.length} direct publisher feeds.`);
+  rssCache = deduped;
+  return deduped;
 }
 
 function buildRssAddendum(items) {
   const list = items
-    .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
+    .map((it, i) => `${i + 1}. [${it.source || "News"}${it.sources && it.sources.length > 1 ? ` + ${it.sources.length - 1} more outlet(s)` : ""} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}${it.link ? ` (link: ${it.link})` : ""}`)
     .join("\n");
   return `\n\nIMPORTANT OVERRIDE — NO LIVE SEARCH THIS RUN: You do NOT have a web search tool in this run, so ignore every instruction above about searching. Instead, the REAL fresh headlines below were fetched minutes ago from Google News RSS (last 36 hours). Pick your stories ONLY from developments covered in this list, choosing the most significant ones. CRITICAL DE-DUPLICATION RULE: the exclusion list in the instructions above describes underlying news EVENTS that are already covered — you must NOT cover the same event again even with completely different wording, a different angle, or different emphasis. If a headline below matches an excluded event, skip that headline entirely and pick a different one. Each of your ${"stories"} must be about a DIFFERENT underlying event. TOPIC DIVERSITY RULE: at most ONE story per company, project, institution-action, or theme across the WHOLE edition — if the exclusion list already covers a semiconductor plant, a specific bank's deal, or a data release, do not write another story about that same plant, deal, or release even from a different angle or with different vocabulary. FRESH DEVELOPMENT RULE: a headline qualifies only if it reports a NEW development (announcement, inauguration, data release, deal milestone, decision) — skip explainers, opinion pieces, retrospectives, and background features about older events, no matter how interesting. DATE HONESTY RULE: anchor each story to its item's bracketed date — never write "today" or "announced today" unless that item's date IS today; otherwise name the actual day (e.g. "on Thursday"). Combine each headline with your background knowledge to explain WHY it matters, but do NOT invent precise figures that appear in neither the headline/snippet nor well-established public knowledge — describe qualitatively instead. COMPLETENESS RULE: the absence of live search does NOT reduce the required depth. Every story must include EVERY schema field — especially deepDiveRead (a full 500-800 words with ** bold emphasis markers) and keyNumbers — and must meet every length floor in the instructions above. Where the headline/snippet is thin, draw on your background knowledge of the institutions, mechanisms, history, and stakeholders involved to write full-length sections; explaining WHY never requires live data. Before returning, verify each story against the field list and length floors, and expand any section that falls short. QUIZ RULE: vary the position of the correct quiz answer across questions — do not put every correct answer in position 1. For each story's sources, use the matching link(s) from the list.\n\nFRESH HEADLINES (newest first):\n${list}`;
 }
@@ -405,7 +433,7 @@ function buildRssAddendum(items) {
 // broken since the feeds were fetched.
 function buildRssSeedAddendum(items) {
   const list = items
-    .map((it, i) => `${i + 1}. [${it.source || "News"} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}`)
+    .map((it, i) => `${i + 1}. [${it.source || "News"}${it.sources && it.sources.length > 1 ? ` + ${it.sources.length - 1} more outlet(s)` : ""} | ${it.pubDate || "recent"}] ${it.title}${it.snippet ? ` — ${it.snippet}` : ""}`)
     .join("\n");
   return `\n\nRSS SEED LIST — you DO have live web search available for this run; use it. The headlines below were fetched minutes ago from Google News and direct publisher RSS feeds (last 36 hours, many established Indian and international outlets) and should be your PRIMARY candidate pool for what to cover. For each one you select, use google_search to find the full story and verify every specific figure, date, and claim against AUTHENTIC, ESTABLISHED sources — major wire services (Reuters, PTI), major Indian financial publishers (Business Standard, LiveMint, Economic Times, Moneycontrol, Financial Express, Hindu BusinessLine), or official/regulator sources corroborated by at least one independent outlet (RBI/SEBI/PIB releases repeated only in a single blog or an uncorroborated wire pickup are NOT sufficient). Do not rely on the headline/snippet alone — search and confirm. You are not restricted to this list: if a headline here doesn't have enough real depth to support a full story, or a bigger and more urgent development has broken since these feeds were fetched, search beyond it — but exhaust this list's genuinely strong candidates first rather than defaulting to an open search. Apply the same de-duplication, topic-diversity, fresh-development, and date-honesty rules from the instructions above to whichever headlines — listed or found via further search — you end up choosing.\n\nRSS SEED HEADLINES (newest first):\n${list}`;
 }
@@ -602,6 +630,20 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
   let currentModel = MODEL;
   const deadModels = new Set(); // models Google has retired (404) this run
 
+  // Scales with batch size instead of a fixed value — the fixed 20000 was
+  // sized for BATCH_SIZE=3 (~6500 tokens/story incl. deepDive, timeMachine,
+  // quiz, keyNumbers, JSON overhead) and never got scaled up when BATCH_SIZE
+  // was raised to 8, which is exactly what caused "Response was cut off
+  // even at 8 stories" on 2026-07-15 (8 * 6500 = 52000, nearly 3x the old
+  // fixed cap). gemini-3.5-flash's documented ceiling is 65,536 output
+  // tokens, so this stays comfortably under that even for larger batches.
+  const maxOutputTokens = Math.min(65536, storyCount * 6500 + 2000);
+  // Scales with the same reasoning — a truncated 8-story generation still
+  // took ~2m26s per the 2026-07-15 log (before it got cut off), so an
+  // untruncated one needs real headroom. 45s/story + 60s base, capped at
+  // 6 minutes.
+  const requestTimeoutMs = Math.min(360000, storyCount * 45000 + 60000);
+
   let userPrompt = buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines);
   if (mode === "rss") {
     userPrompt += buildRssAddendum(await fetchRssHeadlines());
@@ -640,13 +682,11 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
             // ONLY valid JSON" instruction plus extractJson()'s fence-
             // stripping fallback instead. Do not re-add responseMimeType
             // while google_search is in tools.
-            // 20000 (was 16000): timeMachine + extra headlines + optional
-            // chart add ~500 output tokens per story (~1500/batch of 3).
-            maxOutputTokens: 20000,
+            maxOutputTokens,
             ...(mode === "rss" ? { responseMimeType: "application/json" } : {}),
           },
         }),
-        signal: AbortSignal.timeout(240000), // 4 min — 3-story batches usually finish well under 2
+        signal: AbortSignal.timeout(requestTimeoutMs),
       });
 
       if (!res.ok) {
