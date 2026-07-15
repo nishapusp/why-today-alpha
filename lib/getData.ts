@@ -1,4 +1,4 @@
-import { Category, Edition, Sentiment, Story, Trend } from "./types";
+import { Category, Edition, QuickRead, QuickReadsFeed, Sentiment, Story, Trend } from "./types";
 import editionDataRaw from "@/data/edition.json";
 import fs from "fs";
 import path from "path";
@@ -177,4 +177,27 @@ export async function getArchivedEdition(date: string): Promise<Edition | null> 
 export async function getArchivedStoryBySlug(date: string, slug: string): Promise<Story | undefined> {
   const edition = await getArchivedEdition(date);
   return edition?.stories.find((s) => s.slug === slug);
+}
+
+// --- Quick Reads / Pulse ------------------------------------------------
+// data/quick-reads.json is written by scripts/generate-quick-reads.js —
+// see that file for the full design rationale. Read via fs (not a static
+// import like edition.json above) since this file doesn't exist yet until
+// that script's first run; a missing file degrades to an empty feed
+// rather than breaking the build.
+
+const QUICK_READS_PATH = path.join(process.cwd(), "data", "quick-reads.json");
+
+export async function getQuickReads(): Promise<QuickReadsFeed> {
+  try {
+    const raw = fs.readFileSync(QUICK_READS_PATH, "utf8");
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const items = Array.isArray(parsed.items) ? (parsed.items as QuickRead[]) : [];
+    return {
+      generatedAt: typeof parsed.generatedAt === "string" ? parsed.generatedAt : "",
+      items,
+    };
+  } catch {
+    return { generatedAt: "", items: [] };
+  }
 }

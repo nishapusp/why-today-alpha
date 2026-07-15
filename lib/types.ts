@@ -138,3 +138,30 @@ export interface Edition {
 }
 
 export type ReadingLevel = "quick" | "understand" | "deep";
+
+// Pulse / Quick Reads — the swipe feed, distinct from the flagship Story
+// type above. Extractive (RSS headline + snippet + link out), not
+// verified/deep-dived like flagship stories — see scripts/generate-quick-reads.js.
+export interface QuickReadImage {
+  url: string;
+  alt: string;
+  credit: string;
+  creditUrl: string;
+}
+
+export interface QuickRead {
+  id: string;
+  headline: string;
+  snippet: string;
+  category: Category;
+  source: string;
+  corroboratedBy: string[]; // outlets independently covering the same event
+  link: string | null; // original article, opens externally
+  publishedAt: string | null;
+  image: QuickReadImage | null;
+}
+
+export interface QuickReadsFeed {
+  generatedAt: string;
+  items: QuickRead[];
+}
