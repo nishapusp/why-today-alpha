@@ -99,10 +99,16 @@ export default function QuickReadsFeed() {
         ))}
       </div>
 
+      {/* Was positioned at top-3, which sat directly underneath the
+          global sticky header (z-50) from app/layout.tsx and was
+          therefore invisible/untappable — this is a full-screen route
+          but the header still renders above it. Pushed below the
+          header's height and raised above it in z-index so it's
+          reliably visible and tappable as the way back to Home. */}
       <Link
         href="/"
         aria-label="Back to today's stories"
-        className="fixed top-3 left-3 z-20 w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white text-lg"
+        className="fixed top-[60px] left-3 z-[60] w-9 h-9 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white text-lg"
       >
         ✕
       </Link>
@@ -201,17 +207,19 @@ function QuickReadCard({ item }: { item: QuickRead }) {
         {/* Short blurb — a genuine "quick read" alongside the headline,
             not just a bare title. Sourced from the same RSS snippet
             already fetched for free (see generate-quick-reads.js) — no
-            new cost. Only renders when the pipeline actually kept a
-            snippet (many get nulled there when it's just the headline
-            repeated, which is common for Google News items). */}
-        {item.snippet && (
-          <p
-            className="text-[13.5px] leading-relaxed line-clamp-2 mt-1.5 shrink-0"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            {item.snippet}
-          </p>
-        )}
+            new cost. Many get nulled upstream (near-duplicate of the
+            headline, or the source RSS item just had no description —
+            common for wire/transcript items like earnings-call pieces).
+            Rather than rendering nothing in that case (which left a
+            blank gap under the headline), fall back to a short
+            source+category line so every card always shows *some*
+            description. */}
+        <p
+          className="text-[13.5px] leading-relaxed line-clamp-2 mt-1.5 shrink-0"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          {item.snippet || `More on this ${item.category.toLowerCase()} story from ${item.source}.`}
+        </p>
 
         <div className="flex items-center justify-between gap-3 mt-4 shrink-0">
           <span className="text-[12.5px] font-medium truncate" style={{ color: "var(--text-secondary)" }}>

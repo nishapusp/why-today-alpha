@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useUser, SignInButton } from "@clerk/nextjs";
 import type { LearningScoreBreakdown } from "@/lib/preferences";
 
@@ -16,46 +17,6 @@ function FlameIcon() {
     </svg>
   );
 }
-function TargetIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="8" stroke="var(--gold)" strokeWidth={1.4} />
-      <circle cx="12" cy="12" r="4.5" stroke="var(--gold)" strokeWidth={1.4} />
-      <circle cx="12" cy="12" r="1.2" fill="var(--gold)" />
-    </svg>
-  );
-}
-function BookIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M12 6.5V19" stroke="var(--gold)" strokeWidth={1.6} strokeLinecap="round" />
-      <path
-        d="M12 6.5C10 5.2 6.8 4.7 4 5.2v12.3c2.8-.5 6 0 8 1.3"
-        stroke="var(--gold)"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 6.5c2-1.3 5.2-1.8 8-1.3v12.3c-2.8-.5-6 0-8 1.3"
-        stroke="var(--gold)"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-function StackIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="4.5" y="6" width="15" height="3.2" rx="1" stroke="var(--gold)" strokeWidth={1.4} />
-      <rect x="4.5" y="10.4" width="15" height="3.2" rx="1" stroke="var(--gold)" strokeWidth={1.4} />
-      <rect x="4.5" y="14.8" width="15" height="3.2" rx="1" stroke="var(--gold)" strokeWidth={1.4} />
-    </svg>
-  );
-}
-
 export default function JourneyStrip() {
   const { isSignedIn, isLoaded } = useUser();
   const [data, setData] = useState<LearningScoreBreakdown | null>(null);
@@ -96,28 +57,33 @@ export default function JourneyStrip() {
 
   const quizAvg = data.quizTotal > 0 ? Math.round((data.quizCorrect / data.quizTotal) * 100) : null;
 
-  const stats: { icon: React.ReactNode; value: string; label: string }[] = [
-    { icon: <FlameIcon />, value: String(data.streakCount), label: "day streak" },
-    { icon: <TargetIcon />, value: quizAvg !== null ? `${quizAvg}%` : "—", label: "quiz avg" },
-    { icon: <BookIcon />, value: String(data.termsCount), label: "terms learned" },
-    { icon: <StackIcon />, value: String(data.storiesRead), label: "stories read" },
-  ];
-
+  // Condensed from a 4-icon stat grid (py-3, its own row of icons) down
+  // to one minimal line — per explicit feedback that it was eating too
+  // much space above the fold alongside ThreadBanner. Full breakdown
+  // (same four signals, each explained) already lives at /progress —
+  // also reachable from the hamburger menu — so nothing is lost, just
+  // no longer duplicated inline on every visit.
   return (
     <div className="border-y" style={{ borderColor: "var(--border)" }}>
-      <div className="max-w-2xl mx-auto grid grid-cols-4 px-2 py-3">
-        {stats.map((s, i) => (
-          <div key={i} className="flex flex-col items-center gap-1 text-center">
-            {s.icon}
-            <span className="font-mono text-[15px] font-semibold" style={{ color: "var(--navy)" }}>
-              {s.value}
+      <Link
+        href="/progress"
+        className="max-w-2xl mx-auto flex items-center justify-between gap-3 px-4 py-2"
+      >
+        <div className="flex items-center gap-3.5 min-w-0">
+          <span className="flex items-center gap-1 shrink-0">
+            <FlameIcon />
+            <span className="font-mono text-[13px] font-semibold" style={{ color: "var(--navy)" }}>
+              {data.streakCount}
             </span>
-            <span className="font-mono text-[9px] uppercase tracking-wide" style={{ color: "var(--text-secondary)" }}>
-              {s.label}
-            </span>
-          </div>
-        ))}
-      </div>
+          </span>
+          <span className="text-[12px] truncate" style={{ color: "var(--text-secondary)" }}>
+            day streak{quizAvg !== null ? ` · ${quizAvg}% quiz avg` : ""} · {data.storiesRead} stories read
+          </span>
+        </div>
+        <span className="text-[11.5px] font-medium shrink-0" style={{ color: "var(--gold)" }}>
+          View progress →
+        </span>
+      </Link>
     </div>
   );
 }

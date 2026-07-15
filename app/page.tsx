@@ -64,8 +64,6 @@ export default async function Home() {
           </p>
         </div>
 
-        <ThreadBanner themeTitle={edition.themeTitle} themeDescription={edition.themeDescription} />
-
         <div>
           <div className="flex flex-col gap-1 mb-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="font-display text-lg text-[var(--text-primary)]">
@@ -92,6 +90,12 @@ export default async function Home() {
             )}
           </div>
         )}
+
+        {/* Moved to the bottom of the page (was directly under the
+            greeting, eating space above the fold alongside JourneyStrip
+            per explicit feedback) — still present, just no longer
+            competing with today's stories for top billing. */}
+        <ThreadBanner themeTitle={edition.themeTitle} themeDescription={edition.themeDescription} />
       </main>
     </>
   );
