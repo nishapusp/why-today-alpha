@@ -50,26 +50,26 @@ function SearchIcon({ active }: { active: boolean }) {
   );
 }
 
-function GlossaryIcon({ active }: { active: boolean }) {
-  const c = active ? "var(--navy)" : "var(--text-secondary)";
+function PulseIcon({ active }: { active: boolean }) {
+  // Deliberately filled, not a plain stroke icon like the other three tabs
+  // — this is the "premium/stands out" treatment requested, executed by
+  // reusing the app's existing gold accent as a solid badge rather than
+  // introducing new colors (stays inside the locked "gold sparingly, one
+  // accent per section" design system instead of going multi-color).
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M12 6.5V19" stroke={c} strokeWidth={STROKE} strokeLinecap="round" />
-      <path
-        d="M12 6.5C10 5.2 6.8 4.7 4 5.2v12.3c2.8-.5 6 0 8 1.3"
-        stroke={c}
-        strokeWidth={STROKE}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 6.5c2-1.3 5.2-1.8 8-1.3v12.3c-2.8-.5-6 0-8 1.3"
-        stroke={c}
-        strokeWidth={STROKE}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <span
+      className="inline-flex items-center justify-center w-7 h-7 rounded-full"
+      style={{
+        background: active
+          ? "linear-gradient(135deg, var(--gold-light), var(--gold))"
+          : "linear-gradient(135deg, var(--gold-light), var(--gold))",
+        opacity: active ? 1 : 0.85,
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="white" />
+      </svg>
+    </span>
   );
 }
 
@@ -77,11 +77,17 @@ const TABS: Tab[] = [
   { href: "/", label: "Home", match: (p) => p === "/", icon: (a) => <HomeIcon active={a} /> },
   { href: "/archive", label: "Archive", match: (p) => p.startsWith("/archive"), icon: (a) => <ArchiveIcon active={a} /> },
   { href: "/search", label: "Search", match: (p) => p.startsWith("/search"), icon: (a) => <SearchIcon active={a} /> },
-  { href: "/glossary", label: "Glossary", match: (p) => p.startsWith("/glossary"), icon: (a) => <GlossaryIcon active={a} /> },
+  { href: "/pulse", label: "Pulse", match: (p) => p.startsWith("/pulse"), icon: (a) => <PulseIcon active={a} /> },
 ];
 
 export default function BottomNav() {
   const pathname = usePathname() || "/";
+
+  // /pulse is a full-screen immersive swipe experience (its own in-page
+  // navigation via swipe/scroll, plus a ✕ close button back to home) — a
+  // persistent overlay nav here is exactly what caused headlines to be
+  // hidden behind it. Every other route keeps the nav as before.
+  if (pathname.startsWith("/pulse")) return null;
 
   return (
     <nav

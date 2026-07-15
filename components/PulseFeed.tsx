@@ -80,15 +80,19 @@ export default function PulseFeed() {
 
       {/* Progress ticks — reuses the bottom nav's gold-hairline active
           indicator language rather than inventing a new motif, so this
-          feature reads as part of the same product. */}
-      <div className="fixed right-2.5 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 z-20">
+          feature reads as part of the same product. Positioned within
+          the image region (not vertically centered across the whole
+          screen) since the bottom half is now a white info panel, where
+          light ticks wouldn't read against a light background. */}
+      <div className="fixed right-2.5 top-[24%] flex flex-col gap-1.5 z-20">
         {items.map((_, i) => (
           <div
             key={i}
             className="w-[3px] rounded-full transition-all duration-300"
             style={{
               height: i === active ? "18px" : "8px",
-              background: i === active ? "var(--gold)" : "rgba(255,255,255,0.35)",
+              background: i === active ? "var(--gold)" : "rgba(255,255,255,0.5)",
+              boxShadow: i === active ? "none" : "0 0 2px rgba(0,0,0,0.3)",
             }}
           />
         ))}
@@ -110,69 +114,83 @@ function PulseCard({ item }: { item: QuickRead }) {
   const corroborated = item.corroboratedBy.length >= 2;
 
   return (
-    <section className="h-dvh w-full snap-start relative flex flex-col justify-end overflow-hidden">
-      {/* Background image, or a category-tinted gradient fallback when no
-          image was fetchable — never a blank/broken image state. */}
-      {item.image ? (
-        <img
-          src={item.image.url}
-          alt={item.image.alt}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      ) : (
+    <section className="h-dvh w-full snap-start relative flex flex-col overflow-hidden bg-white">
+      {/* Top half: image (or a category-tinted gradient + icon fallback
+          when no image was fetchable — never a blank state). */}
+      <div className="relative h-[52%] w-full shrink-0 overflow-hidden">
+        {item.image ? (
+          <img
+            src={item.image.url}
+            alt={item.image.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 flex items-center justify-center text-[100px] opacity-25"
+            style={{ background: `linear-gradient(180deg, ${style.tint}, ${style.accent})` }}
+          >
+            {style.icon}
+          </div>
+        )}
+        {/* Soft fade at the seam so the photo doesn't cut off harshly
+            against the white panel below. */}
         <div
-          className="absolute inset-0 flex items-center justify-center text-[120px] opacity-20"
-          style={{ background: `linear-gradient(180deg, ${style.deep}, var(--navy-deep))` }}
-        >
-          {style.icon}
-        </div>
-      )}
+          className="absolute inset-x-0 bottom-0 h-16"
+          style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.95))" }}
+        />
+      </div>
 
-      {/* Gradient overlay — text legibility can't depend on the photo
-          being dark enough on its own; a financial publication's cards
-          need to read cleanly regardless of what image landed. */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, rgba(6,15,33,0.15) 0%, rgba(6,15,33,0.25) 45%, rgba(6,15,33,0.92) 100%)" }}
-      />
-
-      <div className="relative z-10 px-5 pb-10 pt-16 flex flex-col gap-3">
-        <div className="flex items-center gap-2 flex-wrap">
+      {/* Bottom half: white info panel, matching the rest of the app's
+          light design rather than a dark overlay-on-photo look — keeps
+          Pulse feeling like part of the same product, not a bolted-on
+          dark-mode feature. Deliberately minimal: badges, headline,
+          source + CTA. No snippet by default — "little information" per
+          the 2026-07-15 redesign request. */}
+      <div className="relative flex-1 flex flex-col px-5 pt-4 pb-6 -mt-4 rounded-t-3xl bg-white z-10">
+        <div className="flex items-center gap-2 flex-wrap mb-3">
           <span
             className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-1 rounded-full"
-            style={{ background: style.accent, color: "#fff" }}
+            style={{ background: style.tint, color: style.deep }}
           >
             {style.icon} {item.category}
           </span>
           {corroborated && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-1 rounded-full bg-white/15 text-white backdrop-blur-sm">
-              ✓ {item.corroboratedBy.length} outlets reporting
+            <span
+              className="inline-flex items-center gap-1 text-[11px] font-mono font-medium px-2.5 py-1 rounded-full"
+              style={{ background: "var(--surface)", color: "var(--text-secondary)", border: "1px solid var(--border)" }}
+            >
+              ✓ {item.corroboratedBy.length} outlets
             </span>
           )}
         </div>
 
-        <h2 className="font-display text-[26px] leading-[1.2] font-semibold text-white">
+        <h2 className="font-display text-[22px] leading-[1.25] font-semibold" style={{ color: "var(--navy)" }}>
           {item.headline}
         </h2>
 
-        {item.snippet && (
-          <p className="text-[15px] leading-relaxed text-white/80">{item.snippet}</p>
-        )}
+        <div className="flex-1" />
 
-        <div className="flex items-center justify-between gap-3 pt-1">
-          <span className="text-[13px] text-white/60 font-medium truncate">{item.source}</span>
+        <div className="flex items-center justify-between gap-3 pt-3">
+          <span className="text-[13px] font-medium truncate" style={{ color: "var(--text-secondary)" }}>
+            {item.source}
+          </span>
           {item.link && (
             <a
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center gap-1 text-[13px] font-semibold px-4 py-2 rounded-full"
-              style={{ background: "var(--gold)", color: "var(--navy-deep)" }}
+              style={{ background: "var(--gold)", color: "white" }}
             >
               Read full story ↗
             </a>
           )}
         </div>
+
+        {/* Safe-area padding for iOS/Android gesture bar — the bottom nav
+            is hidden on this route, so this card owns its own bottom
+            inset instead. */}
+        <div style={{ height: "env(safe-area-inset-bottom, 0px)" }} />
       </div>
     </section>
   );
