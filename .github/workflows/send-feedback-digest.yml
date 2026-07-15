@@ -1,0 +1,37 @@
+name: Send Feedback Digest
+concurrency:
+  group: send-feedback-digest
+  cancel-in-progress: false
+
+on:
+  # Tap "Run workflow" here to send a digest early/manually
+  workflow_dispatch:
+
+  # Runs once daily, after the day is fully over in IST — 19:00 UTC is
+  # 00:30 IST the next day, so "yesterday" (what the script actually
+  # reports on) is complete by then.
+  schedule:
+    - cron: "0 19 * * *"
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Send feedback digest
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          FEEDBACK_DIGEST_EMAIL: ${{ secrets.FEEDBACK_DIGEST_EMAIL }}
+        run: node scripts/send-feedback-digest.js

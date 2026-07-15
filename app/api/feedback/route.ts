@@ -6,12 +6,25 @@ import { getStore } from "@netlify/blobs";
  * (with an optional comment), stored per-slug so it's shared across all
  * readers, not per-user. Read back later via scripts/review-feedback.js —
  * this is meant to feed directly into scripts/regenerate-story.js.
+ *
+ * ALSO writes a timestamped event under events:{YYYY-MM-DD} (IST calendar
+ * day, matching how edition dates are handled elsewhere) — added
+ * 2026-07-15 for scripts/send-feedback-digest.js. The per-slug aggregate
+ * above has no timestamp on individual reactions (just running up/down
+ * counts), so "what came in today" isn't derivable from it alone; this
+ * separate daily event log is additive, doesn't change the aggregate
+ * shape, and doesn't touch the existing review-feedback.js/
+ * regenerate-story.js workflow at all.
  */
 
 interface FeedbackRecord {
   up: number;
   down: number;
   comments: string[];
+}
+
+function istDateKey(): string {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 }
 
 export async function POST(req: NextRequest) {
@@ -50,6 +63,19 @@ export async function POST(req: NextRequest) {
       { error: `Could not save feedback: ${err instanceof Error ? err.message : "unknown error"}` },
       { status: 500 }
     );
+  }
+
+  // Best-effort daily event log — failure here doesn't fail the request,
+  // since the aggregate record above (what regenerate-story.js relies on)
+  // already saved successfully.
+  try {
+    const eventsKey = `events:${istDateKey()}`;
+    const existingEvents = await store.get(eventsKey, { type: "text" });
+    const events = existingEvents ? JSON.parse(existingEvents) : [];
+    events.push({ slug: body.slug, reaction: body.reaction, comment: body.comment?.trim() || undefined, at: new Date().toISOString() });
+    await store.set(eventsKey, JSON.stringify(events));
+  } catch {
+    // Non-fatal — the digest will just show one fewer event for the day.
   }
 
   return NextResponse.json({ ok: true, record });
