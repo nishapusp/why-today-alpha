@@ -40,7 +40,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
-const { fetchStorySources, verifyStoryAgainstSources, enrichStoryWithSourceFigures } = require("./verify-edition.js");
+const { fetchStorySources, verifyStoryAgainstSources, enrichStoryWithSourceFigures, checkSourceRecency } = require("./verify-edition.js");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
@@ -57,6 +57,7 @@ const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 // once billing is enabled, without needing a code change.
 const TOTAL_STORIES = parseInt(process.env.STORY_TARGET || "9", 10);
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || "3", 10);
+const DEDUP_LOOKBACK_DAYS = parseInt(process.env.DEDUP_LOOKBACK_DAYS || "3", 10);
 
 const REQUIRED_STORY_FIELDS = [
   "headline", "slug", "category", "summary", "quickRead", "whatHappened",
@@ -86,7 +87,7 @@ Also include per story:
 - "notificationHeadline": max 7 words, hook first — reads like a push notification you would actually tap.
 
 ## New category guidance
-Use "IPO" only for primary-market news with a genuine fresh trigger (a new listing, subscription/GMP status, SEBI approval, DRHP filing) — not general market commentary. Use "Startups" for funding rounds, fintech product launches, or startup-specific policy/regulatory news — not large-cap corporate results (those stay "Corporate"). Use "AI" only when artificial intelligence or a comparable emerging technology (not routine IT/digital-policy news) is the actual subject with a business or economic angle — general technology-sector news that isn't AI-specific stays "Technology". These three are conditional, not mandatory, categories: include a story in one of them only when a real, fresh, well-sourced trigger exists — never force a weak story in just to fill the category.
+Use "IPO" only for primary-market news with a genuine fresh trigger (a new listing, subscription/GMP status, SEBI approval, DRHP filing) — not general market commentary. Use "Startups" for funding rounds, fintech product launches, or startup-specific policy/regulatory news — not large-cap corporate results (those stay "Corporate"). Use "AI" only when artificial intelligence or a comparable emerging technology (not routine IT/digital-policy news) is the actual subject with a business or economic angle — general technology-sector news that isn't AI-specific stays "Technology". These three are conditional, not mandatory, categories: include a story in one of them only when a real, fresh, well-sourced trigger exists — never force a weak story in just to fill the category. There is no "Markets" category — stock/index/trading-flow stories that don't fit IPO, Corporate, or Banking belong under "Economy". Use ONLY the exact category values listed in the schema above; any other value gets silently downgraded to "Economy" on the live site, which mislabels the story rather than erroring loudly.
 
 ## Sourcing
 Use Google Search to check 3-5 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories. Cross-check figures against 2+ sources.
@@ -109,7 +110,7 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; no transitive verb (supply, serve, cover, provide, reach, and similar) left without its object — reread ifYoureWondering answers specifically for this, they're the most common place it slips through; every headline is 11 words or fewer AND would score 9/10 on curiosity; every story has all six timeMachine keys, each specific to that story's thread; every chart (if present) has real sourced values in matching label/value counts — delete any chart you are not certain about; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; no transitive verb (supply, serve, cover, provide, reach, and similar) left without its object — reread ifYoureWondering answers specifically for this, they're the most common place it slips through; every headline is 11 words or fewer AND would score 9/10 on curiosity; every story has all six timeMachine keys, each specific to that story's thread; every chart (if present) has real sourced values in matching label/value counts — delete any chart you are not certain about; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. Be especially wary of named government/defence operations, exercises, or routine institutional actions (e.g. a periodic RBI liquidity operation, a recurring named military exercise) — these get real news coverage every time they recur, which makes them LOOK fresh even when the underlying activity is routine; only include one if THIS specific occurrence has a genuinely new, non-routine angle. When a candidate story's only source is News on AIR or a PIB release with no independent corroborating outlet, treat that as a signal to verify the date extra carefully before including it — government wire content is often republished well after the original event. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to". If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
 ## timeMachine (per story, required) — the signature feature
 "timeMachine" places today's news in time so a reader sees the full arc, not just today's blip. Six keys, each 1-2 plain sentences (15-35 words), with a REAL fact or figure wherever possible — use Google Search for the historical steps, not memory alone:
@@ -158,9 +159,42 @@ function getTodayISO() {
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 }
 
-function buildUserPrompt(storyCount, excludeHeadlines) {
+// Cross-day dedup — the same-edition exclusion list (seenHeadlines) only
+// ever covered TODAY's stories, so nothing stopped an event that ran
+// yesterday (or two days ago) from being written up again, even verbatim
+// (confirmed 2026-07-15: the Hormuz-blockade headline ran identically on
+// both 07-14 and 07-15). This pulls headlines from the last N days of
+// data/archive/ so the prompt can tell the model what's already been
+// covered recently — separate from the same-edition list because the rule
+// here is softer: a genuine follow-up development (an IPO opening, then
+// later listing) is fine, a same-day-style pure reword is not. Missing
+// archive files (e.g. a day the pipeline didn't run) are skipped silently.
+function loadRecentArchiveHeadlines(todayISO, days) {
+  const out = [];
+  const archiveDir = path.join(__dirname, "..", "data", "archive");
+  const today = new Date(`${todayISO}T00:00:00`);
+  for (let i = 1; i <= days; i++) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const dateStr = d.toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+    const file = path.join(archiveDir, `${dateStr}.json`);
+    if (!fs.existsSync(file)) continue;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(file, "utf8"));
+      (parsed.stories || []).forEach((s) => s.headline && out.push({ headline: s.headline, date: dateStr }));
+    } catch {
+      // Corrupt/partial archive file — skip rather than fail the whole run.
+    }
+  }
+  return out;
+}
+
+function buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines) {
   const exclusionNote = excludeHeadlines?.length
     ? ` Do NOT repeat or overlap with these already-covered stories from the same edition: ${excludeHeadlines.map((h) => `"${h}"`).join(", ")}. Find ${storyCount} completely different fresh stories.`
+    : "";
+  const recentDaysNote = recentDaysHeadlines?.length
+    ? ` These stories were already published in the last ${DEDUP_LOOKBACK_DAYS} days — do NOT cover the same underlying event again, even reworded, UNLESS there is a genuinely substantial new development (a materially different milestone, decision, outcome, or figure — not just a restated angle). If you do run a legitimate follow-up, its headline and summary must lead with what's NEW, not restate the earlier story: ${recentDaysHeadlines.map((h) => `"${h.headline}" (${h.date})`).join(", ")}.`
     : "";
   // Set by poll-rss.js when it dispatches a run specifically because a
   // World/geopolitics story matured and today's edition is short on that
@@ -171,7 +205,7 @@ function buildUserPrompt(storyCount, excludeHeadlines) {
   const focusNote = focusCategory
     ? ` PRIORITY FOR THIS BATCH: today's edition is short on the "${focusCategory}" category — of the ${storyCount} stories in this batch, favor genuine ${focusCategory === "World" ? "geopolitics/world-affairs stories with a clear India angle (trade, markets, security, diaspora impact)" : focusCategory} stories wherever a real fresh trigger exists, without forcing a weak or stale story into that category just to fill it.`
     : "";
-  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, IPO/primary-market, startup/fintech, AI, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${focusNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
+  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, IPO/primary-market, startup/fintech, AI, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${recentDaysNote}${focusNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -200,13 +234,15 @@ const RSS_QUERIES = [
 // straight to the publisher closes that gap for genuinely breaking stories.
 // Each entry's `source` is used as a label since these feeds (unlike
 // Google News RSS) don't carry a <source> tag of their own.
-// URLs sourced 2026-07-13 — the Business Standard ones were copied
-// directly from their live RSS listing page; LiveMint/Economic Times/BBC
-// came from a current aggregator listing, not independently fetch-tested.
-// pullFeed() already logs+skips a feed that 404s or errors rather than
-// failing the run, so a stale URL here degrades gracefully — but worth
-// checking the Action's logs after the first run to confirm all 8 are
-// actually returning items, not silently skipping.
+// URLs sourced 2026-07-13 (BBC/LiveMint/ET/Business Standard) and
+// 2026-07-15 (Moneycontrol/Financial Express/Hindu BusinessLine, added to
+// widen source diversity) — the newer three came from a maintained
+// curated RSS directory (plenaryapp/awesome-rss-feeds), not independently
+// fetch-tested against live traffic. pullFeed() already logs+skips a feed
+// that 404s or errors rather than failing the run, so a stale URL here
+// degrades gracefully — but worth checking the Action's logs after the
+// first run to confirm all 11 are actually returning items, not silently
+// skipping.
 const DIRECT_FEEDS = [
   { source: "Business Standard", url: "https://www.business-standard.com/rss/economy-102.rss" },
   { source: "Business Standard", url: "https://www.business-standard.com/rss/finance-103.rss" },
@@ -216,6 +252,9 @@ const DIRECT_FEEDS = [
   { source: "LiveMint", url: "https://www.livemint.com/rss/news" },
   { source: "Economic Times", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms" },
   { source: "BBC World", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+  { source: "Moneycontrol", url: "http://www.moneycontrol.com/rss/latestnews.xml" },
+  { source: "Financial Express", url: "https://www.financialexpress.com/feed/" },
+  { source: "Hindu BusinessLine", url: "https://www.thehindubusinessline.com/feeder/default.rss" },
 ];
 
 // Fuzzy headline matching — two headlines describe the same underlying event
@@ -541,12 +580,12 @@ function describeQuotaViolations(errBody) {
   };
 }
 
-async function generateBatch(storyCount, excludeHeadlines, mode = "search", maxRetries = 3) {
+async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, mode = "search", maxRetries = 3) {
   let attempt = 0;
   let currentModel = MODEL;
   const deadModels = new Set(); // models Google has retired (404) this run
 
-  let userPrompt = buildUserPrompt(storyCount, excludeHeadlines);
+  let userPrompt = buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines);
   if (mode === "rss") {
     userPrompt += buildRssAddendum(await fetchRssHeadlines());
   }
@@ -856,6 +895,10 @@ async function main() {
   // --- Resume support -----------------------------------------------------
   let edition = loadExistingEdition();
   const seenHeadlines = [];
+  const recentHeadlines = loadRecentArchiveHeadlines(today, DEDUP_LOOKBACK_DAYS);
+  if (recentHeadlines.length) {
+    console.log(`Loaded ${recentHeadlines.length} headline(s) from the last ${DEDUP_LOOKBACK_DAYS} day(s) of archive for cross-day dedup.`);
+  }
 
   // If the midnight date-roll script already bumped `date` to today while
   // carrying over yesterday's stories (edition.stale === true), those
@@ -911,7 +954,7 @@ async function main() {
 
     let batch;
     try {
-      batch = await generateBatch(count, seenHeadlines, effectiveMode);
+      batch = await generateBatch(count, seenHeadlines, recentHeadlines, effectiveMode);
     } catch (err) {
       // First quota block on a grounded call in auto mode → switch this run
       // to RSS grounding and retry the SAME batch before giving up.
@@ -923,7 +966,7 @@ async function main() {
         console.warn("\nGrounded (google_search) request is quota-blocked. Falling back to RSS-grounded mode for the rest of this run — fresh headlines fetched directly from Google News, no grounding quota needed.");
         effectiveMode = "rss";
         try {
-          batch = await generateBatch(count, seenHeadlines, "rss");
+          batch = await generateBatch(count, seenHeadlines, recentHeadlines, "rss");
         } catch (err2) {
           failedBatches++;
           if (err2.status === 429) {
@@ -967,6 +1010,20 @@ async function main() {
       }
       return true;
     });
+
+    // Cross-day repeats aren't auto-dropped like same-edition dupes are —
+    // a genuine follow-up (IPO opens → IPO lists) is legitimate and the
+    // prompt's recentDaysNote already asks the model to lead with what's
+    // new in that case. This just surfaces a soft flag for manual review
+    // when a published headline still closely matches a recent day's, in
+    // case it slipped through as a plain reword rather than a real update.
+    batchStories.forEach((s) => {
+      const recentMatch = recentHeadlines.find((h) => isSameEvent(s.headline, h.headline));
+      if (recentMatch) {
+        allSoftIssues.push(`"${s.headline}": closely matches "${recentMatch.headline}" published ${recentMatch.date} — check this is a genuine follow-up, not a repeat.`);
+      }
+    });
+
     if (batchStories.length === 0) {
       failedBatches++;
       console.error(`Batch ${b + 1} returned no stories — skipping.`);
@@ -1008,6 +1065,23 @@ async function main() {
           verifiedStories.push(story);
           continue;
         }
+
+        // --- Recency gate ---------------------------------------------------
+        // Checks the story's own cited sources' actual publish dates —
+        // independent of whether the model followed the prompt's recency
+        // instructions. A story can be 100% factually accurate and still be
+        // months old (the original bug: a 3-month-old "Operation SAKSHM"
+        // passed fact-checking cleanly because it wasn't wrong, just stale).
+        // This gate catches that regardless of the accuracy verdict below.
+        const recency = checkSourceRecency(sources, today);
+        if (!recency.ok) {
+          console.error(`  STALE  "${shortHeadline}" — HELD BACK, not published. ${recency.reason}`);
+          continue; // dropped — never enters verifiedStories
+        }
+        if (recency.unverifiable) {
+          allSoftIssues.push(`"${story.headline}": ${recency.reason} — recency unverified, publishing but flagged for manual check.`);
+        }
+
         const result = await verifyStoryAgainstSources(story, today, sources);
         if (result.verdict === "FAIL" || result.verdict === "FABRICATED") {
           console.error(`  ${result.verdict}  "${shortHeadline}" — HELD BACK, not published.`);

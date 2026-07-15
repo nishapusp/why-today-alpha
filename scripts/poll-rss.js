@@ -62,6 +62,9 @@ const DIRECT_FEEDS = [
   { source: "LiveMint", category: "Economy", url: "https://www.livemint.com/rss/news" },
   { source: "Economic Times", category: "Economy", url: "https://economictimes.indiatimes.com/rssfeedsdefault.cms" },
   { source: "BBC World", category: "World", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+  { source: "Moneycontrol", category: "Economy", url: "http://www.moneycontrol.com/rss/latestnews.xml" },
+  { source: "Financial Express", category: "Economy", url: "https://www.financialexpress.com/feed/" },
+  { source: "Hindu BusinessLine", category: "Economy", url: "https://www.thehindubusinessline.com/feeder/default.rss" },
 ];
 
 // Minimum World/geopolitics stories we'd like in a day's 15 — see README

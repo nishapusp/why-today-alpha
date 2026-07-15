@@ -110,6 +110,7 @@ Return ONLY valid JSON matching this shape — no preamble, no markdown code fen
    "sentiment" (positive|caution|critical|neutral)
  }]
 }
+There is no "Markets" category — stock/index/trading-flow stories that don't fit IPO, Corporate, or Banking belong under "Economy". Use ONLY the exact category values listed above.
 
 ## Before returning output, verify
 No stray numbers/citations inline. No story-position numbers in text. Every jargon term explained on first use. All length floors met. readMinutes matches actual word count. If any check fails, rewrite that field first.`;
