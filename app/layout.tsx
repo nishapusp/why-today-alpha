@@ -6,6 +6,7 @@ import Link from "next/link";
 import BottomNav from "@/components/BottomNav";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import AppDownloadBanner from "@/components/AppDownloadBanner";
+import PushSubscribePrompt from "@/components/PushSubscribePrompt";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -119,6 +120,7 @@ export default function RootLayout({
           <AppDownloadBanner />
           {children}
           <BottomNav />
+          <PushSubscribePrompt />
           <Script id="sw-register" strategy="afterInteractive">
             {`
               if ('serviceWorker' in navigator) {

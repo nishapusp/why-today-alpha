@@ -69,3 +69,48 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
+// --- Web Push --------------------------------------------------------
+// Kept minimal on purpose: shows whatever title/body/url the push payload
+// carries (sent by scripts/send-push-notification.js), falls back to
+// sensible defaults if the payload is missing or malformed so a
+// malformed push never fails silently with no notification at all.
+self.addEventListener("push", (event) => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch {
+    // Not valid JSON — fall through to defaults below.
+  }
+
+  const title = data.title || "Why Today";
+  const body = data.body || "A new story just went live.";
+  const url = data.url || "/";
+
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body,
+      icon: "/icons/icon-192.png",
+      badge: "/icons/icon-192.png",
+      data: { url },
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || "/";
+  event.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {
+      // Focus an existing tab already on the site rather than opening a
+      // new one, if one's open.
+      for (const client of clients) {
+        if (client.url.includes(self.location.origin) && "focus" in client) {
+          client.navigate(url);
+          return client.focus();
+        }
+      }
+      return self.clients.openWindow(url);
+    })
+  );
+});

@@ -56,6 +56,9 @@ jobs:
           git config user.name "Why Today Bot"
           git config user.email "actions@github.com"
 
+      - name: Install dependencies
+        run: npm install --omit=dev --no-audit --no-fund
+
       - name: Generate today's edition
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -74,4 +77,19 @@ jobs:
           BATCH_SPACING_MS: "20000"
           FOCUS_CATEGORY: ${{ github.event.inputs.focus_category }}
         run: node scripts/generate-edition.js
+
+      # Added 2026-07-15 for the Web Push feature — only runs if the
+      # generate step above succeeded, so a failed/partial run never
+      # notifies readers about stories that didn't actually publish.
+      # v1 is deliberately generic (not featuring a specific headline) —
+      # simple and reliable over clever for a first version.
+      - name: Notify subscribers
+        if: success()
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_CONTACT_EMAIL: ${{ secrets.VAPID_CONTACT_EMAIL }}
+        run: node scripts/send-push-notification.js "Why Today" "Today's edition is live — top banking, economy & finance stories, verified and explained." "/"
 
