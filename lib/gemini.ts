@@ -57,7 +57,13 @@ export async function generateWithGemini(
     );
   }
 
-  const text = candidate.content?.parts?.map((p: { text?: string }) => p.text || "").join("") ?? "";
+  // Same fix as scripts/generate-edition.js and scripts/verify-edition.js:
+  // gemini-3.5-flash thinks by default and can return a "thought": true
+  // summary part alongside the real answer — naively joining every part's
+  // .text mixes thinking-prose into what's shown to the reader here (the
+  // tap-to-expand knowledge-chain/deep-dive explanations), not just JSON
+  // parsing like the other 4 locations. Filtered the same way.
+  const text = candidate.content?.parts?.filter((p: { thought?: boolean }) => !p.thought).map((p: { text?: string }) => p.text || "").join("") ?? "";
   if (!text) {
     throw new Error(`Gemini returned an empty response: ${JSON.stringify(data)}`);
   }
