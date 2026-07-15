@@ -47,6 +47,9 @@ export default function TimeMachine({
     setBusy(true);
     const url = `${window.location.origin}/story/${slug}`;
     const text = "How this story evolved over time — via Why Today:";
+    // Same tagline as ShareButton.tsx's main story share — consistent
+    // across every shareable card the site generates.
+    const fullMessage = `${text} ${url}\n\nGet banking, economy & finance news — all in one place, in 1 minute — on whytoday.in`;
     try {
       if (navigator.share) {
         let file: File | null = null;
@@ -61,18 +64,18 @@ export default function TimeMachine({
         }
         if (file) {
           try {
-            await navigator.share({ files: [file], text: `${text} ${url}` });
+            await navigator.share({ files: [file], text: fullMessage });
             return;
           } catch (err) {
             if (err instanceof DOMException && err.name === "AbortError") return;
             // fall through to text-only share below
           }
         }
-        await navigator.share({ title: "Time Machine", text, url });
+        await navigator.share({ title: "Time Machine", text: fullMessage, url });
         return;
       }
       window.open(
-        `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`,
+        `https://wa.me/?text=${encodeURIComponent(fullMessage)}`,
         "_blank",
         "noopener"
       );

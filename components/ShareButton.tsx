@@ -43,6 +43,11 @@ export default function ShareButton({
     setBusy(true);
     const url = `${window.location.origin}/story/${slug}`;
     const text = `${headline}\n\nRead why it matters on Why Today:`;
+    // One-line tagline appended to every share path, per explicit request —
+    // the goal is that anyone receiving a forwarded share (not just the
+    // person who tapped Share) sees a reason to visit on their own, not
+    // just this one story.
+    const fullMessage = `${text} ${url}\n\nGet banking, economy & finance news — all in one place, in 1 minute — on whytoday.in`;
     try {
       if (navigator.share) {
         const main = await fetchCard(`/cards/${slug}.png`, `why-today-${slug}.png`);
@@ -55,7 +60,7 @@ export default function ShareButton({
         // the image.
         if (main) {
           try {
-            await navigator.share({ files: [main], text: `${text} ${url}` });
+            await navigator.share({ files: [main], text: fullMessage });
             return;
           } catch (err) {
             // AbortError = user closed the share sheet themselves — don't
@@ -66,12 +71,12 @@ export default function ShareButton({
           }
         }
 
-        await navigator.share({ title: headline, text, url });
+        await navigator.share({ title: headline, text: fullMessage, url });
         return;
       }
       // No Web Share API at all — WhatsApp web deep link.
       window.open(
-        `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`,
+        `https://wa.me/?text=${encodeURIComponent(fullMessage)}`,
         "_blank",
         "noopener"
       );
