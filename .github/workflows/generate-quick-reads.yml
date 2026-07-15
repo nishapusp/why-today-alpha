@@ -1,0 +1,42 @@
+name: Generate Quick Reads
+concurrency:
+  group: generate-quick-reads
+  cancel-in-progress: false
+
+on:
+  # Tap "Run workflow" here, or from the GitHub mobile app (Actions tab)
+  workflow_dispatch:
+
+  # Unlike generate-edition.yml, this does NOT touch Gemini quota (no LLM
+  # call at all — see scripts/generate-quick-reads.js) and does NOT touch
+  # Netlify deploy credits (writes to Blobs, not a committed file — see
+  # the same file's header comment for the full 2026-07-15 redesign
+  # rationale). So it can run much more often than the flagship pipeline's
+  # 2x/day without competing for either scarce budget. Every 20 minutes
+  # is a starting point — tune QUICK_READS the same way BATCH_SIZE etc.
+  # were tuned for the flagship pipeline, by watching real usage.
+  schedule:
+    - cron: "*/20 * * * *"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Generate Quick Reads
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          QUICK_READS_LIMIT: "40"
+        run: node scripts/generate-quick-reads.js
