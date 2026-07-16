@@ -21,8 +21,18 @@ on:
   # flagship pipeline has been fighting all session. Revisit this
   # cadence if actual daily quota usage (watch the flagship pipeline's
   # own logs for 429s) suggests it needs to come down further.
+  # 2026-07-16: tightened from hourly to every 20 min — the model
+  # rebalancing fix (see generate-quick-reads.js) means this now defaults
+  # to gemini-3.1-flash-lite (500 requests/day free tier) rather than the
+  # 20/day model, so even at 20-min cadence (72 runs/day) there's
+  # comfortable headroom left for everything else sharing that budget.
+  # Started here rather than 15 min (96 runs/day, also fine on paper) to
+  # leave a bit more margin while confirming real usage looks healthy —
+  # tighten further once that's confirmed. The other real constraint is
+  # GitHub Actions' own minute budget if this repo is private (2,000
+  # free/month) — public repos aren't limited this way.
   schedule:
-    - cron: "0 * * * *"
+    - cron: "*/20 * * * *"
 
 jobs:
   generate:
