@@ -3,6 +3,16 @@ concurrency:
   group: regenerate-story
   cancel-in-progress: false
 
+# 2026-07-16: this was missing entirely — a real run generated a full,
+# valid story (810-word deep dive, written to the file locally) and then
+# failed at the very last step: "Write access to repository not
+# granted... 403". GitHub Actions' auto-injected GITHUB_TOKEN defaults to
+# read-only unless a workflow explicitly declares write access, which
+# this file never did (unlike generate-edition.yml and poll-rss.yml,
+# both of which already have this same block and push successfully).
+permissions:
+  contents: write # needed so the script can git push the new/regenerated story
+
 on:
   workflow_dispatch:
     inputs:
