@@ -44,5 +44,6 @@ jobs:
       - name: Regenerate or add story
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           AUTO_CONFIRM: "1"
         run: node scripts/regenerate-story.js "${{ github.event.inputs.slug_or_mode }}" "${{ github.event.inputs.feedback_or_topic }}"

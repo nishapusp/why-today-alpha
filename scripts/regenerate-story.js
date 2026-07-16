@@ -25,7 +25,7 @@ const { execSync } = require("child_process");
 // the scenario where a thought-part getting concatenated into the
 // response text fools naive brace matching. Also picks up FALLBACK_MODEL
 // for free, which this file never had at all before.
-const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations } = require("./generate-edition.js");
+const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations, fetchPexelsImage } = require("./generate-edition.js");
 // 2026-07-16: this file's API call uses google_search grounding, which
 // needs a DIFFERENT model choice than generate-edition.js's own MODEL/
 // FALLBACK_MODEL (those are tuned for ungrounded/text-only calls
@@ -312,6 +312,24 @@ async function main() {
       }
       console.log("Trying a fresh generation...");
     }
+  }
+
+  // 2026-07-16: this was missing entirely — regenerate-story.js never
+  // fetched an image at all, unlike generate-edition.js which does this
+  // for every story. Confirmed from a real published story showing
+  // headlineImage: undefined. Same pattern as generate-edition.js: only
+  // runs if PEXELS_API_KEY is actually set (also needed adding to
+  // regenerate-story.yml's env, done in the same change), and fails
+  // open — a missing/failed image fetch shouldn't block publishing the
+  // story text, same as it doesn't in the main pipeline.
+  if (process.env.PEXELS_API_KEY) {
+    try {
+      newStory.headlineImage = await fetchPexelsImage(newStory, process.env.PEXELS_API_KEY);
+    } catch (err) {
+      console.warn(`\nCouldn't fetch an image (publishing without one): ${err.message}`);
+    }
+  } else {
+    console.warn("\nPEXELS_API_KEY not set — publishing without an image.");
   }
 
   console.log("\n=== NEW VERSION ===");
