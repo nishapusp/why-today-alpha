@@ -25,7 +25,7 @@ const { execSync } = require("child_process");
 // the scenario where a thought-part getting concatenated into the
 // response text fools naive brace matching. Also picks up FALLBACK_MODEL
 // for free, which this file never had at all before.
-const { GEMINI_API_BASE, MODEL, FALLBACK_MODEL, API_KEY, extractJson } = require("./generate-edition.js");
+const { GEMINI_API_BASE, MODEL, FALLBACK_MODEL, API_KEY, extractJson, describeQuotaViolations } = require("./generate-edition.js");
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
@@ -180,19 +180,57 @@ async function main() {
     const bodyText = await res.text();
     console.warn(`\n${currentModel} error (${res.status}): ${bodyText.slice(0, 300)}`);
 
-    if (res.status === 404 || res.status === 429) {
-      // 404 = this model name is retired; 429 = could be a short rate
-      // limit OR a daily cap — either way, trying the other model costs
-      // nothing and often just works, so don't bother distinguishing
-      // long-window vs short-window here the way verify-edition.js does.
+    if (res.status === 404) {
+      // Model name retired — switching is the only option, no amount of
+      // waiting fixes this.
       deadModels.add(currentModel);
       const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
       if (deadModels.has(other)) {
-        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} failed. Last error (${res.status}):`, bodyText);
+        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} are unavailable (404). Last error:`, bodyText);
+        process.exit(1);
+      }
+      console.log(`${currentModel} unavailable — switching to ${other}...`);
+      currentModel = other;
+      continue;
+    }
+
+    if (res.status === 429) {
+      // 2026-07-16: this used to switch models immediately on ANY 429,
+      // no matter which quota was actually hit — which is why a real run
+      // failed outright even though the usage dashboard showed both
+      // models at near-zero daily usage (0/20, 1/500): that failure was
+      // a transient per-minute (RPM) block, not the daily (RPD) cap, and
+      // immediately abandoning the model instead of just waiting a few
+      // seconds threw away an attempt that would very likely have
+      // succeeded on a short retry. Now uses the same quota-violation
+      // parsing verify-edition.js already has (isLongWindow) to tell the
+      // two apart: a short-window (RPM) block gets a brief wait-and-
+      // retry on the SAME model; only a genuine long-window (RPD) block
+      // triggers switching models, matching what daily exhaustion
+      // actually requires (switching doesn't help RPM, since both
+      // models share the same short-term request pressure if it's
+      // concurrent traffic causing it — but waiting does).
+      const quota = describeQuotaViolations(bodyText);
+      if (!quota.isLongWindow) {
+        attempt++;
+        if (attempt > maxRetries) {
+          console.error(`\n${currentModel} still rate-limited after ${maxRetries} short retries — trying the other model instead.`);
+        } else {
+          const waitMs = 8000 * attempt;
+          console.warn(`${currentModel} hit a short-term rate limit (not daily quota) — waiting ${Math.round(waitMs / 1000)}s and retrying the same model (${attempt}/${maxRetries})...`);
+          await new Promise((r) => setTimeout(r, waitMs));
+          continue;
+        }
+      }
+      deadModels.add(currentModel);
+      const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+      if (deadModels.has(other)) {
+        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} are quota-blocked. Last error:`, bodyText);
         process.exit(1);
       }
       console.log(`Switching to ${other}...`);
       currentModel = other;
+      attempt = 0; // fresh short-retry budget on the new model
       continue;
     }
 

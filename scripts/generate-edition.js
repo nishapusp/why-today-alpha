@@ -1433,4 +1433,5 @@ module.exports = {
   MODEL,
   FALLBACK_MODEL,
   API_KEY,
+  describeQuotaViolations,
 };
