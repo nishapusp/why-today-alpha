@@ -56,7 +56,7 @@ export default function QuickReadsFeed() {
 
   if (items === null) {
     return (
-      <div className="h-screen flex items-center justify-center bg-[var(--navy-deep)]">
+      <div className="h-svh flex items-center justify-center bg-[var(--navy-deep)]">
         <div className="w-6 h-6 rounded-full border-2 border-white/20 border-t-white/70 animate-spin" />
       </div>
     );
@@ -72,9 +72,20 @@ export default function QuickReadsFeed() {
   }
 
   return (
+    // h-svh (not h-screen/100vh, not h-dvh) — deliberate choice after two
+    // rounds of viewport issues: h-screen (100vh) is a fixed value that
+    // doesn't track the mobile browser's own address-bar toolbar
+    // collapsing/expanding during scroll, which is what caused the "nav
+    // bar sliding" look on a scroll-snap page (there's no app nav bar
+    // rendered here at all — BottomNav returns null on this route — so
+    // that motion was the browser's own chrome). h-dvh DOES track it, but
+    // introduced its own overflow issues earlier. h-svh is the stable
+    // middle ground: always sized to the SMALLEST possible visible area,
+    // so it never changes as the toolbar moves — no sliding, and never
+    // overflows past what's guaranteed visible either.
     <div
       ref={containerRef}
-      className="h-screen overflow-y-scroll snap-y snap-mandatory no-scrollbar overscroll-y-contain"
+      className="h-svh overflow-y-scroll snap-y snap-mandatory no-scrollbar overscroll-y-contain"
     >
       {items.map((item) => (
         <QuickReadCard key={item.id} item={item} />
@@ -131,7 +142,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
 
   return (
     <section
-      className="h-screen w-full snap-start relative flex flex-col overflow-hidden bg-white cursor-pointer"
+      className="h-svh w-full snap-start relative flex flex-col overflow-hidden bg-white cursor-pointer"
       onClick={open}
       role="link"
       tabIndex={0}
@@ -262,7 +273,7 @@ function QuickReadCard({ item }: { item: QuickRead }) {
 
 function EmptyState({ title, body }: { title: string; body: string }) {
   return (
-    <div className="h-screen flex flex-col items-center justify-center text-center px-8 bg-[var(--navy-deep)]">
+    <div className="h-svh flex flex-col items-center justify-center text-center px-8 bg-[var(--navy-deep)]">
       <p className="font-display text-xl text-white mb-2">{title}</p>
       <p className="text-[14px] text-white/60 max-w-xs mb-6">{body}</p>
       <Link
