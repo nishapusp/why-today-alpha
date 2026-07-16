@@ -67,30 +67,50 @@ function ask(question) {
 }
 
 async function main() {
-  const slug = process.argv[2];
-  const feedback = process.argv[3] || "";
+  const first = process.argv[2];
+  const second = process.argv[3] || "";
+  const isNew = first === "--new";
 
   if (!API_KEY) {
-    console.error("Set GEMINI_API_KEY first:\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js <slug> [\"feedback\"]");
+    console.error("Set GEMINI_API_KEY first:\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js <slug> [\"feedback\"]\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js --new \"topic description\"");
     process.exit(1);
   }
-  if (!slug) {
-    console.error("Usage: node scripts/regenerate-story.js <slug> [\"what was wrong with it\"]");
+  if (!first) {
+    console.error("Usage: node scripts/regenerate-story.js <slug> [\"what was wrong with it\"]\n   or: node scripts/regenerate-story.js --new \"topic description\"");
     process.exit(1);
   }
 
   const edition = JSON.parse(fs.readFileSync(EDITION_PATH, "utf-8"));
-  const index = edition.stories.findIndex((s) => s.slug === slug);
-  if (index === -1) {
-    console.error(`No story with slug "${slug}" found in data/edition.json. Current slugs:`);
-    edition.stories.forEach((s) => console.error(`  - ${s.slug}`));
-    process.exit(1);
+  let index = -1;
+  let original = null;
+  let userPrompt;
+
+  if (isNew) {
+    // Added 2026-07-16 per explicit request: generating a brand new story
+    // alongside the existing ones, rather than replacing one by slug, so
+    // a failed/imperfect attempt never destroys a story that's already
+    // publishing fine — the old one can be removed manually once the new
+    // one is confirmed good, rather than the replace flow's all-or-
+    // nothing swap.
+    if (!second) {
+      console.error('For --new mode, pass a topic description as the second argument, e.g.:\n  node scripts/regenerate-story.js --new "Union Bank Q1 FY27 results — full deep dive with peer comparison"');
+      process.exit(1);
+    }
+    userPrompt = `Write a brand new story on this topic:\n${second}\n\nThis is a genuinely new story, not a regeneration of an existing one — do not reference "the original" or "what was wrong with it," just write the strongest possible version from scratch.`;
+    console.log(`Generating new story: "${second}"...`);
+  } else {
+    const slug = first;
+    const feedback = second;
+    index = edition.stories.findIndex((s) => s.slug === slug);
+    if (index === -1) {
+      console.error(`No story with slug "${slug}" found in data/edition.json. Current slugs:`);
+      edition.stories.forEach((s) => console.error(`  - ${s.slug}`));
+      process.exit(1);
+    }
+    original = edition.stories[index];
+    userPrompt = `Regenerate this story:\nOriginal headline: "${original.headline}"\nCategory: ${original.category}\nOriginal summary: "${original.summary}"\n${feedback ? `What was wrong with it: ${feedback}` : "No specific complaint — just write a stronger version."}`;
+    console.log(`Regenerating "${original.headline}"...`);
   }
-
-  const original = edition.stories[index];
-  const userPrompt = `Regenerate this story:\nOriginal headline: "${original.headline}"\nCategory: ${original.category}\nOriginal summary: "${original.summary}"\n${feedback ? `What was wrong with it: ${feedback}` : "No specific complaint — just write a stronger version."}`;
-
-  console.log(`Regenerating "${original.headline}"...`);
 
   // 2026-07-16: rebuilt as a proper retry loop with model fallback — this
   // was previously a single unprotected fetch, which is exactly why a
@@ -114,7 +134,16 @@ async function main() {
         system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents: [{ role: "user", parts: [{ text: userPrompt }] }],
         tools: [{ google_search: {} }],
-        generationConfig: { maxOutputTokens: 8192 },
+        // 2026-07-16: raised from 8192 — likely the actual cause of the
+        // "syntax error" failures (a JSON.parse SyntaxError is exactly
+        // what a truncated response produces). generate-edition.js
+        // allocates roughly 6500 tokens PER STORY for this same schema;
+        // 8192 was already tight for a full deep dive + timeMachine +
+        // chart + keyNumbers, and the quarterly-results guidance added
+        // in the same session asks for meaningfully more content
+        // (segment-level analysis, peer comparison data) without this
+        // budget ever being revisited.
+        generationConfig: { maxOutputTokens: 20000 },
       }),
     });
 
@@ -178,25 +207,55 @@ async function main() {
   console.log(`Summary: ${newStory.summary}`);
   console.log(`Deep dive length: ${(newStory.deepDiveRead || "").split(/\s+/).length} words`);
 
+  const confirmPrompt = isNew
+    ? `\nAdd this as a new story (position 1, alongside the existing ${edition.stories.length}) and push? (y/n): `
+    : `\nReplace story ${index + 1} in edition.json with this version and push? (y/n): `;
   const proceed = process.env.AUTO_CONFIRM === "1"
     ? "y" // non-interactive path (GH Actions workflow) — readline.question would
           // hang forever waiting for stdin that never comes in CI, so this
           // bypasses it explicitly rather than accidentally working by luck.
-    : await ask(`\nReplace story ${index + 1} in edition.json with this version and push? (y/n): `);
+    : await ask(confirmPrompt);
   if (proceed.trim().toLowerCase() !== "y") {
     console.log("Not applied. Nothing changed.");
     process.exit(0);
   }
 
-  // Keep the original slug so any existing links/cache keys still point to this story.
-  newStory.slug = original.slug;
-  edition.stories[index] = newStory;
+  let commitMessage;
+  if (isNew) {
+    // Slugify the model's own slug field (or the headline, if the model
+    // omitted slug) and de-dupe against existing slugs — a brand new
+    // story has no "original" to inherit a slug from, unlike the replace
+    // path below.
+    const base = (newStory.slug || newStory.headline || "story")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 70);
+    const existingSlugs = new Set(edition.stories.map((s) => s.slug));
+    let candidateSlug = base;
+    let n = 2;
+    while (existingSlugs.has(candidateSlug)) {
+      candidateSlug = `${base}-${n}`;
+      n++;
+    }
+    newStory.slug = candidateSlug;
+    // Unshift (not push) — a story specifically requested via --new is
+    // presumably meant to be prominent, not buried at the end of the list.
+    edition.stories.unshift(newStory);
+    commitMessage = `Add new story: ${newStory.slug}`;
+  } else {
+    // Keep the original slug so any existing links/cache keys still point to this story.
+    newStory.slug = original.slug;
+    edition.stories[index] = newStory;
+    commitMessage = `Regenerate story: ${original.slug}`;
+  }
+
   fs.writeFileSync(EDITION_PATH, JSON.stringify(edition, null, 2));
   console.log("Written to data/edition.json");
 
   try {
     execSync("git add data/edition.json", { stdio: "inherit", cwd: path.join(__dirname, "..") });
-    execSync(`git commit -m "Regenerate story: ${slug}"`, { stdio: "inherit", cwd: path.join(__dirname, "..") });
+    execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit", cwd: path.join(__dirname, "..") });
     execSync("git push", { stdio: "inherit", cwd: path.join(__dirname, "..") });
     console.log("\nPushed. Netlify will redeploy automatically.");
   } catch (err) {
