@@ -178,7 +178,16 @@ async function main() {
     }
 
     const bodyText = await res.text();
-    console.warn(`\n${currentModel} error (${res.status}): ${bodyText.slice(0, 300)}`);
+    const quota429 = res.status === 429 ? describeQuotaViolations(bodyText) : null;
+    // 2026-07-16: was bodyText.slice(0, 300) — that 300-char cutoff was
+    // hiding exactly the field that matters (details[].violations[].
+    // quotaId), which is what tells us WHICH quota was actually hit.
+    // Confirmed from real logs: every truncated message cut off right at
+    // `"stat` before the useful part. Now logs the parsed quotaId
+    // directly (short, always useful) plus the full body underneath (for
+    // anything the parser didn't recognize).
+    console.warn(`\n${currentModel} error (${res.status})${quota429 ? ` — quota: ${quota429.joined || "(unrecognized shape)"}` : ""}`);
+    console.warn(bodyText);
 
     if (res.status === 404) {
       // Model name retired — switching is the only option, no amount of
@@ -196,22 +205,20 @@ async function main() {
 
     if (res.status === 429) {
       // 2026-07-16: this used to switch models immediately on ANY 429,
-      // no matter which quota was actually hit — which is why a real run
-      // failed outright even though the usage dashboard showed both
-      // models at near-zero daily usage (0/20, 1/500): that failure was
-      // a transient per-minute (RPM) block, not the daily (RPD) cap, and
-      // immediately abandoning the model instead of just waiting a few
-      // seconds threw away an attempt that would very likely have
-      // succeeded on a short retry. Now uses the same quota-violation
-      // parsing verify-edition.js already has (isLongWindow) to tell the
-      // two apart: a short-window (RPM) block gets a brief wait-and-
-      // retry on the SAME model; only a genuine long-window (RPD) block
-      // triggers switching models, matching what daily exhaustion
-      // actually requires (switching doesn't help RPM, since both
-      // models share the same short-term request pressure if it's
-      // concurrent traffic causing it — but waiting does).
-      const quota = describeQuotaViolations(bodyText);
-      if (!quota.isLongWindow) {
+      // no matter which quota was actually hit — fixed once already for
+      // the RPM-vs-RPD distinction. This adds the other missing piece:
+      // GROUNDING quota (this call uses tools: [{google_search:{}}]) is
+      // PROJECT-LEVEL, shared across every model — switching from MODEL
+      // to FALLBACK_MODEL does nothing for it, since both draw from the
+      // same shared grounding budget. Retrying/switching for a grounding
+      // block just wastes ~97 seconds finding out neither helps (which
+      // is exactly what happened in a real run) — fail fast and say so
+      // clearly instead.
+      if (quota429.isGrounding) {
+        console.error(`\nGrounding quota exhausted (${quota429.joined}) — this is shared across ALL models for this project, so switching models or waiting briefly won't help. This resets on the same daily cycle as the per-model quotas.`);
+        process.exit(1);
+      }
+      if (!quota429.isLongWindow) {
         attempt++;
         if (attempt > maxRetries) {
           console.error(`\n${currentModel} still rate-limited after ${maxRetries} short retries — trying the other model instead.`);
