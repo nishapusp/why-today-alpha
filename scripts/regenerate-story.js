@@ -25,7 +25,24 @@ const { execSync } = require("child_process");
 // the scenario where a thought-part getting concatenated into the
 // response text fools naive brace matching. Also picks up FALLBACK_MODEL
 // for free, which this file never had at all before.
-const { GEMINI_API_BASE, MODEL, FALLBACK_MODEL, API_KEY, extractJson, describeQuotaViolations } = require("./generate-edition.js");
+const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations } = require("./generate-edition.js");
+// 2026-07-16: this file's API call uses google_search grounding, which
+// needs a DIFFERENT model choice than generate-edition.js's own MODEL/
+// FALLBACK_MODEL (those are tuned for ungrounded/text-only calls
+// elsewhere in the pipeline, no longer imported here since this file
+// only ever makes the one grounded call). Confirmed from the real usage
+// dashboard: "Gemini 3" family search-grounding quota is 0/0 on the
+// free tier — a hard architectural cap, not something that resets or
+// clears with waiting — while "Gemini 2.5" family shows 37/1.5K, over
+// 1,400 requests of real headroom completely unused. gemini-3.5-flash/
+// gemini-3.1-flash-lite (generate-edition.js's MODEL/FALLBACK_MODEL)
+// are BOTH "Gemini 3" family, so every grounded call through them was
+// guaranteed to fail regardless of retries or switching between them —
+// this is why every attempt failed identically no matter how many times
+// it was retried. Using the 2.5 family here specifically, where
+// grounding is actually available.
+const GROUNDED_MODEL = process.env.GEMINI_GROUNDED_MODEL || "gemini-2.5-flash";
+const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-flash-lite";
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
@@ -124,27 +141,19 @@ async function main() {
     console.log(`Regenerating "${original.headline}"...`);
   }
 
-  // 2026-07-16: rebuilt as a proper retry loop with model fallback — this
-  // was previously a single unprotected fetch, which is exactly why a
-  // 429 (daily quota exhausted on MODEL) failed the whole run outright
-  // instead of trying FALLBACK_MODEL, which typically has a much larger
-  // daily budget on the free tier (checked the actual usage dashboard:
-  // gemini-3.5-flash had a 20/day cap, essentially always spent by other
-  // callers before a manual regeneration got a turn; gemini-3.1-flash-lite
-  // had 500/day, barely touched).
-  // 2026-07-16: swapped to FALLBACK_MODEL first — this was the one
-  // consumer I fixed the retry/fallback LOGIC on yesterday but never
-  // actually flipped the PRIORITY order for, unlike verify-edition.js
-  // and generate-quick-reads.js. Confirmed from a real failure log: this
-  // tried gemini-3.5-flash (MODEL, 20 req/day) first, got 429, then
-  // tried gemini-3.1-flash-lite (FALLBACK_MODEL, 500/day) — which ALSO
-  // returned 429 in that instance, meaning cumulative same-day demand
-  // had exhausted both. Trying the high-quota model first means a manual
-  // regeneration is far less likely to draw down the scarce model's
-  // budget at all, protecting it for the scheduled flagship batch-
-  // generation calls (which still use MODEL first, and genuinely
-  // benefit from it) rather than competing with them.
-  let currentModel = FALLBACK_MODEL;
+  // 2026-07-16 (superseding the two comments this replaced, both wrong
+  // theories at the time): the REAL cause of every failed attempt,
+  // confirmed from the actual usage dashboard — "Gemini 3" family
+  // search-grounding quota is 0/0 on the free tier. gemini-3.5-flash and
+  // gemini-3.1-flash-lite are both "Gemini 3" family, so switching
+  // between them (the previous fix) could never have worked for this
+  // grounded call specifically — 0/0 doesn't reset, doesn't clear with
+  // waiting, and isn't a temporary spike. Using GROUNDED_MODEL/
+  // GROUNDED_FALLBACK_MODEL (Gemini 2.5 family, confirmed 37/1.5K used —
+  // real headroom) instead. The retry-on-short-window-429 and switch-on-
+  // long-window-429 logic below is still correct and worth keeping;
+  // it just needed the right models to apply it to.
+  let currentModel = GROUNDED_MODEL;
   const deadModels = new Set();
   let attempt = 0;
   const maxRetries = 3;
@@ -192,9 +201,9 @@ async function main() {
       // Model name retired — switching is the only option, no amount of
       // waiting fixes this.
       deadModels.add(currentModel);
-      const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+      const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
       if (deadModels.has(other)) {
-        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} are unavailable (404). Last error:`, bodyText);
+        console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are unavailable (404). Last error:`, bodyText);
         process.exit(1);
       }
       console.log(`${currentModel} unavailable — switching to ${other}...`);
@@ -203,18 +212,21 @@ async function main() {
     }
 
     if (res.status === 429) {
-      // 2026-07-16: this used to switch models immediately on ANY 429,
-      // no matter which quota was actually hit — fixed once already for
-      // the RPM-vs-RPD distinction. This adds the other missing piece:
       // GROUNDING quota (this call uses tools: [{google_search:{}}]) is
-      // PROJECT-LEVEL, shared across every model — switching from MODEL
-      // to FALLBACK_MODEL does nothing for it, since both draw from the
-      // same shared grounding budget. Retrying/switching for a grounding
-      // block just wastes ~97 seconds finding out neither helps (which
-      // is exactly what happened in a real run) — fail fast and say so
-      // clearly instead.
+      // project-level and shared within a model FAMILY, not per exact
+      // model — confirmed from the real dashboard that "Gemini 3" family
+      // (gemini-3.5-flash + gemini-3.1-flash-lite, the two models this
+      // used before 2026-07-16) has a HARD 0/0 grounding cap on the free
+      // tier, which is why every attempt failed identically no matter
+      // how many times it retried or switched between them — 0/0 isn't
+      // a temporary spike, switching within the same capped family does
+      // nothing. Now using the Gemini 2.5 family instead (confirmed
+      // 37/1.5K used, real headroom) — this check stays as a defensive
+      // safeguard in case that family's shared grounding budget also
+      // gets exhausted someday, failing fast rather than wasting time
+      // retrying/switching within a family that's actually out.
       if (quota429.isGrounding) {
-        console.error(`\nGrounding quota exhausted (${quota429.joined}) — this is shared across ALL models for this project, so switching models or waiting briefly won't help. This resets on the same daily cycle as the per-model quotas.`);
+        console.error(`\nGrounding quota exhausted (${quota429.joined}) — shared within the ${currentModel.includes("2.5") ? "Gemini 2.5" : "current"} model family, so switching models or waiting briefly won't help.`);
         process.exit(1);
       }
       if (!quota429.isLongWindow) {
@@ -229,9 +241,9 @@ async function main() {
         }
       }
       deadModels.add(currentModel);
-      const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+      const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
       if (deadModels.has(other)) {
-        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} are quota-blocked. Last error:`, bodyText);
+        console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are quota-blocked. Last error:`, bodyText);
         process.exit(1);
       }
       console.log(`Switching to ${other}...`);
