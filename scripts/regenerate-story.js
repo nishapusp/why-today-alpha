@@ -38,6 +38,8 @@ Length rules (both floors AND ceilings — do not exceed them): summary 30-40 wo
 
 If the user describes what was wrong with the original, fix that specific issue first.
 
+QUARTERLY RESULTS STORIES — special handling (this readership includes bankers who read past the headline number): cover the full picture (NII/margin, asset quality, deposit/advances growth, CASA, fee income, capital adequacy, cost-to-income, ROA/ROE where available), not just profit. Name what was good AND weak separately — if a blended figure (e.g. "non-interest income") looks unremarkable, check whether it's actually blending a strong and a weak component and report that segment breakdown instead. Peer comparison only when genuinely comparable: same bank type (PSU-vs-PSU, private-vs-private, never across), same reporting period, and ONLY if the peer has actually announced results — if not, say so explicitly rather than omitting silently. Use the chart field for a real, sourced peer comparison when that data exists (e.g. advances growth % across banks) — omit rather than force one with incomplete data. Every figure must trace to a source; if sources conflict on a number, flag it rather than silently picking one.
+
 Return ONLY valid JSON matching this shape:
 {
   "headline", "whatsappHeadline", "notificationHeadline",
@@ -133,7 +135,11 @@ async function main() {
   console.log(`Summary: ${newStory.summary}`);
   console.log(`Deep dive length: ${(newStory.deepDiveRead || "").split(/\s+/).length} words`);
 
-  const proceed = await ask(`\nReplace story ${index + 1} in edition.json with this version and push? (y/n): `);
+  const proceed = process.env.AUTO_CONFIRM === "1"
+    ? "y" // non-interactive path (GH Actions workflow) — readline.question would
+          // hang forever waiting for stdin that never comes in CI, so this
+          // bypasses it explicitly rather than accidentally working by luck.
+    : await ask(`\nReplace story ${index + 1} in edition.json with this version and push? (y/n): `);
   if (proceed.trim().toLowerCase() !== "y") {
     console.log("Not applied. Nothing changed.");
     process.exit(0);

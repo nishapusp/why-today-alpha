@@ -54,10 +54,11 @@ export default function PushSubscribePrompt() {
 
   useEffect(() => {
     const dayCount = recordVisitAndGetDayCount();
-    if (dayCount < DAY_THRESHOLD) return;
+    const testBypass = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("testpush") === "1";
+    if (dayCount < DAY_THRESHOLD && !testBypass) return;
     if (typeof Notification === "undefined" || !("serviceWorker" in navigator) || !("PushManager" in window)) return;
     if (Notification.permission === "denied") return; // already said no at the browser level
-    if (localStorage.getItem(DISMISSED_KEY) || localStorage.getItem(SUBSCRIBED_KEY)) return;
+    if (!testBypass && (localStorage.getItem(DISMISSED_KEY) || localStorage.getItem(SUBSCRIBED_KEY))) return;
 
     setShow(true);
   }, []);

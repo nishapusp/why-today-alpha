@@ -1,0 +1,36 @@
+name: Test Push Notification
+concurrency:
+  group: test-push-notification
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Test notification body text"
+        required: false
+        default: "This is a test push from Why Today — if you see this, it works!"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Send test push
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_CONTACT_EMAIL: ${{ secrets.VAPID_CONTACT_EMAIL }}
+        run: node scripts/send-push-notification.js "Why Today (test)" "${{ github.event.inputs.message }}" "/"

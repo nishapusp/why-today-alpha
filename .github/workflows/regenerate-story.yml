@@ -1,0 +1,38 @@
+name: Regenerate Story
+concurrency:
+  group: regenerate-story
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "The story's slug (from its URL, e.g. union-bank-of-india-q1-fcnrb-deposits)"
+        required: true
+      feedback:
+        description: "What to fix/change (e.g. 'expand into full Q1 results deep dive with peer comparison, not just FCNR deposits angle')"
+        required: false
+        default: ""
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Why Today Bot"
+          git config user.email "actions@github.com"
+
+      - name: Regenerate story
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AUTO_CONFIRM: "1"
+        run: node scripts/regenerate-story.js "${{ github.event.inputs.slug }}" "${{ github.event.inputs.feedback }}"
