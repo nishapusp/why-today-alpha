@@ -59,6 +59,8 @@ Use Google Search to check current sources before writing. No citation markers o
 
 Length rules (both floors AND ceilings — do not exceed them): summary 30-40 words, quickRead 100-150 words, whatHappened/whyToday/whyCare 120-160 words each with a concrete comparison, whatNext 80-120 words, deepDiveRead 500-800 words across 5 headers (## What Changed, ## The Backstory, ## Why It Matters, ## Broader Connections, ## Alternative View), opening with a "Fast Facts" bullet list and using **bold** on key numbers. Tight and specific beats long and padded.
 
+IMPORTANT: "deepDiveRead" must be ONE plain string value containing all 5 sections with their "## " markdown headers embedded directly in that string (e.g. "## What Changed\n\n...\n\n## The Backstory\n\n...") — NOT an array of 5 separate strings, and NOT an object with one key per section. A JSON array or object here will break how the story renders on the actual site.
+
 If the user describes what was wrong with the original, fix that specific issue first.
 
 QUARTERLY RESULTS STORIES — special handling (this readership includes bankers who read past the headline number): cover the full picture (NII/margin, asset quality, deposit/advances growth, CASA, fee income, capital adequacy, cost-to-income, ROA/ROE where available), not just profit. Name what was good AND weak separately — if a blended figure (e.g. "non-interest income") looks unremarkable, check whether it's actually blending a strong and a weak component and report that segment breakdown instead. Peer comparison only when genuinely comparable: same bank type (PSU-vs-PSU, private-vs-private, never across), same reporting period, and ONLY if the peer has actually announced results — if not, say so explicitly rather than omitting silently. Use the chart field for a real, sourced peer comparison when that data exists (e.g. advances growth % across banks) — omit rather than force one with incomplete data. Every figure must trace to a source; if sources conflict on a number, flag it rather than silently picking one.
@@ -280,6 +282,26 @@ async function main() {
     const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
     try {
       newStory = JSON.parse(extractJson(text));
+      // 2026-07-16: a real run crashed here — newStory.deepDiveRead came
+      // back as something other than a plain string (most likely an
+      // array, one entry per section, since the quarterly-results
+      // guidance describes 5 distinct parts — "## What Changed" etc —
+      // which the model apparently sometimes interprets as 5 separate
+      // array items rather than 5 markdown headers within one string).
+      // lib/types.ts requires deepDiveRead: string — writing a non-
+      // string into edition.json wouldn't just break this diagnostic
+      // log, it would break the actual story page's rendering on the
+      // live site. Normalize here, once, rather than just guarding the
+      // log line below.
+      if (Array.isArray(newStory.deepDiveRead)) {
+        console.warn("\ndeepDiveRead came back as an array, not a string — joining into one markdown string.");
+        newStory.deepDiveRead = newStory.deepDiveRead
+          .map((section) => (typeof section === "string" ? section : Object.values(section || {}).join("\n\n")))
+          .join("\n\n");
+      } else if (newStory.deepDiveRead && typeof newStory.deepDiveRead === "object") {
+        console.warn("\ndeepDiveRead came back as an object, not a string — joining its values into one markdown string.");
+        newStory.deepDiveRead = Object.values(newStory.deepDiveRead).join("\n\n");
+      }
       break; // valid JSON — done, exit the outer generation-retry loop
     } catch (err) {
       console.error(`\nCouldn't parse response as JSON (generation attempt ${genAttempt}/${maxGenAttempts}): ${err.message}`);
@@ -295,7 +317,13 @@ async function main() {
   console.log("\n=== NEW VERSION ===");
   console.log(`Headline: ${newStory.headline}`);
   console.log(`Summary: ${newStory.summary}`);
-  console.log(`Deep dive length: ${(newStory.deepDiveRead || "").split(/\s+/).length} words`);
+  // Defensive coercion regardless of the normalization above — a string
+  // is guaranteed at this point, but keeping this resilient rather than
+  // assuming, so a future unexpected shape logs a word count of 0
+  // instead of crashing the whole script on a mere diagnostic line
+  // right after a successful generation (which is what happened here —
+  // the story data was already fine, only this log line crashed).
+  console.log(`Deep dive length: ${String(newStory.deepDiveRead || "").split(/\s+/).filter(Boolean).length} words`);
 
   const confirmPrompt = isNew
     ? `\nAdd this as a new story (position 1, alongside the existing ${edition.stories.length}) and push? (y/n): `
