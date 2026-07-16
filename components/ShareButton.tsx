@@ -42,12 +42,10 @@ export default function ShareButton({
     if (busy) return;
     setBusy(true);
     const url = `${window.location.origin}/story/${slug}`;
-    const text = `${headline}\n\nRead why it matters on Why Today:`;
-    // One-line tagline appended to every share path, per explicit request —
-    // the goal is that anyone receiving a forwarded share (not just the
-    // person who tapped Share) sees a reason to visit on their own, not
-    // just this one story.
-    const fullMessage = `${text} ${url}\n\nGet banking, economy & finance news — all in one place, in 1 minute — on whytoday.in`;
+    // Shortened per feedback: the earlier "headline + preamble line + url +
+    // tagline" (4 effective lines) looked cluttered next to the card image.
+    // Now just headline, link, tagline — same information, less bulk.
+    const fullMessage = `${headline}\n\n${url}\n\nGet the latest banking, economy & finance news in 1 minute — all in one place — on whytoday.in`;
     try {
       if (navigator.share) {
         const main = await fetchCard(`/cards/${slug}.png`, `why-today-${slug}.png`);

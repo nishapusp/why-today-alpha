@@ -46,10 +46,8 @@ export default function TimeMachine({
     if (busy) return;
     setBusy(true);
     const url = `${window.location.origin}/story/${slug}`;
-    const text = "How this story evolved over time — via Why Today:";
-    // Same tagline as ShareButton.tsx's main story share — consistent
-    // across every shareable card the site generates.
-    const fullMessage = `${text} ${url}\n\nGet banking, economy & finance news — all in one place, in 1 minute — on whytoday.in`;
+    // Shortened per feedback on ShareButton.tsx's version — same fix here.
+    const fullMessage = `How this story evolved over time — via Why Today\n\n${url}\n\nGet the latest banking, economy & finance news in 1 minute — all in one place — on whytoday.in`;
     try {
       if (navigator.share) {
         let file: File | null = null;
