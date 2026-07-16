@@ -141,146 +141,155 @@ async function main() {
     console.log(`Regenerating "${original.headline}"...`);
   }
 
-  // 2026-07-16 (superseding the two comments this replaced, both wrong
-  // theories at the time): the REAL cause of every failed attempt,
-  // confirmed from the actual usage dashboard — "Gemini 3" family
-  // search-grounding quota is 0/0 on the free tier. gemini-3.5-flash and
-  // gemini-3.1-flash-lite are both "Gemini 3" family, so switching
-  // between them (the previous fix) could never have worked for this
-  // grounded call specifically — 0/0 doesn't reset, doesn't clear with
-  // waiting, and isn't a temporary spike. Using GROUNDED_MODEL/
-  // GROUNDED_FALLBACK_MODEL (Gemini 2.5 family, confirmed 37/1.5K used —
-  // real headroom) instead. The retry-on-short-window-429 and switch-on-
-  // long-window-429 logic below is still correct and worth keeping;
-  // it just needed the right models to apply it to.
-  let currentModel = GROUNDED_MODEL;
-  const deadModels = new Set();
-  let attempt = 0;
-  const maxRetries = 3;
-  let data;
+  // 2026-07-16: wrapped the whole generate+parse cycle in this outer loop
+  // after a real run got a genuinely successful API response (200 OK,
+  // substantial accurate content) that then failed to PARSE — a
+  // malformed array partway through the model's own JSON output. That
+  // used to exit immediately, wasting a real successful generation
+  // (including real grounding-quota spend) on what's often just a one-
+  // off LLM output glitch rather than a systemic problem — a fresh
+  // attempt has a good chance of producing valid JSON. HTTP-level
+  // failures (both models genuinely unavailable, hard quota exhaustion)
+  // still exit immediately inside the inner loop below, since retrying
+  // generation doesn't help those; only a parse failure on an otherwise-
+  // successful response gets this outer retry.
+  const maxGenAttempts = 3;
+  let newStory;
 
-  while (attempt <= maxRetries) {
-    const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
-      method: "POST",
-      headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-        tools: [{ google_search: {} }],
-        // 2026-07-16: raised from 8192 — likely the actual cause of the
-        // "syntax error" failures (a JSON.parse SyntaxError is exactly
-        // what a truncated response produces). generate-edition.js
-        // allocates roughly 6500 tokens PER STORY for this same schema;
-        // 8192 was already tight for a full deep dive + timeMachine +
-        // chart + keyNumbers, and the quarterly-results guidance added
-        // in the same session asks for meaningfully more content
-        // (segment-level analysis, peer comparison data) without this
-        // budget ever being revisited.
-        generationConfig: { maxOutputTokens: 20000 },
-      }),
-    });
+  for (let genAttempt = 1; genAttempt <= maxGenAttempts; genAttempt++) {
+    let currentModel = GROUNDED_MODEL;
+    const deadModels = new Set();
+    let attempt = 0;
+    const maxRetries = 3;
+    let data;
 
-    if (res.ok) {
-      data = await res.json();
-      break;
-    }
+    while (attempt <= maxRetries) {
+      const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
+        method: "POST",
+        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+          tools: [{ google_search: {} }],
+          // 2026-07-16: raised from 8192 — likely the actual cause of the
+          // "syntax error" failures (a JSON.parse SyntaxError is exactly
+          // what a truncated response produces). generate-edition.js
+          // allocates roughly 6500 tokens PER STORY for this same schema;
+          // 8192 was already tight for a full deep dive + timeMachine +
+          // chart + keyNumbers, and the quarterly-results guidance added
+          // in the same session asks for meaningfully more content
+          // (segment-level analysis, peer comparison data) without this
+          // budget ever being revisited.
+          generationConfig: { maxOutputTokens: 20000 },
+        }),
+      });
 
-    const bodyText = await res.text();
-    const quota429 = res.status === 429 ? describeQuotaViolations(bodyText) : null;
-    // 2026-07-16: was bodyText.slice(0, 300) — that 300-char cutoff was
-    // hiding exactly the field that matters (details[].violations[].
-    // quotaId), which is what tells us WHICH quota was actually hit.
-    // Confirmed from real logs: every truncated message cut off right at
-    // `"stat` before the useful part. Now logs the parsed quotaId
-    // directly (short, always useful) plus the full body underneath (for
-    // anything the parser didn't recognize).
-    console.warn(`\n${currentModel} error (${res.status})${quota429 ? ` — quota: ${quota429.joined || "(unrecognized shape)"}` : ""}`);
-    console.warn(bodyText);
-
-    if (res.status === 404) {
-      // Model name retired — switching is the only option, no amount of
-      // waiting fixes this.
-      deadModels.add(currentModel);
-      const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
-      if (deadModels.has(other)) {
-        console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are unavailable (404). Last error:`, bodyText);
-        process.exit(1);
+      if (res.ok) {
+        data = await res.json();
+        break;
       }
-      console.log(`${currentModel} unavailable — switching to ${other}...`);
-      currentModel = other;
-      continue;
-    }
 
-    if (res.status === 429) {
-      // GROUNDING quota (this call uses tools: [{google_search:{}}]) is
-      // project-level and shared within a model FAMILY, not per exact
-      // model — confirmed from the real dashboard that "Gemini 3" family
-      // (gemini-3.5-flash + gemini-3.1-flash-lite, the two models this
-      // used before 2026-07-16) has a HARD 0/0 grounding cap on the free
-      // tier, which is why every attempt failed identically no matter
-      // how many times it retried or switched between them — 0/0 isn't
-      // a temporary spike, switching within the same capped family does
-      // nothing. Now using the Gemini 2.5 family instead (confirmed
-      // 37/1.5K used, real headroom) — this check stays as a defensive
-      // safeguard in case that family's shared grounding budget also
-      // gets exhausted someday, failing fast rather than wasting time
-      // retrying/switching within a family that's actually out.
-      if (quota429.isGrounding) {
-        console.error(`\nGrounding quota exhausted (${quota429.joined}) — shared within the ${currentModel.includes("2.5") ? "Gemini 2.5" : "current"} model family, so switching models or waiting briefly won't help.`);
-        process.exit(1);
-      }
-      if (!quota429.isLongWindow) {
-        attempt++;
-        if (attempt > maxRetries) {
-          console.error(`\n${currentModel} still rate-limited after ${maxRetries} short retries — trying the other model instead.`);
-        } else {
-          const waitMs = 8000 * attempt;
-          console.warn(`${currentModel} hit a short-term rate limit (not daily quota) — waiting ${Math.round(waitMs / 1000)}s and retrying the same model (${attempt}/${maxRetries})...`);
-          await new Promise((r) => setTimeout(r, waitMs));
-          continue;
+      const bodyText = await res.text();
+      const quota429 = res.status === 429 ? describeQuotaViolations(bodyText) : null;
+      // 2026-07-16: was bodyText.slice(0, 300) — that 300-char cutoff was
+      // hiding exactly the field that matters (details[].violations[].
+      // quotaId), which is what tells us WHICH quota was actually hit.
+      // Confirmed from real logs: every truncated message cut off right at
+      // `"stat` before the useful part. Now logs the parsed quotaId
+      // directly (short, always useful) plus the full body underneath (for
+      // anything the parser didn't recognize).
+      console.warn(`\n${currentModel} error (${res.status})${quota429 ? ` — quota: ${quota429.joined || "(unrecognized shape)"}` : ""}`);
+      console.warn(bodyText);
+
+      if (res.status === 404) {
+        // Model name retired — switching is the only option, no amount of
+        // waiting fixes this.
+        deadModels.add(currentModel);
+        const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
+        if (deadModels.has(other)) {
+          console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are unavailable (404). Last error:`, bodyText);
+          process.exit(1);
         }
+        console.log(`${currentModel} unavailable — switching to ${other}...`);
+        currentModel = other;
+        continue;
       }
-      deadModels.add(currentModel);
-      const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
-      if (deadModels.has(other)) {
-        console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are quota-blocked. Last error:`, bodyText);
+
+      if (res.status === 429) {
+        // GROUNDING quota (this call uses tools: [{google_search:{}}]) is
+        // project-level and shared within a model FAMILY, not per exact
+        // model — confirmed from the real dashboard that "Gemini 3" family
+        // (gemini-3.5-flash + gemini-3.1-flash-lite, the two models this
+        // used before 2026-07-16) has a HARD 0/0 grounding cap on the free
+        // tier, which is why every attempt failed identically no matter
+        // how many times it retried or switched between them — 0/0 isn't
+        // a temporary spike, switching within the same capped family does
+        // nothing. Now using the Gemini 2.5 family instead (confirmed
+        // 37/1.5K used, real headroom) — this check stays as a defensive
+        // safeguard in case that family's shared grounding budget also
+        // gets exhausted someday, failing fast rather than wasting time
+        // retrying/switching within a family that's actually out.
+        if (quota429.isGrounding) {
+          console.error(`\nGrounding quota exhausted (${quota429.joined}) — shared within the ${currentModel.includes("2.5") ? "Gemini 2.5" : "current"} model family, so switching models or waiting briefly won't help.`);
+          process.exit(1);
+        }
+        if (!quota429.isLongWindow) {
+          attempt++;
+          if (attempt > maxRetries) {
+            console.error(`\n${currentModel} still rate-limited after ${maxRetries} short retries — trying the other model instead.`);
+          } else {
+            const waitMs = 8000 * attempt;
+            console.warn(`${currentModel} hit a short-term rate limit (not daily quota) — waiting ${Math.round(waitMs / 1000)}s and retrying the same model (${attempt}/${maxRetries})...`);
+            await new Promise((r) => setTimeout(r, waitMs));
+            continue;
+          }
+        }
+        deadModels.add(currentModel);
+        const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
+        if (deadModels.has(other)) {
+          console.error(`\nBoth ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} are quota-blocked. Last error:`, bodyText);
+          process.exit(1);
+        }
+        console.log(`Switching to ${other}...`);
+        currentModel = other;
+        attempt = 0; // fresh short-retry budget on the new model
+        continue;
+      }
+
+      attempt++;
+      if (attempt > maxRetries) {
+        console.error(`\nGemini API error (${res.status}) after ${maxRetries} retries:`, bodyText);
         process.exit(1);
       }
-      console.log(`Switching to ${other}...`);
-      currentModel = other;
-      attempt = 0; // fresh short-retry budget on the new model
-      continue;
+      const waitMs = Math.min(5000 * 3 ** (attempt - 1), 45000);
+      console.warn(`Waiting ${Math.round(waitMs / 1000)}s before retry ${attempt}/${maxRetries}...`);
+      await new Promise((r) => setTimeout(r, waitMs));
     }
 
-    attempt++;
-    if (attempt > maxRetries) {
-      console.error(`\nGemini API error (${res.status}) after ${maxRetries} retries:`, bodyText);
+    const candidate = data.candidates?.[0];
+    if (!candidate) {
+      console.error("\nNo candidates returned:", JSON.stringify(data, null, 2));
       process.exit(1);
     }
-    const waitMs = Math.min(5000 * 3 ** (attempt - 1), 45000);
-    console.warn(`Waiting ${Math.round(waitMs / 1000)}s before retry ${attempt}/${maxRetries}...`);
-    await new Promise((r) => setTimeout(r, waitMs));
-  }
 
-  const candidate = data.candidates?.[0];
-  if (!candidate) {
-    console.error("\nNo candidates returned:", JSON.stringify(data, null, 2));
-    process.exit(1);
-  }
-
-  // Thought-part filter — gemini-3.x models think by default and can
-  // return a "thought": true part alongside the real answer; naively
-  // joining every part's .text mixes thinking-prose into what's supposed
-  // to be pure JSON. Fixed everywhere else in the codebase already; this
-  // file was the one place still missing it.
-  const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
-  let newStory;
-  try {
-    newStory = JSON.parse(extractJson(text));
-  } catch (err) {
-    console.error("\nCouldn't parse response as JSON:", err.message);
-    console.error(text.slice(0, 1500));
-    process.exit(1);
+    // Thought-part filter — gemini-3.x models think by default and can
+    // return a "thought": true part alongside the real answer; naively
+    // joining every part's .text mixes thinking-prose into what's supposed
+    // to be pure JSON. Fixed everywhere else in the codebase already; this
+    // file was the one place still missing it.
+    const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
+    try {
+      newStory = JSON.parse(extractJson(text));
+      break; // valid JSON — done, exit the outer generation-retry loop
+    } catch (err) {
+      console.error(`\nCouldn't parse response as JSON (generation attempt ${genAttempt}/${maxGenAttempts}): ${err.message}`);
+      console.error(text.slice(0, 1500));
+      if (genAttempt >= maxGenAttempts) {
+        console.error(`\nGave up after ${maxGenAttempts} generation attempts, all producing malformed JSON.`);
+        process.exit(1);
+      }
+      console.log("Trying a fresh generation...");
+    }
   }
 
   console.log("\n=== NEW VERSION ===");
