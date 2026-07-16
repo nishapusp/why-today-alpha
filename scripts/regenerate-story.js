@@ -69,7 +69,20 @@ function ask(question) {
 async function main() {
   const first = process.argv[2];
   const second = process.argv[3] || "";
-  const isNew = first === "--new";
+  // Tolerant of common mobile-keyboard/browser autocorrect: "--" often
+  // gets silently converted to an em-dash (—) or en-dash (–) when typed
+  // into a web form on a phone, which is a DIFFERENT character than two
+  // literal hyphens and won't match a strict "--new" check — confirmed
+  // this exact failure from a real run ("—new" instead of "--new").
+  // Also accepts a bare "new"/"-new" (case-insensitive) — deliberately
+  // lenient, not just a leftover: an earlier real attempt typed plain
+  // "New" as a natural instruction without realizing exact flag syntax
+  // mattered, and real story slugs are always multi-word kebab-case
+  // (e.g. "union-bank-of-india-q1-results"), so a bare "new" can never
+  // collide with an actual slug — safe to accept as a synonym rather
+  // than making the interface fight the user's intent.
+  const normalizedFirst = (first || "").trim().replace(/[\u2012-\u2015\u2212]/g, "-").toLowerCase();
+  const isNew = normalizedFirst === "--new" || normalizedFirst === "-new" || normalizedFirst === "new";
 
   if (!API_KEY) {
     console.error("Set GEMINI_API_KEY first:\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js <slug> [\"feedback\"]\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js --new \"topic description\"");
