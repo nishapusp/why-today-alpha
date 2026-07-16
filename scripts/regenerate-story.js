@@ -69,20 +69,19 @@ function ask(question) {
 async function main() {
   const first = process.argv[2];
   const second = process.argv[3] || "";
-  // Tolerant of common mobile-keyboard/browser autocorrect: "--" often
-  // gets silently converted to an em-dash (—) or en-dash (–) when typed
-  // into a web form on a phone, which is a DIFFERENT character than two
-  // literal hyphens and won't match a strict "--new" check — confirmed
-  // this exact failure from a real run ("—new" instead of "--new").
-  // Also accepts a bare "new"/"-new" (case-insensitive) — deliberately
-  // lenient, not just a leftover: an earlier real attempt typed plain
-  // "New" as a natural instruction without realizing exact flag syntax
-  // mattered, and real story slugs are always multi-word kebab-case
-  // (e.g. "union-bank-of-india-q1-results"), so a bare "new" can never
-  // collide with an actual slug — safe to accept as a synonym rather
-  // than making the interface fight the user's intent.
-  const normalizedFirst = (first || "").trim().replace(/[\u2012-\u2015\u2212]/g, "-").toLowerCase();
-  const isNew = normalizedFirst === "--new" || normalizedFirst === "-new" || normalizedFirst === "new";
+  // Fully whitespace-and-dash-tolerant "--new" detection. This started as
+  // an exact "--new" check and needed three successive patches for real
+  // typing/autocorrect variants hit in practice: an em-dash substitution
+  // ("—new", common mobile-keyboard autocorrect for "--"), a bare "New"
+  // (a natural-language attempt that didn't realize exact flag syntax
+  // mattered), and a stray space ("- new"). Rather than keep adding exact
+  // strings to a list, this strips ALL whitespace, normalizes any
+  // dash-like character to a plain hyphen, then matches 0-2 leading
+  // hyphens followed by "new" — covers every variant seen so far and any
+  // similar one not yet seen. Real story slugs are always multi-word
+  // kebab-case, so this can never false-match an actual slug.
+  const normalizedFirst = (first || "").replace(/\s+/g, "").replace(/[\u2012-\u2015\u2212]/g, "-").toLowerCase();
+  const isNew = /^-{0,2}new$/.test(normalizedFirst);
 
   if (!API_KEY) {
     console.error("Set GEMINI_API_KEY first:\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js <slug> [\"feedback\"]\n  GEMINI_API_KEY=\"...\" node scripts/regenerate-story.js --new \"topic description\"");
