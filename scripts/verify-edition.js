@@ -292,7 +292,18 @@ List ONLY problem claims in "issues". Be strict.`;
 
 async function verifyStoryAgainstSources(story, editionDate, sources, maxRetries = 3) {
   let attempt = 0;
-  let currentModel = MODEL;
+  // 2026-07-16: swapped from MODEL to FALLBACK_MODEL as the starting
+  // point — checked the actual usage dashboard and found gemini-3.5-flash
+  // (MODEL) has only 20 requests/day on the free tier, while
+  // gemini-3.1-flash-lite (FALLBACK_MODEL) has 500/day. This function runs
+  // once per story (~15x/day) — comparing claims against source text is a
+  // structured verification task, not creative writing, so the lite model
+  // is a good fit and this alone was likely consuming most of the scarce
+  // 20 RPD budget before generation or regeneration ever got a turn. The
+  // existing 404 dead-model toggle below already handles switching to the
+  // other model bidirectionally, so this still falls back to the stronger
+  // model if the lite one is ever retired/unavailable.
+  let currentModel = FALLBACK_MODEL;
   const deadModels = new Set();
 
   const srcBlock = sources
@@ -346,7 +357,20 @@ async function verifyStoryAgainstSources(story, editionDate, sources, maxRetries
       if (attempt > maxRetries) throw err;
       if (err.status === 429) {
         const quota = describeQuotaViolations(err.body);
-        if (quota.isLongWindow) { err.isGroundingQuota = true; throw err; }
+        if (quota.isLongWindow) {
+          // Daily (RPD) quota exhausted on this specific model — retrying
+          // the SAME model with a short backoff is pointless, a daily cap
+          // doesn't clear in seconds. Try the other model instead, same
+          // as the 404 "model retired" handling above, rather than giving
+          // up outright — this is what was previously missing and made a
+          // single model's daily exhaustion fail the whole verification
+          // step even when the other model still had headroom.
+          deadModels.add(currentModel);
+          const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+          if (deadModels.has(other)) { err.isGroundingQuota = true; throw err; }
+          currentModel = other;
+          continue;
+        }
         const waitMs = extractRetryDelayMs(err.body, 20000);
         console.warn(`  rate-limited — waiting ${Math.round(waitMs / 1000)}s...`);
         await sleep(waitMs);

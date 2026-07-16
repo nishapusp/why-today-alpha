@@ -93,7 +93,14 @@ ${numbered}
 
 Return ONLY a JSON object of the exact shape {"items": [...]}, where "items" is an array of ${items.length} objects in the same order as the items above, each with exactly "blurb" and "imageQuery" string fields. No other text, no markdown fences.`;
 
-  const models = [MODEL, FALLBACK_MODEL];
+  // 2026-07-16: swapped order after checking the actual usage dashboard —
+  // MODEL (gemini-3.5-flash) has only 20 requests/day free-tier, while
+  // FALLBACK_MODEL (gemini-3.1-flash-lite) has 500/day. This call runs
+  // hourly (up to 24x/day) and is a lightweight summarization task, not
+  // creative generation needing the stronger model — it was very likely
+  // the single largest consumer of the scarce 20 RPD budget, competing
+  // with the flagship pipeline and manual story regeneration for it.
+  const models = [FALLBACK_MODEL, MODEL];
   let lastErr;
   for (const model of models) {
     try {

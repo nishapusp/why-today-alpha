@@ -17,9 +17,15 @@ const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
 
-const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
-const API_KEY = process.env.GEMINI_API_KEY;
+// Reuse generate-edition.js's already-fixed versions rather than
+// maintaining separate copies that can drift — this file's own local
+// extractJson (removed 2026-07-16) still had the naive first-brace/
+// last-brace bug fixed elsewhere in the codebase weeks ago, and this
+// script uses google_search grounding (tools below), which is exactly
+// the scenario where a thought-part getting concatenated into the
+// response text fools naive brace matching. Also picks up FALLBACK_MODEL
+// for free, which this file never had at all before.
+const { GEMINI_API_BASE, MODEL, FALLBACK_MODEL, API_KEY, extractJson } = require("./generate-edition.js");
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
@@ -55,17 +61,6 @@ Return ONLY valid JSON matching this shape:
   "sentiment" (positive|caution|critical|neutral)
 }`;
 
-function extractJson(text) {
-  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenceMatch) return fenceMatch[1].trim();
-  const start = text.indexOf("{");
-  const end = text.lastIndexOf("}");
-  if (start !== -1 && end !== -1 && end > start) {
-    return text.slice(start, end + 1);
-  }
-  return text;
-}
-
 function ask(question) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   return new Promise((resolve) => rl.question(question, (answer) => { rl.close(); resolve(answer); }));
@@ -97,30 +92,78 @@ async function main() {
 
   console.log(`Regenerating "${original.headline}"...`);
 
-  const res = await fetch(`${GEMINI_API_BASE}/${MODEL}:generateContent`, {
-    method: "POST",
-    headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-      tools: [{ google_search: {} }],
-      generationConfig: { maxOutputTokens: 8192 },
-    }),
-  });
+  // 2026-07-16: rebuilt as a proper retry loop with model fallback — this
+  // was previously a single unprotected fetch, which is exactly why a
+  // 429 (daily quota exhausted on MODEL) failed the whole run outright
+  // instead of trying FALLBACK_MODEL, which typically has a much larger
+  // daily budget on the free tier (checked the actual usage dashboard:
+  // gemini-3.5-flash had a 20/day cap, essentially always spent by other
+  // callers before a manual regeneration got a turn; gemini-3.1-flash-lite
+  // had 500/day, barely touched).
+  let currentModel = MODEL;
+  const deadModels = new Set();
+  let attempt = 0;
+  const maxRetries = 3;
+  let data;
 
-  if (!res.ok) {
-    console.error(`\nGemini API error (${res.status}):`, await res.text());
-    process.exit(1);
+  while (attempt <= maxRetries) {
+    const res = await fetch(`${GEMINI_API_BASE}/${currentModel}:generateContent`, {
+      method: "POST",
+      headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+        tools: [{ google_search: {} }],
+        generationConfig: { maxOutputTokens: 8192 },
+      }),
+    });
+
+    if (res.ok) {
+      data = await res.json();
+      break;
+    }
+
+    const bodyText = await res.text();
+    console.warn(`\n${currentModel} error (${res.status}): ${bodyText.slice(0, 300)}`);
+
+    if (res.status === 404 || res.status === 429) {
+      // 404 = this model name is retired; 429 = could be a short rate
+      // limit OR a daily cap — either way, trying the other model costs
+      // nothing and often just works, so don't bother distinguishing
+      // long-window vs short-window here the way verify-edition.js does.
+      deadModels.add(currentModel);
+      const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+      if (deadModels.has(other)) {
+        console.error(`\nBoth ${MODEL} and ${FALLBACK_MODEL} failed. Last error (${res.status}):`, bodyText);
+        process.exit(1);
+      }
+      console.log(`Switching to ${other}...`);
+      currentModel = other;
+      continue;
+    }
+
+    attempt++;
+    if (attempt > maxRetries) {
+      console.error(`\nGemini API error (${res.status}) after ${maxRetries} retries:`, bodyText);
+      process.exit(1);
+    }
+    const waitMs = Math.min(5000 * 3 ** (attempt - 1), 45000);
+    console.warn(`Waiting ${Math.round(waitMs / 1000)}s before retry ${attempt}/${maxRetries}...`);
+    await new Promise((r) => setTimeout(r, waitMs));
   }
 
-  const data = await res.json();
   const candidate = data.candidates?.[0];
   if (!candidate) {
     console.error("\nNo candidates returned:", JSON.stringify(data, null, 2));
     process.exit(1);
   }
 
-  const text = candidate.content?.parts?.map((p) => p.text || "").join("") ?? "";
+  // Thought-part filter — gemini-3.x models think by default and can
+  // return a "thought": true part alongside the real answer; naively
+  // joining every part's .text mixes thinking-prose into what's supposed
+  // to be pure JSON. Fixed everywhere else in the codebase already; this
+  // file was the one place still missing it.
+  const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
   let newStory;
   try {
     newStory = JSON.parse(extractJson(text));
