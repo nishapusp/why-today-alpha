@@ -120,7 +120,19 @@ async function main() {
   // gemini-3.5-flash had a 20/day cap, essentially always spent by other
   // callers before a manual regeneration got a turn; gemini-3.1-flash-lite
   // had 500/day, barely touched).
-  let currentModel = MODEL;
+  // 2026-07-16: swapped to FALLBACK_MODEL first — this was the one
+  // consumer I fixed the retry/fallback LOGIC on yesterday but never
+  // actually flipped the PRIORITY order for, unlike verify-edition.js
+  // and generate-quick-reads.js. Confirmed from a real failure log: this
+  // tried gemini-3.5-flash (MODEL, 20 req/day) first, got 429, then
+  // tried gemini-3.1-flash-lite (FALLBACK_MODEL, 500/day) — which ALSO
+  // returned 429 in that instance, meaning cumulative same-day demand
+  // had exhausted both. Trying the high-quota model first means a manual
+  // regeneration is far less likely to draw down the scarce model's
+  // budget at all, protecting it for the scheduled flagship batch-
+  // generation calls (which still use MODEL first, and genuinely
+  // benefit from it) rather than competing with them.
+  let currentModel = FALLBACK_MODEL;
   const deadModels = new Set();
   let attempt = 0;
   const maxRetries = 3;
