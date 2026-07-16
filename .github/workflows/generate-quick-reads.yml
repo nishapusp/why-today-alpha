@@ -21,18 +21,21 @@ on:
   # flagship pipeline has been fighting all session. Revisit this
   # cadence if actual daily quota usage (watch the flagship pipeline's
   # own logs for 429s) suggests it needs to come down further.
-  # 2026-07-16: tightened from hourly to every 20 min — the model
-  # rebalancing fix (see generate-quick-reads.js) means this now defaults
-  # to gemini-3.1-flash-lite (500 requests/day free tier) rather than the
-  # 20/day model, so even at 20-min cadence (72 runs/day) there's
-  # comfortable headroom left for everything else sharing that budget.
-  # Started here rather than 15 min (96 runs/day, also fine on paper) to
-  # leave a bit more margin while confirming real usage looks healthy —
-  # tighten further once that's confirmed. The other real constraint is
-  # GitHub Actions' own minute budget if this repo is private (2,000
-  # free/month) — public repos aren't limited this way.
+  # 2026-07-16: reverted from every 20 min back to hourly, ahead of the
+  # repo going private. Every-20-min (72 runs/day) was fine on Gemini
+  # quota after the model rebalancing fix, but GitHub Actions minutes are
+  # a SEPARATE budget — private repos get 2,000 free minutes/month
+  # shared across every workflow in the repo, and at ~45-75s/run (npm
+  # install + RSS fetch + Gemini call + Blobs write), 72 runs/day alone
+  # could be ~2,000+ min/month — potentially the entire private-repo
+  # budget from this one workflow, before the flagship pipeline, the
+  # feedback digest, or any manual regenerations. Hitting that cap stops
+  # EVERY workflow in the repo, not just this one, until next month's
+  # reset (unless overage billing is set up) — hourly (24 runs/day)
+  # lands around ~700-900 min/month, comfortably safe alongside
+  # everything else sharing the same budget.
   schedule:
-    - cron: "*/20 * * * *"
+    - cron: "0 * * * *"
 
 jobs:
   generate:
