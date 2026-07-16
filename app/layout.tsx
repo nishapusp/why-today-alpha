@@ -4,6 +4,7 @@ import { ClerkProvider, SignInButton, UserButton, Show } from "@clerk/nextjs";
 import Script from "next/script";
 import Link from "next/link";
 import BottomNav from "@/components/BottomNav";
+import PageBody from "@/components/PageBody";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import AppDownloadBanner from "@/components/AppDownloadBanner";
 import PushSubscribePrompt from "@/components/PushSubscribePrompt";
@@ -118,7 +119,7 @@ export default function RootLayout({
           </div>
           </header>
           <AppDownloadBanner />
-          {children}
+          <PageBody>{children}</PageBody>
           <BottomNav />
           <PushSubscribePrompt />
           <Script id="sw-register" strategy="afterInteractive">
