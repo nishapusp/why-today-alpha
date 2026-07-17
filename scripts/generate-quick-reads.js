@@ -175,6 +175,26 @@ Return ONLY a JSON object of the exact shape {"items": [...]}, where "items" is 
               continue;
             }
           }
+        } else if (!e.status) {
+          // 2026-07-17: e.status is only set on HTTP-level failures above —
+          // no status means this is a JSON.parse failure or the "Expected
+          // N items" shape-mismatch check, i.e. a genuinely SUCCESSFUL API
+          // response that just came back malformed. Found via a real run:
+          // gemini-3.1-flash-lite returned 200 OK with truncated/invalid
+          // JSON ("Expected double-quoted property name..."), and this
+          // used to fall through to the fallback model immediately with no
+          // retry at all — the exact same class of bug already fixed in
+          // regenerate-story.js (a malformed response is often a one-off
+          // LLM glitch, not a systemic failure, so it's worth retrying the
+          // SAME model before giving up on it). Reuses the same retry
+          // budget/backoff as the short-window-429 case above.
+          attempt++;
+          if (attempt <= maxRetriesPerModel) {
+            const waitMs = 3000 * attempt;
+            console.warn(`${model} returned malformed JSON (${e.message}) — retrying the same model (${attempt}/${maxRetriesPerModel})...`);
+            await new Promise((r) => setTimeout(r, waitMs));
+            continue;
+          }
         }
         console.warn(`enrichWithSummaries failed on ${model}: ${e.message}`);
         break; // move to the next model
