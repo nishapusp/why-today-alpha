@@ -12,7 +12,13 @@ import { useState } from "react";
  * deploy by generate-share-cards.js) and the homepage URL instead of a
  * story's.
  */
-export default function ShareWebsiteButton({ className }: { className?: string }) {
+export default function ShareWebsiteButton({
+  className,
+  iconOnly = false,
+}: {
+  className?: string;
+  iconOnly?: boolean; // compact circular icon button, no text label — for placing directly on the home page hero banner rather than a menu list
+}) {
   const [busy, setBusy] = useState(false);
 
   async function fetchCard(): Promise<File | null> {
@@ -56,6 +62,28 @@ export default function ShareWebsiteButton({ className }: { className?: string }
     } finally {
       setBusy(false);
     }
+  }
+
+  if (iconOnly) {
+    return (
+      <button
+        onClick={share}
+        disabled={busy}
+        aria-label="Share Why Today"
+        title="Share Why Today"
+        className={
+          className ??
+          "inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors disabled:opacity-60"
+        }
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="18" cy="5" r="3" stroke="white" strokeWidth={1.8} />
+          <circle cx="6" cy="12" r="3" stroke="white" strokeWidth={1.8} />
+          <circle cx="18" cy="19" r="3" stroke="white" strokeWidth={1.8} />
+          <path d="M8.6 10.5L15.4 6.5M8.6 13.5L15.4 17.5" stroke="white" strokeWidth={1.8} strokeLinecap="round" />
+        </svg>
+      </button>
+    );
   }
 
   return (

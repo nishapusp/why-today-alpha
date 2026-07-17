@@ -6,6 +6,7 @@ import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
 import PersonalizedName from "@/components/PersonalizedName";
+import ShareWebsiteButton from "@/components/ShareWebsiteButton";
 
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
 
@@ -65,6 +66,9 @@ export default async function Home() {
             className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20"
             style={{ background: "var(--gold)", filter: "blur(30px)" }}
           />
+          <div className="absolute top-4 right-4">
+            <ShareWebsiteButton iconOnly />
+          </div>
           <p className="relative font-display text-[22px] leading-tight text-white">
             {greeting()}
             <PersonalizedName />
