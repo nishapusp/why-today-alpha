@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
@@ -9,7 +10,7 @@ import AudioReader from "./AudioReader";
 
 export default function Top10List({
   stories,
-  readSlugs = [],
+  readSlugs: initialReadSlugs = [],
   linkBase = "/story",
   trackReads = true,
 }: {
@@ -18,9 +19,31 @@ export default function Top10List({
   linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
   trackReads?: boolean; // false for archived days — no point marking old stories "read" against today's streak
 }) {
+  const { isSignedIn, isLoaded } = useUser();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [newlyRead, setNewlyRead] = useState<Set<string>>(new Set());
   const [showRead, setShowRead] = useState(false);
+  // 2026-07-17: readSlugs is now fetched client-side (below), not passed
+  // pre-resolved from a server-side auth() call — that auth() call in
+  // app/page.tsx was forcing the whole home page to skip ISR caching and
+  // render fresh on every visit (confirmed via real PageSpeed data
+  // showing ~2s of server-response latency). Starts as whatever the
+  // caller passed (empty array for the common case) and updates once
+  // the client-side fetch below resolves — same "loads in shortly after
+  // initial paint" pattern JourneyStrip already uses successfully.
+  const [readSlugs, setReadSlugs] = useState<string[]>(initialReadSlugs);
+
+  useEffect(() => {
+    if (!isLoaded || !isSignedIn || !trackReads) return;
+    fetch("/api/preferences")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (Array.isArray(json?.readSlugs)) setReadSlugs(json.readSlugs);
+      })
+      .catch(() => {});
+    // Only re-run if sign-in state changes — not on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoaded, isSignedIn]);
 
   const all = stories.slice(0, 15);
   const alreadyReadSet = new Set(readSlugs);

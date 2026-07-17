@@ -1,12 +1,11 @@
 import { getLatestEdition, getHomeStories } from "@/lib/getData";
 import { getTermOfTheDay } from "@/lib/termOfDay";
-import { auth, currentUser } from "@clerk/nextjs/server";
-import { recordVisitAndGetStreak, getPreferences } from "@/lib/preferences";
 import ThreadBanner from "@/components/ThreadBanner";
 import ContinueLearning from "@/components/ContinueLearning";
 import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
+import PersonalizedName from "@/components/PersonalizedName";
 
 export const revalidate = 300; // re-check Airtable at most every 5 minutes
 
@@ -23,17 +22,21 @@ export default async function Home() {
   const homeStories = await getHomeStories();
   const termOfDay = getTermOfTheDay();
 
-  const { userId } = await auth();
-  let userName: string | undefined;
-  let readSlugs: string[] = [];
-
-  if (userId) {
-    await recordVisitAndGetStreak(userId); // side effect: updates streak — JourneyStrip (now in the hamburger menu) reads the result independently
-    const user = await currentUser();
-    userName = user?.firstName ?? undefined;
-    const prefs = await getPreferences(userId);
-    readSlugs = prefs.readSlugs;
-  }
+  // 2026-07-17: removed the auth()/currentUser()/recordVisitAndGetStreak/
+  // getPreferences block that used to be here — Clerk's auth() is a
+  // Next.js "Dynamic API," and using one anywhere in this page's render
+  // path was silently overriding `export const revalidate` above,
+  // forcing the WHOLE page to skip ISR caching and render fresh (with a
+  // database write + a profile fetch) on every single visit. Confirmed
+  // via real PageSpeed data: ~2s of "Document request latency," directly
+  // consistent with this. Personalization (the name, and read-story
+  // state) now happens client-side after initial paint instead — see
+  // PersonalizedName.tsx (uses Clerk's useUser(), no server round-trip
+  // at all) and Top10List.tsx's own readSlugs fetch (reuses the exact
+  // pattern JourneyStrip already had working). Streak recording moved
+  // into /api/preferences's GET handler, piggybacking on JourneyStrip's
+  // existing unconditional fetch-on-mount rather than needing its own
+  // server-side call here.
 
   const dateLabel = new Date(edition.date).toLocaleDateString("en-IN", {
     weekday: "long",
@@ -64,7 +67,7 @@ export default async function Home() {
           />
           <p className="relative font-display text-[22px] leading-tight text-white">
             {greeting()}
-            {userName ? `, ${userName}` : ""}
+            <PersonalizedName />
           </p>
           <div className="relative flex items-center gap-2 mt-2">
             <span className="h-px w-5" style={{ background: "var(--gold)" }} />
@@ -76,7 +79,7 @@ export default async function Home() {
           <h2 className="font-display text-lg text-[var(--text-primary)] mb-3">
             Today&apos;s stories ({homeStories.length})
           </h2>
-          <Top10List stories={homeStories} readSlugs={readSlugs} />
+          <Top10List stories={homeStories} />
         </div>
 
         {(termOfDay || homeStories.length > 0) && (
