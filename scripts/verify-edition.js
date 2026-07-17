@@ -233,12 +233,42 @@ async function fetchStorySources(story) {
 // disappearing either way.
 const MAX_STORY_AGE_DAYS = Number(process.env.RECENCY_MAX_AGE_DAYS || 4);
 
+// 2026-07-17: AIR (newsonair.gov.in) specifically — per a real report of old
+// AIR-sourced stories slipping into editions despite the existing soft
+// "verify extra carefully" prompt guidance. The general fail-open policy
+// above exists because most Indian publisher sites just have messy date
+// metadata, not because their content is actually likely to be stale —
+// but AIR is different: it's government-run wire content that gets
+// republished/rebroadcast well after the original event, so "we
+// couldn't find a date" on an AIR-sourced story is a much weaker signal
+// of "probably fine" than on a normal news site. Real-world evidence
+// (this exact complaint) says the soft nudge alone wasn't enough.
+const GOVERNMENT_WIRE_ONLY_DOMAINS = [/newsonair\.gov\.in/i, /newsonair\.com/i];
+
+function isGovernmentWireOnly(sources) {
+  const withUrls = (sources || []).filter((s) => s.url);
+  if (withUrls.length === 0) return false;
+  return withUrls.every((s) => GOVERNMENT_WIRE_ONLY_DOMAINS.some((re) => re.test(s.url)));
+}
+
 function checkSourceRecency(sources, editionDate) {
   const reference = editionDate ? new Date(editionDate) : new Date();
   const maxAgeMs = MAX_STORY_AGE_DAYS * 24 * 3600 * 1000;
   const dated = (sources || []).filter((s) => s.publishedAt instanceof Date && !Number.isNaN(s.publishedAt.getTime()));
 
   if (dated.length === 0) {
+    // The one deliberate exception to the general fail-open policy
+    // documented above — AIR/government-wire-only sourcing with no
+    // extractable date is treated as a fail, not a pass-with-flag,
+    // specifically because this source type is a confirmed repeat
+    // offender for silently republishing old content.
+    if (isGovernmentWireOnly(sources)) {
+      return {
+        ok: false,
+        unverifiable: false,
+        reason: "every cited source is AIR/government-wire content with no extractable publish date — treated as likely stale rather than fail-open, per confirmed real-world reports of old AIR reposts slipping through",
+      };
+    }
     return { ok: true, unverifiable: true, reason: "no publish date could be extracted from any cited source" };
   }
 
