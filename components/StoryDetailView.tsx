@@ -128,7 +128,7 @@ export default function StoryDetailView({
 
         <StoryChart chart={story.chart} cat={cat} />
 
-        <TimeMachine data={story.timeMachine} cat={cat} slug={story.slug} linkBase={linkBase} />
+        <TimeMachine data={story.timeMachine} cat={cat} slug={story.slug} linkBase={linkBase} terms={terms} story={story} />
 
         <ReadingLevelToggle story={story} />
 

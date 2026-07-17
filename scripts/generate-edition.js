@@ -138,18 +138,15 @@ Open with a "Fast Facts" bullet list (3-4 lines starting with "- ", each a concr
 3-6 word labels, each explained in "Broader Connections".
 
 ## Before returning output, verify — do not skip this step
-Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; no transitive verb (supply, serve, cover, provide, reach, and similar) left without its object — reread ifYoureWondering answers specifically for this, they're the most common place it slips through; every headline is 11 words or fewer AND would score 9/10 on curiosity; every story has all six timeMachine keys, each specific to that story's thread; every chart (if present) has real sourced values in matching label/value counts — delete any chart you are not certain about; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. Be especially wary of named government/defence operations, exercises, or routine institutional actions (e.g. a periodic RBI liquidity operation, a recurring named military exercise) — these get real news coverage every time they recur, which makes them LOOK fresh even when the underlying activity is routine; only include one if THIS specific occurrence has a genuinely new, non-routine angle. When a candidate story's only source is News on AIR or a PIB release with no independent corroborating outlet, treat that as a signal to verify the date extra carefully before including it — government wire content is often republished well after the original event. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to"; "## Broader Connections" names a specific real historical precedent with its year and outcome, not just a general "this connects to X" statement. If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
+Re-read every prose field and confirm: no stray numbers/citations inline; no story-position numbers in text; every jargon term explained on first use; no transitive verb (supply, serve, cover, provide, reach, and similar) left without its object — reread ifYoureWondering answers specifically for this, they're the most common place it slips through; every headline is 11 words or fewer AND would score 9/10 on curiosity; every story has today, future, and 3-6 real pastEvents in timeMachine, each with a genuine researched detail (not a padded/invented one just to hit a count); every chart (if present) has real sourced values in matching label/value counts — delete any chart you are not certain about; whatHappened/whyToday/whyCare are each 120-160 words (a one-sentence field is an automatic failure, and so is a 250-word one); readMinutes matches the actual word count; EVERY story is genuinely from the last 24-48 hours, not an evergreen/recurring topic — if any story fails this recency check, replace it with a fresher one before finalizing. Be especially wary of named government/defence operations, exercises, or routine institutional actions (e.g. a periodic RBI liquidity operation, a recurring named military exercise) — these get real news coverage every time they recur, which makes them LOOK fresh even when the underlying activity is routine; only include one if THIS specific occurrence has a genuinely new, non-routine angle. When a candidate story's only source is News on AIR or a PIB release with no independent corroborating outlet, treat that as a signal to verify the date extra carefully before including it — government wire content is often republished well after the original event. For deepDiveRead specifically, verify all of these are literally present in the text, not just planned: 500-800 words total; all 5 "## " headers; a "- " bullet list (3-4 lines) placed right after the first header; at least one "**...**" bold marker in at least 3 sections; the LAST paragraph of "## The Backstory" starting with "Then vs. now:" or "Compared to"; "## Broader Connections" names a specific real historical precedent with its year and outcome, not just a general "this connects to X" statement. If any single one of these is missing, add it before finalizing — this is not optional formatting. A field that says only one vague sentence (e.g. "Updated data highlighted the scale of the increase.") is not acceptable output under any circumstance — it must be rewritten with real, specific figures.
 
 ## timeMachine (per story, required) — the signature feature
-"timeMachine" places today's news in time so a reader sees the full arc, not just today's blip. Six keys, each 1-2 plain sentences (15-35 words), with a REAL fact or figure wherever possible — use Google Search for the historical steps, not memory alone:
-- "yesterday": the immediate setup — what the situation was in the days just before this news broke.
-- "lastMonth": where this issue/number stood roughly a month ago.
-- "lastYear": where it stood about a year ago — a real figure or a named event.
-- "tenYearsAgo": the long view — what this landscape looked like roughly a decade ago (an approximate era is fine, e.g. "Back in 2016, ...").
+"timeMachine" places today's news in time so a reader sees the full arc, not just today's blip. Two anchor fields plus a flexible list of real past events:
 - "today": what changed today, in one crisp line.
 - "future": the single most likely next development, with a timeframe if known.
-Each step must be specific to THIS story's thread, so reading top to bottom feels like time travel toward today.
-HISTORICAL STEPS MUST BE RESEARCHED, NOT RECALLED: for "lastMonth", "lastYear" and "tenYearsAgo", run dedicated date-qualified searches for the actual historical data (e.g. "repo rate June 2026", "forex reserves July 2025", "repo rate 2016"). Each of these three steps must carry at least one concrete dated figure or a named event with its year — "the rate was 6.5% in July 2025" is a Time Machine step; "rates were higher back then" is not. This researched specificity is the entire value of the feature. If a genuine fact for a step cannot be verified even after searching, write the honest general context for that era — never invent precise figures.
+- "pastEvents": an array of 3-6 objects {"period", "headline", "detail"} — the events from roughly the last decade that ACTUALLY, MATERIALLY shaped this specific story's thread. "period" is a real date/year label ("2018", "March 2024", "Last week") — NOT a fixed slot like "1 month ago"/"1 year ago"/"10 years ago". Do not force one event per artificial interval — real history clusters where things actually happened: if the genuinely important events were 2019, 2021, and three weeks ago, use exactly those three: do not pad in a weak "1 year ago" event just to fill a slot nothing significant happened in. "headline" is a few words. "detail" is the researched substance — a real figure, a named event, an outcome, written as 1-3 sentences (not a one-liner) — this is where genuine depth belongs, more room than the old format had.
+Order pastEvents chronologically, oldest first, so reading top to bottom feels like time travel toward today.
+RESEARCHED, NOT RECALLED: run dedicated date-qualified searches for each event's real figures (e.g. "repo rate June 2026", "forex reserves July 2025", "[company] 2018"). Each event must carry at least one concrete dated figure or outcome — "the rate was 6.5% in July 2025" is a pastEvents entry; "rates were higher back then" is not. This researched specificity is the entire value of the feature. If you cannot verify enough genuinely significant events even after searching, 3 strong ones beat 6 padded ones — never invent a event or its figures to hit a count.
 
 ## chart (per story, OPTIONAL — include only when genuinely numeric)
 2026-07-17: actively LOOK for a chartable series rather than only reaching for one when it's the obvious center of the story — most financial/corporate/policy stories have SOME real numeric trend nearby even when it's not the headline itself (a company's stock/profit over recent quarters, a sector's growth rate across years, a policy rate's recent path, an IPO's subscription across investor categories). Search for one before deciding a story has no chart to offer. That said, the anti-fabrication rule below is absolute and unchanged by this: include "chart": {"title", "unit" (e.g. "%", "₹ lakh crore" — optional), "labels" (3-6 short strings like "FY22" or "Jan"), "values" (same count of plain numbers, no commas/symbols), "takeaway" (one sentence: what the chart proves)} only when you have 3+ REAL, sourced, comparable numbers in consistent units and chronological order. If you do not, OMIT "chart" entirely — a story without a chart is fine; a fabricated chart is a failure, full stop.
@@ -169,7 +166,7 @@ Return ONLY valid JSON matching this shape:
    "headline","whatsappHeadline","notificationHeadline",
    "slug","category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
-   "timeMachine":{"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
+   "timeMachine":{"today","future","pastEvents":[{"period","headline","detail"}]},
    "chart":{"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
    "keyNumbers":[{"label","value","previousValue?","previousLabel?","trendNote?"}],
    "knowledgeChain":["..."],
@@ -944,14 +941,26 @@ function validateStories(stories, startIndex = 0) {
     if (!story.whatsappHeadline) soft.push(`${label}: missing whatsappHeadline (share cards will fall back to headline).`);
     if (!story.notificationHeadline) soft.push(`${label}: missing notificationHeadline.`);
 
-    const TM_KEYS = ["yesterday", "lastMonth", "lastYear", "tenYearsAgo", "today", "future"];
+    // 2026-07-17: validates the new flexible pastEvents format —
+    // today/future are still fixed anchor fields, but the old
+    // yesterday/lastMonth/lastYear/tenYearsAgo checkpoints are gone from
+    // what the prompt now asks for (still accepted if a model somehow
+    // returns them, for safety, but not required or expected).
     if (!story.timeMachine || typeof story.timeMachine !== "object" || Array.isArray(story.timeMachine)) {
       soft.push(`${label}: missing timeMachine (UI will hide the Time Machine block).`);
       delete story.timeMachine;
     } else {
-      const missing = TM_KEYS.filter((k) => !asText(story.timeMachine[k]).trim());
-      if (missing.length > 0) soft.push(`${label}: timeMachine missing/empty step(s): ${missing.join(", ")}.`);
-      if (missing.length >= 4) {
+      const missingAnchors = ["today", "future"].filter((k) => !asText(story.timeMachine[k]).trim());
+      const events = Array.isArray(story.timeMachine.pastEvents) ? story.timeMachine.pastEvents : [];
+      const validEvents = events.filter(
+        (e) => e && typeof e === "object" && asText(e.period).trim() && asText(e.headline).trim() && asText(e.detail).trim()
+      );
+      if (missingAnchors.length > 0) soft.push(`${label}: timeMachine missing anchor field(s): ${missingAnchors.join(", ")}.`);
+      if (validEvents.length < 3) soft.push(`${label}: timeMachine has only ${validEvents.length} valid pastEvents (wanted 3-6).`);
+      // Drop malformed entries rather than the whole block, same
+      // fail-soft philosophy as the chart validation just below.
+      if (validEvents.length !== events.length) story.timeMachine.pastEvents = validEvents;
+      if (missingAnchors.length === 2 || (validEvents.length === 0 && !story.timeMachine.yesterday)) {
         soft.push(`${label}: timeMachine too incomplete — dropping it for this story.`);
         delete story.timeMachine;
       }

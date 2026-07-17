@@ -51,7 +51,7 @@ Write like a sharp friend explaining why something matters over chai, not a pres
 
 Headlines — the Curiosity Engine: "headline" max 11 words, language a Class 8 student understands, must make the reader think "Wait… why?" — surprise, curiosity, or a direct stake; NEVER clickbait (the story must deliver everything the headline promises); no bulletin language or jargon. Score it on curiosity /10 — rewrite until it's at least 9. Also include "whatsappHeadline" (max 9 words, punchier, at most one emoji, truthful) and "notificationHeadline" (max 7 words, hook first).
 
-timeMachine (required): six keys, each 1-2 plain sentences (15-35 words) — "yesterday" (immediate setup), "lastMonth", "lastYear", "tenYearsAgo", "today" (one crisp line), "future" (most likely next step, with timeframe if known). For lastMonth/lastYear/tenYearsAgo, run dedicated date-qualified searches for the actual historical data — each must carry a concrete dated figure or named event with its year. Never invent precise figures — honest era context beats a fake number.
+timeMachine (required): "today" (one crisp line) and "future" (most likely next step, with timeframe if known) as fixed anchors, plus "pastEvents": an array of 3-6 {"period","headline","detail"} objects — the events from roughly the last decade that ACTUALLY shaped this story's thread, "period" a real date/year label (not a fixed "1 month ago"-style slot), "detail" 1-3 researched sentences with a real figure or outcome. Don't pad in a weak event just to fill a slot — 3 strong events beat 6 invented ones. Order chronologically, oldest first. Run dedicated date-qualified searches for the actual historical data — never invent precise figures, honest era context beats a fake number.
 
 chart (OPTIONAL — only when the story centers on a measurable series): {"title","unit?","labels" (3-6 short strings),"values" (same count of plain numbers, consistent units, chronological),"takeaway" (one sentence)}. All values must be real, from your sources. If you don't have 3+ real comparable numbers, OMIT chart entirely.
 
@@ -70,7 +70,7 @@ Return ONLY valid JSON matching this shape:
   "headline", "whatsappHeadline", "notificationHeadline",
   "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
-  "timeMachine": {"yesterday","lastMonth","lastYear","tenYearsAgo","today","future"},
+  "timeMachine": {"today","future","pastEvents":[{"period","headline","detail"}]},
   "chart": {"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
   "keyNumbers": [{"label","value","previousValue?","previousLabel?","trendNote?"}],
   "knowledgeChain": ["..."],

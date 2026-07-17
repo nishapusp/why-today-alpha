@@ -50,13 +50,34 @@ export interface HeadlineImage {
 // Six steps of temporal context per story — reads top-to-bottom like time
 // travel toward today. Generated with Search grounding; steps are 1-2
 // sentences each. Older stories lack this entirely.
+export interface TimeMachineEvent {
+  period: string; // a real date/year label, e.g. "2018", "March 2024", "Last week" — NOT a fixed slot name
+  headline: string; // short title for this event (a few words)
+  detail: string; // the researched substance — real figures/outcomes, not a one-liner
+}
+
 export interface TimeMachine {
-  yesterday: string;
-  lastMonth: string;
-  lastYear: string;
-  tenYearsAgo: string;
   today: string;
   future: string; // "What happens next?"
+  // 2026-07-17: replaced the rigid yesterday/lastMonth/lastYear/tenYearsAgo
+  // checkpoints with a flexible event list per explicit request — forcing
+  // a fixed "what happened exactly 1 month ago" slot produced weak/padded
+  // content when nothing significant actually happened at that specific
+  // interval; a flexible "the events that actually mattered" naturally
+  // surfaces only the strong material, clustered wherever real history
+  // actually clusters rather than evenly spaced. today/future stay as
+  // their own anchor fields (the current moment and its trajectory are a
+  // different kind of thing than "a past event," not really "history").
+  pastEvents?: TimeMachineEvent[];
+  // OLD fixed-checkpoint fields — kept optional, never removed. Every
+  // already-published story (this launched 2026-07 and has been
+  // generating daily editions since) has these, not pastEvents.
+  // TimeMachine.tsx renders whichever shape is present rather than this
+  // being a breaking migration of historical data.
+  yesterday?: string;
+  lastMonth?: string;
+  lastYear?: string;
+  tenYearsAgo?: string;
 }
 
 // Optional per-story mini chart — only present when the story centers on a

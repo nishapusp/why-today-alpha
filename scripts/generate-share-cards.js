@@ -605,7 +605,21 @@ function buildTimeMachineCardTree(story, editionDate, qrUri) {
   const dateLabel = formatDate(story.generatedAt || editionDate);
   const headline = String(story.whatsappHeadline || story.headline || "").trim();
   const tm = story.timeMachine || {};
-  const steps = TM_STEPS.filter((s) => String(tm[s.key] || "").trim());
+  // 2026-07-17: same dual-format support as components/TimeMachine.tsx —
+  // new stories carry tm.pastEvents (flexible, real events with real
+  // dates) instead of the old fixed tenYearsAgo/lastYear/lastMonth/
+  // yesterday checkpoints. Building a unified {key, label, text} list
+  // here so the rest of this function (tmStepRow, footer, etc.) doesn't
+  // need to know which format it's looking at.
+  const events = Array.isArray(tm.pastEvents) ? tm.pastEvents.filter((e) => e && String(e.detail || "").trim()) : [];
+  const usingFlexibleFormat = events.length >= 2 && String(tm.today || "").trim() && String(tm.future || "").trim();
+  const steps = usingFlexibleFormat
+    ? [
+        ...events.map((e) => ({ key: e.period, label: String(e.period || "").toUpperCase(), text: e.detail })),
+        { key: "today", label: "TODAY", text: tm.today },
+        { key: "future", label: "WHAT HAPPENS NEXT?", text: tm.future },
+      ]
+    : TM_STEPS.filter((s) => String(tm[s.key] || "").trim()).map((s) => ({ key: s.key, label: s.label, text: tm[s.key] }));
 
   return el(
     "div",
@@ -676,7 +690,7 @@ function buildTimeMachineCardTree(story, editionDate, qrUri) {
           padding: "0 64px",
         },
       },
-      steps.map((s, i) => tmStepRow(s, tm[s.key], cat, i === steps.length - 1))
+      steps.map((s, i) => tmStepRow(s, s.text, cat, i === steps.length - 1))
     ),
 
     // Footer (matches the main card)
@@ -685,10 +699,17 @@ function buildTimeMachineCardTree(story, editionDate, qrUri) {
 }
 
 // How many usable steps a story's timeMachine has — below 4 the card looks
-// sparse and sad, so we skip rendering it.
+// sparse and sad, so we skip rendering it. Same dual-format detection as
+// buildTimeMachineCardTree above — a new-format story's 3 pastEvents + 2
+// anchors (5 total) should count same as an old-format story's 6 steps,
+// not be wrongly treated as having 0.
 function tmStepCount(story) {
   const tm = story && story.timeMachine;
   if (!tm || typeof tm !== "object") return 0;
+  const events = Array.isArray(tm.pastEvents) ? tm.pastEvents.filter((e) => e && String(e.detail || "").trim()) : [];
+  if (events.length >= 2 && String(tm.today || "").trim() && String(tm.future || "").trim()) {
+    return events.length + 2; // + today + future anchors
+  }
   return TM_STEPS.filter((s) => String(tm[s.key] || "").trim()).length;
 }
 
