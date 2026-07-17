@@ -68,6 +68,7 @@ const {
   MODEL,
   FALLBACK_MODEL,
   API_KEY,
+  describeQuotaViolations,
 } = require("./generate-edition.js");
 
 // Batched enrichment: one ungrounded Gemini call per run writes a short
@@ -100,43 +101,84 @@ Return ONLY a JSON object of the exact shape {"items": [...]}, where "items" is 
   // creative generation needing the stronger model — it was very likely
   // the single largest consumer of the scarce 20 RPD budget, competing
   // with the flagship pipeline and manual story regeneration for it.
+  //
+  // 2026-07-17: this loop used to try each model exactly ONCE with no
+  // retry — found via a real report of Quick Reads reverting to bare
+  // "More on this X story from Y" placeholders. Root cause: if
+  // FALLBACK_MODEL (normally healthy at ~26/500 that day) hit even a
+  // brief transient rate blip — plausible given how much else was
+  // running concurrently that day — this gave up on it immediately and
+  // fell through to MODEL, which the dashboard showed was ALREADY OVER
+  // its daily cap (31/20) — so the fallback was itself doomed too,
+  // losing enrichment for the entire run. Backported the same fix
+  // already proven working in regenerate-story.js: a short-window (RPM)
+  // failure now waits briefly and retries the SAME model up to 3 times
+  // before switching; only a genuine long-window (RPD) failure switches
+  // models immediately, since waiting doesn't help a daily cap but does
+  // help a transient spike.
   const models = [FALLBACK_MODEL, MODEL];
+  const maxRetriesPerModel = 3;
   let lastErr;
+
   for (const model of models) {
-    try {
-      const res = await fetch(`${GEMINI_API_BASE}/${model}:generateContent`, {
-        method: "POST",
-        headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ role: "user", parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: Math.min(65536, items.length * 300 + 2000), responseMimeType: "application/json" },
-        }),
-        signal: AbortSignal.timeout(120000),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
-      const data = await res.json();
-      const candidate = data.candidates?.[0];
-      // Same thought-part filter as the flagship pipeline — gemini-3.5-flash
-      // can return a "thought": true part alongside the real JSON answer.
-      const text = candidate?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
-      const parsedRaw = JSON.parse(extractJson(text));
-      // extractJson (shared with the flagship pipeline) finds the first
-      // "{" and balance-matches to its "}" — it's built for object-shaped
-      // responses. A bare top-level array's first "{" is actually inside
-      // its first element, so extractJson would silently return just that
-      // one item, not the whole array (confirmed by reproducing this
-      // exact failure against the real function before fixing it) — that
-      // is why the prompt above asks for {"items": [...]} instead of a
-      // bare array. Still handles a bare array leniently here in case a
-      // model ignores the wrapping instruction anyway.
-      const parsed = Array.isArray(parsedRaw) ? parsedRaw : parsedRaw?.items;
-      if (!Array.isArray(parsed) || parsed.length !== items.length) {
-        throw new Error(`Expected ${items.length} items, got ${Array.isArray(parsed) ? parsed.length : typeof parsed}`);
+    let attempt = 0;
+    while (attempt <= maxRetriesPerModel) {
+      try {
+        const res = await fetch(`${GEMINI_API_BASE}/${model}:generateContent`, {
+          method: "POST",
+          headers: { "x-goog-api-key": API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ role: "user", parts: [{ text: prompt }] }],
+            generationConfig: { maxOutputTokens: Math.min(65536, items.length * 300 + 2000), responseMimeType: "application/json" },
+          }),
+          signal: AbortSignal.timeout(120000),
+        });
+
+        if (!res.ok) {
+          const bodyText = await res.text();
+          const err = new Error(`HTTP ${res.status}: ${bodyText}`);
+          err.status = res.status;
+          err.body = bodyText;
+          throw err;
+        }
+
+        const data = await res.json();
+        const candidate = data.candidates?.[0];
+        // Same thought-part filter as the flagship pipeline — gemini-3.5-flash
+        // can return a "thought": true part alongside the real JSON answer.
+        const text = candidate?.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
+        const parsedRaw = JSON.parse(extractJson(text));
+        // extractJson (shared with the flagship pipeline) finds the first
+        // "{" and balance-matches to its "}" — it's built for object-shaped
+        // responses. A bare top-level array's first "{" is actually inside
+        // its first element, so extractJson would silently return just that
+        // one item, not the whole array (confirmed by reproducing this
+        // exact failure against the real function before fixing it) — that
+        // is why the prompt above asks for {"items": [...]} instead of a
+        // bare array. Still handles a bare array leniently here in case a
+        // model ignores the wrapping instruction anyway.
+        const parsed = Array.isArray(parsedRaw) ? parsedRaw : parsedRaw?.items;
+        if (!Array.isArray(parsed) || parsed.length !== items.length) {
+          throw new Error(`Expected ${items.length} items, got ${Array.isArray(parsed) ? parsed.length : typeof parsed}`);
+        }
+        return parsed;
+      } catch (e) {
+        lastErr = e;
+        if (e.status === 429) {
+          const quota = describeQuotaViolations(e.body || "");
+          if (!quota.isLongWindow) {
+            attempt++;
+            if (attempt <= maxRetriesPerModel) {
+              const waitMs = 8000 * attempt;
+              console.warn(`${model} hit a short-term rate limit — waiting ${Math.round(waitMs / 1000)}s and retrying the same model (${attempt}/${maxRetriesPerModel})...`);
+              await new Promise((r) => setTimeout(r, waitMs));
+              continue;
+            }
+          }
+        }
+        console.warn(`enrichWithSummaries failed on ${model}: ${e.message}`);
+        break; // move to the next model
       }
-      return parsed;
-    } catch (e) {
-      lastErr = e;
-      console.warn(`enrichWithSummaries failed on ${model}: ${e.message}`);
     }
   }
   throw lastErr;
