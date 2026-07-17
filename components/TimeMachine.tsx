@@ -39,19 +39,23 @@ export default function TimeMachine({
   linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
 }) {
   const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   if (!data) return null;
   const steps = STEPS.filter((s) => (data[s.key] || "").trim());
   if (steps.length < 3) return null; // too sparse to feel like a timeline
+
+  function buildFullMessage(): string {
+    const url = `${window.location.origin}${linkBase}/${slug}`;
+    return `How this story evolved over time — via Why Today\n\n${url}\n\nGet the latest banking, economy & finance news in 1 minute — all in one place — on whytoday.in`;
+  }
 
   async function shareTimeline() {
     if (busy) return;
     setBusy(true);
     // 2026-07-17: was always /story/${slug} — same 404-on-archived-story
     // bug as ShareButton.tsx, fixed the same way.
-    const url = `${window.location.origin}${linkBase}/${slug}`;
-    // Shortened per feedback on ShareButton.tsx's version — same fix here.
-    const fullMessage = `How this story evolved over time — via Why Today\n\n${url}\n\nGet the latest banking, economy & finance news in 1 minute — all in one place — on whytoday.in`;
+    const fullMessage = buildFullMessage();
     try {
       if (navigator.share) {
         let file: File | null = null;
@@ -73,7 +77,7 @@ export default function TimeMachine({
             // fall through to text-only share below
           }
         }
-        await navigator.share({ title: "Time Machine", text: fullMessage, url });
+        await navigator.share({ title: "Time Machine", text: fullMessage, url: `${window.location.origin}${linkBase}/${slug}` });
         return;
       }
       window.open(
@@ -88,6 +92,22 @@ export default function TimeMachine({
     }
   }
 
+  // 2026-07-17: same WhatsApp-broadcast-list gap as ShareButton.tsx — see
+  // that file's header comment for the full explanation. Broadcast lists
+  // can't be reached via any share sheet, so the workaround is manually
+  // attaching a saved image inside the list, which loses the caption
+  // this button normally bundles — this copies it to the clipboard so
+  // it can be pasted in alongside the manually-attached image.
+  async function copyCaption() {
+    try {
+      await navigator.clipboard.writeText(buildFullMessage());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable/blocked — button just won't confirm.
+    }
+  }
+
   return (
     <section
       aria-label="Time Machine: how this story evolved over time"
@@ -98,15 +118,35 @@ export default function TimeMachine({
         <p className="text-xs font-mono uppercase tracking-wide" style={{ color: cat.deep }}>
           ⏳ Time Machine
         </p>
-        <button
-          onClick={shareTimeline}
-          disabled={busy}
-          aria-label="Share this timeline"
-          className="text-[11px] font-semibold rounded-full px-2.5 py-1 shrink-0 disabled:opacity-60"
-          style={{ background: "rgba(255,255,255,0.55)", color: cat.deep }}
-        >
-          {busy ? "Sharing…" : "↗ Share timeline"}
-        </button>
+        <div className="flex items-center gap-1.5 shrink-0">
+          <button
+            onClick={shareTimeline}
+            disabled={busy}
+            aria-label="Share this timeline"
+            className="text-[11px] font-semibold rounded-full px-2.5 py-1 disabled:opacity-60"
+            style={{ background: "rgba(255,255,255,0.55)", color: cat.deep }}
+          >
+            {busy ? "Sharing…" : "↗ Share timeline"}
+          </button>
+          <button
+            onClick={copyCaption}
+            aria-label="Copy caption and link (for broadcast lists)"
+            title="Copy caption and link — paste into WhatsApp when attaching a saved image to a broadcast list"
+            className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+            style={{ background: "rgba(255,255,255,0.55)", color: cat.deep }}
+          >
+            {copied ? (
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            ) : (
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="9" y="9" width="12" height="12" rx="2" />
+                <path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
       <p className="text-[13px] mb-5" style={{ color: cat.deep, opacity: 0.75 }}>
         How today&rsquo;s news fits into the bigger picture
