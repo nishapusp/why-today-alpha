@@ -20,10 +20,12 @@ export default function ShareButton({
   slug,
   headline,
   accent,
+  linkBase = "/story",
 }: {
   slug: string;
   headline: string;
   accent?: string;
+  linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
 }) {
   const [busy, setBusy] = useState(false);
 
@@ -41,7 +43,10 @@ export default function ShareButton({
   async function share() {
     if (busy) return;
     setBusy(true);
-    const url = `${window.location.origin}/story/${slug}`;
+    // 2026-07-17: was always /story/${slug}, which 404s for anything not
+    // in today's edition — a real report of an archived story's shared
+    // link being broken led here.
+    const url = `${window.location.origin}${linkBase}/${slug}`;
     // Shortened per feedback: the earlier "headline + preamble line + url +
     // tagline" (4 effective lines) looked cluttered next to the card image.
     // Now just headline, link, tagline — same information, less bulk.

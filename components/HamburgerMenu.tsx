@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useUser, SignOutButton } from "@clerk/nextjs";
 import JourneyStrip from "@/components/JourneyStrip";
+import ShareWebsiteButton from "@/components/ShareWebsiteButton";
 import editionData from "@/data/edition.json";
 
 function HomeIcon() {
@@ -166,6 +167,7 @@ export default function HamburgerMenu() {
             <ProgressIcon />
             Progress
           </Link>
+          <ShareWebsiteButton />
           <Link
             href="/feedback"
             onClick={() => setOpen(false)}

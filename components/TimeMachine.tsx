@@ -31,10 +31,12 @@ export default function TimeMachine({
   data,
   cat,
   slug,
+  linkBase = "/story",
 }: {
   data?: TimeMachineData;
   cat: CategoryStyle;
   slug: string;
+  linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
 }) {
   const [busy, setBusy] = useState(false);
 
@@ -45,7 +47,9 @@ export default function TimeMachine({
   async function shareTimeline() {
     if (busy) return;
     setBusy(true);
-    const url = `${window.location.origin}/story/${slug}`;
+    // 2026-07-17: was always /story/${slug} — same 404-on-archived-story
+    // bug as ShareButton.tsx, fixed the same way.
+    const url = `${window.location.origin}${linkBase}/${slug}`;
     // Shortened per feedback on ShareButton.tsx's version — same fix here.
     const fullMessage = `How this story evolved over time — via Why Today\n\n${url}\n\nGet the latest banking, economy & finance news in 1 minute — all in one place — on whytoday.in`;
     try {

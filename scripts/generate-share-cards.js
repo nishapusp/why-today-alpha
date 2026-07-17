@@ -241,6 +241,97 @@ function headerRow(story, cat, dateLabel) {
   );
 }
 
+/**
+ * The site-level share card — distinct from buildCardTree (one per
+ * story): this represents Why Today as a product, not any single
+ * story, for when someone wants to invite a friend to the app itself
+ * rather than share one specific piece of coverage. Uses the app's own
+ * gold accent (not a category color, since there's no category here)
+ * and the same navy background + Inter branding treatment already
+ * established in buildCardTree, so it reads as part of the same family
+ * when it lands in someone's gallery next to a story card.
+ */
+function buildSiteCardTree() {
+  const GOLD = "#D4AF6A";
+  const categories = [
+    { icon: "🏦", label: "Banking" },
+    { icon: "📊", label: "Economy" },
+    { icon: "🌐", label: "World" },
+    { icon: "🏢", label: "Corporate" },
+    { icon: "💡", label: "IPOs" },
+  ];
+
+  return el(
+    "div",
+    {
+      style: {
+        width: `${W}px`, height: `${H}px`,
+        display: "flex", flexDirection: "column",
+        backgroundColor: "#060F21",
+        fontFamily: "Inter", color: "#FFFFFF",
+        position: "relative", padding: "80px 64px",
+      },
+    },
+
+    // Soft gold glow, top-right — same "one contained bold moment"
+    // treatment as the app's own home-page hero banner, not a new motif.
+    el("div", {
+      style: {
+        position: "absolute", top: "-120px", right: "-120px",
+        width: "420px", height: "420px", borderRadius: "9999px",
+        backgroundColor: GOLD, opacity: 0.18, display: "flex",
+      },
+    }),
+
+    el("div", { style: { display: "flex", flexGrow: 0.3 } }),
+
+    el("span", {
+      style: { fontSize: "30px", fontWeight: 800, letterSpacing: "2px", color: GOLD, display: "flex" },
+    }, "WHY TODAY"),
+
+    el("span", {
+      style: {
+        marginTop: "28px", fontSize: "76px", lineHeight: 1.15, fontWeight: 800,
+        display: "flex", maxWidth: "820px",
+      },
+    }, "Banking, economy & markets — verified, explained, in 1 minute a day."),
+
+    el("div", { style: { display: "flex", flexGrow: 1 } }),
+
+    // Category icon row — breadth-of-coverage signal, same icons used
+    // as category badges throughout the actual app.
+    el(
+      "div",
+      { style: { display: "flex", gap: "36px", marginBottom: "48px" } },
+      ...categories.map((c) =>
+        el(
+          "div",
+          { style: { display: "flex", flexDirection: "column", alignItems: "center" } },
+          el("span", { style: { fontSize: "56px", display: "flex" } }, c.icon),
+          el("span", {
+            style: { marginTop: "8px", fontSize: "20px", color: "rgba(255,255,255,0.6)", display: "flex" },
+          }, c.label)
+        )
+      )
+    ),
+
+    el("div", {
+      style: { width: "100%", height: "2px", backgroundColor: GOLD, opacity: 0.4, display: "flex", marginBottom: "40px" },
+    }),
+
+    el(
+      "div",
+      { style: { display: "flex", alignItems: "center", justifyContent: "space-between" } },
+      el("span", {
+        style: { fontSize: "38px", fontWeight: 800, color: "#FFFFFF", display: "flex" },
+      }, "whytoday.in"),
+      el("span", {
+        style: { fontSize: "24px", color: "rgba(255,255,255,0.55)", display: "flex" },
+      }, "Read banking, economy & finance news — all in one place")
+    )
+  );
+}
+
 function buildCardTree(story, editionDate, photoUri, storyTerm) {
   const cat = catStyle(story.category);
   const keyNum = pickKeyNumber(story);
@@ -605,7 +696,54 @@ async function main() {
   const satori = (await import("satori")).default;
   const { Resvg } = await import("@resvg/resvg-js");
   const edition = JSON.parse(fs.readFileSync(EDITION_PATH, "utf8"));
-  const stories = Array.isArray(edition.stories) ? edition.stories : [];
+  const todayStories = Array.isArray(edition.stories) ? edition.stories : [];
+
+  // 2026-07-17: extended to also cover the last few days of ARCHIVED
+  // stories, not just today's edition — found via a real report that a
+  // story's share card had simply vanished. Root cause: this script
+  // wipes public/cards/ and only ever regenerated cards for whatever was
+  // in data/edition.json at build time. The moment a day rolls over (see
+  // roll-date.yml), yesterday's stories move to data/archive/ and their
+  // cards disappear on the next build — even though the story itself is
+  // still live and perfectly shareable at /archive/<date>/<slug>. A
+  // fixed window (3 days, not unlimited) keeps build time and output
+  // bounded rather than regenerating cards for the entire archive on
+  // every single build.
+  const ARCHIVE_DAYS_TO_COVER = 3;
+  const archiveDir = path.join(ROOT, "data", "archive");
+  let archivedStories = [];
+  try {
+    const files = fs.readdirSync(archiveDir)
+      .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+      .sort()
+      .reverse()
+      .slice(0, ARCHIVE_DAYS_TO_COVER);
+    for (const file of files) {
+      try {
+        const archived = JSON.parse(fs.readFileSync(path.join(archiveDir, file), "utf8"));
+        if (Array.isArray(archived.stories)) {
+          const dateFromFilename = file.replace(".json", "");
+          archived.stories.forEach((s) => { s._cardDate = archived.date || dateFromFilename; });
+          archivedStories.push(...archived.stories);
+        }
+      } catch {
+        // One bad/missing archive file shouldn't stop the others.
+      }
+    }
+  } catch {
+    // No archive directory yet — fine, e.g. a brand-new deployment.
+  }
+
+  // Today's version of a story wins on any slug collision (shouldn't
+  // normally happen, but today's data is the freshest if it does).
+  // Each story tagged with _cardDate — archived stories don't carry
+  // their own date field (only generatedAt, which most don't have
+  // either), so without this every archived card would show TODAY's
+  // date instead of the day it actually published.
+  todayStories.forEach((s) => { s._cardDate = edition.date; });
+  const seenSlugs = new Set(todayStories.map((s) => s.slug));
+  const stories = [...todayStories, ...archivedStories.filter((s) => !seenSlugs.has(s.slug))];
+
   if (stories.length === 0) {
     console.log("No stories in edition.json — nothing to render.");
     return;
@@ -666,11 +804,14 @@ async function main() {
     if (!story.slug) continue;
     try {
       const photoUri = await fetchImageDataUri(story.headlineImage && story.headlineImage.url);
-      var qrUri = await makeQrDataUri(`https://${SITE_URL}/story/${story.slug}`);
+      const storyUrl = story._cardDate && story._cardDate !== edition.date
+        ? `https://${SITE_URL}/archive/${story._cardDate}/${story.slug}`
+        : `https://${SITE_URL}/story/${story.slug}`;
+      var qrUri = await makeQrDataUri(storyUrl);
       if (photoUri) withPhoto++;
       const storyTerm = getStoryTerm(story, glossaryMap);
       if (storyTerm) termMatched++;
-      await renderPng(buildCardTree(story, edition.date, photoUri, storyTerm), `${story.slug}.png`);
+      await renderPng(buildCardTree(story, story._cardDate || edition.date, photoUri, storyTerm), `${story.slug}.png`);
       manifest[story.slug] = `/cards/${story.slug}.png`;
       ok++;
     } catch (err) {
@@ -680,7 +821,7 @@ async function main() {
     // Time Machine companion card — its failure never affects the main card.
     if (tmStepCount(story) >= 4) {
       try {
-        await renderPng(buildTimeMachineCardTree(story, edition.date, qrUri), `${story.slug}-tm.png`);
+        await renderPng(buildTimeMachineCardTree(story, story._cardDate || edition.date, qrUri), `${story.slug}-tm.png`);
         tmManifest[story.slug] = `/cards/${story.slug}-tm.png`;
         tmOk++;
       } catch (err) {
@@ -693,6 +834,16 @@ async function main() {
     path.join(OUT_DIR, "manifest.json"),
     JSON.stringify({ date: edition.date, cards: manifest, timeMachineCards: tmManifest }, null, 2)
   );
+  // One-time site-level card (not per-story) — for sharing the app
+  // itself rather than any single story. Cheap: one extra render per
+  // build, same pipeline already warmed up for the per-story cards.
+  try {
+    await renderPng(buildSiteCardTree(), "site-share.png");
+    console.log("Site share card rendered to public/cards/site-share.png");
+  } catch (err) {
+    console.warn(`Site share card failed: ${err.message} — site sharing will fall back to text-only.`);
+  }
+
   console.log(`Share cards: ${ok}/${stories.length} rendered (${withPhoto} with photos, ${termMatched} with a matched Term of the Day), ${tmOk} Time Machine cards, to public/cards/.`);
 }
 

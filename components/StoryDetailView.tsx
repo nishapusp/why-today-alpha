@@ -27,6 +27,7 @@ export default function StoryDetailView({
   next,
   terms,
   position,
+  linkBase = "/story",
 }: {
   story: Story;
   backHref: string;
@@ -35,6 +36,13 @@ export default function StoryDetailView({
   next?: StoryNeighbor; // next story in the same edition
   terms?: TermDefinition[]; // knowledge-chain terms + glossary definitions
   position?: { index: number; total: number }; // place in edition, for the swipe pill
+  // 2026-07-17: added after a real report that a shared archived
+  // story's link (and its card's embedded QR code) pointed to
+  // /story/<slug>, which 404s for anything not in today's edition —
+  // both ShareButton and TimeMachine hardcoded that path. Matches
+  // Top10List's existing linkBase pattern for the same today-vs-
+  // archived distinction, rather than inventing a new convention.
+  linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
 }) {
   const cat = getCategoryStyle(story.category);
 
@@ -95,7 +103,7 @@ export default function StoryDetailView({
             <span>{story.readMinutes} min read</span>
             {story.headlineImage && <span>· 📷 {story.headlineImage.credit}</span>}
             <span className="ml-auto">
-              <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} />
+              <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} linkBase={linkBase} />
             </span>
           </div>
         </div>
@@ -120,7 +128,7 @@ export default function StoryDetailView({
 
         <StoryChart chart={story.chart} cat={cat} />
 
-        <TimeMachine data={story.timeMachine} cat={cat} slug={story.slug} />
+        <TimeMachine data={story.timeMachine} cat={cat} slug={story.slug} linkBase={linkBase} />
 
         <ReadingLevelToggle story={story} />
 

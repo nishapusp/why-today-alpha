@@ -44,6 +44,7 @@ export default async function ArchivedStoryPage({
       next={nextStory && { href: `/archive/${date}/${nextStory.slug}`, headline: nextStory.headline }}
       terms={getTermDefinitions(story.knowledgeChain)}
       position={edition && idx >= 0 ? { index: idx + 1, total: edition.stories.length } : undefined}
+      linkBase={`/archive/${date}`}
     />
   );
 }
