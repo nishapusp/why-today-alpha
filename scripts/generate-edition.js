@@ -49,6 +49,22 @@ const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 // switching is often more effective than waiting and re-hitting the same
 // overloaded or quota-exhausted model.
 const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3.1-flash-lite";
+// 2026-07-17: SEPARATE model pair specifically for GROUNDED (google_search
+// tool) calls — confirmed from the real usage dashboard that "Gemini 3"
+// family (MODEL/FALLBACK_MODEL above) has a HARD 0/0 search-grounding
+// quota on the free tier, not a temporary exhaustion. That's why the
+// isGrounding check a bit further down in generateBatch was firing on
+// essentially every run's first grounded call, falling back to RSS mode
+// for the rest of the day, every day — RSS mode is deliberately thinner
+// (no live verification, works from a headline+snippet alone), which is
+// very likely why deep dives read as less detailed than expected. Same
+// fix already proven working for regenerate-story.js: "Gemini 2.5" family
+// has real, largely-unused grounding headroom (confirmed 37/1.5K used).
+// Only the "search"-mode branch of generateBatch uses this pair — "rss"
+// mode never touches the google_search tool at all, so it's unaffected
+// by this and stays on the regular MODEL/FALLBACK_MODEL pair.
+const GROUNDED_MODEL = process.env.GEMINI_GROUNDED_MODEL || "gemini-2.5-flash";
+const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-flash-lite";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
@@ -692,7 +708,18 @@ function describeQuotaViolations(errBody) {
 
 async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, mode = "search", maxRetries = 3) {
   let attempt = 0;
-  let currentModel = MODEL;
+  // 2026-07-17: mode-dependent pair — "search" mode makes a GROUNDED call
+  // (google_search tool attached below), which needs GROUNDED_MODEL/
+  // GROUNDED_FALLBACK_MODEL (Gemini 2.5 family, real grounding quota).
+  // "rss" mode never attaches that tool at all, so it stays on the
+  // regular MODEL/FALLBACK_MODEL pair — no reason to move it off a model
+  // that's working fine for ungrounded calls. mode is fixed for the
+  // duration of one generateBatch call (the caller decides it before
+  // invoking), so picking the pair once here is safe.
+  const [primaryModel, secondaryModel] = mode === "search"
+    ? [GROUNDED_MODEL, GROUNDED_FALLBACK_MODEL]
+    : [MODEL, FALLBACK_MODEL];
+  let currentModel = primaryModel;
   const deadModels = new Set(); // models Google has retired (404) this run
 
   // Scales with batch size instead of a fixed value — the fixed 20000 was
@@ -793,10 +820,10 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
       // the retry budget.
       if (err.status === 404) {
         deadModels.add(currentModel);
-        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        const other = currentModel === primaryModel ? secondaryModel : primaryModel;
         if (deadModels.has(other)) {
           throw new Error(
-            `Both ${MODEL} and ${FALLBACK_MODEL} return 404 — Google has retired them. ` +
+            `Both ${primaryModel} and ${secondaryModel} return 404 — Google has retired them. ` +
             `Set GEMINI_MODEL / GEMINI_FALLBACK_MODEL in the workflow to current model names ` +
             `(check https://ai.google.dev/gemini-api/docs/models).`
           );
@@ -852,7 +879,7 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
       // overloaded or exhausted one. Never alternate onto a model we've
       // already seen 404.
       if (err.status === 429 || err.status === 503 || err.status === 500) {
-        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        const other = currentModel === primaryModel ? secondaryModel : primaryModel;
         if (!deadModels.has(other)) currentModel = other;
       }
     }
@@ -1432,6 +1459,8 @@ module.exports = {
   GEMINI_API_BASE,
   MODEL,
   FALLBACK_MODEL,
+  GROUNDED_MODEL,
+  GROUNDED_FALLBACK_MODEL,
   API_KEY,
   describeQuotaViolations,
 };
