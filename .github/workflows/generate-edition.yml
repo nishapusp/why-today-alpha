@@ -71,7 +71,19 @@ jobs:
           # errors come back on a NORMAL run (not every batch instantly
           # failing), drop this back to 9 or enable billing.
           STORY_TARGET: "15"
-          BATCH_SIZE: "8"
+          # 2026-07-17: reduced from 8 — a real run hit "Unexpected end of
+          # JSON input" on ALL 3 retry attempts (same failure every time,
+          # not random bad luck), right after switching from a retired
+          # model to gemini-2.5-flash. Grounded calls moved to the Gemini
+          # 2.5 family the day before (fixing the 0/0 grounding quota
+          # issue) — that model's real maxOutputTokens ceiling isn't
+          # confirmed the way gemini-3.5-flash's 65536 was, so requesting
+          # 8*6500+2000=54000 tokens may simply exceed what it can return,
+          # producing a truncated/unparseable response every single time
+          # regardless of retries. Smaller batches need less total output
+          # per call, which is a robust mitigation regardless of the exact
+          # ceiling. Revisit upward if a run completes cleanly at this size.
+          BATCH_SIZE: "5"
           # Slightly wider than the default 15s now that we're pushing more
           # batches/day — extra margin against the 5-requests/minute cap.
           BATCH_SPACING_MS: "20000"

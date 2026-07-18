@@ -42,7 +42,11 @@ const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations, fetchPex
 // it was retried. Using the 2.5 family here specifically, where
 // grounding is actually available.
 const GROUNDED_MODEL = process.env.GEMINI_GROUNDED_MODEL || "gemini-2.5-flash";
-const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-flash-lite";
+// 2026-07-17: gemini-2.5-flash-lite confirmed retired by Google (404) in
+// a real run of generate-edition.js — same fallback pair, updating here
+// too for consistency. Existing 404-handling already recovers gracefully
+// regardless, so this is a convenience default, not a dependency.
+const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-pro";
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.

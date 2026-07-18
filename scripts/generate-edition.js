@@ -64,7 +64,18 @@ const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3.1-flash-li
 // mode never touches the google_search tool at all, so it's unaffected
 // by this and stays on the regular MODEL/FALLBACK_MODEL pair.
 const GROUNDED_MODEL = process.env.GEMINI_GROUNDED_MODEL || "gemini-2.5-flash";
-const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-flash-lite";
+// 2026-07-17: gemini-2.5-flash-lite is CONFIRMED retired by Google — a
+// real run hit an explicit 404 "has been retired" error. The existing
+// 404-handling already recovers gracefully from this (switches to the
+// other model in the pair for the rest of the run), so this wasn't a
+// hard failure, just a wasted round-trip every run until the default
+// changes. Using gemini-2.5-pro instead — reasoning, not a live-verified
+// guarantee: "lite" variants seem to get retired faster than the full
+// models in the same generation, based on this happening once already.
+// If this ALSO gets retired later, the same graceful-fallback logic
+// handles it the same way — this default is a convenience, not a
+// dependency the pipeline actually relies on to function.
+const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-pro";
 const API_KEY = process.env.GEMINI_API_KEY;
 const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
@@ -1208,6 +1219,47 @@ async function main() {
       console.error(`Batch ${b + 1} returned no stories — skipping.`);
       continue;
     }
+
+    // 2026-07-17: found via a real run where ALL 8 stories in a batch got
+    // hard-rejected because deepDiveRead came back as an object (keyed by
+    // section name, e.g. {"Fast Facts": [...], "What Changed": "...", ...})
+    // instead of one markdown string — the model interpreted "Fast Facts
+    // bullets + 5 headers" as JSON field structure rather than literal "##"
+    // /"- " text within one string. This is the same shape bug already
+    // fixed in regenerate-story.js, but that fix used Object.values().join()
+    // directly, which mishandles a NESTED array value (e.g. "Fast Facts":
+    // [...bullets]) by stringifying it as a comma-joined mess instead of
+    // real lines — the exact shape this real failure had. flattenDeepDive
+    // recurses through arrays/objects at any depth, joining arrays with
+    // newlines (right for a bullet list) and objects with blank lines
+    // (right for section-keyed content), so it reconstructs a readable
+    // markdown string from either shape rather than discarding 8 fully-
+    // researched, otherwise-good stories over one field's JSON shape.
+    function flattenDeepDive(v) {
+      if (typeof v === "string") return v;
+      if (Array.isArray(v)) return v.map(flattenDeepDive).join("\n");
+      if (v && typeof v === "object") {
+        return Object.entries(v)
+          .map(([k, val]) => {
+            const flatVal = flattenDeepDive(val);
+            // "Fast Facts" is a bulleted list with NO header in the correct
+            // format (see the prompt's own instruction) — every other
+            // section-shaped key gets "## " re-injected so the frontend's
+            // header-based parser (ReadingLevelToggle.tsx) can still
+            // structure it into distinct sections, not one undifferentiated
+            // block of prose.
+            return /^fast facts$/i.test(k.trim()) ? flatVal : `## ${k}\n\n${flatVal}`;
+          })
+          .join("\n\n");
+      }
+      return v === null || v === undefined ? "" : String(v);
+    }
+    batchStories.forEach((s) => {
+      if (s && s.deepDiveRead && typeof s.deepDiveRead !== "string") {
+        console.warn(`  NORMALIZED  "${asText(s.headline)}" — deepDiveRead was ${Array.isArray(s.deepDiveRead) ? "an array" : "an object"}, flattened to a string.`);
+        s.deepDiveRead = flattenDeepDive(s.deepDiveRead);
+      }
+    });
 
     const { hard, soft } = validateStories(batchStories, publishedCount);
     soft.forEach((s) => allSoftIssues.push(s));
