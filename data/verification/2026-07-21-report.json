@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T02:44:52.404Z",
+  "generatedAt": "2026-07-21T08:02:27.193Z",
   "results": [
     {
       "slug": "houthi-maritime-blockade-impact-india",
@@ -26,21 +26,6 @@
       "notes": "The central event (Houthi declaration of a maritime blockade on Saudi Arabia) is confirmed by Source 1. However, the specific claims regarding an Indian travel advisory and the Q1FY27 crude import bill figures are not supported by the provided source texts."
     },
     {
-      "slug": "punjab-national-bank-q1-fy27-results",
-      "headline": "PNB's Q1 Profit Soars 214%; Asset Quality Improves Dramatically",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
-    },
-    {
       "slug": "india-wto-fisheries-subsidies-agreement",
       "headline": "India Joins WTO Fisheries Subsidies Pact; What Does It Mean?",
       "verdict": "WARN",
@@ -49,19 +34,12 @@
         {
           "claim": "India has formally accepted the World Trade Organization (WTO) Agreement on Fisheries Subsidies, becoming the 123rd member to do so.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) mentions India joining the WTO Fisheries Subsidies Agreement in its headline, but the body of the text does not contain the specific claim that India is the 123rd member to do so. Source 2 is a 404 error page.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Commerce Secretary Rajesh Agarwal is participating in India's eighth trade policy review meeting at the WTO in Geneva this week",
-          "status": "UNVERIFIABLE",
-          "detail": "This information is not present in the provided source texts.",
+          "detail": "The provided source text (Source 1) mentions India joining the agreement but does not explicitly state it is the 123rd member. Source 2 is a 404 error page.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (India joining the WTO Fisheries Subsidies Agreement) is confirmed by the headline of Source 1. However, specific details such as the '123rd member' status and the Commerce Secretary's activities are not supported by the provided source text."
+      "notes": "The central event (India joining the WTO Fisheries Subsidies Agreement) is confirmed by the headline of Source 1. However, the specific figure '123rd member' is not present in the provided source text, making it unverifiable."
     },
     {
       "slug": "rallis-india-q1-fy27-results",
@@ -94,12 +72,19 @@
         {
           "claim": "HDB Financial Services reporting a 38% jump in net profit",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention HDB Financial Services or its profit growth.",
+          "detail": "The provided source texts do not mention HDB Financial Services or its profit performance.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Brokerages like Motilal Oswal Financial Services have reiterated 'Buy' ratings with target prices well above current levels, anticipating a return on assets (RoA) of 1.84% and return on equity (RoE) of 14.7% by FY28.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention Motilal Oswal Financial Services, target prices, RoA, or RoE projections.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (HDFC Bank Q1 results and share price movement) is supported by the source texts. However, the story includes specific details regarding a new Chairman and subsidiary performance that are not present in the provided source material."
+      "notes": "The central event (HDFC Bank Q1 results and share price decline) is confirmed by the source texts. However, the story includes several specific details regarding management appointments, subsidiary performance, and brokerage analyst reports that are not present in the provided source material."
     },
     {
       "slug": "us-iran-tensions-strait-of-hormuz",
@@ -108,70 +93,42 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The ninth consecutive day of US airstrikes on Iran",
+          "claim": "The Houthi rebels in Yemen also announced a blockade on Saudi oil shipments through the Red Sea",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention US airstrikes on Iran or any military conflict of this nature.",
+          "detail": "The provided source texts do not mention Houthi rebels or a blockade on Saudi oil shipments.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Iran retaliated by striking US-allied countries like Bahrain and Kuwait",
+          "claim": "India's Directorate General of Maritime Administration has suspended the deployment of Indian seafarers on voyages through the Strait",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any Iranian strikes on Bahrain or Kuwait.",
+          "detail": "The provided source texts do not mention any directive from the Directorate General of Maritime Administration regarding seafarers.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Two oil tankers 'exploded' on Monday",
+          "claim": "US Casualties: 17 service members killed since conflict resumed.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any explosions of oil tankers.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Daily vessel movements dropping significantly from their pre-conflict average... to as low as eight ships",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention vessel movement statistics or a drop in traffic in the Strait of Hormuz.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Houthi rebels in Yemen also announced a blockade on Saudi oil shipments through the Red Sea",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention Houthi rebels or a blockade in the Red Sea.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Crude oil prices to surge past $90 a barrel",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention current crude oil prices.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Directorate General of Maritime Administration has suspended the deployment of Indian seafarers on voyages through the Strait",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any suspension of Indian seafarers.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "17 service members killed since conflict resumed",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any US casualties.",
+          "detail": "The provided source texts do not mention any US casualties or service member deaths.",
           "correction": null,
           "source": null
         },
         {
           "claim": "India's recent surge in crude oil imports, increasing 60% to $49.8 billion in Q1 FY27",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention Indian import statistics.",
+          "detail": "The provided source texts do not contain data regarding India's Q1 FY27 crude oil import bill or percentage increases.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The Houthi rebels' declared blockade of Saudi oil shipments through the Red Sea's Bab el-Mandeb Strait... threatening an additional 7% of global oil supply.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention Houthi rebels, a blockade, or the 7% figure.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "While the story correctly reports the Indian Embassy's travel advisory issued on July 19, 2026, the vast majority of the geopolitical and economic claims regarding the Strait of Hormuz, oil prices, military casualties, and shipping blockades are entirely absent from the provided source texts."
+      "notes": "The story correctly reports the Indian travel advisory issued on July 19, 2026, as per Source 1. However, it includes several specific claims regarding Houthi rebels, US casualties, and Indian maritime policy that are entirely absent from the provided source texts."
     },
     {
       "slug": "rbi-special-forex-swap-facility",
@@ -192,45 +149,16 @@
       "slug": "tata-steel-jharkhand-green-investment",
       "headline": "Tata Steel Invests ₹10,000 Crore in Jharkhand for Green Steel",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Tata Steel announced on Monday its plan to invest ₹10,000 crore in its Jharkhand projects by 2028.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states the investment is more than 11.1 billion rupees ($1.2 billion). It does not mention a 10,000 crore figure or a 2028 deadline for this specific investment.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "creating approximately 2,000 direct and indirect jobs in the state.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention job creation figures.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "A substantial portion of this investment, ₹7,000 crore, will be allocated to implementing advanced green steel technologies, specifically Hisarna and EASyMelt.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not break down the investment into these specific amounts.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Additionally, the company plans to invest ₹2,600 crore in its Tinplate Division expansion and ₹1,500 crore in a new Combi Mill project.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention these specific investment amounts for these projects.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This contributes to Tata Steel's ambitious goal of reaching 40 MTPA steelmaking capacity in India from the current 27.35 MTPA.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 40 MTPA goal or the 27.35 MTPA current capacity figure.",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "While the source confirms the signing of an MoU for green steel technology (Hisarna/EASyMelt) in Jharkhand, the specific financial figures (₹10,000 crore, ₹7,000 crore, etc.), job creation numbers, and capacity targets are not present in the provided source text."
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
       "slug": "india-outward-fdi-june-fall",
@@ -277,23 +205,16 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "five-month high growth of 5% in June",
+          "claim": "India's eight core sectors achieved a five-month high growth of 5% in June",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the 5% growth figure but does not contain any information regarding it being a 'five-month high'.",
+          "detail": "The source text provided is a search results page that contains no data regarding the 5% growth figure, the five-month high, or the specific performance of core sectors in June 2026.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "newly revised 2022-23 base year for calculating industrial output",
+          "claim": "The primary drivers of this strong performance were significant increases in the production of iron ore (up 43.9%), electricity (up 9.8%), and coal (up 1.4%).",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 2022-23 base year revision.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "iron ore (up 43.9%), electricity (up 9.8%), and coal (up 1.4%)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide these specific sectoral growth percentages.",
+          "detail": "The source text does not contain these specific growth percentages or production data.",
           "correction": null,
           "source": null
         },
@@ -314,42 +235,49 @@
         {
           "claim": "Core Sectors' IIP Weight = 40.27%",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide this specific percentage.",
+          "detail": "The source text does not mention the IIP weight of core sectors.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The source text provided is a search results page from Business Standard that mentions the 5% growth figure in the headline but contains no body text or data to verify the specific sectoral growth rates, historical comparisons, or methodological changes mentioned in the story."
+      "notes": "The provided source text is a search results page from Business Standard and does not contain the actual article content or the statistical data cited in the story. Consequently, all specific figures and claims are unverifiable based on the provided source."
     },
     {
       "slug": "strait-of-hormuz-blockade-escalates",
       "headline": "Strait of Hormuz Shuts Down, Threatening Global Oil Supplies",
-      "verdict": "WARN",
+      "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "India to advise its citizens against non-essential travel to Iran",
+          "claim": "Houthi threats of a Saudi maritime blockade",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions India's crude oil import bill and various other news items, but contains no mention of an Indian government travel advisory for Iran.",
+          "detail": "The source text mentions a 'maritime embargo' declared by Houthis against Saudi Arabia, but does not mention a 'Saudi maritime blockade' as the cause or context for the Houthi action.",
           "correction": null,
           "source": null
         },
         {
           "claim": "US President Donald Trump warning Iran will pay 'many times over' for recent US soldier deaths",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions 'Trump warns of more attacks on Iran but says it does not mean return to war', but does not mention soldier deaths or the specific quote provided.",
+          "detail": "The source text mentions Trump warning of more attacks on Iran, but contains no mention of US soldier deaths or a specific quote about paying 'many times over'.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "ninth consecutive day of strikes and counter-strikes recorded yesterday",
+          "claim": "India's official advisory to its citizens to postpone travel to Iran, issued yesterday",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a count of days for strikes.",
+          "detail": "The source text contains no mention of an Indian travel advisory for Iran.",
           "correction": null,
           "source": null
+        },
+        {
+          "claim": "US-Iran Strikes = 9",
+          "status": "WRONG",
+          "detail": "The source text explicitly states: 'US attacks Iran for 10th consecutive night'.",
+          "correction": "10",
+          "source": "SOURCE 1"
         }
       ],
-      "notes": "The central event regarding the Strait of Hormuz is confirmed by the source, but the story includes several specific details (travel advisory, specific presidential quotes, and strike duration) that are not present in the provided source text."
+      "notes": "The story contains several claims not supported by the provided source text, including the mention of an Indian travel advisory and specific quotes attributed to Donald Trump. Additionally, the count of US-Iran strikes is factually incorrect based on the source."
     },
     {
       "slug": "nlc-india-renewables-ipo-managers",
