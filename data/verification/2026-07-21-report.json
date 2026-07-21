@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T08:02:27.193Z",
+  "generatedAt": "2026-07-21T10:16:35.249Z",
   "results": [
     {
       "slug": "houthi-maritime-blockade-impact-india",
@@ -11,35 +11,49 @@
         {
           "claim": "India has advised its citizens to postpone all non-essential travel to Iran amid the heightened regional instability.",
           "status": "UNVERIFIABLE",
-          "detail": "While the story lists a source URL for this claim, the provided source texts do not contain any mention of an Indian travel advisory for Iran.",
+          "detail": "The provided source texts do not contain any information regarding an Indian government travel advisory for Iran.",
           "correction": null,
           "source": null
         },
         {
           "claim": "India's Q1FY27 crude import bill surged 60% to $49.8 billion.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain data regarding India's Q1FY27 crude import bill or the $49.8 billion figure.",
+          "detail": "The provided source texts do not contain any data regarding India's Q1FY27 crude import bill.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The Indian rupee recently weakened to a two-month intraday low, partly due to higher crude oil prices and Middle East tensions.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding the Indian rupee's performance or a two-month intraday low.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (Houthi declaration of a maritime blockade on Saudi Arabia) is confirmed by Source 1. However, the specific claims regarding an Indian travel advisory and the Q1FY27 crude import bill figures are not supported by the provided source texts."
+      "notes": "While the central event (Houthi declaration of a maritime blockade on Saudi Arabia) is confirmed by Source 1, several specific claims regarding Indian economic data and travel advisories are not supported by the provided source texts."
     },
     {
       "slug": "india-wto-fisheries-subsidies-agreement",
       "headline": "India Joins WTO Fisheries Subsidies Pact; What Does It Mean?",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "India has formally accepted the World Trade Organization (WTO) Agreement on Fisheries Subsidies, becoming the 123rd member to do so.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) mentions India joining the agreement but does not explicitly state it is the 123rd member. Source 2 is a 404 error page.",
+          "detail": "The provided source text from the WTO is a 404 error page and does not contain any information regarding India's membership status or the agreement.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Commerce Secretary Rajesh Agarwal is participating in India's eighth trade policy review meeting at the WTO in Geneva this week",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention Commerce Secretary Rajesh Agarwal or a trade policy review meeting.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (India joining the WTO Fisheries Subsidies Agreement) is confirmed by the headline of Source 1. However, the specific figure '123rd member' is not present in the provided source text, making it unverifiable."
+      "notes": "The central claim regarding India's accession to the WTO Fisheries Subsidies Agreement cannot be verified as the provided WTO source link is broken (404). The Business Standard source provided does not contain any mention of the WTO agreement or the specific claims made in the story."
     },
     {
       "slug": "rallis-india-q1-fy27-results",
@@ -55,80 +69,6 @@
         }
       ],
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
-    },
-    {
-      "slug": "hdfc-bank-q1-fy27-results",
-      "headline": "HDFC Bank Shares Plummet 5% Despite Profit Boost",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The appointment of former finance secretary Rajiv Kumar as the new Part-time Chairman could bring new strategic direction.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Rajiv Kumar or any appointment of a new Part-time Chairman for HDFC Bank.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "HDB Financial Services reporting a 38% jump in net profit",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention HDB Financial Services or its profit performance.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Brokerages like Motilal Oswal Financial Services have reiterated 'Buy' ratings with target prices well above current levels, anticipating a return on assets (RoA) of 1.84% and return on equity (RoE) of 14.7% by FY28.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Motilal Oswal Financial Services, target prices, RoA, or RoE projections.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The central event (HDFC Bank Q1 results and share price decline) is confirmed by the source texts. However, the story includes several specific details regarding management appointments, subsidiary performance, and brokerage analyst reports that are not present in the provided source material."
-    },
-    {
-      "slug": "us-iran-tensions-strait-of-hormuz",
-      "headline": "Middle East Ablaze: US-Iran Clashes Halt Oil Shipping",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The Houthi rebels in Yemen also announced a blockade on Saudi oil shipments through the Red Sea",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Houthi rebels or a blockade on Saudi oil shipments.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's Directorate General of Maritime Administration has suspended the deployment of Indian seafarers on voyages through the Strait",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention any directive from the Directorate General of Maritime Administration regarding seafarers.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "US Casualties: 17 service members killed since conflict resumed.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention any US casualties or service member deaths.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's recent surge in crude oil imports, increasing 60% to $49.8 billion in Q1 FY27",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain data regarding India's Q1 FY27 crude oil import bill or percentage increases.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The Houthi rebels' declared blockade of Saudi oil shipments through the Red Sea's Bab el-Mandeb Strait... threatening an additional 7% of global oil supply.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Houthi rebels, a blockade, or the 7% figure.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The story correctly reports the Indian travel advisory issued on July 19, 2026, as per Source 1. However, it includes several specific claims regarding Houthi rebels, US casualties, and Indian maritime policy that are entirely absent from the provided source texts."
     },
     {
       "slug": "rbi-special-forex-swap-facility",
@@ -166,133 +106,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and the breakdown of equity commitments, are supported by the provided source text."
-    },
-    {
-      "slug": "nlc-india-renewables-ipo-managers",
-      "headline": "Major Green Energy IPO Hits Market: New Investment Wave?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "NLC India Renewables Limited has appointed four merchant bankers/book running lead managers: SBI Capital Markets, HDFC Bank, IIFL Capital Services, and IDBI Capital Markets & Securities.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text discusses NLC India Ltd's stock performance and mentions an IPO in the headline, but it does not contain any information regarding the appointment of specific merchant bankers or book running lead managers.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "NLC India established NLC India Renewables Limited (NIRL) in June 2023.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the establishment date of NLC India Renewables Limited.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "NIRL Existing Capacity = 1,785 MW",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the existing capacity of NLC India Renewables Limited.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The provided source text is a market report on NLC India Ltd's stock price and does not contain the factual details regarding the IPO's merchant bankers, the subsidiary's formation date, or its current capacity."
-    },
-    {
-      "slug": "india-core-sector-growth-june",
-      "headline": "India's Core Industries Soar 5% in June: Economy Heating Up?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India's eight core sectors achieved a five-month high growth of 5% in June",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text provided is a search results page that contains no data regarding the 5% growth figure, the five-month high, or the specific performance of core sectors in June 2026.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The primary drivers of this strong performance were significant increases in the production of iron ore (up 43.9%), electricity (up 9.8%), and coal (up 1.4%).",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain these specific growth percentages or production data.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "3.2% growth recorded in May 2026",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention May 2026 growth figures.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "1.1% growth in June 2025",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention June 2025 growth figures.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Core Sectors' IIP Weight = 40.27%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the IIP weight of core sectors.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The provided source text is a search results page from Business Standard and does not contain the actual article content or the statistical data cited in the story. Consequently, all specific figures and claims are unverifiable based on the provided source."
-    },
-    {
-      "slug": "strait-of-hormuz-blockade-escalates",
-      "headline": "Strait of Hormuz Shuts Down, Threatening Global Oil Supplies",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Houthi threats of a Saudi maritime blockade",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a 'maritime embargo' declared by Houthis against Saudi Arabia, but does not mention a 'Saudi maritime blockade' as the cause or context for the Houthi action.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "US President Donald Trump warning Iran will pay 'many times over' for recent US soldier deaths",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions Trump warning of more attacks on Iran, but contains no mention of US soldier deaths or a specific quote about paying 'many times over'.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's official advisory to its citizens to postpone travel to Iran, issued yesterday",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text contains no mention of an Indian travel advisory for Iran.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "US-Iran Strikes = 9",
-          "status": "WRONG",
-          "detail": "The source text explicitly states: 'US attacks Iran for 10th consecutive night'.",
-          "correction": "10",
-          "source": "SOURCE 1"
-        }
-      ],
-      "notes": "The story contains several claims not supported by the provided source text, including the mention of an Indian travel advisory and specific quotes attributed to Donald Trump. Additionally, the count of US-Iran strikes is factually incorrect based on the source."
-    },
-    {
-      "slug": "nlc-india-renewables-ipo-managers",
-      "headline": "NLC India Renewables Selects Banks for IPO Launch",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and component breakdowns, are supported by the provided source text."
     },
     {
       "slug": "assam-ai-phygital-bank",
@@ -312,6 +126,96 @@
     {
       "slug": "indigo-leap-engine-order-maintenance",
       "headline": "IndiGo Orders 1,000 New Engines, Plans India Repair Shop",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "karur-vysya-bank-q1-profit-asset-quality",
+      "headline": "Karur Vysya Bank Q1 Profit Surges 45%; Asset Quality Holds Steady!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "sbi-funds-management-ipo-listing",
+      "headline": "SBI Funds Management Lists at 7% Premium; Falls Short of Grey Market Hype!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "ai-operator-led-startups-india",
+      "headline": "One in Four New Operator-Led Startups in India Now an AI Company!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "tvs-motor-q1-profit-surges",
+      "headline": "Motorcycle Maker TVS Sees Profits Skyrocket 51%!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "TVS Motor Company announced a 51.35% year-on-year jump in standalone net profit to ₹1,173.97 crore for Q1 FY27",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text title mentions a 51% jump to Rs 1,174 cr, but the body of the source text does not contain the specific figures 51.35% or 1,173.97 crore.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The company’s revenue from operations also saw a significant increase, growing by 20% year-on-year to ₹10,505.74 crore from ₹8,754.78 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention revenue figures or a 20% growth rate.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The company also saw its EBITDA margin expand to 11.2% from 10.1% year-on-year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention EBITDA margins.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "While the headline of the source text confirms a 51% jump in profit for TVS Motor, the specific granular figures (51.35%, 1,173.97 crore, revenue, and EBITDA margins) are not present in the provided source text."
+    },
+    {
+      "slug": "rbi-penalizes-three-cooperative-banks",
+      "headline": "Rules Are Rules: RBI Fines 3 Co-op Banks ₹17.3 Lakh.",
       "verdict": "WARN",
       "issues": [
         {
