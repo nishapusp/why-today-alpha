@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T16:09:45.052Z",
+  "generatedAt": "2026-07-21T17:55:34.343Z",
   "results": [
     {
       "slug": "india-wto-fisheries-subsidies-agreement",
@@ -11,19 +11,19 @@
         {
           "claim": "India has formally accepted the World Trade Organization (WTO) Agreement on Fisheries Subsidies, becoming the 123rd member to do so.",
           "status": "UNVERIFIABLE",
-          "detail": "Source 1 mentions India joining the WTO fisheries subsidies agreement, but the source text provided is a list of headlines and snippets that does not explicitly confirm India is the 123rd member to ratify it. Source 2 is a 404 error page.",
+          "detail": "Source 1 mentions India joining the agreement but does not confirm the specific count of '123rd member'. Source 2 is a 404 error page.",
           "correction": null,
           "source": null
         },
         {
           "claim": "Commerce Secretary Rajesh Agarwal is participating in India's eighth trade policy review meeting at the WTO in Geneva this week",
           "status": "UNVERIFIABLE",
-          "detail": "This specific detail regarding the Commerce Secretary and the trade policy review meeting is not mentioned in the provided source texts.",
+          "detail": "The provided source text does not mention Commerce Secretary Rajesh Agarwal or a trade policy review meeting.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (India joining the WTO fisheries agreement) is mentioned in the headline of Source 1, but the specific claim that India is the '123rd member' and the details regarding the Commerce Secretary's activities are not supported by the provided source text."
+      "notes": "The central event (India joining the WTO fisheries agreement) is confirmed by the headline of Source 1. However, the specific claim that India is the '123rd member' and details regarding the Commerce Secretary's activities are not supported by the provided source text."
     },
     {
       "slug": "rallis-india-q1-fy27-results",
@@ -76,7 +76,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and component breakdowns, are supported by the provided source text."
+      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and component breakdowns, are supported by the provided source text (Source 1)."
     },
     {
       "slug": "assam-ai-phygital-bank",
@@ -207,12 +207,12 @@
         {
           "claim": "generated more than 14.15 lakh jobs",
           "status": "UNVERIFIABLE",
-          "detail": "Source 1 mentions the investment figure of ₹2.40 lakh crore but does not contain any data regarding job creation figures.",
+          "detail": "Source 1 confirms the investment figure of over ₹2.40 lakh crore, but it does not mention the job creation figure of 14.15 lakh.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The investment figure of ₹2.40 lakh crore is verified by Source 1. However, the claim regarding 14.15 lakh jobs is not mentioned in the provided source text."
+      "notes": "The investment figure of ₹2.40 lakh crore is verified by Source 1. However, the claim regarding 14.15 lakh jobs is not present in the provided source text."
     }
   ]
 }
