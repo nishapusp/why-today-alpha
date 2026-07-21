@@ -694,6 +694,46 @@ async function main() {
     console.error(`\n${bad.length} story(ies) FAILED verification:`);
     for (const r of bad) console.error(`  - ${r.slug}: ${r.verdict}`);
   }
+
+  // 2026-07-21: added after a real report showed the actual gap in this
+  // whole system — verify-edition.js was sophisticated and genuinely
+  // catching problems (a real run found 14/15 stories WARN, including a
+  // story with an entirely fabricated Iran/Strait of Hormuz narrative —
+  // invented airstrikes, tanker explosions, specific vessel counts, none
+  // of it in any real source), but was ONLY ever manually triggered and
+  // its exit code was explicitly ignored by the workflow ("Don't fail
+  // the job on FAIL verdicts"). Fact-checking existed; nothing connected
+  // it to what actually got published. This flag closes that gap.
+  //
+  // Threshold reasoning: FAIL/FABRICATED (a claim actively CONTRADICTS a
+  // source) always removes a story — that's unambiguous fabrication.
+  // WARN (claims are unconfirmed, not necessarily false) is murkier —
+  // dropping every WARN story would gut the edition, since today's real
+  // run shows WARN correctly firing on minor, low-stakes unconfirmed
+  // details too (a Commerce Secretary's exact schedule), not just
+  // serious fabrication. But the Hormuz story alone had 7 separate
+  // unverifiable claims forming an entire invented narrative — volume of
+  // unverifiable claims is a reasonable, mechanical proxy for "this
+  // isn't one soft edge, this is substantially made up." Configurable
+  // via env var rather than hardcoded, since the right number is a
+  // judgment call worth revisiting as real data comes in.
+  if (args.includes("--auto-remove")) {
+    const warnThreshold = parseInt(process.env.VERIFY_WARN_ISSUE_THRESHOLD || "3", 10);
+    const toRemove = results.filter(
+      (r) => r.verdict === "FAIL" || r.verdict === "FABRICATED" || (r.verdict === "WARN" && r.issues.length >= warnThreshold)
+    );
+    if (toRemove.length === 0) {
+      console.log("\n--auto-remove: nothing crossed the removal threshold — edition unchanged.");
+    } else {
+      const removeSlugs = new Set(toRemove.map((r) => r.slug));
+      const before = edition.stories.length;
+      edition.stories = edition.stories.filter((s) => !removeSlugs.has(s.slug));
+      fs.writeFileSync(editionFile, JSON.stringify(edition, null, 2));
+      console.log(`\n--auto-remove: pulled ${toRemove.length} story(ies) from ${editionFile} (${before} -> ${edition.stories.length}):`);
+      for (const r of toRemove) console.log(`  - ${r.slug} (${r.verdict}, ${r.issues.length} issue(s)): ${r.headline}`);
+    }
+  }
+
   process.exit(quotaExhausted ? 2 : bad.length ? 1 : 0);
 }
 

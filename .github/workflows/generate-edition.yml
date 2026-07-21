@@ -90,6 +90,45 @@ jobs:
           FOCUS_CATEGORY: ${{ github.event.inputs.focus_category }}
         run: node scripts/generate-edition.js
 
+      # 2026-07-21: added after a real report showed the actual gap in
+      # this whole system — verify-edition.js was sophisticated and
+      # genuinely catching problems (a real run found fabricated content
+      # in most of a day's stories), but was ONLY ever manually triggered
+      # and its findings never affected what was actually published.
+      # Runs in "source" mode specifically — fetches each story's own
+      # cited sources directly, ZERO grounding quota used, so this is
+      # safe to run automatically after every single generation without
+      # competing with the scarce grounding budget the generation step
+      # itself needs. --auto-remove pulls any FAIL/FABRICATED story, plus
+      # any WARN story with 3+ unverifiable claims (see verify-edition.js
+      # for the full reasoning on that threshold). continue-on-error:
+      # true because a verification hiccup (a source site down, a
+      # transient API error) should not block the edition that already
+      # published successfully — worst case, a bad story stays live
+      # until the next manual verify catches it, same as before this
+      # existed; that's a regression to the OLD behavior, not a new
+      # failure mode.
+      - name: Fact-check and remove any fabricated stories
+        if: success()
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/verify-edition.js --mode source --auto-remove
+
+      - name: Commit any auto-removed stories
+        if: success()
+        continue-on-error: true
+        run: |
+          git config user.name "why-today-bot"
+          git config user.email "actions@github.com"
+          git add data/edition.json data/verification/
+          git diff --cached --quiet && echo "No changes from fact-check." && exit 0
+          git commit -m "chore(verify): auto-remove fabricated/unverifiable stories ($(date -u +%F))"
+          for i in 1 2 3; do
+            git push && break
+            git pull --rebase && sleep 3
+          done
+
       # Added 2026-07-15 for the Web Push feature — only runs if the
       # generate step above succeeded, so a failed/partial run never
       # notifies readers about stories that didn't actually publish.
