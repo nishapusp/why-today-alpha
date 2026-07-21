@@ -373,6 +373,20 @@ async function fetchRssHeadlines() {
   const seen = new Set();
   const cutoff = Date.now() - 24 * 3600 * 1000;
 
+  // 2026-07-21: confirmed via a real report + direct verification — this
+  // is a content-recycling site, not a normal publisher with occasionally
+  // messy dates. It republished a May 16, 2026 event (Assam CM inaugurating
+  // a bank branch — 6 independent outlets all dated it May 16) as "new" on
+  // BOTH July 8 and July 15, near-verbatim, with fresh timestamps each
+  // time. That's exactly what let 2-month-old news pass the 24h freshness
+  // cutoff below — the site's own reported date was genuinely fresh, the
+  // underlying event wasn't. A title-pattern filter can't catch this (the
+  // headline doesn't say "recap" or "throwback"), so this is a domain-level
+  // block for a confirmed bad actor, not a general policy — add more
+  // domains here only when a specific site is caught doing this, not
+  // preemptively.
+  const BLOCKED_DOMAINS = [/bankingfinance\.in/i];
+
   // One shared parser for both the Google News search feeds and the direct
   // publisher feeds below — both are standard RSS 2.0 <item> blocks.
   async function pullFeed(url, fallbackSource) {
@@ -398,6 +412,8 @@ async function fetchRssHeadlines() {
         // (often old ones), not events — the EUV-lithography evergreen and
         // year-old deal stories all entered through this door.
         if (/\b(explained|explainer|opinion|analysis|editorial|recap|wrap-?up|week in review|what to know|all you need|top \d+|listicle|throwback|history of)\b/i.test(title)) continue;
+        const link = pickTag(block, "link");
+        if (link && BLOCKED_DOMAINS.some((re) => re.test(link))) continue;
         const key = title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 60);
         if (seen.has(key)) continue;
         // Freshness is the entire point — an item with no parseable date is
@@ -408,7 +424,7 @@ async function fetchRssHeadlines() {
         count++;
         items.push({
           title,
-          link: pickTag(block, "link"),
+          link,
           source: pickTag(block, "source") || fallbackSource,
           pubDate: pickTag(block, "pubDate"),
           pubMs: pub,
