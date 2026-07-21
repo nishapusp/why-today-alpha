@@ -1,160 +1,7 @@
 {
   "date": "2026-07-22",
-  "generatedAt": "2026-07-21T19:34:28.007Z",
+  "generatedAt": "2026-07-21T20:49:46.389Z",
   "results": [
-    {
-      "slug": "red-sea-tanker-u-turn",
-      "headline": "Why did Saudi tankers carrying Indian oil pull a U-turn?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "the US launching its tenth consecutive day of strikes against Iranian military targets",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any US strikes against Iranian military targets.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's National Security Advisor immediately met with the Saudi Foreign Minister to discuss maritime corridor protection",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a meeting between the Indian NSA and the Saudi Foreign Minister.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Goldman Sachs issued an alert warning that prolonged chokepoint closures could force Brent crude to $120 per barrel",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Goldman Sachs or any such alert.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "gold futures also jumping 1.03% to hit an intraday high of ₹1,42,848 per 10 grams",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention gold futures or this specific price point.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Refiners will begin booking more shipments from West Africa and the US over the next three to four weeks",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention future booking plans for Indian refiners.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Maritime insurance firms are expected to raise war-risk premiums by another 15% before August 2026",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention insurance premium projections.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's National Security Advisor rushed to Riyadh to secure maritime energy corridors",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the Indian NSA traveling to Riyadh.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The central event (Saudi tankers turning back due to Houthi threats) is confirmed by the source. However, the story contains numerous specific claims regarding US military strikes, Goldman Sachs reports, gold prices, and diplomatic meetings that are entirely absent from the provided source text."
-    },
-    {
-      "slug": "inmobi-billion-dollar-ipo",
-      "headline": "Why is an Indian adtech pioneer eyeing a $1 billion IPO?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The mobile advertising company is looking to raise capital to scale its artificial intelligence capabilities and fund strategic global acquisitions.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the appointment of banks for the IPO but does not specify the intended use of proceeds.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This fundraise is significantly larger than typical Indian startup listings, which usually hover around the $150 million to $300 million range.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide data or comparisons regarding the size of typical Indian startup listings.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Over the last two quarters, domestic institutional investors have emerged as the primary backers of Indian equities, accounting for 64% of recent real estate and equity inflows.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this statistic.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "SBI Funds Management just made its highly anticipated market debut, listing at ₹613.30 against an issue price of ₹574.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions SBI Funds Management ended its debut session at a 6.3% premium, but does not provide these specific share prices.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "SBI Funds Premium = 6.85%",
-          "status": "WRONG",
-          "detail": "The source text states the premium was 6.3%.",
-          "correction": "6.3%",
-          "source": "Source 1"
-        },
-        {
-          "claim": "The company aims to file these preliminary papers by November 2026, targeting a final stock market listing in early 2027.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a timeline for filing the DRHP or the target listing date.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Meanwhile, InMobi will likely restructure its corporate holdings to streamline domestic taxes.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions re-domiciling to India, but does not mention restructuring for tax purposes.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The story correctly identifies the appointment of the four banks and the $1 billion IPO target. However, it includes several specific figures and strategic details (use of proceeds, specific share prices, tax restructuring, and market inflow percentages) that are not present in the provided source text."
-    },
-    {
-      "slug": "bandhan-bank-q1-profit-jump",
-      "headline": "Why did Bandhan Bank’s profit jump despite weaker operations?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The bank's loan book is ₹1.2 lakh crore.",
-          "status": "WRONG",
-          "detail": "The source states the bank's gross advances grew to Rs 1.56 lakh crore.",
-          "correction": "1.56 lakh crore",
-          "source": "SOURCE 1"
-        },
-        {
-          "claim": "Bandhan Bank started as a microfinance institution in 2001.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source does not mention the year 2001 as the founding date of the microfinance institution.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The current transformation of Bandhan Bank is reminiscent of the 2001 ICICI Bank transition.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source does not mention ICICI Bank or a 2001 transition.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Lenders in the micro-credit space will adjust loan pricing by October 2026 to reflect rising technology overheads.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source does not mention future loan pricing adjustments or an October 2026 deadline.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The story accurately reports the core financial results (profit, growth, and reasons for the profit jump). However, it includes unverified historical claims and an incorrect figure for the total loan book size."
-    },
     {
       "slug": "indian-banking-npa-drop",
       "headline": "How did India’s banks slash bad loans by half in five years?",
@@ -169,173 +16,6 @@
         }
       ],
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
-    },
-    {
-      "slug": "wto-india-export-gaps",
-      "headline": "Why does the WTO think India’s trade targets are too ambitious?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Currently, Indian exporters face significantly longer port clearance times than their competitors in East Asia.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention port clearance times or comparisons with East Asian competitors.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "While India's cumulative exports under various industrial incentive schemes recently crossed a milestone ₹15.2 lakh crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions PLI schemes attracted ₹2.4 trillion in investments, but does not mention a ₹15.2 lakh crore export milestone.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "On Tuesday, US President Donald Trump initiated a massive trade escalation by imposing 50% tariffs on $20 billion of Canadian imports",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention US President Donald Trump, Canada, or any such tariff escalation.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "recently, farmer groups staged protests in Delhi over potential agricultural import concessions under a proposed India-US trade deal.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention farmer protests or an India-US trade deal.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The Commerce Ministry will likely fast-track the National Logistics Policy to reduce domestic shipping costs to under 9% of GDP by 2028.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the National Logistics Policy or a 9% of GDP shipping cost target.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Negotiations for major free trade agreements, including the ongoing India-UK FTA, will be adjusted to address the specific non-tariff barriers flagged by the WTO.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the India-UK FTA or adjustments to trade negotiations.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Exporters will receive enhanced digital filing systems to streamline port clearances.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention enhanced digital filing systems for exporters.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Manufacturing remained stuck at roughly 15% of GDP",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide this statistic regarding manufacturing as a percentage of GDP.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "turning India into the world's second-largest mobile phone manufacturer.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention India's ranking as a mobile phone manufacturer.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Small enterprises contribute nearly 40% of India's total exports",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the contribution of MSMEs to total exports.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India will fully implement its unified digital customs single-window system by early 2027",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a unified digital customs single-window system or a 2027 implementation deadline.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The story correctly identifies the WTO report's core findings regarding GDP growth, export targets, and PLI investments. However, it includes significant amounts of extraneous, unverified information regarding US-Canada trade, farmer protests, specific logistics policy targets, and manufacturing rankings that are not present in the provided source text."
-    },
-    {
-      "slug": "india-russia-seafarer-tensions",
-      "headline": "Why did India just summon Russia's envoy over a ship attack?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 20% of the world's commercial ship crews are of Indian origin.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the percentage of global commercial ship crews that are of Indian origin.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "insurance premiums, sometimes by 300% to 500% for transit through high-risk zones.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention insurance premium percentages or specific figures regarding maritime insurance costs.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India will seek a formal investigation report and safety assurances from Russian authorities by August 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a timeline for seeking an investigation report or safety assurances.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The central event regarding the summoning of the Russian envoy and the death of four Indian seafarers is verified. However, the story includes several specific statistics and future projections that are not supported by the provided source text."
-    },
-    {
-      "slug": "pli-scheme-investment-milestone",
-      "headline": "Can a ₹2.4 lakh crore incentive actually make India manufacture?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This ₹2.4 lakh crore investment represents a substantial increase compared to the initial capital projections of around ₹1.5 lakh crore when the program was first announced.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the total approved outlay is ₹1.91 lakh crore, but it does not mention an initial capital projection of ₹1.5 lakh crore.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The government is planning to review underperforming PLI sectors, such as specialty steel and textiles, to simplify compliance rules over the next quarter.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that implementation is reviewed periodically and guidelines have been rationalized, but it does not specify a plan to review these specific sectors over the next quarter.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This policy adjustment, expected by October 2026, aims to increase the local value addition of smartphone manufacturing from the current twenty percent to at least forty percent.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any policy adjustments expected by October 2026 or specific targets for local value addition in smartphone manufacturing.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The policy shifted away from traditional tax breaks, offering direct cash payouts of 4% to 6% on incremental sales of locally manufactured goods.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the specific percentage range (4% to 6%) for cash payouts.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This manufacturing push resembles China's Special Economic Zone (SEZ) policies of the 1980s",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention China's SEZ policies or any comparison to the 1980s.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The government will restructure underperforming PLI sectors with simplified guidelines by November 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a restructuring plan or a deadline of November 2026.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The story correctly reports the primary figures (investments, jobs, exports) found in the source text. However, it includes several specific claims regarding future policy timelines, historical projections, and specific incentive percentages that are not supported by the provided source."
     },
     {
       "slug": "npci-offline-upi-development",
@@ -353,231 +33,258 @@
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
-      "slug": "cube-highways-invit-ipo-anchor",
-      "headline": "Why are big-money investors betting ₹1,687 crore on Indian roads?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "slug": "inmobi-ipo-bankers-appointed",
+      "headline": "$1 Billion Tech IPO: India's InMobi Picks Bankers, What's Next?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "At least 90% of an InvIT’s net distributable cash flows must be paid out to investors as dividends under SEBI rules.",
+          "claim": "Indian ad-tech firm InMobi has appointed four leading investment banks, including JPMorgan and Jefferies, to manage its anticipated $1 billion Initial Public Offering.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention SEBI rules regarding the percentage of cash flow distribution.",
+          "detail": "The provided source text is a Business Standard search results page that explicitly states 'Search No Result Found' for IPO news related to InMobi.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "This funding model mirrors the Real Estate Investment Trusts (REITs) boom in the United States during the 1990s.",
+          "claim": "The company aims for a valuation of $5-6 billion and is re-domiciling to India ahead of the listing.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the history of US REITs or the 1990s.",
+          "detail": "The provided source text contains no information regarding InMobi's valuation or re-domiciling plans.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Toll rates are legally indexed to inflation and adjusted periodically",
+          "claim": "With approximately $5 billion raised through Indian IPOs this year, a figure significantly lower than the $20 billion-plus seen in each of the two preceding record-setting years",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not confirm the legal indexing of toll rates to inflation.",
+          "detail": "The provided source text does not contain these specific market statistics.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "A more recent example is the SBI Funds Management IPO in July 2026, which saw a 'muted' debut",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention an SBI Funds Management IPO.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event regarding the anchor investment is verified. However, the story includes several claims about SEBI regulations, historical comparisons to US REITs, and the mechanics of toll rate inflation indexing that are not supported by the provided source text."
+      "notes": "The provided source text is a blank search results page from Business Standard that contains no information about InMobi or its IPO. Consequently, all specific claims in the story are unverifiable based on the provided source."
     },
     {
-      "slug": "mittal-family-liverpool-fc",
-      "headline": "Why is an Indian billionaire family trying to buy Liverpool?",
+      "slug": "pli-schemes-investment-jobs-impact",
+      "headline": "India's PLI Schemes Attract ₹2.4 Lakh Crore: But Who Really Benefits?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "10 percent: The estimated annual growth rate of global premium sports franchise valuations over the last decade.",
+          "claim": "Key sectors such as high-efficiency solar PV modules (₹64,873 crore), pharmaceuticals (₹45,158 crore), and automobiles and auto components (₹44,326 crore) were the frontrunners in attracting these investments.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any growth rate percentages for sports franchises.",
+          "detail": "The source texts mention the total investment and job figures but do not provide a breakdown of investments by specific sector.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "300 million: The approximate global digital fan base of Liverpool FC, making it a prime media asset.",
+          "claim": "The initial phase of PLI implementation focused on establishing foundational manufacturing capacities. Compared to the early years (FY24 and FY25), when exports under PLI were ₹4 lakh crore and ₹6.5 lakh crore respectively, FY26 saw a dramatic leap to ₹15.2 lakh crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the size of Liverpool's fan base.",
+          "detail": "The source texts mention cumulative exports of ₹15.2 trillion (lakh crore) but do not provide the year-on-year breakdown for FY24 or FY25.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Mittal Family Net Worth = $16 billion",
+          "claim": "reducing imports by 77%, demonstrates a significant step towards self-reliance ('Atmanirbhar Bharat') and integrates India more deeply into global value chains. ... 77% drop in mobile phone imports and 99.2% domestic manufacturing of phones.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the net worth of the Mittal family.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Due diligence on the transaction is expected to conclude by October 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a timeline for due diligence.",
+          "detail": "The provided source texts do not contain data regarding mobile phone import reductions or domestic manufacturing percentages.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event regarding the talks between Fenway Sports Group and the Amit Bhatia-led consortium is verified. However, the story includes several specific figures and timelines regarding fan base size, growth rates, net worth, and due diligence deadlines that are not present in the provided source text."
+      "notes": "The core figures regarding total investment (₹2.4 lakh crore), total jobs (1.45 million/14.5 lakh), and total exports (₹15.2 lakh crore) are verified by the source texts. However, the story includes several specific sector-wise investment breakdowns and mobile phone market statistics that are not present in the provided source material."
     },
     {
-      "slug": "icici-bank-gift-city-bonds",
-      "headline": "Why is ICICI Bank tapping GIFT City for cheap dollars?",
+      "slug": "oil-tankers-reroute-red-sea-threats-india-impact",
+      "headline": "Oil Tankers Reroute After Red Sea Threats: Why India Cares",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The deal is moving forward today because ICICI Bank wants to lock in favorable pricing before the RBI's concessional swap facility expires.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an expiration date for the RBI's concessional swap facility.",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
           "correction": null,
           "source": null
-        },
-        {
-          "claim": "accumulating $20.72 billion in just 42 days.",
-          "status": "WRONG",
-          "detail": "The source states Indian banks mobilized $20.7 billion within six weeks (42 days), but the figure is $20.7 billion, not $20.72 billion.",
-          "correction": "$20.7 billion",
-          "source": "Source 1"
-        },
-        {
-          "claim": "allows ICICI Bank to save up to 40 basis points in borrowing costs.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source mentions the bonds could be priced at 90-95 basis points over US treasury, but does not quantify a 40 basis point saving.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "other major private sector lenders, including Axis Bank, are expected to launch similar offshore bond programs through GIFT City by September 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source mentions Axis Bank has already raised funds under the facility, but does not state that other banks are expected to launch programs by September 2026.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "$20.72 billion: The total foreign exchange reserves mobilized by the RBI through recent swap measures.",
-          "status": "WRONG",
-          "detail": "The source states $20.7 billion was mobilized.",
-          "correction": "$20.7 billion",
-          "source": "Source 1"
-        },
-        {
-          "claim": "That single policy successfully raised $34 billion in three months",
-          "status": "WRONG",
-          "detail": "The source states the 2013 facility attracted $34 billion, but does not specify it was raised in three months.",
-          "correction": "$34 billion",
-          "source": "Source 1"
-        },
-        {
-          "claim": "KEY NUMBER CARD: RBI Mobilization Total = $20.72 billion",
-          "status": "WRONG",
-          "detail": "The source states $20.7 billion.",
-          "correction": "$20.7 billion",
-          "source": "Source 1"
         }
       ],
-      "notes": "The story accurately captures the central event of ICICI Bank's bond issuance. However, it introduces minor inaccuracies in figures (e.g., $20.72 billion vs $20.7 billion) and makes claims about future timelines and specific cost savings that are not supported by the provided source text."
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
-      "slug": "ai-data-center-water-crisis",
-      "headline": "Why is the global AI boom secretly drying up Mumbai?",
+      "slug": "bandhan-bank-q1-profit-asset-quality-improvement",
+      "headline": "Bandhan Bank Profit Jumps 35% on Better Asset Quality",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Compared to traditional IT parks, these next-generation AI data centers consume up to five times more energy and water.",
+          "claim": "reaching ₹1,023 crore compared to ₹758 crore in the same period last year",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not provide a comparison of energy or water consumption between traditional IT parks and AI data centers.",
+          "detail": "The source text mentions the 35% profit growth but does not provide the specific absolute figures of ₹1,023 crore or ₹758 crore.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "5.4 lakh: The number of people currently displaced by seasonal floods in Assam",
+          "claim": "a substantial 40.5% reduction in provisions, which stood at ₹487 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Assam floods or displacement figures.",
+          "detail": "The source text mentions the profit growth but does not provide the specific provision percentage or the absolute figure of ₹487 crore.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "52,700: The number of public EV charging stations in India",
+          "claim": "gross Non-Performing Assets (NPAs) decreased to 3.1% from 3.9% in the previous quarter",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention EV charging stations.",
+          "detail": "The source text mentions asset quality improved but does not provide the specific 3.1% or 3.9% figures.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "70 percent: The reduction in enterprise software configuration time promised by new AI platforms",
+          "claim": "Net Interest Income (NII), the core earning metric, grew by 5.9% to ₹2,560 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention enterprise software configuration time.",
+          "detail": "The source text does not mention NII growth percentage or the absolute figure of ₹2,560 crore.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Over the next twelve months, environmental regulators in Maharashtra are expected to draft India's first water-use guidelines specifically for data centers.",
+          "claim": "gross advances expanded by 16.4% year-on-year",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention upcoming Maharashtra environmental regulations or guidelines.",
+          "detail": "The source text does not mention the 16.4% figure for gross advances.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "Tech companies failing to comply could face severe delays in securing civic approvals for new projects by mid-2027.",
+          "claim": "Compared to the previous quarter (Q4 FY26), when its net profit was ₹732 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention mid-2027 deadlines for civic approvals related to water-use guidelines.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "10 to 50: The number of AI chat prompts that collectively consume about one liter of water for server cooling.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention the water consumption per AI chat prompt.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Water per AI Interaction = 0.5 liters",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention this specific figure.",
+          "detail": "The source text does not mention the Q4 FY26 profit figure of ₹732 crore.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "While the story correctly identifies the Anant Raj demerger and the general global debate on data center water usage, it includes several specific statistics and future regulatory predictions that are not supported by the provided source texts."
+      "notes": "The story correctly identifies the 35% profit growth reported in the source, but it includes numerous specific financial figures (absolute amounts, specific NPA percentages, and growth metrics) that are not present in the provided source text."
     },
     {
-      "slug": "sbi-funds-management-listing",
-      "headline": "Why did SBI stop selling shares in its mutual fund?",
+      "slug": "sbi-funds-management-ipo-listing",
+      "headline": "SBI Funds IPO Sees Muted Debut, SBI Confirms No Further Stake Sale",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "no further equity offerings planned for the next three years.",
+          "claim": "SBI Funds Management Limited (SBI FML), India's largest asset manager, had its market debut yesterday, listing at ₹613.30 per share on the bourses. This represented a 6.85% premium over its issue price of ₹574.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the Chairman said they are not considering further stake dilution at this stage, but it does not specify a three-year timeline.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "38 percent: The surge in other income that supported the mutual fund’s parent ecosystem in the first quarter.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 38 percent surge in other income.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "utilizing SBI’s vast network of over 22,000 branches",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the number of branches.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "They do not lend money, completely avoiding non-performing assets",
-          "status": "UNVERIFIABLE",
-          "detail": "While the source discusses the difference between banking and mutual funds, it does not explicitly state that mutual funds 'completely avoid' non-performing assets as a matter of definition.",
+          "detail": "The source text mentions 'SBI Funds Management delivers 7% listing gains', but does not provide the specific listing price of ₹613.30, the issue price of ₹574, or the exact 6.85% figure.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The story accurately reports the listing price, premium, and the Chairman's statement regarding no further dilution. However, it includes several specific figures and claims (branch count, three-year timeline, 38% income surge) that are not present in the provided source text."
+      "notes": "The source text confirms the general sentiment of a 7% listing gain and the Chairman's stance on no further dilution, but it does not contain the specific numerical values (₹613.30, ₹574, 6.85%) cited in the story."
+    },
+    {
+      "slug": "wto-india-export-share-2047-target",
+      "headline": "WTO: India Aims For 10% Global Export Share by 2047",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "A World Trade Organization (WTO) report, released yesterday, outlined India's strategic vision to elevate its share in global merchandise exports to a substantial 10% by 2047.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts are search result pages that do not contain the text of the report or confirm its release date.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The report, part of the WTO's regular trade policy review, also pointed out critical areas for improvement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain the content of the report.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "To achieve this target, India must focus on reducing trade costs, enhancing infrastructure, and further integrating into the global economy through trade agreements and policy reforms.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain the content of the report.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The headlines and summaries of the source texts confirm that a WTO report exists regarding India's 10% export share target by 2047. However, the source texts provided are merely search result landing pages and do not contain the actual content of the report, making the specific details about the report's findings and recommendations unverifiable."
+    },
+    {
+      "slug": "mideast-tensions-oil-prices",
+      "headline": "Middle East Strikes Push Oil Towards $100: Will India Feel It?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "anant-raj-demerges-data-centre",
+      "headline": "Anant Raj to Spin Off Data Centre Business Into Separate Company",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "icici-bank-gift-city-bond",
+      "headline": "ICICI Bank Taps GIFT City for $500 Million Dollar Bond Issue",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "ICICI Bank is reportedly set to raise at least $500 million through five-year dollar bonds issued via its GIFT City unit.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention ICICI Bank, a bond issue, or any fundraising activity by the bank.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "In June 2026, the RBI introduced new concessional dollar-rupee swap facilities.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the introduction of such a facility in June 2026.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "For instance, the RBI's swap measures have pulled nearly $21 billion in just 42 days",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this figure or mention this specific event.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The source text provided is a news summary from Business Standard that does not contain any information regarding ICICI Bank's bond issuance or the specific RBI swap figures mentioned in the story. The story appears to be fabricated or based on external information not present in the provided source."
+    },
+    {
+      "slug": "cube-highways-invit-anchor-allotment",
+      "headline": "Cube Highways Trust Raises ₹1,687.5 Crore From Anchor Investors",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     }
   ]
 }
