@@ -1,59 +1,29 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T10:16:35.249Z",
+  "generatedAt": "2026-07-21T12:17:56.138Z",
   "results": [
-    {
-      "slug": "houthi-maritime-blockade-impact-india",
-      "headline": "Red Sea Shipping Chaos: Houthis Declare Saudi Maritime Blockade?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India has advised its citizens to postpone all non-essential travel to Iran amid the heightened regional instability.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any information regarding an Indian government travel advisory for Iran.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "India's Q1FY27 crude import bill surged 60% to $49.8 billion.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any data regarding India's Q1FY27 crude import bill.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The Indian rupee recently weakened to a two-month intraday low, partly due to higher crude oil prices and Middle East tensions.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any information regarding the Indian rupee's performance or a two-month intraday low.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "While the central event (Houthi declaration of a maritime blockade on Saudi Arabia) is confirmed by Source 1, several specific claims regarding Indian economic data and travel advisories are not supported by the provided source texts."
-    },
     {
       "slug": "india-wto-fisheries-subsidies-agreement",
       "headline": "India Joins WTO Fisheries Subsidies Pact; What Does It Mean?",
       "verdict": "WARN",
-      "centralEventConfirmed": false,
+      "centralEventConfirmed": true,
       "issues": [
         {
           "claim": "India has formally accepted the World Trade Organization (WTO) Agreement on Fisheries Subsidies, becoming the 123rd member to do so.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text from the WTO is a 404 error page and does not contain any information regarding India's membership status or the agreement.",
+          "detail": "The provided source text (Source 1) does not mention India joining the WTO Fisheries Subsidies Agreement or becoming the 123rd member. Source 2 is a 404 error page.",
           "correction": null,
           "source": null
         },
         {
           "claim": "Commerce Secretary Rajesh Agarwal is participating in India's eighth trade policy review meeting at the WTO in Geneva this week",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention Commerce Secretary Rajesh Agarwal or a trade policy review meeting.",
+          "detail": "The provided source text does not mention Commerce Secretary Rajesh Agarwal or an eighth trade policy review meeting.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central claim regarding India's accession to the WTO Fisheries Subsidies Agreement cannot be verified as the provided WTO source link is broken (404). The Business Standard source provided does not contain any mention of the WTO agreement or the specific claims made in the story."
+      "notes": "While the story describes a plausible event, the provided source text (a Business Standard news summary) does not contain any information regarding India's accession to the WTO Fisheries Subsidies Agreement. The second source provided is a broken link."
     },
     {
       "slug": "rallis-india-q1-fy27-results",
@@ -106,7 +76,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and component breakdowns, are supported by the provided source text."
+      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and the breakdown of equity commitments, are fully supported by the provided source text."
     },
     {
       "slug": "assam-ai-phygital-bank",
@@ -184,36 +154,6 @@
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
-      "slug": "tvs-motor-q1-profit-surges",
-      "headline": "Motorcycle Maker TVS Sees Profits Skyrocket 51%!",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "TVS Motor Company announced a 51.35% year-on-year jump in standalone net profit to ₹1,173.97 crore for Q1 FY27",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text title mentions a 51% jump to Rs 1,174 cr, but the body of the source text does not contain the specific figures 51.35% or 1,173.97 crore.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The company’s revenue from operations also saw a significant increase, growing by 20% year-on-year to ₹10,505.74 crore from ₹8,754.78 crore.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention revenue figures or a 20% growth rate.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "The company also saw its EBITDA margin expand to 11.2% from 10.1% year-on-year",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention EBITDA margins.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "While the headline of the source text confirms a 51% jump in profit for TVS Motor, the specific granular figures (51.35%, 1,173.97 crore, revenue, and EBITDA margins) are not present in the provided source text."
-    },
-    {
       "slug": "rbi-penalizes-three-cooperative-banks",
       "headline": "Rules Are Rules: RBI Fines 3 Co-op Banks ₹17.3 Lakh.",
       "verdict": "WARN",
@@ -227,6 +167,89 @@
         }
       ],
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "black-sea-missile-strike-indians-killed",
+      "headline": "Missile Strike Kills Four Indian Sailors in Black Sea",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "middle-east-conflict-oil-impact",
+      "headline": "Middle East War Escalates, Threatens India's Oil Supply Stability",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The US launching its tenth consecutive night of airstrikes against Iran",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline of a Goldman Sachs report regarding Brent crude prices but does not contain any information about US airstrikes on Iran, Houthi blockades, or specific conflict events.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Iran's reported strikes on a tanker in the Strait of Hormuz",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any tanker strikes.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Yemen's Houthi rebels have declared a naval blockade on Saudi Arabia",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Houthi rebels or a naval blockade.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "injured nearly 100 US personnel since early July",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention US personnel injuries.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The source text provided is a search results page from Business Standard that only contains a headline about a Goldman Sachs report on Brent crude. It does not contain any of the narrative details regarding the conflict, airstrikes, or geopolitical events described in the story."
+    },
+    {
+      "slug": "hdfc-bank-q1-results-stock-decline",
+      "headline": "HDFC Bank Q1 Results Disappoint, Shares Drop Over 7%",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+    },
+    {
+      "slug": "pli-schemes-investment-jobs-growth",
+      "headline": "India's PLI Schemes Attract ₹2.40 Lakh Crore Investments, Create 1.4 Million Jobs",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "generated more than 14.15 lakh jobs",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 confirms the investment figure of over ₹2.40 lakh crore, but does not mention the specific job creation figure of 14.15 lakh.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The headline and body correctly report the investment figure of ₹2.40 lakh crore as per Source 1. However, the claim regarding 14.15 lakh jobs is not supported by the provided source text."
     }
   ]
 }
