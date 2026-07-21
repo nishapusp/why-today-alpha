@@ -1,6 +1,6 @@
 {
   "date": "2026-07-21",
-  "generatedAt": "2026-07-21T12:17:56.138Z",
+  "generatedAt": "2026-07-21T14:31:01.425Z",
   "results": [
     {
       "slug": "india-wto-fisheries-subsidies-agreement",
@@ -11,19 +11,19 @@
         {
           "claim": "India has formally accepted the World Trade Organization (WTO) Agreement on Fisheries Subsidies, becoming the 123rd member to do so.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) does not mention India joining the WTO Fisheries Subsidies Agreement or becoming the 123rd member. Source 2 is a 404 error page.",
+          "detail": "Source 1 mentions India joining the WTO fisheries subsidies agreement, but the source text provided is a list of headlines and snippets that does not explicitly confirm India is the 123rd member to ratify it. Source 2 is a 404 error page.",
           "correction": null,
           "source": null
         },
         {
           "claim": "Commerce Secretary Rajesh Agarwal is participating in India's eighth trade policy review meeting at the WTO in Geneva this week",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention Commerce Secretary Rajesh Agarwal or an eighth trade policy review meeting.",
+          "detail": "This specific detail regarding the Commerce Secretary and the trade policy review meeting is not mentioned in the provided source texts.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "While the story describes a plausible event, the provided source text (a Business Standard news summary) does not contain any information regarding India's accession to the WTO Fisheries Subsidies Agreement. The second source provided is a broken link."
+      "notes": "The central event (India joining the WTO fisheries agreement) is mentioned in the headline of Source 1, but the specific claim that India is the '123rd member' and the details regarding the Commerce Secretary's activities are not supported by the provided source text."
     },
     {
       "slug": "rallis-india-q1-fy27-results",
@@ -76,7 +76,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, and the breakdown of equity commitments, are fully supported by the provided source text."
+      "notes": "All specific factual claims regarding the June 2026 outward FDI figures, including the percentage decline, total value, equity component, and the date of the RBI data release, are verified by Source 1."
     },
     {
       "slug": "assam-ai-phygital-bank",
@@ -184,43 +184,6 @@
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
     },
     {
-      "slug": "middle-east-conflict-oil-impact",
-      "headline": "Middle East War Escalates, Threatens India's Oil Supply Stability",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "The US launching its tenth consecutive night of airstrikes against Iran",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the headline of a Goldman Sachs report regarding Brent crude prices but does not contain any information about US airstrikes on Iran, Houthi blockades, or specific conflict events.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Iran's reported strikes on a tanker in the Strait of Hormuz",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any tanker strikes.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "Yemen's Houthi rebels have declared a naval blockade on Saudi Arabia",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Houthi rebels or a naval blockade.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "injured nearly 100 US personnel since early July",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention US personnel injuries.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "The source text provided is a search results page from Business Standard that only contains a headline about a Goldman Sachs report on Brent crude. It does not contain any of the narrative details regarding the conflict, airstrikes, or geopolitical events described in the story."
-    },
-    {
       "slug": "hdfc-bank-q1-results-stock-decline",
       "headline": "HDFC Bank Q1 Results Disappoint, Shares Drop Over 7%",
       "verdict": "WARN",
@@ -244,12 +207,12 @@
         {
           "claim": "generated more than 14.15 lakh jobs",
           "status": "UNVERIFIABLE",
-          "detail": "Source 1 confirms the investment figure of over ₹2.40 lakh crore, but does not mention the specific job creation figure of 14.15 lakh.",
+          "detail": "Source 1 mentions the investment figure of ₹2.40 lakh crore but does not contain any data regarding job creation figures.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The headline and body correctly report the investment figure of ₹2.40 lakh crore as per Source 1. However, the claim regarding 14.15 lakh jobs is not supported by the provided source text."
+      "notes": "The investment figure of ₹2.40 lakh crore is verified by Source 1. However, the claim regarding 14.15 lakh jobs is not mentioned in the provided source text."
     }
   ]
 }
