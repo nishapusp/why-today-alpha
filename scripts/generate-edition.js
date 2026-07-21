@@ -293,6 +293,24 @@ const DIRECT_FEEDS = [
   { source: "Hindu BusinessLine", url: "https://www.thehindubusinessline.com/feeder/default.rss" },
   { source: "NDTV Business", url: "https://feeds.feedburner.com/NDTV-Business?format=xml" },
   { source: "Zee Business", url: "http://zeenews.india.com/rss/business.xml" },
+  // 2026-07-21: added per explicit request to reduce reliance on Google
+  // News search discovery — a confirmed content-recycling site slipped
+  // through via a Google News query the same day (see BLOCKED_DOMAINS
+  // above), while every item that's ever needed a domain block so far
+  // came through search, not a direct feed. Direct feeds pull straight
+  // from a publisher's own pipeline — more reliable freshness, no
+  // search-ranking-gaming risk. URLs verified against a curated,
+  // recently-updated (July 2026) aggregator rather than guessed; The
+  // Hindu's specifically confirmed by pattern-matching the exact
+  // "/feeder/default.rss" structure already proven working for Hindu
+  // BusinessLine above. If any of these turn out to be dead/blocked
+  // like Moneycontrol and Financial Express currently are, they fail
+  // the same way those do — a logged warning, not a broken run.
+  { source: "The Hindu", url: "https://www.thehindu.com/feeder/default.rss" },
+  { source: "Indian Express", url: "https://indianexpress.com/feed/" },
+  { source: "Hindustan Times", url: "https://www.hindustantimes.com/feeds/rss/latest/rssfeed.xml" },
+  { source: "Times of India", url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms" },
+  { source: "News18", url: "https://www.news18.com/commonfeeds/v1/eng/rss/text.xml" },
 ];
 
 // Fuzzy headline matching — two headlines describe the same underlying event
