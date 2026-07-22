@@ -613,6 +613,36 @@ function writeReports(editionDate, results, outDir) {
   return { jsonPath, mdPath };
 }
 
+// 2026-07-22: Broader Connections is the historical-precedent feature —
+// the actual differentiator this publication is built around, not an
+// incidental detail. Real evidence showed exactly why it needs separate,
+// stricter treatment: a story's core regulatory fact was accurate, but
+// it padded in an invented historical parallel (a US Savings & Loan
+// crisis reference) there — and because the auto-remove threshold
+// treats every unverified claim the same regardless of where it sits in
+// the story, that fabricated precedent only got removed because it
+// happened to coincide with 2 OTHER unrelated issues crossing the
+// generic 3-issue bar. A single fabricated historical precedent should
+// be enough on its own — this section is where a reader's trust in "this
+// platform gets its history right" either holds or breaks, which is a
+// different, higher stake than a padded incidental detail elsewhere in
+// the same story.
+//
+// Lightweight overlap heuristic rather than exact substring matching,
+// since a verification issue's claim text is the model's own paraphrase
+// of the problem, not necessarily a verbatim quote from the story.
+function tagBroaderConnectionsIssues(story, issues) {
+  const match = (story.deepDiveRead || "").match(/## Broader Connections([\s\S]*?)(?=\n## |$)/i);
+  if (!match || !issues.length) return issues;
+  const bcText = match[1].toLowerCase();
+  return issues.map((issue) => {
+    const claimWords = (issue.claim || "").toLowerCase().split(/\s+/).filter((w) => w.length > 4);
+    const overlap = claimWords.filter((w) => bcText.includes(w)).length;
+    const inBroaderConnections = claimWords.length > 0 && overlap / claimWords.length >= 0.5;
+    return { ...issue, inBroaderConnections };
+  });
+}
+
 // ---------- main ----------
 
 async function main() {
@@ -658,12 +688,46 @@ async function main() {
       if (mode === "source") {
         const sources = await fetchStorySources(story);
         if (sources.length === 0) {
-          results.push({ slug: story.slug, headline: story.headline, verdict: "WARN", issues: [{
-            claim: "(entire story)", status: "UNVERIFIABLE",
-            detail: "None of the story's cited source links could be fetched — nothing to verify against.",
-            correction: null, source: null,
-          }], notes: "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually." });
-          console.log(`${label} — WARN (no fetchable sources)`);
+          // 2026-07-22: this used to just record "unverifiable, no
+          // fetchable sources" and move on — a real report showed 11 of
+          // 15 stories in one edition landed exactly here and stayed
+          // live, genuinely unchecked, not because they were fine but
+          // because verification simply couldn't reach their links. That
+          // silently became "good enough to publish," which it never was
+          // meant to be. Auto-escalating to grounded mode (live search,
+          // doesn't depend on the story's own links working) turns
+          // "couldn't verify" into an actual verification instead of an
+          // assumption. Only escalates the stories that actually need
+          // it — not a blanket re-run of the whole edition in the
+          // costlier mode.
+          console.log(`  no fetchable sources — escalating to grounded verification...`);
+          try {
+            const gv = await verifyStory(story, editionDate);
+            const taggedIssues = tagBroaderConnectionsIssues(story, gv.issues);
+            results.push({
+              slug: story.slug, headline: story.headline, verdict: gv.verdict,
+              centralEventConfirmed: gv.centralEventConfirmed, issues: taggedIssues,
+              notes: `${gv.notes || ""} (escalated from source mode — original links were unfetchable)`.trim(),
+            });
+            console.log(`${label} — ${gv.verdict}${gv.issues.length ? ` (${gv.issues.length} issue(s))` : ""} [escalated]`);
+          } catch (escErr) {
+            if (escErr.isGroundingQuota) {
+              // Grounding quota ran out during escalation specifically —
+              // fall back to the honest "couldn't check" placeholder for
+              // this story and stop attempting further escalations this
+              // run, but keep processing remaining stories in source mode
+              // (they don't need grounding quota at all).
+              console.warn(`  grounding quota exhausted during escalation — falling back to unverifiable for this story.`);
+              results.push({ slug: story.slug, headline: story.headline, verdict: "WARN", issues: [{
+                claim: "(entire story)", status: "UNVERIFIABLE",
+                detail: "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+                correction: null, source: null,
+              }], notes: "Re-run with --mode grounded once quota resets." });
+            } else {
+              console.error(`  escalation failed: ${escErr.message}`);
+              results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", issues: [], error: `Escalation failed: ${escErr.message}` });
+            }
+          }
           if (i < stories.length - 1) await sleep(SPACING_MS);
           continue;
         }
@@ -672,7 +736,7 @@ async function main() {
       } else {
         v = await verifyStory(story, editionDate);
       }
-      results.push({ slug: story.slug, headline: story.headline, verdict: v.verdict, centralEventConfirmed: v.centralEventConfirmed, issues: v.issues, notes: v.notes });
+      results.push({ slug: story.slug, headline: story.headline, verdict: v.verdict, centralEventConfirmed: v.centralEventConfirmed, issues: tagBroaderConnectionsIssues(story, v.issues), notes: v.notes });
       console.log(`${label} — ${v.verdict}${v.issues.length ? ` (${v.issues.length} issue(s))` : ""}`);
     } catch (err) {
       if (err.isGroundingQuota) {
@@ -723,8 +787,17 @@ async function main() {
   // judgment call worth revisiting as real data comes in.
   if (args.includes("--auto-remove")) {
     const warnThreshold = parseInt(process.env.VERIFY_WARN_ISSUE_THRESHOLD || "3", 10);
+    // 2026-07-22: a single unverifiable claim inside Broader Connections
+    // (the historical-precedent feature — this publication's actual
+    // differentiator) now removes a story on its own, regardless of the
+    // generic issue-count threshold — see tagBroaderConnectionsIssues for
+    // the full reasoning. Getting this section wrong is a different kind
+    // of failure than a padded incidental detail elsewhere in the story.
     const toRemove = results.filter(
-      (r) => r.verdict === "FAIL" || r.verdict === "FABRICATED" || (r.verdict === "WARN" && r.issues.length >= warnThreshold)
+      (r) =>
+        r.verdict === "FAIL" ||
+        r.verdict === "FABRICATED" ||
+        (r.verdict === "WARN" && (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections)))
     );
     if (toRemove.length === 0) {
       console.log("\n--auto-remove: nothing crossed the removal threshold — edition unchanged.");
