@@ -129,6 +129,8 @@ When a story covers a bank's (or any listed company's) quarterly results, go bey
 ## Sourcing
 Use Google Search to check 3-5 real, current sources per story, drawn from DIFFERENT categories: national financial press (Economic Times, Business Standard, Mint, Moneycontrol, Financial Express, Hindu BusinessLine, CNBC-TV18), official/regulatory (RBI, SEBI, NSE, BSE, PIB), and international (Reuters, Bloomberg) when relevant. Rotate outlets across stories.
 
+The following outlets are this publication's own vetted, trusted tier (the same publishers whose feeds directly seed this pipeline) and can be treated with normal journalistic confidence for general reporting, without needing extra independent corroboration for straightforward factual claims: ${TRUSTED_PUBLISHERS.join(", ")}. This does NOT lower the bar below for a story's central/headline statistic specifically — even a trusted outlet's headline can imprecisely phrase a segment-specific figure as an aggregate one, which is exactly the failure described next.
+
 2026-07-22: for any number that is the CENTRAL/HEADLINE statistic of a story — the figure the whole piece is built around — apply extra rigor, found necessary after a real, confirmed error: a story presented a private-sector-banks-specific NPA ratio (1.73%) as if it were the system-wide figure for all scheduled commercial banks (which was actually a different, if close, number). The error traced back to a single secondary news aggregator whose own headline was imprecise about which segment its number covered — and because that aggregator was the ONLY source actually consulted for that specific figure, the imprecision passed straight through uncaught.
 - PREFER the primary/official source (RBI, SEBI, a company's own results/investor presentation, a government release) over a secondary summary or aggregator for the central statistic specifically. A secondary source is fine for color and context, but the headline number itself should trace to where it actually originates.
 - When an aggregate/system-wide figure is reported alongside segment-level figures (public sector banks vs. private banks vs. foreign banks; a company's consolidated vs. standalone results; a sector total vs. one player's share), read carefully enough to be certain which one you are citing, and say so explicitly if there's any room for confusion — do not silently carry forward a segment-specific number as if it were the aggregate, or vice versa.
@@ -318,6 +320,19 @@ const DIRECT_FEEDS = [
   { source: "Times of India", url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms" },
   { source: "News18", url: "https://www.news18.com/commonfeeds/v1/eng/rss/text.xml" },
 ];
+
+// 2026-07-22: derived directly from DIRECT_FEEDS (deduped) rather than a
+// separately-maintained list, so this can never silently drift out of
+// sync with the actual curated feed list above — added per explicit
+// request to give the model a clear trusted-outlet tier, since these are
+// the same publishers already vetted for the direct-feed list itself.
+// This complements, but does not replace, the primary-source-preference
+// rule in the sourcing guidance below: a reputed outlet's headline can
+// still make the exact segment-vs-aggregate imprecision that caused a
+// real error (see that guidance for the full story) — this list raises
+// the floor of general reliability, it doesn't exempt the central
+// statistic in a story from still tracing to a primary source.
+const TRUSTED_PUBLISHERS = [...new Set(DIRECT_FEEDS.map((f) => f.source))];
 
 // Fuzzy headline matching — two headlines describe the same underlying event
 // when they share most of their significant words. Exact-string exclusion is
@@ -1566,4 +1581,5 @@ module.exports = {
   GROUNDED_FALLBACK_MODEL,
   API_KEY,
   describeQuotaViolations,
+  TRUSTED_PUBLISHERS,
 };
