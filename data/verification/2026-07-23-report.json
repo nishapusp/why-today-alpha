@@ -1,0 +1,415 @@
+{
+  "date": "2026-07-23",
+  "generatedAt": "2026-07-22T21:59:31.846Z",
+  "results": [
+    {
+      "slug": "us-iran-conflict-oil-rupee",
+      "headline": "Why is a US-Iran shipping clash tanking the Indian rupee?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Donald Trump threatened strikes on Iranian power plants",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions 'Continued US military strikes on Iran' and 'US President Donald Trump’s warning of strikes', but does not specify that the threats were directed at 'Iranian power plants'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "merchant tankers bound for Saudi ports made sharp U-turns to avoid hostile zones",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions 'threats to shipping in the Red Sea and reduced traffic through the Strait of Hormuz', but does not report on specific merchant tankers making U-turns.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "official data revealed the RBI had already sold $6 billion in spot forex markets in May to defend the rupee",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any RBI forex sales data for the month of May.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "every $10 increase in oil prices typically widens the current account deficit by about 0.5% of GDP",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this economic metric or calculation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "RBI May Forex Sales = $6 billion (previous: $10 billion — April interventions)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention RBI forex sales figures for April or May.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the rupee's closing rate and the general context of rising oil prices and geopolitical tension. However, it includes several specific claims regarding RBI intervention data and specific geopolitical details that are not present in the provided source text."
+    },
+    {
+      "slug": "us-tariffs-indian-pharma-threat",
+      "headline": "Why is Trump’s new generic drug tariff threatening Indian pharma?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over the last decade, Indian manufacturers have secured over 3,000 Abbreviated New Drug Approvals from the US FDA",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention the number of ANDAs secured by Indian manufacturers.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "By introducing a new tariff barrier, the US administration threatens to make Indian generic imports up to 20% more expensive",
+          "status": "WRONG",
+          "detail": "The source text states the proposal involves a 100% tariff from August 2028 and a 200% tariff from August 2029, not 20%.",
+          "correction": "The proposed tariffs are 100% starting August 2028 and 200% starting August 2029.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "If a 15% to 20% tariff is imposed, it will instantly erode the price competitiveness of Indian drugs.",
+          "status": "WRONG",
+          "detail": "The source text states the proposed tariffs are 100% and 200%, not 15% to 20%.",
+          "correction": "The proposed tariffs are 100% and 200%.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the central event and the 1.3% index decline. However, it incorrectly cites the tariff percentages as 15-20% when the source explicitly states 100% and 200%. Additionally, the claim regarding 3,000 ANDA approvals is not supported by the provided source texts."
+    },
+    {
+      "slug": "gift-city-private-banks-nri-leverage",
+      "headline": "Why are private banks using GIFT City to lend to NRIs?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the bank’s international unit can lend up to 80% of the deposit value to the NRI in foreign currency",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention an 80% leverage limit or any specific loan-to-value ratio for these transactions.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "domestic deposit growth in India has slowed down to around 10%, while credit demand is expanding much faster at nearly 15%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not provide these specific growth percentages for domestic deposits or credit demand.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "NRIs can pocket a risk-free interest rate spread of up to 2.5% on the leveraged portion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention a 2.5% interest rate spread.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "NRI Leverage Loan Limit = 80% (previous: 70% — Prior year average)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention these figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Rupee-Support Inflows = $20 billion (previous: $15 billion — June 2026 estimate)",
+          "status": "UNVERIFIABLE",
+          "detail": "While the $20 billion figure is verified, the $15 billion June 2026 estimate is not mentioned in the source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "FCNR Deposit Tenure = 3-5 years (previous: 1-2 years — Standard retail deposits)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts mention the 3-5 year tenor for FCNR(B) deposits, but do not mention a 1-2 year 'previous' standard for retail deposits.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core event (banks using GIFT City IBUs to facilitate FCNR(B) deposits) and the $20 billion inflow figure. However, it includes several specific percentages and comparative figures that are not supported by the provided source texts."
+    },
+    {
+      "slug": "india-space-startup-ecosystem-growth",
+      "headline": "Why did India’s space startup ecosystem just cross 450 ventures?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "pakistan-us-iran-diplomatic-fee",
+      "headline": "Why is Pakistan asking Washington for a $10 billion 'brokerage fee'?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The request comes at a critical juncture when the Pakistani rupee is facing immense downward pressure, trading at historic lows compared to the Indian rupee, which has remained relatively resilient despite global headwinds.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Pakistani rupee's performance relative to the Indian rupee or the relative resilience of the Indian rupee.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The development has emerged today as US-Iran hostilities threaten to disrupt global trade routes, sending Brent crude oil prices soaring past $95 per barrel.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Brent crude oil prices or the $95 per barrel figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "While India is actively spending billions of dollars defending its currency and managing import inflation, Pakistan is attempting to turn the crisis into an economic opportunity.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's currency defense spending or import inflation management.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The Strait of Hormuz, through which a third of the world's liquefied natural gas travels daily.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Strait of Hormuz or the proportion of global LNG trade passing through it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Compared to India's economic path of building structural export capacity and attracting $70 billion in annual foreign direct investment",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's export capacity or FDI figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The US administration will announce its decision on the bilateral aid request within the next two months.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states that the proposal is under consideration and no decision has been made, but it does not provide a two-month timeline for an announcement.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central claim regarding Pakistan's request for a $10 billion exchange stabilization facility is verified by the source. However, the story includes several specific economic and geopolitical figures (oil prices, FDI, currency comparisons) that are not present in the provided source text."
+    },
+    {
+      "slug": "bioscan-research-seed-funding-round",
+      "headline": "Why did this brain-injury scanning startup get a million-dollar seed?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-national-ai-mission-user-shortage",
+      "headline": "Why is India's 10,000-crore AI mission struggling to find users?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "bandhan-bank-guidance-cut-crash",
+      "headline": "Why did a 35% profit rise cause this bank’s stock to crash?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Net Profit Growth = 35% (previous: 24% — Prior Quarter)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the 35% year-on-year net profit growth for the June quarter, but it contains no information regarding a 24% growth figure for the prior quarter.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The underlying problem lies in the bank's core microfinance institution portfolio... rising default rates. Write-offs and provisions for bad loans are eating into net interest margins.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that the bank's advances were weighed down by sequential contraction in the microfinance book and that the RoA cut was due to 'weaker margins' and 'elevated operating costs', but it does not explicitly attribute the guidance cut to 'rising default rates' or 'write-offs' on the microfinance portfolio.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Rural borrowers are struggling to repay loans due to erratic weather patterns and stagnant agricultural incomes",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention erratic weather patterns or stagnant agricultural incomes as reasons for the bank's performance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The sudden downward revision shocked institutional investors who had expected a post-election rural recovery",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention institutional investor expectations regarding a post-election rural recovery.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the primary event (the 17% share price drop and the RoA guidance cut). However, it includes several speculative claims about the causes (weather, agricultural income, specific investor expectations) that are not supported by the provided source text."
+    },
+    {
+      "slug": "paras-semiconductors-mp-facility",
+      "headline": "Why is a semiconductor giant building a massive plant in Madhya Pradesh?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "msedcl-billion-dollar-ipo-banks",
+      "headline": "Why is six top investment banks fighting over this power IPO?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "nestle-q1-profit-surge-premiumization",
+      "headline": "Why did Nestle India's profit surge despite costly coffee and cocoa?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-outward-remittances-lrs-rise-tax",
+      "headline": "Why are wealthy Indians sending record cash abroad despite high taxes?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Wednesday, the Reserve Bank of India published its monthly remittance data for May 2026, revealing that Indian residents sent $2.39 billion abroad under the LRS framework.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (RBI website) does not contain any data regarding LRS remittance figures for May 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This represents a 3.6% increase compared to the $2.31 billion remitted in May of the previous year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding LRS remittance figures for May 2025 or May 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story cites specific RBI data regarding LRS remittances that is not present in the provided source text. While the source text mentions an 'RBI Bulletin – July 2026' and 'Developments in India’s Balance of Payments for the Month of May 2026', the actual figures are not contained within the provided text."
+    },
+    {
+      "slug": "mutual-fund-licenses-gold-rush-sebi",
+      "headline": "Why is there a sudden gold rush for mutual fund licenses?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Carnelian Asset Management recently secured SEBI's mutual fund license",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided SEBI source text does not mention Carnelian Asset Management or the granting of any mutual fund licenses.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "nine other financial entities entered the regulatory queue in the June quarter",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided SEBI source text does not mention any applications for mutual fund licenses or a regulatory queue of nine entities.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Nippon Life India Asset Management reported a stellar 27% year-on-year jump in its first-quarter net profit",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain financial performance data for Nippon Life India Asset Management.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "India's ₹55 lakh crore mutual fund industry",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the total assets under management for the Indian mutual fund industry.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "mutual fund SIPs, which now consistently exceed ₹20,000 crore every single month",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain data regarding monthly SIP inflows.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The top ten asset management companies currently control over 80% of the industry's total assets",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain market share data for asset management companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story makes numerous specific claims regarding SEBI licensing, corporate financial performance, and industry-wide AUM/SIP data that are not supported by the provided source texts. The source texts are limited to general SEBI website navigation and AMFI informational links."
+    }
+  ]
+}
