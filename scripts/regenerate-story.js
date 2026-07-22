@@ -25,7 +25,7 @@ const { execSync } = require("child_process");
 // the scenario where a thought-part getting concatenated into the
 // response text fools naive brace matching. Also picks up FALLBACK_MODEL
 // for free, which this file never had at all before.
-const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations, fetchPexelsImage } = require("./generate-edition.js");
+const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations, fetchPexelsImage, TRUSTED_PUBLISHERS } = require("./generate-edition.js");
 // 2026-07-16: this file's API call uses google_search grounding, which
 // needs a DIFFERENT model choice than generate-edition.js's own MODEL/
 // FALLBACK_MODEL (those are tuned for ungrounded/text-only calls
@@ -60,6 +60,8 @@ timeMachine (required): "today" (one crisp line) and "future" (most likely next 
 chart (OPTIONAL — only when the story centers on a measurable series): {"title","unit?","labels" (3-6 short strings),"values" (same count of plain numbers, consistent units, chronological),"takeaway" (one sentence)}. All values must be real, from your sources. If you don't have 3+ real comparable numbers, OMIT chart entirely.
 
 Use Google Search to check current sources before writing. No citation markers or story-position numbers in any text field.
+
+This publication's own vetted, trusted outlet tier (the same publishers whose feeds seed the main pipeline) can be treated with normal journalistic confidence for general reporting: ${TRUSTED_PUBLISHERS.join(", ")}. This does not lower the bar below for a story's central statistic — even a trusted outlet's headline can imprecisely phrase a segment-specific figure as an aggregate one.
 
 2026-07-22: for the CENTRAL/HEADLINE statistic — the number the whole story is built around — apply extra rigor, found necessary after a real, confirmed error: a story presented a private-sector-banks-specific NPA ratio as if it were the system-wide figure for all scheduled commercial banks, traced to a single secondary aggregator whose own headline was imprecise about which segment its number covered. PREFER the primary/official source (RBI, SEBI, a company's own results, a government release) over a secondary summary for this specific number. When an aggregate figure sits alongside segment-level figures (public vs. private banks, consolidated vs. standalone, sector total vs. one player), be certain which one you're citing before using it as "the" number. If two sources give different numbers for the central statistic, that usually means they're measuring different things — find the primary source rather than picking either arbitrarily.
 
