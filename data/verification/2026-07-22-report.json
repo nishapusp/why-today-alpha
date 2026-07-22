@@ -1,6 +1,6 @@
 {
   "date": "2026-07-22",
-  "generatedAt": "2026-07-22T16:09:43.898Z",
+  "generatedAt": "2026-07-22T17:48:33.776Z",
   "results": [
     {
       "slug": "npci-offline-upi-development",
@@ -114,40 +114,32 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Furthermore, the cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
+          "claim": "Cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) mentions the headline figures of ₹2.4 lakh crore investment and 1.4 million jobs, but it does not contain any mention of cumulative exports or the figure ₹15.2 lakh crore.",
+          "detail": "The provided source text does not mention any figure regarding cumulative exports from PLI sectors.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly reports the investment and job creation figures as stated in the source. However, the claim regarding ₹15.2 lakh crore in cumulative exports is not supported by the provided source text."
+      "notes": "The core figures regarding investment (₹2.4 lakh crore) and job creation (1.4 million) are supported by the source text. However, the claim regarding ₹15.2 lakh crore in cumulative exports is not mentioned in the provided source."
     },
     {
       "slug": "rbi-forex-inflow-scheme-mobilizes-20-billion",
       "headline": "RBI's Forex Measures Attract $20.72 Billion; Rupee Strengthens?",
-      "verdict": "UNVERIFIABLE",
+      "verdict": "WARN",
       "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "$20.72 billion",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any RBI measures to attract foreign exchange, nor does it contain the figure $20.72 billion.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Measures launched in early June 2026",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the launch of any such RBI measures in June 2026.",
+          "detail": "The provided source text does not mention any $20.72 billion inflow or any specific RBI measures launched in June 2026 to attract foreign exchange.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The provided source text is a news summary from Business Standard that covers various topics (electronics, corporate earnings, etc.) but contains no information regarding RBI foreign exchange measures or the $20.72 billion figure cited in the story."
+      "notes": "The story is built around a specific figure ($20.72 billion) and a set of RBI policy measures that are entirely absent from the provided source text. The source text focuses on other topics such as electronics manufacturing, corporate earnings, and geopolitical conflicts."
     },
     {
       "slug": "nestle-india-q1-results",
@@ -209,7 +201,7 @@
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central claim regarding the GTRI report and the 200% tariff proposal is supported by the source text. However, the specific figure for India's pharmaceutical exports in FY26 is not mentioned in the provided source."
+      "notes": "The story correctly identifies the GTRI report and the 200% tariff proposal mentioned in the source headlines. However, the specific figure of $25 billion for pharmaceutical exports is not supported by the provided source text."
     },
     {
       "slug": "bandhan-bank-q1-profit-jumps-but-roa-guidance-cut-sends-shares-plunging",
@@ -218,39 +210,31 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Bandhan Bank reported a 35% rise in net profit for Q1 FY27, reaching ₹1,030 crore",
+          "claim": "The bank's Net Interest Income (NII), a core measure of profitability from lending, grew by 17.5% to ₹2,880 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Business Standard) does not contain any financial results for Bandhan Bank; it only mentions in the headline that shares plunged nearly 17% after the lender cut RoA guidance.",
+          "detail": "The provided source text does not contain any financial data regarding Bandhan Bank's NII or specific profit figures; it only mentions that the bank's shares plunged nearly 17% after it cut its RoA guidance.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "The bank's Net Interest Income (NII) grew by 17.5% to ₹2,880 crore.",
+          "claim": "Gross Non-Performing Assets (NPAs), or bad loans, improved to 6.3% from 7.5% sequentially, and Net NPAs also saw a decrease to 1.7% from 2.2%.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this figure.",
+          "detail": "The source text does not mention these specific NPA figures.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Gross Non-Performing Assets (NPAs) improved to 6.3% from 7.5% sequentially, and Net NPAs also saw a decrease to 1.7% from 2.2%.",
+          "claim": "For FY27, the RoA projection was slashed from 2.2-2.5% to 1.7-1.9%, and for FY28, it was reduced from 2.5-2.8% to 1.8-2.0%.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The bank concurrently cut its Return on Assets (RoA) guidance for FY27 to 1.7-1.9% from an earlier 2.2-2.5%, and for FY28 to 1.8-2.0% from 2.5-2.8%.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these specific guidance figures.",
+          "detail": "The source text confirms the bank cut its RoA guidance but does not provide the specific numerical ranges mentioned in the story.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "While the headline of the source article confirms the share price drop and the RoA guidance cut, the specific financial figures (net profit, NII, NPA percentages, and specific RoA ranges) are not present in the provided source text."
+      "notes": "The story correctly identifies the central event (the share price drop due to lowered RoA guidance), but it includes several specific financial figures (NII, NPA percentages, and specific RoA guidance ranges) that are not present in the provided source text."
     }
   ]
 }
