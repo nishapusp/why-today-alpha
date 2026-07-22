@@ -1,6 +1,6 @@
 {
   "date": "2026-07-22",
-  "generatedAt": "2026-07-22T12:19:13.889Z",
+  "generatedAt": "2026-07-22T14:31:12.933Z",
   "results": [
     {
       "slug": "npci-offline-upi-development",
@@ -114,9 +114,9 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
+          "claim": "Furthermore, the cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the ₹2.4 lakh crore investment and 1.4 million jobs, but it contains no mention of a ₹15.2 lakh crore export figure.",
+          "detail": "The provided source text (Source 1) mentions the headline figures of ₹2.4 lakh crore investment and 1.4 million jobs, but it does not contain any mention of cumulative exports or the figure ₹15.2 lakh crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -133,7 +133,7 @@
         {
           "claim": "$20.72 billion",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Business Standard) does not mention any RBI measures to attract foreign exchange, nor does it mention a $20.72 billion inflow.",
+          "detail": "The provided source text does not mention any RBI measures to attract foreign exchange, nor does it contain the figure $20.72 billion.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -141,13 +141,13 @@
         {
           "claim": "Measures launched in early June 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any such measures or their launch date.",
+          "detail": "The source text does not mention the launch of any such RBI measures in June 2026.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story is entirely fabricated. The provided source text is a news summary from Business Standard that covers various topics (semiconductors, corporate earnings, etc.) but contains zero information regarding RBI foreign exchange measures or the $20.72 billion figure cited in the story."
+      "notes": "The provided source text is a news summary from Business Standard that covers various topics (electronics, corporate earnings, etc.) but contains no information regarding RBI foreign exchange measures or the $20.72 billion figure cited in the story."
     },
     {
       "slug": "nestle-india-q1-results",
@@ -182,19 +182,19 @@
     {
       "slug": "paras-defence-semiconductor-mp-investment",
       "headline": "Will India's Chips Get A ₹6,200 Crore Boost?",
-      "verdict": "UNVERIFIABLE",
+      "verdict": "FAIL",
       "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "Paras Defence & Space Technologies, through its subsidiary Paras Semiconductors, announced a ₹6,200 crore investment to establish a semiconductor packaging facility in Madhya Pradesh.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) is a list of headlines and snippets from a news aggregator page. While the headline of the source page mentions 'Paras Defence arm to invest Rs 6,200 cr in semiconductor packaging facility in Madhya Pradesh', the actual body text of the source does not contain any article content, details, or confirmation of this event.",
+          "detail": "The provided source text (Source 1) does not contain any information regarding Paras Defence, Paras Semiconductors, or a ₹6,200 crore investment in Madhya Pradesh. The source text is a list of headlines and snippets from a news website, none of which mention this event.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The source text provided is a collection of headlines and snippets from a news website, not the full article. While the headline of the source page mentions the investment, the body text is missing, making it impossible to verify the details of the claim."
+      "notes": "The story claims to be based on a source that does not contain the information provided. The central event is entirely absent from the provided source text."
     },
     {
       "slug": "e2e-networks-q1-results-ai-cloud",
@@ -220,13 +220,54 @@
         {
           "claim": "India's pharmaceutical exports were valued at over $25 billion in FY26",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the GTRI report regarding tariffs but does not contain any data or figures regarding the total value of India's pharmaceutical exports in FY26.",
+          "detail": "The provided source text does not contain any data regarding the total value of India's pharmaceutical exports in FY26.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the core subject matter (the GTRI report on Trump's proposed 200% tariff on generic drugs). However, it includes a specific export value ($25 billion) that is not present in the provided source text."
+      "notes": "The central claim regarding the GTRI report and the 200% tariff proposal is supported by the source text. However, the specific figure for India's pharmaceutical exports in FY26 is not mentioned in the provided source."
+    },
+    {
+      "slug": "bandhan-bank-q1-profit-jumps-but-roa-guidance-cut-sends-shares-plunging",
+      "headline": "Bandhan Bank's Profit Jumps 35%, But Investors Pan Future Outlook?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Bandhan Bank reported a 35% rise in net profit for Q1 FY27, reaching ₹1,030 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard) does not contain any financial results for Bandhan Bank; it only mentions in the headline that shares plunged nearly 17% after the lender cut RoA guidance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The bank's Net Interest Income (NII) grew by 17.5% to ₹2,880 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Gross Non-Performing Assets (NPAs) improved to 6.3% from 7.5% sequentially, and Net NPAs also saw a decrease to 1.7% from 2.2%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The bank concurrently cut its Return on Assets (RoA) guidance for FY27 to 1.7-1.9% from an earlier 2.2-2.5%, and for FY28 to 1.8-2.0% from 2.5-2.8%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these specific guidance figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "While the headline of the source article confirms the share price drop and the RoA guidance cut, the specific financial figures (net profit, NII, NPA percentages, and specific RoA ranges) are not present in the provided source text."
     }
   ]
 }
