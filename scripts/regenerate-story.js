@@ -61,6 +61,8 @@ chart (OPTIONAL — only when the story centers on a measurable series): {"title
 
 Use Google Search to check current sources before writing. No citation markers or story-position numbers in any text field.
 
+2026-07-22: for the CENTRAL/HEADLINE statistic — the number the whole story is built around — apply extra rigor, found necessary after a real, confirmed error: a story presented a private-sector-banks-specific NPA ratio as if it were the system-wide figure for all scheduled commercial banks, traced to a single secondary aggregator whose own headline was imprecise about which segment its number covered. PREFER the primary/official source (RBI, SEBI, a company's own results, a government release) over a secondary summary for this specific number. When an aggregate figure sits alongside segment-level figures (public vs. private banks, consolidated vs. standalone, sector total vs. one player), be certain which one you're citing before using it as "the" number. If two sources give different numbers for the central statistic, that usually means they're measuring different things — find the primary source rather than picking either arbitrarily.
+
 Length rules (both floors AND ceilings — do not exceed them): summary 30-40 words, quickRead 100-150 words, whatHappened/whyToday/whyCare 120-160 words each with a concrete comparison, whatNext 80-120 words, deepDiveRead 500-800 words across 5 headers (## What Changed, ## The Backstory, ## Why It Matters, ## Broader Connections, ## Alternative View), opening with a "Fast Facts" bullet list and using **bold** on key numbers. Tight and specific beats long and padded. "## Broader Connections" must include at least one NAMED historical precedent — a real past event/decision with its year and outcome, researched via search, never invented — explaining why it's relevant to this story now, not just a general "this connects to X" statement.
 
 IMPORTANT: "deepDiveRead" must be ONE plain string value containing all 5 sections with their "## " markdown headers embedded directly in that string (e.g. "## What Changed\n\n...\n\n## The Backstory\n\n...") — NOT an array of 5 separate strings, and NOT an object with one key per section. A JSON array or object here will break how the story renders on the actual site.
@@ -401,6 +403,20 @@ async function main() {
   } catch (err) {
     console.error("\nGit commit/push failed — the file is written locally, but you'll need to commit and push manually.");
     console.error(err.message);
+  }
+
+  // 2026-07-22: added after a real report that regenerating a story to
+  // fix one wrong number produced a DIFFERENT wrong number instead —
+  // regeneration was being trusted as "the fix" with no automatic check
+  // that it actually fixed anything. Writing the final slug here (works
+  // for both an existing-slug regeneration AND --new mode, where the
+  // slug is only known after the model writes the headline) lets the
+  // workflow run verify-edition.js against exactly this one story right
+  // after, in quota-free "source" mode, so a bad regeneration gets
+  // caught immediately instead of silently replacing one error with
+  // another.
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `slug=${newStory.slug}\n`);
   }
 }
 

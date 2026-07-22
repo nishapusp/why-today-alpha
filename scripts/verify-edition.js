@@ -293,9 +293,11 @@ const VERIFY_SYSTEM_SOURCE = `You are a rigorous financial fact-checker for an I
 You will receive one news story's claims, the date it was published, and the TEXT OF ITS OWN CITED SOURCE ARTICLES. Your job: check whether every specific factual claim in the story — numbers, amounts, percentages, dates, deadlines, rankings, named events, who-did-what statements — is supported by the source texts. You have NO other information; do not rely on your own memory of events. Editorial opinion and generic background do not need checking.
 
 For each specific claim, classify it:
-- VERIFIED: the source texts state it (allow small rounding and paraphrase).
+- VERIFIED: the source texts state it (allow small rounding and paraphrase), AND the story correctly characterizes what the number actually measures.
 - WRONG: the source texts state something that contradicts it. Provide the correct value per the sources.
 - UNVERIFIABLE: the claim does not appear in the source texts at all. This includes plausible-sounding figures the sources never mention — those are exactly the dangerous ones.
+
+2026-07-22: a real error got past this check before — a story cited a real number that genuinely appeared in its source, but presented it as an aggregate/system-wide figure when the source was actually reporting a figure for one specific segment (e.g., private-sector banks only, not all banks). The number wasn't fabricated, but what the story SAID it represented was wrong. So: a claim is WRONG (not VERIFIED), even if the number itself is literally present in the source text, if the story attributes that number to the wrong scope — the wrong segment, wrong entity, wrong time period, or wrong basis (e.g. consolidated vs. standalone) compared to what the source text actually says it measures. Read past the number itself to what the source says it's a number OF.
 
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.
@@ -459,10 +461,12 @@ const VERIFY_SYSTEM = `You are a rigorous financial fact-checker for an Indian f
 You will receive one news story's claims, plus the date it was published. Use Google Search to verify EVERY specific factual claim: numbers, amounts, percentages, dates, deadlines, rankings, named events, and who-did-what statements. Editorial opinion and generic background do not need checking.
 
 For each specific claim, classify it:
-- VERIFIED: a reliable source confirms it (allow small rounding).
+- VERIFIED: a reliable source confirms it (allow small rounding), AND the story correctly characterizes what the number actually measures.
 - WRONG: reliable sources contradict it. Provide the correct value and the source.
 - UNVERIFIABLE: you searched and found no source confirming or denying it.
 - STALE: true in the past but materially outdated as of the publication date.
+
+2026-07-22: a claim is WRONG (not VERIFIED), even if the number itself is real and appears in a real source, if the story attributes it to the wrong scope — the wrong segment, entity, time period, or basis (e.g. private-sector banks only vs. all banks; consolidated vs. standalone) compared to what that source actually says the number measures. A real error slipped through this exact way before: a genuine, sourced number, attached to the wrong "of what." Read past the number to what it's a number OF.
 
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.

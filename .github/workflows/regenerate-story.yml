@@ -42,8 +42,37 @@ jobs:
           git config user.email "actions@github.com"
 
       - name: Regenerate or add story
+        id: regenerate
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           AUTO_CONFIRM: "1"
         run: node scripts/regenerate-story.js "${{ github.event.inputs.slug_or_mode }}" "${{ github.event.inputs.feedback_or_topic }}"
+
+      # 2026-07-22: closes the loop after a real report that regenerating
+      # a story to fix one wrong number produced a different wrong number
+      # instead — this runs the fact-checker against exactly the story
+      # that was just changed, in quota-free "source" mode (fetches the
+      # story's own cited sources directly, no grounding quota used), so
+      # a bad regeneration is caught immediately rather than assumed
+      # correct. Doesn't auto-remove here (unlike generate-edition.yml) —
+      # a human just deliberately made this specific change and should
+      # see the verdict before anything gets auto-reverted.
+      - name: Fact-check the regenerated story
+        if: success() && steps.regenerate.outputs.slug != ''
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/verify-edition.js --mode source --slugs "${{ steps.regenerate.outputs.slug }}"
+
+      - name: Commit verification report
+        if: success()
+        continue-on-error: true
+        run: |
+          git add data/verification/
+          git diff --cached --quiet && echo "No report changes." && exit 0
+          git commit -m "chore(verify): fact-check regenerated story ($(date -u +%F))"
+          for i in 1 2 3; do
+            git push && break
+            git pull --rebase && sleep 3
+          done
