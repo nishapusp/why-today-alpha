@@ -1,6 +1,6 @@
 {
   "date": "2026-07-22",
-  "generatedAt": "2026-07-22T10:29:36.409Z",
+  "generatedAt": "2026-07-22T12:19:13.889Z",
   "results": [
     {
       "slug": "npci-offline-upi-development",
@@ -114,15 +114,15 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Furthermore, the cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
+          "claim": "Cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) does not contain any mention of cumulative exports or the figure ₹15.2 lakh crore.",
+          "detail": "The provided source text mentions the ₹2.4 lakh crore investment and 1.4 million jobs, but it contains no mention of a ₹15.2 lakh crore export figure.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The core figures regarding investment (₹2.4 lakh crore) and job creation (1.4 million) are supported by the headline of the source text. However, the claim regarding cumulative exports of ₹15.2 lakh crore is not mentioned in the provided source."
+      "notes": "The story correctly reports the investment and job creation figures as stated in the source. However, the claim regarding ₹15.2 lakh crore in cumulative exports is not supported by the provided source text."
     },
     {
       "slug": "rbi-forex-inflow-scheme-mobilizes-20-billion",
@@ -133,7 +133,7 @@
         {
           "claim": "$20.72 billion",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Business Standard, July 21, 2026) does not mention any RBI measures to attract foreign exchange, nor does it contain the figure $20.72 billion.",
+          "detail": "The provided source text (Business Standard) does not mention any RBI measures to attract foreign exchange, nor does it mention a $20.72 billion inflow.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -141,13 +141,13 @@
         {
           "claim": "Measures launched in early June 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the launch of any such RBI measures in June 2026.",
+          "detail": "The source text does not mention any such measures or their launch date.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The provided source text is a news summary that covers various topics such as corporate earnings, geopolitical conflicts, and market updates, but it contains no information regarding RBI foreign exchange measures or the $20.72 billion figure cited in the story."
+      "notes": "The story is entirely fabricated. The provided source text is a news summary from Business Standard that covers various topics (semiconductors, corporate earnings, etc.) but contains zero information regarding RBI foreign exchange measures or the $20.72 billion figure cited in the story."
     },
     {
       "slug": "nestle-india-q1-results",
@@ -180,79 +180,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "bandhan-bank-q1-profit-dips-asset-quality-concerns",
-      "headline": "Why did Bandhan Bank's profits fall despite more loans?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "provisions for potential loan losses, which jumped by 26% annually to ₹1,420 crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions Bandhan Bank's profit decline and asset quality issues but does not contain the specific figure of ₹1,420 crore for provisions.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Net Interest Income (NII), its core earnings from lending, rose by 5.2% to ₹2,852 crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the specific NII figure of ₹2,852 crore or the 5.2% growth rate.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Net Interest Margin (NIM) stood at 7.2%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the NIM figure of 7.2%.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Net NPAs rising to 2.2% from 2.0%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention these specific Net NPA figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "management's decision to cut its Return on Assets (RoA) guidance for FY27 from an earlier projection of 1.5-1.7% to a revised 1.3-1.4%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention RoA guidance figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Advances Growth: 11% (to ₹1.35 lakh crore)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention these specific advances growth figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Deposit Growth: 17% (to ₹1.46 lakh crore)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention these specific deposit growth figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "improvement in the Provision Coverage Ratio (PCR) to 71.9%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the PCR figure of 71.9%.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the headline figures (18% profit decline, ₹663 crore profit, 7.8% GNPA) which are supported by the source text. However, it includes numerous specific financial metrics (NII, NIM, Net NPA, RoA guidance, PCR, and specific advances/deposit totals) that are not present in the provided source article."
-    },
-    {
       "slug": "paras-defence-semiconductor-mp-investment",
       "headline": "Will India's Chips Get A ₹6,200 Crore Boost?",
       "verdict": "UNVERIFIABLE",
@@ -261,13 +188,13 @@
         {
           "claim": "Paras Defence & Space Technologies, through its subsidiary Paras Semiconductors, announced a ₹6,200 crore investment to establish a semiconductor packaging facility in Madhya Pradesh.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the headline of a Business Standard article regarding this investment, but the actual content of that article is not included in the source text provided. The source text only contains a list of unrelated news headlines and snippets.",
+          "detail": "The provided source text (Source 1) is a list of headlines and snippets from a news aggregator page. While the headline of the source page mentions 'Paras Defence arm to invest Rs 6,200 cr in semiconductor packaging facility in Madhya Pradesh', the actual body text of the source does not contain any article content, details, or confirmation of this event.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The source text provided is a collection of unrelated news headlines and snippets from a Business Standard page. While the headline of the article in question is listed, the body text containing the details of the Paras Defence investment is missing, making the claims unverifiable based on the provided input."
+      "notes": "The source text provided is a collection of headlines and snippets from a news website, not the full article. While the headline of the source page mentions the investment, the body text is missing, making it impossible to verify the details of the claim."
     },
     {
       "slug": "e2e-networks-q1-results-ai-cloud",
@@ -293,13 +220,13 @@
         {
           "claim": "India's pharmaceutical exports were valued at over $25 billion in FY26",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the tariff proposal and its impact but does not contain any data regarding the total value of India's pharmaceutical exports in FY26.",
+          "detail": "The provided source text mentions the GTRI report regarding tariffs but does not contain any data or figures regarding the total value of India's pharmaceutical exports in FY26.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the core news regarding the GTRI report and the proposed tariff rates as mentioned in the source. However, it includes a specific export value figure ($25 billion) that is not present in the provided source text."
+      "notes": "The story correctly identifies the core subject matter (the GTRI report on Trump's proposed 200% tariff on generic drugs). However, it includes a specific export value ($25 billion) that is not present in the provided source text."
     }
   ]
 }
