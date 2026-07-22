@@ -1,21 +1,78 @@
 {
   "date": "2026-07-22",
-  "generatedAt": "2026-07-22T02:07:15.087Z",
+  "generatedAt": "2026-07-22T04:04:17.231Z",
   "results": [
     {
       "slug": "indian-banking-npa-drop",
-      "headline": "How did India’s banks slash bad loans by half in five years?",
-      "verdict": "WARN",
+      "headline": "India's Banks Halved Bad Loans. Is Yours Safer?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "From a high of approximately ₹8.28 lakh crore in March 2021",
           "status": "UNVERIFIABLE",
-          "detail": "None of the story's cited source links could be fetched — nothing to verify against.",
+          "detail": "The provided source text (RBI Financial Stability Report, Dec 2022) does not contain any data regarding March 2021 or March 2026 figures.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "aggregate GNPA across public, private, and foreign banks has fallen to an estimated ₹4.00 lakh crore by March 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding March 2026 figures.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "GNPA ratio hitting a multi-decadal low of 1.80% of total advances for SCBs",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding March 2026 figures or a 1.80% ratio.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "consolidated balance sheet expanded by 12.2% in FY23",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding FY23.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "credit grew 14.5% in FY26",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding FY26.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "projects a slight uptick to 1.9% by March 2028",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any projections for March 2028.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "SCBs' net profit increased from ₹2.63 lakh crore in FY23 to ₹4.01 lakh crore in FY25",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding FY23 or FY25 profits.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Gross NPA Ratio (Mar 2026) = 1.73%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding March 2026.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "Absolute Gross NPAs (Mar 2026) = ₹3.75 lakh crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding March 2026.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
+      "notes": "The provided source text is an RBI Financial Stability Report from December 2022. It contains no data for the years 2023, 2024, 2025, 2026, or 2028. Consequently, all claims regarding these dates are unverifiable based on the provided source."
     },
     {
       "slug": "npci-offline-upi-development",
@@ -46,50 +103,6 @@
         }
       ],
       "notes": "No fetchable sources. Re-run with --mode grounded when quota allows, or check the links manually."
-    },
-    {
-      "slug": "sbi-funds-management-ipo-listing",
-      "headline": "SBI Funds IPO Sees Muted Debut, SBI Confirms No Further Stake Sale",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "SBI Funds Management Limited (SBI FML), India's largest asset manager, had its market debut yesterday, listing at ₹613.30 per share on the bourses.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the headline 'No further dilution by SBI in SBI Funds Management: Chairman C S Setty', but does not contain any information regarding an IPO, a listing date, a listing price, or an issue price.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This represented a 6.85% premium over its issue price of ₹574.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an IPO, issue price, or listing premium.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "This IPO follows a trend seen in 2017-2018 when several private sector AMCs like HDFC AMC and ICICI Prudential AMC went public",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention historical IPO trends or specific past IPOs of other AMCs.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "More recently, in 2023-2024, India's primary market saw a surge in IPOs across various sectors",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention IPO trends for 2023-2024.",
-          "correction": null,
-          "source": null
-        },
-        {
-          "claim": "similar to the post-COVID period of 2020, when IPOs were still active but listing pops were less extravagant.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention IPO market conditions in 2020.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "While the source confirms the headline statement regarding no further dilution by SBI, the entire narrative regarding an IPO, listing prices, and historical market trends is completely absent from the provided source text."
     },
     {
       "slug": "mideast-tensions-oil-prices",
@@ -169,18 +182,25 @@
     {
       "slug": "inmobi-ipo-plans-unveiled",
       "headline": "Ad-Tech Giant InMobi Eyes ₹8,300 Crore IPO, Hires Big Banks",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "InMobi's successful listing at a $1 billion valuation (₹8,300 crore) would validate the long-term potential",
+          "claim": "InMobi has initiated its IPO process, appointing major investment banks for a potential $1 billion (approx. ₹8,300 crore) public listing.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a $1 billion IPO target (fundraising amount), not a $1 billion valuation. The source does not provide a valuation figure.",
+          "detail": "The provided source texts do not contain any information regarding InMobi's IPO plans or the appointment of investment banks. Source 1 discusses Adani Total Gas Q1 results, and Source 2 is an unrelated, outdated page about astrological stock tips.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The company has appointed a syndicate of four leading investment banks: JPMorgan Chase & Co., Jefferies Financial Group Inc., Kotak Mahindra Capital Co., and Axis Capital Ltd.",
+          "status": "UNVERIFIABLE",
+          "detail": "No source text mentions these appointments or InMobi.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The central event (InMobi appointing JPMorgan, Jefferies, Kotak, and Axis for a $1 billion IPO) is confirmed by the headline and content of Source 1. However, the story conflates the IPO fundraising target ($1 billion) with the company's valuation in the 'Why It Matters' section, which is not supported by the provided source text."
+      "notes": "The story is entirely unsupported by the provided source texts. The sources provided are completely unrelated to the subject matter of the story (InMobi IPO)."
     },
     {
       "slug": "pli-schemes-investment-jobs",
@@ -189,37 +209,37 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
+          "claim": "cumulative exports originating from these PLI-supported sectors have surpassed ₹15.2 lakh crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the investment and job figures but does not contain any data regarding cumulative exports.",
+          "detail": "The provided source text mentions the ₹2.4 lakh crore investment and 1.4 million jobs, but it does not contain any mention of cumulative exports or the figure ₹15.2 lakh crore.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The headline and core figures regarding investment (₹2.4 lakh crore) and jobs (1.4 million) are verified by the source text. However, the claim regarding ₹15.2 lakh crore in cumulative exports is not mentioned in the provided source."
+      "notes": "The story correctly reports the investment and job creation figures as stated in the source. However, the claim regarding ₹15.2 lakh crore in cumulative exports is not supported by the provided source text."
     },
     {
       "slug": "rbi-forex-inflow-scheme-mobilizes-20-billion",
       "headline": "RBI's Forex Measures Attract $20.72 Billion; Rupee Strengthens?",
-      "verdict": "WARN",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "$20.72 billion",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any $20.72 billion inflow or any specific RBI measures launched in June 2026 to attract foreign exchange.",
+          "detail": "The provided source text does not mention any figure of $20.72 billion or any specific inflow amount resulting from RBI measures.",
           "correction": null,
           "source": null
         },
         {
           "claim": "Measures launched in early June 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the launch of such measures in June 2026.",
+          "detail": "The source text does not mention the launch of any such RBI measures in June 2026.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The story claims a specific $20.72 billion inflow resulting from RBI measures launched in June 2026, but the provided source text contains no mention of these measures or this figure. The source text is a collection of unrelated news headlines and snippets."
+      "notes": "The source text provided is a news aggregator page that does not contain the specific claims regarding the $20.72 billion inflow or the RBI measures mentioned in the story. Consequently, the central event of the story is not supported by the provided source."
     },
     {
       "slug": "wto-india-exports-viksit-bharat-2047-structural-gaps",
@@ -228,21 +248,79 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The WTO's latest trade policy review states India must address high trade costs and infrastructure gaps to achieve its ambitious goal of a 10% share in global merchandise exports by 2047.",
+          "claim": "10% share in global merchandise exports by 2047",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions a WTO report regarding structural gaps for 'Viksit Bharat by 2047', but it does not contain any mention of a 10% global merchandise export share target or a WTO trade policy review discussing such a target.",
+          "detail": "The source text mentions the WTO report discusses structural gaps to realize 'Viksit Bharat by 2047', but it does not contain any mention of a 10% global merchandise export share target set by the WTO or the Indian government.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "The WTO noted that India's current share in global merchandise exports is around 1.8% in 2024.",
+          "claim": "India's current share in global merchandise exports is around 1.8% in 2024",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this figure or any reference to India's current global merchandise export share.",
+          "detail": "The source text does not contain this figure.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "In 2015, India aimed for a 3.5% export share by 2020",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this figure.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "While the source text confirms the WTO discussed structural gaps for 'Viksit Bharat by 2047', the specific figures regarding a 10% export target and a 1.8% current share are not present in the provided source material."
+      "notes": "The source text provided is a news summary that mentions the WTO report's existence but does not contain the specific numerical targets or historical export share figures cited in the story. These figures are therefore unverifiable based on the provided source."
+    },
+    {
+      "slug": "airport-owners-running-airlines",
+      "headline": "Why is India letting airport bosses buy their own airplanes?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "On Wednesday, July 22, 2026, details emerged that the Ministry of Civil Aviation is actively reviewing policies",
+          "status": "WRONG",
+          "detail": "July 22, 2026, is a Wednesday, but the source article was published on that day and does not state that the details 'emerged' on that specific day; it reports that India has initiated talks.",
+          "correction": "The source reports that India has initiated talks, but does not specify that details emerged on July 22, 2026.",
+          "source": "Source 1"
+        },
+        {
+          "claim": "864 lakh: The record number of domestic passengers carried by Indian airlines in the first half of 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any passenger traffic statistics for 2026.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "30%: The potential decrease in airport charges that a vertically integrated operator might offer to its own fleet.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any potential decrease in airport charges or any specific percentage related to this.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "In 2006, the domestic skies were bustling with over half a dozen active airlines including Jet Airways, Kingfisher, Air Sahara, and Deccan Aviation",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the year 2006 or the specific list of airlines provided.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "The civil aviation ministry is expected to float a formal consultation paper for public feedback by next month",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any plans for a consultation paper or a timeline for one.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "In India, a similar pattern played out in the telecom sector after 2016",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the telecom sector or the year 2016.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "The story correctly identifies the core policy discussion regarding airport operators owning airlines. However, it includes several specific statistics and future timelines (passenger numbers, consultation paper dates, historical comparisons) that are entirely absent from the provided source text."
     }
   ]
 }
