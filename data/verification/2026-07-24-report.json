@@ -1,0 +1,303 @@
+{
+  "date": "2026-07-24",
+  "generatedAt": "2026-07-23T22:06:44.651Z",
+  "results": [
+    {
+      "slug": "govt-e-commerce-export-policy",
+      "headline": "Why Is India Forcing Amazon To Pivot Its Export Model?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Industry participants expect the government to set up a digital monitoring system by the end of Q3 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any industry expectations regarding a digital monitoring system or a timeline for its implementation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Recent reports from parliamentary panels and policy study groups have underscored the need for such structural shifts to modernize India's trade infrastructure.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention reports from parliamentary panels or policy study groups.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reflects the core policy change described in the source text. However, it includes speculative claims regarding the timeline for monitoring systems and the existence of specific parliamentary reports that are not supported by the provided source."
+    },
+    {
+      "slug": "oil-price-surge-red-sea-tensions",
+      "headline": "Why Is India's Oil Market Nervous About West Asia?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "On Thursday, domestic equity markets in India extended their losing streak to the fourth consecutive session, largely due to the twin pressures of FPI (Foreign Portfolio Investor) selling and the anxiety surrounding imported inflation.",
+          "status": "UNVERIFIABLE",
+          "detail": "While Source 1 mentions 'Markets fall for fourth session' in a 'More From This Section' sidebar, the provided source text does not explicitly confirm that the streak was caused by 'FPI selling' or 'anxiety surrounding imported inflation'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The central government and the RBI have acknowledged the threat, noting that while the domestic economy has robust activity, a sustained rise in oil prices creates a 'headwind' that could offset the progress made in stabilizing local inflation.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any statements from the RBI or the Indian central government regarding this specific oil price surge or its impact on inflation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The RBI's recent assessment clearly flagged energy costs as a primary risk, making this specific market movement a flashpoint for economic policy debate in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any recent RBI assessment or mention of an economic policy debate regarding this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the primary event (Brent crude crossing $100 due to Houthi attacks). However, it attributes specific policy assessments and economic commentary to the RBI and the Indian government that are not present in the provided source texts."
+    },
+    {
+      "slug": "pnb-quantum-hub",
+      "headline": "Why Is PNB Partnering For A Quantum Finance Hub?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "ai-manufacturing-data-gap",
+      "headline": "Why Is India's Manufacturing AI Spending Outpacing Its Data?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "silver-import-crash",
+      "headline": "Why Did India's Silver Imports Crash 96% In Five Months?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Electronics and solar power manufacturing",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions 'jewelry, silverware, industrial use' as drivers of demand, but does not explicitly list 'electronics' or 'solar power manufacturing' as the sectors affected by the supply restriction.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core figures regarding the import decline (747 tonnes in January to 29 tonnes in June) and the policy rationale are verified by the source. The quiz claim regarding specific sectors (electronics and solar) is plausible but not supported by the provided text."
+    },
+    {
+      "slug": "banks-dollar-bond-plans",
+      "headline": "Why Are Indian Banks Reviving Their Dollar Bond Plans?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "us-temporary-tariff-expires-india",
+      "headline": "Why Indian exporters are sweating over a US tariff deadline",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "$75 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text explicitly states India's merchandise exports to the US are USD 87.2 billion. The figure of $75 billion is not mentioned in the provided source texts.",
+          "correction": "87.2 billion",
+          "source": "Source 1",
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "150% surge in global container shipping costs",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention shipping costs or a 150% surge.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Indian exporters operate on razor-thin operating margins of 5% to 8%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention the operating margins of Indian exporters.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core event (the expiry of the 10% tariff) and the timeline. However, it includes several specific figures regarding export volume and business margins that are not supported by the provided source texts."
+    },
+    {
+      "slug": "india-myanmar-rare-earths-china",
+      "headline": "Why India is quietly teaming up with Myanmar for rare earths",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "70%: China's current control over global rare earth mining operations",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 70% figure for global mining control.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "90%: The share of global rare earth magnet production concentrated in Chinese facilities",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 90% figure for global magnet production.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "17: The number of critical metallic elements classed as rare earths",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the number 17 in relation to rare earth elements.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "one kilogram of rare earth magnets (per EV motor)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the weight of magnets required for an EV motor.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "2010 Senkaku Islands dispute",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 2010 Senkaku Islands dispute.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story correctly identifies the core event (India-Myanmar rare earth cooperation) and the 1,600 km border length. However, it includes several specific statistics (70%, 90%, 17 elements, 1kg per motor) and historical references (2010 Senkaku dispute) that are not present in the provided source text."
+    },
+    {
+      "slug": "sebi-slashes-upfront-trading-margin",
+      "headline": "Why SEBI is suddenly planning to slash stock trading margins",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "indigo-q1-net-loss-fuel-costs",
+      "headline": "Why did IndiGo crash into a massive ₹2,380 crore loss?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "70+",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions a net decrease of 9 passenger aircraft and a total fleet count of 432, but it does not state that 70+ aircraft are grounded.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "$100+",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions elevated fuel costs but does not provide specific Brent crude oil price figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "40%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the percentage of operating expenses represented by aviation turbine fuel.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central financial figures (net loss and year-on-year comparison) are verified against the source. However, the story includes specific operational and macroeconomic figures (grounded aircraft count, oil prices, and fuel cost percentages) that are not present in the provided source text."
+    },
+    {
+      "slug": "servicenow-invests-businessnext-banking",
+      "headline": "Why ServiceNow is putting $40 million into Indian banking tech",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "ntpc-green-energy-q1-results",
+      "headline": "NTPC Green Energy Reports 38% Profit Surge Amid Expansion",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "What is the primary factor driving the company's financial growth? — stated correct answer: \"Renewable energy capacity deployment\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text attributes the financial performance to strong Q1 earnings and operational efficiencies, but it does not explicitly identify 'renewable energy capacity deployment' as the primary factor driving the growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core financial figures (38% profit growth, 63% revenue growth, 9% share price gain) are correctly reported. The quiz claim regarding the 'primary factor' is not explicitly supported by the provided source text."
+    },
+    {
+      "slug": "sebi-portfolio-management-overseas-investing",
+      "headline": "India's SEBI Proposes Easing Portfolio Manager Overseas Investment Rules",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
