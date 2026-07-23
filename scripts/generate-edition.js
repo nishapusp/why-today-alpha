@@ -41,6 +41,7 @@ const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
 const { fetchStorySources, verifyStoryAgainstSources, enrichStoryWithSourceFigures, checkSourceRecency } = require("./verify-edition.js");
+const { archiveOutgoingEdition } = require("./archive-edition.js");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
@@ -1141,6 +1142,29 @@ async function main() {
 
   // --- Resume support -----------------------------------------------------
   let edition = loadExistingEdition();
+
+  // loadExistingEdition() silently discards whatever is on disk if its date
+  // isn't today — that happens whenever this run fires before roll-date.js
+  // has rolled the date over (e.g. a manual dispatch shortly after midnight
+  // IST). That discarded content can be a previous day's FINISHED edition
+  // that was never archived. Archive it now, exactly like roll-date.js would
+  // have at midnight, so a race between the two never loses a day again
+  // (this is what silently dropped 2026-07-18 through 2026-07-22).
+  if (!edition) {
+    try {
+      if (fs.existsSync(EDITION_PATH)) {
+        const onDisk = JSON.parse(fs.readFileSync(EDITION_PATH, "utf8"));
+        if (onDisk?.date && onDisk.date !== today && archiveOutgoingEdition(onDisk)) {
+          const cwd = path.join(__dirname, "..");
+          execSync("git add data/archive", { stdio: "inherit", cwd });
+          execSync(`git commit -m "Archive ${onDisk.date} edition (found un-rolled at start of ${today}'s run)"`, { stdio: "inherit", cwd });
+        }
+      }
+    } catch (err) {
+      console.error(`Could not archive outgoing edition before starting ${today}'s run: ${err.message}`);
+    }
+  }
+
   const seenHeadlines = [];
   const recentHeadlines = loadRecentArchiveHeadlines(today, DEDUP_LOOKBACK_DAYS);
   if (recentHeadlines.length) {
