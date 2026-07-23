@@ -1,6 +1,6 @@
 {
   "date": "2026-07-23",
-  "generatedAt": "2026-07-23T10:09:29.677Z",
+  "generatedAt": "2026-07-23T11:08:21.997Z",
   "results": [
     {
       "slug": "india-space-startup-ecosystem-growth",
@@ -201,13 +201,29 @@
         {
           "claim": "25.08% increase in Total Operating Income, which reached ₹2,024.92 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Total Operating Income or the figure ₹2,024.92 crore.",
+          "detail": "The source text mentions Ujjivan Small Finance Bank's net profit growth but does not contain any data regarding 'Total Operating Income' or the figure ₹2,024.92 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Net Interest Margin (NIM) remained stable at 9.3%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the bank's Net Interest Margin (NIM) or the figure 9.3%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "deposit and advances growth, currently at 25% and 28% respectively",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention deposit growth figures; it only mentions the net profit growth.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central claim regarding the 206.67% profit growth and the specific profit figures are verified by the source. However, the story includes a specific figure for 'Total Operating Income' that is not present in the provided source text."
+      "notes": "The story correctly identifies the net profit, profit growth, NII growth, and NPA figures as reported in the source. However, it includes several specific financial metrics (Total Operating Income, NIM, and deposit growth) that are not present in the provided source text."
     },
     {
       "slug": "equinix-india-data-center-expansion",
