@@ -1,6 +1,6 @@
 {
   "date": "2026-07-23",
-  "generatedAt": "2026-07-23T06:16:12.479Z",
+  "generatedAt": "2026-07-23T08:51:54.784Z",
   "results": [
     {
       "slug": "india-space-startup-ecosystem-growth",
@@ -101,7 +101,7 @@
         {
           "claim": "On Wednesday, the Reserve Bank of India published its monthly remittance data for May 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) lists 'Developments in India’s Balance of Payments for the Month of May 2026' as a document, but does not contain the specific remittance figures or the date of publication for such data.",
+          "detail": "The provided source text (RBI website) does not contain a report or data release confirming that the RBI published monthly remittance data for May 2026 on Wednesday, July 22, 2026.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -109,13 +109,13 @@
         {
           "claim": "This represents a 3.6% increase compared to the $2.31 billion remitted in May of the previous year.",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not contain the specific remittance figures for May 2026 or May 2025.",
+          "detail": "The provided source text does not contain data regarding May 2025 remittances or a year-on-year comparison for May 2026.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story cites specific RBI remittance data that is not present in the provided source texts. While the RBI website is linked, the actual data tables or reports containing these figures were not included in the source material provided for verification."
+      "notes": "The story cites specific RBI data points that are not present in the provided source text. While the RBI website is provided as a source, it does not contain the specific remittance figures or the publication event mentioned in the story."
     },
     {
       "slug": "indo-mim-ipo-opens-subscription-grey-market-premium",
@@ -191,6 +191,56 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "ujjivan-sfbs-q1-profit-surge",
+      "headline": "How Did This Small Bank Triple Its Profits So Fast?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Total Operating Income, which reached ₹2,024.92 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Ujjivan Small Finance Bank's net profit and NII, but does not contain any data regarding 'Total Operating Income' or the figure ₹2,024.92 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Net Interest Margin (NIM) remained stable at 9.3%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the bank's Net Interest Margin (NIM) or the figure 9.3%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central claim regarding the 206.67% profit surge and the specific net profit figures for Q1 FY27 and Q1 FY26 are verified by the source. However, the story includes several specific financial metrics (Total Operating Income and NIM) that are not present in the provided source text."
+    },
+    {
+      "slug": "equinix-india-data-center-expansion",
+      "headline": "Why Is India's Digital Backbone Tripling In Size?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Equinix plans to nearly triple its data center capacity in India by 2028, expanding to 270 MW from its current 90 MW.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a list of press release titles and dates from the Equinix website; it contains no mention of expansion plans, capacity figures (90 MW or 270 MW), or future targets.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Equinix entered the Indian market in 2021 by acquiring the India operations of GPX Global Systems Inc.",
+          "status": "VERIFIED",
+          "detail": "The source text title explicitly states: 'Equinix Completes Acquisition of GPX India Operations' and the date is 2021.",
+          "correction": null,
+          "source": "Source 1",
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The source text provided is a list of press release headlines and does not contain the specific operational data (90 MW, 270 MW, 2028 targets) cited in the story. While the 2021 acquisition date is verified by the source title, the core claims regarding current and future capacity are entirely unsupported by the provided text."
     }
   ]
 }
