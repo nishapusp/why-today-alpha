@@ -1,6 +1,6 @@
 {
   "date": "2026-07-23",
-  "generatedAt": "2026-07-23T04:00:27.095Z",
+  "generatedAt": "2026-07-23T06:16:12.479Z",
   "results": [
     {
       "slug": "india-space-startup-ecosystem-growth",
@@ -101,7 +101,7 @@
         {
           "claim": "On Wednesday, the Reserve Bank of India published its monthly remittance data for May 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (RBI website) does not contain a report or press release confirming the publication of May 2026 remittance data on Wednesday, July 22, 2026.",
+          "detail": "The provided source text (Source 1) lists 'Developments in India’s Balance of Payments for the Month of May 2026' as a document, but does not contain the specific remittance figures or the date of publication for such data.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -109,13 +109,13 @@
         {
           "claim": "This represents a 3.6% increase compared to the $2.31 billion remitted in May of the previous year.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain the specific May 2026 or May 2025 remittance figures.",
+          "detail": "The source texts do not contain the specific remittance figures for May 2026 or May 2025.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story cites specific RBI remittance data that is not present in the provided source texts. While the RBI website is listed as a source, the actual data points regarding May 2026 LRS outflows are not contained within the provided text."
+      "notes": "The story cites specific RBI remittance data that is not present in the provided source texts. While the RBI website is linked, the actual data tables or reports containing these figures were not included in the source material provided for verification."
     },
     {
       "slug": "indo-mim-ipo-opens-subscription-grey-market-premium",
@@ -131,64 +131,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "bandhan-bank-shares-plunge",
-      "headline": "Why did a 35% profit jump make this bank's stock crash?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This sharp decline contrasted sharply with other major private banks, such as HDFC Bank and ICICI Bank, which have managed to maintain stable profitability outlooks despite systemic pressures on deposit mobilization and rising credit costs.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention HDFC Bank, ICICI Bank, or their profitability outlooks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The bank's micro-banking loan book showed signs of rising pressure, reflecting broader stress in the rural economy.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions sequential contraction in the microfinance book but does not explicitly link this to 'broader stress in the rural economy'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "When rural incomes slow down—as highlighted by recent NABARD surveys showing rural income growth at a two-year low—the microfinance sector is always the first to feel the pain.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention NABARD surveys or rural income growth statistics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story accurately reports the core financial figures and the reason for the stock decline as per the source. However, it includes several external claims regarding other banks and macroeconomic data (NABARD surveys) that are not present in the provided source text."
-    },
-    {
-      "slug": "pharma-stocks-slide-trump-tariffs",
-      "headline": "Why did a US presidential threat send Indian pharma stocks sliding?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India currently supplies nearly 40% of the volume of generic medicines consumed in the United States.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions India's role as a supplier of affordable medicines but does not provide the specific 40% figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This historical policy backfired spectacularly, triggering retaliatory tariffs from trading partners, worsening the Great Depression, and causing global trade to plunge by nearly 66%.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any information regarding the Smoot-Hawley Tariff Act or its historical impact on global trade.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story correctly identifies the core event (Trump's tariff proposal) and the market reaction as reported in the source. However, it includes specific statistics (40% market share and 66% global trade decline) that are not present in the provided source text."
     },
     {
       "slug": "silver-imports-crash-96-percent",
@@ -223,6 +165,21 @@
     {
       "slug": "hcltech-ai-data-centre-odisha",
       "headline": "Why Is HCLTech Building India's First AI-Focused Data Centre?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "inmobi-ipo-banks",
+      "headline": "InMobi appoints four banks for proposed $1 billion IPO",
       "verdict": "WARN",
       "issues": [
         {
