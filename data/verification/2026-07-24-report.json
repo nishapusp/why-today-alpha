@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "generatedAt": "2026-07-24T11:18:38.241Z",
+  "generatedAt": "2026-07-24T12:51:28.174Z",
   "results": [
     {
       "slug": "govt-e-commerce-export-policy",
@@ -158,9 +158,9 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "10s of thousands of crore rupees are currently estimated to be lying dormant in unclaimed accounts.",
+          "claim": "100% standardization of documentation is now mandatory across all stock registries.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the headline of the article but does not contain any data or estimates regarding the total value of unclaimed financial assets.",
+          "detail": "The source text mentions that SEBI 'standardises documentation requirements' and 'standardised list of documentation', but it does not quantify this as '100%'.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -168,13 +168,13 @@
         {
           "claim": "Unclaimed financial assets = ₹50,000 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this figure or any specific monetary estimate for unclaimed assets.",
+          "detail": "The source text mentions 'tens of thousands of crore rupees' are lying dormant, but it does not specify the figure of ₹50,000 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the SEBI policy announcement and its purpose as described in the source. However, it includes specific monetary estimates for unclaimed assets that are not present in the provided source text."
+      "notes": "The story accurately reflects the core regulatory changes described in the source text. However, it introduces specific numerical quantifications ('100%' and '₹50,000 crore') that are not present in the provided source material."
     },
     {
       "slug": "airtel-africa-ipo-delay",
