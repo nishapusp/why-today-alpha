@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "generatedAt": "2026-07-24T00:23:53.004Z",
+  "generatedAt": "2026-07-24T03:51:33.126Z",
   "results": [
     {
       "slug": "govt-e-commerce-export-policy",
@@ -158,15 +158,23 @@
       "centralEventConfirmed": true,
       "issues": [
         {
+          "claim": "100% standardization of documentation is now mandatory across all stock registries.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that SEBI 'standardises documentation requirements' and 'standardised list of documentation', but it does not quantify this as '100%'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
           "claim": "Unclaimed financial assets = ₹50,000 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the figure of ₹50,000 crore regarding unclaimed financial assets.",
+          "detail": "The source text mentions 'tens of thousands of crore rupees' are lying dormant, but it does not provide the specific figure of ₹50,000 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central event regarding SEBI's new security transmission rules is confirmed by the source. However, the specific figure of ₹50,000 crore for unclaimed assets is not mentioned in the provided text."
+      "notes": "The central event regarding SEBI's new security transmission rules is supported by the source. However, the story includes specific quantitative claims (100% standardization and the ₹50,000 crore figure) that are not present in the provided source text."
     },
     {
       "slug": "airtel-africa-ipo-delay",
@@ -184,63 +192,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "us-india-tariffs-section301",
-      "headline": "Why did the US slap a 10% import tax on India?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This announcement came just a day before the existing temporary 10% additional levies were set to expire on Friday morning.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the new tariffs come into effect on Friday, but it does not mention the existence of prior temporary levies or their expiration dates.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This move directly targets India's massive trade surplus with the US, which stood at over $30 billion last year.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention India's trade surplus or any specific dollar amount regarding it.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The US is India's largest single-country trading partner, with bilateral trade crossing $120 billion annually.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the status of the US as a trading partner or the $120 billion figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Sectors like handlooms and leather goods operate on thin margins of 5% to 8%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention specific profit margins for handloom or leather sectors.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Exporters have until next month to submit detailed representations on how the tariffs affect their supply chains.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any deadline or process for exporters to submit representations.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "That decision stripped tax-free access for $5.6 billion of Indian exports",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the 2019 GSP event but does not cite the $5.6 billion figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story correctly identifies the core event (Section 301 tariffs on India at 10% due to forced labor concerns), but it includes significant amounts of specific economic data and procedural details that are not present in the provided source text."
-    },
-    {
       "slug": "crude-oil-crosses-100-red-sea",
       "headline": "Why is crude oil suddenly trading back above $100?",
       "verdict": "WARN",
@@ -254,88 +205,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "indigo-q1-fy27-net-loss",
-      "headline": "Why did IndiGo plunge into a massive Q1 loss?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 70 Airbus aircraft remain grounded due to engine defects.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a net decrease of 9 passenger aircraft and a total fleet count of 432, but it does not mention the specific figure of 70 grounded aircraft.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Aviation turbine fuel costs rose by over 15% tracking global oil.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions elevated fuel costs but does not provide a specific percentage increase of 15%.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "IndiGo... controlling over 60% of the domestic sky.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention IndiGo's domestic market share percentage.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "When an airline ground nearly one-fifth of its fleet",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not state that one-fifth of the fleet is grounded.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "When combined with Brent crude crossing $100",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Brent crude prices or the $100 threshold.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly reports the financial results (net loss and profit) as stated in the source. However, it includes several specific operational and market figures (grounded aircraft count, fuel cost percentage, market share, and oil price) that are not present in the provided source text."
-    },
-    {
-      "slug": "india-myanmar-rare-earths-partnership",
-      "headline": "Why is India quietly securing rare earths from Myanmar?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The Indian government has identified 30 critical minerals, including lithium, cobalt, and neodymium, as vital for the nation's economic security and green energy transition.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the number 30 or a specific list of critical minerals identified by the Indian government.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Refined rare earths are the foundation of India's ₹24 lakh crore electronics manufacturing goal.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention a ₹24 lakh crore electronics manufacturing goal.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This mineral race echoes the 2010 Senkaku Islands dispute, when China blocked rare earth exports to Japan during a diplomatic standoff.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the 2010 Senkaku Islands dispute or the Japan rare earth embargo.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story correctly identifies the core event (India-Myanmar rare earth cooperation) and the 90% figure for Chinese magnet production, but includes several specific figures and historical references that are not present in the provided source text."
     }
   ]
 }
