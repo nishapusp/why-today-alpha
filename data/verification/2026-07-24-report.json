@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "generatedAt": "2026-07-24T14:54:21.313Z",
+  "generatedAt": "2026-07-24T16:42:08.550Z",
   "results": [
     {
       "slug": "govt-e-commerce-export-policy",
@@ -154,13 +154,13 @@
     {
       "slug": "sebi-fast-track-security-transmission",
       "headline": "Why is SEBI fast-tracking the transfer of family inheritance shares?",
-      "verdict": "WARN",
+      "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
           "claim": "100% standardization of documentation is now mandatory across all stock registries.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that SEBI introduced a standardized list of documentation and that the policy standardises requirements, but it does not explicitly state that '100%' standardization is mandatory.",
+          "detail": "The source text mentions SEBI eased rules and introduced a fast-track mechanism, but it does not contain the specific claim that '100% standardization' is now mandatory.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -168,13 +168,29 @@
         {
           "claim": "Unclaimed financial assets = ₹50,000 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions 'tens of thousands of crore rupees' are lying dormant, but it does not provide the specific figure of ₹50,000 crore.",
+          "detail": "The source text mentions 'tens of thousands of crore rupees' are lying dormant, but it does not specify the figure of ₹50,000 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
+        },
+        {
+          "claim": "Compared to 2022, when SEBI first raised the monetary threshold for simplified transmission",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any SEBI action or threshold changes occurring in 2022.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "It matches the philosophy behind the 2015 launch of the DigiLocker platform",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the DigiLocker platform or the year 2015.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
         }
       ],
-      "notes": "The story accurately reflects the core regulatory announcement regarding SEBI's new security transmission framework. However, it includes specific quantitative figures (100% standardization and ₹50,000 crore) that are not present in the provided source text."
+      "notes": "While the central event (SEBI easing transmission rules) is confirmed by the source, the story includes several specific figures and historical references (₹50,000 crore, 2022 threshold changes, 2015 DigiLocker) that are not present in the provided source text."
     },
     {
       "slug": "airtel-africa-ipo-delay",
