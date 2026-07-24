@@ -1,6 +1,6 @@
 {
   "date": "2026-07-24",
-  "generatedAt": "2026-07-24T03:51:33.126Z",
+  "generatedAt": "2026-07-24T03:59:47.151Z",
   "results": [
     {
       "slug": "govt-e-commerce-export-policy",
@@ -160,7 +160,7 @@
         {
           "claim": "100% standardization of documentation is now mandatory across all stock registries.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that SEBI 'standardises documentation requirements' and 'standardised list of documentation', but it does not quantify this as '100%'.",
+          "detail": "The source text mentions SEBI eased rules and standardized documentation, but it does not quantify this as '100%'.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -168,13 +168,13 @@
         {
           "claim": "Unclaimed financial assets = ₹50,000 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions 'tens of thousands of crore rupees' are lying dormant, but it does not provide the specific figure of ₹50,000 crore.",
+          "detail": "The source text mentions 'tens of thousands of crore rupees' but does not provide the specific figure of ₹50,000 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central event regarding SEBI's new security transmission rules is supported by the source. However, the story includes specific quantitative claims (100% standardization and the ₹50,000 crore figure) that are not present in the provided source text."
+      "notes": "The central event regarding SEBI's new security transmission rules is confirmed by the source. However, the story includes specific figures (100% standardization and ₹50,000 crore) that are not present in the provided source text."
     },
     {
       "slug": "airtel-africa-ipo-delay",
@@ -194,6 +194,36 @@
     {
       "slug": "crude-oil-crosses-100-red-sea",
       "headline": "Why is crude oil suddenly trading back above $100?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "manipal-health-ipo-valuation",
+      "headline": "India's Manipal Health aims for huge $8 billion IPO valuation?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "infosys-q1-results-and-ceo-change",
+      "headline": "Infosys names new CEO, but why did its profit disappoint?",
       "verdict": "WARN",
       "issues": [
         {
