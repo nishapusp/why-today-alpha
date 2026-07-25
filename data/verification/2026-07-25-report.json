@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T09:24:42.939Z",
+  "generatedAt": "2026-07-25T10:18:46.596Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -158,39 +158,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "credit-card-spending-growth-jun-2026",
-      "headline": "Why are Indians charging a record ₹2 trillion to credit cards?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Overall spending grew by 9.8% compared to June of the previous year",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the ₹2 trillion figure but does not contain any data regarding a 9.8% year-on-year growth rate.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "121.6 million active credit cards currently in circulation across India",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the total number of active credit cards in India.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This expansion was led by market leaders HDFC Bank and SBI Card",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not identify which banks led the expansion in credit card spending.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the ₹2 trillion spending milestone reported in the source, but includes several specific statistics (9.8% growth, 121.6 million cards, and market leadership by HDFC/SBI) that are not present in the provided source text."
-    },
-    {
       "slug": "sebi-ban-viresh-joshi-axis-mutual-fund",
       "headline": "Why did SEBI ban a top mutual fund dealer for seven years?",
       "verdict": "WARN",
@@ -229,13 +196,13 @@
         {
           "claim": "Number of FIRs in Delhi protest: 13",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any FIRs or protests in Delhi, nor any specific count of 13.",
+          "detail": "The provided source text does not mention any FIRs or protests in Delhi, nor any specific count of FIRs related to protests.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the geopolitical context provided in the source text regarding the Middle East conflict and oil prices. However, it includes a specific claim about '13 FIRs' in a Delhi protest that is entirely absent from the provided source material."
+      "notes": "The story accurately reflects the geopolitical tensions and market impacts described in the source text. However, it includes a specific statistic regarding '13 FIRs' in Delhi that is entirely absent from the provided source material."
     },
     {
       "slug": "rec-first-quarter-profit-declines",
@@ -243,7 +210,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific financial figures, including the net profit, total income, percentage decline, and dividend amount, are accurately reflected in the provided source text."
+      "notes": "All specific financial figures, percentages, and corporate actions mentioned in the story are supported by the provided source text."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
