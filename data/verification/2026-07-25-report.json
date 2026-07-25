@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T06:17:42.165Z",
+  "generatedAt": "2026-07-25T09:24:42.939Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -172,15 +172,23 @@
           "inBroaderConnections": false
         },
         {
-          "claim": "the total number of active credit cards in the country scaled to 121.6 million",
+          "claim": "121.6 million active credit cards currently in circulation across India",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the figure of 121.6 million active credit cards.",
+          "detail": "The provided source text does not mention the total number of active credit cards in India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This expansion was led by market leaders HDFC Bank and SBI Card",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not identify which banks led the expansion in credit card spending.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the ₹2 trillion spending milestone reported in the source, but includes specific growth percentages and card base figures that are not present in the provided source text."
+      "notes": "The story correctly identifies the ₹2 trillion spending milestone reported in the source, but includes several specific statistics (9.8% growth, 121.6 million cards, and market leadership by HDFC/SBI) that are not present in the provided source text."
     },
     {
       "slug": "sebi-ban-viresh-joshi-axis-mutual-fund",
@@ -216,26 +224,18 @@
       "slug": "middle-east-war-jolts-oil-prices-china-pushes-for-peace",
       "headline": "Middle East War Jolts Oil Prices, China Pushes For Peace",
       "verdict": "WARN",
-      "centralEventConfirmed": false,
+      "centralEventConfirmed": true,
       "issues": [
-        {
-          "claim": "Brent crude oil to trade above $100 a barrel",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a forecast that Red Sea and Hormuz risks 'may push Brent to $120', but does not report that it is currently trading above $100.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
         {
           "claim": "Number of FIRs in Delhi protest: 13",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any FIRs or a Delhi protest involving 13 FIRs.",
+          "detail": "The provided source text does not mention any FIRs or protests in Delhi, nor any specific count of 13.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story fabricates specific data points (Brent price levels and FIR counts) that are not present in the provided source text. While the source discusses general geopolitical tensions, it does not confirm the specific military escalations or price benchmarks cited in the story."
+      "notes": "The story accurately reflects the geopolitical context provided in the source text regarding the Middle East conflict and oil prices. However, it includes a specific claim about '13 FIRs' in a Delhi protest that is entirely absent from the provided source material."
     },
     {
       "slug": "rec-first-quarter-profit-declines",
@@ -243,7 +243,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific financial figures, percentages, and corporate actions mentioned in the story are supported by the provided source text."
+      "notes": "All specific financial figures, including the net profit, total income, percentage decline, and dividend amount, are accurately reflected in the provided source text."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
