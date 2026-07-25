@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T12:48:06.919Z",
+  "generatedAt": "2026-07-25T14:33:45.444Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -190,27 +190,10 @@
     {
       "slug": "rec-first-quarter-profit-declines",
       "headline": "REC's First Quarter Profit Declines 6%, Declares Dividend",
-      "verdict": "WARN",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The company reported a consolidated net profit of ₹4,192.76 crore, which is a 6.11% decrease compared to the ₹4,465.71 crore recorded in the corresponding quarter of the previous fiscal year.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text (Source 1) mentions the headline 'REC Q1 PAT declines 6% yoy to Rs 4,193 crore' but does not contain the specific figures ₹4,192.76 crore, ₹4,465.71 crore, or the 6.11% calculation.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "REC's total income showed robust growth, increasing by 15.11% to reach ₹13,296.86 crore in Q1 FY27.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain the figure ₹13,296.86 crore or the 15.11% growth rate.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story contains specific financial figures that are not present in the provided source text. While the headline of the source confirms a decline of approximately 6% and a profit of approximately Rs 4,193 crore, the precise decimals and the total income figures are not supported by the provided source."
+      "issues": [],
+      "notes": "All specific financial figures, percentages, and corporate actions mentioned in the story are supported by the provided source text."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
@@ -226,6 +209,71 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "idfc-first-bank-q1-fy27-results",
+      "headline": "IDFC First Bank's Profit Explodes, Beating Expectations. Why?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "132.4% jump in net profit",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions a PAT of Rs 1,075 crore and a drop in provisions, but does not contain the percentage growth figure or the prior year's profit figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "net interest income (NII), its core earning, also grew substantially by 25.5% to ₹4,890 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention NII figures or growth percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Gross NPAs falling to 1.78% from 2.05% sequentially",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention NPA percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "retail loan book grew by 23% year-on-year",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention retail loan book growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "operating income to ₹8,282 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention operating income figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Advances Growth: 20% YoY",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention advances growth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Provision Coverage Ratio (PCR) of 75.6%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention PCR figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "While the headline figure of Rs 1,075 crore PAT is verified by the source, the story includes numerous specific financial metrics (NII, NPA, growth percentages, PCR) that are entirely absent from the provided source text."
     }
   ]
 }
