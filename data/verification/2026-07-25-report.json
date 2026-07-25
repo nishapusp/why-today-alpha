@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T16:56:44.876Z",
+  "generatedAt": "2026-07-25T18:01:25.081Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -211,21 +211,21 @@
         {
           "claim": "The bank's operating income also saw a significant boost, rising by 23.36% to ₹8,282 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the net profit and the percentage drop in provisions, but it does not contain any information regarding the bank's operating income or the figure of ₹8,282 crore.",
+          "detail": "The source text mentions the net profit and the drop in provisions, but it does not contain any information regarding the bank's operating income or the figure of ₹8,282 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "For the first quarter of FY27, IDFC First Bank recorded a consolidated net profit of ₹1,075 crore, marking a 132.4% increase compared to ₹462.5 crore in Q1 FY26.",
+          "claim": "compared to ₹462.5 crore in Q1 FY26",
           "status": "UNVERIFIABLE",
-          "detail": "The source text confirms the net profit of ₹1,075 crore and the 132% growth, but it does not mention the specific figure of ₹462.5 crore for Q1 FY26.",
+          "detail": "The source text confirms the net profit of ₹1,075 crore for Q1 FY27, but it does not mention the Q1 FY26 profit figure of ₹462.5 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central claim regarding the net profit and the drop in provisions is verified by the source. However, the story includes specific financial figures (operating income, previous year's profit) that are not present in the provided source text."
+      "notes": "The central claim regarding the net profit of ₹1,075 crore and the drop in provisions is verified by the source. However, the story includes specific financial figures for operating income and prior-year profit that are not present in the provided source text."
     },
     {
       "slug": "phonepe-fy26-financials-ipo",
@@ -241,6 +241,47 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "au-small-finance-bank-q1-profit-surge",
+      "headline": "Why Did AU Small Finance Bank's Profit Suddenly Jump 37%?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "AU Small Finance Bank reported a strong 37.03% increase in net profit for the first quarter of FY27, reaching ₹795.95 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) contains a headline stating 'AU SFB Q1 PAT climbs 37% YoY to Rs 796 cr', but the body of the source text is truncated and does not contain the specific figures (795.95 crore, 37.03%, 580.85 crore, 2,695 crore, or 2.1%) mentioned in the story.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This represents a robust increase of 37.03% compared to ₹580.85 crore in the same quarter last year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain these specific figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The bank's core income, Net Interest Income (NII), also saw a substantial rise of 32%, climbing to ₹2,695 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain these specific figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Furthermore, the bank demonstrated improved asset quality, with its Gross Non-Performing Assets (GNPAs) reducing to 2.1%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this specific figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story reports specific financial figures that are not present in the provided source text. While the headline of the source text confirms a 37% rise and a profit of Rs 796 crore, the granular details (decimals, NII, GNPA) are missing from the provided source material."
     }
   ]
 }
