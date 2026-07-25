@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T00:29:03.015Z",
+  "generatedAt": "2026-07-25T03:58:05.756Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -73,47 +73,6 @@
       "notes": "The story correctly cites the Colliers report regarding GCC office space leasing. However, it includes specific statistics regarding global data generation and a specific investment figure for HCLTech that are not present in the provided source material."
     },
     {
-      "slug": "india-private-sector-slowdown",
-      "headline": "Why Is India's Private Sector Activity Slowing Down So Much?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "India's private sector activity has slumped to a four-year low in July",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text (RBI website) does not contain any data or reports regarding the Flash Composite Purchasing Managers' Index (PMI) or any private sector activity indices.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Flash PMI (July 2026) = 53.8",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention PMI data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Crude Oil Price (July 2026) = >$100",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention crude oil prices.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The market's recent five-day losing streak",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention market performance trends or losing streaks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story relies entirely on external data (PMI, oil prices, market trends) that is not present in the provided RBI source text. While the RBI source provides current policy rates and exchange rates, it does not confirm the central event of the story."
-    },
-    {
       "slug": "hindustan-zinc-q1-results",
       "headline": "Why Did Hindustan Zinc's Profit Suddenly Double?",
       "verdict": "WARN",
@@ -127,47 +86,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "india-stock-market-losing-streak",
-      "headline": "Why Is India's Stock Market Facing A 5-Day Losing Streak?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Indian benchmark indices, the Sensex and Nifty, extended their losing streak to five consecutive sessions, registering their longest such run in over six months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a landing page for the National Stock Exchange (NSE) and contains no market news, index performance data, or historical analysis regarding a five-day losing streak.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The Sensex shed 332 points, or 0.43%, to close at 76,059.77, while the Nifty slipped 102.15 points, or 0.43%, settling at 23,767.45.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain specific index closing data or daily performance metrics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "approximately ₹5 lakh crore wiped off",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain data regarding market capitalization erosion or investor wealth.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "global crude oil prices remaining stubbornly above $100 per barrel",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding global crude oil prices.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The provided source text is a generic NSE India landing page and does not contain any of the specific market data, index values, or economic claims made in the story. Consequently, all factual claims are unverifiable based on the provided source."
     },
     {
       "slug": "us-imposes-tariffs-on-india",
@@ -193,186 +111,6 @@
         }
       ],
       "notes": "The story accurately captures the core details regarding the Section 301 tariff, the 10% rate, and the context of forced labor investigations. However, it includes specific historical claims about a Supreme Court ruling and the duration of the previous tariff framework that are not supported by the provided source material."
-    },
-    {
-      "slug": "bnp-paribas-acquires-indiafirst-life-stake",
-      "headline": "Why is a French giant buying into an Indian insurer?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "₹59,289 crore represents the massive scale of Indian infrastructure assets currently drawing foreign direct investment.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this figure or any specific value regarding Indian infrastructure assets.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Bank of Baroda’s extensive network of over 8,000 retail branches",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions Bank of Baroda has an 'extensive distribution franchise' but does not specify the number of branches.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The deal will go before the IRDAI for official regulatory approval, which is expected by the end of the third quarter of FY27.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text states the transaction is subject to regulatory approvals but does not provide a timeline for when they are expected.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Why are foreign insurers highly interested in the Indian insurance market? — stated correct answer: 'India's low insurance penetration and rising middle-class income offer a large growth runway.'",
-          "status": "UNVERIFIABLE",
-          "detail": "While the source mentions 'compelling growth opportunity' and 'high-potential markets', it does not explicitly cite 'low insurance penetration' or 'rising middle-class income' as the reasons.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central event regarding the 26% stake acquisition is confirmed. However, the story includes several specific figures and timelines (branch count, infrastructure investment, regulatory approval timeline) that are not present in the provided source text."
-    },
-    {
-      "slug": "credit-card-spending-crosses-two-trillion",
-      "headline": "Why are Indians putting a record ₹2 trillion on credit cards?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "driven by e-commerce transactions and premium travel",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text attributes the spending growth to HDFC Bank and SBI Card, and mentions public-sector banks benefiting from UPI-linked credit, but does not mention e-commerce or premium travel as drivers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "monthly spending hovered around ₹50,000 crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide historical data for 2018 or any other past period.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "2003 South Korean credit card crisis... nearly 10% of the country's population defaulting",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the South Korean credit card crisis or any historical data regarding it.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story accurately reports the core figures (₹2 trillion spending and 121.6 million cards) from the source text. However, it includes several claims regarding the drivers of spending and historical context that are not present in the provided source."
-    },
-    {
-      "slug": "us-court-blocks-h1b-fee-hike",
-      "headline": "Why did a US court just save Indian IT companies billions?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "the standard visa fee structure, which stands at a basic filing fee of just $460 per application",
-          "status": "WRONG",
-          "detail": "The source text states that before the new policy, employers generally paid between $2,000 and $5,000 in government fees to sponsor an H-1B worker. It does not mention a $460 fee.",
-          "correction": null,
-          "source": "Source 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Indian professionals currently receive over 70% of the 85,000 annual H-1B visas issued.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the 85,000 annual visa cap (65,000 + 20,000) but does not provide any statistics regarding the percentage of visas issued to Indian professionals.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Indian IT firms generate more than 55% of their total revenue from the US market.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any information regarding the revenue breakdown of Indian IT firms.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This legal conflict closely mirrors the 2020 dispute when the US Department of Homeland Security attempted to narrow H-1B eligibility criteria and impose steep wage requirements.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2020 dispute or the Department of Homeland Security.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "The United States government must decide within the next ninety days whether to appeal this decision to the Supreme Court",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a ninety-day deadline for the government to decide on an appeal.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the central event (the court blocking the $100,000 fee). However, it includes several specific figures and historical claims that are not supported by the provided source text."
-    },
-    {
-      "slug": "india-opens-power-bids-to-china",
-      "headline": "Why is India quietly opening its power grid to Chinese firms?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Compared to domestic suppliers who currently require up to 36 months to deliver heavy transformers",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions supply-chain constraints and a supply gap, but does not provide specific delivery timelines for domestic manufacturers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Domestic manufacturing backlogs for heavy transformers have reached 36 months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 36-month backlog figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Power equipment procurement costs had climbed by 25% under restricted bidding.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 25% increase in procurement costs.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "In 2019, Chinese companies supplied nearly 60% of India's heavy power transmission equipment with minimal security vetting.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain historical data regarding 2019 market share or supply percentages.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India cannot achieve its target of 500 gigawatts of non-fossil fuel capacity by 2030",
-          "status": "UNVERIFIABLE",
-          "detail": "While this is a well-known government target, it is not mentioned in the provided source text.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This situation is highly reminiscent of India's power crisis in 2010... The government subsequently imposed high anti-dumping duties in 2012",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not discuss the 2010 power crisis or 2012 anti-dumping duties.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story correctly identifies the core news regarding the CEA allowing four Chinese firms to bid for power projects. However, it includes several specific statistics (36-month backlogs, 25% cost increases, 60% market share in 2019) that are not present in the provided source text."
     },
     {
       "slug": "bank-of-india-q1-results",
@@ -407,6 +145,185 @@
     {
       "slug": "karnataka-plans-dedicated-ai-university",
       "headline": "Why is Karnataka building a university just for artificial intelligence?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "gulf-tanker-clash-markets",
+      "headline": "Why did a disabled oil tanker in the Gulf spook Indian markets?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Indian benchmark indices, the Sensex and Nifty, fell by 0.43% on Friday",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Sensex or Nifty performance, nor any percentage drop for Indian indices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "extending a five-day losing streak that wiped out over ₹5 lakh crore in investor wealth",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Indian stock market losses or investor wealth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "previously, minor drone threats caused shipping rates to spike by 15%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention shipping rate spikes or drone threat statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Global oil prices remained highly sensitive, hovering around the $100 per barrel mark.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention current global oil prices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The country imports more than 80% of its oil",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's oil import percentage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This rerouting adds roughly 10 to 14 days of travel time",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention shipping rerouting times.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the central event (the US military disabling a tanker on July 25, 2026) as reported in the source. However, it includes numerous specific financial and economic claims regarding Indian markets, oil prices, and shipping logistics that are entirely absent from the provided source text."
+    },
+    {
+      "slug": "hdfc-bank-us-lawsuit-probe",
+      "headline": "Why are US law firms suddenly targeting India's biggest private bank?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Foreign portfolio investors hold a massive 47% stake in the private lender.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the percentage of foreign portfolio investment in HDFC Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "HDFC Bank holds a dominant weight of over 29% in the Nifty Bank index",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the weight of HDFC Bank in the Nifty Bank index.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Three US law firms launched probes into HDFC Bank on Friday, July 24, 2026.",
+          "status": "WRONG",
+          "detail": "The source text states the article was updated on July 24, 2026, but refers to the share price drop occurring on 'Friday' (which would be July 24, 2026, based on the article date). However, the source text does not explicitly state the probes were launched on that specific date; it notes the shares slipped on Friday after the firms announced investigations.",
+          "correction": "The source text indicates the share price drop occurred on Friday, following the announcement of the investigations.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core event (US law firms investigating HDFC Bank regarding MSRDC payments). However, it includes specific figures regarding foreign shareholding and index weight that are not present in the provided source text."
+    },
+    {
+      "slug": "credit-card-spending-growth",
+      "headline": "Why are Indians swiping their credit cards like never before?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "overall credit card spending rose by 9.8% year-on-year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the ₹2 trillion figure but does not contain the 9.8% year-on-year growth statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "total base of outstanding credit cards expanded to cross 121.6 million",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the 121.6 million figure for the credit card base.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "credit growth to slow down by 2% to 3% within a quarter",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this specific impact of risk weight changes on credit growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "credit card interest rates hover between 36% and 42% per annum",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention specific credit card interest rate ranges.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central claim regarding the ₹2 trillion spending milestone is supported by the source, but several other specific statistics (growth percentages, card base totals, interest rate ranges) are not present in the provided text."
+    },
+    {
+      "slug": "us-debars-h1b-violator-firms",
+      "headline": "Why did the US just ban four tech firms from H-1B visas?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The US Department of Labor updated its H-1B violator list on Friday, July 24, 2026.",
+          "status": "WRONG",
+          "detail": "The source text states the update was effective July 1, 2026, and the article itself was updated on July 25, 2026. There is no mention of a July 24, 2026 update.",
+          "correction": "The list was updated effective July 1, 2026.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Indian nationals typically receive over 70% of all US H-1B visas issued annually.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any statistics regarding the percentage of H-1B visas issued to Indian nationals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This enforcement action reflects a historical pattern dating back to the 2016 Buy American and Hire American executive order",
+          "status": "WRONG",
+          "detail": "The 'Buy American and Hire American' executive order was signed in 2017, not 2016.",
+          "correction": "The executive order was signed in 2017.",
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story correctly identifies the four companies and the nature of the debarment, but contains errors regarding the date of the update and the year of the cited executive order. It also includes statistics not found in the provided source."
+    },
+    {
+      "slug": "phygital-ai-banking-assam",
+      "headline": "Why is India's first 'phygital' AI bank branch opening in Assam?",
       "verdict": "WARN",
       "issues": [
         {
