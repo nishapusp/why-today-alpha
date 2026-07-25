@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T10:18:46.596Z",
+  "generatedAt": "2026-07-25T11:44:28.927Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -190,27 +190,60 @@
     {
       "slug": "middle-east-war-jolts-oil-prices-china-pushes-for-peace",
       "headline": "Middle East War Jolts Oil Prices, China Pushes For Peace",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
       "issues": [
+        {
+          "claim": "Brent crude oil to trade above $100 a barrel",
+          "status": "WRONG",
+          "detail": "The source text mentions that Red Sea and Hormuz risks 'may push Brent to $120', but does not report that it is currently trading above $100.",
+          "correction": null,
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
         {
           "claim": "Number of FIRs in Delhi protest: 13",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any FIRs or protests in Delhi, nor any specific count of FIRs related to protests.",
+          "detail": "The source text makes no mention of FIRs or a specific number of FIRs related to protests.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "China has reportedly stepped in to mediate, pushing for a resumption of stalled peace talks between the United States and Iran",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions China in the context of memory chip makers and US scrutiny, but contains no mention of China mediating US-Iran peace talks.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the geopolitical tensions and market impacts described in the source text. However, it includes a specific statistic regarding '13 FIRs' in Delhi that is entirely absent from the provided source material."
+      "notes": "The story fabricates a geopolitical narrative regarding China's mediation and current oil price levels, neither of which are supported by the provided source text."
     },
     {
       "slug": "rec-first-quarter-profit-declines",
       "headline": "REC's First Quarter Profit Declines 6%, Declares Dividend",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific financial figures, percentages, and corporate actions mentioned in the story are supported by the provided source text."
+      "issues": [
+        {
+          "claim": "The company reported a consolidated net profit of ₹4,192.76 crore, which is a 6.11% decrease compared to the ₹4,465.71 crore recorded in the corresponding quarter of the previous fiscal year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided (Source 1) mentions the headline 'REC Q1 PAT declines 6% YoY to Rs 4,193 crore' but does not contain the specific figures ₹4,192.76 crore, ₹4,465.71 crore, or the 6.11% calculation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "REC's total income showed robust growth, increasing by 15.11% to reach ₹13,296.86 crore in Q1 FY27.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain the figure ₹13,296.86 crore or the 15.11% growth rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the headline event (REC Q1 profit decline and dividend declaration) as reported in the source. However, the specific financial figures (net profit, total income, and exact percentages) are not present in the provided source text and are therefore unverifiable."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
