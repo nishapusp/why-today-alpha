@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T14:33:45.444Z",
+  "generatedAt": "2026-07-25T15:51:11.311Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -190,10 +190,35 @@
     {
       "slug": "rec-first-quarter-profit-declines",
       "headline": "REC's First Quarter Profit Declines 6%, Declares Dividend",
-      "verdict": "PASS",
+      "verdict": "FAIL",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific financial figures, percentages, and corporate actions mentioned in the story are supported by the provided source text."
+      "issues": [
+        {
+          "claim": "REC Limited... reported a 6.11% decline in consolidated net profit for the first quarter of FY27, reaching ₹4,192.76 crore.",
+          "status": "WRONG",
+          "detail": "The source text (Source 1) explicitly states: 'REC Q1 PAT declines 6% yoy to Rs 4,193 crore'. The story's specific figures (6.11% and 4,192.76 crore) are not present in the source text.",
+          "correction": "The source reports a 6% decline to Rs 4,193 crore.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "the ₹4,465.71 crore recorded in the corresponding quarter of the previous fiscal year",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the figure 4,465.71 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "total income showed robust growth, increasing by 15.11% to reach ₹13,296.86 crore in Q1 FY27.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the total income figure or the 15.11% growth rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story fabricates specific decimal-point financial figures that are not present in the provided source text. While the headline figure (approx 6% decline to 4,193 crore) is supported, the additional precision provided throughout the text is unsupported."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
@@ -211,69 +236,78 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "idfc-first-bank-q1-fy27-results",
-      "headline": "IDFC First Bank's Profit Explodes, Beating Expectations. Why?",
+      "slug": "au-small-finance-bank-q1-fy27-results",
+      "headline": "Why Did a Small Finance Bank's Profit Jump 37%?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "132.4% jump in net profit",
+          "claim": "The gross loan portfolio grew by 23% to ₹1,44,250 crore, and total deposits increased by 24% to ₹1,57,727 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a PAT of Rs 1,075 crore and a drop in provisions, but does not contain the percentage growth figure or the prior year's profit figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "net interest income (NII), its core earning, also grew substantially by 25.5% to ₹4,890 crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention NII figures or growth percentages.",
+          "detail": "The provided source texts do not contain these specific figures for AU Small Finance Bank's loan portfolio or total deposits.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Gross NPAs falling to 1.78% from 2.05% sequentially",
+          "claim": "The bank's Net Interest Margin (NIM) also notably expanded by 47 basis points year-on-year to 5.9%",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention NPA percentages.",
+          "detail": "The provided source texts do not mention the NIM figure or the 47 basis point expansion.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "retail loan book grew by 23% year-on-year",
+          "claim": "slippages fell 22% year-on-year to ₹798 crore",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention retail loan book growth.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "operating income to ₹8,282 crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention operating income figures.",
+          "detail": "The provided source texts do not mention slippage figures.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Advances Growth: 20% YoY",
+          "claim": "Provision Coverage Ratio (PCR) remained robust at 85%",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention advances growth figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Provision Coverage Ratio (PCR) of 75.6%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention PCR figures.",
+          "detail": "The provided source texts do not mention the Provision Coverage Ratio.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "While the headline figure of Rs 1,075 crore PAT is verified by the source, the story includes numerous specific financial metrics (NII, NPA, growth percentages, PCR) that are entirely absent from the provided source text."
+      "notes": "The story correctly reports the net profit and the sequential NPA figures found in the source text, but includes several specific financial metrics (loan portfolio, deposits, NIM, slippages, and PCR) that are not present in the provided source material."
+    },
+    {
+      "slug": "irdai-dark-patterns-insurance",
+      "headline": "Why Is India's Insurance Regulator Cracking Down On 'Dark Patterns'?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The IRDAI chief, Ajay Seth, on July 25, 2026, explicitly urged insurers to eliminate these deceptive digital practices",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention an IRDAI chief named Ajay Seth, nor do they contain any record of a statement or directive issued by an IRDAI chief on July 25, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "formal directive issued by IRDAI on April 2, 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided IRDAI press release list does not contain any directive or circular dated April 2, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "A survey by LocalCircles highlighted that over 80% of Indian consumers encountered dark patterns while buying insurance online",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention LocalCircles or any survey regarding dark patterns in insurance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "While the story discusses the topic of dark patterns, the specific dates, directives, and survey data cited are not present in the provided source materials. Additionally, the source texts do not identify the current IRDAI chief as Ajay Seth."
     }
   ]
 }
