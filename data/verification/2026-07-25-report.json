@@ -1,6 +1,6 @@
 {
   "date": "2026-07-25",
-  "generatedAt": "2026-07-25T11:44:28.927Z",
+  "generatedAt": "2026-07-25T12:48:06.919Z",
   "results": [
     {
       "slug": "manipal-health-ipo-analysis",
@@ -188,39 +188,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "middle-east-war-jolts-oil-prices-china-pushes-for-peace",
-      "headline": "Middle East War Jolts Oil Prices, China Pushes For Peace",
-      "verdict": "FAIL",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Brent crude oil to trade above $100 a barrel",
-          "status": "WRONG",
-          "detail": "The source text mentions that Red Sea and Hormuz risks 'may push Brent to $120', but does not report that it is currently trading above $100.",
-          "correction": null,
-          "source": "Source 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Number of FIRs in Delhi protest: 13",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text makes no mention of FIRs or a specific number of FIRs related to protests.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "China has reportedly stepped in to mediate, pushing for a resumption of stalled peace talks between the United States and Iran",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions China in the context of memory chip makers and US scrutiny, but contains no mention of China mediating US-Iran peace talks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story fabricates a geopolitical narrative regarding China's mediation and current oil price levels, neither of which are supported by the provided source text."
-    },
-    {
       "slug": "rec-first-quarter-profit-declines",
       "headline": "REC's First Quarter Profit Declines 6%, Declares Dividend",
       "verdict": "WARN",
@@ -229,7 +196,7 @@
         {
           "claim": "The company reported a consolidated net profit of ₹4,192.76 crore, which is a 6.11% decrease compared to the ₹4,465.71 crore recorded in the corresponding quarter of the previous fiscal year.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text provided (Source 1) mentions the headline 'REC Q1 PAT declines 6% YoY to Rs 4,193 crore' but does not contain the specific figures ₹4,192.76 crore, ₹4,465.71 crore, or the 6.11% calculation.",
+          "detail": "The source text (Source 1) mentions the headline 'REC Q1 PAT declines 6% yoy to Rs 4,193 crore' but does not contain the specific figures ₹4,192.76 crore, ₹4,465.71 crore, or the 6.11% calculation.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
@@ -243,7 +210,7 @@
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the headline event (REC Q1 profit decline and dividend declaration) as reported in the source. However, the specific financial figures (net profit, total income, and exact percentages) are not present in the provided source text and are therefore unverifiable."
+      "notes": "The story contains specific financial figures that are not present in the provided source text. While the headline of the source confirms a decline of approximately 6% and a profit of approximately Rs 4,193 crore, the precise decimals and the total income figures are not supported by the provided source."
     },
     {
       "slug": "assam-first-ai-phygital-bank-branch",
