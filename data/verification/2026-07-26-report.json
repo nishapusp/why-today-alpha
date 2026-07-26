@@ -1,6 +1,6 @@
 {
   "date": "2026-07-26",
-  "generatedAt": "2026-07-25T23:22:03.271Z",
+  "generatedAt": "2026-07-26T00:21:01.072Z",
   "results": [
     {
       "slug": "saudi-oil-strike-india-impact",
@@ -190,6 +190,23 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "chatgpt-global-outage-impact-india",
+      "headline": "Global ChatGPT Outage: Is AI Too Fragile For Business?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Downdetector, a platform that tracks service disruptions, registered a sharp surge in user complaints, with over 1,300 reports originating from India during the July 25 outage.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is the OpenAI Status Page, which does not contain any data regarding Downdetector, user complaint counts, or geographic breakdowns of reports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story's central event (an OpenAI service disruption) is confirmed by the source, but the specific figure regarding 1,300 Indian user reports is not present in the provided source text."
     }
   ]
 }
