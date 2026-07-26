@@ -400,8 +400,18 @@ async function main() {
   try {
     execSync("git add data/edition.json", { stdio: "inherit", cwd: path.join(__dirname, "..") });
     execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit", cwd: path.join(__dirname, "..") });
-    execSync("git push", { stdio: "inherit", cwd: path.join(__dirname, "..") });
-    console.log("\nPushed. Netlify will redeploy automatically.");
+    // 2026-07-26: skippable so the workflow can defer this push until
+    // after the post-regeneration fact-check runs and makes its own
+    // commit — combines what used to be two separate deploys (one for
+    // the regeneration, one for its verification report) into one.
+    // Commit still happens locally either way; only the network push
+    // is deferred.
+    if (process.env.SKIP_INTERNAL_PUSH === "1") {
+      console.log("\nSKIP_INTERNAL_PUSH set — commit staged locally; a later workflow step will push it together with the fact-check report.");
+    } else {
+      execSync("git push", { stdio: "inherit", cwd: path.join(__dirname, "..") });
+      console.log("\nPushed. Netlify will redeploy automatically.");
+    }
   } catch (err) {
     console.error("\nGit commit/push failed — the file is written locally, but you'll need to commit and push manually.");
     console.error(err.message);

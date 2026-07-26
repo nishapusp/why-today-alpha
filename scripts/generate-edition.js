@@ -1538,8 +1538,21 @@ async function main() {
   // This covers both a normal finish and an early `break` (e.g. quota
   // exhaustion) — both fall through to here, and whatever got committed
   // so far still goes out in one deploy.
+  //
+  // 2026-07-26: SKIP_INTERNAL_PUSH lets the workflow defer this push until
+  // AFTER the automatic fact-check step runs and makes its own commit —
+  // found necessary after real usage data showed verification's own
+  // separate push was roughly doubling deploy count (38 "chore(verify)"
+  // deploys in 3 days, on top of generation's own). The workflow's later
+  // step still pushes everything (this script's local commits plus
+  // verification's), just as ONE deploy instead of two. Commits still
+  // happen locally either way — only the network push is deferred.
   if (publishedBatches > 0) {
-    pushPending(path.join(__dirname, ".."));
+    if (process.env.SKIP_INTERNAL_PUSH === "1") {
+      console.log("\nSKIP_INTERNAL_PUSH set — commits are staged locally; a later workflow step will push them together with any fact-check changes.");
+    } else {
+      pushPending(path.join(__dirname, ".."));
+    }
   }
 
   // --- Summary -------------------------------------------------------------

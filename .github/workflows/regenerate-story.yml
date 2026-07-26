@@ -47,6 +47,11 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           AUTO_CONFIRM: "1"
+          # 2026-07-26: defers this script's own push — see that env var's
+          # handling in regenerate-story.js and the final workflow step
+          # below for the full reasoning (combines what used to be two
+          # deploys per regeneration into one).
+          SKIP_INTERNAL_PUSH: "1"
         run: node scripts/regenerate-story.js "${{ github.event.inputs.slug_or_mode }}" "${{ github.event.inputs.feedback_or_topic }}"
 
       # 2026-07-22: closes the loop after a real report that regenerating
@@ -65,13 +70,23 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/verify-edition.js --mode source --slugs "${{ steps.regenerate.outputs.slug }}"
 
-      - name: Commit verification report
+      # 2026-07-26: renamed and fixed — used to exit early when
+      # verification made no report changes, which would have stranded
+      # the regeneration's own commit (now deferred via SKIP_INTERNAL_PUSH
+      # above) on the runner instead of pushing it. Always pushes now,
+      # combining what used to be two deploys per regeneration into one.
+      - name: Commit verification report and push everything
         if: success()
         continue-on-error: true
         run: |
-          git add data/verification/
-          git diff --cached --quiet && echo "No report changes." && exit 0
-          git commit -m "chore(verify): fact-check regenerated story ($(date -u +%F))"
+          git config user.name "why-today-bot"
+          git config user.email "actions@github.com"
+          git add data/edition.json data/verification/
+          if git diff --cached --quiet; then
+            echo "No new changes to commit — still pushing any pending commits."
+          else
+            git commit -m "chore(verify): fact-check regenerated story ($(date -u +%F))"
+          fi
           for i in 1 2 3; do
             git push && break
             git pull --rebase && sleep 3

@@ -88,6 +88,13 @@ jobs:
           # batches/day — extra margin against the 5-requests/minute cap.
           BATCH_SPACING_MS: "20000"
           FOCUS_CATEGORY: ${{ github.event.inputs.focus_category }}
+          # 2026-07-26: defers this script's own push until the workflow's
+          # final step below, after verification has also had a chance to
+          # commit its changes — see that step and generate-edition.js's
+          # pushPending() for the full reasoning. Combines what used to be
+          # two separate deploys (one for generation, one for verification)
+          # into one, without skipping or weakening verification itself.
+          SKIP_INTERNAL_PUSH: "1"
         run: node scripts/generate-edition.js
 
       # 2026-07-21: added after a real report showed the actual gap in
@@ -115,15 +122,30 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/verify-edition.js --mode source --auto-remove
 
-      - name: Commit any auto-removed stories
+      # 2026-07-26: renamed and fixed — this used to exit early ("No changes
+      # from fact-check") whenever verification itself found nothing to
+      # remove, which is fine on its own EXCEPT this step is now also
+      # responsible for pushing generation's own commits (deferred via
+      # SKIP_INTERNAL_PUSH above, to combine what used to be two separate
+      # deploys into one). Exiting early on "verification made no changes"
+      # would have silently stranded every day's stories on the runner,
+      # never reaching Netlify, on any day verification didn't need to
+      # remove anything — which is most days. Now: commit verification's
+      # changes IF there are any, then always attempt a push regardless,
+      # to flush whatever's pending (generation's commits, verification's
+      # commit, or both).
+      - name: Commit verification changes and push everything
         if: success()
         continue-on-error: true
         run: |
           git config user.name "why-today-bot"
           git config user.email "actions@github.com"
           git add data/edition.json data/verification/
-          git diff --cached --quiet && echo "No changes from fact-check." && exit 0
-          git commit -m "chore(verify): auto-remove fabricated/unverifiable stories ($(date -u +%F))"
+          if git diff --cached --quiet; then
+            echo "No changes from fact-check — still pushing generation's own pending commits."
+          else
+            git commit -m "chore(verify): auto-remove fabricated/unverifiable stories ($(date -u +%F))"
+          fi
           for i in 1 2 3; do
             git push && break
             git pull --rebase && sleep 3
