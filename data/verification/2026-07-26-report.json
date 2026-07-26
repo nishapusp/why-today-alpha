@@ -1,6 +1,6 @@
 {
   "date": "2026-07-26",
-  "generatedAt": "2026-07-26T10:53:22.440Z",
+  "generatedAt": "2026-07-26T12:02:45.823Z",
   "results": [
     {
       "slug": "saudi-oil-strike-india-impact",
@@ -190,6 +190,31 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "icici-bank-1-billion-dollar-bond-issue",
+      "headline": "Why Did ICICI Bank Raise A Staggering $1 Billion Overseas?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Compared to an earlier report just days ago suggesting ICICI Bank was looking to raise $500 million, the bank has now secured double that amount",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not mention any prior reports or expectations of a $500 million raise.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The previous time ICICI Bank significantly tapped dollar markets was nearly nine years ago",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the historical frequency or timing of ICICI Bank's previous dollar market issuances.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central event (ICICI Bank raising $1 billion via AT1 bonds) is confirmed by Source 1. However, the story includes specific claims about past reporting and historical fundraising timelines that are not supported by the provided source texts."
     }
   ]
 }
