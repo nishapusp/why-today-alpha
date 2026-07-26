@@ -1,6 +1,6 @@
 {
   "date": "2026-07-26",
-  "generatedAt": "2026-07-26T00:21:01.072Z",
+  "generatedAt": "2026-07-26T04:10:55.351Z",
   "results": [
     {
       "slug": "saudi-oil-strike-india-impact",
@@ -200,13 +200,29 @@
         {
           "claim": "Downdetector, a platform that tracks service disruptions, registered a sharp surge in user complaints, with over 1,300 reports originating from India during the July 25 outage.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text is the OpenAI Status Page, which does not contain any data regarding Downdetector, user complaint counts, or geographic breakdowns of reports.",
+          "detail": "The provided source text is the OpenAI Status Page, which does not contain any data regarding Downdetector or specific user complaint counts from India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Over 1,300 Indian users reported issues on July 25.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding user reports from India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "ChatGPT experienced 3 major outages in 72 hours (July 23-25, 2026).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions 'Ongoing for 6 hours' and provides aggregate uptime percentages for the period of April 2026 to July 2026, but it does not confirm the occurrence or dates of three specific major outages.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story's central event (an OpenAI service disruption) is confirmed by the source, but the specific figure regarding 1,300 Indian user reports is not present in the provided source text."
+      "notes": "The story relies on external data (Downdetector and specific user counts) that is not present in the provided source text. While the OpenAI status page confirms 'elevated error rates', it does not verify the specific frequency or regional impact claims made in the article."
     }
   ]
 }
