@@ -1,6 +1,6 @@
 {
   "date": "2026-07-27",
-  "generatedAt": "2026-07-27T05:06:17.615Z",
+  "generatedAt": "2026-07-27T08:27:59.057Z",
   "results": [
     {
       "slug": "rbi-forex-inflows-fcnrb",
@@ -133,39 +133,6 @@
       "notes": "The story correctly identifies the core figures regarding the number of companies and the total capital target for August. However, it includes unsubstantiated claims regarding operational changes at stock exchanges and specific timelines for prospectus filings that are not present in the provided source."
     },
     {
-      "slug": "india-black-sea-sailor-advisory",
-      "headline": "Why is India warning its sailors to avoid the Black Sea?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 150,000 Indian seafarers currently serving on global merchant fleets",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a list of headlines and snippets from a news website; it does not contain any data regarding the total number of Indian seafarers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India manages approximately 10% of the global seafaring workforce",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain statistics regarding India's share of the global seafaring workforce.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Annual Indian export-import trade value = ₹67 lakh crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding India's annual export-import trade value.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The source text provided is a collection of headlines and news snippets from a Business Standard page. While it mentions an MEA advisory regarding the Black Sea, it does not contain the specific statistical claims (150,000 seafarers, 10% share, trade value) cited in the story."
-    },
-    {
       "slug": "cbdt-crypto-reporting-tightening",
       "headline": "Why did tax authorities just tighten the screws on crypto platforms?",
       "verdict": "WARN",
@@ -179,47 +146,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "tata-consumer-q1-results-surge",
-      "headline": "Why are brokerages cheering a sharp profit jump at Tata Consumer?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "10% volume growth in its India foods segment",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions 'double-digit topline growth' and 'robust underlying volume growth' for the India business, but it does not specify a '10%' figure for the India foods segment volume growth.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "FMCG sector average revenue growth = 6% (previous: 8% — FY25)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no data regarding the FMCG sector average revenue growth or historical comparisons for FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The company is also planning to expand its direct retail reach to over four million outlets by the end of the fiscal year.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a target of four million outlets.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "aiming to realize cost synergies by October",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an October deadline for realizing cost synergies.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story accurately reports the core financial results (profit and revenue) as stated in the source. However, it includes several specific operational targets and industry benchmarks that are not present in the provided source text."
     },
     {
       "slug": "sebi-proposes-mutual-fund-pms",
