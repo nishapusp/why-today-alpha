@@ -63,8 +63,16 @@ jobs:
       # correct. Doesn't auto-remove here (unlike generate-edition.yml) —
       # a human just deliberately made this specific change and should
       # see the verdict before anything gets auto-reverted.
+      # 2026-07-27: if: success() -> if: always() (keeping the slug check)
+      # — applying the same fix made to generate-edition.yml after a real
+      # run there showed success()-gated steps can silently strand real,
+      # locally-committed progress when the generation step itself exits
+      # non-zero for a reason that isn't "nothing was produced" (e.g. a
+      # partial batch). Same risk exists here in principle even though
+      # the confirmed failure was in the other workflow — better to fix
+      # both consistently than wait for this one to fail the same way.
       - name: Fact-check the regenerated story
-        if: success() && steps.regenerate.outputs.slug != ''
+        if: always() && steps.regenerate.outputs.slug != ''
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -76,7 +84,7 @@ jobs:
       # above) on the runner instead of pushing it. Always pushes now,
       # combining what used to be two deploys per regeneration into one.
       - name: Commit verification report and push everything
-        if: success()
+        if: always()
         continue-on-error: true
         run: |
           git config user.name "why-today-bot"

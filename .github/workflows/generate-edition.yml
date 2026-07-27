@@ -115,8 +115,18 @@ jobs:
       # until the next manual verify catches it, same as before this
       # existed; that's a regression to the OLD behavior, not a new
       # failure mode.
+      # 2026-07-27: if: success() -> if: always() — a real run made
+      # genuine progress (10/15 stories, 3 valid batches committed
+      # locally) but exited non-zero because it was PARTIAL (quota ran
+      # out), which is correct/by-design for the script itself. But
+      # success() treated that as "the previous step failed," skipping
+      # this step AND the push step below entirely — meaning all 10 real
+      # stories got generated, staged locally, and then discarded when
+      # the runner shut down, never reaching Netlify at all. always()
+      # runs regardless, so a partial run's real progress still gets
+      # checked and pushed rather than lost outright.
       - name: Fact-check and remove any fabricated stories
-        if: success()
+        if: always()
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -135,7 +145,7 @@ jobs:
       # to flush whatever's pending (generation's commits, verification's
       # commit, or both).
       - name: Commit verification changes and push everything
-        if: success()
+        if: always()
         continue-on-error: true
         run: |
           git config user.name "why-today-bot"
