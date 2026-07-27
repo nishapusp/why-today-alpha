@@ -1,0 +1,185 @@
+{
+  "date": "2026-07-27",
+  "generatedAt": "2026-07-27T04:34:46.499Z",
+  "results": [
+    {
+      "slug": "rbi-forex-inflows-fcnrb",
+      "headline": "Why did RBI's emergency schemes just pull in $32 billion?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "uni-card-valuation-downround-rbi",
+      "headline": "Why did this popular credit card startup's valuation crash 70%?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "hcltech-ai-data-center-investment",
+      "headline": "Why is an Indian IT giant building a $4.4 billion AI data center?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "sigma-advanced-system-defense-export-order",
+      "headline": "Why did this Indian firm win a $105 million defense order?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "extending range by up to 30 percent",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text explains that base bleed shells reduce drag and extend range, but it does not mention a specific '30 percent' figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "On Monday, Sigma Advanced System announced it had secured a $104.9 million export order",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text is dated Sunday, July 27, 2026. The story claims the announcement happened on 'Monday', which is not supported by the source.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Just today, US President Donald Trump dismissed concerns over weapon depletion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no mention of US President Donald Trump or any statements regarding weapon depletion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Contract Dollar Value = $104.9 million (previous: $15 million — Average Export Order Value)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a previous average export order value of $15 million.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "global defense supply chain crisis of 2022",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a '2022' crisis.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The core facts regarding the contract value, the number of units, and the nature of the technology are verified. However, the story includes several specific claims about geopolitical events, historical averages, and specific performance metrics (30% range extension) that are not present in the provided source text."
+    },
+    {
+      "slug": "juniper-green-energy-ipo-pricing",
+      "headline": "Why did a green power player just set its IPO price?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "oil-slide-sparks-sensex-rally",
+      "headline": "Why did a sudden pause in global strikes rescue Indian stocks?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "paras-semiconductors-madhya-pradesh-plant",
+      "headline": "Why is Madhya Pradesh setting up a massive chip testing plant?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "sebi-ai-cyber-threats-task-force",
+      "headline": "Why is the stock regulator building an artificial intelligence shield?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "august-ipo-rush-india",
+      "headline": "Why is August about to see a ₹35,000 crore stampede?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "To handle this influx, the stock exchanges and clearing houses are streamlining their registration systems, ensuring that multiple multi-billion-crore listings can proceed simultaneously without causing trading delays.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text makes no mention of stock exchanges or clearing houses streamlining registration systems to accommodate the IPO pipeline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The first major prospectus filings will open for public subscription during the first week of August.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions companies are preparing to hold IPOs in August, but does not specify that the first major prospectus filings will open for subscription in the first week.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core figures regarding the number of companies and the total capital target for August. However, it includes unsubstantiated claims regarding operational changes at stock exchanges and specific timelines for prospectus filings that are not present in the provided source."
+    }
+  ]
+}
