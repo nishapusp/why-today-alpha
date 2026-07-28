@@ -1,6 +1,6 @@
 {
   "date": "2026-07-28",
-  "generatedAt": "2026-07-28T10:19:39.856Z",
+  "generatedAt": "2026-07-28T10:35:15.246Z",
   "results": [
     {
       "slug": "states-repayment-bill-icra",
@@ -209,6 +209,39 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "city-union-bank-q1-fy27-results",
+      "headline": "Why did City Union Bank’s profit jump 25%?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The bank's core income, Net Interest Income (NII), surged by 31% to ₹820 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the bank's profit and the headline mentions the profit figure, but the source text does not contain any data regarding the NII amount or its growth percentage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "driven by a 25% growth in advances.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention advances growth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The improved Net Interest Margin (NIM) of 3.78% reflects efficient deployment of funds.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Net Interest Margin (NIM) figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly reports the headline profit figure and the year-on-year profit growth percentage as stated in the source. However, it includes several specific financial metrics (NII, advances growth, and NIM) that are not present in the provided source text."
     }
   ]
 }
