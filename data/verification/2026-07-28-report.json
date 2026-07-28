@@ -1,6 +1,6 @@
 {
   "date": "2026-07-28",
-  "generatedAt": "2026-07-28T12:27:52.184Z",
+  "generatedAt": "2026-07-28T15:08:56.657Z",
   "results": [
     {
       "slug": "states-repayment-bill-icra",
@@ -73,10 +73,19 @@
     {
       "slug": "us-currency-watchlist-india-exclusion",
       "headline": "Why did the US just keep India off its watch list?",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "The story accurately reflects the information provided in the source text regarding the US Treasury's decision to keep India off the currency watchlist, the criteria used for the assessment, and the historical context of the 1988 Act."
+      "issues": [
+        {
+          "claim": "$30+ billion: India’s typical annual bilateral trade surplus with the United States.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the US Treasury report and India's status, but it does not contain any data regarding the specific dollar amount of India's bilateral trade surplus with the US.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the US Treasury's decision regarding India's status on the currency watchlist as reported in the source. However, it includes a specific figure for India's bilateral trade surplus that is not present in the provided source text."
     },
     {
       "slug": "credit-deposit-ratio-peak",
@@ -181,6 +190,36 @@
     {
       "slug": "india-post-payments-bank-shg-accounts",
       "headline": "Zero-Balance Accounts For Rural Women: Why Is Post Bank Betting Big?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "iran-oil-cushion-trump-sanctions",
+      "headline": "Iran's $23 Billion Oil Shield: Can Trump's Sanctions Break It?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "tata-electronics-loss-semiconductor",
+      "headline": "Tata's Chip Dream: Why Did Tata Electronics' Loss Soar 2000%?",
       "verdict": "WARN",
       "issues": [
         {
