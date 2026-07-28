@@ -1,6 +1,6 @@
 {
   "date": "2026-07-28",
-  "generatedAt": "2026-07-28T10:35:15.246Z",
+  "generatedAt": "2026-07-28T12:27:52.184Z",
   "results": [
     {
       "slug": "states-repayment-bill-icra",
@@ -73,27 +73,10 @@
     {
       "slug": "us-currency-watchlist-india-exclusion",
       "headline": "Why did the US just keep India off its watch list?",
-      "verdict": "WARN",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The US Treasury submitted its report on 'Macroeconomic and Foreign Exchange Policies of Major Trading Partners' to Congress on Monday.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the US Treasury's report and the date of the news article (July 28, 2026, which was a Tuesday), but it does not specify that the report was submitted on 'Monday'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The US Treasury will conduct its next exchange rate review in late 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the timing of the next review.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the US Treasury's decision regarding India's status on the currency watchlist as reported in the source. However, it includes specific claims about the timing of the report's submission and the next review cycle that are not supported by the provided source text."
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in the source text regarding the US Treasury's decision to keep India off the currency watchlist, the criteria used for the assessment, and the historical context of the 1988 Act."
     },
     {
       "slug": "credit-deposit-ratio-peak",
@@ -209,39 +192,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "city-union-bank-q1-fy27-results",
-      "headline": "Why did City Union Bank’s profit jump 25%?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The bank's core income, Net Interest Income (NII), surged by 31% to ₹820 crore.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the bank's profit and the headline mentions the profit figure, but the source text does not contain any data regarding the NII amount or its growth percentage.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "driven by a 25% growth in advances.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention advances growth figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The improved Net Interest Margin (NIM) of 3.78% reflects efficient deployment of funds.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the Net Interest Margin (NIM) figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly reports the headline profit figure and the year-on-year profit growth percentage as stated in the source. However, it includes several specific financial metrics (NII, advances growth, and NIM) that are not present in the provided source text."
     }
   ]
 }
