@@ -1,105 +1,7 @@
 {
   "date": "2026-07-28",
-  "generatedAt": "2026-07-28T02:15:09.489Z",
+  "generatedAt": "2026-07-28T04:05:33.240Z",
   "results": [
-    {
-      "slug": "banks-cannot-fund-viksit-bharat",
-      "headline": "Why is the RBI warning that banks cannot build tomorrow's India?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 70% of India's corporate debt is currently held by commercial banks.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Corporate bond markets in India remain small, representing only about 17% of the nation's GDP.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "In contrast, developed economies like the US feature corporate bond markets that exceed 120% of their annual economic output.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Infrastructure projects require funding with tenures of 20 to 30 years, while bank deposits average under 5 years.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain these specific figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Over the coming quarters, the RBI and SEBI are expected to introduce a series of harmonized regulations to simplify corporate bond issuances and expand derivatives trading.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention specific upcoming regulatory actions by SEBI or a timeline for harmonized regulations.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Market participants should watch for new rules allowing pension funds and insurance companies to invest in lower-rated corporate bonds, which will immediately inject liquidity into BBB-rated issuers.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention these specific upcoming rules or the injection of liquidity into BBB-rated issuers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Additionally, the RBI plans to roll out new credit default swap frameworks to help investors hedge credit risks.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts mention the RBI's *recent* introduction of credit default swaps, not a *planned* rollout of new frameworks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The ultimate goal is to increase the share of corporate bond financing from the current low levels to a much higher percentage of GDP by 2030",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention a 2030 target for corporate bond financing as a percentage of GDP.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story accurately captures the core message of RBI Deputy Governor Rohit Jain's speech regarding the need for market-based finance. However, it includes several specific statistics and forward-looking regulatory claims that are not supported by the provided source texts."
-    },
-    {
-      "slug": "demat-only-securitisation-rbi",
-      "headline": "Why is the RBI locking high-value debt notes inside demat accounts?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 95% of equity trades are digital, but debt securitisation has lagged behind.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any statistics regarding the percentage of equity trades that are digital.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The RBI’s move to clean up the securitisation market mirrors the 1996 dematerialization of equities in India.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 1996 dematerialization of equities or the Depositories Act of 1996.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story accurately reflects the RBI's draft proposal regarding demat-only securitisation notes and the ₹1 crore ticket size. However, it includes background information and historical comparisons that are not present in the provided source text."
-    },
     {
       "slug": "states-repayment-bill-icra",
       "headline": "Why are Indian states facing a terrifying ₹24 lakh crore bill?",
@@ -122,47 +24,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "ai-job-matchmaker-govt",
-      "headline": "Why does the government want an artificial intelligence matchmaker for jobs?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The system, being planned under the aegis of the technology and skill development ministries",
-          "status": "WRONG",
-          "detail": "The source states the platform is led by the labour and employment ministry, in consultation with the ministries of education, skill development and other stakeholders.",
-          "correction": "The platform is led by the labour and employment ministry.",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "12 to 24 months is the forecasting window the AI will use to predict upcoming skill shortages.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a specific 12 to 24-month forecasting window.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "over 65% of its citizens under the age of 35.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain demographic statistics regarding the age of the Indian population.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The government is expected to roll out the pilot phase of the AI platform... Over the next few quarters",
-          "status": "UNVERIFIABLE",
-          "detail": "The source states that no timeline has been fixed for its rollout.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the government's plan for an AI-based labour market platform but includes several specific figures and timelines that are not supported by the provided source text."
     },
     {
       "slug": "coal-india-ipo",
@@ -195,47 +56,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "maruti-brezza-gst-loophole",
-      "headline": "Why does a smaller engine save car buyers 22% in tax?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Maruti Suzuki released the pricing for its refreshed Brezza, revealing a strategic shift to a 1.0-litre turbo-petrol engine.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is the official website of the GST Council of India, which contains no information regarding Maruti Suzuki, the Brezza, or any specific vehicle pricing announcements.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "GST on engines over 1.2 litres: 40%",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding specific GST tax rates for vehicle engine capacities.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "Average price reduction for buyers: Up to ₹1.5 lakh",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding vehicle pricing or price reductions.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The company will phase out the larger 1.5L naturally aspirated engines in its compact models by late 2027.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding Maruti Suzuki's future product roadmap or engine phase-out plans.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The source text provided is the official website of the GST Council of India, which serves as a repository for government notifications, committee information, and newsletters. It contains no data regarding automotive industry news, specific car models, or corporate pricing strategies."
-    },
-    {
       "slug": "engineering-exports-china-surge",
       "headline": "Why are Chinese factories buying record amounts of Indian engineering?",
       "verdict": "WARN",
@@ -251,118 +71,247 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "rbi-polymer-banknote-pilot",
-      "headline": "Why is India replacing paper money with plastic bills?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The field trials will be conducted in five select cities with diverse climatic conditions",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the government approved the issuance of 1 billion pieces each of ₹10 and ₹20 notes for field trials, but it does not mention any specific number of cities or the selection of five cities for these trials.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "1-2 years: Average lifespan of a traditional low-value Indian paper banknote.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide the average lifespan of Indian paper banknotes.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "5 times: Expected increase in lifespan when shifting to polymer bills.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that polymer banknotes have a significantly higher lifespan than paper banknotes, but it does not quantify this as '5 times'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Compared to 2016, when the RBI first announced plans to conduct limited trials of plastic notes in select cities",
-          "status": "WRONG",
-          "detail": "The source text states that India first tried introducing polymer banknotes in 2012, not 2016.",
-          "correction": "India first tried introducing polymer banknotes in 2012.",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This transition places India in the company of over 30 countries that have successfully adopted polymer banknotes.",
-          "status": "WRONG",
-          "detail": "The source text states that about 60 countries around the world have introduced polymer banknotes into circulation.",
-          "correction": "About 60 countries around the world have introduced polymer banknotes into circulation.",
-          "source": "SOURCE 1",
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "Following the trial's completion in late 2028, the RBI will decide on a full-scale transition for all low-value currency notes.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a timeline for the completion of the trials or a date of late 2028.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the core news regarding the government's approval of 1 billion pieces each of ₹10 and ₹20 polymer notes. However, it includes several specific details (number of cities, lifespan multipliers, the year of the previous trial, and the number of countries using polymer notes) that are either unsupported by the provided source or contradict it."
-    },
-    {
       "slug": "us-currency-watchlist-india-exclusion",
       "headline": "Why did the US just keep India off its watch list?",
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "The story accurately reflects the information provided in the source text regarding the US Treasury's decision to keep India off the currency watchlist, the criteria used for the assessment, and the historical context of the 1988 Act."
+      "notes": "All factual claims regarding the US Treasury's currency report, the criteria for the watchlist, and the historical context provided in the story are supported by the provided source text."
     },
     {
-      "slug": "indian-stockbrokers-q1-profit-pressure",
-      "headline": "Why are India's stockbrokers suddenly losing their grip on profits?",
+      "slug": "balaji-amines-earnings-rebound",
+      "headline": "Why did a quiet specialty chemical company just double its profit?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "90%+ : Estimated percentage of retail options traders who lose money, according to SEBI.",
+          "claim": "Operating margins expanded significantly as the prices of key raw materials like methanol and ammonia stabilized",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention SEBI's statistics on retail options trader losses.",
+          "detail": "The source text provides the OPM percentage (25.42%) but does not mention methanol, ammonia, or the stabilization of raw material prices as the cause.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "5 years: The relative peak of retail option trading activity before the current regulatory slowdown.",
+          "claim": "The company was also able to run its production plants at higher capacity utilization levels",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 5-year peak for retail option trading.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "Compared to 2021, when brokers celebrated record-breaking quarterly profits...",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention 2021 or record-breaking profits from that year.",
+          "detail": "The source text does not mention capacity utilization levels.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "The current retail options frenzy and subsequent cooling mirrors the 1999 Dot-Com bubble in the United States",
+          "claim": "Furthermore, the company's focus on high-margin derivative products, such as dimethylformamide, has insulated it from basic commodity price wars.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 1999 Dot-Com bubble.",
+          "detail": "The source text does not mention dimethylformamide or the company's product strategy.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": true
+          "inBroaderConnections": false
         },
         {
-          "claim": "According to regulatory reports, what percentage of retail options traders incur losses? — stated correct answer: \"Over 90%\"",
+          "claim": "The expansion of operating margins to over 22% proves that Indian chemical manufacturers are successfully clawing back pricing power",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this information.",
+          "detail": "While the source confirms an OPM of 25.42%, it does not provide analysis or attribution regarding 'pricing power' or the broader Indian chemical industry.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Specialty amines are most commonly used as critical raw materials in which industry? — stated correct answer: Pharmaceuticals and agrochemicals",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the end-use industries for specialty amines.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the earnings pressure on brokers and the shift toward wealth management/MTF as reported in the source. However, it includes several specific statistics and historical comparisons (90% loss rate, 5-year peak, 2021 comparisons, 1999 Dot-Com bubble) that are entirely absent from the provided source text."
+      "notes": "The story correctly reports the financial figures (net profit growth and sales) provided in the source text. However, it includes significant amounts of external analysis, industry context, and operational explanations (such as raw material stabilization and capacity utilization) that are not present in the provided source."
+    },
+    {
+      "slug": "credit-deposit-ratio-peak",
+      "headline": "Why did Indian banks just hit a 62-year lending milestone?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "ipo-listing-gains-decline",
+      "headline": "Why did average Indian IPO profits just collapse to 4%?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Investment bankers will likely advise clients to price their shares conservatively to leave 'money on the table' for retail buyers. Regulators will also step up scrutiny of draft listing papers to ensure clear disclosure of valuation metrics.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the IPO pipeline and listing gains but does not contain information regarding future advice from investment bankers or future regulatory actions.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Over the next two months, several prominent companies in the five lakh crore rupee pipeline are expected to delay their initial public offerings or cut their target valuations by ten to fifteen percent.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention expected delays or specific valuation cuts of 10-15%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Why is a low listing gain of four percent particularly dangerous for leveraged traders? — stated correct answer: The interest cost of their borrowed trading capital exceeds their actual listing profits",
+          "status": "UNVERIFIABLE",
+          "detail": "While the story discusses the impact on leveraged trading, the source text does not explicitly define the mechanics of why 4% is dangerous or confirm the specific interest cost logic provided in the quiz.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core figures regarding the ₹5 lakh crore IPO pipeline and the 4% average listing gain are supported by the provided source text. However, the story includes several speculative claims about future market behavior and regulatory actions that are not present in the source."
+    },
+    {
+      "slug": "apple-reclaims-top-valuation",
+      "headline": "Why did Apple just climb back to the global valuation throne?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Apple's services division margins remain robust at over 70%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the profit margins of Apple's services division.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The company commands a base of over 2 billion active devices globally.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the number of active Apple devices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central event (Apple reclaiming the most valuable company title) is verified by the source. However, the story includes specific financial metrics (services margins and active device counts) that are not present in the provided source text."
+    },
+    {
+      "slug": "rbi-polymer-banknote-trials",
+      "headline": "Why is India finally testing plastic money in your wallet?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Polymer notes typically last 3 times longer than standard paper notes.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that polymer banknotes have a significantly higher life span than paper banknotes, but it does not provide a specific '3 times' multiplier.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Compared to 2014, when the RBI first announced plans to trial plastic notes in five selected cities but faced delays due to procurement and technical hurdles",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states India first tried introducing polymer banknotes in 2012, but it does not mention a 2014 announcement or a plan involving five selected cities.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The UK's Bank of England reported a dramatic drop in counterfeiting and a 60% reduction in currency replacement costs following the switch.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any information regarding the Bank of England's reported statistics on counterfeiting or currency replacement costs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "A complete rollout of polymer notes for other denominations could begin by 2029 depending on trial results.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 2029 timeline for a potential rollout.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "They resist water, tearing, and dirt, lasting up to three times longer",
+          "status": "UNVERIFIABLE",
+          "detail": "While the source confirms polymer notes are more durable, it does not quantify the lifespan as 'three times longer'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core news regarding the government's approval of 1 billion pieces each of ₹10 and ₹20 polymer banknotes. However, it includes several specific statistics and historical details (such as the 3x lifespan, 2014 trial details, UK statistics, and 2029 timeline) that are not supported by the provided source text."
+    },
+    {
+      "slug": "banks-cannot-fund-viksit-bharat",
+      "headline": "Why can't Indian banks fund the nation's grand economic dream?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India's corporate bond market size is currently less than 25% of GDP",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the size of the corporate bond market relative to GDP.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Banks carry over 60% of the country's formal credit system load.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the percentage of the credit system load carried by banks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Infrastructure projects require funding tenures of 15 to 25 years",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the need for long-term capital but does not specify a 15 to 25-year tenure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The RBI and SEBI are expected to roll out joint guidelines to make it easier for retail investors to participate in corporate debt markets.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention upcoming joint guidelines from RBI and SEBI regarding retail participation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "New SEBI and RBI guidelines are expected by the end of 2026 to ease retail access to corporate debt.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention expected guidelines or a 2026 timeline for retail access to corporate debt.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately captures the central message of RBI Deputy Governor Rohit Jain's speech. However, it includes several specific statistics and regulatory predictions that are not present in the provided source text."
+    },
+    {
+      "slug": "govt-ai-job-matchmaker",
+      "headline": "Why is the government building an AI to hunt for jobs?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
