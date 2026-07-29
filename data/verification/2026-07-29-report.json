@@ -1,6 +1,6 @@
 {
   "date": "2026-07-29",
-  "generatedAt": "2026-07-29T01:59:50.680Z",
+  "generatedAt": "2026-07-29T04:41:53.580Z",
   "results": [
     {
       "slug": "india-industrial-output-june-2026-high",
@@ -46,23 +46,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "dpiit-startup-india-fund-of-funds-2.0-guidelines",
-      "headline": "Why is the government investing ₹10,000 crore in startups?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "The Department for Promotion of Industry and Internal Trade (DPIIT) released guidelines for the ₹10,000 crore Startup India Fund of Funds 2.0.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a financial report regarding Indoco Remedies' quarterly earnings and does not contain any information about the DPIIT, Startup India, or a Fund of Funds 2.0.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The source text provided is entirely unrelated to the claims made in the story. While the story's claims are internally consistent, they are completely unsupported by the provided source material."
     },
     {
       "slug": "karnataka-anthropic-ai-public-services",
@@ -119,40 +102,144 @@
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the SEBI proposal details regarding investment thresholds and net worth requirements as reported in the source. However, it includes a specific estimate of 1.5 to 2 crore new investors which is not present in the provided source text."
+      "notes": "The story accurately reflects the SEBI proposal details regarding investment thresholds and net worth requirements as reported in the source. However, it includes a specific projection of 1.5 to 2 crore new investors which is not supported by the provided source text."
     },
     {
-      "slug": "bank-of-baroda-cyberattack-data-leak",
-      "headline": "Why Did a State-Owned Bank Just Confirm a Cyberattack?",
+      "slug": "iran-us-strikes-crude-oil-jump",
+      "headline": "Why did new strikes make crude oil jump 5%?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "lnt-q1-results-fy27",
+      "headline": "Why did construction giant L&T’s profit jump 14%?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "has also filed a claim under its cyber insurance policy",
+          "claim": "The company's international business continues to be a major growth driver, with over half of both new orders and the total order book coming from outside India.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the bank is working with authorities and conducting a forensic investigation, but it does not mention the filing of a cyber insurance claim.",
+          "detail": "The source text does not provide the percentage of the total order book that is international; it only mentions that 56% of new orders are international.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "cyber insurance claim, potentially covering up to ₹750 crore",
+          "claim": "The significant international order book, now at 52% of the total, mitigates risks from any single geographical market",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any cyber insurance claim or the figure of ₹750 crore.",
+          "detail": "The source text does not contain the figure 52% regarding the total order book.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "potentially including sensitive personal details like Aadhaar numbers",
+          "claim": "L&T's EBITDA margin contracted by 90 basis points to 9.0% in Q1 FY27, down from 9.9% in Q1 FY26.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text lists savings/current accounts, loan accounts, net banking users, NRI data, and ATM records, but does not mention Aadhaar numbers.",
+          "detail": "The provided source text does not mention EBITDA margins or the specific figures 9.0% or 9.9%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "affected its green energy revenue by 11%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention an 11% decline in green energy revenue.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the core event (cyberattack via email compromise) and the volume of data (1TB). However, it introduces specific details regarding a cyber insurance claim and the inclusion of Aadhaar numbers that are not supported by the provided source text."
+      "notes": "The story correctly reports the headline financial figures (Profit, Revenue, Order Inflow, Order Book) as they appear in the source text. However, it includes several specific percentages and margin figures that are not present in the provided source material."
+    },
+    {
+      "slug": "fixxly-startup-funding",
+      "headline": "Why did construction startup Fixxly raise $5.5 million?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-urban-infrastructure-funding-challenge",
+      "headline": "India's Cities Need Trillions: Where Will The Money Come From?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India currently accounts for about 14% of the global urban population but only about 4% of global urban investments",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "urban population projected to reach 600 million by 2030 and nearly 900 million by 2050",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these population projections.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "India's urban centers will need an enormous $2.4 trillion by the year 2050",
+          "status": "UNVERIFIABLE",
+          "detail": "While the story mentions this figure, the provided source text does not contain this projection or cite a report that does.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the ADB's $1 billion commitment mentioned in the source text. However, several key statistics regarding urban funding needs and population projections are not supported by the provided source material."
+    },
+    {
+      "slug": "acme-solar-funding-green-energy",
+      "headline": "Green Energy Firm Just Secured Billions. Why Does It Matter?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the funding amount, the project capacity, the project type (FDRE), and the funding entity (PFC) are supported by the provided source text."
+    },
+    {
+      "slug": "rbi-polymer-banknotes-introduction",
+      "headline": "New ₹10, ₹20 Notes Coming: Will Your Wallet Change?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India (RBI) is planning to introduce new ₹10 and ₹20 polymer banknotes.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from the RBI website contains no mention of plans to introduce polymer banknotes in any denomination.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The RBI is expected to announce a detailed plan for the gradual rollout of the new ₹10 and ₹20 polymer banknotes.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any upcoming announcements or rollout plans regarding polymer currency.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story makes significant claims about the introduction of polymer banknotes by the RBI, but the provided source text—which is a snapshot of the RBI's official website—contains no information to support these claims. The claims are therefore unverifiable based on the provided source."
     }
   ]
 }
