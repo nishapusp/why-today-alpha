@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLatestEdition, getStoryBySlug } from "@/lib/getData";
 import { classifyStory } from "@/lib/visualEngine/classify";
@@ -7,14 +6,22 @@ import { buildVisualBlueprint } from "@/lib/visualEngine/blueprint";
 import { makeQrDataUri } from "@/lib/visualEngine/qr";
 import VisualEngineViewer from "@/components/motion/VisualEngineViewer";
 
-// Test harness for the WhyToday Visual Engine — not linked from primary
-// nav. Renders whatever the classifier + blueprint generator produce for a
-// real story, purely from data/edition.json, for review before any of this
-// is wired into production surfaces.
+// Not linked from primary nav (reached via the "Watch the Visual Story"
+// banner on /story/[slug]). Renders whatever the classifier + blueprint
+// generator produce for a real story, purely from data/edition.json.
 export const revalidate = 300;
 
-export default async function VisualPreviewPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function VisualPreviewPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  // ?debug=1 reveals the classification/theme diagnostic overlay — off by
+  // default so the reader-facing storyboard starts clean, brand header first.
+  searchParams: Promise<{ debug?: string }>;
+}) {
   const { slug } = await params;
+  const { debug } = await searchParams;
   const story = await getStoryBySlug(slug);
   if (!story) notFound();
 
@@ -33,13 +40,12 @@ export default async function VisualPreviewPage({ params }: { params: Promise<{ 
   const qrDataUri = outroSection ? await makeQrDataUri(outroSection.visual_data.url as string) : null;
 
   return (
-    <div className="bg-neutral-900 min-h-screen">
-      <div className="max-w-sm mx-auto pt-4 px-4">
-        <Link href={`/story/${slug}`} className="text-white/60 text-xs hover:text-white/90">
-          ← Back to article
-        </Link>
-      </div>
-      <VisualEngineViewer blueprint={blueprint} headlineImage={story.headlineImage} qrDataUri={qrDataUri ?? undefined} />
-    </div>
+    <VisualEngineViewer
+      blueprint={blueprint}
+      headlineImage={story.headlineImage}
+      qrDataUri={qrDataUri ?? undefined}
+      backHref={`/story/${slug}`}
+      debug={debug === "1"}
+    />
   );
 }

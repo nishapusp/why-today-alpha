@@ -17,7 +17,7 @@ export default function Timeline({ items, theme }: TimelineProps) {
   return (
     <div className="relative pl-6">
       <div className="absolute left-[7px] top-1 bottom-1 w-px" style={{ background: theme.border }} />
-      <div className="space-y-5">
+      <div className="space-y-4">
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
           const color = theme.accentRotation[i % theme.accentRotation.length];
@@ -36,11 +36,11 @@ export default function Timeline({ items, theme }: TimelineProps) {
               <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.textMuted }}>
                 {item.date}
               </p>
-              <p className="font-display text-base font-semibold mt-0.5" style={{ color }}>
+              <p className="font-display text-base font-semibold mt-0.5 line-clamp-2" style={{ color }}>
                 {item.event}
               </p>
               {item.detail && (
-                <p className="text-xs mt-0.5 leading-relaxed" style={{ color: theme.textMuted }}>
+                <p className="text-xs mt-0.5 leading-relaxed line-clamp-1" style={{ color: theme.textMuted }}>
                   {item.detail}
                 </p>
               )}
