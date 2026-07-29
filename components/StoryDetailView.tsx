@@ -124,6 +124,32 @@ export default function StoryDetailView({
           </p>
         )}
 
+        {/* /visual-preview/[slug] only resolves today's edition (see
+            lib/getData.ts getStoryBySlug) — omit for archived stories
+            rather than point at a 404. Its own full-width card rather than
+            squeezed into another row — a "Visual" pill in the reading-level
+            tabs or the hero meta line both got lost among other UI. */}
+        {linkBase === "/story" && (
+          <Link
+            href={`/visual-preview/${story.slug}`}
+            className="flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 mb-6 transition-transform active:scale-[0.98]"
+            style={{ background: cat.tint }}
+          >
+            <span className="flex items-center gap-3">
+              <span className="text-2xl leading-none">🎬</span>
+              <span>
+                <span className="block text-sm font-semibold" style={{ color: cat.deep }}>
+                  Watch the Visual Story
+                </span>
+                <span className="block text-xs text-[var(--text-secondary)]">
+                  This story, animated
+                </span>
+              </span>
+            </span>
+            <span className="text-lg" style={{ color: cat.accent }}>→</span>
+          </Link>
+        )}
+
         <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
 
         <StoryChart chart={story.chart} cat={cat} />
