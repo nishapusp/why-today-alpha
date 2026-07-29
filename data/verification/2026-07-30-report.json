@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-29T21:29:00.250Z",
+  "generatedAt": "2026-07-29T22:27:08.996Z",
   "results": [
     {
       "slug": "dpiit-startup-fund-revamp-deep-tech",
@@ -16,39 +16,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "oil-surge-west-asia",
-      "headline": "Oil Prices Surge 7% Amid Resumed Airstrikes in West Asia",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "In response, India officially expressed 'deep concern' regarding the safety of maritime trade routes, condemning the attacks on several vessels.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any official statement, condemnation, or expression of 'deep concern' by the Indian government.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Because companies like Indian Oil Corp are now actively seeking stakes in gas carriers to mitigate these risks, the shift from pure trade to strategic ownership is happening faster than anticipated.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Indian Oil Corp or any strategy regarding the acquisition of stakes in gas carriers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "State-run Indian Oil Corp is actively seeking equity stakes in gas carriers to bypass traditional shipping vulnerabilities.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Indian Oil Corp or any strategy regarding the acquisition of stakes in gas carriers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the market movement of Brent crude oil prices as reported in the source. However, it includes several specific claims regarding the Indian government's diplomatic actions and Indian Oil Corp's corporate strategy that are not present in the provided source text."
     },
     {
       "slug": "rbi-polymer-notes",
@@ -111,113 +78,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "dengue-mapping-india",
-      "headline": "India's Dengue Vaccine Strategy Shifts as All Four Strains Circulate",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This data, released on Thursday, is the first of its kind",
-          "status": "UNVERIFIABLE",
-          "detail": "The source article does not mention that the data was released on a Thursday, nor does it explicitly state it is the 'first of its kind' (though it calls it the 'first nationwide mapping').",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The government is expected to use this data to finalize the vaccine tender requirements within the next two months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source article does not mention a two-month timeline for finalizing vaccine tender requirements.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Government to likely initiate multi-valent vaccine procurement by late 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source article does not mention a timeline for vaccine procurement.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The core factual claims regarding the study findings (4 strains, 8 states, DENV-2 dominance) are verified by the source. However, the story includes several specific timelines and procedural expectations regarding government tenders and procurement that are not supported by the provided text."
-    },
-    {
-      "slug": "google-pay-sbi-card",
-      "headline": "Google Pay Expands Financial Services with Second Co-Branded Card",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The timing of this partnership with SBI Card, India's largest credit card issuer, allows Google to tap into a massive, established customer base",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the partnership with SBI Card but does not state that SBI Card is India's largest credit card issuer.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Google is expected to scale this AI integration to include more complex financial products, such as insurance and mutual fund analysis, over the next 6-12 months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention future plans for insurance or mutual fund analysis integration.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This integration is reminiscent of the growth seen in China’s WeChat Pay ecosystem during the late 2010s, which combined social messaging with a financial super-app.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention WeChat Pay or the Chinese ecosystem.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "Privacy advocates are raising concerns about the level of access Google will have to user financial data.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention privacy advocates or concerns regarding data access.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The core news regarding the Google Pay and SBI Card partnership and the integration of Gemini AI is verified. However, the story includes several speculative or contextual claims about market rankings, future product roadmaps, and privacy concerns that are not supported by the provided source text."
-    },
-    {
-      "slug": "corporate-bond-market-maturity",
-      "headline": "India's Corporate Bond Market Shifts Toward Market-Based Structure",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The market is expected to see more innovative bond structures, including green bonds and infrastructure debt funds, over the coming 12-24 months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention future expectations for green bonds or infrastructure debt funds, nor does it provide a 12-24 month timeline.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Further regulatory reforms are anticipated to enhance secondary market liquidity, which remains the final hurdle for full bond market integration.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not discuss future regulatory reforms or secondary market liquidity as a hurdle.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Increased liquidity in secondary markets expected by 2027 through new trading platforms.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text contains no mention of 2027 or new trading platforms.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story accurately reflects the core findings of the Crisil report mentioned in the source (shift to market-based structure, NBFCs leading issuance). However, it includes several forward-looking statements and specific predictions about regulatory reforms and market liquidity that are not supported by the provided source text."
-    },
-    {
       "slug": "grant-thornton-cbiz-deal",
       "headline": "Grant Thornton to Acquire CBIZ for $5 Billion",
       "verdict": "WARN",
@@ -233,6 +93,111 @@
         }
       ],
       "notes": "The story accurately reflects the core financial details and the strategic rationale for the merger. However, it provides an incorrect timeline for the deal's closure compared to the source text."
+    },
+    {
+      "slug": "us-humanoid-robot-import-ban",
+      "headline": "Why did the US just ban foreign humanoid robots?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The US robotic market was previously projected to import $4.5 billion worth of hardware by 2028.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions a forecast for China's humanoid robot market reaching USD 15 billion by 2030, but contains no mention of a $4.5 billion import projection for the US market.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "India's domestic electronics manufacturing targets a $300 billion output by 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's electronics manufacturing targets.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Global robotics stocks declined by up to 12% following the announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention stock market reactions or a 12% decline in robotics shares.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The US Commerce Department will implement strict component-level auditing for all imported automated machinery by early 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Department of Commerce or future auditing requirements for 2027.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the FCC's ban on humanoid robots and the security rationale provided in the source. However, it includes several specific financial and market projections that are not present in the provided source text."
+    },
+    {
+      "slug": "jk-bank-q1-profit-drop",
+      "headline": "Why did this state-linked bank's profits just fall 13%?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific financial figures, percentages, and operational details provided in the story are supported by the source text. The story accurately reflects the bank's Q1 FY27 performance, the reasons for the profit decline, and the asset quality trends."
+    },
+    {
+      "slug": "nse-30000-crore-ipo-risk-warning",
+      "headline": "Why is India's largest stock exchange warning its own investors?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "NSE filed its updated draft IPO papers on Wednesday",
+          "status": "WRONG",
+          "detail": "The source states the DRHP was filed on June 17, 2026, not on the Wednesday preceding the July 30, 2026 publication date.",
+          "correction": "The DRHP was filed on June 17, 2026.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "estimated post-listing valuation of the exchange exceeds ₹1.5 lakh crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a valuation of ₹1.5 lakh crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Derivatives trading accounts for over 80% of NSE's total transaction revenue",
+          "status": "WRONG",
+          "detail": "The source states the options segment accounted for over 60 per cent of operational revenue in FY26.",
+          "correction": "The options segment accounted for over 60 per cent of operational revenue in FY26.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Recent SEBI studies show 90% of retail active traders lose money in derivatives",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any SEBI study or the 90% figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "While the central event (NSE IPO filing and risk disclosure) is confirmed, the story includes several specific figures regarding valuation, revenue composition, and regulatory studies that are not supported by the provided source text."
+    },
+    {
+      "slug": "google-gemini-spark-india-launch",
+      "headline": "Why is Google deploying a personal AI assistant in India first?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
