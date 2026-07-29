@@ -1,6 +1,6 @@
 {
   "date": "2026-07-29",
-  "generatedAt": "2026-07-29T15:02:23.675Z",
+  "generatedAt": "2026-07-29T16:23:23.609Z",
   "results": [
     {
       "slug": "india-industrial-output-june-2026-high",
@@ -77,15 +77,23 @@
       "centralEventConfirmed": true,
       "issues": [
         {
+          "claim": "Target: 1.5 to 2 crore mass-affluent investors.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the proposal aims to target mass-affluent investors, but it does not provide the specific figure of 1.5 to 2 crore investors.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
           "claim": "potentially bringing an estimated 1.5 crore to 2 crore new investors into the regulated PMS fold.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the proposal, the investment thresholds, and the net worth requirements, but it does not contain any estimate regarding the number of new investors (1.5 to 2 crore) that would enter the PMS fold.",
+          "detail": "The source text does not contain this estimate.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the regulatory proposals regarding investment thresholds and net worth requirements as described in the source. However, it includes a specific estimate of '1.5 crore to 2 crore' new investors which is not present in the provided source text."
+      "notes": "The story accurately reflects the regulatory proposals regarding investment thresholds and net worth requirements as described in the source. However, it includes specific numerical estimates regarding the number of potential new investors that are not present in the provided source text."
     },
     {
       "slug": "iran-us-strikes-crude-oil-jump",
@@ -150,10 +158,19 @@
     {
       "slug": "ipl-valuation-july-2026",
       "headline": "IPL business value hits $20.6 billion, RCB leads",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific factual claims regarding the IPL's business valuation, RCB's brand value, and the year-on-year growth percentage are supported by the provided source text."
+      "issues": [
+        {
+          "claim": "How is the IPL growth viewed in the context of the Indian economy? — stated correct answer: \"A key pillar of the growing 'Experience Economy'\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the term 'Experience Economy' or describe the IPL as a 'key pillar' of it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core financial figures regarding the IPL's $20.6 billion valuation and RCB's $312 million brand value are correctly reported. However, the story includes an unverified claim in the quiz section regarding the 'Experience Economy' which is not present in the provided source text."
     },
     {
       "slug": "marvell-india-ai-investment",
@@ -171,25 +188,23 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "irdai-insurance-reforms",
-      "headline": "Insurance regulator unveils broad reforms for sector growth and protection",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "These reforms are reminiscent of the liberalization of India's banking sector in the early 1990s, which, following the Narasimham Committee reports, moved from a highly regulated and state-dominated system to one that encouraged private sector participation and greater competition.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the Narasimham Committee reports or the banking sector liberalization of the 1990s.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story correctly identifies the granting of the fourth insurance license in 2026 as reported in the source. However, it includes historical context regarding the 1990s banking reforms and the Narasimham Committee that is entirely absent from the provided source text."
-    },
-    {
       "slug": "dabur-q1-results-2026",
       "headline": "Dabur India’s Q1 profit jumps 15% on strong sales growth",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-polymer-banknotes",
+      "headline": "RBI to Introduce Polymer Banknotes of ₹10 and ₹20",
       "verdict": "WARN",
       "issues": [
         {
