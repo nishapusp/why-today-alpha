@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-29T22:27:08.996Z",
+  "generatedAt": "2026-07-29T23:18:41.666Z",
   "results": [
     {
       "slug": "dpiit-startup-fund-revamp-deep-tech",
@@ -95,94 +95,12 @@
       "notes": "The story accurately reflects the core financial details and the strategic rationale for the merger. However, it provides an incorrect timeline for the deal's closure compared to the source text."
     },
     {
-      "slug": "us-humanoid-robot-import-ban",
-      "headline": "Why did the US just ban foreign humanoid robots?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The US robotic market was previously projected to import $4.5 billion worth of hardware by 2028.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a forecast for China's humanoid robot market reaching USD 15 billion by 2030, but contains no mention of a $4.5 billion import projection for the US market.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India's domestic electronics manufacturing targets a $300 billion output by 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention India's electronics manufacturing targets.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Global robotics stocks declined by up to 12% following the announcement.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention stock market reactions or a 12% decline in robotics shares.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The US Commerce Department will implement strict component-level auditing for all imported automated machinery by early 2027.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the Department of Commerce or future auditing requirements for 2027.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the FCC's ban on humanoid robots and the security rationale provided in the source. However, it includes several specific financial and market projections that are not present in the provided source text."
-    },
-    {
       "slug": "jk-bank-q1-profit-drop",
       "headline": "Why did this state-linked bank's profits just fall 13%?",
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
       "notes": "All specific financial figures, percentages, and operational details provided in the story are supported by the source text. The story accurately reflects the bank's Q1 FY27 performance, the reasons for the profit decline, and the asset quality trends."
-    },
-    {
-      "slug": "nse-30000-crore-ipo-risk-warning",
-      "headline": "Why is India's largest stock exchange warning its own investors?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "NSE filed its updated draft IPO papers on Wednesday",
-          "status": "WRONG",
-          "detail": "The source states the DRHP was filed on June 17, 2026, not on the Wednesday preceding the July 30, 2026 publication date.",
-          "correction": "The DRHP was filed on June 17, 2026.",
-          "source": "Source 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "estimated post-listing valuation of the exchange exceeds ₹1.5 lakh crore",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a valuation of ₹1.5 lakh crore.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Derivatives trading accounts for over 80% of NSE's total transaction revenue",
-          "status": "WRONG",
-          "detail": "The source states the options segment accounted for over 60 per cent of operational revenue in FY26.",
-          "correction": "The options segment accounted for over 60 per cent of operational revenue in FY26.",
-          "source": "Source 1",
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Recent SEBI studies show 90% of retail active traders lose money in derivatives",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any SEBI study or the 90% figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "While the central event (NSE IPO filing and risk disclosure) is confirmed, the story includes several specific figures regarding valuation, revenue composition, and regulatory studies that are not supported by the provided source text."
     },
     {
       "slug": "google-gemini-spark-india-launch",
