@@ -1,6 +1,6 @@
 {
   "date": "2026-07-29",
-  "generatedAt": "2026-07-29T07:28:46.133Z",
+  "generatedAt": "2026-07-29T10:21:05.982Z",
   "results": [
     {
       "slug": "india-industrial-output-june-2026-high",
@@ -65,27 +65,10 @@
     {
       "slug": "paytm-payments-bank-winding-up-delhi-high-court-rbi",
       "headline": "Why Is a Major Payments Bank Being Shut Down By Court Order?",
-      "verdict": "WARN",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "KEY NUMBER CARD: Deposits Limit (Payments Bank) = ₹2 lakh",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the deposit limit for payments banks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "QUIZ CLAIM: 'What is the primary difference between a Payments Bank and a traditional commercial bank?' — stated correct answer: 'Payments Banks can only accept deposits up to a certain limit and cannot issue loans.'",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not define the operational differences between payments banks and commercial banks.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story accurately reflects the source text regarding the court order, the liquidator's appointment, and the timeline of regulatory actions. However, it includes specific technical details about payments bank regulations (deposit limits and operational definitions) that are not present in the provided source material."
+      "issues": [],
+      "notes": "All factual claims regarding the Delhi High Court order, the appointment of the liquidator, the dates of regulatory actions, and the history of restrictions on Paytm Payments Bank are supported by the provided source text."
     },
     {
       "slug": "sebi-lowers-mf-pms-investment-threshold",
@@ -94,15 +77,23 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "potentially bringing an estimated 1.5 crore to 2 crore new investors into the regulated PMS fold",
+          "claim": "potentially bringing an estimated 1.5 crore to 2 crore new investors into the regulated PMS fold.",
           "status": "UNVERIFIABLE",
           "detail": "The source text mentions the SEBI proposal but does not contain any estimate regarding the number of new investors (1.5 to 2 crore) that would enter the PMS fold.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
+        },
+        {
+          "claim": "PMS industry, which already grew 2.36 times to ₹42.61 lakh crore in seven years by May 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain any data regarding the PMS industry AUM or its growth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the SEBI proposal details (investment thresholds and net worth requirements) as reported in the source. However, it includes a specific estimate of 1.5 to 2 crore new investors that is not present in the provided source text."
+      "notes": "The story correctly identifies the core SEBI proposal regarding MF-only PMS investment and net worth thresholds as described in the source. However, it includes specific figures regarding the number of potential new investors and the industry's AUM growth that are not present in the provided source text."
     },
     {
       "slug": "iran-us-strikes-crude-oil-jump",
@@ -135,38 +126,34 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "acme-solar-funding-green-energy",
-      "headline": "Green Energy Firm Just Secured Billions. Why Does It Matter?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
+      "slug": "h1b-visa-ban-us-companies",
+      "headline": "US bans 4 firms, shutters H1B dreams for Indians",
+      "verdict": "WARN",
       "issues": [
         {
-          "claim": "ACME Solar Holdings has secured ₹3,404.57 crore in long-term project funding",
-          "status": "WRONG",
-          "detail": "The source text states the funding amount is ₹3,404 crore, not ₹3,404.57 crore.",
-          "correction": "₹3,404 crore",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
         }
       ],
-      "notes": "The story accurately identifies the project and the lender, but introduces a precision error in the funding amount by adding '.57' which is not present in the source text."
+      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "rbi-polymer-banknotes-introduction",
-      "headline": "New ₹10, ₹20 Notes Coming: Will Your Wallet Change?",
-      "verdict": "FABRICATED",
-      "centralEventConfirmed": false,
+      "slug": "tata-capital-q1-fy27-results",
+      "headline": "Tata Capital profit jumps 56% as lending boom continues",
+      "verdict": "WARN",
       "issues": [
         {
-          "claim": "The Reserve Bank of India (RBI) is planning to introduce new ₹10 and ₹20 polymer banknotes.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text, which is the official RBI website, contains no mention of plans to introduce polymer banknotes in any denomination.",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
           "correction": null,
-          "source": null,
-          "inBroaderConnections": false
+          "source": null
         }
       ],
-      "notes": "The story claims the RBI is planning to introduce polymer banknotes, but the provided source text (the official RBI website) contains no such announcement or information. The central event of the story is not supported by the source."
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
