@@ -102,7 +102,19 @@ export default function StoryDetailView({
             )}
             <span>{story.readMinutes} min read</span>
             {story.headlineImage && <span>· 📷 {story.headlineImage.credit}</span>}
-            <span className="ml-auto">
+            <span className="ml-auto flex items-center gap-2">
+              {/* /visual-preview/[slug] only resolves today's edition
+                  (see lib/getData.ts getStoryBySlug) — hide the link for
+                  archived stories rather than point at a 404. */}
+              {linkBase === "/story" && (
+                <Link
+                  href={`/visual-preview/${story.slug}`}
+                  className="text-[11px] text-white/80 hover:text-white bg-white/15 backdrop-blur-sm rounded-full px-2.5 py-1.5 transition-colors"
+                  title="Preview this story as an auto-generated visual storyboard"
+                >
+                  🎬 Visual Story
+                </Link>
+              )}
               <ShareButton slug={story.slug} headline={story.headline} accent={cat.accent} linkBase={linkBase} />
             </span>
           </div>
