@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import type { BlueprintSection, MotionComponent, VisualBlueprint, VisualTheme } from "../../lib/visualEngine/types";
 import StatisticCard, { StatisticCardProps } from "./components/StatisticCard";
 import Dashboard, { DashboardProps } from "./components/Dashboard";
@@ -23,10 +23,32 @@ export interface StoryVideoProps {
   blueprint: VisualBlueprint;
   headlineImageUrl?: string;
   qrDataUri?: string;
+  // public/-relative path (e.g. "audio/bg-music.mp3"), or undefined if
+  // render.ts didn't find a track in public/audio/ — resolved via
+  // staticFile() in MusicBed below, not in render.ts (that Node script has
+  // no `window`, which is what staticFile()'s URL base depends on).
+  musicFile?: string;
   // Remotion's Composition/renderMedia generics require props to
   // structurally satisfy Record<string, unknown> (they're serialized to
   // JSON for the render worker).
   [key: string]: unknown;
+}
+
+const MUSIC_PEAK_VOLUME = 0.22;
+const MUSIC_FADE_SECONDS = 1.2;
+
+/** Loops the track under the whole video, fading in/out at the edges so it never starts or stops abruptly. */
+function MusicBed({ musicFile }: { musicFile: string }) {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const fadeFrames = Math.round(MUSIC_FADE_SECONDS * fps);
+  const volume = interpolate(
+    frame,
+    [0, fadeFrames, durationInFrames - fadeFrames, durationInFrames],
+    [0, MUSIC_PEAK_VOLUME, MUSIC_PEAK_VOLUME, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+  );
+  return <Audio src={staticFile(musicFile)} loop volume={volume} />;
 }
 
 function renderSection(section: BlueprintSection, theme: VisualTheme, qrDataUri?: string) {
@@ -147,7 +169,7 @@ function Chrome({ theme, totalSlides, activeIndex }: { theme: VisualTheme; total
   );
 }
 
-export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri }: StoryVideoProps) {
+export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri, musicFile }: StoryVideoProps) {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const { theme, sections, hook } = blueprint;
@@ -171,6 +193,7 @@ export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri }: S
 
   return (
     <AbsoluteFill style={{ background: theme.background, fontFamily: "Helvetica, Arial, sans-serif" }}>
+      {musicFile && <MusicBed musicFile={musicFile} />}
       {headlineImageUrl && (
         <Sequence from={0} durationInFrames={heroFrames}>
           <HeroSlide url={headlineImageUrl} hook={hook} theme={theme} />

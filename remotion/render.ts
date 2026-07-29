@@ -22,6 +22,13 @@ import type { StoryVideoProps } from "./src/StoryVideo";
 const ROOT = path.join(__dirname, "..");
 const EDITION_PATH = path.join(ROOT, "data", "edition.json");
 const OUT_DIR = path.join(__dirname, "out");
+// See public/audio/README.md — optional, videos render silently if absent.
+// Passed as a plain public/-relative path, not resolved via staticFile()
+// here: that helper reads `window.remotion_staticBase`, which only exists
+// once the composition is running inside the rendered browser bundle, not
+// in this plain Node driver script. StoryVideo.tsx resolves it instead.
+const MUSIC_PATH = path.join(__dirname, "public", "audio", "bg-music.mp3");
+const musicFile = fs.existsSync(MUSIC_PATH) ? "audio/bg-music.mp3" : undefined;
 // Unset in CI (GitHub Actions has normal internet access — Remotion just
 // downloads its own Chrome Headless Shell there). Set this to point at a
 // pre-installed Chromium in sandboxes whose network egress is allowlisted
@@ -57,6 +64,7 @@ async function main() {
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
+  console.log(musicFile ? "Background music found — will mix in." : "No public/audio/bg-music.mp3 — rendering silently.");
   console.log("Bundling Remotion composition...");
   const bundleLocation = await bundle({ entryPoint: path.join(__dirname, "src", "index.ts") });
 
@@ -78,6 +86,7 @@ async function main() {
       blueprint,
       headlineImageUrl: noHero ? undefined : story.headlineImage?.url,
       qrDataUri,
+      musicFile,
     };
 
     console.log(`Rendering ${story.slug}...`);
