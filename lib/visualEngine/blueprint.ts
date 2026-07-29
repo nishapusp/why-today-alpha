@@ -1,6 +1,5 @@
 import { KeyNumber, Story } from "@/lib/types";
-import { StoryNeighbor } from "@/components/StoryDetailView";
-import { Classification, BlueprintSection, VisualBlueprint, VisualTheme } from "./types";
+import { Classification, BlueprintSection, StoryNeighbor, VisualBlueprint, VisualTheme } from "./types";
 
 const MAX_TOTAL_DURATION = 35;
 // Same convention as app/sitemap.ts's BASE constant.
@@ -65,10 +64,32 @@ function section(
   return { title, component, animation, duration, visual_data };
 }
 
-/** Prefers real `timeline` events; falls back to timeMachine's researched past-events (which also carry a `detail` sentence, unlike plain timeline). */
+const MAX_TIMELINE_ITEMS = 3;
+const MAX_DETAIL_LENGTH = 70;
+
+/** Cuts at the last whole word within the limit rather than mid-word. */
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
+}
+
+/**
+ * Prefers real `timeline` events; falls back to timeMachine's researched
+ * past-events (which also carry a `detail` sentence, unlike plain
+ * timeline). Capped and trimmed — this renders on one compact storyboard
+ * card, not the full Time Machine feature on the story page, so it needs
+ * a handful of the most essential beats, not the complete research.
+ */
 function timelineItemsFromStory(story: Story): { date: string; event: string; detail?: string }[] {
-  if (story.timeline?.length) return story.timeline.map((t) => ({ date: t.date, event: t.event }));
-  return story.timeMachine?.pastEvents?.map((e) => ({ date: e.period, event: e.headline, detail: e.detail })) ?? [];
+  const items = story.timeline?.length
+    ? story.timeline.map((t) => ({ date: t.date, event: t.event }))
+    : story.timeMachine?.pastEvents?.map((e) => ({
+        date: e.period,
+        event: e.headline,
+        detail: e.detail ? truncate(e.detail, MAX_DETAIL_LENGTH) : undefined,
+      })) ?? [];
+  return items.slice(-MAX_TIMELINE_ITEMS);
 }
 
 function detectRegions(story: Story): string[] {
@@ -252,6 +273,7 @@ export function buildVisualBlueprint(
       tagline: "Financial learning, made easy.",
       ctaLabel: "Read Full Story →",
       url: `${SITE_URL}/story/${story.slug}`,
+      videoUrl: `/api/visual-video/${story.slug}`,
     }, 4)
   );
 

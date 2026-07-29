@@ -8,6 +8,7 @@ import PageBody from "@/components/PageBody";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import AppDownloadBanner from "@/components/AppDownloadBanner";
 import PushSubscribePrompt from "@/components/PushSubscribePrompt";
+import ChromeVisibility from "@/components/ChromeVisibility";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -89,39 +90,43 @@ export default function RootLayout({
         )}
         <body className="min-h-full flex flex-col overflow-x-hidden pb-16">
           {/* Sticky so the wordmark = one-tap Home from any depth of any page */}
-          <header
-            className="sticky top-0 z-50 backdrop-blur-md border-b"
-            style={{
-              borderColor: "var(--border)",
-              background: "color-mix(in srgb, var(--bg) 86%, transparent)",
-            }}
-          >
-          <div className="max-w-2xl mx-auto w-full px-4 py-2.5 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <HamburgerMenu />
-              <Link href="/" className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full" style={{ background: "var(--gold)" }} />
-                <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: "var(--navy)" }}>
-                  Why Today
-                </span>
-              </Link>
+          <ChromeVisibility>
+            <header
+              className="sticky top-0 z-50 backdrop-blur-md border-b"
+              style={{
+                borderColor: "var(--border)",
+                background: "color-mix(in srgb, var(--bg) 86%, transparent)",
+              }}
+            >
+            <div className="max-w-2xl mx-auto w-full px-4 py-2.5 flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <HamburgerMenu />
+                <Link href="/" className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full" style={{ background: "var(--gold)" }} />
+                  <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: "var(--navy)" }}>
+                    Why Today
+                  </span>
+                </Link>
+              </div>
+              <Show when="signed-out">
+                <SignInButton mode="modal">
+                  <button className="text-[13px] font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white whitespace-nowrap">
+                    Track your learning →
+                  </button>
+                </SignInButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
             </div>
-            <Show when="signed-out">
-              <SignInButton mode="modal">
-                <button className="text-[13px] font-medium px-3.5 py-1.5 rounded-full bg-[var(--navy)] text-white whitespace-nowrap">
-                  Track your learning →
-                </button>
-              </SignInButton>
-            </Show>
-            <Show when="signed-in">
-              <UserButton />
-            </Show>
-          </div>
-          </header>
-          <AppDownloadBanner />
+            </header>
+            <AppDownloadBanner />
+          </ChromeVisibility>
           <PageBody>{children}</PageBody>
-          <BottomNav />
-          <PushSubscribePrompt />
+          <ChromeVisibility>
+            <BottomNav />
+            <PushSubscribePrompt />
+          </ChromeVisibility>
           <Script id="sw-register" strategy="afterInteractive">
             {`
               if ('serviceWorker' in navigator) {

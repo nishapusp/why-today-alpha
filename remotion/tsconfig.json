@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": ["dom", "es2018"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../*"]
+    },
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src", "render.ts", "../lib/visualEngine"]
+}

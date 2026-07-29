@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { HeadlineImage } from "@/lib/types";
 import { BlueprintSection, MotionComponent, VisualBlueprint, VisualTheme } from "@/lib/visualEngine/types";
 import { getAllThemes } from "@/lib/visualEngine/theme";
@@ -78,12 +79,20 @@ export default function VisualEngineViewer({
   blueprint,
   headlineImage,
   qrDataUri,
+  backHref,
+  debug = false,
 }: {
   blueprint: VisualBlueprint;
   headlineImage?: HeadlineImage;
   qrDataUri?: string;
+  backHref?: string;
+  // Diagnostic overlay (classification/confidence, theme switcher, raw
+  // blueprint JSON) — only ever meant for reviewing the engine's output,
+  // not for the actual reader-facing storyboard. Opt in with ?debug=1
+  // rather than always rendering it.
+  debug?: boolean;
 }) {
-  const [showDebug, setShowDebug] = useState(false);
+  const [showDebugPanel, setShowDebugPanel] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [theme, setTheme] = useState<VisualTheme>(blueprint.theme);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -99,67 +108,75 @@ export default function VisualEngineViewer({
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-8 px-4 bg-neutral-900">
-      <div className="w-full max-w-sm mb-3 flex items-center justify-between text-white/70 text-xs font-mono">
-        <span>
-          {classification.recommended_style} · {classification.confidence}% confidence · {theme.theme} theme
-        </span>
-        <button onClick={() => setShowDebug((v) => !v)} className="underline shrink-0 ml-2">
-          {showDebug ? "hide" : "debug"}
-        </button>
-      </div>
-
-      {/* Theme picker was only ever a decision-making tool for comparing
-          looks — now that WhyToday Dark is the settled default, it stays
-          tucked behind "debug" instead of always showing on screen. */}
-      {showDebug && (
-        <div className="w-full max-w-sm mb-3 flex items-center gap-2 flex-wrap">
-          {allThemes.map((t) => (
-            <button
-              key={t.theme}
-              onClick={() => setTheme(t)}
-              title={t.theme}
-              className="flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-1 text-[10px] font-mono transition-colors"
-              style={{
-                background: t.theme === theme.theme ? "rgba(255,255,255,.15)" : "transparent",
-                color: t.theme === theme.theme ? "#fff" : "rgba(255,255,255,.55)",
-                border: `1px solid ${t.theme === theme.theme ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.12)"}`,
-              }}
-            >
-              <span
-                className="w-3.5 h-3.5 rounded-full shrink-0"
-                style={{ background: t.background, border: `1px solid ${t.accent}` }}
-              />
-              {t.theme}
+    <div className="min-h-dvh flex flex-col items-center bg-black">
+      {debug && (
+        <div className="w-full max-w-md p-3 text-xs font-mono text-white/70">
+          <div className="flex items-center justify-between">
+            <span>
+              {classification.recommended_style} · {classification.confidence}% confidence · {theme.theme} theme
+            </span>
+            <button onClick={() => setShowDebugPanel((v) => !v)} className="underline shrink-0 ml-2">
+              {showDebugPanel ? "hide" : "debug"}
             </button>
-          ))}
+          </div>
+
+          {showDebugPanel && (
+            <>
+              <div className="mt-3 flex items-center gap-2 flex-wrap">
+                {allThemes.map((t) => (
+                  <button
+                    key={t.theme}
+                    onClick={() => setTheme(t)}
+                    title={t.theme}
+                    className="flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-1 text-[10px] transition-colors"
+                    style={{
+                      background: t.theme === theme.theme ? "rgba(255,255,255,.15)" : "transparent",
+                      color: t.theme === theme.theme ? "#fff" : "rgba(255,255,255,.55)",
+                      border: `1px solid ${t.theme === theme.theme ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.12)"}`,
+                    }}
+                  >
+                    <span
+                      className="w-3.5 h-3.5 rounded-full shrink-0"
+                      style={{ background: t.background, border: `1px solid ${t.accent}` }}
+                    />
+                    {t.theme}
+                  </button>
+                ))}
+              </div>
+              <pre className="mt-3 max-h-64 overflow-auto leading-relaxed bg-white/5 text-emerald-300 rounded-lg p-3">
+                {JSON.stringify(
+                  {
+                    classification,
+                    hook: blueprint.hook,
+                    sections: sections.map((s) => ({
+                      title: s.title,
+                      component: s.component,
+                      animation: s.animation,
+                      duration: s.duration,
+                      visual_data: s.visual_data,
+                    })),
+                  },
+                  null,
+                  2
+                )}
+              </pre>
+            </>
+          )}
         </div>
       )}
 
-      {showDebug && (
-        <pre className="w-full max-w-sm mb-3 max-h-64 overflow-auto text-[10px] leading-relaxed bg-white/5 text-emerald-300 rounded-lg p-3">
-          {JSON.stringify(
-            {
-              classification,
-              hook: blueprint.hook,
-              sections: sections.map((s) => ({
-                title: s.title,
-                component: s.component,
-                animation: s.animation,
-                duration: s.duration,
-                visual_data: s.visual_data,
-              })),
-            },
-            null,
-            2
-          )}
-        </pre>
-      )}
+      <div className="w-full max-w-md h-dvh flex flex-col relative" style={{ background: theme.background }}>
+        {backHref && (
+          <Link
+            href={backHref}
+            className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full flex items-center justify-center text-sm backdrop-blur-sm"
+            style={{ background: "rgba(0,0,0,.25)", color: "#fff" }}
+            aria-label="Back to article"
+          >
+            ←
+          </Link>
+        )}
 
-      <div
-        className="w-full max-w-sm aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col"
-        style={{ background: theme.background }}
-      >
         {/* Persistent brand header — matches every frame of the reference storyboard, not baked into each slide */}
         <div className="shrink-0 z-10" style={{ background: theme.background }}>
           <div style={{ height: 3, background: theme.accent }} />
@@ -229,10 +246,6 @@ export default function VisualEngineViewer({
           <div style={{ height: 3, background: theme.accent }} />
         </div>
       </div>
-
-      <p className="text-white/40 text-[11px] mt-3">
-        Scroll to move through the storyboard · {totalSlides} sections
-      </p>
     </div>
   );
 }
