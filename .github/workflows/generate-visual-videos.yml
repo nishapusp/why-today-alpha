@@ -1,0 +1,68 @@
+name: Generate Visual Story Videos
+
+concurrency:
+  group: generate-visual-videos
+  cancel-in-progress: false
+
+on:
+  # Manual runs (Actions tab / GitHub mobile app), optionally for one story only.
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Optional: render only this story's slug. Leave blank to render the whole day's edition."
+        required: false
+        default: ""
+
+  # Runs after the daily edition is generated (and verified/auto-corrected —
+  # see generate-edition.yml's own final step) rather than on a fixed
+  # schedule, so it always renders the day's FINAL story content, not a
+  # pre-verification draft.
+  workflow_run:
+    workflows: ["Generate Daily Edition"]
+    types:
+      - completed
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    # For the workflow_run trigger, only proceed if the edition generation
+    # actually succeeded — a failed/cancelled run has nothing new to render.
+    # workflow_dispatch has no associated workflow_run event, so it always proceeds.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Root deps: lib/visualEngine/qr.ts (imported by remotion/render.ts)
+      # resolves the `qrcode` package relative to its own location in
+      # lib/, not from remotion/'s own node_modules — and scripts/upload-
+      # visual-videos.js needs @netlify/blobs, also a root dependency.
+      - name: Install root dependencies
+        run: npm install --omit=dev --no-audit --no-fund
+
+      # remotion/ is a fully standalone subproject (its own package.json +
+      # lockfile, pinned to React 18) — see remotion/package.json's
+      # comment-free but deliberate isolation from the main app's React 19.
+      - name: Install remotion/ dependencies
+        working-directory: remotion
+        run: npm install --no-audit --no-fund
+
+      - name: Render videos
+        working-directory: remotion
+        run: |
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            npx tsx render.ts --slug "${{ github.event.inputs.slug }}"
+          else
+            npx tsx render.ts
+          fi
+
+      - name: Upload videos to Netlify Blobs
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: node scripts/upload-visual-videos.js

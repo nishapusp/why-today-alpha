@@ -13,11 +13,11 @@ import KnowledgeChain from "@/components/KnowledgeChain";
 import SwipeNavigator from "@/components/SwipeNavigator";
 import SignInPrompt from "@/components/SignInPrompt";
 import type { TermDefinition } from "@/lib/glossaryLookup";
-
-export interface StoryNeighbor {
-  href: string;
-  headline: string;
-}
+// Canonical definition lives in lib/visualEngine/types.ts (a plain-TS
+// module) — imported (for local use below) and re-exported here so
+// existing `@/components/StoryDetailView` imports keep working.
+import type { StoryNeighbor } from "@/lib/visualEngine/types";
+export type { StoryNeighbor } from "@/lib/visualEngine/types";
 
 export default function StoryDetailView({
   story,

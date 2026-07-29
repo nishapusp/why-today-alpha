@@ -78,6 +78,16 @@ export interface VisualTheme {
   accentRotation: string[];
 }
 
+// Canonical home for this shape (not components/StoryDetailView.tsx, which
+// re-exports it) — a real .tsx component pulls in its own React-anchored
+// type graph, which caused a React-18-vs-19 identity conflict when the
+// isolated remotion/ workspace (React 18) imported it transitively via
+// lib/visualEngine/blueprint.ts.
+export interface StoryNeighbor {
+  href: string;
+  headline: string;
+}
+
 export interface BlueprintSection {
   title: string;
   component: MotionComponent;

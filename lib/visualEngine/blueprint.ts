@@ -1,6 +1,5 @@
 import { KeyNumber, Story } from "@/lib/types";
-import { StoryNeighbor } from "@/components/StoryDetailView";
-import { Classification, BlueprintSection, VisualBlueprint, VisualTheme } from "./types";
+import { Classification, BlueprintSection, StoryNeighbor, VisualBlueprint, VisualTheme } from "./types";
 
 const MAX_TOTAL_DURATION = 35;
 // Same convention as app/sitemap.ts's BASE constant.
@@ -274,6 +273,7 @@ export function buildVisualBlueprint(
       tagline: "Financial learning, made easy.",
       ctaLabel: "Read Full Story →",
       url: `${SITE_URL}/story/${story.slug}`,
+      videoUrl: `/api/visual-video/${story.slug}`,
     }, 4)
   );
 

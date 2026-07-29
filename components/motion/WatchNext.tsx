@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { VisualTheme } from "@/lib/visualEngine/types";
-import { StoryNeighbor } from "@/components/StoryDetailView";
+import { StoryNeighbor, VisualTheme } from "@/lib/visualEngine/types";
 
 export interface WatchNextProps {
   prev?: StoryNeighbor;
