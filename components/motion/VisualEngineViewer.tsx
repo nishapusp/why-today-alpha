@@ -109,27 +109,32 @@ export default function VisualEngineViewer({
         </button>
       </div>
 
-      <div className="w-full max-w-sm mb-3 flex items-center gap-2 flex-wrap">
-        {allThemes.map((t) => (
-          <button
-            key={t.theme}
-            onClick={() => setTheme(t)}
-            title={t.theme}
-            className="flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-1 text-[10px] font-mono transition-colors"
-            style={{
-              background: t.theme === theme.theme ? "rgba(255,255,255,.15)" : "transparent",
-              color: t.theme === theme.theme ? "#fff" : "rgba(255,255,255,.55)",
-              border: `1px solid ${t.theme === theme.theme ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.12)"}`,
-            }}
-          >
-            <span
-              className="w-3.5 h-3.5 rounded-full shrink-0"
-              style={{ background: t.background, border: `1px solid ${t.accent}` }}
-            />
-            {t.theme}
-          </button>
-        ))}
-      </div>
+      {/* Theme picker was only ever a decision-making tool for comparing
+          looks — now that WhyToday Dark is the settled default, it stays
+          tucked behind "debug" instead of always showing on screen. */}
+      {showDebug && (
+        <div className="w-full max-w-sm mb-3 flex items-center gap-2 flex-wrap">
+          {allThemes.map((t) => (
+            <button
+              key={t.theme}
+              onClick={() => setTheme(t)}
+              title={t.theme}
+              className="flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-1 text-[10px] font-mono transition-colors"
+              style={{
+                background: t.theme === theme.theme ? "rgba(255,255,255,.15)" : "transparent",
+                color: t.theme === theme.theme ? "#fff" : "rgba(255,255,255,.55)",
+                border: `1px solid ${t.theme === theme.theme ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.12)"}`,
+              }}
+            >
+              <span
+                className="w-3.5 h-3.5 rounded-full shrink-0"
+                style={{ background: t.background, border: `1px solid ${t.accent}` }}
+              />
+              {t.theme}
+            </button>
+          ))}
+        </div>
+      )}
 
       {showDebug && (
         <pre className="w-full max-w-sm mb-3 max-h-64 overflow-auto text-[10px] leading-relaxed bg-white/5 text-emerald-300 rounded-lg p-3">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { ReadingLevel, Story } from "@/lib/types";
 import { getCategoryStyle } from "@/lib/categoryStyle";
@@ -15,13 +14,7 @@ const LEVELS: { key: ReadingLevel; label: string; minutes: string }[] = [
   { key: "deep", label: "Deep Dive", minutes: "8m" },
 ];
 
-export default function ReadingLevelToggle({
-  story,
-  visualStoryHref,
-}: {
-  story: Story;
-  visualStoryHref?: string; // "/visual-preview/<slug>" — omitted for archived stories
-}) {
+export default function ReadingLevelToggle({ story }: { story: Story }) {
   const { isSignedIn } = useUser();
   const [level, setLevel] = useState<ReadingLevel>("quick");
   const cat = getCategoryStyle(story.category);
@@ -82,16 +75,6 @@ export default function ReadingLevelToggle({
             <span className="ml-1 text-[11px] opacity-70">{l.minutes}</span>
           </button>
         ))}
-        {visualStoryHref && (
-          <Link
-            href={visualStoryHref}
-            className="px-3 py-2 rounded-full text-[13px] font-medium transition-all whitespace-nowrap shrink-0 border"
-            style={{ borderColor: cat.accent, color: cat.deep, touchAction: "manipulation" }}
-            title="Preview this story as an auto-generated visual storyboard"
-          >
-            🎬 Visual
-          </Link>
-        )}
       </div>
 
       <div className="mb-5">
