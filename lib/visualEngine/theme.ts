@@ -28,6 +28,22 @@ const PALETTES: Record<ThemeName, VisualTheme> = {
     negative: CRIMSON,
     accentRotation: WHY_TODAY_ROTATION,
   },
+  // Same dark-mode tokens the main site already uses (see the `.dark`
+  // block in app/globals-tokens.css) — unlike the placeholder dark themes
+  // below (Bloomberg/Dark Markets, invented before the reference video),
+  // this one is built from real WhyToday brand values.
+  "WhyToday Dark": {
+    theme: "WhyToday Dark",
+    background: "#070f1f",
+    surface: "#0f1c33",
+    border: "#1f2f4d",
+    text: "#f1f5f9",
+    textMuted: "#94a3b8",
+    accent: GOLD,
+    positive: EMERALD,
+    negative: CRIMSON,
+    accentRotation: WHY_TODAY_ROTATION,
+  },
   Bloomberg: {
     theme: "Bloomberg",
     background: "#0a0a0a",
@@ -114,21 +130,26 @@ const PALETTES: Record<ThemeName, VisualTheme> = {
   },
 };
 
+// Pending a final call on light vs. dark (see VisualEngineViewer's live
+// theme switcher), "WhyToday Dark" is the current best guess: same brand
+// colors as the light version, reads more premium for financial content.
+export const DEFAULT_THEME_NAME: ThemeName = "WhyToday Dark";
+
 /**
  * The reference storyboard video (the actual brand asset, not a mockup of
- * one) makes clear WhyToday has a single consistent visual identity — light
- * background, gold/navy brand chrome, per-item color rotation — rather than
- * a different "mood" per category. So this always returns the WhyToday
- * palette now. The other 7 palettes stay defined (and reachable via
- * getAllThemes) as alternate looks for later, but aren't selected by
- * default anymore.
+ * one) makes clear WhyToday has a single consistent visual identity —
+ * gold/navy brand chrome, per-item color rotation — rather than a
+ * different "mood" per category, so this doesn't vary by story. The other
+ * palettes stay defined (and reachable via getAllThemes) as alternate
+ * looks, swappable live in the preview via VisualEngineViewer's theme
+ * switcher.
  */
 // `story` kept in the signature (matching classifyStory's shape) since
 // per-story theme selection is the obvious next step once there's more
 // than one look.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getVisualTheme(_story: Story): VisualTheme {
-  return PALETTES.WhyToday;
+  return PALETTES[DEFAULT_THEME_NAME];
 }
 
 export function getAllThemes(): VisualTheme[] {

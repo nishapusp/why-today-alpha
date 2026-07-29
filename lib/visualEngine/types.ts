@@ -53,6 +53,7 @@ export interface Classification {
 
 export type ThemeName =
   | "WhyToday"
+  | "WhyToday Dark"
   | "Bloomberg"
   | "Financial Times"
   | "Dark Markets"

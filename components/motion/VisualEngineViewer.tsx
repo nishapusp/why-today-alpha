@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { HeadlineImage } from "@/lib/types";
 import { BlueprintSection, MotionComponent, VisualBlueprint, VisualTheme } from "@/lib/visualEngine/types";
+import { getAllThemes } from "@/lib/visualEngine/theme";
 import Reveal from "./Reveal";
 import StatisticCard, { StatisticCardProps } from "./StatisticCard";
 import Dashboard, { DashboardProps } from "./Dashboard";
@@ -84,9 +85,11 @@ export default function VisualEngineViewer({
 }) {
   const [showDebug, setShowDebug] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [theme, setTheme] = useState<VisualTheme>(blueprint.theme);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const { theme, sections, classification } = blueprint;
+  const { sections, classification } = blueprint;
   const totalSlides = (headlineImage ? 1 : 0) + sections.length;
+  const allThemes = getAllThemes();
 
   function handleScroll() {
     const el = scrollerRef.current;
@@ -104,6 +107,28 @@ export default function VisualEngineViewer({
         <button onClick={() => setShowDebug((v) => !v)} className="underline shrink-0 ml-2">
           {showDebug ? "hide" : "debug"}
         </button>
+      </div>
+
+      <div className="w-full max-w-sm mb-3 flex items-center gap-2 flex-wrap">
+        {allThemes.map((t) => (
+          <button
+            key={t.theme}
+            onClick={() => setTheme(t)}
+            title={t.theme}
+            className="flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-1 text-[10px] font-mono transition-colors"
+            style={{
+              background: t.theme === theme.theme ? "rgba(255,255,255,.15)" : "transparent",
+              color: t.theme === theme.theme ? "#fff" : "rgba(255,255,255,.55)",
+              border: `1px solid ${t.theme === theme.theme ? "rgba(255,255,255,.3)" : "rgba(255,255,255,.12)"}`,
+            }}
+          >
+            <span
+              className="w-3.5 h-3.5 rounded-full shrink-0"
+              style={{ background: t.background, border: `1px solid ${t.accent}` }}
+            />
+            {t.theme}
+          </button>
+        ))}
       </div>
 
       {showDebug && (
