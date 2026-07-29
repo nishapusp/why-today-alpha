@@ -48,3 +48,6 @@ next-env.d.ts
 # rendered videos are generated output, uploaded to Netlify Blobs, never committed
 /remotion/node_modules
 /remotion/out/
+
+# scripts/generate-tts-sample.js output — one-off comparison clips, never committed
+/tts-sample-out/

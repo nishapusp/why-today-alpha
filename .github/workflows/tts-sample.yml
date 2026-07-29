@@ -1,0 +1,40 @@
+name: TTS Narration Sample (test)
+
+# Manual, one-off comparison run — not part of the daily pipeline. Generates
+# a single narrated clip via ElevenLabs (see scripts/generate-tts-sample.js)
+# so it can be compared against the current music-only video export.
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Optional: story slug to narrate. Leave blank for the first story in today's edition."
+        required: false
+        default: ""
+
+jobs:
+  narrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate narration sample
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            node scripts/generate-tts-sample.js --slug "${{ github.event.inputs.slug }}"
+          else
+            node scripts/generate-tts-sample.js
+          fi
+
+      - name: Upload narration sample
+        uses: actions/upload-artifact@v4
+        with:
+          name: tts-sample
+          path: tts-sample-out/*.mp3
