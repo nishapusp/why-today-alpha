@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { HeadlineImage } from "@/lib/types";
 import { BlueprintSection, MotionComponent, VisualBlueprint, VisualTheme } from "@/lib/visualEngine/types";
@@ -64,6 +64,12 @@ function renderComponent(section: BlueprintSection, theme: VisualTheme, qrDataUr
   }
 }
 
+// No BlueprintSection (and thus no authored `duration`) exists for the
+// headline-image hero slide, so it gets its own fixed dwell time here —
+// close to Remotion's HERO_SECONDS so the web preview and exported video
+// feel like the same pacing.
+const HERO_AUTO_ADVANCE_SECONDS = 4;
+
 function Pill({ label, color }: { label: string; color: string }) {
   return (
     <span
@@ -96,9 +102,18 @@ export default function VisualEngineViewer({
   const [activeIndex, setActiveIndex] = useState(0);
   const [theme, setTheme] = useState<VisualTheme>(blueprint.theme);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const isInteractingRef = useRef(false);
   const { sections, classification } = blueprint;
   const totalSlides = (headlineImage ? 1 : 0) + sections.length;
   const allThemes = getAllThemes();
+
+  // Same seconds-per-slide the video export uses (section.duration), so
+  // the auto-advancing preview and the downloaded video feel like the
+  // same story at the same pace.
+  const slideDurations = useMemo(
+    () => [...(headlineImage ? [HERO_AUTO_ADVANCE_SECONDS] : []), ...sections.map((s) => s.duration)],
+    [headlineImage, sections]
+  );
 
   function handleScroll() {
     const el = scrollerRef.current;
@@ -106,6 +121,22 @@ export default function VisualEngineViewer({
     const idx = Math.round(el.scrollTop / el.clientHeight);
     setActiveIndex(Math.max(0, Math.min(totalSlides - 1, idx)));
   }
+
+  // Auto-advances to the next slide after its dwell time, like a stories
+  // UI — but a manual swipe always wins: it updates activeIndex via
+  // handleScroll, which reruns this effect for the new slide and cancels
+  // whatever timer was pending for the old one.
+  useEffect(() => {
+    if (activeIndex >= totalSlides - 1) return;
+    const seconds = slideDurations[activeIndex];
+    if (!seconds) return;
+    const timer = setTimeout(() => {
+      if (isInteractingRef.current) return;
+      const el = scrollerRef.current;
+      el?.scrollTo({ top: el.clientHeight * (activeIndex + 1), behavior: "smooth" });
+    }, seconds * 1000);
+    return () => clearTimeout(timer);
+  }, [activeIndex, slideDurations, totalSlides]);
 
   return (
     <div className="min-h-dvh flex flex-col items-center bg-black">
@@ -191,6 +222,12 @@ export default function VisualEngineViewer({
         <div
           ref={scrollerRef}
           onScroll={handleScroll}
+          onPointerDown={() => {
+            isInteractingRef.current = true;
+          }}
+          onPointerUp={() => {
+            isInteractingRef.current = false;
+          }}
           className="flex-1 min-h-0 overflow-y-auto no-scrollbar snap-y snap-mandatory"
         >
           {headlineImage && (
