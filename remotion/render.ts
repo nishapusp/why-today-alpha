@@ -27,8 +27,12 @@ const OUT_DIR = path.join(__dirname, "out");
 // here: that helper reads `window.remotion_staticBase`, which only exists
 // once the composition is running inside the rendered browser bundle, not
 // in this plain Node driver script. StoryVideo.tsx resolves it instead.
-const MUSIC_PATH = path.join(__dirname, "public", "audio", "bg-music.mp3");
-const musicFile = fs.existsSync(MUSIC_PATH) ? "audio/bg-music.mp3" : undefined;
+// A real licensed track takes priority if one's ever added; falls back to
+// the synthesized placeholder (scripts/generate-ambient-bg-music.js) so
+// exports never go fully silent by default.
+const MUSIC_CANDIDATES = ["bg-music.mp3", "bg-music.wav"];
+const musicFileName = MUSIC_CANDIDATES.find((name) => fs.existsSync(path.join(__dirname, "public", "audio", name)));
+const musicFile = musicFileName ? `audio/${musicFileName}` : undefined;
 // Unset in CI (GitHub Actions has normal internet access — Remotion just
 // downloads its own Chrome Headless Shell there). Set this to point at a
 // pre-installed Chromium in sandboxes whose network egress is allowlisted
