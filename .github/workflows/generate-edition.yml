@@ -17,23 +17,30 @@ on:
   # FIXED CLOCK TIME (midnight Pacific = ~12:30 PM IST), not per-run and
   # not on a rolling basis. Under the old schedule, the 1 PM/4 PM/8:30 PM
   # runs all drew from the SAME quota bucket that opens at 12:30 PM IST —
-  # and so did the NEXT DAY's 6 AM run, since 6 AM IST is still hours
-  # before the following reset. So the "safety net" top-ups were spending
+  # and so did the NEXT DAY's morning run, since it's still hours before
+  # the following reset. So the "safety net" top-ups were spending
   # tomorrow morning's quota tonight, which is exactly backwards for a
-  # product whose main readership arrives at 6 AM.
+  # product whose main readership arrives early.
   #
-  # Now: one run right at 6 AM (fresh bucket, minus whatever leaked from
-  # the previous day — should be ~nothing since nothing else fires
+  # Moved from 6 AM to 5 AM IST (2026-07-29) — scheduled GitHub Actions
+  # triggers on this repo have repeatedly landed 2-3+ hours late (and
+  # some days not at all), so an hour of buffer gives it more room to
+  # actually land before readers show up, without changing anything else
+  # about the quota timing below (5 AM IST is still hours before the
+  # ~12:30 PM IST reset, same as 6 AM was).
+  #
+  # One run right at 5 AM (fresh bucket, minus whatever leaked from the
+  # previous day — should be ~nothing since nothing else fires
   # overnight), and exactly one top-up at 1:15 PM — 45 minutes AFTER the
   # ~12:30 PM IST reset, so it always gets a clean bucket rather than
   # competing with the morning run. generate-edition.js exits immediately
   # if the day's target is already met, so the 1:15 PM run costs nothing
-  # on a day the 6 AM run already finished.
+  # on a day the 5 AM run already finished.
   # Cron is in UTC:
-  #   6:00 AM IST  = 00:30 UTC
+  #   5:00 AM IST  = 23:30 UTC (previous day)
   #   1:15 PM IST  = 07:45 UTC  (quota resets ~07:00 UTC / 12:30 PM IST)
   schedule:
-    - cron: "30 0 * * *"
+    - cron: "30 23 * * *"
     - cron: "45 7 * * *"
 
 permissions:
