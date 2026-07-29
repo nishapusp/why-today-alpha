@@ -54,6 +54,8 @@ jobs:
 
       - name: Render videos
         working-directory: remotion
+        env:
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
         run: |
           if [ -n "${{ github.event.inputs.slug }}" ]; then
             npx tsx render.ts --slug "${{ github.event.inputs.slug }}"

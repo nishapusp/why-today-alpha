@@ -28,24 +28,33 @@ export interface StoryVideoProps {
   // staticFile() in MusicBed below, not in render.ts (that Node script has
   // no `window`, which is what staticFile()'s URL base depends on).
   musicFile?: string;
+  // data:audio/mp3;base64,... URI from render.ts's Google Cloud TTS call
+  // (same pattern as qrDataUri below — generated server-side, passed
+  // through as a ready-to-use URI, not a public/ file), or undefined if
+  // GOOGLE_TTS_API_KEY isn't set.
+  narrationUrl?: string;
   // Remotion's Composition/renderMedia generics require props to
   // structurally satisfy Record<string, unknown> (they're serialized to
   // JSON for the render worker).
   [key: string]: unknown;
 }
 
-const MUSIC_PEAK_VOLUME = 0.22;
+// Ducked lower when narration is present so the voice always reads clearly;
+// louder as the sole audio when there's no narration for this story.
+const MUSIC_PEAK_VOLUME_WITH_NARRATION = 0.1;
+const MUSIC_PEAK_VOLUME_ALONE = 0.22;
 const MUSIC_FADE_SECONDS = 1.2;
 
 /** Loops the track under the whole video, fading in/out at the edges so it never starts or stops abruptly. */
-function MusicBed({ musicFile }: { musicFile: string }) {
+function MusicBed({ musicFile, hasNarration }: { musicFile: string; hasNarration: boolean }) {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const fadeFrames = Math.round(MUSIC_FADE_SECONDS * fps);
+  const peak = hasNarration ? MUSIC_PEAK_VOLUME_WITH_NARRATION : MUSIC_PEAK_VOLUME_ALONE;
   const volume = interpolate(
     frame,
     [0, fadeFrames, durationInFrames - fadeFrames, durationInFrames],
-    [0, MUSIC_PEAK_VOLUME, MUSIC_PEAK_VOLUME, 0],
+    [0, peak, peak, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
   return <Audio src={staticFile(musicFile)} loop volume={volume} />;
@@ -169,7 +178,7 @@ function Chrome({ theme, totalSlides, activeIndex }: { theme: VisualTheme; total
   );
 }
 
-export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri, musicFile }: StoryVideoProps) {
+export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri, musicFile, narrationUrl }: StoryVideoProps) {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const { theme, sections, hook } = blueprint;
@@ -193,7 +202,8 @@ export default function StoryVideo({ blueprint, headlineImageUrl, qrDataUri, mus
 
   return (
     <AbsoluteFill style={{ background: theme.background, fontFamily: "Helvetica, Arial, sans-serif" }}>
-      {musicFile && <MusicBed musicFile={musicFile} />}
+      {musicFile && <MusicBed musicFile={musicFile} hasNarration={Boolean(narrationUrl)} />}
+      {narrationUrl && <Audio src={narrationUrl} />}
       {headlineImageUrl && (
         <Sequence from={0} durationInFrames={heroFrames}>
           <HeroSlide url={headlineImageUrl} hook={hook} theme={theme} />

@@ -16,7 +16,9 @@ import { classifyStory } from "../lib/visualEngine/classify";
 import { getVisualTheme } from "../lib/visualEngine/theme";
 import { buildVisualBlueprint } from "../lib/visualEngine/blueprint";
 import { makeQrDataUri } from "../lib/visualEngine/qr";
+import { buildNarrationScript } from "../lib/visualEngine/narration";
 import type { Edition } from "../lib/types";
+import { HERO_SECONDS } from "./src/StoryVideo";
 import type { StoryVideoProps } from "./src/StoryVideo";
 
 const ROOT = path.join(__dirname, "..");
@@ -44,6 +46,43 @@ const BROWSER_EXECUTABLE = process.env.REMOTION_BROWSER_EXECUTABLE || undefined;
 // browser's trust store; this exists solely to unblock local testing there.
 const IGNORE_CERT_ERRORS = process.env.REMOTION_IGNORE_CERT_ERRORS === "1";
 
+// Chosen after comparing Neural2/News/Studio/Chirp3-HD samples — Studio-Q
+// read as the heaviest, most authentic/professional of the set. Optional:
+// videos render without narration if the key isn't set (same graceful
+// degradation as background music).
+const GOOGLE_TTS_API_KEY = process.env.GOOGLE_TTS_API_KEY;
+const NARRATION_VOICE = "en-US-Studio-Q";
+
+/**
+ * Google's TTS response already returns base64 audio, so this is passed
+ * straight through as a data: URI — same pattern as makeQrDataUri, no
+ * public/ file needed (unlike bg-music.mp3/.wav, which are static assets
+ * shared across every render; narration is generated fresh per story).
+ */
+async function synthesizeNarration(text: string): Promise<string | undefined> {
+  if (!GOOGLE_TTS_API_KEY) return undefined;
+  try {
+    const res = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_TTS_API_KEY}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: { text },
+        voice: { languageCode: "en-US", name: NARRATION_VOICE },
+        audioConfig: { audioEncoding: "MP3" },
+      }),
+    });
+    if (!res.ok) {
+      console.error(`Google TTS error ${res.status}: ${await res.text()}`);
+      return undefined;
+    }
+    const data = (await res.json()) as { audioContent: string };
+    return `data:audio/mp3;base64,${data.audioContent}`;
+  } catch (err) {
+    console.error("Narration synthesis failed:", err);
+    return undefined;
+  }
+}
+
 function parseArgs() {
   const args = process.argv.slice(2);
   const slugIdx = args.indexOf("--slug");
@@ -69,6 +108,7 @@ async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
   console.log(musicFile ? "Background music found — will mix in." : "No public/audio/bg-music.mp3 — rendering silently.");
+  console.log(GOOGLE_TTS_API_KEY ? "GOOGLE_TTS_API_KEY set — will generate narration." : "GOOGLE_TTS_API_KEY not set — rendering without narration.");
   console.log("Bundling Remotion composition...");
   const bundleLocation = await bundle({ entryPoint: path.join(__dirname, "src", "index.ts") });
 
@@ -86,11 +126,16 @@ async function main() {
     const outroSection = blueprint.sections.find((s) => s.component === "Outro");
     const qrDataUri = outroSection ? ((await makeQrDataUri(outroSection.visual_data.url as string)) ?? undefined) : undefined;
 
+    const headlineImageUrl = noHero ? undefined : story.headlineImage?.url;
+    const totalSeconds = blueprint.sections.reduce((t, s) => t + s.duration, 0) + (headlineImageUrl ? HERO_SECONDS : 0);
+    const narrationUrl = await synthesizeNarration(buildNarrationScript(story, totalSeconds));
+
     const inputProps: StoryVideoProps = {
       blueprint,
-      headlineImageUrl: noHero ? undefined : story.headlineImage?.url,
+      headlineImageUrl,
       qrDataUri,
       musicFile,
+      narrationUrl,
     };
 
     console.log(`Rendering ${story.slug}...`);
