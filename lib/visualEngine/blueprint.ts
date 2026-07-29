@@ -3,6 +3,8 @@ import { StoryNeighbor } from "@/components/StoryDetailView";
 import { Classification, BlueprintSection, VisualBlueprint, VisualTheme } from "./types";
 
 const MAX_TOTAL_DURATION = 35;
+// Same convention as app/sitemap.ts's BASE constant.
+const SITE_URL = "https://whytoday.in";
 
 /**
  * Story prose occasionally carries **bold** markdown (deepDiveRead always
@@ -63,6 +65,12 @@ function section(
   return { title, component, animation, duration, visual_data };
 }
 
+/** Prefers real `timeline` events; falls back to timeMachine's researched past-events (which also carry a `detail` sentence, unlike plain timeline). */
+function timelineItemsFromStory(story: Story): { date: string; event: string; detail?: string }[] {
+  if (story.timeline?.length) return story.timeline.map((t) => ({ date: t.date, event: t.event }));
+  return story.timeMachine?.pastEvents?.map((e) => ({ date: e.period, event: e.headline, detail: e.detail })) ?? [];
+}
+
 function detectRegions(story: Story): string[] {
   const haystack = [story.headline, story.summary, story.whatHappened]
     .filter(Boolean)
@@ -106,11 +114,7 @@ function typeSections(story: Story, c: Classification): BlueprintSection[] {
 
   switch (c.story_type) {
     case "timeline":
-      return [
-        section("Timeline", "Timeline", anim[0] ?? "slide-left", {
-          items: (story.timeline ?? story.timeMachine?.pastEvents?.map((e) => ({ date: e.period, event: e.headline })) ?? []),
-        }, 5),
-      ];
+      return [section("Timeline", "Timeline", anim[0] ?? "slide-left", { items: timelineItemsFromStory(story) }, 5)];
 
     case "dashboard": {
       const out: BlueprintSection[] = [
@@ -151,7 +155,7 @@ function typeSections(story: Story, c: Classification): BlueprintSection[] {
 
     case "company_profile":
       return [
-        section(story.headline, "CompanyCard", "zoom", {
+        section("The Company", "CompanyCard", "zoom", {
           headline: story.headline,
           category: story.category,
           sentiment: story.sentiment,
@@ -222,11 +226,7 @@ export function buildVisualBlueprint(
   const used = new Set(sections.map((s) => s.component));
   const hasTimelineData = (story.timeline && story.timeline.length >= 2) || (story.timeMachine?.pastEvents?.length ?? 0) >= 2;
   if (!used.has("Timeline") && hasTimelineData) {
-    sections.push(
-      section("Timeline", "Timeline", "slide-left", {
-        items: story.timeline ?? story.timeMachine?.pastEvents?.map((e) => ({ date: e.period, event: e.headline })) ?? [],
-      }, 4)
-    );
+    sections.push(section("Timeline", "Timeline", "slide-left", { items: timelineItemsFromStory(story) }, 4));
   } else if (!used.has("ImpactCards")) {
     const impact = buildImpactData(story);
     if (impact.positive.length || impact.negative.length) {
@@ -240,19 +240,29 @@ export function buildVisualBlueprint(
     sections.push(section("Good Question", "FactBox", "fade", { question: item.q, answer: item.a }, 4));
   }
 
-  // 5. Close — WatchNext
+  // 5. Keep reading (optional, before the true closer)
   if (neighbors?.prev || neighbors?.next) {
     sections.push(section("Keep Reading", "WatchNext", "fade", { ...neighbors }, 3));
   }
 
+  // 6. Close — the branded CTA card, always last (matches the reference
+  // storyboard's outro: tagline + "Read Full Story" + QR).
+  sections.push(
+    section("Read More", "Outro", "fade", {
+      tagline: "Financial learning, made easy.",
+      ctaLabel: "Read Full Story →",
+      url: `${SITE_URL}/story/${story.slug}`,
+    }, 4)
+  );
+
   // Cap total duration — trim optional middle sections (never the hook or
-  // the closing WatchNext) starting from the least essential first.
-  const trimOrder: BlueprintSection["component"][] = ["FactBox", "ImpactCards", "StatisticCard"];
+  // the closing Outro) starting from the least essential first.
+  const trimOrder: BlueprintSection["component"][] = ["FactBox", "WatchNext", "ImpactCards", "StatisticCard"];
   let total = sections.reduce((t, s) => t + s.duration, 0);
   for (const comp of trimOrder) {
     if (total <= MAX_TOTAL_DURATION) break;
     const idx = sections.findIndex((s) => s.component === comp);
-    if (idx > 0 && sections[idx].component !== "WatchNext") {
+    if (idx > 0 && sections[idx].component !== "Outro") {
       total -= sections[idx].duration;
       sections.splice(idx, 1);
     }

@@ -29,7 +29,8 @@ export type MotionComponent =
   | "WatchNext"
   | "MapStory"
   | "SankeyFlow"
-  | "BarChart";
+  | "BarChart"
+  | "Outro";
 
 export type MotionAnimation =
   | "fade"
@@ -51,6 +52,7 @@ export interface Classification {
 }
 
 export type ThemeName =
+  | "WhyToday"
   | "Bloomberg"
   | "Financial Times"
   | "Dark Markets"
@@ -63,11 +65,16 @@ export interface VisualTheme {
   theme: ThemeName;
   background: string;
   surface: string; // card/panel background, one step off the base background
+  border: string;
   text: string;
   textMuted: string;
   accent: string;
   positive: string;
   negative: string;
+  // Per-item color cycling for multi-stat/multi-node sections (StatisticCard
+  // grids, Timeline dots) — the brand's actual reference video rotates a
+  // different accent per item rather than using one flat accent throughout.
+  accentRotation: string[];
 }
 
 export interface BlueprintSection {

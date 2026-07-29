@@ -16,7 +16,7 @@ function Side({ side, theme, align }: { side: ComparisonSide; theme: VisualTheme
   return (
     <div
       className="rounded-2xl p-4 flex-1 min-w-0"
-      style={{ background: theme.surface, border: `1px solid ${theme.accent}33`, textAlign: align }}
+      style={{ background: theme.surface, border: `1px solid ${theme.border}`, textAlign: align }}
     >
       <p className="text-xs font-mono uppercase tracking-wide mb-2" style={{ color: theme.accent }}>
         {side.title}

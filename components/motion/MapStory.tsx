@@ -24,7 +24,7 @@ export default function MapStory({ regions, stats, theme }: MapStoryProps) {
         <Reveal key={region} animation="fade" delay={i * 100}>
           <div
             className="rounded-xl p-3"
-            style={{ background: theme.surface, border: `1px solid ${theme.accent}33` }}
+            style={{ background: theme.surface, border: `1px solid ${theme.border}` }}
           >
             <p className="text-sm font-semibold" style={{ color: theme.text }}>
               📍 {region}

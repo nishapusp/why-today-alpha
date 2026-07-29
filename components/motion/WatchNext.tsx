@@ -22,7 +22,7 @@ export default function WatchNext({ prev, next, theme }: WatchNextProps) {
             key={item.href}
             href={item.href}
             className="block rounded-xl p-3 transition-transform active:scale-[0.98]"
-            style={{ background: theme.surface, border: `1px solid ${theme.accent}33` }}
+            style={{ background: theme.surface, border: `1px solid ${theme.border}` }}
           >
             <p className="text-sm leading-snug" style={{ color: theme.text }}>
               {item.headline}

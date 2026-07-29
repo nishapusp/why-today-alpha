@@ -18,7 +18,7 @@ export default function ProcessFlow({ variant, steps, theme }: ProcessFlowProps)
           <Reveal animation="slide-left" delay={i * 150}>
             <div
               className="rounded-xl p-3 flex items-center gap-3"
-              style={{ background: theme.surface, border: `1px solid ${theme.accent}33` }}
+              style={{ background: theme.surface, border: `1px solid ${theme.border}` }}
             >
               <span
                 className="shrink-0 w-7 h-7 rounded-full grid place-items-center text-xs font-mono font-bold"

@@ -4,6 +4,7 @@ import { getLatestEdition, getStoryBySlug } from "@/lib/getData";
 import { classifyStory } from "@/lib/visualEngine/classify";
 import { getVisualTheme } from "@/lib/visualEngine/theme";
 import { buildVisualBlueprint } from "@/lib/visualEngine/blueprint";
+import { makeQrDataUri } from "@/lib/visualEngine/qr";
 import VisualEngineViewer from "@/components/motion/VisualEngineViewer";
 
 // Test harness for the WhyToday Visual Engine — not linked from primary
@@ -28,15 +29,17 @@ export default async function VisualPreviewPage({ params }: { params: Promise<{ 
     prev: prevStory && { href: `/story/${prevStory.slug}`, headline: prevStory.headline },
     next: nextStory && { href: `/story/${nextStory.slug}`, headline: nextStory.headline },
   });
+  const outroSection = blueprint.sections.find((s) => s.component === "Outro");
+  const qrDataUri = outroSection ? await makeQrDataUri(outroSection.visual_data.url as string) : null;
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-neutral-900 min-h-screen">
       <div className="max-w-sm mx-auto pt-4 px-4">
         <Link href={`/story/${slug}`} className="text-white/60 text-xs hover:text-white/90">
           ← Back to article
         </Link>
       </div>
-      <VisualEngineViewer blueprint={blueprint} headlineImage={story.headlineImage} />
+      <VisualEngineViewer blueprint={blueprint} headlineImage={story.headlineImage} qrDataUri={qrDataUri ?? undefined} />
     </div>
   );
 }

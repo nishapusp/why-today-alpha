@@ -12,8 +12,14 @@ export default function Dashboard({ stats, theme }: DashboardProps) {
   if (!stats?.length) return null;
   return (
     <div className="grid grid-cols-2 gap-3">
-      {stats.slice(0, 4).map((s) => (
-        <StatisticCard key={s.label} {...s} theme={theme} size={stats.length > 2 ? "sm" : "lg"} />
+      {stats.slice(0, 4).map((s, i) => (
+        <StatisticCard
+          key={s.label}
+          {...s}
+          theme={theme}
+          size={stats.length > 2 ? "sm" : "lg"}
+          color={theme.accentRotation[i % theme.accentRotation.length]}
+        />
       ))}
     </div>
   );

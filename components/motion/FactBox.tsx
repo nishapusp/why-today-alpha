@@ -8,7 +8,7 @@ export interface FactBoxProps {
 
 export default function FactBox({ question, answer, theme }: FactBoxProps) {
   return (
-    <div className="rounded-2xl p-4" style={{ background: theme.surface, border: `1px solid ${theme.accent}33` }}>
+    <div className="rounded-2xl p-4" style={{ background: theme.surface, border: `1px solid ${theme.border}` }}>
       <p className="text-xs font-mono uppercase tracking-wide mb-2" style={{ color: theme.accent }}>
         If you&rsquo;re wondering
       </p>

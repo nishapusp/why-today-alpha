@@ -10,6 +10,7 @@ export interface StatisticCardProps extends KeyNumber {
   theme: VisualTheme;
   animation?: MotionAnimation;
   size?: "lg" | "sm";
+  color?: string; // overrides theme.accent — lets callers cycle theme.accentRotation per item
 }
 
 /** ₹24 lakh crore -> animates "0 lakh crore" up to "24 lakh crore" on view. */
@@ -45,6 +46,7 @@ export default function StatisticCard({
   theme,
   animation = "count-up",
   size = "lg",
+  color,
 }: StatisticCardProps) {
   const { ref, inView } = useInView<HTMLDivElement>();
   const animatedValue = useCountUpText(value, inView && animation === "count-up");
@@ -55,11 +57,11 @@ export default function StatisticCard({
       className={`rounded-2xl p-5 transition-all duration-700 ease-out ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
       }`}
-      style={{ background: theme.surface, border: `1px solid ${theme.accent}33` }}
+      style={{ background: theme.surface, border: `1px solid ${theme.border}` }}
     >
       <p
-        className={`font-mono font-bold ${size === "lg" ? "text-4xl" : "text-2xl"}`}
-        style={{ color: theme.accent }}
+        className={`font-display font-bold ${size === "lg" ? "text-4xl" : "text-2xl"}`}
+        style={{ color: color ?? theme.accent }}
       >
         {animatedValue}
       </p>
