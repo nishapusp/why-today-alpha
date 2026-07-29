@@ -1,6 +1,6 @@
 {
   "date": "2026-07-29",
-  "generatedAt": "2026-07-29T04:41:53.580Z",
+  "generatedAt": "2026-07-29T07:28:46.133Z",
   "results": [
     {
       "slug": "india-industrial-output-june-2026-high",
@@ -85,7 +85,7 @@
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central event and all specific dates/names regarding the winding-up of Paytm Payments Bank are verified by the source. The 'WARN' verdict is issued because the story includes specific regulatory definitions (deposit limits and operational scope) that are not present in the provided source text."
+      "notes": "The story accurately reflects the source text regarding the court order, the liquidator's appointment, and the timeline of regulatory actions. However, it includes specific technical details about payments bank regulations (deposit limits and operational definitions) that are not present in the provided source material."
     },
     {
       "slug": "sebi-lowers-mf-pms-investment-threshold",
@@ -102,7 +102,7 @@
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reflects the SEBI proposal details regarding investment thresholds and net worth requirements as reported in the source. However, it includes a specific projection of 1.5 to 2 crore new investors which is not supported by the provided source text."
+      "notes": "The story accurately reflects the SEBI proposal details (investment thresholds and net worth requirements) as reported in the source. However, it includes a specific estimate of 1.5 to 2 crore new investors that is not present in the provided source text."
     },
     {
       "slug": "iran-us-strikes-crude-oil-jump",
@@ -120,47 +120,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "lnt-q1-results-fy27",
-      "headline": "Why did construction giant L&T’s profit jump 14%?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The company's international business continues to be a major growth driver, with over half of both new orders and the total order book coming from outside India.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide the percentage of the total order book that is international; it only mentions that 56% of new orders are international.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The significant international order book, now at 52% of the total, mitigates risks from any single geographical market",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain the figure 52% regarding the total order book.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "L&T's EBITDA margin contracted by 90 basis points to 9.0% in Q1 FY27, down from 9.9% in Q1 FY26.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention EBITDA margins or the specific figures 9.0% or 9.9%.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "affected its green energy revenue by 11%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an 11% decline in green energy revenue.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly reports the headline financial figures (Profit, Revenue, Order Inflow, Order Book) as they appear in the source text. However, it includes several specific percentages and margin figures that are not present in the provided source material."
-    },
-    {
       "slug": "fixxly-startup-funding",
       "headline": "Why did construction startup Fixxly raise $5.5 million?",
       "verdict": "WARN",
@@ -176,70 +135,38 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "india-urban-infrastructure-funding-challenge",
-      "headline": "India's Cities Need Trillions: Where Will The Money Come From?",
-      "verdict": "WARN",
+      "slug": "acme-solar-funding-green-energy",
+      "headline": "Green Energy Firm Just Secured Billions. Why Does It Matter?",
+      "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "India currently accounts for about 14% of the global urban population but only about 4% of global urban investments",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these statistics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "urban population projected to reach 600 million by 2030 and nearly 900 million by 2050",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these population projections.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India's urban centers will need an enormous $2.4 trillion by the year 2050",
-          "status": "UNVERIFIABLE",
-          "detail": "While the story mentions this figure, the provided source text does not contain this projection or cite a report that does.",
-          "correction": null,
-          "source": null,
+          "claim": "ACME Solar Holdings has secured ₹3,404.57 crore in long-term project funding",
+          "status": "WRONG",
+          "detail": "The source text states the funding amount is ₹3,404 crore, not ₹3,404.57 crore.",
+          "correction": "₹3,404 crore",
+          "source": "SOURCE 1",
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the ADB's $1 billion commitment mentioned in the source text. However, several key statistics regarding urban funding needs and population projections are not supported by the provided source material."
-    },
-    {
-      "slug": "acme-solar-funding-green-energy",
-      "headline": "Green Energy Firm Just Secured Billions. Why Does It Matter?",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All factual claims regarding the funding amount, the project capacity, the project type (FDRE), and the funding entity (PFC) are supported by the provided source text."
+      "notes": "The story accurately identifies the project and the lender, but introduces a precision error in the funding amount by adding '.57' which is not present in the source text."
     },
     {
       "slug": "rbi-polymer-banknotes-introduction",
       "headline": "New ₹10, ₹20 Notes Coming: Will Your Wallet Change?",
-      "verdict": "WARN",
+      "verdict": "FABRICATED",
       "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "The Reserve Bank of India (RBI) is planning to introduce new ₹10 and ₹20 polymer banknotes.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text from the RBI website contains no mention of plans to introduce polymer banknotes in any denomination.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The RBI is expected to announce a detailed plan for the gradual rollout of the new ₹10 and ₹20 polymer banknotes.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any upcoming announcements or rollout plans regarding polymer currency.",
+          "detail": "The provided source text, which is the official RBI website, contains no mention of plans to introduce polymer banknotes in any denomination.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story makes significant claims about the introduction of polymer banknotes by the RBI, but the provided source text—which is a snapshot of the RBI's official website—contains no information to support these claims. The claims are therefore unverifiable based on the provided source."
+      "notes": "The story claims the RBI is planning to introduce polymer banknotes, but the provided source text (the official RBI website) contains no such announcement or information. The central event of the story is not supported by the source."
     }
   ]
 }
