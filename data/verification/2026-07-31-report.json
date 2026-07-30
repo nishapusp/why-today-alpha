@@ -1,47 +1,14 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-30T19:04:17.998Z",
+  "generatedAt": "2026-07-30T20:26:28.873Z",
   "results": [
-    {
-      "slug": "hyundai-india-q1-profit-falls",
-      "headline": "Why did Hyundai India's profit just fall by over one-third?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Hyundai Motor India’s consolidated net profit plummeted by 35.1% to ₹888.6 crore in the first quarter of fiscal year 2027, down from ₹1,369.2 crore in Q1 FY26.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions Hyundai in the headline but does not contain the financial figures, profit percentages, or specific operational details (Chennai fire, West Asia crisis) cited in the story.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Concurrently, the company's revenue from operations also saw a significant decline of 12.5%, shrinking to ₹18,450 crore from ₹21,085 crore in the prior year's first quarter.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these revenue figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The company managed to sell just over 1.78 lakh units during this period",
-          "status": "UNVERIFIABLE",
-          "detail": "While the headline of the source text mentions 'sells over 1.78 lakh auto units', the body of the source text provided is empty of content regarding Hyundai's specific financial or operational performance.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The provided source text is a search results page that does not contain the body content required to verify the specific financial claims made in the story. While the headline of the source mentions the unit sales, the financial figures are entirely absent from the provided text."
-    },
     {
       "slug": "veritas-finance-ipo-drhp",
       "headline": "This NBFC just filed for a ₹900 crore IPO: Who are they?",
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the Offer For Sale of 1.28 crore shares, are supported by the provided source text."
+      "notes": "All factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the OFS of 1.28 crore shares, are supported by the provided source text."
     },
     {
       "slug": "mahindra-last-mile-mobility-unicorn",
@@ -74,128 +41,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "india-warns-ukraine-black-sea",
-      "headline": "Why did India just warn Ukraine about Black Sea shipping?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Over 25,000 Indian seafarers navigate high-risk European corridors daily",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the number of Indian seafarers navigating European corridors daily.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "making up nearly 12% of crews on global cargo ships",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide this percentage.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Freight insurance premiums for vessels entering the Black Sea have surged by over 400% since the collapse of the grain corridor agreement.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention insurance premiums or a 400% surge.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India relies heavily on this region for sunflower oil imports, which account for 70% of its domestic consumption.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention sunflower oil import statistics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India plans to collaborate with the International Maritime Organization to establish mandatory 'blue corridors' for safe commercial transit in high-risk waters.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the IMO or 'blue corridors'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Over the next three months, New Delhi will push for stricter international laws regarding naval drone deployments near civilian shipping lanes.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this diplomatic plan.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Maritime unions are also calling for an immediate halt to voyages passing through active combat zones unless shipping lines guarantee double hazard pay and comprehensive insurance coverage for Indian crews.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention maritime unions or these specific demands.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Indian Seafarers Globally = 250000",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide a total count of Indian seafarers globally.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Insurance Premium Surge = 400%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention insurance premiums.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "TIME MACHINE (future): India will lobby the International Maritime Organization in October 2026 for a treaty banning autonomous drone strikes on merchant vessels.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this future event.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "While the central event (Jaishankar's conversation with the Ukrainian FM regarding Black Sea attacks) is confirmed by the source, the article contains numerous specific statistics and future policy claims that are entirely absent from the provided source text."
-    },
-    {
-      "slug": "egypt-drone-strike-suez-route",
-      "headline": "Why are drone strikes in Egypt threatening India’s trade routes?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "industrial credit surging by 18%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Indian industrial credit or any percentage growth related to it.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "US's massive $58.6 billion Patriot missile contract",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a $58.6 billion Patriot missile contract.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Over $200 billion of annual Indian trade relies directly on the Suez Canal.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the value of Indian trade relying on the Suez Canal.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "While the story correctly identifies the drone strike on Damietta port as reported in the source, it includes several specific financial and trade-related figures that are entirely absent from the provided source text."
-    },
-    {
       "slug": "rbi-bulk-deposits-differential-rates",
       "headline": "Why did the RBI just change bulk deposit interest rates?",
       "verdict": "WARN",
@@ -209,31 +54,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "us-iran-tensions-patriot-deal",
-      "headline": "Why did the US just sign a massive $58.6 billion missile deal?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Estimated Missile Cost = $4 million",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention the cost per missile.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India imports over sixty percent of its crude oil through shipping corridors near the region",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not contain information regarding India's crude oil import percentages or trade routes.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The central claims regarding the $58.6 billion contract and the Iran-US conflict are supported by the provided sources. However, the story includes specific figures (missile cost and Indian oil import dependency) that are not present in the source texts."
     },
     {
       "slug": "rbi-delays-pillar-3-disclosures",
@@ -294,6 +114,331 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "hyundai-motor-india-q1-profit-drop",
+      "headline": "Why did India’s biggest car IPO giant just lose 35% profit?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "60% SUV contribution to total sales volume.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the percentage contribution of SUVs to total sales volume.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Standalone operating margins have compressed significantly, dropping from 13.5% down to 10.2%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the EBITDA margin contracted 400 basis points to 9.3%, but does not mention 13.5% or 10.2% figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the core financial figures (PAT, revenue, sales units) from the source. However, it includes specific margin percentages and SUV sales contribution figures that are not present in the provided source text."
+    },
+    {
+      "slug": "delhi-property-aadhaar-land-records-bill",
+      "headline": "Why is Delhi giving an Aadhaar-like ID card to every property?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "12-digit unique ID number to be assigned per land parcel.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source mentions the cards are 'Aadhaar-like' but does not specify the number of digits for the property ID.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Zero manual intervention planned for title verification.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not state that manual intervention will be completely eliminated.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Millions of properties to be mapped using GPS.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source mentions a comprehensive survey of all properties but does not quantify the number of properties as 'millions'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "waiting up to three months for a certified paper report",
+          "status": "UNVERIFIABLE",
+          "detail": "The source mentions difficulties in proving ownership but does not specify a 'three month' waiting period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "within seconds",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not specify the speed of the digital retrieval process.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "60% of all civil cases pending in Indian courts",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not mention this statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "2021 launch of the Unique Land Parcel Identification Number (ULPIN) scheme",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not mention the year 2021.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "Proposed Property ID Digits = 12",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not specify the number of digits.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Share of Land Disputes in Civil Courts = 60%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not mention this statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The physical GPS mapping of Delhi's residential zones is expected to commence by late 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not provide a timeline for the commencement of the survey.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the core announcement regarding the Delhi Land Records Bill. However, it includes several specific statistics and claims (such as the 12-digit ID, the 60% litigation figure, and specific timeframes) that are not present in the provided source text."
+    },
+    {
+      "slug": "egypt-drone-strike-suez-shipping-fears",
+      "headline": "Why did a drone strike in Egypt just spook Indian shippers?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In comparison to the Houthi rebel attacks of 2023 which were concentrated in the southern Red Sea",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Houthi attacks but does not specify the year 2023.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "On Thursday, domestic shipping associations reported that spot freight rates for the Mumbai-to-Rotterdam route have already risen by 5% in anticipatory trading, compared to a week ago.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention domestic shipping associations or specific freight rate increases for the Mumbai-to-Rotterdam route.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Compared to the previous quarter, when shipping rates had softened by nearly 12%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 12% softening in shipping rates in the previous quarter.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Over the next 30 days, maritime insurers are expected to rewrite risk premiums for any vessel traversing the Suez Canal, which could add up to $100,000 per transit in extra charges.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 30-day timeline for insurance changes or the $100,000 figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "$200 billion in annual Indian trade relies directly on the Suez Canal.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "10 to 14 days of extra transit time is added when bypassing the canal.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this transit time.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "$1.5 billion is the estimated monthly increase in India's oil import bill under diversion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Ever since the canal was opened in 1869, it has cut shipping distances between India and Europe by roughly 7,000 kilometers",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the opening year or the distance saved.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Compared to the Suez crisis of 1956",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 1956 Suez crisis.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "consumes up to 3,000 metric tons of extra fuel per round trip",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this fuel consumption figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "slashes the global carrying capacity of merchant fleets by nearly 15%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this percentage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "threatens India’s fiscal target of containing inflation below 4%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this inflation target.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This escalation directly echoes the 2023 Red Sea crisis, when Houthi drone and missile attacks in the Bab al-Mandab strait forced global carriers to divert over $350 billion in trade away from the Suez Canal.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the year 2023 or the $350 billion figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "a 250% rise in freight rates within weeks",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this percentage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "While the central event (the drone strike in Damietta) is confirmed by the source, the article contains numerous specific financial and logistical claims that are not present in the provided source text."
+    },
+    {
+      "slug": "india-warns-ukraine-black-sea-shipping",
+      "headline": "Why is India suddenly warning Ukraine about Black Sea shipping?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "150 Indian nationals",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions five Indian seafarers died and two are missing, but it does not mention a figure of 150 Indian nationals in danger.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Black Sea shipping insurance rates have spiked by 20%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention insurance rates or a 20% spike.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "sunflower oil, which has seen prices rise by 8% over the last week",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention sunflower oil price fluctuations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "10% of the global merchant navy workforce is supplied by India",
+          "status": "UNVERIFIABLE",
+          "detail": "This statistic is not mentioned in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "region traditionally supplies over 25% of global wheat exports",
+          "status": "UNVERIFIABLE",
+          "detail": "This statistic is not mentioned in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story correctly identifies the central event (Jaishankar's warning to Ukraine regarding Black Sea attacks). However, it includes several specific statistics regarding insurance rates, commodity prices, and workforce percentages that are not present in the provided source text."
+    },
+    {
+      "slug": "tata-steel-q1-results-profit-rise",
+      "headline": "How did Tata Steel grow profits in a struggling global market?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "domestic operating margins of over 15%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provides EBITDA per tonne figures for the standalone (Indian) business, but does not calculate or state an operating margin percentage of 15%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "global steel prices have plunged by 15% over the last six months",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention global steel price trends or a 15% decline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "£1.25 billion green transition of its Port Talbot plant",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions capital expenditure for Neelachal Ispat Nigam and general UK operations, but does not mention a £1.25 billion figure for Port Talbot.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "$12 billion acquisition of Anglo-Dutch steelmaker Corus in 2007",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the company's history but does not contain the $12 billion figure for the Corus acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the 19% profit growth and the Corus acquisition, but includes several specific financial figures (margins, global price drops, and capex amounts) that are not present in the provided source text."
     }
   ]
 }
