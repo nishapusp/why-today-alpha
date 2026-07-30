@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T06:18:26.280Z",
+  "generatedAt": "2026-07-30T09:10:46.830Z",
   "results": [
     {
       "slug": "yes-bank-capital-stack",
@@ -169,21 +169,61 @@
         {
           "claim": "The announcement emphasizes that violating these guidelines will lead to strict consequences, which could include the cancellation of food licenses or criminal charges for persistent offenders.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that the FDA commissioner warned of 'strict action' and that FDA inspectors will visit schools to ensure compliance, but it does not explicitly mention 'criminal charges' as a consequence.",
+          "detail": "The source text mentions that strict action will be taken against principals and school management and that the FDA suspended licenses of three eateries in a separate incident, but it does not explicitly state that the consequences for violating the school junk food ban include 'criminal charges'.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
           "claim": "By making the announcement on July 30, the government is signalling its commitment to enforcing child-safety and nutrition standards ahead of the new academic sessions.",
-          "status": "WRONG",
-          "detail": "The source text states the directive was announced on Wednesday (July 29, 2026, given the publication date of July 30), not July 30.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the directive was announced on Wednesday (July 29, 2026) by the Commissioner, not July 30. The article was published on July 30, but the announcement date is explicitly stated as Wednesday.",
           "correction": "The directive was announced on Wednesday, July 29, 2026.",
           "source": "Source 1",
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately captures the core of the FDA directive regarding the junk food ban. However, it incorrectly identifies the announcement date and includes a specific consequence (criminal charges) not supported by the provided source text."
+      "notes": "The story correctly identifies the core policy change and the scope of the ban. However, it attributes the announcement date to the day of publication rather than the date specified in the text, and it includes a claim about 'criminal charges' that is not supported by the provided source."
+    },
+    {
+      "slug": "irdai-greenlights-new-insurer-reforms",
+      "headline": "IRDAI Greenlights New Insurer, Expands Regulatory Reforms",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Regulatory changes are effective from August 2.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the licensing of ProTec General Insurance but contains no information regarding an effective date of August 2 for any regulatory reforms.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the licensing of ProTec General Insurance as the fourth such approval in 2026 based on the provided source. However, the specific effective date for the regulatory reforms is not mentioned in the source text."
+    },
+    {
+      "slug": "mtar-technologies-q1-profit",
+      "headline": "MTAR Technologies Q1 Profit Soars 364% on Strong Order Book",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific financial figures, percentages, and dates regarding MTAR Technologies' Q1 FY27 performance are supported by the provided source text."
+    },
+    {
+      "slug": "sarvam-ai-india-centric-models",
+      "headline": "Sarvam AI Unveils Platform for Building India-Centric AI Models",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
