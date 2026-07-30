@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T13:16:58.743Z",
+  "generatedAt": "2026-07-30T15:29:18.680Z",
   "results": [
     {
       "slug": "yes-bank-capital-stack",
@@ -153,23 +153,6 @@
       "notes": "The story accurately reflects the government's push for SAF readiness ahead of the 2027 CORSIA deadline as reported in the source. However, it includes speculative claims about future policy release dates and specific industry actions that are not supported by the provided text."
     },
     {
-      "slug": "cognizant-growth-cut",
-      "headline": "Cognizant trims 2026 growth estimate on cautious client spending",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This pattern mirrors the 2008 global financial crisis, where IT spending saw a multi-quarter contraction, followed by a pivot toward outsourcing as companies sought to reduce their internal costs",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2008 global financial crisis or historical comparisons to IT spending patterns during that period.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The story accurately reports the core news regarding Cognizant's guidance revision and the reasons cited by the company. However, it includes an unverified historical comparison to the 2008 financial crisis which is not present in the provided source material."
-    },
-    {
       "slug": "maharashtra-junk-food-ban",
       "headline": "Maharashtra bans junk food in and around schools",
       "verdict": "WARN",
@@ -217,7 +200,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific financial figures, percentages, and dates regarding MTAR Technologies' Q1 FY27 results are supported by the provided source text."
+      "notes": "The story's claims regarding MTAR Technologies' Q1 FY27 financial results (PAT, revenue, and percentage growth) and the stock price movement are fully supported by the provided source text."
     },
     {
       "slug": "sarvam-ai-india-centric-models",
