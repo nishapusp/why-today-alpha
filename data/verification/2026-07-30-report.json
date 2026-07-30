@@ -1,37 +1,7 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T01:06:37.428Z",
+  "generatedAt": "2026-07-30T03:43:51.949Z",
   "results": [
-    {
-      "slug": "dpiit-startup-fund-revamp-deep-tech",
-      "headline": "Why is the government rewriting the rules for its massive startup fund?",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "rbi-polymer-notes",
-      "headline": "RBI Approves ₹10 and ₹20 Polymer Banknotes",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
     {
       "slug": "yes-bank-capital-stack",
       "headline": "Yes Bank and Capital Stack Partner to Boost Institutional Funding",
@@ -173,62 +143,95 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "grid-scale-storage-tender",
-      "headline": "Top manufacturers eye 10GWh energy storage PLI tender",
+      "slug": "india-saf-policy",
+      "headline": "India unveils plan for sustainable aviation fuel by 2027",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The move gained momentum as of Thursday, July 30",
-          "status": "WRONG",
-          "detail": "July 30, 2026, is a Thursday, but the source article was published on July 30, 2026, and refers to the pre-bid conference occurring on Wednesday, July 29, 2026. The story incorrectly implies the momentum gained on the 30th.",
-          "correction": "The momentum followed the pre-bid conference held on Wednesday, July 29, 2026.",
-          "source": "Source 1",
+          "claim": "The government is expected to release the final legal document detailing the incentives and penalties for SAF usage in the coming weeks.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that the draft policy is in its final stages and that stakeholders have been directed to expedite action points, but it does not mention a specific timeline for the release of a document detailing incentives and penalties.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "This initiative mirrors the 2017 Ujala scheme",
+          "claim": "Refiners are likely to announce long-term supply contracts, and airlines will start updating their operational workflows to account for the price and performance differences of blended SAF.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the Ujala scheme or any comparison to it.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "this tender acts as a bridge to align domestic energy storage with the broader 'Semicon 2.0' and electronics manufacturing goals.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention 'Semicon 2.0' or electronics manufacturing goals in relation to this tender.",
+          "detail": "The source text does not mention upcoming announcements of long-term supply contracts by refiners or specific operational workflow updates by airlines.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reports the core details of the tender (capacity, deadline, and likely bidders). However, it includes external claims about 'Semicon 2.0' and the 'Ujala scheme' that are not supported by the provided source text."
+      "notes": "The story accurately reflects the government's push for SAF readiness ahead of the 2027 CORSIA deadline as reported in the source. However, it includes speculative claims about future policy release dates and specific industry actions that are not supported by the provided text."
     },
     {
-      "slug": "nse-ipo-risk",
-      "headline": "NSE flags lower trading volumes in ₹30,000 crore IPO papers",
+      "slug": "rbi-forex-inflow-status",
+      "headline": "RBI Governor: Foreign capital drive has not yet lifted the rupee",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Subscription windows will likely open in August 2026",
+          "claim": "The governor noted that the inflows have hit a ceiling in terms of their immediate impact on the currency markets",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the IPO filing date and the expected nature of the IPO, but it does not provide any information or timeline regarding the opening of subscription windows in August 2026.",
+          "detail": "The source text reports the Governor's comments on the mobilization of funds and the lack of impact on reserves/liquidity/rupee, but it does not contain any statement from the Governor regarding the inflows having 'hit a ceiling' in terms of impact.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "This echoes the 2008 BSE listing preparations",
+          "claim": "The clarification comes as a direct response to growing public and investor curiosity regarding why the rupee has not strengthened significantly",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the BSE, its listing preparations, or the year 2008.",
+          "detail": "The source text reports the Governor's comments but does not state that these comments were a 'direct response' to public or investor curiosity.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The RBI is expected to continue its current forex intervention strategy, though more subtle adjustments to liquidity management may be on the horizon.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that the RBI has been selling dollars and injecting liquidity via repo operations, but it does not provide forward-looking statements or expectations regarding the RBI's future strategy or adjustments to liquidity management.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Expect close monitoring of forex reserves data in the next monthly RBI report.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 'next monthly RBI report' or suggest that observers should monitor it for this specific purpose.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the $32 billion figure and the Governor's comments on the lack of impact on the rupee and liquidity. However, it includes several speculative claims about the Governor's motivations, future RBI policy, and specific reporting expectations that are not supported by the provided source text."
+    },
+    {
+      "slug": "vande-bharat-freight-trial",
+      "headline": "India's first Vande Bharat freight train hits 145 kmph in trials",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Ministry of Railways is expected to finalize the deployment schedule for commercial operations by the end of the year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the train is undergoing a month-long trial phase but does not mention any specific timeline or expectation regarding the finalization of a commercial deployment schedule by the end of the year.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This strategy draws a parallel to the Chinese 'Gaotie' rail network strategy (2010 onwards), which combined high-speed passenger rail with high-speed cargo movement to connect regional industrial centers.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no mention of China, the 'Gaotie' rail network, or any international comparisons.",
           "correction": null,
           "source": null,
           "inBroaderConnections": true
         }
       ],
-      "notes": "The story accurately reflects the core details of the NSE IPO filing as reported in the source. However, it includes speculative timelines and historical comparisons that are not supported by the provided source text."
+      "notes": "The story accurately reports the trial speed and the nature of the Vande Bharat freight prototype as described in the source. However, it includes speculative claims about future deployment timelines and international comparisons that are not supported by the provided source text."
     }
   ]
 }
