@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T00:22:21.581Z",
+  "generatedAt": "2026-07-30T01:06:37.428Z",
   "results": [
     {
       "slug": "dpiit-startup-fund-revamp-deep-tech",
@@ -118,64 +118,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "oil-price-spike-west-asia",
-      "headline": "West Asia Strikes Send Brent Crude Prices Soaring 7 Percent",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India issued a formal statement calling for de-escalation.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention any formal statement issued by the Indian government regarding the conflict.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The news is particularly impactful today because it coincides with the Federal Reserve's decision to hold interest rates",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention a Federal Reserve interest rate decision occurring on July 29 or July 30, 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India's Import Dependence = 85%+",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any data regarding India's oil import dependence percentage.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the oil price surge and the military events in Iraq and the Strait of Hormuz as reported in the sources. However, it includes several claims regarding Indian government actions, Federal Reserve policy, and India's import dependence statistics that are not supported by the provided source texts."
-    },
-    {
-      "slug": "iit-kanpur-website-hack",
-      "headline": "IIT-Kanpur Website Hacked by Applicant Denied Fair Consideration",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This incident mirrors the 2014 cybersecurity concerns at various government websites, where unauthorized access exposed major vulnerabilities in public infrastructure.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention 2014 cybersecurity concerns or any historical comparison to government website vulnerabilities.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "Expect a major audit of IIT-Kanpur’s digital security infrastructure in the coming weeks.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any planned or expected audits of the institute's digital security infrastructure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The core event is accurately reported based on the source. However, the story includes speculative future actions and historical comparisons that are not supported by the provided source text."
-    },
-    {
       "slug": "rbi-mission-saksham",
       "headline": "RBI Launches 'Mission SAKSHAM' for Urban Co-operative Banks",
       "verdict": "WARN",
@@ -214,6 +156,79 @@
         }
       ],
       "notes": "The core news regarding the partnership with SBI Card and the integration of Gemini AI is accurate. However, the story includes details about 'investment tips' and 'target consumer segments' that are not supported by the provided source text."
+    },
+    {
+      "slug": "oil-price-fiscal-risk",
+      "headline": "India warns of fiscal risk as West Asia conflict flares",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "grid-scale-storage-tender",
+      "headline": "Top manufacturers eye 10GWh energy storage PLI tender",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The move gained momentum as of Thursday, July 30",
+          "status": "WRONG",
+          "detail": "July 30, 2026, is a Thursday, but the source article was published on July 30, 2026, and refers to the pre-bid conference occurring on Wednesday, July 29, 2026. The story incorrectly implies the momentum gained on the 30th.",
+          "correction": "The momentum followed the pre-bid conference held on Wednesday, July 29, 2026.",
+          "source": "Source 1",
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This initiative mirrors the 2017 Ujala scheme",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Ujala scheme or any comparison to it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "this tender acts as a bridge to align domestic energy storage with the broader 'Semicon 2.0' and electronics manufacturing goals.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention 'Semicon 2.0' or electronics manufacturing goals in relation to this tender.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the core details of the tender (capacity, deadline, and likely bidders). However, it includes external claims about 'Semicon 2.0' and the 'Ujala scheme' that are not supported by the provided source text."
+    },
+    {
+      "slug": "nse-ipo-risk",
+      "headline": "NSE flags lower trading volumes in ₹30,000 crore IPO papers",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Subscription windows will likely open in August 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the IPO filing date and the expected nature of the IPO, but it does not provide any information or timeline regarding the opening of subscription windows in August 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This echoes the 2008 BSE listing preparations",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the BSE, its listing preparations, or the year 2008.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story accurately reflects the core details of the NSE IPO filing as reported in the source. However, it includes speculative timelines and historical comparisons that are not supported by the provided source text."
     }
   ]
 }
