@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T03:43:51.949Z",
+  "generatedAt": "2026-07-30T06:18:26.280Z",
   "results": [
     {
       "slug": "yes-bank-capital-stack",
@@ -88,21 +88,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "rbi-mission-saksham",
-      "headline": "RBI Launches 'Mission SAKSHAM' for Urban Co-operative Banks",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "google-pay-sbi-card",
       "headline": "Fintech and Big Tech: Google Pay Partners with SBI Card",
       "verdict": "WARN",
@@ -168,70 +153,37 @@
       "notes": "The story accurately reflects the government's push for SAF readiness ahead of the 2027 CORSIA deadline as reported in the source. However, it includes speculative claims about future policy release dates and specific industry actions that are not supported by the provided text."
     },
     {
-      "slug": "rbi-forex-inflow-status",
-      "headline": "RBI Governor: Foreign capital drive has not yet lifted the rupee",
-      "verdict": "WARN",
+      "slug": "cognizant-growth-cut",
+      "headline": "Cognizant trims 2026 growth estimate on cautious client spending",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The governor noted that the inflows have hit a ceiling in terms of their immediate impact on the currency markets",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text reports the Governor's comments on the mobilization of funds and the lack of impact on reserves/liquidity/rupee, but it does not contain any statement from the Governor regarding the inflows having 'hit a ceiling' in terms of impact.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The clarification comes as a direct response to growing public and investor curiosity regarding why the rupee has not strengthened significantly",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text reports the Governor's comments but does not state that these comments were a 'direct response' to public or investor curiosity.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The RBI is expected to continue its current forex intervention strategy, though more subtle adjustments to liquidity management may be on the horizon.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that the RBI has been selling dollars and injecting liquidity via repo operations, but it does not provide forward-looking statements or expectations regarding the RBI's future strategy or adjustments to liquidity management.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Expect close monitoring of forex reserves data in the next monthly RBI report.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 'next monthly RBI report' or suggest that observers should monitor it for this specific purpose.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story accurately reports the $32 billion figure and the Governor's comments on the lack of impact on the rupee and liquidity. However, it includes several speculative claims about the Governor's motivations, future RBI policy, and specific reporting expectations that are not supported by the provided source text."
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding Cognizant's guidance revision, the reasons cited by the CFO, and the comparative performance against peers."
     },
     {
-      "slug": "vande-bharat-freight-trial",
-      "headline": "India's first Vande Bharat freight train hits 145 kmph in trials",
+      "slug": "maharashtra-junk-food-ban",
+      "headline": "Maharashtra bans junk food in and around schools",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The Ministry of Railways is expected to finalize the deployment schedule for commercial operations by the end of the year.",
+          "claim": "The announcement emphasizes that violating these guidelines will lead to strict consequences, which could include the cancellation of food licenses or criminal charges for persistent offenders.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the train is undergoing a month-long trial phase but does not mention any specific timeline or expectation regarding the finalization of a commercial deployment schedule by the end of the year.",
+          "detail": "The source text mentions that the FDA commissioner warned of 'strict action' and that FDA inspectors will visit schools to ensure compliance, but it does not explicitly mention 'criminal charges' as a consequence.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "This strategy draws a parallel to the Chinese 'Gaotie' rail network strategy (2010 onwards), which combined high-speed passenger rail with high-speed cargo movement to connect regional industrial centers.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text contains no mention of China, the 'Gaotie' rail network, or any international comparisons.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
+          "claim": "By making the announcement on July 30, the government is signalling its commitment to enforcing child-safety and nutrition standards ahead of the new academic sessions.",
+          "status": "WRONG",
+          "detail": "The source text states the directive was announced on Wednesday (July 29, 2026, given the publication date of July 30), not July 30.",
+          "correction": "The directive was announced on Wednesday, July 29, 2026.",
+          "source": "Source 1",
+          "inBroaderConnections": false
         }
       ],
-      "notes": "The story accurately reports the trial speed and the nature of the Vande Bharat freight prototype as described in the source. However, it includes speculative claims about future deployment timelines and international comparisons that are not supported by the provided source text."
+      "notes": "The story accurately captures the core of the FDA directive regarding the junk food ban. However, it incorrectly identifies the announcement date and includes a specific consequence (criminal charges) not supported by the provided source text."
     }
   ]
 }
