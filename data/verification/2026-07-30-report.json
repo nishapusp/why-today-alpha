@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generatedAt": "2026-07-30T11:26:29.743Z",
+  "generatedAt": "2026-07-30T13:16:58.743Z",
   "results": [
     {
       "slug": "yes-bank-capital-stack",
@@ -155,10 +155,19 @@
     {
       "slug": "cognizant-growth-cut",
       "headline": "Cognizant trims 2026 growth estimate on cautious client spending",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "The story accurately reflects the details provided in the source text regarding Cognizant's guidance revision, the reasons cited by the CFO, and the comparative performance against peers."
+      "issues": [
+        {
+          "claim": "This pattern mirrors the 2008 global financial crisis, where IT spending saw a multi-quarter contraction, followed by a pivot toward outsourcing as companies sought to reduce their internal costs",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 2008 global financial crisis or historical comparisons to IT spending patterns during that period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story accurately reports the core news regarding Cognizant's guidance revision and the reasons cited by the company. However, it includes an unverified historical comparison to the 2008 financial crisis which is not present in the provided source material."
     },
     {
       "slug": "maharashtra-junk-food-ban",
@@ -224,6 +233,31 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "oil-prices-jump-west-asia-strikes-india-economy-impact",
+      "headline": "West Asia Strikes Spark 7% Oil Price Surge, Threatening India's Economy",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "US forces reportedly launched heavy strikes on Iran",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions 'heavy US airstrikes targeting Iranian positions' but does not state that US forces launched strikes on Iran itself.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The Finance Ministry has already voiced concerns, stating that sustained elevated oil prices could seriously strain these key economic indicators.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the Finance Ministry's fiscal deficit target, but does not contain a statement from the Ministry regarding the current oil price surge or its impact on economic indicators.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the oil price surge and India's import reliance as reported in the source. However, it attributes specific statements to the Finance Ministry and claims regarding US strikes on Iran that are not present in the provided source text."
     }
   ]
 }
