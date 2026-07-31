@@ -1,6 +1,6 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-31T02:52:34.685Z",
+  "generatedAt": "2026-07-31T06:05:20.005Z",
   "results": [
     {
       "slug": "veritas-finance-ipo-drhp",
@@ -8,7 +8,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific factual claims regarding the IPO size, the Offer for Sale (OFS) component, the company's focus, and the regulatory process are supported by the provided source text."
+      "notes": "All factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the Offer for Sale of 1.28 crore shares, are supported by the provided source text."
     },
     {
       "slug": "mahindra-last-mile-mobility-unicorn",
@@ -177,14 +177,21 @@
       "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "Over 50% of India's 150 major reservoirs are still less than half full",
+          "claim": "After two months of the current monsoon season, more than 50% of India's 150 major reservoirs are still less than half full",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding the percentage of reservoirs that are less than half full; it only mentions the aggregate storage percentage.",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or percentages.",
+          "correction": null,
+          "source": null
+        },
+        {
+          "claim": "the water levels in these reservoirs collectively stand at only 44% of their total storage capacity of 183.565 billion cubic meters",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or capacities.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The story correctly cites the aggregate reservoir storage level (44%) and the total number of reservoirs (150) as mentioned in the source, but the claim that 'over 50% of reservoirs are less than half full' is not supported by the provided text."
+      "notes": "The provided source text is a news aggregator page that does not contain the reservoir data cited in the story. While the story's claims are plausible in a general context, they are entirely unsupported by the provided source material."
     },
     {
       "slug": "e20-petrol-mileage-drop",
