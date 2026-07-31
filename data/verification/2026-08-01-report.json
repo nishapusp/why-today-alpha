@@ -1,81 +1,7 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-07-31T18:57:04.837Z",
+  "generatedAt": "2026-07-31T20:20:52.663Z",
   "results": [
-    {
-      "slug": "nse-settles-co-location-case",
-      "headline": "Exchange Pays Half Price To End Longest Running Market Scandal?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "NSE pays Rs 714 crore to settle Rs 1,491 crore co-location case ahead of IPO",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) is a search results page that contains no article content, no mention of the NSE settlement, and no figures regarding the NSE case.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "NSE has paid ₹714.74 crore to the Securities and Exchange Board of India (SEBI) to resolve the protracted co-location and dark fibre cases.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this information.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This payment follows an in-principle approval from SEBI to settle the charges for a total amount of ₹1,491.21 crore.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this information.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "In 2019, SEBI had ordered the NSE to disgorge profits worth ₹624.89 crore with 12% interest",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this information.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The provided source text is a blank search results page from Business Standard and does not contain any of the factual claims made in the story. While the story's central event is plausible, it cannot be verified by the provided source."
-    },
-    {
-      "slug": "sebi-bars-punit-goenka-subhash-chandra",
-      "headline": "SEBI Cracks Down: Media Moguls Banned For One Year!",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The regulatory action stems from an investigation that found alleged instances of fund diversion worth over ₹200 crore from ZEEL to other promoter-related entities.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a search results page that does not contain the body of the article or any mention of the ₹200 crore figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "In August 2023, SEBI had confirmed interim directions against Goenka and Chandra, restricting them from holding board positions in any listed company.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this historical information.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The SEBI action against Zee's promoters is reminiscent of other major corporate governance scandals in India, such as the IL&FS crisis in 2018",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the IL&FS crisis or 2018.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        }
-      ],
-      "notes": "The headline and core facts regarding the SEBI ban and penalty are confirmed by the source's title, but the body of the article contains significant details (fund diversion amounts, historical context, and comparisons) that are not present in the provided source text."
-    },
     {
       "slug": "imd-forecasts-below-normal-monsoon",
       "headline": "Monsoon Scare: Below-Normal Rains Threaten India's Economy?",
@@ -100,21 +26,38 @@
         {
           "claim": "In 2024, LPG imports from the US accounted for only about 15-20% of India's total LPG imports.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the 73% figure for July 2026 but contains no data regarding the percentage of LPG imports from the US in 2024.",
+          "detail": "The provided source text mentions the July 2026 figure but contains no data regarding the percentage of LPG imports from the US in 2024.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central claim regarding the 73% share of US LPG imports in July 2026 is verified by the source. However, the historical comparison to 2024 (15-20%) is not supported by the provided text."
+      "notes": "The central claim regarding the July 2026 LPG import share is verified by the source. However, the story includes a specific historical comparison (15-20% in 2024) that is not present in the provided source text."
     },
     {
       "slug": "maruti-suzuki-q1-fy27-results",
       "headline": "Car Sales Giant Profits Drop 30% Amid Inflation, Discount Wars?",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific financial figures, including the net profit of ₹2,105 crore, the 30% decline, the net sales of ₹35,840 crore, and the 2.5% sales growth, are supported by the provided source text."
+      "issues": [
+        {
+          "claim": "Net sales saw a modest increase of 2.5% to ₹35,840 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 mentions the profit drop but does not provide the specific net sales figures for Q1 FY27 or Q1 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q1 FY26 net profit of ₹3,010 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 does not mention the specific profit figure for Q1 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central claim regarding the 30% profit drop to ₹2,105 crore is verified by the headline of Source 1. However, the story includes specific financial figures for net sales and the previous year's profit that are not present in the provided source texts."
     },
     {
       "slug": "gail-india-q1-profit-fy27",
@@ -134,6 +77,36 @@
     {
       "slug": "rbi-master-directions-regulatory-framework",
       "headline": "RBI Simplifies Banking Rules: 628 Old Circulars Out, 64 New In!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-polymer-banknotes",
+      "headline": "Government Approves RBI Plan for New ₹10, ₹20 Polymer Notes",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "banking-workforce-shift",
+      "headline": "RBI Data Shows Banking Workforce Shift Toward Officers",
       "verdict": "WARN",
       "issues": [
         {
