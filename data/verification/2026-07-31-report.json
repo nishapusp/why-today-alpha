@@ -1,6 +1,6 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-31T06:05:20.005Z",
+  "generatedAt": "2026-07-31T09:17:31.200Z",
   "results": [
     {
       "slug": "veritas-finance-ipo-drhp",
@@ -8,7 +8,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the Offer for Sale of 1.28 crore shares, are supported by the provided source text."
+      "notes": "The story accurately reflects the details provided in the source text regarding the Veritas Finance DRHP filing, including the fresh issue size and the offer for sale component."
     },
     {
       "slug": "mahindra-last-mile-mobility-unicorn",
@@ -156,21 +156,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "tata-steel-q1-fy27-results",
-      "headline": "Tata Steel's Profit Jumps 19% in Q1, Thanks to Better Pricing",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "india-reservoirs-monsoon-status",
       "headline": "India's Reservoirs Half-Empty Despite Two Months of Monsoon",
       "verdict": "WARN",
@@ -179,19 +164,19 @@
         {
           "claim": "After two months of the current monsoon season, more than 50% of India's 150 major reservoirs are still less than half full",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding reservoir levels or percentages.",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or monsoon progress related to reservoir capacity.",
           "correction": null,
           "source": null
         },
         {
           "claim": "the water levels in these reservoirs collectively stand at only 44% of their total storage capacity of 183.565 billion cubic meters",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding reservoir levels or capacities.",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or storage capacity.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The provided source text is a news aggregator page that does not contain the reservoir data cited in the story. While the story's claims are plausible in a general context, they are entirely unsupported by the provided source material."
+      "notes": "The story makes specific claims about reservoir levels and monsoon impact that are entirely absent from the provided source text. The source text focuses on stock market performance, corporate results, and general economic news, not water management or reservoir data."
     },
     {
       "slug": "e20-petrol-mileage-drop",
@@ -221,27 +206,40 @@
     {
       "slug": "cauvery-water-directive",
       "headline": "Cauvery Authority Orders Karnataka to Release Water to Tamil Nadu",
-      "verdict": "WARN",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the CWMA directive, the daily release volume of 3,500 cusecs, the total volume of 4 TMC, and the reasons for Karnataka's appeal are supported by the provided source text."
+    },
+    {
+      "slug": "india-oil-import-bill-record-q1-fy27",
+      "headline": "India's Oil Import Bill Hits Record $50 Billion Amid Global Turmoil?",
+      "verdict": "WARN",
       "issues": [
         {
-          "claim": "The total volume stipulated by the authority is 4 TMC.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states the authority directed Karnataka to release 3,500 cusecs daily for 15 days, but it does not explicitly state that the total volume of this specific 15-day release equals 4 TMC. While 3,500 cusecs for 15 days is a specific calculation, the source text does not provide the '4 TMC' figure as the total for this directive.",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
           "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Total water volume mandate = 4 TMC",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain the figure '4 TMC' as a total mandate for the current directive.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
+          "source": null
         }
       ],
-      "notes": "The story accurately reports the daily release of 3,500 cusecs and the context of the dispute. However, it includes a '4 TMC' figure for the total volume which is not present in the provided source text."
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "astra-microwave-hal-order-boosts-defence-tech",
+      "headline": "Defence Supplier Lands ₹2,205 Crore Mega Order, Stock Soars?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
