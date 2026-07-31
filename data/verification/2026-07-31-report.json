@@ -1,6 +1,6 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-30T22:47:52.492Z",
+  "generatedAt": "2026-07-31T00:04:46.950Z",
   "results": [
     {
       "slug": "veritas-finance-ipo-drhp",
@@ -8,7 +8,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the OFS of 1.28 crore shares, are supported by the provided source text."
+      "notes": "All factual claims regarding the IPO size, the Offer for Sale, and the company's business focus are supported by the provided source text."
     },
     {
       "slug": "mahindra-last-mile-mobility-unicorn",
@@ -177,21 +177,21 @@
       "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "After two months of the current monsoon season, more than 50% of India's 150 major reservoirs are still less than half full",
+          "claim": "Over 50% of India's 150 major reservoirs are still less than half full",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding reservoir levels or monsoon progress.",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or water storage statistics.",
           "correction": null,
           "source": null
         },
         {
-          "claim": "The latest data indicates that the water levels in these reservoirs collectively stand at only 44% of their total storage capacity of 183.565 billion cubic meters.",
+          "claim": "water levels in these reservoirs collectively stand at only 44% of their total storage capacity of 183.565 billion cubic meters",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding reservoir levels or storage capacity.",
+          "detail": "The provided source text does not contain any data regarding reservoir levels or water storage statistics.",
           "correction": null,
           "source": null
         }
       ],
-      "notes": "The provided source text is a news aggregator page that does not contain the specific data points regarding reservoir levels or monsoon performance cited in the story. Therefore, these claims are unverifiable based on the provided source."
+      "notes": "The provided source text is a news aggregator page that does not contain the reservoir data cited in the story. While the story presents specific figures, they cannot be verified against the provided source."
     },
     {
       "slug": "e20-petrol-mileage-drop",
@@ -242,6 +242,39 @@
         }
       ],
       "notes": "The story accurately reports the daily release of 3,500 cusecs and the context of the dispute. However, it includes a '4 TMC' figure for the total volume which is not present in the provided source text."
+    },
+    {
+      "slug": "india-casualties-west-asia-war",
+      "headline": "Why Are Indian Lives Caught in the West Asia War?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "External Affairs Minister S. Jaishankar has expressed strong condemnation over attacks on Indian seafarers in the Black Sea",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the MEA summoning a Russian envoy regarding four Indians killed off Ukraine's coast, but it does not contain any statement or quote from S. Jaishankar regarding the Black Sea or condemnation of such attacks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "External Affairs Minister S. Jaishankar's direct message to Ukraine about the 'absolutely unacceptable' attacks on Indian seafarers in the Black Sea",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any communication between Jaishankar and Ukraine regarding this topic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "External Affairs Minister S. Jaishankar conveyed to his Ukrainian counterpart, Andrii Sybiha, that attacks on commercial shipping and Indian seafarers in the Black Sea are 'absolutely unacceptable.'",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Andrii Sybiha or any such conversation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly reports the government's figures regarding Indian casualties in the West Asia conflict as stated in the source. However, it repeatedly attributes specific diplomatic actions and statements to External Affairs Minister S. Jaishankar regarding the Black Sea and Ukraine that are entirely absent from the provided source text."
     }
   ]
 }
