@@ -1,14 +1,23 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-31T11:41:49.676Z",
+  "generatedAt": "2026-07-31T13:23:30.732Z",
   "results": [
     {
       "slug": "veritas-finance-ipo-drhp",
       "headline": "This NBFC just filed for a ₹900 crore IPO: Who are they?",
-      "verdict": "PASS",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific factual claims regarding the Veritas Finance IPO, including the fresh issue size of ₹900 crore and the OFS of 1.28 crore shares, are supported by the provided source text."
+      "issues": [
+        {
+          "claim": "the IPO will feature an Offer For Sale (OFS) of up to 1.28 crore equity shares by existing shareholders",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the filing of the DRHP and the ₹900 crore fresh issue, but it does not contain any information regarding an Offer For Sale (OFS) or the specific number of shares (1.28 crore) involved.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central event (Veritas Finance filing a DRHP for a ₹900 crore IPO) is confirmed by the source. However, the specific detail regarding the Offer For Sale (OFS) of 1.28 crore shares is not mentioned in the provided source text."
     },
     {
       "slug": "mahindra-last-mile-mobility-unicorn",
@@ -219,37 +228,29 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "maruti-suzuki-q1-fy27-results-profit-fall",
-      "headline": "Maruti Suzuki Profit Drops, But Why Are Shares Up?",
+      "slug": "esaf-sfb-q1-results",
+      "headline": "ESAF Small Finance Bank Clocks ₹80 Crore Profit in Q1FY27",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "₹2,543 crore profit reported in the corresponding period of Q1 FY26",
+          "claim": "ESAF Small Finance Bank declared its Q1FY27 financial results on Friday",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the Q1 FY26 profit figure for Maruti Suzuki.",
+          "detail": "The source text states the article was updated on July 31, 2026, but does not explicitly state that the results were declared on a Friday.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "total revenue from operations saw a healthy 10% rise, reaching ₹39,835 crore",
+          "claim": "Which term describes a business strategy blending physical branches with digital service delivery? — stated correct answer: \"Phygital\"",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the revenue figures for Maruti Suzuki.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "previous: ₹36,214 crore — Q1 FY26",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the Q1 FY26 revenue figure for Maruti Suzuki.",
+          "detail": "The term 'Phygital' does not appear in the provided source text.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central event (Maruti Suzuki Q1 profit decline of 13% to ₹2,213 crore) is confirmed by the headline of Source 1. However, the story includes specific revenue and prior-year profit figures that are not present in the provided source texts."
+      "notes": "The core financial figures (PAT, gross advances, secured advances) are correctly reported based on the source. However, the story includes claims about the day of the week and a specific business term ('Phygital') that are not supported by the provided source text."
     }
   ]
 }
