@@ -1,6 +1,6 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T01:09:43.376Z",
+  "generatedAt": "2026-08-01T01:17:14.016Z",
   "results": [
     {
       "slug": "imd-forecasts-below-normal-monsoon",
@@ -148,15 +148,15 @@
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "In 2020-21, due to the COVID-19 pandemic, the deficit reached over 100% of the target within months as the government was forced to ramp up healthcare and welfare spending.",
+          "claim": "In 2020-21, due to the COVID-19 pandemic, the deficit reached over 100% of the target within months",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any information regarding the fiscal deficit levels in 2020-21.",
+          "detail": "The provided source text contains no information regarding the fiscal deficit figures for the 2020-21 financial year.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central claim regarding the Q1 FY27 fiscal deficit is verified by the source. However, the story includes historical context about the 2020-21 fiscal deficit that is not supported by the provided source text."
+      "notes": "The central claim regarding the 18.2% fiscal deficit for Q1FY27 is verified by the source. However, the story includes historical context about the 2020-21 fiscal deficit that is not present in the provided source text."
     },
     {
       "slug": "tech-market-lag",
@@ -202,6 +202,14 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "nse-colocation-settlement",
+      "headline": "NSE Pays ₹714 Crore to Settle Long-Pending Co-Location Case Ahead of IPO",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the settlement amount, the total case value, and the context of the NSE IPO are supported by the provided source text."
     }
   ]
 }
