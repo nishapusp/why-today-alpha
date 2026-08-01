@@ -1,0 +1,127 @@
+{
+  "date": "2026-08-02",
+  "generatedAt": "2026-08-01T19:42:17.018Z",
+  "results": [
+    {
+      "slug": "middle-east-escalation-us-strikes",
+      "headline": "Why is America telling its citizens to leave the Middle East?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "On Saturday, August 1, 2026, US embassies across West Asia raised security alerts to their highest levels, telling American citizens to immediately secure commercial transport out of the region or prepare for emergency departures.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text makes no mention of US embassies issuing evacuation alerts or security warnings on August 1, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "8.8 million: The number of Indian workers currently living in the Gulf.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "1 in 5: The fraction of global oil that passes through the Strait of Hormuz.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "India imports over 85% of its crude oil",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this statistic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the reported US military plans against Iran as per the source, but includes several specific statistics and claims regarding embassy alerts that are not present in the provided source text."
+    },
+    {
+      "slug": "rbi-forex-swap-window-mobilization",
+      "headline": "How did RBI pull $41 billion into India so quickly?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "which recently crossed a historic $682 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the total foreign exchange reserves of India or the $682 billion figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reflects the data provided in the source regarding the swap window inflows and HDFC Bank's rate hike. However, it includes a figure for India's total foreign exchange reserves ($682 billion) which is not present in the provided source text."
+    },
+    {
+      "slug": "gst-collections-record-july",
+      "headline": "Why did India's tax collection just jump to ₹2.11 lakh crore?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-china-border-trade-shipki-la",
+      "headline": "Why did India and China reopen a 6-year-old border trade route?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The trade was suspended in early 2020 following military standoffs along the Line of Actual Control and subsequent pandemic-related border closures.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms a six-year hiatus but does not explicitly state the cause of the suspension or the year 2020.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The initial trade will focus on wool, local garments, dry fruits, and agricultural tools, bringing immediate financial relief to hundreds of families in the Kinnaur region whose livelihoods had been completely destroyed by the prolonged border blockade.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that traders will be able to bring 72 types of items from the Indian side and 30 from the other side, but it does not list these specific goods or mention the impact on 'hundreds of families'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "3: The number of primary land-trade passes historically designated between India and China.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the total number of primary land-trade passes between India and China.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core event (resumption of trade at Shipki La after six years) is verified. However, the story includes several specific details regarding the cause of the 2020 suspension, the specific goods traded, and the total number of border passes that are not supported by the provided source text."
+    },
+    {
+      "slug": "sebi-fine-zee-founders-fund-diversion",
+      "headline": "Why did SEBI just fine the founders of Zee Entertainment?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
