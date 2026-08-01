@@ -299,6 +299,8 @@ For each specific claim, classify it:
 
 2026-07-22: a real error got past this check before — a story cited a real number that genuinely appeared in its source, but presented it as an aggregate/system-wide figure when the source was actually reporting a figure for one specific segment (e.g., private-sector banks only, not all banks). The number wasn't fabricated, but what the story SAID it represented was wrong. So: a claim is WRONG (not VERIFIED), even if the number itself is literally present in the source text, if the story attributes that number to the wrong scope — the wrong segment, wrong entity, wrong time period, or wrong basis (e.g. consolidated vs. standalone) compared to what the source text actually says it measures. Read past the number itself to what the source says it's a number OF.
 
+2026-07-29: check EVERY "CHART DATA POINT" claim individually — do not wave a chart through because it looks plausible overall. A real, confirmed error had two correct recent points (current period + prior-period comparator, both genuinely in the source) sitting alongside several invented older points that were wrong in both magnitude and direction (a fake decline masking a real, steady rise) — the correct points made the whole series look trustworthy on a casual read. A quarter/period whose value does not appear anywhere in the source texts is UNVERIFIABLE for that specific point, even if neighboring points in the same chart are genuinely sourced — do not let a chart pass as a whole just because most of it checks out.
+
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.
 - "WARN": no WRONG claims, but at least one UNVERIFIABLE.
@@ -442,6 +444,20 @@ function buildClaimDigest(story) {
       );
     }
   }
+  // 2026-07-29: chart was never included here at all — meaning it was
+  // never checked by either verification mode, which is exactly how a
+  // real fabricated-history chart (correct current-quarter point, invented
+  // older quarters with the trend direction inverted) reached the live
+  // site uncaught. Each label/value pair is its own claim, same as a
+  // keyNumbers card, so the verifier can catch a single bad point inside
+  // an otherwise-real series, not just an entirely-fabricated chart.
+  if (story.chart && Array.isArray(story.chart.labels) && Array.isArray(story.chart.values)) {
+    parts.push(`CHART: "${story.chart.title}"${story.chart.unit ? ` (${story.chart.unit})` : ""}`);
+    story.chart.labels.forEach((label, i) => {
+      parts.push(`CHART DATA POINT: ${label} = ${story.chart.values[i]}`);
+    });
+    if (story.chart.takeaway) parts.push(`CHART TAKEAWAY: ${story.chart.takeaway}`);
+  }
   if (story.timeMachine && typeof story.timeMachine === "object") {
     for (const [k, v] of Object.entries(story.timeMachine)) {
       parts.push(`TIME MACHINE (${k}): ${v}`);
@@ -467,6 +483,8 @@ For each specific claim, classify it:
 - STALE: true in the past but materially outdated as of the publication date.
 
 2026-07-22: a claim is WRONG (not VERIFIED), even if the number itself is real and appears in a real source, if the story attributes it to the wrong scope — the wrong segment, entity, time period, or basis (e.g. private-sector banks only vs. all banks; consolidated vs. standalone) compared to what that source actually says the number measures. A real error slipped through this exact way before: a genuine, sourced number, attached to the wrong "of what." Read past the number to what it's a number OF.
+
+2026-07-29: check EVERY "CHART DATA POINT" claim individually via search — do not pass a chart as a whole just because it looks plausible or directionally reasonable. A real, confirmed error had two correct recent points (current period + prior-period comparator, easy to find via search) sitting alongside several invented older points, wrong in both magnitude and direction (a fake decline masking a real, steady rise) — the correct points made the whole series look trustworthy on a casual check. Search for each period's actual figure specifically; a point you cannot confirm is UNVERIFIABLE for that point even when its neighbors in the same chart are genuinely correct.
 
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.
