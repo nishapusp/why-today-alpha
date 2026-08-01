@@ -1,6 +1,6 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T14:02:23.889Z",
+  "generatedAt": "2026-08-01T15:08:55.942Z",
   "results": [
     {
       "slug": "imd-forecasts-below-normal-monsoon",
@@ -203,6 +203,64 @@
         }
       ],
       "notes": "The central event (the US Senate bill targeting Russian oil buyers with potential 100% tariffs) is correctly reported based on the source. However, the story includes specific trade and import statistics that are not present in the provided source text."
+    },
+    {
+      "slug": "anil-ambani-cbi-investigation",
+      "headline": "Why is CBI chasing Anil Ambani over retirement fund losses?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The agency has carried out searches across multiple locations to recover documents detailing the boardroom decisions that led to these massive defaults.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the registration of an FIR and the basis of the complaint, but it does not report that the CBI has carried out searches at multiple locations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The EPFO is the primary savings vehicle for over six crore salaried workers.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the number of salaried workers covered by the EPFO.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the core details of the CBI FIR and the complaint from the Ministry of Labour. However, it includes specific details about CBI search operations and the number of EPFO subscribers that are not present in the provided source text."
+    },
+    {
+      "slug": "shipki-la-trade-resumption",
+      "headline": "Why is an ancient Himalayan pass reopening for trade after six years?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "18,500 feet is the approximate altitude of the Shipki La pass",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the pass but does not provide its altitude.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Over $130 billion annually",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the value of India-China maritime trade.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "It was only in 1992 that India and China signed a protocol to reopen Shipki La",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the year 1992 or the history of the protocol.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The story correctly identifies the resumption of trade at Shipki La as reported in the source. However, it includes several specific figures and historical claims regarding altitude, trade volume, and the 1992 protocol that are not present in the provided source text."
     }
   ]
 }
