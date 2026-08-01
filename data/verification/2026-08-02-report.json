@@ -1,48 +1,7 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-01T19:42:17.018Z",
+  "generatedAt": "2026-08-01T20:37:16.320Z",
   "results": [
-    {
-      "slug": "middle-east-escalation-us-strikes",
-      "headline": "Why is America telling its citizens to leave the Middle East?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "On Saturday, August 1, 2026, US embassies across West Asia raised security alerts to their highest levels, telling American citizens to immediately secure commercial transport out of the region or prepare for emergency departures.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text makes no mention of US embassies issuing evacuation alerts or security warnings on August 1, 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "8.8 million: The number of Indian workers currently living in the Gulf.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "1 in 5: The fraction of global oil that passes through the Strait of Hormuz.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India imports over 85% of its crude oil",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this statistic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the reported US military plans against Iran as per the source, but includes several specific statistics and claims regarding embassy alerts that are not present in the provided source text."
-    },
     {
       "slug": "rbi-forex-swap-window-mobilization",
       "headline": "How did RBI pull $41 billion into India so quickly?",
@@ -76,39 +35,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "india-china-border-trade-shipki-la",
-      "headline": "Why did India and China reopen a 6-year-old border trade route?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The trade was suspended in early 2020 following military standoffs along the Line of Actual Control and subsequent pandemic-related border closures.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text confirms a six-year hiatus but does not explicitly state the cause of the suspension or the year 2020.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The initial trade will focus on wool, local garments, dry fruits, and agricultural tools, bringing immediate financial relief to hundreds of families in the Kinnaur region whose livelihoods had been completely destroyed by the prolonged border blockade.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that traders will be able to bring 72 types of items from the Indian side and 30 from the other side, but it does not list these specific goods or mention the impact on 'hundreds of families'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "3: The number of primary land-trade passes historically designated between India and China.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the total number of primary land-trade passes between India and China.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The core event (resumption of trade at Shipki La after six years) is verified. However, the story includes several specific details regarding the cause of the 2020 suspension, the specific goods traded, and the total number of border passes that are not supported by the provided source text."
-    },
-    {
       "slug": "sebi-fine-zee-founders-fund-diversion",
       "headline": "Why did SEBI just fine the founders of Zee Entertainment?",
       "verdict": "WARN",
@@ -122,6 +48,143 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "us-embassies-warn-citizens-west-asia",
+      "headline": "Why is the US telling citizens to leave West Asia?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "daily departures dropping by nearly 35% compared to normal weekly schedules",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts mention that some airlines have postponed or cancelled routes, but they do not provide any statistical data regarding a 35% drop in daily departures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "8.5 million Indian citizens live and work in the vulnerable West Asian region.",
+          "status": "UNVERIFIABLE",
+          "detail": "This figure does not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "$40 billion in annual remittances from the Gulf to India are at immediate risk.",
+          "status": "UNVERIFIABLE",
+          "detail": "This figure does not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "supplying over 60% of its crude imports",
+          "status": "UNVERIFIABLE",
+          "detail": "This figure does not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly identifies the issuance of security alerts by US embassies in the Middle East. However, it includes several specific statistics regarding the Indian diaspora, remittances, and flight reductions that are not supported by the provided source articles."
+    },
+    {
+      "slug": "assam-first-ai-phygital-banking",
+      "headline": "Why did a robot just take over an Assam bank branch?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "upi-record-transactions-maldives-corridor",
+      "headline": "Why did UPI just smash through 23 billion monthly transactions?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The July surge was driven by... the expansion of UPI to credit cards and pre-sanctioned credit lines.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text attributes the growth to 'organic, everyday transaction behaviour' and mentions no specific drivers related to credit cards or pre-sanctioned credit lines.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The launch of the Maldives payment corridor today represents a strategic diplomatic victory for India",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the Maldives corridor but does not state it was launched on the date of the story (August 2, 2026) or describe it as a 'diplomatic victory'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This payment link was fast-tracked as part of a bilateral economic cooperation agreement aimed at boosting tourism and local trade.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the Maldives corridor but provides no details regarding a bilateral economic cooperation agreement or the 'fast-tracking' of the project.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This reduces transaction fees by up to 90% for small businesses and tourists alike.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention transaction fee reductions or any specific percentage savings.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The National Payments Corporation of India is actively working to link UPI with five more countries in Southeast Asia and the Middle East by the end of 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any plans to link UPI with five more countries by the end of 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "transactions projected to cross 25 billion by October.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no projections for future transaction volumes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "having a single payment network handle over 80% of retail transactions creates a dangerous single point of failure.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention an 80% market share or systemic risk concerns regarding UPI.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: July 2025 = 19.39",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide the July 2025 transaction volume.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: June 2026 = 22.73",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide the June 2026 transaction volume.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story correctly reports the July 2026 UPI volume and value figures. However, it includes numerous specific claims regarding the Maldives corridor, future projections, and market share that are not supported by the provided source texts."
     }
   ]
 }
