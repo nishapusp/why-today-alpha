@@ -1,6 +1,6 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T11:08:51.933Z",
+  "generatedAt": "2026-08-01T12:22:25.584Z",
   "results": [
     {
       "slug": "imd-forecasts-below-normal-monsoon",
@@ -16,47 +16,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "india-lpg-imports-us-record-high",
-      "headline": "West Asia Turmoil Forces India To Buy Record US LPG?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "In 2024, LPG imports from the US accounted for only about 15-20% of India's total LPG imports.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the 73% figure for July 2026 but does not contain any data regarding the percentage of LPG imports from the US in 2024.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: US (2024) = 20",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide data for 2024 LPG import shares.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: Gulf (2024) = 60",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide data for 2024 LPG import shares.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: Gulf (July 2026) = 20",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that supplies from Gulf producers were constrained, but it does not provide a specific percentage figure for Gulf LPG imports in July 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central claim regarding the 73% US share of LPG imports in July 2026 is verified by the source. However, the story includes historical data points for 2024 and specific figures for Gulf imports that are not present in the provided source text."
     },
     {
       "slug": "gail-india-q1-profit-fy27",
@@ -221,78 +180,151 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "nse-colocation-settlement",
-      "headline": "NSE Pays ₹714 Crore to Settle Long-Pending Co-Location Case Ahead of IPO",
+      "slug": "us-tariff-russian-oil-threat",
+      "headline": "Why is America threatening India with a 100% tariff?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The NSE on Friday, July 31, 2026, confirmed that it has paid ₹714.74 crore to the Securities and Exchange Board of India (SEBI).",
+          "claim": "Since 2022, India's share of Russian oil imports has surged from less than 2% to over 40% of its total crude basket",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states that July 31, 2026, was a Friday, but the source text itself is dated July 31, 2026. The claim that the NSE confirmed the payment on that specific date is not explicitly stated as a 'Friday' confirmation in the source, and the source text actually says the NSE said it on 'Friday' (which is correct for July 31, 2026), but the story's phrasing implies a specific confirmation event that is not explicitly detailed beyond the report date.",
+          "detail": "The source text does not mention the 2% or 40% figures regarding India's Russian oil import share.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "This settlement echoes the 2008-2009 regulatory scrutiny that exchanges worldwide faced as high-frequency trading became more prevalent.",
+          "claim": "Indian exports to the US—which totaled nearly $80 billion last fiscal year compared to just $50 billion a few years ago",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no mention of 2008-2009 regulatory scrutiny or global exchanges.",
+          "detail": "The source text does not contain data regarding the value of Indian exports to the US.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central event (the US Senate bill targeting Russian oil buyers with potential 100% tariffs) is correctly reported based on the source. However, the story includes specific trade and import statistics that are not present in the provided source text."
+    },
+    {
+      "slug": "gst-collections-july-record",
+      "headline": "Why did India's tax office just collect ₹2.11 trillion?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This is only the second time in history that monthly GST collections have crossed the crucial ₹2.1 trillion milestone.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention how many times GST collections have crossed the ₹2.1 trillion mark.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "which recently received an additional ₹1.09 lakh crore tax devolution payout to support local development.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any tax devolution payout of ₹1.09 lakh crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The 15% growth rate is notably higher than the 10% average growth seen in the previous fiscal year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide data on the average growth rate of the previous fiscal year.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This acceleration is crucial because it offsets the slower growth in other tax categories, such as corporate tax, which has faced headwinds from compressed corporate profit margins.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention corporate tax growth or profit margins.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The GST Council is scheduled to meet next month to discuss potential rate rationalizations, particularly on common consumer goods and services.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a scheduled GST Council meeting or discussions on rate rationalizations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Coming on the heels of the Centre releasing an additional ₹1.09 lakh crore in tax devolution to states",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this devolution amount.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "fiscal deficit target of 4.9% for the current financial year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the fiscal deficit target.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "It echoes the 1997 Voluntary Disclosure of Income Scheme (VDIS), which was a landmark effort to bring undeclared wealth into the formal economy.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 1997 VDIS.",
           "correction": null,
           "source": null,
           "inBroaderConnections": true
         }
       ],
-      "notes": "The core financial figures and the context of the IPO and settlement are accurately reflected from the source. However, the story includes background information regarding 2008-2009 global regulatory scrutiny that is not present in the provided source text."
+      "notes": "The story correctly reports the primary GST figures but includes several specific claims regarding fiscal policy, historical milestones, and government actions that are not supported by the provided source text."
     },
     {
-      "slug": "rbi-forex-swap-window-inflow",
-      "headline": "RBI Pulled in $41 Billion. Wait, Where Did it All Come From?",
+      "slug": "tata-motors-cv-sales-july",
+      "headline": "Why did Tata Motors sell 37% more commercial vehicles?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The RBI announced on Saturday that banks have mobilized nearly $41 billion in foreign exchange through its concessional swap window by July 31, 2026.",
+          "claim": "This is a dramatic acceleration compared to the flat sales growth of just 2% recorded in the first quarter of the fiscal year.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any announcement or data regarding a $41 billion mobilization through a special swap window.",
+          "detail": "The source text provides July sales data and year-ago comparisons, but contains no information regarding the sales growth rate for the first quarter of the fiscal year.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "The lion's share, $36.7 billion, came from fresh Foreign Currency Non-Resident (Bank) [FCNR(B)] deposits, while Overseas Foreign Currency Borrowings (OFCBs) contributed $2.57 billion and External Commercial Borrowings (ECBs) added $1.5 billion.",
+          "claim": "2%: The sluggish sales growth rate recorded by Tata Motors' CV division in the first quarter, highlighting the sharp July turnaround.",
           "status": "UNVERIFIABLE",
-          "detail": "These specific figures are not mentioned in the provided source texts.",
+          "detail": "The source text does not mention a 2% growth rate for the first quarter.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "This facility, launched on June 5, 2026, and operationalized on June 8, aims to attract foreign capital by allowing banks to swap fresh FCNR(B) dollar funds with the RBI",
+          "claim": "90%: The approximate percentage of commercial vehicles in India purchased using retail vehicle financing.",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention the launch or operationalization of such a facility.",
+          "detail": "The source text does not mention financing statistics for commercial vehicles.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Analysts are already revising their estimates upward, with some predicting total inflows from this entire package could reach $80-85 billion.",
+          "claim": "Additionally, because over 90% of these heavy vehicles are financed, this boom indicates that banks and non-banking financial companies are highly willing to extend credit.",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not contain any analyst predictions regarding future inflows of $80-85 billion.",
+          "detail": "The source text does not mention financing statistics for commercial vehicles.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "The RBI's concessional swap window for FCNR(B) deposits is set to close on September 30, 2026, while facilities for OFCBs and ECBs will continue until December 31, 2026.",
+          "claim": "KEY NUMBER CARD: CV Sales Growth = 37% (previous: 2% — Q1 FY27 Sales Growth)",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention these closing dates for any swap window.",
+          "detail": "The source text does not mention a 2% growth rate for Q1 FY27.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story reports on a major RBI policy initiative and specific inflow figures that are entirely absent from the provided source texts. While the sources mention general RBI activities, they do not support the existence of the specific swap window or the associated financial data cited in the article."
+      "notes": "The story correctly reports the July sales growth figures but includes several specific statistics regarding Q1 growth and vehicle financing that are not present in the provided source text."
     }
   ]
 }
