@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-01T20:37:16.320Z",
+  "generatedAt": "2026-08-01T21:43:11.154Z",
   "results": [
     {
       "slug": "rbi-forex-swap-window-mobilization",
@@ -50,47 +50,6 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "us-embassies-warn-citizens-west-asia",
-      "headline": "Why is the US telling citizens to leave West Asia?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "daily departures dropping by nearly 35% compared to normal weekly schedules",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts mention that some airlines have postponed or cancelled routes, but they do not provide any statistical data regarding a 35% drop in daily departures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "8.5 million Indian citizens live and work in the vulnerable West Asian region.",
-          "status": "UNVERIFIABLE",
-          "detail": "This figure does not appear in the provided source texts.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true
-        },
-        {
-          "claim": "$40 billion in annual remittances from the Gulf to India are at immediate risk.",
-          "status": "UNVERIFIABLE",
-          "detail": "This figure does not appear in the provided source texts.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "supplying over 60% of its crude imports",
-          "status": "UNVERIFIABLE",
-          "detail": "This figure does not appear in the provided source texts.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The story correctly identifies the issuance of security alerts by US embassies in the Middle East. However, it includes several specific statistics regarding the Indian diaspora, remittances, and flight reductions that are not supported by the provided source articles."
-    },
-    {
       "slug": "assam-first-ai-phygital-banking",
       "headline": "Why did a robot just take over an Assam bank branch?",
       "verdict": "WARN",
@@ -106,85 +65,132 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "upi-record-transactions-maldives-corridor",
-      "headline": "Why did UPI just smash through 23 billion monthly transactions?",
+      "slug": "maruti-suzuki-july-sales-production-strategy",
+      "headline": "India's Top Car Seller Sees Growth, But Can It Build Enough?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "hdfc-bank-raises-fcnrb-deposit-rates",
+      "headline": "Want More for Your Overseas Savings? HDFC Bank Offers More.",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The July surge was driven by... the expansion of UPI to credit cards and pre-sanctioned credit lines.",
+          "claim": "Pre-2013 = 20",
           "status": "UNVERIFIABLE",
-          "detail": "The source text attributes the growth to 'organic, everyday transaction behaviour' and mentions no specific drivers related to credit cards or pre-sanctioned credit lines.",
+          "detail": "The source texts do not contain any data regarding FCNR(B) deposit levels prior to the 2013 scheme.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "The launch of the Maldives payment corridor today represents a strategic diplomatic victory for India",
+          "claim": "Pre-2026 = 25",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the Maldives corridor but does not state it was launched on the date of the story (August 2, 2026) or describe it as a 'diplomatic victory'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This payment link was fast-tracked as part of a bilateral economic cooperation agreement aimed at boosting tourism and local trade.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the Maldives corridor but provides no details regarding a bilateral economic cooperation agreement or the 'fast-tracking' of the project.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "This reduces transaction fees by up to 90% for small businesses and tourists alike.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention transaction fee reductions or any specific percentage savings.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "The National Payments Corporation of India is actively working to link UPI with five more countries in Southeast Asia and the Middle East by the end of 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any plans to link UPI with five more countries by the end of 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "transactions projected to cross 25 billion by October.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text contains no projections for future transaction volumes.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "having a single payment network handle over 80% of retail transactions creates a dangerous single point of failure.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an 80% market share or systemic risk concerns regarding UPI.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: July 2025 = 19.39",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide the July 2025 transaction volume.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: June 2026 = 22.73",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide the June 2026 transaction volume.",
+          "detail": "The source texts do not contain any data regarding FCNR(B) deposit levels prior to the 2026 scheme.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly reports the July 2026 UPI volume and value figures. However, it includes numerous specific claims regarding the Maldives corridor, future projections, and market share that are not supported by the provided source texts."
+      "notes": "The story accurately reports the HDFC Bank rate hike and the $40.8 billion figure for the 2026 swap facility as stated in the source. However, the chart includes historical data points ('Pre-2013' and 'Pre-2026') that are not mentioned in the provided source texts."
+    },
+    {
+      "slug": "india-china-border-trade-resumes",
+      "headline": "Why did India and China just reopen their Himalayan trade routes?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Annual Bilateral Trade = $130 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the total annual bilateral trade volume between India and China.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "The Galwan Valley military clash",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the trade was suspended in 2020 due to the Covid-19 pandemic, but it does not explicitly attribute the suspension to the Galwan Valley military clash.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the resumption of trade at Lipulekh and Shipki La. However, it includes figures and causal attributions (annual trade volume and the specific link to the Galwan clash) that are not present in the provided source text."
+    },
+    {
+      "slug": "upi-launches-in-maldives",
+      "headline": "Why did India's UPI just launch in the Maldives?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "settles transactions in under three seconds",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the launch of the payment corridor but does not specify the transaction settlement speed.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Traditional Credit Card Markup = 2% to 5%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention credit card markup percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Peer-to-peer cross-border money transfers between the two nations will be enabled by early 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide a timeline for the expansion to peer-to-peer transfers.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central event (UPI-Maldives payment corridor launch) is confirmed by the source. However, the story includes specific technical and timeline claims that are not present in the provided source text."
+    },
+    {
+      "slug": "indian-oil-q1-loss",
+      "headline": "Why did Indian Oil just slip into a quarterly loss?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "startup-india-fund-of-funds-two",
+      "headline": "Why did the government just launch Startup Fund of Funds 2.0?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
