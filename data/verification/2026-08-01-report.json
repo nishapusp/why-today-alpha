@@ -1,7 +1,250 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T10:29:27.833Z",
+  "generatedAt": "2026-08-01T11:08:51.933Z",
   "results": [
+    {
+      "slug": "imd-forecasts-below-normal-monsoon",
+      "headline": "Monsoon Scare: Below-Normal Rains Threaten India's Economy?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-lpg-imports-us-record-high",
+      "headline": "West Asia Turmoil Forces India To Buy Record US LPG?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In 2024, LPG imports from the US accounted for only about 15-20% of India's total LPG imports.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the 73% figure for July 2026 but does not contain any data regarding the percentage of LPG imports from the US in 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: US (2024) = 20",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide data for 2024 LPG import shares.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: Gulf (2024) = 60",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide data for 2024 LPG import shares.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: Gulf (July 2026) = 20",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that supplies from Gulf producers were constrained, but it does not provide a specific percentage figure for Gulf LPG imports in July 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central claim regarding the 73% US share of LPG imports in July 2026 is verified by the source. However, the story includes historical data points for 2024 and specific figures for Gulf imports that are not present in the provided source text."
+    },
+    {
+      "slug": "gail-india-q1-profit-fy27",
+      "headline": "GAIL India Profit Jumps 240% in Q1; What Drove Surge?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-master-directions-regulatory-framework",
+      "headline": "RBI Simplifies Banking Rules: 628 Old Circulars Out, 64 New In!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-polymer-banknotes",
+      "headline": "Government Approves RBI Plan for New ₹10, ₹20 Polymer Notes",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "banking-workforce-shift",
+      "headline": "RBI Data Shows Banking Workforce Shift Toward Officers",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "manipal-hospitals-ipo-oversubscribed",
+      "headline": "Manipal Hospitals IPO Oversubscribed: What Made It A Hot Pick?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "cabinet-approves-floating-solar",
+      "headline": "Cabinet Greenlights Floating Solar Plants: 5,000 MW Target!",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "forex-reserve-high",
+      "headline": "India's Forex Reserves Hit Record $682 Billion Despite Global Tensions",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Recent data indicates that the rise was supported by solid valuation gains in gold reserves and inflows from foreign portfolio investors who are increasingly bullish on India's growth story compared to other emerging markets that are struggling with tech-related volatility.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text attributes the rise to foreign currency assets and gold reserves, but it does not mention foreign portfolio investor inflows or tech-related volatility as drivers for this specific week's increase.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical data points or a 'pastEvents' list to verify these objects.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The core financial figures regarding the forex reserves and the weekly change are correctly reported. However, the story includes speculative commentary on market drivers (FPI inflows) and a malformed 'pastEvents' section that are not supported by the provided source."
+    },
+    {
+      "slug": "fiscal-deficit-q1",
+      "headline": "India's Fiscal Deficit Touches 18.2% of FY27 Target in Q1",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In 2020-21, due to the COVID-19 pandemic, the deficit reached over 100% of the target within months",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding the fiscal deficit figures for the 2020-21 financial year.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The story accurately reports the Q1 FY27 fiscal deficit data as provided in the source. However, it includes a historical claim about the 2020-21 fiscal deficit that is not supported by the provided source text."
+    },
+    {
+      "slug": "tech-market-lag",
+      "headline": "India's Tech Sector Growth Outpaced by Regional Peers",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-fake-note-training",
+      "headline": "RBI Mandates Counterfeit Detection Training for Cash Handlers",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "nse-colocation-settlement",
+      "headline": "NSE Pays ₹714 Crore to Settle Long-Pending Co-Location Case Ahead of IPO",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The NSE on Friday, July 31, 2026, confirmed that it has paid ₹714.74 crore to the Securities and Exchange Board of India (SEBI).",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states that July 31, 2026, was a Friday, but the source text itself is dated July 31, 2026. The claim that the NSE confirmed the payment on that specific date is not explicitly stated as a 'Friday' confirmation in the source, and the source text actually says the NSE said it on 'Friday' (which is correct for July 31, 2026), but the story's phrasing implies a specific confirmation event that is not explicitly detailed beyond the report date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "This settlement echoes the 2008-2009 regulatory scrutiny that exchanges worldwide faced as high-frequency trading became more prevalent.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of 2008-2009 regulatory scrutiny or global exchanges.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        }
+      ],
+      "notes": "The core financial figures and the context of the IPO and settlement are accurately reflected from the source. However, the story includes background information regarding 2008-2009 global regulatory scrutiny that is not present in the provided source text."
+    },
     {
       "slug": "rbi-forex-swap-window-inflow",
       "headline": "RBI Pulled in $41 Billion. Wait, Where Did it All Come From?",
