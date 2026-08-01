@@ -1,6 +1,6 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T15:08:55.942Z",
+  "generatedAt": "2026-08-01T16:19:45.972Z",
   "results": [
     {
       "slug": "imd-forecasts-below-normal-monsoon",
@@ -230,37 +230,45 @@
       "notes": "The story accurately reports the core details of the CBI FIR and the complaint from the Ministry of Labour. However, it includes specific details about CBI search operations and the number of EPFO subscribers that are not present in the provided source text."
     },
     {
-      "slug": "shipki-la-trade-resumption",
-      "headline": "Why is an ancient Himalayan pass reopening for trade after six years?",
+      "slug": "us-issues-west-asia-departure-advisory",
+      "headline": "US Warns Citizens to Depart West Asia As Tensions Soar",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "18,500 feet is the approximate altitude of the Shipki La pass",
+          "claim": "India imports approximately 60% of its crude oil from West Asia",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the pass but does not provide its altitude.",
+          "detail": "The provided source text does not contain any data regarding India's crude oil import percentages or sources.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Over $130 billion annually",
+          "claim": "safety of approximately 9 million Indian expatriates living and working in West Asia",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the value of India-China maritime trade.",
+          "detail": "The provided source text does not contain any data regarding the number of Indian expatriates in West Asia.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "It was only in 1992 that India and China signed a protocol to reopen Shipki La",
+          "claim": "1990-91 Gulf War",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the year 1992 or the history of the protocol.",
+          "detail": "The provided source text does not mention the 1990-91 Gulf War.",
           "correction": null,
           "source": null,
           "inBroaderConnections": true
+        },
+        {
+          "claim": "2003 Iraq War",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the 2003 Iraq War.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
         }
       ],
-      "notes": "The story correctly identifies the resumption of trade at Shipki La as reported in the source. However, it includes several specific figures and historical claims regarding altitude, trade volume, and the 1992 protocol that are not present in the provided source text."
+      "notes": "The story's central claims regarding the US advisory and the tanker strikes are supported by the provided source headline. However, several specific statistics and historical references included in the body text are not present in the provided source material."
     }
   ]
 }
