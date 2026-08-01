@@ -1,225 +1,47 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T09:40:04.438Z",
+  "generatedAt": "2026-08-01T10:02:59.064Z",
   "results": [
-    {
-      "slug": "imd-forecasts-below-normal-monsoon",
-      "headline": "Monsoon Scare: Below-Normal Rains Threaten India's Economy?",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "india-lpg-imports-us-record-high",
-      "headline": "West Asia Turmoil Forces India To Buy Record US LPG?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "In 2024, LPG imports from the US accounted for only about 15-20% of India's total LPG imports.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data regarding the percentage of LPG imports from the US in 2024.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central claim regarding the 73% share of US LPG imports in July 2026 is verified by the source. However, the historical comparison figure for 2024 is not mentioned in the provided source text."
-    },
-    {
-      "slug": "gail-india-q1-profit-fy27",
-      "headline": "GAIL India Profit Jumps 240% in Q1; What Drove Surge?",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "rbi-master-directions-regulatory-framework",
-      "headline": "RBI Simplifies Banking Rules: 628 Old Circulars Out, 64 New In!",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "rbi-polymer-banknotes",
-      "headline": "Government Approves RBI Plan for New ₹10, ₹20 Polymer Notes",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "banking-workforce-shift",
-      "headline": "RBI Data Shows Banking Workforce Shift Toward Officers",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "manipal-hospitals-ipo-oversubscribed",
-      "headline": "Manipal Hospitals IPO Oversubscribed: What Made It A Hot Pick?",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "cabinet-approves-floating-solar",
-      "headline": "Cabinet Greenlights Floating Solar Plants: 5,000 MW Target!",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "forex-reserve-high",
-      "headline": "India's Forex Reserves Hit Record $682 Billion Despite Global Tensions",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Recent data indicates that the rise was supported by solid valuation gains in gold reserves and inflows from foreign portfolio investors who are increasingly bullish on India's growth story compared to other emerging markets that are struggling with tech-related volatility.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text confirms the increase in gold reserves and foreign currency assets, but it contains no mention of foreign portfolio investor (FPI) inflows or their sentiment regarding India's growth story versus other emerging markets.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The core factual data regarding the forex reserve figures and the weekly change is accurate and supported by the source. However, the story includes additional commentary regarding foreign portfolio investor sentiment that is not present in the provided source text."
-    },
-    {
-      "slug": "fiscal-deficit-q1",
-      "headline": "India's Fiscal Deficit Touches 18.2% of FY27 Target in Q1",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "In 2020-21, due to the COVID-19 pandemic, the deficit reached over 100% of the target within months",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no information regarding the fiscal deficit figures for the 2020-21 financial year.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central claim regarding the 18.2% fiscal deficit for Q1FY27 is verified by the source. However, the story includes historical context about the 2020-21 fiscal deficit that is not present in the provided source text."
-    },
-    {
-      "slug": "tech-market-lag",
-      "headline": "India's Tech Sector Growth Outpaced by Regional Peers",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "rbi-fake-note-training",
-      "headline": "RBI Mandates Counterfeit Detection Training for Cash Handlers",
-      "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "nse-colocation-settlement",
-      "headline": "NSE Pays ₹714 Crore to Settle Long-Pending Co-Location Case Ahead of IPO",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All factual claims regarding the settlement amount, the total case value, and the context of the NSE IPO are supported by the provided source text."
-    },
     {
       "slug": "divis-laboratories-q1-fy27-results",
       "headline": "This pharma giant just saw profit jump 66% last quarter. Why?",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "All specific financial figures, growth percentages, and operational drivers mentioned in the story are supported by the provided source text."
-    },
-    {
-      "slug": "rbi-forex-swap-window-inflow",
-      "headline": "RBI's Secret Move Attracts $40.8 Billion To India. Why Now?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "HDFC Bank raised FCNR(B) dollar deposit rates by 0.25%.",
+          "claim": "Q1 FY25 = 800",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention HDFC Bank or any specific interest rate hikes by commercial banks.",
+          "detail": "The source text does not contain any financial data for Q1 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q2 FY25 = 750",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any financial data for Q2 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q3 FY25 = 680",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any financial data for Q3 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q4 FY25 = 600",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any financial data for Q4 FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central figures regarding the $40.82 billion total and the $36.725 billion FCNR(B) contribution are verified by the source texts. However, the claim regarding HDFC Bank's specific interest rate hike is not supported by any of the provided source materials."
+      "notes": "The core financial figures for Q1 FY27 and Q1 FY26 are verified against the source. However, the chart data points for FY25 are not mentioned in the provided source text and are therefore unverifiable."
     }
   ]
 }
