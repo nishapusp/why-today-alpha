@@ -1,6 +1,6 @@
 {
   "date": "2026-08-01",
-  "generatedAt": "2026-08-01T09:28:17.111Z",
+  "generatedAt": "2026-08-01T09:40:04.438Z",
   "results": [
     {
       "slug": "imd-forecasts-below-normal-monsoon",
@@ -203,6 +203,23 @@
       "centralEventConfirmed": true,
       "issues": [],
       "notes": "All specific financial figures, growth percentages, and operational drivers mentioned in the story are supported by the provided source text."
+    },
+    {
+      "slug": "rbi-forex-swap-window-inflow",
+      "headline": "RBI's Secret Move Attracts $40.8 Billion To India. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "HDFC Bank raised FCNR(B) dollar deposit rates by 0.25%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention HDFC Bank or any specific interest rate hikes by commercial banks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The central figures regarding the $40.82 billion total and the $36.725 billion FCNR(B) contribution are verified by the source texts. However, the claim regarding HDFC Bank's specific interest rate hike is not supported by any of the provided source materials."
     }
   ]
 }
