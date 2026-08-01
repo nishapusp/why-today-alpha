@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-01T22:41:23.884Z",
+  "generatedAt": "2026-08-01T23:40:08.244Z",
   "results": [
     {
       "slug": "rbi-forex-swap-window-mobilization",
@@ -68,16 +68,66 @@
       "slug": "maruti-suzuki-july-sales-production-strategy",
       "headline": "India's Top Car Seller Sees Growth, But Can It Build Enough?",
       "verdict": "WARN",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "186,000 units",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The source text provided does not contain any specific sales volume figures, only the percentage growth.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "180,580 units — July 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain any specific sales volume figures for July 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q1 FY26 = 475",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain quarterly sales volume data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q2 FY26 = 510",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain quarterly sales volume data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q3 FY26 = 530",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain quarterly sales volume data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q4 FY26 = 545",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain quarterly sales volume data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "Q1 FY27 (July Est.) = 558",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provided does not contain quarterly sales volume data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story correctly identifies the 3% growth rate mentioned in the source, but includes several specific sales volume figures and quarterly data points that are not present in the provided source text."
     },
     {
       "slug": "hdfc-bank-raises-fcnrb-deposit-rates",
@@ -171,47 +221,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "iraq-turkey-oil-pipeline-deal",
-      "headline": "Why did Iraq and Turkey just bypass the world’s riskiest oil route?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "20%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the percentage of global oil supply that passes through the Strait of Hormuz.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "85%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention India's dependence on imported crude oil.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "$120",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a potential price spike to $120 per barrel.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Technical trials will test the pipeline's maximum flow capacity by the end of August 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that technical teams will begin ramping up pressure this week, but does not specify a timeline for testing maximum flow capacity by the end of August 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central event (the one-year oil pipeline deal) is verified by the source. However, the story includes several specific statistics and future projections that are not present in the provided source text."
     }
   ]
 }
