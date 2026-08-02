@@ -1,6 +1,6 @@
 {
   "date": "2026-08-03",
-  "generatedAt": "2026-08-02T19:58:34.469Z",
+  "generatedAt": "2026-08-02T22:58:46.993Z",
   "results": [
     {
       "slug": "india-canada-cepa-2026",
@@ -35,47 +35,6 @@
       "notes": "The central event regarding the Bankers' Books Evidence Bill is confirmed by the source title. However, the specific figure for UPI transactions in July is not present in the provided source text."
     },
     {
-      "slug": "opec-plus-boosts-oil-output-september-india-impact",
-      "headline": "OPEC+ Boosts Oil Output Slightly; What Does It Mean For India?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India is the world's 3rd largest oil consumer.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain information regarding India's global ranking as an oil consumer.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: April 2023 Cuts = -1600",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this specific data point.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: June 2026 Hike = 100",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this specific data point.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: July 2026 Hike = 150",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this specific data point.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central event regarding the OPEC+ production hike is supported by the source text. However, several specific data points in the chart and the claim regarding India's global consumption ranking are not mentioned in the provided source material."
-    },
-    {
       "slug": "pakistan-suicide-attack-khyber-pakhtunkhwa-regional-stability",
       "headline": "Terror Attack Kills 14 at Pakistan Rally: Regional Stability Impact?",
       "verdict": "WARN",
@@ -106,33 +65,109 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "india-fund-offshore-oil-gas-exploration-import-dependence",
-      "headline": "India To Fund Risky Offshore Oil & Gas Exploration: Why Now?",
+      "slug": "alliance-university-quantum-ai-school-8-qubit-centre",
+      "headline": "Quantum AI School Opens In India: Training For The Future?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "trump-halts-iran-strikes-hormuz-deal",
+      "headline": "Trump Halts Iran Strikes: Will Oil Prices Stay Calm?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "world-fdi-screening",
+      "headline": "Why is India blocking Chinese money but welcoming Hong Kong?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The success of this initiative will be crucial in shaping India's long-term energy policy and its ambition to significantly reduce energy import dependence by 2030.",
+          "claim": "KEY NUMBER CARD: Approved Chinese FDI Value = ₹1 crore (previous: ₹10,000+ crore — Pre-2020 Annual Average)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the government's plan to fund offshore exploration to cut import dependence, but it does not mention a specific 2030 target date for reducing this dependence.",
+          "detail": "The source text does not provide a pre-2020 annual average of ₹10,000+ crore for Chinese FDI.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": true
+          "inBroaderConnections": false
         },
         {
-          "claim": "Target for Reduced Dependence = 2030",
+          "claim": "KEY NUMBER CARD: Approved Hong Kong FDI Value = ₹610.42 crore (previous: None — Comparative Standard)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain a 2030 target for reducing energy import dependence.",
+          "detail": "The source text does not state that previous Hong Kong FDI values were 'None'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Hong Kong Proposals Cleared = 13 (previous: 1 — Mainland Chinese Clearances)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not establish '1' as a comparative standard for previous Hong Kong proposal clearances; it notes 11 proposals from Hong Kong were approved in 2024-25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "WHY IS THE GOVERNMENT CLEARING MORE HONG KONG PROPOSALS THAN MAINLAND CHINESE ONES? — STATED CORRECT ANSWER: \"TO BALANCE NATIONAL SECURITY WITH INDUSTRIAL MACHINERY NEEDS\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not explicitly state that the government is clearing more Hong Kong proposals specifically to balance national security with industrial machinery needs; this is an analytical inference by the author.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The central event regarding the government's decision to fund offshore oil and gas exploration is supported by the source. However, the specific 2030 deadline for reducing import dependence is not mentioned in the provided source text."
+      "notes": "The story accurately reports the primary data points regarding FY26 FDI approvals from China and Hong Kong. However, it includes several 'Key Number Cards' and quiz answers that contain claims not supported by the provided source text."
     },
     {
-      "slug": "alliance-university-quantum-ai-school-8-qubit-centre",
-      "headline": "Quantum AI School Opens In India: Training For The Future?",
+      "slug": "banking-mission-saksham",
+      "headline": "Why is the RBI suddenly retraining thousands of cooperative bankers?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "ai-it-hiring-slowdown",
+      "headline": "Why is India’s software pioneer warning that AI is destroying jobs?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "leap-india-ipo-launch",
+      "headline": "Why is a packaging giant launching a massive ₹2,480-crore IPO now?",
       "verdict": "WARN",
       "issues": [
         {
