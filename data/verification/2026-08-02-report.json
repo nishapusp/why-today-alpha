@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-02T12:22:31.131Z",
+  "generatedAt": "2026-08-02T14:05:48.536Z",
   "results": [
     {
       "slug": "rbi-forex-swap-window-mobilization",
@@ -197,6 +197,21 @@
     {
       "slug": "ayush-ministry-india-ai-traditional-medicine",
       "headline": "India's ancient medicine just got a boost from cutting-edge AI. How?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-china-diaspora-concerns",
+      "headline": "Indians in China Raise Alarms Over Anti-India Posts, Visa Curbs",
       "verdict": "WARN",
       "issues": [
         {
