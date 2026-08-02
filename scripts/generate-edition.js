@@ -1604,11 +1604,27 @@ if (require.main === module) {
       console.error("(3) trying a different network if you're on a work/office connection,");
       console.error("(4) testing https://generativelanguage.googleapis.com directly in a browser.");
     }
-    console.error("\nAny batches that already published are still committed locally — attempting to push them now...");
-    try {
-      pushPending(path.join(__dirname, ".."));
-    } catch (pushErr) {
-      console.error("Push-on-crash also failed:", pushErr.message, "— commits remain local; the next run's push will carry them.");
+    // 2026-08-02: this used to call pushPending() unconditionally here,
+    // regardless of SKIP_INTERNAL_PUSH — meaning a mid-run crash pushed
+    // whatever was committed so far immediately, and the workflow's own
+    // later "fact-check + push everything" step (which runs on
+    // `if: always()`, so it still executes after a crash) then pushed
+    // AGAIN for verification's changes. Two pushes = two Netlify deploys
+    // for one logical run, exactly the double-deploy pattern the
+    // SKIP_INTERNAL_PUSH mechanism was built to eliminate in the normal
+    // path. Respecting the same flag here closes that gap: in CI, trust
+    // the workflow's always-run steps to push everything together; only
+    // push directly here for a local/manual run, where there is no later
+    // step to fall back on and losing the commits would be worse.
+    if (process.env.SKIP_INTERNAL_PUSH === "1") {
+      console.error("\nAny batches that already published are still committed locally — SKIP_INTERNAL_PUSH is set, so a later workflow step will push them.");
+    } else {
+      console.error("\nAny batches that already published are still committed locally — attempting to push them now...");
+      try {
+        pushPending(path.join(__dirname, ".."));
+      } catch (pushErr) {
+        console.error("Push-on-crash also failed:", pushErr.message, "— commits remain local; the next run's push will carry them.");
+      }
     }
     process.exit(1);
   });

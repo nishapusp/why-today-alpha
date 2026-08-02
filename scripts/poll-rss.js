@@ -39,7 +39,28 @@ const MATURITY_MINUTES = 45;
 // Don't dispatch generation more than once per run of this script, and not
 // again within this cooldown — protects the daily Gemini quota from being
 // drained by a burst of simultaneously-maturing stories.
-const COOLDOWN_MINUTES = 30;
+// 2026-08-02: raised from 30 — a real Netlify credit-usage investigation
+// found this was tight enough for two independently-maturing stories to
+// both fire within the same hour, and (see MAX_TRIGGERS_PER_DAY below)
+// too loose to prevent a specific feedback loop with generate-edition.yml's
+// own auto-remove step.
+const COOLDOWN_MINUTES = 120;
+
+// 2026-08-02: added after the same investigation found a real, confirmed
+// retrigger loop, not just occasional breaking-news top-ups. generate-
+// edition.yml's own fact-check step auto-removes fabricated/unverifiable
+// stories after every run, which can drop today's story count below the
+// editionFull threshold below — and the MOMENT it does, the next 20-min
+// poll here would see a pre-existing matured backlog item and fire
+// AGAIN, whose own fact-check could remove more stories, clearing
+// editionFull again, and so on. Real data: 36 "Daily edition" runs and
+// 45 auto-remove commits in 3 days (expected: ~6 and ~0), spread across
+// nearly every hour rather than clustered near breaking news. A hard
+// daily cap bounds the worst case regardless of the exact mechanism —
+// the two FIXED schedule runs (5 AM / 1:15 PM IST) are unaffected by
+// this cap; it only limits how many EXTRA poll-triggered dispatches can
+// happen on top of those.
+const MAX_TRIGGERS_PER_DAY = 2;
 
 const RSS_QUERIES = [
   '(RBI OR "monetary policy" OR "reserve bank") when:2d',
@@ -127,10 +148,17 @@ async function fetchFeed(url) {
 
 function loadState() {
   try {
-    return JSON.parse(fs.readFileSync(STATE_PATH, "utf8"));
+    const state = JSON.parse(fs.readFileSync(STATE_PATH, "utf8"));
+    if (!state.triggersToday) state.triggersToday = { date: "", count: 0 };
+    return state;
   } catch {
-    return { seen: {}, promoted: {}, lastTriggerMs: 0 };
+    return { seen: {}, promoted: {}, lastTriggerMs: 0, triggersToday: { date: "", count: 0 } };
   }
+}
+
+// Same IST-calendar-day convention as todaysEditionStats() below.
+function todayIST() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 }
 function saveState(state) {
   fs.mkdirSync(path.dirname(STATE_PATH), { recursive: true });
@@ -140,8 +168,7 @@ function saveState(state) {
 function todaysEditionStats() {
   try {
     const edition = JSON.parse(fs.readFileSync(EDITION_PATH, "utf8"));
-    const todayISO = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
-    if (edition.date !== todayISO) return { total: 0, byCategory: {} }; // yesterday's file hasn't rolled yet
+    if (edition.date !== todayIST()) return { total: 0, byCategory: {} }; // yesterday's file hasn't rolled yet
     const stories = edition.stories || [];
     const byCategory = {};
     for (const s of stories) byCategory[s.category] = (byCategory[s.category] || 0) + 1;
@@ -235,7 +262,16 @@ async function main() {
   const stats = todaysEditionStats();
   const editionFull = stats.total >= 15;
 
-  if (matured.length > 0 && cooldownOk && !editionFull) {
+  // Reset the counter on a new IST calendar day — see MAX_TRIGGERS_PER_DAY
+  // above for why this exists. Deliberately independent of editionFull:
+  // that gate can flip back to "not full" purely because generate-
+  // edition.yml's own verification step removed a bad story, which isn't
+  // a reason to fire off another full generation run on its own.
+  const today = todayIST();
+  if (state.triggersToday.date !== today) state.triggersToday = { date: today, count: 0 };
+  const dailyCapOk = state.triggersToday.count < MAX_TRIGGERS_PER_DAY;
+
+  if (matured.length > 0 && cooldownOk && !editionFull && dailyCapOk) {
     // Prefer a matured World candidate if today's edition is short on that
     // category — otherwise trigger normally (Gemini picks freely, same as
     // the fixed-schedule runs always have).
@@ -252,6 +288,7 @@ async function main() {
     const ok = await triggerGeneration(focusCategory);
     if (ok) {
       state.lastTriggerMs = now;
+      state.triggersToday.count += 1;
       // Only the triggering story is marked promoted — others stay
       // eligible for the NEXT run rather than all being consumed at once,
       // since one generation run can't guarantee covering every matured
@@ -259,7 +296,10 @@ async function main() {
       state.promoted[useCandidate[0]] = now;
     }
   } else if (matured.length > 0) {
-    console.log(`poll-rss: ${matured.length} matured but not triggering (cooldownOk=${cooldownOk}, editionFull=${editionFull}).`);
+    console.log(
+      `poll-rss: ${matured.length} matured but not triggering ` +
+        `(cooldownOk=${cooldownOk}, editionFull=${editionFull}, dailyCapOk=${dailyCapOk} [${state.triggersToday.count}/${MAX_TRIGGERS_PER_DAY} used today]).`
+    );
   } else {
     console.log("poll-rss: nothing matured yet.");
   }
