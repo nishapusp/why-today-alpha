@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-02T04:46:25.664Z",
+  "generatedAt": "2026-08-02T07:36:25.136Z",
   "results": [
     {
       "slug": "rbi-forex-swap-window-mobilization",
@@ -52,27 +52,51 @@
     {
       "slug": "hdfc-bank-raises-fcnrb-deposit-rates",
       "headline": "Want More for Your Overseas Savings? HDFC Bank Offers More.",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "Pre-2013 = 20",
+          "claim": "HDFC Bank has increased its interest rates on Foreign Currency Non-Resident (Bank) or FCNR(B) dollar deposits by 25 basis points, bringing the new rate for 3-5 year deposits to 6.25%.",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not provide data for a 'Pre-2013' period or a value of 20 billion.",
+          "detail": "The provided source text contains no information regarding HDFC Bank, interest rate changes, or FCNR(B) deposits. The source text is exclusively about a government denial of a news report regarding an attack on an army vehicle in Ganderbal.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         },
         {
-          "claim": "Pre-2026 = 25",
+          "claim": "RBI's special swap facility mobilized $40.8 billion in forex.",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not provide data for a 'Pre-2026' period or a value of 25 billion.",
+          "detail": "The source text does not mention an RBI swap facility or any mobilization of $40.8 billion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The 2013 FCNR(B) swap scheme... successfully mobilized $34 billion in foreign currency deposits.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 2013 FCNR(B) swap scheme or the $34 billion figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true
+        },
+        {
+          "claim": "CHART DATA POINT: Pre-2013 = 20",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this data point.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "CHART DATA POINT: Pre-2026 = 25",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this data point.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false
         }
       ],
-      "notes": "The core claims regarding HDFC Bank's rate hike and the RBI swap facility figures are supported by the provided source texts. However, the chart includes data points ('Pre-2013' and 'Pre-2026') that are not mentioned in any of the source articles."
+      "notes": "The provided source text is completely unrelated to the claims made in the story. The source text discusses a government fact-check regarding a security incident in Ganderbal, while the story discusses HDFC Bank's interest rates and RBI swap facilities. Consequently, all claims regarding the bank and the swap facility are unverifiable."
     },
     {
       "slug": "indian-oil-q1-loss",
@@ -103,23 +127,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "commercial-lpg-cylinder-price-drops-202-boosting-businesses",
-      "headline": "Commercial LPG Cylinder Price Drops ₹202, Boosting Businesses",
-      "verdict": "FAIL",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Commercial LPG cylinder prices in Delhi were cut by ₹202, effective Saturday, August 2nd.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any information regarding a price cut for commercial LPG cylinders. The source text mentions various news items such as GST collections, Q1 results, and Commonwealth Games, but makes no mention of LPG pricing.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The source text provided is a list of headlines and snippets from a news website that does not contain the article about the LPG price cut. Therefore, the central claim of the story is entirely unsupported by the provided source."
     },
     {
       "slug": "maldives-connects-to-indias-upi-expands-digital-payments",
@@ -180,6 +187,78 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "fpis-reverse-selling-trend",
+      "headline": "Why Did Foreign Investors Suddenly Flood India with ₹20,200 Crore?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-china-trade-shipki-la",
+      "headline": "India-China Border Trade Resumes After Six Years: What Does It Mean?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Cross-border trade between India and China officially resumed through the Shipki La pass in Himachal Pradesh after a six-year hiatus.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions 'India-China border trade' in the headline list but contains no article or confirmation that trade has resumed at Shipki La or that a six-year hiatus has ended.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        },
+        {
+          "claim": "The reopening was marked by a ceremony attended by Himachal Pradesh Revenue and Horticulture Minister Jagat Singh Negi.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this event or the minister's attendance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The provided source text is a list of headlines and brief summaries from a news website. While 'India-China border trade' appears as a topic in the headline list, the actual content of the article describing the resumption of trade at Shipki La is entirely missing from the provided source material."
+    },
+    {
+      "slug": "carmakers-post-strong-july-sales",
+      "headline": "Carmakers Just Reported a Huge 33% Jump in July Sales: Why?",
+      "verdict": "WARN",
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "iraq-turkey-oil-pipeline-deal",
+      "headline": "Iraq and Turkey Ink Oil Pipeline Deal: Why It Matters for Global Energy?",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Iraq and Turkey officially signed a one-year deal to increase crude oil exports through a pipeline that leads to the Turkish Mediterranean port of Ceyhan.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a list of headlines and snippets from Business Standard; it contains no mention of an Iraq-Turkey oil pipeline deal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false
+        }
+      ],
+      "notes": "The source text provided is a collection of unrelated news headlines and does not contain any information regarding an oil pipeline agreement between Iraq and Turkey. The entire story is unsupported by the provided source."
     }
   ]
 }
