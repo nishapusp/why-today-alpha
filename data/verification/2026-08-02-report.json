@@ -1,6 +1,6 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-02T09:41:57.024Z",
+  "generatedAt": "2026-08-02T11:09:58.422Z",
   "results": [
     {
       "slug": "rbi-forex-swap-window-mobilization",
@@ -193,39 +193,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "iran-threatens-energy-fields-global-impact",
-      "headline": "Iran just threatened global energy fields. Why?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "crude oil prices already seeing a 20% surge in July",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not contain any data regarding a 20% surge in crude oil prices during July 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "Approximately 60% of India's crude oil imports come from the region.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention the percentage of India's crude oil imports sourced from West Asia.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "India is the world's third-largest oil importer.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention India's global ranking as an oil importer.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        }
-      ],
-      "notes": "The central event regarding the Iranian Foreign Minister's warning is verified by Source 1. However, the story includes several specific economic statistics (oil price surge, import percentages, and import rankings) that are not supported by the provided source texts."
     },
     {
       "slug": "ayush-ministry-india-ai-traditional-medicine",
