@@ -5,6 +5,8 @@ import ReadingLevelToggle from "@/components/ReadingLevelToggle";
 import ShareButton from "@/components/ShareButton";
 import { formatStoryDate } from "@/lib/storyDate";
 import DataCardGrid from "@/components/DataCard";
+import HeroStat from "@/components/HeroStat";
+import { pickHeroNumber } from "@/lib/pickHeroNumber";
 import StoryFeedback from "@/components/StoryFeedback";
 import StoryChart from "@/components/StoryChart";
 import TimeMachine from "@/components/TimeMachine";
@@ -45,6 +47,7 @@ export default function StoryDetailView({
   linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
 }) {
   const cat = getCategoryStyle(story.category);
+  const heroNumber = pickHeroNumber(story.keyNumbers);
 
   return (
     <main className="max-w-2xl mx-auto pb-16 overflow-x-hidden">
@@ -123,6 +126,8 @@ export default function StoryDetailView({
             {story.summary}
           </p>
         )}
+
+        {heroNumber && <HeroStat number={heroNumber} tint={cat.tint} deep={cat.deep} accent={cat.accent} />}
 
         {/* /visual-preview/[slug] only resolves today's edition (see
             lib/getData.ts getStoryBySlug) — omit for archived stories

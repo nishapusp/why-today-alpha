@@ -13,8 +13,12 @@ export interface StatisticCardProps extends KeyNumber {
   color?: string; // overrides theme.accent — lets callers cycle theme.accentRotation per item
 }
 
-/** ₹24 lakh crore -> animates "0 lakh crore" up to "24 lakh crore" on view. */
-function useCountUpText(value: string, active: boolean) {
+/**
+ * ₹24 lakh crore -> animates "0 lakh crore" up to "24 lakh crore" on view.
+ * Exported so other reading-UI components (e.g. HeroStat, the article
+ * page's above-the-fold stat) can share this instead of re-implementing it.
+ */
+export function useCountUpText(value: string, active: boolean) {
   const target = parseLeadingNumber(value);
   const shouldAnimate = active && target !== null && !prefersReducedMotion();
   const [display, setDisplay] = useState(value);
