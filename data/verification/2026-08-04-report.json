@@ -1,0 +1,191 @@
+{
+  "date": "2026-08-04",
+  "generatedAt": "2026-08-03T19:19:41.284Z",
+  "results": [
+    {
+      "slug": "india-achieves-near-universal-banking-access",
+      "headline": "99.92% of India's Villages Now Have Banks. How?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "government-to-offload-lic-stake",
+      "headline": "Government Selling ₹300 Billion More LIC Shares. Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Indian government plans to sell up to a 6.5% stake in Life Insurance Corporation of India (LIC), aiming to raise over ₹300 billion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding an LIC stake sale, an OFS, or the figures ₹300 billion or 6.5%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The OFS, which opens for institutional investors on Tuesday, August 4, 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention an LIC OFS or any such event occurring on August 4, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The floor price for the shares has been fixed at ₹382 apiece",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a floor price for LIC shares.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a general news feed from Business Standard that does not contain any of the specific claims made in the story regarding an LIC stake sale. Consequently, all claims regarding the OFS, the stake percentage, the target amount, and the floor price are unverifiable based on the provided source."
+    },
+    {
+      "slug": "government-proposes-reintroduction-of-upi-mdr",
+      "headline": "UPI Transactions Might Cost Money Again. Who Pays?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "anthropic-brings-claude-in-country-inference-to-india",
+      "headline": "A Top AI Company Just Chose India For Big Expansion. Why?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "trump-says-us-iran-talks-underway",
+      "headline": "Trump Says US-Iran Talks 'Going On Right Now.' What's India's Stake?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "tax-nudge-recovers-9494-crore-did-you-pay-up",
+      "headline": "Tax 'Nudge' Recovers ₹9,494 Crore: Did You Pay Up?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's income tax department's 'NUDGE' campaign has successfully resulted in 1.25 crore updated Income Tax Returns (ITR-U) filings over the past two years, leading to an additional tax collection of ₹9,494 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is exclusively about DeepSeek's V4-Flash AI model and contains no information regarding the Indian Income Tax department, the 'NUDGE' campaign, ITR-U filings, or tax collection figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. As the source text does not contain any of the figures or events mentioned, all claims are unverifiable."
+    },
+    {
+      "slug": "top-ai-firm-brings-claude-closer-to-india-why-now",
+      "headline": "Top AI Firm Brings Claude 'Closer' To India. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Anthropic's opening of its first India office in Bengaluru in February 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the opening of an Anthropic office in Bengaluru or any date associated with such an event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Google established an AI research center in Bengaluru in 2018",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Google establishing an AI research center in Bengaluru in 2018.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story contains specific claims about the history of Anthropic's and Google's operations in India that are not supported by the provided source text. While the central event (Anthropic launching in-country inference via Amazon Bedrock) is consistent with the context of the provided AWS investment data, the historical claims are unverifiable based on the provided text."
+    },
+    {
+      "slug": "government-raises-windfall-tax-on-fuel-exports",
+      "headline": "Government Just Raised Tax On Your Fuel Exports. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the government's announcement regarding the windfall tax (SAED) adjustments as reported in the provided source text. All specific figures and dates align with the source material."
+    },
+    {
+      "slug": "rbi-monisha-chakraborty-appointment",
+      "headline": "RBI Just Appointed A New Director For Key Market Functions. Who?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "fssai-dabur-misleading-claims",
+      "headline": "Food Regulator Orders Dabur To Stop \"100%\" Claims. What Next?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
