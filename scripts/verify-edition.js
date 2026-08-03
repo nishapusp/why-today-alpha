@@ -697,7 +697,7 @@ async function main() {
     const story = stories[i];
     const label = `[${i + 1}/${stories.length}] ${story.slug}`;
     if (quotaExhausted) {
-      results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", issues: [], notes: "Grounding quota exhausted earlier in this run." });
+      results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", neverVerified: true, issues: [], notes: "Grounding quota exhausted earlier in this run." });
       continue;
     }
     console.log(`${label} — verifying...`);
@@ -736,7 +736,7 @@ async function main() {
               // run, but keep processing remaining stories in source mode
               // (they don't need grounding quota at all).
               console.warn(`  grounding quota exhausted during escalation — falling back to unverifiable for this story.`);
-              results.push({ slug: story.slug, headline: story.headline, verdict: "WARN", issues: [{
+              results.push({ slug: story.slug, headline: story.headline, verdict: "WARN", neverVerified: true, issues: [{
                 claim: "(entire story)", status: "UNVERIFIABLE",
                 detail: "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
                 correction: null, source: null,
@@ -760,11 +760,11 @@ async function main() {
       if (err.isGroundingQuota) {
         console.error(`\nGrounding quota exhausted at story ${i + 1}. Stopping — this verifier never runs ungrounded.`);
         quotaExhausted = true;
-        results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", issues: [], notes: "Grounding quota exhausted — story not verified." });
+        results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", neverVerified: true, issues: [], notes: "Grounding quota exhausted — story not verified." });
         continue;
       }
       console.error(`${label} — ERROR: ${err.message}`);
-      results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", issues: [], error: err.message });
+      results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", neverVerified: true, issues: [], error: err.message });
     }
     if (i < stories.length - 1 && !quotaExhausted) await sleep(SPACING_MS);
   }
@@ -811,10 +811,25 @@ async function main() {
     // generic issue-count threshold — see tagBroaderConnectionsIssues for
     // the full reasoning. Getting this section wrong is a different kind
     // of failure than a padded incidental detail elsewhere in the story.
+    //
+    // 2026-08-03: a real, confirmed case slipped through this exact gap —
+    // a story reporting an RBI rate decision that hadn't actually been
+    // announced yet (the real announcement was 2 days out), with a
+    // materially wrong rate figure. Verification never actually checked
+    // it: its own source links were unfetchable AND the grounded
+    // escalation hit a quota limit — but that produced exactly one
+    // generic "(entire story)" UNVERIFIABLE issue, landing under the
+    // warnThreshold and staying live. A story nobody managed to check at
+    // all is a materially different (and riskier) situation than one
+    // that WAS checked and came back with a minor loose end — treat
+    // "never verified" (neverVerified, set on SKIPPED/ERROR results and
+    // on the quota-exhausted-during-escalation WARN) as always crossing
+    // the threshold, independent of issue count.
     const toRemove = results.filter(
       (r) =>
         r.verdict === "FAIL" ||
         r.verdict === "FABRICATED" ||
+        r.neverVerified ||
         (r.verdict === "WARN" && (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections)))
     );
     if (toRemove.length === 0) {

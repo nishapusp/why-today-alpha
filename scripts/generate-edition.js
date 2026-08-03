@@ -85,7 +85,18 @@ const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 // once billing is enabled, without needing a code change.
 const TOTAL_STORIES = parseInt(process.env.STORY_TARGET || "9", 10);
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || "3", 10);
-const DEDUP_LOOKBACK_DAYS = parseInt(process.env.DEDUP_LOOKBACK_DAYS || "3", 10);
+// 2026-08-03: raised from 3 — a real, confirmed repeat slipped through at
+// exactly this gap. "RBI launches Mission SAKSHAM" (retraining co-op bank
+// staff) was covered 2026-07-14, then re-covered nearly verbatim
+// ("officially launched"/"has launched," same event, same framing) on
+// 2026-08-03 — 20 days later, well outside the old 3-day window, so the
+// model was never even told this one existed. This list is purely
+// advisory (it informs the model what NOT to repeat; the model still
+// decides, and the existing "unless genuinely new development" carve-out
+// already protects legitimate follow-ups), so widening it mainly costs a
+// larger prompt, not correctness — cheap relative to publishing a stale
+// story as breaking news.
+const DEDUP_LOOKBACK_DAYS = parseInt(process.env.DEDUP_LOOKBACK_DAYS || "30", 10);
 
 const REQUIRED_STORY_FIELDS = [
   "headline", "slug", "category", "summary", "quickRead", "whatHappened",
