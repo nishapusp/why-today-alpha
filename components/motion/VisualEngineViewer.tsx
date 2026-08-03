@@ -86,12 +86,18 @@ export default function VisualEngineViewer({
   headlineImage,
   qrDataUri,
   backHref,
+  slug,
   debug = false,
 }: {
   blueprint: VisualBlueprint;
   headlineImage?: HeadlineImage;
   qrDataUri?: string;
   backHref?: string;
+  // Used to source the same narration+music mix already rendered for
+  // the downloadable video (/api/visual-video/[slug]) — reused here as
+  // an inline-streamed <audio> track rather than re-generating anything,
+  // so the web preview isn't silent while the video export has sound.
+  slug?: string;
   // Diagnostic overlay (classification/confidence, theme switcher, raw
   // blueprint JSON) — only ever meant for reviewing the engine's output,
   // not for the actual reader-facing storyboard. Opt in with ?debug=1
@@ -101,7 +107,10 @@ export default function VisualEngineViewer({
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [theme, setTheme] = useState<VisualTheme>(blueprint.theme);
+  const [muted, setMuted] = useState(true);
+  const [audioAvailable, setAudioAvailable] = useState(true);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const isInteractingRef = useRef(false);
   const { sections, classification } = blueprint;
   const totalSlides = (headlineImage ? 1 : 0) + sections.length;
@@ -114,6 +123,19 @@ export default function VisualEngineViewer({
     () => [...(headlineImage ? [HERO_AUTO_ADVANCE_SECONDS] : []), ...sections.map((s) => s.duration)],
     [headlineImage, sections]
   );
+
+  // Cumulative start time (seconds) of each slide — lets a manual swipe
+  // seek the audio to roughly the right point instead of leaving it
+  // playing from wherever it happened to be.
+  const cumulativeStart = useMemo(() => {
+    const out: number[] = [];
+    let t = 0;
+    for (const d of slideDurations) {
+      out.push(t);
+      t += d;
+    }
+    return out;
+  }, [slideDurations]);
 
   function handleScroll() {
     const el = scrollerRef.current;
@@ -137,6 +159,20 @@ export default function VisualEngineViewer({
     }, seconds * 1000);
     return () => clearTimeout(timer);
   }, [activeIndex, slideDurations, totalSlides]);
+
+  // Keeps the narration+music track roughly aligned with whichever slide
+  // is showing. Auto-advance already keeps them in sync on its own (both
+  // derive from the same section.duration values), so this only actually
+  // corrects anything after a manual swipe jumps several slides at once —
+  // a small tolerance avoids fighting normal playback with redundant seeks.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !audioAvailable) return;
+    const target = cumulativeStart[activeIndex] ?? 0;
+    if (Math.abs(audio.currentTime - target) > 1.5) {
+      audio.currentTime = target;
+    }
+  }, [activeIndex, cumulativeStart, audioAvailable]);
 
   return (
     <div className="min-h-dvh flex flex-col items-center bg-black">
@@ -197,6 +233,22 @@ export default function VisualEngineViewer({
       )}
 
       <div className="w-full max-w-md h-dvh flex flex-col relative" style={{ background: theme.background }}>
+        {slug && audioAvailable && (
+          // Muted autoplay is universally allowed without a user gesture;
+          // unmuted requires one, which the toggle button below provides.
+          // Same file the "Download Video" link uses (no ?download=1
+          // here, so the API route serves it as inline/streamable rather
+          // than forcing a save-to-device).
+          <audio
+            ref={audioRef}
+            src={`/api/visual-video/${slug}`}
+            autoPlay
+            muted={muted}
+            preload="auto"
+            onError={() => setAudioAvailable(false)}
+            className="hidden"
+          />
+        )}
         {backHref && (
           <Link
             href={backHref}
@@ -206,6 +258,25 @@ export default function VisualEngineViewer({
           >
             ←
           </Link>
+        )}
+        {slug && audioAvailable && (
+          <button
+            onClick={() => {
+              setMuted((v) => {
+                const next = !v;
+                // Some browsers pause playback when muted state is
+                // toggled programmatically outside a direct user gesture
+                // path — re-assert play() defensively on unmute.
+                if (!next) audioRef.current?.play().catch(() => {});
+                return next;
+              });
+            }}
+            className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center text-sm backdrop-blur-sm"
+            style={{ background: "rgba(0,0,0,.25)", color: "#fff" }}
+            aria-label={muted ? "Unmute" : "Mute"}
+          >
+            {muted ? "🔇" : "🔊"}
+          </button>
         )}
 
         {/* Persistent brand header — matches every frame of the reference storyboard, not baked into each slide */}

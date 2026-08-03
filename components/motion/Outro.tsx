@@ -24,7 +24,7 @@ export default function Outro({ tagline, ctaLabel, url, videoUrl, theme, qrDataU
       </a>
       {videoUrl && (
         <a
-          href={videoUrl}
+          href={`${videoUrl}?download=1`}
           download
           className="inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold mb-8"
           style={{ border: `1px solid ${theme.accent}`, color: theme.accent }}

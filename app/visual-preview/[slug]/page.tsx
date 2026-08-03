@@ -45,6 +45,7 @@ export default async function VisualPreviewPage({
       headlineImage={story.headlineImage}
       qrDataUri={qrDataUri ?? undefined}
       backHref={`/story/${slug}`}
+      slug={slug}
       debug={debug === "1"}
     />
   );

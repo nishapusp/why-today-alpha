@@ -113,16 +113,15 @@ async function main() {
   const bundleLocation = await bundle({ entryPoint: path.join(__dirname, "src", "index.ts") });
 
   for (const story of stories) {
-    const idx = edition.stories.findIndex((s) => s.slug === story.slug);
-    const prevStory = idx > 0 ? edition.stories[idx - 1] : undefined;
-    const nextStory = idx >= 0 && idx < edition.stories.length - 1 ? edition.stories[idx + 1] : undefined;
-
     const classification = classifyStory(story);
     const theme = getVisualTheme(story);
-    const blueprint = buildVisualBlueprint(story, classification, theme, {
-      prev: prevStory && { href: `/story/${prevStory.slug}`, headline: prevStory.headline },
-      next: nextStory && { href: `/story/${nextStory.slug}`, headline: nextStory.headline },
-    });
+    // No neighbors passed here (unlike the web preview) — the resulting
+    // "Keep Reading" WatchNext slide has no click target in a rendered
+    // video and reads as confusing filler for someone watching a shared
+    // clip with no site context, right before the actual closing Outro
+    // slide. Omitting neighbors means buildVisualBlueprint never adds
+    // that section for video exports at all.
+    const blueprint = buildVisualBlueprint(story, classification, theme);
     const outroSection = blueprint.sections.find((s) => s.component === "Outro");
     const qrDataUri = outroSection ? ((await makeQrDataUri(outroSection.visual_data.url as string)) ?? undefined) : undefined;
 
