@@ -43,6 +43,26 @@ export const metadata: Metadata = {
   title: "Why Today — Understand today's world, not just today's news",
   description:
     "A modern knowledge platform that helps readers understand the context behind today's headlines through curated data, storytelling, and AI-powered explanations.",
+  // Root-domain link preview (WhatsApp/Telegram/Twitter/iMessage all read
+  // this) — previously unset, so a bare "whytoday.in" link showed no
+  // image at all. scripts/generate-share-cards.js already renders a
+  // dedicated branded card for exactly this (public/cards/site-share.png,
+  // build output, not committed) — this just wires it in, same pattern
+  // as app/story/[slug]/page.tsx's per-story cards.
+  openGraph: {
+    title: "Why Today — Understand today's world, not just today's news",
+    description: "Banking, economy & markets — verified, explained, in 1 minute a day.",
+    type: "website",
+    url: "https://whytoday.in",
+    siteName: "Why Today",
+    images: [{ url: "/cards/site-share.png", width: 1080, height: 1350 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Today — Understand today's world, not just today's news",
+    description: "Banking, economy & markets — verified, explained, in 1 minute a day.",
+    images: ["/cards/site-share.png"],
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
