@@ -82,6 +82,34 @@ function extractJson(text) {
   return end > start ? cleaned.slice(start, end + 1) : cleaned;
 }
 
+// 2026-08-03: same hand-maintained known-facts cache generate-edition.js
+// reads (see data/known-facts.json) — a soft anchor so the verifier isn't
+// solely trusting whatever a story's own sources (source mode) or a
+// single search pass (grounded mode) turned up for a slow-moving figure.
+// Duplicated here rather than required from generate-edition.js, matching
+// this file's existing pattern of standalone shared-helper copies.
+function loadKnownFacts() {
+  try {
+    const file = path.join(__dirname, "..", "data", "known-facts.json");
+    if (!fs.existsSync(file)) return null;
+    const parsed = JSON.parse(fs.readFileSync(file, "utf8"));
+    return Array.isArray(parsed.facts) && parsed.facts.length ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function buildKnownFactsBlock() {
+  const known = loadKnownFacts();
+  if (!known) return "";
+  const lines = known.facts.map((f) => `${f.topic} = ${f.value}${f.note ? ` — ${f.note}` : ""}`).join("\n");
+  return (
+    `\n\nKNOWN REFERENCE FIGURES (independently confirmed as of ${known.asOf} — a source or search result that ` +
+    `flatly contradicts one of these without clearly post-dating a real, confirmed event is suspect; ` +
+    `double-check it rather than taking it at face value):\n${lines}`
+  );
+}
+
 function extractRetryDelayMs(errBody, fallbackMs) {
   const m = /"retryDelay"\s*:\s*"(\d+(?:\.\d+)?)s"/.exec(errBody || "");
   return m ? Math.ceil(Number(m[1]) * 1000) + 1000 : fallbackMs;
@@ -301,6 +329,8 @@ For each specific claim, classify it:
 
 2026-07-29: check EVERY "CHART DATA POINT" claim individually — do not wave a chart through because it looks plausible overall. A real, confirmed error had two correct recent points (current period + prior-period comparator, both genuinely in the source) sitting alongside several invented older points that were wrong in both magnitude and direction (a fake decline masking a real, steady rise) — the correct points made the whole series look trustworthy on a casual read. A quarter/period whose value does not appear anywhere in the source texts is UNVERIFIABLE for that specific point, even if neighboring points in the same chart are genuinely sourced — do not let a chart pass as a whole just because most of it checks out.
 
+2026-08-03: a real error slipped through where the story's headline and body stated a decision as already made ("RBI holds/maintains the repo rate") when the cited sources were actually about an UPCOMING, not-yet-happened scheduled event — a preview of an MPC meeting, analyst expectations, "expected to," "likely to," "scheduled to," "due to meet/decide" language. The event had not occurred yet. Watch specifically for this tense mismatch: a claim phrased as a completed action (announced, cut, hiked, held, approved, launched, signed, decided) where the source text is actually hedged/future-tense about something that hasn't happened. If the story reports an expected or scheduled future event as if it already happened, that is WRONG at minimum, and if it's the story's central premise, treat centralEventConfirmed as false and the verdict as FABRICATED even if the underlying numbers exist elsewhere and are individually accurate.
+
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.
 - "WARN": no WRONG claims, but at least one UNVERIFIABLE.
@@ -346,7 +376,8 @@ async function verifyStoryAgainstSources(story, editionDate, sources, maxRetries
   const userPrompt =
     `Publication date of this story: ${editionDate}\n\n` +
     `SOURCE TEXTS:\n\n${srcBlock}\n\n====\n\n` +
-    `Story claims to verify:\n\n${buildClaimDigest(story)}`;
+    `Story claims to verify:\n\n${buildClaimDigest(story)}` +
+    buildKnownFactsBlock();
 
   while (attempt <= maxRetries) {
     try {
@@ -486,6 +517,8 @@ For each specific claim, classify it:
 
 2026-07-29: check EVERY "CHART DATA POINT" claim individually via search — do not pass a chart as a whole just because it looks plausible or directionally reasonable. A real, confirmed error had two correct recent points (current period + prior-period comparator, easy to find via search) sitting alongside several invented older points, wrong in both magnitude and direction (a fake decline masking a real, steady rise) — the correct points made the whole series look trustworthy on a casual check. Search for each period's actual figure specifically; a point you cannot confirm is UNVERIFIABLE for that point even when its neighbors in the same chart are genuinely correct.
 
+2026-08-03: a real error slipped through where the story stated a decision as already made ("RBI holds/maintains the repo rate") when a live search actually shows it was an UPCOMING, not-yet-happened scheduled event — an MPC meeting preview, analyst expectations, "expected to," "likely to," "scheduled to," "due to meet/decide" coverage. Search specifically for whether the event has actually occurred as of the publication date, not just whether the topic is being discussed. If the story reports an expected or scheduled future event as if it already happened, that is WRONG at minimum, and if it's the story's central premise, treat centralEventConfirmed as false and the verdict as FABRICATED even if the underlying numbers exist elsewhere and are individually accurate.
+
 Then give one overall verdict:
 - "PASS": every specific claim VERIFIED.
 - "WARN": no WRONG claims, but at least one UNVERIFIABLE or STALE.
@@ -518,7 +551,8 @@ async function verifyStory(story, editionDate, maxRetries = 3) {
 
   const userPrompt =
     `Publication date of this story: ${editionDate}\n\n` +
-    `Story claims to verify:\n\n${buildClaimDigest(story)}`;
+    `Story claims to verify:\n\n${buildClaimDigest(story)}` +
+    buildKnownFactsBlock();
 
   while (attempt <= maxRetries) {
     try {
@@ -649,15 +683,29 @@ function writeReports(editionDate, results, outDir) {
 // Lightweight overlap heuristic rather than exact substring matching,
 // since a verification issue's claim text is the model's own paraphrase
 // of the problem, not necessarily a verbatim quote from the story.
+// 2026-08-03: chart/keyNumbers claims get the same "one bad point sinks
+// the whole thing" treatment as Broader Connections, for the same reason —
+// buildClaimDigest feeds these to the verifier as distinctly-prefixed
+// lines ("CHART DATA POINT: ...", "KEY NUMBER CARD: ..."), and the prompt
+// asks the model to return the claim "as it appears," so a flagged
+// chart/keyNumber issue reliably carries its prefix straight through.
+// These are exactly the figures readers screenshot and share — a single
+// wrong one shouldn't need to wait for 2 unrelated issues elsewhere in the
+// same story to cross the generic warnThreshold before the story is pulled.
+const CHART_OR_KEYNUMBER_PREFIXES = ["chart data point:", "chart takeaway:", "chart:", "key number card:"];
+function isChartOrKeyNumberIssue(issue) {
+  const claim = (issue.claim || "").trim().toLowerCase();
+  return CHART_OR_KEYNUMBER_PREFIXES.some((p) => claim.startsWith(p));
+}
+
 function tagBroaderConnectionsIssues(story, issues) {
   const match = (story.deepDiveRead || "").match(/## Broader Connections([\s\S]*?)(?=\n## |$)/i);
-  if (!match || !issues.length) return issues;
-  const bcText = match[1].toLowerCase();
+  const bcText = match ? match[1].toLowerCase() : "";
   return issues.map((issue) => {
     const claimWords = (issue.claim || "").toLowerCase().split(/\s+/).filter((w) => w.length > 4);
-    const overlap = claimWords.filter((w) => bcText.includes(w)).length;
-    const inBroaderConnections = claimWords.length > 0 && overlap / claimWords.length >= 0.5;
-    return { ...issue, inBroaderConnections };
+    const overlap = bcText ? claimWords.filter((w) => bcText.includes(w)).length : 0;
+    const inBroaderConnections = bcText.length > 0 && claimWords.length > 0 && overlap / claimWords.length >= 0.5;
+    return { ...issue, inBroaderConnections, isChartOrKeyNumber: isChartOrKeyNumberIssue(issue) };
   });
 }
 
@@ -825,12 +873,19 @@ async function main() {
     // "never verified" (neverVerified, set on SKIPPED/ERROR results and
     // on the quota-exhausted-during-escalation WARN) as always crossing
     // the threshold, independent of issue count.
+    //
+    // 2026-08-03: a flagged chart point or key-number card gets the same
+    // always-crosses-the-threshold treatment as Broader Connections (see
+    // isChartOrKeyNumberIssue) — these are the exact figures readers
+    // screenshot and share, so a single wrong one shouldn't need 2
+    // unrelated issues elsewhere in the story to also cross warnThreshold.
     const toRemove = results.filter(
       (r) =>
         r.verdict === "FAIL" ||
         r.verdict === "FABRICATED" ||
         r.neverVerified ||
-        (r.verdict === "WARN" && (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections)))
+        (r.verdict === "WARN" &&
+          (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections || i.isChartOrKeyNumber)))
     );
     if (toRemove.length === 0) {
       console.log("\n--auto-remove: nothing crossed the removal threshold — edition unchanged.");

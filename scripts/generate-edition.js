@@ -254,12 +254,33 @@ function loadRecentArchiveHeadlines(todayISO, days) {
   return out;
 }
 
-function buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines) {
+// 2026-08-03: a small, hand-maintained cache of slow-moving figures a
+// model can get wrong even with live search grounding (stale cached
+// pages, a meeting-preview article ranking above the real announcement).
+// Purely a soft anchor for the model to weigh noisy search results
+// against — never a hard override, since it goes stale itself the moment
+// a real decision happens. Missing/corrupt file is not an error, the note
+// is simply omitted; see data/known-facts.json for how to update it.
+function loadKnownFacts() {
+  try {
+    const file = path.join(__dirname, "..", "data", "known-facts.json");
+    if (!fs.existsSync(file)) return null;
+    const parsed = JSON.parse(fs.readFileSync(file, "utf8"));
+    return Array.isArray(parsed.facts) && parsed.facts.length ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines, knownFacts) {
   const exclusionNote = excludeHeadlines?.length
     ? ` Do NOT repeat or overlap with these already-covered stories from the same edition: ${excludeHeadlines.map((h) => `"${h}"`).join(", ")}. Find ${storyCount} completely different fresh stories.`
     : "";
   const recentDaysNote = recentDaysHeadlines?.length
     ? ` These stories were already published in the last ${DEDUP_LOOKBACK_DAYS} days — do NOT cover the same underlying event again, even reworded, UNLESS there is a genuinely substantial new development (a materially different milestone, decision, outcome, or figure — not just a restated angle). If you do run a legitimate follow-up, its headline and summary must lead with what's NEW, not restate the earlier story: ${recentDaysHeadlines.map((h) => `"${h.headline}" (${h.date})`).join(", ")}.`
+    : "";
+  const knownFactsNote = knownFacts?.facts?.length
+    ? ` Known reference figures (independently confirmed as of ${knownFacts.asOf} — treat any source that flatly contradicts one of these without clearly post-dating a real, confirmed announcement as suspect, and double-check before using it): ${knownFacts.facts.map((f) => `${f.topic} = ${f.value}${f.note ? ` — ${f.note}` : ""}`).join("; ")}.`
     : "";
   // Set by poll-rss.js when it dispatches a run specifically because a
   // World/geopolitics story matured and today's edition is short on that
@@ -270,7 +291,7 @@ function buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines) {
   const focusNote = focusCategory
     ? ` PRIORITY FOR THIS BATCH: today's edition is short on the "${focusCategory}" category — of the ${storyCount} stories in this batch, favor genuine ${focusCategory === "World" ? "geopolitics/world-affairs stories with a clear India angle (trade, markets, security, diaspora impact)" : focusCategory} stories wherever a real fresh trigger exists, without forcing a weak or stale story into that category just to fill it.`
     : "";
-  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, IPO/primary-market, startup/fintech, AI, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${recentDaysNote}${focusNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
+  return `Today's actual date is ${getTodayISO()}. Generate ${storyCount} stories for today's Why Today edition dated ${getTodayISO()}, covering important Indian financial, banking, corporate, markets, policy, IPO/primary-market, startup/fintech, AI, and economy-relevant technology NEWS FROM TODAY AND YESTERDAY SPECIFICALLY — including results and major announcements of large listed companies (banks included) and technology developments affecting the economic landscape (${getTodayISO()} and the day before) — not general background topics. Search using date-qualified terms (include "${getTodayISO()}", "today", "latest") rather than generic topic searches, which tend to surface older established articles. Every story must have a genuine fresh news trigger from the last 24-48 hours — reject anything that's really an evergreen/recurring theme.${exclusionNote}${recentDaysNote}${focusNote}${knownFactsNote} Follow every rule in your instructions exactly, especially the length floors AND ceilings, the recency requirement, the "Before returning output, verify" checklist, and the Deep Dive formatting. Also include the top-level edition fields (date, themeTitle, themeDescription, numberValue, numberLabel, numberTrend) summarizing the overall theme across these stories.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -822,7 +843,7 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
   // 6 minutes.
   const requestTimeoutMs = Math.min(360000, storyCount * 45000 + 60000);
 
-  let userPrompt = buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines);
+  let userPrompt = buildUserPrompt(storyCount, excludeHeadlines, recentDaysHeadlines, loadKnownFacts());
   if (mode === "rss") {
     userPrompt += buildRssAddendum(await fetchRssHeadlines());
   } else if (mode === "search") {
@@ -1069,6 +1090,45 @@ function validateStories(stories, startIndex = 0) {
       }
     } else {
       delete story.chart; // normalize explicit null away
+    }
+
+    // 2026-08-03: chart and keyNumbers are written somewhat independently
+    // by the model, so they can silently disagree on the same figure (e.g.
+    // chart shows GDP growth at 6.9% for a quarter while keyNumbers states
+    // 7.2% for that same quarter) — a subtle internal-fabrication signal
+    // that generic fact-checking often misses since neither number looks
+    // wrong in isolation, only against each other. Any real contradiction
+    // drops the chart entirely (same fail-soft philosophy as above).
+    if (story.chart && Array.isArray(story.keyNumbers)) {
+      const normalizeLabel = (s) => asText(s).toLowerCase().replace(/[^a-z0-9%]+/g, " ").trim();
+      const extractNumber = (s) => {
+        const m = asText(s).replace(/,/g, "").match(/-?\d+(\.\d+)?/);
+        return m ? parseFloat(m[0]) : null;
+      };
+      let contradiction = null;
+      for (let i = 0; i < story.chart.labels.length && !contradiction; i++) {
+        const chartLabel = normalizeLabel(story.chart.labels[i]);
+        const chartValue = story.chart.values[i];
+        if (!chartLabel) continue;
+        for (const kn of story.keyNumbers) {
+          const knLabel = normalizeLabel(kn && kn.label);
+          if (!knLabel || (knLabel !== chartLabel && !knLabel.includes(chartLabel) && !chartLabel.includes(knLabel))) continue;
+          const knValue = extractNumber(kn.value);
+          if (knValue === null) continue;
+          // Generous tolerance — chart values are often rounded or a
+          // derived variant (YoY vs. absolute level) of the same figure —
+          // only flag a real mismatch, not rounding noise.
+          const tolerance = Math.max(Math.abs(knValue) * 0.05, 0.5);
+          if (Math.abs(knValue - chartValue) > tolerance) {
+            contradiction = `chart label "${story.chart.labels[i]}" = ${chartValue} contradicts keyNumbers "${kn.label}" = "${kn.value}"`;
+          }
+          break;
+        }
+      }
+      if (contradiction) {
+        soft.push(`${label}: chart/keyNumbers mismatch — ${contradiction} — chart dropped.`);
+        delete story.chart;
+      }
     }
 
     // Quiz is soft-only: a story without a valid quiz still publishes (the
@@ -1655,4 +1715,8 @@ module.exports = {
   API_KEY,
   describeQuotaViolations,
   TRUSTED_PUBLISHERS,
+  loadRecentArchiveHeadlines,
+  loadKnownFacts,
+  DEDUP_LOOKBACK_DAYS,
+  getTodayISO,
 };

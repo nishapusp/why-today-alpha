@@ -1,0 +1,11 @@
+{
+  "_comment": "Hand-maintained anchor facts for slow-moving figures a model can otherwise get wrong even with search grounding (stale cached pages, mixed preview/announcement results). Soft cross-check only — update 'asOf' and 'value' whenever a fact genuinely changes, e.g. after a confirmed RBI MPC decision. Not a substitute for real verification, just a known-good anchor to weigh noisy search results against.",
+  "asOf": "2026-08-03",
+  "facts": [
+    {
+      "topic": "RBI repo rate",
+      "value": "5.25%",
+      "note": "Confirmed as of 2026-08-03. The RBI MPC decides the repo rate only at scheduled meeting announcements — do not report a rate change as already decided unless a source clearly post-dates the actual announcement, not just a meeting preview or analyst expectation."
+    }
+  ]
+}

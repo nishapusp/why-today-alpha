@@ -25,7 +25,17 @@ const { execSync } = require("child_process");
 // the scenario where a thought-part getting concatenated into the
 // response text fools naive brace matching. Also picks up FALLBACK_MODEL
 // for free, which this file never had at all before.
-const { GEMINI_API_BASE, API_KEY, extractJson, describeQuotaViolations, fetchPexelsImage, TRUSTED_PUBLISHERS } = require("./generate-edition.js");
+const {
+  GEMINI_API_BASE,
+  API_KEY,
+  extractJson,
+  describeQuotaViolations,
+  fetchPexelsImage,
+  TRUSTED_PUBLISHERS,
+  loadRecentArchiveHeadlines,
+  DEDUP_LOOKBACK_DAYS,
+  getTodayISO,
+} = require("./generate-edition.js");
 // 2026-07-16: this file's API call uses google_search grounding, which
 // needs a DIFFERENT model choice than generate-edition.js's own MODEL/
 // FALLBACK_MODEL (those are tuned for ungrounded/text-only calls
@@ -137,7 +147,22 @@ async function main() {
       console.error('For --new mode, pass a topic description as the second argument, e.g.:\n  node scripts/regenerate-story.js --new "Union Bank Q1 FY27 results — full deep dive with peer comparison"');
       process.exit(1);
     }
-    userPrompt = `Write a brand new story on this topic:\n${second}\n\nThis is a genuinely new story, not a regeneration of an existing one — do not reference "the original" or "what was wrong with it," just write the strongest possible version from scratch.`;
+    // 2026-08-03: --new mode had no cross-day dedup awareness at all —
+    // unlike generate-edition.js's normal batches (which load recent
+    // archive headlines and warn the model off same-event reruns), a
+    // manually-requested new story could silently rewrite something
+    // already covered in the last N days. Mirrors generate-edition.js's
+    // recentDaysNote exactly, plus this edition's OWN existing stories
+    // (a --new story is never checked against those elsewhere, since it
+    // isn't part of the normal same-edition exclusion list).
+    const todayISO = getTodayISO();
+    const recentDaysHeadlines = loadRecentArchiveHeadlines(todayISO, DEDUP_LOOKBACK_DAYS);
+    const sameEditionHeadlines = edition.stories.map((s) => ({ headline: s.headline, date: todayISO }));
+    const dedupCandidates = [...sameEditionHeadlines, ...recentDaysHeadlines];
+    const recentDaysNote = dedupCandidates.length
+      ? `\n\nThese stories are already published (today's edition or the last ${DEDUP_LOOKBACK_DAYS} days) — do NOT cover the same underlying event again, even reworded, UNLESS there is a genuinely substantial new development (a materially different milestone, decision, outcome, or figure — not just a restated angle). If you do run a legitimate follow-up, its headline and summary must lead with what's NEW, not restate the earlier story: ${dedupCandidates.map((h) => `"${h.headline}" (${h.date})`).join(", ")}.`
+      : "";
+    userPrompt = `Write a brand new story on this topic:\n${second}\n\nThis is a genuinely new story, not a regeneration of an existing one — do not reference "the original" or "what was wrong with it," just write the strongest possible version from scratch.${recentDaysNote}`;
     console.log(`Generating new story: "${second}"...`);
   } else {
     const slug = first;
