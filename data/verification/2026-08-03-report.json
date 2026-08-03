@@ -1,11 +1,12 @@
 {
   "date": "2026-08-03",
-  "generatedAt": "2026-08-03T01:17:14.615Z",
+  "generatedAt": "2026-08-03T11:03:45.154Z",
   "results": [
     {
       "slug": "india-canada-cepa-2026",
       "headline": "India & Canada Target Trade Deal: Will It Boost Key Sectors?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -26,18 +27,20 @@
         {
           "claim": "UPI, which processed a record ₹29.9 lakh crore in July",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions 'GST collections in July' as a topic, but does not contain any data regarding UPI transaction volumes for July 2026.",
+          "detail": "The provided source text does not contain any data regarding UPI transaction volumes for July 2026.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": false
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The central event regarding the Bankers' Books Evidence Bill is confirmed by the source title. However, the specific figure for UPI transactions in July is not present in the provided source text."
+      "notes": "The story accurately reports the government's plan to introduce the Bankers' Books Evidence Bill as described in the source. However, the figure cited for UPI transactions in July 2026 is not present in the provided source text."
     },
     {
       "slug": "pakistan-suicide-attack-khyber-pakhtunkhwa-regional-stability",
       "headline": "Terror Attack Kills 14 at Pakistan Rally: Regional Stability Impact?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -53,21 +56,52 @@
       "slug": "upi-payments-record-july-2026-digital-leap",
       "headline": "UPI Payments Soar To Record ₹29.9 Lakh Crore In July: A Digital Leap?",
       "verdict": "WARN",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "YoY Growth (Value, est.) = 50%+",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source text mentions the July 2026 transaction value but does not contain any data regarding year-on-year growth percentages.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Apr 2026 = 26.8",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain transaction data for April 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "May 2026 = 27.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain transaction data for May 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Jun 2026 = 28.3",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain transaction data for June 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The headline figure of ₹29.9 lakh crore and the launch year of 2016 are verified by the source. However, the chart data points for April, May, and June 2026, as well as the estimated YoY growth figure, are not present in the provided source text."
     },
     {
       "slug": "alliance-university-quantum-ai-school-8-qubit-centre",
       "headline": "Quantum AI School Opens In India: Training For The Future?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -83,21 +117,7 @@
       "slug": "trump-halts-iran-strikes-hormuz-deal",
       "headline": "Trump Halts Iran Strikes: Will Oil Prices Stay Calm?",
       "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "banking-mission-saksham",
-      "headline": "Why is the RBI suddenly retraining thousands of cooperative bankers?",
-      "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -113,6 +133,7 @@
       "slug": "ai-it-hiring-slowdown",
       "headline": "Why is India’s software pioneer warning that AI is destroying jobs?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -128,21 +149,7 @@
       "slug": "leap-india-ipo-launch",
       "headline": "Why is a packaging giant launching a massive ₹2,480-crore IPO now?",
       "verdict": "WARN",
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "rbi-maintains-repo-rate-projects-6-9-percent-gdp-growth",
-      "headline": "RBI Holds Rates Steady, Predicts 6.9% GDP Growth. Why The Caution?",
-      "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -158,6 +165,7 @@
       "slug": "marvell-commits-250-million-india-expansion",
       "headline": "US Chip Giant Invests $250 Million in India AI, Semiconductors. Why India?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -173,6 +181,7 @@
       "slug": "new-stock-market-closing-auction-rules-effective-august-3",
       "headline": "New Stock Market Closing Rules Start Today. What Changes for Traders?",
       "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
           "claim": "(entire story)",
@@ -185,45 +194,90 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "japan-us-yen-intervention",
-      "headline": "Japan and U.S. Intervene to Stabilize Yen After Decade-Long Hiatus",
+      "slug": "dixon-technologies-q1-fy27-results",
+      "headline": "This Electronics Manufacturer's Profit Doubled: How?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "groww-cofounders-ai-startup-fund",
+      "headline": "Fintech Unicorn Founders Now Backing New AI Ventures?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "domestic-investors-surpass-foreign-investors-india-equities",
+      "headline": "Indians Now Control More Of Their Stock Market Than Foreigners. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "domestic institutional investors (DIIs) in India have reportedly absorbed a significant $58 billion worth of foreign institutional investor (FII) sell-off",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of a $58 billion FII sell-off or the claim that DIIs have surpassed FIIs in ownership share.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "DIIs now own a larger share of Indian equities than FIIs",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes significant claims about market ownership and specific dollar amounts that are entirely absent from the provided source text. The source text is a collection of headlines and search results that do not support the narrative presented."
+    },
+    {
+      "slug": "corrosion-cost-india-economy-nomura-report",
+      "headline": "Rust is Costing India ₹14.1 Trillion Every Year. What Can Be Done?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "CHART DATA POINT: 1985-1995 = 5",
+          "claim": "a recent Nomura report",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data regarding historical intervention frequency or counts for these time periods.",
+          "detail": "The provided source text (Source 1) mentions a report on corrosion costs but does not name 'Nomura' as the author or source of the report.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": false
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         },
         {
-          "claim": "CHART DATA POINT: 1996-2005 = 3",
+          "claim": "a 2016 NACE International report estimated corrosion costs to be around $2.5 trillion annually (roughly 3.1% of US GDP at the time)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data regarding historical intervention frequency or counts for these time periods.",
+          "detail": "The provided source texts do not contain any information regarding a 2016 NACE International report or US corrosion cost estimates.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: 2006-2015 = 1",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the 2011 intervention, but does not provide a count or frequency data for the 2006-2015 period.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
-        },
-        {
-          "claim": "CHART DATA POINT: 2016-2026 = 1",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide a count or frequency data for the 2016-2026 period.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The central event and primary facts regarding the 2026 joint intervention are verified by the source. However, the article includes a chart with historical frequency data that is not supported by the provided source text."
+      "notes": "The story attributes the corrosion cost data to a 'Nomura report', but the provided source text does not mention Nomura. Additionally, the story includes external data points about a NACE International report that are not present in the provided source texts."
     }
   ]
 }
