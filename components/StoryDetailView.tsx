@@ -155,7 +155,12 @@ export default function StoryDetailView({
           </Link>
         )}
 
-        <DataCardGrid numbers={story.keyNumbers} tint={cat.tint} deep={cat.deep} accent={cat.accent} />
+        <DataCardGrid
+          numbers={heroNumber ? story.keyNumbers?.filter((n) => n !== heroNumber) : story.keyNumbers}
+          tint={cat.tint}
+          deep={cat.deep}
+          accent={cat.accent}
+        />
 
         <StoryChart chart={story.chart} cat={cat} />
 
