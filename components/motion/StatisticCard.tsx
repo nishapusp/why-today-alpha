@@ -18,7 +18,12 @@ export interface StatisticCardProps extends KeyNumber {
  * Exported so other reading-UI components (e.g. HeroStat, the article
  * page's above-the-fold stat) can share this instead of re-implementing it.
  */
-export function useCountUpText(value: string, active: boolean) {
+export function useCountUpText(rawValue: string, active: boolean) {
+  // Same defensive coercion as parseLeadingNumber below, and for the same
+  // reason: KeyNumber.value is typed string but a real story shipped a
+  // bare JSON number, which crashed the production build the moment this
+  // ran during static prerendering.
+  const value = String(rawValue);
   const target = parseLeadingNumber(value);
   const shouldAnimate = active && target !== null && !prefersReducedMotion();
   const [display, setDisplay] = useState(value);
