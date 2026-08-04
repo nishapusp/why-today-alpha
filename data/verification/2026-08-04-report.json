@@ -1,17 +1,17 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-03T22:03:14.368Z",
+  "generatedAt": "2026-08-04T01:12:04.469Z",
   "results": [
     {
       "slug": "government-to-offload-lic-stake",
       "headline": "Government Selling ₹300 Billion More LIC Shares. Why Now?",
-      "verdict": "UNVERIFIABLE",
-      "centralEventConfirmed": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
       "issues": [
         {
           "claim": "The government announced its intention to sell up to 6.5% of its equity holding in Life Insurance Corporation of India (LIC) through an Offer for Sale (OFS).",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) is a list of headlines and search results that does not contain any information regarding an LIC stake sale, an OFS, or the government's intention to sell shares.",
+          "detail": "The provided source text does not mention an LIC OFS or a 6.5% stake sale; it lists other news items such as GRSE orders and rail freight data.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
@@ -20,32 +20,32 @@
         {
           "claim": "This transaction is expected to raise over ₹300 billion (approximately $3.6 billion).",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention this figure or any financial details regarding an LIC stake sale.",
+          "detail": "The source text contains no mention of an LIC stake sale or a ₹300 billion target.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "The OFS, which opens for institutional investors on Tuesday, August 4, 2026, and for retail investors the following day, will initially offer a 2.5% stake, with a 'greenshoe option' to sell an additional 4% if there is sufficient demand.",
+          "claim": "The OFS, which opens for institutional investors on Tuesday, August 4, 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention an OFS, its opening dates, or the specific stake percentages mentioned.",
+          "detail": "The source text does not mention an LIC OFS opening on this date.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "The floor price for the shares has been fixed at ₹382 apiece, representing a discount to LIC's current market trading price.",
+          "claim": "The floor price for the shares has been fixed at ₹382 apiece",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention a floor price for LIC shares.",
+          "detail": "The source text does not mention an LIC floor price.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The provided source text is a generic news aggregator page that contains no information about an LIC stake sale. Consequently, all specific claims regarding the OFS, the stake percentage, the floor price, and the expected funds raised are unverifiable based on the provided source."
+      "notes": "The story reports on a major government divestment event that is entirely absent from the provided source text. The source text is a list of unrelated news headlines and does not support any of the claims regarding LIC."
     },
     {
       "slug": "tax-nudge-recovers-9494-crore-did-you-pay-up",
@@ -74,94 +74,6 @@
       "notes": "The story accurately reflects the government's announcement regarding the windfall tax (SAED) adjustments as reported in the provided source text. All specific figures and dates align with the source material."
     },
     {
-      "slug": "upi-mdr-policy-proposal",
-      "headline": "Why is the government planning to charge you for UPI?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Under the proposed draft, peer-to-merchant transactions exceeding ₹2,000 could attract a nominal fee",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the government has proposed amendments to enable MDR on UPI for large merchants, but it does not specify a ₹2,000 threshold.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "In the last fiscal year, UPI processed over 131 billion transactions",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any data regarding the total number of UPI transactions processed in the last fiscal year.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "representing a staggering 50% YoY increase",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 50% year-over-year increase in UPI transactions.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "banks received less than ₹1,500 crore in government subsidies to support this infrastructure",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any specific government subsidy amount provided to banks for UPI infrastructure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "the government hopes to generate over ₹5,000 crore annually for payment service providers",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a target of ₹5,000 crore in annual revenue generation from the proposed MDR.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "banks to absorb estimated annual losses of over ₹5,000 crore in transaction processing costs",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any estimate of annual losses incurred by banks due to UPI transaction processing.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "previous: 87 billion — Prior Year UPI Transactions",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain this figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story correctly identifies the government's legislative intent to amend the Payment and Settlement Systems Act to allow for MDR on UPI and extend tax breaks for electronics manufacturers. However, it includes numerous specific financial figures and transaction volume statistics that are not present in the provided source text."
-    },
-    {
-      "slug": "nvidia-sarvam-ai-funding",
-      "headline": "Why is a US chip giant betting millions on Indian languages?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "govt-upi-merchant-fee",
       "headline": "Government Eyes Reintroducing Merchant Fees for UPI Transactions",
       "verdict": "PASS",
@@ -170,8 +82,8 @@
       "notes": "The story accurately reflects the government's proposed legislative amendments to the Payment and Settlement Systems Act, 2007, as detailed in the provided source texts. All claims regarding the intent to reintroduce MDR, the focus on merchant-side costs, and the context of fiscal sustainability are supported by the source material."
     },
     {
-      "slug": "assam-ai-phygital-branch",
-      "headline": "Assam Inaugurates India’s First AI-Powered Phygital Bank Branch",
+      "slug": "itc-q1-earnings",
+      "headline": "ITC's Q1 Profit Drops Amid Higher Cigarette Taxes, FMCG & Paper Businesses Cushion Impact",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -186,8 +98,8 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "sarvam-ai-funding",
-      "headline": "Sarvam AI Set to Raise $74 Million in Series B Extension",
+      "slug": "anthropic-claude-ai-india-bedrock",
+      "headline": "Anthropic's Claude AI Expands to India via Amazon Bedrock, Boosting Local Innovation",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -202,53 +114,187 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "closing-auction-session-nifty-anomaly",
-      "headline": "Why did Nifty surge 200 points in its final minutes?",
+      "slug": "leap-india-ipo-price-band",
+      "headline": "LEAP India Sets IPO Price Band at ₹151-₹159, Aims to Raise ₹500 Crore",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-fcnrb-deposits-surge",
+      "headline": "RBI's Forex Relaxation Doubles FCNR(B) Deposits to $60.5 Billion",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Major banks leading inflows: HSBC, SBI, ICICI.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention specific banks (HSBC, SBI, ICICI) as leading the inflows.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core figures regarding the $28 billion increase and the total FCNR(B) deposit levels are consistent with the provided source text. However, the claim naming specific banks as leaders in these inflows is not supported by the source."
+    },
+    {
+      "slug": "persistent-systems-q1-profit-jumps",
+      "headline": "Tech Firm Persistent Systems' Profit Jumps 12.5%, Beats Expectations. Why?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The extreme price movement occurred because institutional investors were adjusting their portfolios to align with recent index weight changes during the newly introduced auction format.",
+          "claim": "Q2 FY26 = 285",
           "status": "UNVERIFIABLE",
-          "detail": "The source text attributes the spike to institutional buying and short covering, but does not mention 'index weight changes' as the reason for the portfolio adjustments.",
+          "detail": "The source text only provides data for Q1 FY26 and Q1 FY27; it does not contain figures for Q2, Q3, or Q4 of FY26.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Over the next three months, clearing corporations are expected to refine the matching algorithms to prevent singular large trades from causing such massive index distortions.",
+          "claim": "Q3 FY26 = 290",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any timeline or expectation regarding clearing corporations refining algorithms over the next three months.",
+          "detail": "The source text only provides data for Q1 FY26 and Q1 FY27; it does not contain figures for Q2, Q3, or Q4 of FY26.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Historically, Indian exchanges calculated closing prices by taking the volume-weighted average price of all trades executed between 3:00 PM and 3:30 PM.",
+          "claim": "Q4 FY26 = 295.3",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text only provides data for Q1 FY26 and Q1 FY27; it does not contain figures for Q2, Q3, or Q4 of FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial results for Q1 FY27 are verified against the source. However, the chart includes quarterly data points for FY26 that are not present in the provided source text."
+    },
+    {
+      "slug": "india-near-universal-banking-coverage",
+      "headline": "Almost Every Indian Village Now Has Banking Access. How?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "sarvam-ai-raises-74-million-nvidia",
+      "headline": "Indian AI Startup Sarvam Raises $74 Million From NVIDIA. Why?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "nifty-closing-auction-confusion",
+      "headline": "New Closing Auction Triggers Chaos on Nifty. What Happened?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "gail-india-q1-fy27-results",
+      "headline": "Gas Giant GAIL Hits Record Profit. How Did It Happen?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-wpi-inflation-june-2026",
+      "headline": "Why Did India's Wholesale Inflation Jump to 9.87%?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "8.51%",
           "status": "WRONG",
-          "detail": "The source text states the closing auction begins after 3:15 PM, and the previous methodology was based on VWAP, but it does not specify the 3:00 PM to 3:30 PM window.",
-          "correction": "The source does not specify the exact time window for the previous VWAP calculation.",
-          "source": "Source 1",
+          "detail": "The source text explicitly states that WPI inflation was 9.68% in May 2026, not 8.51%.",
+          "correction": "9.68%",
+          "source": "SOURCE 1",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "It echoes the 2010 \"Flash Crash\" in the United States, when automated high-frequency trading algorithms withdrew liquidity simultaneously during a period of market stress, causing the Dow Jones to drop 1,000 points in minutes before recovering.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2010 US Flash Crash or the Dow Jones.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
+          "claim": "May 2026 WPI: 8.51%",
+          "status": "WRONG",
+          "detail": "The source text states May 2026 WPI was 9.68%.",
+          "correction": "9.68%",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
           "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: WPI Inflation (May 2026) = 8.51% (previous: 2.37% — June 2025)",
+          "status": "WRONG",
+          "detail": "The May 2026 figure is incorrect per the source.",
+          "correction": "May 2026 WPI = 9.68%",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: May 2026 = 8.51",
+          "status": "WRONG",
+          "detail": "The source text states May 2026 WPI was 9.68%.",
+          "correction": "9.68",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
         }
       ],
-      "notes": "The story correctly identifies the core event (the Nifty spike during the new CAS) and the primary figures (200 points, 30% turnover). However, it includes several speculative or external details regarding index rebalancing, future algorithmic refinements, and historical comparisons that are not supported by the provided source text."
+      "notes": "The story incorrectly reports the May 2026 WPI inflation figure as 8.51% throughout the text, whereas the cited source clearly states it was 9.68%."
     },
     {
-      "slug": "rural-banking-inclusion-milestone",
-      "headline": "How did India put banking in 99.92% of its villages?",
+      "slug": "groww-cofounders-ai-fund",
+      "headline": "Groww Founders Launch ₹500 Crore Fund for AI Startups. Why?",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -261,76 +307,6 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "encube-ethicals-drhp-ipo-filing",
-      "headline": "Why is a low-profile ointment maker chasing a ₹3,000 crore IPO?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "yen-carry-trade-unwind-indian-markets",
-      "headline": "Why did a sudden shift in Japan rattle Indian stock markets?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Foreign institutional investors have been forced to rebalance portfolios, impacting over $10 billion in emerging market assets.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a $10 billion figure regarding emerging market asset rebalancing.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The US Dollar Index has reset below the 100 mark",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the current level of the US Dollar Index or that it has reset below 100.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "domestic institutional investors, who now manage over $400 billion in assets",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the total assets managed by domestic institutional investors in India.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: US Dollar Index Level = 100",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide the current US Dollar Index level.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "KEY NUMBER CARD: Yen Carry Trade Volatility = 10%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 10% volatility figure for the yen carry trade.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "The story correctly identifies the joint Japan-US intervention and the context of the yen carry trade as reported in the source. However, several specific quantitative claims regarding asset values, index levels, and volatility are not supported by the provided source text."
     }
   ]
 }
