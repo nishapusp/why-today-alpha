@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-04T01:52:03.181Z",
+  "generatedAt": "2026-08-04T04:01:03.790Z",
   "results": [
     {
       "slug": "tax-nudge-recovers-9494-crore-did-you-pay-up",
@@ -26,7 +26,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "The story accurately reflects the government's announcement regarding the windfall tax (SAED) adjustments as reported in the provided source text. All specific figures and dates align with the source material."
+      "notes": "All specific claims regarding the windfall tax rates, effective dates, and historical context are supported by the provided source text."
     },
     {
       "slug": "govt-upi-merchant-fee",
@@ -37,159 +37,6 @@
       "notes": "The story accurately reflects the government's proposed legislative amendments to the Payment and Settlement Systems Act, 2007, as detailed in the provided source texts. All claims regarding the intent to reintroduce MDR, the focus on merchant-side costs, and the context of fiscal sustainability are supported by the source material."
     },
     {
-      "slug": "itc-q1-earnings",
-      "headline": "ITC's Q1 Profit Drops Amid Higher Cigarette Taxes, FMCG & Paper Businesses Cushion Impact",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "ITC Limited reported a 2.5% decrease in its standalone net profit for the first quarter of fiscal year 2027",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY27 actually declined by 27.1% year-on-year.",
-          "correction": "ITC Limited reported a 27.1% decrease in its standalone net profit for the first quarter of fiscal year 2027.",
-          "source": "Tobacco Insider",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "falling to ₹4,875 crore compared to ₹4,999 crore in the same period last year.",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY27 was ₹3,579 crore, compared to ₹4,911 crore in Q1 FY26.",
-          "correction": "falling to ₹3,579 crore compared to ₹4,911 crore in the same period last year (Q1 FY26).",
-          "source": "Return On Capital - Enablx, Upstox, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The company's gross revenue from operations increased by a modest 0.8% to ₹17,738 crore from ₹17,600 crore year-on-year.",
-          "status": "WRONG",
-          "detail": "ITC's standalone gross revenue from operations for Q1 FY27 surged by 28.1% year-on-year to ₹26,794.47 crore, from approximately ₹21,070 crore in Q1 FY26.",
-          "correction": "The company's standalone gross revenue from operations increased by 28.1% to ₹26,794.47 crore from approximately ₹21,070 crore year-on-year.",
-          "source": "Tobacco Insider, Upstox",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q1 FY27 Net Profit: ₹4,875 crore.",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY27 was ₹3,579 crore.",
-          "correction": "Q1 FY27 Net Profit: ₹3,579 crore.",
-          "source": "Return On Capital - Enablx, Upstox, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q1 FY27 Revenue: ₹17,738 crore.",
-          "status": "WRONG",
-          "detail": "ITC's standalone gross revenue from operations for Q1 FY27 was ₹26,794.47 crore.",
-          "correction": "Q1 FY27 Revenue (Gross Revenue): ₹26,794.47 crore.",
-          "source": "Tobacco Insider",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Net Profit decline: 2.5% YoY.",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit declined by 27.1% year-on-year.",
-          "correction": "Net Profit decline: 27.1% YoY.",
-          "source": "Tobacco Insider",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Gross Revenue growth: 0.8% YoY.",
-          "status": "WRONG",
-          "detail": "ITC's standalone gross revenue from operations increased by 28.1% year-on-year.",
-          "correction": "Gross Revenue growth: 28.1% YoY.",
-          "source": "Tobacco Insider",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY25 = 4950",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY25 was ₹5,055 crore.",
-          "correction": "Q1 FY25 = 5055",
-          "source": "Business Standard (August 1, 2024 article titled 'ITC posts 4.6% rise in Q1 FY25 standalone net profit at ₹5,055 crore')",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY26 = 4999",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY26 was ₹4,911 crore.",
-          "correction": "Q1 FY26 = 4911",
-          "source": "Upstox",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY27 = 4875",
-          "status": "WRONG",
-          "detail": "ITC's standalone net profit for Q1 FY27 was ₹3,579 crore.",
-          "correction": "Q1 FY27 = 3579",
-          "source": "Return On Capital - Enablx, Upstox, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "The story correctly identifies the central event and the qualitative reasons for the profit decline (cigarette taxes, FMCG/paper cushioning). However, nearly all specific numerical claims regarding standalone net profit, revenue, and their year-on-year changes are significantly incorrect based on reported financial results. This constitutes a severe factual error in core financial data. (escalated from source mode — original links were unfetchable)"
-    },
-    {
-      "slug": "anthropic-claude-ai-india-bedrock",
-      "headline": "Anthropic's Claude AI Expands to India via Amazon Bedrock, Boosting Local Innovation",
-      "verdict": "FABRICATED",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Anthropic, a prominent AI research company and rival to OpenAI, has expanded the availability of its flagship Claude AI models in India. Indian businesses and developers can now access Claude directly through Amazon Bedrock.",
-          "status": "WRONG",
-          "detail": "While Anthropic's Claude models were generally available to Indian customers via Amazon Bedrock (using global cross-region inference) since March 2026, the specific expansion highlighted in the story – in-country inference for local data processing – was announced on August 3, 2026, as becoming available 'in the coming weeks,' not immediately. The story's phrasing of 'has expanded' and 'can now access' for this new, significant expansion is incorrect as of the publication date.",
-          "correction": "Anthropic, a prominent AI research company and rival to OpenAI, announced on August 3, 2026, that its flagship Claude AI models would be available with in-country inference for Indian businesses and developers through Amazon Bedrock in the coming weeks.",
-          "source": "The Bridge Chronicle (Aug 3, 2026), Business Standard (Aug 3, 2026), Analytics Insight (Aug 3, 2026), Lokmat Times (Aug 3, 2026)",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story's central premise, the immediate availability of Anthropic's Claude AI models with in-country inference in India via Amazon Bedrock, is contradicted by multiple sources published on August 3, 2026, which state this functionality will be available 'in the coming weeks.' This misrepresentation of a future event as having already happened leads to a 'FABRICATED' verdict, despite other factual claims being correct. (escalated from source mode — original links were unfetchable)"
-    },
-    {
-      "slug": "leap-india-ipo-price-band",
-      "headline": "LEAP India Sets IPO Price Band at ₹151-₹159, Aims to Raise ₹500 Crore",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Aims to Raise ₹500 Crore",
-          "status": "WRONG",
-          "detail": "The total IPO size is ₹2,480 crore, comprising a fresh issue of ₹480 crore and an offer for sale (OFS) of ₹2,000 crore. The claim of 'approximately ₹500 crore' as the total amount to be raised through the public issue is incorrect.",
-          "correction": "Aims to raise approximately ₹2,480 crore",
-          "source": "Mint, The Economic Times, IPO Tracker, Seeking Alpha, Rediff Money",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "public issue is an offer-for-sale (OFS) of up to 3.14 crore (31.4 million) equity shares by existing shareholders and aims to raise approximately ₹500 crore.",
-          "status": "WRONG",
-          "detail": "The offer for sale (OFS) component is for ₹2,000 crore, not ₹500 crore. The number of shares offered in the OFS is up to 12.58 crore (125.8 million) equity shares, not 3.14 crore (31.4 million) shares.",
-          "correction": "The public issue includes an offer-for-sale (OFS) of up to 12.58 crore (125.8 million) equity shares by existing shareholders, aiming to raise ₹2,000 crore.",
-          "source": "Mint, The Economic Times, Seeking Alpha",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The IPO subscription window is set to open on August 6, 2026, and will close on August 9, 2026.",
-          "status": "WRONG",
-          "detail": "The IPO subscription window is scheduled to open on August 7, 2026, and close on August 11, 2026. Anchor investor bidding is on August 6, but the general public subscription period is different.",
-          "correction": "The IPO subscription window is set to open on August 7, 2026, and will close on August 11, 2026.",
-          "source": "Mint, The Economic Times, IPO Tracker, Seeking Alpha, GuruFocus",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the IPO price band and the launch year of the National Logistics Policy. However, it contains significant inaccuracies regarding the total IPO size, the offer-for-sale amount, the number of shares in the OFS, and the IPO subscription dates. These errors are material and lead to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)"
-    },
-    {
       "slug": "rbi-fcnrb-deposits-surge",
       "headline": "RBI's Forex Relaxation Doubles FCNR(B) Deposits to $60.5 Billion",
       "verdict": "WARN",
@@ -198,410 +45,335 @@
         {
           "claim": "Major banks leading inflows: HSBC, SBI, ICICI.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention specific banks (HSBC, SBI, ICICI) as leading the inflows.",
+          "detail": "The provided source text does not mention specific banks like HSBC, SBI, or ICICI as leading the inflows.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The core figures regarding the $28 billion increase and the total FCNR(B) deposit levels are supported by the provided source text. However, the story includes a list of specific banks leading the inflows which is not mentioned in the source."
+      "notes": "The core figures regarding the $28 billion increase and the total FCNR(B) deposit levels are supported by the provided source text. However, the story includes a list of specific banks leading the inflows which is not mentioned in the source material."
     },
     {
-      "slug": "persistent-systems-q1-profit-jumps",
-      "headline": "Tech Firm Persistent Systems' Profit Jumps 12.5%, Beats Expectations. Why?",
+      "slug": "lic-ofs-government-stake-sale",
+      "headline": "Government selling part of LIC again. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Indian government has launched an Offer For Sale (OFS) to offload up to a 6.5% stake in Life Insurance Corporation of India (LIC) at ₹382 per share.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a list of news headlines and snippets; it does not contain any article confirming that the government has launched an OFS for LIC, nor does it mention a 6.5% stake sale or a price of ₹382.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This move aims to raise approximately ₹25,500 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this figure in relation to an LIC OFS.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The government's disinvestment target for the current fiscal year is ₹65,000 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a disinvestment target of ₹65,000 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of news headlines and summaries from Business Standard. None of these headlines or snippets contain information regarding an LIC OFS, the specific stake percentage, the share price, or the disinvestment target mentioned in the story. Consequently, all specific factual claims regarding the OFS are unverifiable."
+    },
+    {
+      "slug": "kaya-q1-results",
+      "headline": "Kaya posts loss despite rising sales. What went wrong?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Q2 FY26 = 285",
+          "claim": "Q1 FY25 = -5.3",
           "status": "UNVERIFIABLE",
-          "detail": "The source text only provides data for Q1 FY27 and Q1 FY26; it does not contain figures for Q2 FY26, Q3 FY26, or Q4 FY26.",
+          "detail": "The provided source text does not contain financial data for Q1 FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Q3 FY26 = 290",
+          "claim": "Q2 FY25 = -2.1",
           "status": "UNVERIFIABLE",
-          "detail": "The source text only provides data for Q1 FY27 and Q1 FY26; it does not contain figures for Q2 FY26, Q3 FY26, or Q4 FY26.",
+          "detail": "The provided source text does not contain financial data for Q2 FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Q4 FY26 = 295.3",
+          "claim": "Q3 FY25 = 0.8",
           "status": "UNVERIFIABLE",
-          "detail": "The source text only provides data for Q1 FY27 and Q1 FY26; it does not contain figures for Q2 FY26, Q3 FY26, or Q4 FY26.",
+          "detail": "The provided source text does not contain financial data for Q3 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q4 FY25 = 4.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain financial data for Q4 FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The core financial results for Q1 FY27 are verified against the source. However, the chart includes quarterly data points for Q2, Q3, and Q4 of FY26 which are not present in the provided source text."
+      "notes": "The core financial figures for the June 2026 quarter (Q1 FY27) are verified against the source text. However, the historical data points provided in the chart for FY25 are not present in the source text and are therefore unverifiable."
     },
     {
-      "slug": "india-near-universal-banking-coverage",
-      "headline": "Almost Every Indian Village Now Has Banking Access. How?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "As of late July 2026, the PMJDY scheme has led to the opening of over 52.8 crore (528 million) bank accounts",
-          "status": "WRONG",
-          "detail": "As of July 17, 2026, the number of Pradhan Mantri Jan Dhan Yojana (PMJDY) accounts opened was 58.77 crore.",
-          "correction": "As of late July 2026, the PMJDY scheme has led to the opening of over 58.77 crore (587.7 million) bank accounts.",
-          "source": "India nears 100% banking coverage! Finance Ministry reveals major milestone, India achieves 99.92% banking coverage, Finance Ministry informs Parliament, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - BFSI News, India Is Almost Fully Banked. Here's How 99.92% of Villages Now Have Banking Access, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - Big News Network.com, India achieves near-universal banking coverage, with 99.92% of inhabited villages now served by a banking outlet - Press Release Page | Press Information Bureau",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "collectively holding a balance of ₹2.38 lakh crore (₹2.38 trillion)",
-          "status": "WRONG",
-          "detail": "As of July 17, 2026, the aggregate deposits in PMJDY accounts totaled ₹3,12,414 crore (₹3.12 lakh crore).",
-          "correction": "collectively holding a balance of ₹3.12 lakh crore (₹3.12 trillion).",
-          "source": "India nears 100% banking coverage! Finance Ministry reveals major milestone, India achieves 99.92% banking coverage, Finance Ministry informs Parliament, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - BFSI News, India Is Almost Fully Banked. Here's How 99.92% of Villages Now Have Banking Access, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - Big News Network.com, India achieves near-universal banking coverage, with 99.92% of inhabited villages now served by a banking outlet - Press Release Page | Press Information Bureau",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Compared to 2014, when only 58% of Indian adults had a bank account",
-          "status": "WRONG",
-          "detail": "According to the World Bank Global Findex Database 2014, 53% of adults in India had a bank account in 2014.",
-          "correction": "Compared to 2014, when only 53% of Indian adults had a bank account",
-          "source": "World Bank Global Findex Database 2014 Report (general knowledge, not explicitly in provided snippets but confirmed via separate search for \"World Bank Findex 2014 India bank account ownership\")",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: Aug 2014 = 10",
-          "status": "WRONG",
-          "detail": "On inauguration day (August 28, 2014), 1.5 crore accounts were opened. The Guinness World Record for the most bank accounts opened in one week (August 23-29, 2014) was 1.8 crore.",
-          "correction": "Aug 2014 = approx 1.8",
-          "source": "Pradhan Mantri Jan Dhan Yojana - Wikipedia",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Jan 2015 = 11.5",
-          "status": "WRONG",
-          "detail": "As of January 31, 2015, banks had opened 12.54 crore accounts under the PMJDY scheme.",
-          "correction": "Jan 2015 = 12.54",
-          "source": "Pradhan Mantri Jan Dhan Yojana | Prime Minister of India",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Mar 2023 = 50",
-          "status": "WRONG",
-          "detail": "As of the end of the financial year (March 31, 2023), the total number of beneficiaries under PMJDY reached 48.65 crore.",
-          "correction": "Mar 2023 = 48.65",
-          "source": "Total balance in Jan Dhan A/C's sees record spurt in FY23 - Banking Finance",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Jul 2026 = 52.8",
-          "status": "WRONG",
-          "detail": "As of July 17, 2026, the number of Pradhan Mantri Jan Dhan Yojana (PMJDY) accounts opened was 58.77 crore.",
-          "correction": "Jul 2026 = 58.77",
-          "source": "India nears 100% banking coverage! Finance Ministry reveals major milestone, India achieves 99.92% banking coverage, Finance Ministry informs Parliament, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - BFSI News, India Is Almost Fully Banked. Here's How 99.92% of Villages Now Have Banking Access, India achieves near-universal banking coverage, 99.92% of inhabited villages served: Finance Ministry - Big News Network.com, India achieves near-universal banking coverage, with 99.92% of inhabited villages now served by a banking outlet - Press Release Page | Press Information Bureau",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "The story accurately reports the central announcement regarding near-universal banking access. However, several key numerical claims related to PMJDY account numbers and balances for July 2026, as well as historical chart data points and a 2014 financial inclusion statistic, are incorrect based on verifiable sources. This indicates significant factual inaccuracies. (escalated from source mode — original links were unfetchable)"
-    },
-    {
-      "slug": "sarvam-ai-raises-74-million-nvidia",
-      "headline": "Indian AI Startup Sarvam Raises $74 Million From NVIDIA. Why?",
-      "verdict": "FABRICATED",
+      "slug": "tata-agratas-lithium-cells",
+      "headline": "Tata's battery unit ditching China for India. Why?",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "Indian AI startup Sarvam AI has secured $74 million in a Series B extension round, led by chip giant NVIDIA.",
-          "status": "WRONG",
-          "detail": "News sources published on August 3, 2026 (the day before the story's publication), consistently report that Sarvam AI is 'set to raise' or 'expected to raise' this funding, and NVIDIA is 'expected to lead' it. This indicates the event had not yet occurred or been officially announced as completed by the publication date of August 4, 2026. The story presents an expected future event as already having happened.",
-          "correction": "Indian AI startup Sarvam AI is *expected to raise* $74 million in a Series B extension round, with chip giant NVIDIA *expected to lead*.",
-          "source": "Financial Express, DealStreetAsia, Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "approximately ₹615 crore (as an equivalent of $74 million)",
-          "status": "WRONG",
-          "detail": "Reputable news sources from August 3, 2026, consistently report the rupee equivalent of the expected $74 million as approximately ₹700 crore.",
-          "correction": "approximately ₹700 crore",
-          "source": "Financial Express, DealStreetAsia",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Existing investors, including Lightspeed and Peak XV Partners, also participated in this funding. (referring to the $74M extension)",
-          "status": "WRONG",
-          "detail": "News about the expected $74 million extension round mentions new investors such as Glade Brook Capital, Gaja Capital, and Indigo Ventures as participants. While Lightspeed and Peak XV Partners are existing investors in Sarvam AI and participated in previous rounds (like the Series A in December 2023 and an earlier Series B tranche in June 2026), they are not listed as participants in this specific expected $74 million extension round as per the August 3, 2026 reports.",
-          "correction": "Other investors, including Glade Brook Capital, Gaja Capital, and Indigo Ventures, are expected to participate in this funding.",
-          "source": "Financial Express, DealStreetAsia, Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Sarvam AI was co-founded by two former Google India executives, Vivek Raghavan and Akshay Kumar.",
-          "status": "WRONG",
-          "detail": "Sarvam AI was co-founded by Vivek Raghavan and Pratyush Kumar. Akshay Kumar is not mentioned as a co-founder in any reliable source.",
-          "correction": "Sarvam AI was co-founded by two former Google India executives, Vivek Raghavan and Pratyush Kumar.",
-          "source": "Financial Express, Economic Times, ET Telecom, Indian Startup Times, Medium, Wikipedia, Startup Intros, ETEnterpriseAI Desk",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Previous Series A round was $41 million in December 2025.",
-          "status": "WRONG",
-          "detail": "Sarvam AI raised its $41 million Series A round in December **2023**, not December 2025.",
-          "correction": "Previous Series A round was $41 million in December **2023**.",
-          "source": "Indian Startup Times, Medium, Wikipedia, VCCircle, Startup Intros",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Series B Extension Funding = $74 million",
-          "status": "WRONG",
-          "detail": "This claim presents the funding as a confirmed, completed amount, whereas news reports from August 3, 2026, indicate it is an expected or planned event. One source also reports the figure as $75 million.",
-          "correction": "Expected Series B Extension Funding = $74 million",
-          "source": "Financial Express, DealStreetAsia, Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "TIME MACHINE (today): Sarvam AI raised $74 million in a Series B extension round, with NVIDIA leading the investment.",
-          "status": "WRONG",
-          "detail": "This statement reports the funding as an accomplished fact, but news on August 3, 2026, indicates the round is 'set to raise' or 'expected' to be led by NVIDIA, meaning it has not yet been confirmed as completed.",
-          "correction": "Sarvam AI is *expected to raise* $74 million in a Series B extension round, with NVIDIA *expected to lead* the investment.",
-          "source": "Financial Express, DealStreetAsia, Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "QUIZ CLAIM: \"Who led the $74 million funding round for Sarvam AI?\" — stated correct answer: \"NVIDIA\"",
-          "status": "WRONG",
-          "detail": "The funding round is not confirmed to have closed as of the publication date; NVIDIA is 'expected' to lead it.",
-          "correction": "Who is *expected to lead* the $74 million funding round for Sarvam AI? — stated correct answer: \"NVIDIA\"",
-          "source": "Financial Express, DealStreetAsia",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story's central premise, that Sarvam AI 'has secured' and 'has announced' a $74 million Series B extension round led by NVIDIA, is contradicted by multiple sources published just prior to the story's date. These sources indicate the funding round is 'set to raise' or 'expected', not yet completed or officially announced, rendering the central event fabricated. Additionally, several other claims regarding the rupee equivalent, participating investors, co-founder names, and the date of a previous funding round are factually incorrect. (escalated from source mode — original links were unfetchable)"
-    },
-    {
-      "slug": "nifty-closing-auction-confusion",
-      "headline": "New Closing Auction Triggers Chaos on Nifty. What Happened?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "covering Nifty 50, Nifty Bank, and Sensex constituents.",
-          "status": "WRONG",
-          "detail": "The new Closing Auction Session (CAS) was introduced for F&O-eligible stocks in the cash segment, not directly for the indices themselves or all their constituents. While Nifty 50 stocks are all F&O-eligible, and many Sensex/Nifty Bank constituents are too, the system does not apply to non-F&O cash segment securities, which continue with the Volume Weighted Average Price (VWAP) method.",
-          "correction": "covering F&O-eligible stocks in the cash segment, including all Nifty 50 constituents and many Nifty Bank and Sensex constituents.",
-          "source": "Express News Service (August 03 2026), Mint (August 01 2026), Traders Union (August 03 2026), The Financial Express (July 31 2026), Samco (July 30 2026), Groww (July 28 2026), Briefs Finance (August 04 2026)",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This 10-minute auction, designed to run from 3:30 PM to 3:40 PM",
-          "status": "WRONG",
-          "detail": "The Closing Auction Session (CAS) for F&O stocks is a 20-minute session running from 3:15 PM to 3:35 PM. Equity derivatives trading hours were extended to 3:40 PM, which is a separate but related change.",
-          "correction": "This 20-minute auction, designed to run from 3:15 PM to 3:35 PM",
-          "source": "Mint (August 01 2026), Traders Union (August 03 2026), Whalesbook (August 03 2026), NSE India (August 02 2026), The Financial Express (July 31 2026), Samco (July 30 2026), Groww (July 28 2026)",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "with the top 10 stocks contributing approximately 30% of the total.",
+          "claim": "Tata Group's battery manufacturing arm, Agratas, is reportedly turning to in-house technology and other global partners for lithium cell production in India.",
           "status": "UNVERIFIABLE",
-          "detail": "Searches for 'NSE Closing Auction Session turnover August 3 2026', 'CAS top 10 stocks turnover share', or similar queries did not yield specific data on the turnover contribution of the top 10 stocks during the debut CAS on August 3, 2026.",
+          "detail": "The provided source text (Business Standard) does not contain any information regarding Tata's battery unit Agratas, its technology strategy, or its pivot to in-house lithium cell production.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
-        },
+        }
+      ],
+      "notes": "The source text provided is a collection of headlines and snippets from a Business Standard news feed. None of these snippets mention Tata Agratas or its battery technology strategy. Consequently, the entire story is unverifiable based on the provided source."
+    },
+    {
+      "slug": "nse-new-closing-auction-confusion",
+      "headline": "Why Did India's New Closing Auction Trigger Mass Market Confusion?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
         {
-          "claim": "Auction ran from 3:30 PM to 3:40 PM.",
-          "status": "WRONG",
-          "detail": "The Closing Auction Session (CAS) for F&O stocks ran from 3:15 PM to 3:35 PM. Equity derivatives trading hours were extended to 3:40 PM, but the CAS itself was not 3:30 PM to 3:40 PM.",
-          "correction": "Auction ran from 3:15 PM to 3:35 PM.",
-          "source": "Mint (August 01 2026), Traders Union (August 03 2026), Whalesbook (August 03 2026), NSE India (August 02 2026), The Financial Express (July 31 2026), Samco (July 30 2026), Groww (July 28 2026)",
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "anthropic-enters-indian-ai-market",
+      "headline": "Why Is A Silicon Valley AI Giant Launching Directly In India?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-universal-banking-coverage-milestone",
+      "headline": "Why Does India Now Have Banking Outlets In 99% Of Villages?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "leap-india-ipo-price-band-set",
+      "headline": "Why Is A Pallet Leasing Giant Launching A ₹2,480 Crore IPO?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "LEAP India operated roughly 3.5 million active pallets across its network in 2022",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source confirms the actual number of active pallets operated by LEAP India in 2022. A 2017 article projected 4.5 million pallets deployed by 2022, but this was a future plan, not a reported operational figure for that year.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": true,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Top 10 stocks contributed ~30% of CAS turnover.",
+          "claim": "now grown to over 6.2 million as of early 2026",
+          "status": "WRONG",
+          "detail": "As of March 31, 2026, LEAP India's portfolio included 8.98 million pallets, in addition to 5.71 million containers and other material handling equipment, totaling 14.7 million revenue-generating assets. The claim of 6.2 million active pallets is an understatement of the actual reported pallet count.",
+          "correction": "now grown to over 8.98 million pallets (as of March 31, 2026), which are part of 14.7 million total assets.",
+          "source": "Kotak Neo, Maritime Gateway, IPO Ji, Filter Coffee",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "6.2 million: The number of active pallets managed by the company across its national network.",
+          "status": "WRONG",
+          "detail": "As of March 31, 2026, LEAP India's portfolio included 8.98 million pallets, in addition to 5.71 million containers and other material handling equipment, totaling 14.7 million revenue-generating assets. The claim of 6.2 million active pallets is an understatement of the actual reported pallet count.",
+          "correction": "8.98 million: The number of active pallets managed by the company across its national network (as of March 31, 2026), part of 14.7 million total pooled assets.",
+          "source": "Kotak Neo, Maritime Gateway, IPO Ji, Filter Coffee",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Traditional unorganized warehouses in India typically rely on cheap, non-standardized pallets that suffer from a high breakage rate of over 12% annually",
           "status": "UNVERIFIABLE",
-          "detail": "Searches for 'NSE Closing Auction Session turnover August 3 2026', 'CAS top 10 stocks turnover share', or similar queries did not yield specific data on the turnover contribution of the top 10 stocks during the debut CAS on August 3, 2026.",
+          "detail": "While general information about inefficiencies in unorganized logistics exists, no specific, verifiable figure for a '12% annual breakage rate' in traditional unorganized warehouses in India could be found.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "KEY NUMBER CARD: Closing Auction Session Time = 3:30 PM - 3:40 PM",
-          "status": "WRONG",
-          "detail": "The Closing Auction Session (CAS) for F&O stocks is from 3:15 PM to 3:35 PM. Equity derivatives trading hours were extended to 3:40 PM.",
-          "correction": "Closing Auction Session Time = 3:15 PM - 3:35 PM",
-          "source": "Mint (August 01 2026), Traders Union (August 03 2026), Whalesbook (August 03 2026), NSE India (August 02 2026), The Financial Express (July 31 2026), Samco (July 30 2026), Groww (July 28 2026)",
+          "claim": "compared to LEAP India's standardized pooling model where the annual loss rate is kept below 2%",
+          "status": "UNVERIFIABLE",
+          "detail": "This specific operational metric for LEAP India (annual loss rate below 2%) is not publicly disclosed in the available search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "18%: The projected annual growth rate of organized logistics asset leasing in India over the next five years.",
+          "status": "UNVERIFIABLE",
+          "detail": "Searches for 'organized logistics asset leasing' growth rates in India yield figures ranging from 8% to 12.7% CAGR for the broader logistics or enterprise asset leasing markets over similar periods. No source specifically confirms an 18% projected annual growth rate for the niche 'organized logistics asset leasing' segment.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event of LEAP India's IPO price band announcement, including the price band and target size, and KKR's involvement. However, it contains multiple unverified claims, and critically, a significant factual error regarding LEAP India's current pallet count, stating a figure substantially lower than what is publicly reported. (escalated from source mode — original links were unfetchable)"
+    },
+    {
+      "slug": "defense-geo-ai-partnership",
+      "headline": "Why Is India's Defense Giant Putting Geographic AI On Our Borders?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Esri India, which commands over 70% of the domestic GIS market",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Esri India is a 'GIS major' but does not provide any market share percentage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Initial pilot deployments of the geographic AI systems are expected to launch along high-altitude border sectors by early 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the companies will collaborate on projects but does not mention specific pilot deployment timelines or locations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Initial geographic AI deployments are slated for high-altitude sectors within the next 9 months.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 9-month timeline for deployments.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The two companies plan to establish a dedicated joint task force to finalize software designs and run rigorous field trials over the next six months.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a joint task force or a six-month timeline for field trials.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Co-development Timeline = 6 months",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 6-month co-development timeline.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": true
         },
         {
-          "claim": "KEY NUMBER CARD: Top 10 Stocks CAS Turnover Share = 30%",
+          "claim": "KEY NUMBER CARD: Pact Duration = Multi-year",
           "status": "UNVERIFIABLE",
-          "detail": "Searches for specific data on the turnover contribution of the top 10 stocks during the debut CAS on August 3, 2026, did not yield results.",
+          "detail": "The source text does not specify the duration of the MoU.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": true
         }
       ],
-      "notes": "The story accurately reports the central event of the NSE's new Closing Auction Session debuting on August 3, 2026, and the observed 200-point jump in the Nifty 50. However, it contains factual errors regarding the exact timing of the auction session and the scope of its applicability (covering all constituents vs. F&O-eligible stocks). One specific statistical claim about turnover contribution could not be verified. (escalated from source mode — original links were unfetchable)"
+      "notes": "The story correctly identifies the partnership between Bharat Electronics and Esri India but includes several specific timelines and market share figures that are not present in the provided source text."
     },
     {
-      "slug": "gail-india-q1-fy27-results",
-      "headline": "Gas Giant GAIL Hits Record Profit. How Did It Happen?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
+      "slug": "fpi-inflows-debt-slowdown",
+      "headline": "Why Did Foreign Cash Suddenly Flee India's Government Bonds?",
+      "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "GAIL (India) Limited announced a record net profit of ₹2,642 crore for Q1 FY27",
-          "status": "WRONG",
-          "detail": "Consolidated net profit for Q1 FY27 was ₹4,665 crore (or ₹4,670.99 crore), not ₹2,642 crore.",
-          "correction": "Consolidated net profit of ₹4,665 crore (or ₹4,670.99 crore) for Q1 FY27",
-          "source": "ETEnergyworld, Rediff Money, Business Standard",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "a significant 157% jump year-on-year.",
-          "status": "WRONG",
-          "detail": "Based on the correct consolidated net profit figures of ₹4,665.36 crore for Q1 FY27 and ₹2,369.20 crore for Q1 FY26, the year-on-year jump is approximately 96.91%, not 157%.",
-          "correction": "a 96.91% jump year-on-year",
-          "source": "ETEnergyworld",
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "compared to the ₹1,029 crore profit reported in the corresponding quarter of the previous fiscal year, Q1 FY26.",
-          "status": "WRONG",
-          "detail": "Consolidated net profit for Q1 FY26 was ₹2,369.20 crore (or ₹2,382.24 crore), not ₹1,029 crore.",
-          "correction": "compared to the ₹2,369.20 crore profit reported in the corresponding quarter of the previous fiscal year, Q1 FY26",
-          "source": "ETEnergyworld, Rediff Money, The Economic Times, Business Standard",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The company's total revenue from operations also saw a healthy increase, reaching ₹31,489 crore from ₹28,345 crore in Q1 FY26.",
-          "status": "WRONG",
-          "detail": "Consolidated revenue from operations for Q1 FY27 was ₹41,350.18 crore (or ₹41,483 crore), not ₹31,489 crore. For Q1 FY26, it was ₹35,428.81 crore (or ₹35,573 crore), not ₹28,345 crore.",
-          "correction": "The company's total revenue from operations also saw a healthy increase, reaching ₹41,350.18 crore from ₹35,428.81 crore in Q1 FY26.",
-          "source": "ETEnergyworld, Industry News, Rediff Money, The Economic Times, Univest, Business Standard, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Key drivers included a significant 11% rise in gas transmission volumes",
-          "status": "WRONG",
-          "detail": "Natural gas transmission volumes for Q1 FY27 (122.36 MMSCMD) were broadly in line with or matching FY26 levels, indicating minimal year-on-year growth, not a significant 11% rise. Sequential growth from Q4 FY26 was approximately 2.83%.",
-          "correction": "Natural gas transmission volumes held steady year-on-year with Q1 FY27 volumes at 122.36 MMSCMD",
-          "source": "Investing.com Nigeria, Seeking Alpha, Business Standard, YouTube",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "and a 25% increase in petrochemical sales",
-          "status": "WRONG",
-          "detail": "Revenue from the petrochemicals segment declined by 61.57% year-on-year in Q1 FY27. Petrochemical and polymer volumes also declined.",
-          "correction": "while petrochemical sales revenue declined by 61.57% year-on-year",
-          "source": "ETEnergyworld, Investing.com Nigeria, Business Standard, YouTube",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Compared to the previous quarter (Q4 FY26) where GAIL reported a net profit of ₹2,476 crore, this quarter's ₹2,642 crore shows continued sequential growth.",
-          "status": "WRONG",
-          "detail": "Consolidated net profit for Q4 FY26 was approximately ₹1,481 crore (or ₹1,485 crore), not ₹2,476 crore. The Q1 FY27 net profit figure of ₹2,642 crore is also incorrect; the correct consolidated figure is ₹4,665 crore.",
-          "correction": "Compared to the previous quarter (Q4 FY26) where GAIL reported a consolidated net profit of ₹1,481 crore, Q1 FY27's consolidated net profit of ₹4,665 crore shows significant sequential growth.",
-          "source": "Industry News, ETEnergyworld, Mint, The Financial Express, The Economic Times, Business Standard, India Infoline, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
         }
       ],
-      "notes": "The story accurately identifies GAIL's Q1 FY27 results announcement as a central event, which indeed occurred on July 31, 2026. However, nearly all the specific numerical claims regarding net profit, revenue, and growth percentages are incorrect and significantly diverge from reported figures from multiple reliable sources. This indicates a major factual error in the article's core data. (escalated from source mode — original links were unfetchable)"
+      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "groww-cofounders-ai-fund",
-      "headline": "Groww Founders Launch ₹500 Crore Fund for AI Startups. Why?",
-      "verdict": "FABRICATED",
-      "centralEventConfirmed": false,
+      "slug": "itc-q1-results-taxation-impact",
+      "headline": "Why Did Higher Taxes Just Dent India’s Favorite Conglomerate?",
+      "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "The co-founders of fintech giant Groww have launched a new ₹500 crore venture capital fund, 'Groww Founders' Fund', specifically targeting early-stage startups in AI and deep tech sectors.",
-          "status": "WRONG",
-          "detail": "As of the story's publication date (August 4, 2026), multiple reliable sources (dated July 31, August 1, August 2, August 3, 2026) indicate that the Groww co-founders are *planning* or are *in the process of establishing* a new fund with a target corpus of ₹400-500 crore under the 'Stargazer AIF' platform. There is no confirmation that the fund has actually been 'launched' or 'announced' as an established entity as of August 3 or 4, 2026. The story presents a planned event as a completed one. Also, the fund is often referred to as operating under 'Stargazer AIF', not explicitly 'Groww Founders' Fund' as its formal name.",
-          "correction": "The co-founders of fintech giant Groww are reportedly planning to launch a new venture capital fund, 'Stargazer AIF' (or a new fund under Stargazer AIF), with a target corpus of ₹400-500 crore, specifically targeting early-stage startups in AI and deep tech sectors.",
-          "source": "CXO Digitalpulse, Elets BFSI, Inc42, NewsBytes, The Economic Times, Entrackr, StockGro",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Announced yesterday, this fund will primarily focus on investing in early-stage startups that are innovating in Artificial Intelligence (AI) and deep tech sectors.",
-          "status": "WRONG",
-          "detail": "Given the publication date of August 4, 2026, 'yesterday' refers to August 3, 2026. Search results from August 3, 2026, still use future-oriented language, stating that the founders are 'planning to launch' the fund, not that it was officially 'announced' as launched on that date. The central event (the launch) is not confirmed to have occurred.",
-          "correction": "Reports from July 31 to August 3, 2026, indicate that this proposed fund will primarily focus on investing in early-stage startups that are innovating in Artificial Intelligence (AI) and deep tech sectors.",
-          "source": "Elets BFSI, The Economic Times",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Fund Size: ₹500 crore ($60 million)",
-          "status": "WRONG",
-          "detail": "The planned fund's corpus is consistently reported as a range of ₹400-500 crore, not a definitive ₹500 crore. Furthermore, the fund is still in the planning stages and has not been launched as of the story's publication date. The conversion of ₹500 crore to $60 million implies an exchange rate of approximately ₹83.33/$, which is not consistently supported as the precise current or planned rate, especially when another source indicated ~₹95.3/$ for a related figure around the same time. Since the fund's launch is not confirmed, the specific figure for a non-existent fund, along with its precise dollar conversion, cannot be verified as true.",
-          "correction": "Proposed Fund Size: ₹400-500 crore (approximately $48-60 million, depending on the final corpus and prevailing exchange rates).",
-          "source": "CXO Digitalpulse, Elets BFSI, Inc42, NewsBytes, The Economic Times, StockGro",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Approx. USD Value = $60 million",
-          "status": "WRONG",
-          "detail": "As the fund's corpus is reported as a range (₹400-500 crore) and its launch is not confirmed, a precise dollar value cannot be confirmed. The implied exchange rate of ₹83.33/$ is not definitively established or universally consistent with related figures from the same period.",
-          "correction": "Approx. USD Value = $48-60 million (based on a ₹400-500 crore range and current exchange rates).",
-          "source": "Inc42",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
         }
       ],
-      "notes": "The story's central premise, the 'launch' of the Groww Founders' Fund, is not supported by recent search results. All available information points to the fund being in the planning or proposed stages as of the publication date. This fundamental inaccuracy makes the story fabricated, even though details like the founders' names and Groww's history are accurate. (escalated from source mode — original links were unfetchable)"
+      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "lic-ofs-government-divestment",
-      "headline": "Government Sells Big Chunk of LIC. Why Now?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
+      "slug": "encube-ethicals-files-drhp",
+      "headline": "Why Is A Topical Cream Giant Chasing A ₹3,000 Crore Listing?",
+      "verdict": "WARN",
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "This move could potentially fetch the government over ₹15,700 crore (approximately $1.88 billion), calculated based on the maximum stake offered and the floor price.",
-          "status": "WRONG",
-          "detail": "Reliable sources indicate that if the OFS for up to 6.5% stake at a floor price of ₹382 per share is fully subscribed, the government is expected to raise approximately ₹31,000 crore to ₹31,400 crore. The figure of ₹15,700 crore is significantly lower than actual estimates.",
-          "correction": "This move could potentially fetch the government over ₹31,000 crore (approximately $3.71 billion), calculated based on the maximum stake offered and the floor price.",
-          "source": "Mint, The Hindu, The New Indian Express, The Pioneer, The Financial Express, The Pioneer",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
         }
       ],
-      "notes": "The story accurately reports the key details of the LIC Offer For Sale, including the stake percentage, floor price, and dates for retail and non-retail investors. However, the calculation for potential funds raised is significantly understated compared to what multiple financial news outlets reported. (escalated from source mode — original links were unfetchable)"
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
