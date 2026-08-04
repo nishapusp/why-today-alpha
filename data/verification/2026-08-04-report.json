@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-04T04:01:03.790Z",
+  "generatedAt": "2026-08-04T09:04:35.208Z",
   "results": [
     {
       "slug": "tax-nudge-recovers-9494-crore-did-you-pay-up",
@@ -26,7 +26,7 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific claims regarding the windfall tax rates, effective dates, and historical context are supported by the provided source text."
+      "notes": "The story accurately reflects the information provided in Source 1 regarding the windfall tax adjustments effective August 3, 2026. All specific figures, dates, and policy contexts align with the source text."
     },
     {
       "slug": "govt-upi-merchant-fee",
@@ -39,31 +39,31 @@
     {
       "slug": "rbi-fcnrb-deposits-surge",
       "headline": "RBI's Forex Relaxation Doubles FCNR(B) Deposits to $60.5 Billion",
-      "verdict": "WARN",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": true,
       "issues": [
         {
           "claim": "Major banks leading inflows: HSBC, SBI, ICICI.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention specific banks like HSBC, SBI, or ICICI as leading the inflows.",
+          "detail": "The provided source text does not mention specific banks like HSBC, SBI, or ICICI in relation to the FCNR(B) inflows.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The core figures regarding the $28 billion increase and the total FCNR(B) deposit levels are supported by the provided source text. However, the story includes a list of specific banks leading the inflows which is not mentioned in the source material."
+      "notes": "The story contains specific figures regarding FCNR(B) deposits that are not present in the provided source text. While the source mentions FCNR(B) deposits in the context of a headline, it does not contain the specific data points ($60.55 billion, $32.56 billion, or the $28 billion inflow) attributed to the RBI's recent measures."
     },
     {
       "slug": "lic-ofs-government-stake-sale",
       "headline": "Government selling part of LIC again. Why?",
       "verdict": "UNVERIFIABLE",
-      "centralEventConfirmed": false,
+      "centralEventConfirmed": true,
       "issues": [
         {
           "claim": "The Indian government has launched an Offer For Sale (OFS) to offload up to a 6.5% stake in Life Insurance Corporation of India (LIC) at ₹382 per share.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a list of news headlines and snippets; it does not contain any article confirming that the government has launched an OFS for LIC, nor does it mention a 6.5% stake sale or a price of ₹382.",
+          "detail": "The provided source text (Source 1) mentions 'LIC tanks 8% as OFS opens for subscription; govt to sell up to 6.5% equity' in its headlines/ticker, but does not contain the specific price of ₹382 or the specific target of ₹25,500 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
@@ -72,7 +72,7 @@
         {
           "claim": "This move aims to raise approximately ₹25,500 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this figure in relation to an LIC OFS.",
+          "detail": "The source text does not mention the figure ₹25,500 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
@@ -81,299 +81,437 @@
         {
           "claim": "The government's disinvestment target for the current fiscal year is ₹65,000 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a disinvestment target of ₹65,000 crore.",
+          "detail": "The source text does not mention the specific disinvestment target of ₹65,000 crore.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The provided source text is a collection of news headlines and summaries from Business Standard. None of these headlines or snippets contain information regarding an LIC OFS, the specific stake percentage, the share price, or the disinvestment target mentioned in the story. Consequently, all specific factual claims regarding the OFS are unverifiable."
-    },
-    {
-      "slug": "kaya-q1-results",
-      "headline": "Kaya posts loss despite rising sales. What went wrong?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Q1 FY25 = -5.3",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain financial data for Q1 FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q2 FY25 = -2.1",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain financial data for Q2 FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q3 FY25 = 0.8",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain financial data for Q3 FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q4 FY25 = 4.5",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain financial data for Q4 FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core financial figures for the June 2026 quarter (Q1 FY27) are verified against the source text. However, the historical data points provided in the chart for FY25 are not present in the source text and are therefore unverifiable."
+      "notes": "While the source text confirms an LIC OFS is occurring and mentions the 6.5% stake, it does not contain the specific financial figures (₹382 price, ₹25,500 crore target, or ₹65,000 crore annual target) cited in the story."
     },
     {
       "slug": "tata-agratas-lithium-cells",
       "headline": "Tata's battery unit ditching China for India. Why?",
-      "verdict": "UNVERIFIABLE",
-      "centralEventConfirmed": false,
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Tata Group's battery manufacturing arm, Agratas, is reportedly turning to in-house technology and other global partners for lithium cell production in India.",
+          "claim": "Make in India and Atmanirbhar Bharat",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Business Standard) does not contain any information regarding Tata's battery unit Agratas, its technology strategy, or its pivot to in-house lithium cell production.",
+          "detail": "The source text mentions 'Atmanirbhar Bharat' but does not mention 'Make in India' in the context of the quiz answer.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The source text provided is a collection of headlines and snippets from a Business Standard news feed. None of these snippets mention Tata Agratas or its battery technology strategy. Consequently, the entire story is unverifiable based on the provided source."
+      "notes": "The story accurately reflects the content of the source article regarding Tata Agratas's strategic shift. The only issue is the inclusion of 'Make in India' in the quiz answer, which is not supported by the provided source text."
     },
     {
-      "slug": "nse-new-closing-auction-confusion",
-      "headline": "Why Did India's New Closing Auction Trigger Mass Market Confusion?",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "slug": "bankers-books-evidence-bill-2026-advances-parliament",
+      "headline": "Parliament to Consider New Law for Your Bank Records Today",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "India's Lok Sabha is scheduled to consider and pass the Bankers' Books Evidence Bill, 2026, today",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source text (Business Standard) does not mention the Bankers' Books Evidence Bill, 2026, nor any parliamentary schedule regarding such a bill.",
           "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "anthropic-enters-indian-ai-market",
-      "headline": "Why Is A Silicon Valley AI Giant Launching Directly In India?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
         {
-          "claim": "(entire story)",
+          "claim": "90% of banking transactions being digital",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "india-universal-banking-coverage-milestone",
-      "headline": "Why Does India Now Have Banking Outlets In 99% Of Villages?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "leap-india-ipo-price-band-set",
-      "headline": "Why Is A Pallet Leasing Giant Launching A ₹2,480 Crore IPO?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "LEAP India operated roughly 3.5 million active pallets across its network in 2022",
-          "status": "UNVERIFIABLE",
-          "detail": "No reliable source confirms the actual number of active pallets operated by LEAP India in 2022. A 2017 article projected 4.5 million pallets deployed by 2022, but this was a future plan, not a reported operational figure for that year.",
+          "detail": "The provided source text does not contain this statistic.",
           "correction": null,
           "source": null,
           "inBroaderConnections": true,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "now grown to over 6.2 million as of early 2026",
-          "status": "WRONG",
-          "detail": "As of March 31, 2026, LEAP India's portfolio included 8.98 million pallets, in addition to 5.71 million containers and other material handling equipment, totaling 14.7 million revenue-generating assets. The claim of 6.2 million active pallets is an understatement of the actual reported pallet count.",
-          "correction": "now grown to over 8.98 million pallets (as of March 31, 2026), which are part of 14.7 million total assets.",
-          "source": "Kotak Neo, Maritime Gateway, IPO Ji, Filter Coffee",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "6.2 million: The number of active pallets managed by the company across its national network.",
-          "status": "WRONG",
-          "detail": "As of March 31, 2026, LEAP India's portfolio included 8.98 million pallets, in addition to 5.71 million containers and other material handling equipment, totaling 14.7 million revenue-generating assets. The claim of 6.2 million active pallets is an understatement of the actual reported pallet count.",
-          "correction": "8.98 million: The number of active pallets managed by the company across its national network (as of March 31, 2026), part of 14.7 million total pooled assets.",
-          "source": "Kotak Neo, Maritime Gateway, IPO Ji, Filter Coffee",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Traditional unorganized warehouses in India typically rely on cheap, non-standardized pallets that suffer from a high breakage rate of over 12% annually",
+          "claim": "USA's Electronic Signatures in Global and National Commerce Act (ESIGN Act) of 2000",
           "status": "UNVERIFIABLE",
-          "detail": "While general information about inefficiencies in unorganized logistics exists, no specific, verifiable figure for a '12% annual breakage rate' in traditional unorganized warehouses in India could be found.",
+          "detail": "The provided source text does not mention the ESIGN Act.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": false,
+          "inBroaderConnections": true,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "compared to LEAP India's standardized pooling model where the annual loss rate is kept below 2%",
+          "claim": "UK's Electronic Communications Act 2000",
           "status": "UNVERIFIABLE",
-          "detail": "This specific operational metric for LEAP India (annual loss rate below 2%) is not publicly disclosed in the available search results.",
+          "detail": "The provided source text does not mention the UK's Electronic Communications Act 2000.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "18%: The projected annual growth rate of organized logistics asset leasing in India over the next five years.",
-          "status": "UNVERIFIABLE",
-          "detail": "Searches for 'organized logistics asset leasing' growth rates in India yield figures ranging from 8% to 12.7% CAGR for the broader logistics or enterprise asset leasing markets over similar periods. No source specifically confirms an 18% projected annual growth rate for the niche 'organized logistics asset leasing' segment.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
+          "inBroaderConnections": true,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately reports the central event of LEAP India's IPO price band announcement, including the price band and target size, and KKR's involvement. However, it contains multiple unverified claims, and critically, a significant factual error regarding LEAP India's current pallet count, stating a figure substantially lower than what is publicly reported. (escalated from source mode — original links were unfetchable)"
+      "notes": "The story makes numerous specific claims about a parliamentary bill and international legal precedents that are entirely absent from the provided source text. The source text is a general news feed that does not mention the Bankers' Books Evidence Bill at all."
     },
     {
-      "slug": "defense-geo-ai-partnership",
-      "headline": "Why Is India's Defense Giant Putting Geographic AI On Our Borders?",
+      "slug": "ge-shipping-q1-profit-surges",
+      "headline": "Shipping Giant's Profit Jumps 160%! What's Driving It?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Esri India, which commands over 70% of the domestic GIS market",
+          "claim": "Great Eastern Shipping Company (GE Shipping) reported a net profit of ₹977 crore for the first quarter of the fiscal year 2027",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions Esri India is a 'GIS major' but does not provide any market share percentage.",
+          "detail": "The provided source text mentions the headline of a Business Standard article regarding GE Shipping's Q1 results, but the text of the article itself is not included in the source provided. The source text only contains the headline and metadata, not the body content containing these specific financial figures.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Initial pilot deployments of the geographic AI systems are expected to launch along high-altitude border sectors by early 2027.",
+          "claim": "marking a substantial 160% increase compared to ₹375 crore in the same period last year.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states the companies will collaborate on projects but does not mention specific pilot deployment timelines or locations.",
+          "detail": "The provided source text does not contain the body of the article to verify these specific financial figures.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Initial geographic AI deployments are slated for high-altitude sectors within the next 9 months.",
+          "claim": "The company's revenue from operations also surged by 67% year-on-year, reaching ₹2,560 crore from ₹1,533 crore.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 9-month timeline for deployments.",
+          "detail": "The provided source text does not contain the body of the article to verify these specific financial figures.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "The two companies plan to establish a dedicated joint task force to finalize software designs and run rigorous field trials over the next six months.",
+          "claim": "This strong financial performance was accompanied by the announcement of an interim dividend of ₹14.40 per share.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a joint task force or a six-month timeline for field trials.",
+          "detail": "The provided source text does not contain the body of the article to verify this dividend information.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "KEY NUMBER CARD: Co-development Timeline = 6 months",
+          "claim": "driving a nearly 9% rally in the company's shares following the announcement.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 6-month co-development timeline.",
+          "detail": "While the headline mentions a 9% rally, the body text containing the context of this rally is not provided in the source.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "KEY NUMBER CARD: Pact Duration = Multi-year",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not specify the duration of the MoU.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the partnership between Bharat Electronics and Esri India but includes several specific timelines and market share figures that are not present in the provided source text."
+      "notes": "The provided source text only contains the headline and metadata of the Business Standard article. While the headline confirms the 9% rally, 160% profit surge, and 67% revenue growth, the specific financial figures (₹977 crore, ₹375 crore, ₹2,560 crore, ₹1,533 crore, and the dividend amount) are not present in the provided source text."
     },
     {
-      "slug": "fpi-inflows-debt-slowdown",
-      "headline": "Why Did Foreign Cash Suddenly Flee India's Government Bonds?",
+      "slug": "leap-india-ipo-launch",
+      "headline": "Pallet Rental Firm Seeks ₹2,480 Crore in IPO. Should You Invest?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "reducing manual labor costs by up to 30%",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The source text does not mention any specific percentage reduction in manual labor costs.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHEP (Commonwealth Handling Equipment Pool), founded in Australia in 1945",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding the history or founding date of CHEP.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "growth of e-commerce giants like Amazon in the early 2000s necessitated highly efficient and scalable logistics",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Amazon or the early 2000s in the context of logistics evolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The core claims regarding the IPO size, dates, and business model are verified by the provided source. However, the story includes several historical and industry-specific claims that are not supported by the provided source text."
     },
     {
-      "slug": "itc-q1-results-taxation-impact",
-      "headline": "Why Did Higher Taxes Just Dent India’s Favorite Conglomerate?",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "slug": "claude-ai-india-data-residency",
+      "headline": "Why did this Silicon Valley AI giant choose India for data residency?",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "Anthropic has launched in-country data residency for its Claude AI model via Amazon Bedrock in India.",
+          "status": "WRONG",
+          "detail": "Multiple reliable sources published on the same date (August 4, 2026) or the day prior (August 3, 2026) explicitly state that Anthropic's in-country inference for Claude AI models via Amazon Bedrock will be available in India 'in the coming weeks,' not that it has already launched or is currently available as of the publication date.",
+          "correction": "Anthropic has announced upcoming in-country data residency for its Claude AI model via Amazon Bedrock in India, to be available in the coming weeks.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Anthropic launched in-country inference and data residency for its Claude AI models in India, partnering with Amazon Web Services (AWS) via Amazon Bedrock.",
+          "status": "WRONG",
+          "detail": "Similar to the summary claim, sources indicate this is an upcoming offering ('in the coming weeks') rather than an already completed launch.",
+          "correction": "Anthropic announced upcoming in-country inference and data residency for its Claude AI models in India, partnering with Amazon Web Services (AWS) via Amazon Bedrock.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This deployment also lowers the cost of deploying enterprise-grade generative AI by minimizing cross-border bandwidth fees and simplifying data audit trails.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "While 'simplifying data audit trails' is a plausible benefit, no reliable source explicitly confirms that this deployment will 'lower the cost' or 'minimize cross-border bandwidth fees.' One source even suggests localized clouds can be more expensive.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Today's rollout is a direct response to India's tightening regulatory environment regarding data sovereignty.",
+          "status": "WRONG",
+          "detail": "The 'rollout' is not happening 'today' but is announced for 'in the coming weeks.' The motivation (response to regulatory environment) is correct, but the timing is incorrect.",
+          "correction": "The upcoming rollout is a direct response to India's tightening regulatory environment regarding data sovereignty.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In comparison, rival models from other big tech firms still require overseas data transit for their most advanced configurations.",
+          "status": "UNVERIFIABLE",
+          "detail": "No specific comparative data confirming that rival models from other big tech firms *still* require overseas data transit for their *most advanced configurations* was found in the search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "By launching local inference today, Anthropic is positioning itself to win lucrative contracts from state-run banks and local telecom giants who are currently planning their FY27 technology budgets.",
+          "status": "WRONG",
+          "detail": "The launch is not 'today' but announced for 'in the coming weeks.' The strategic positioning and target sectors are consistent with search results, but the timing is incorrect.",
+          "correction": "By announcing upcoming local inference, Anthropic is positioning itself to win lucrative contracts from state-run banks and local telecom giants who are currently planning their FY27 technology budgets.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The goal is to onboard over 500 enterprise clients onto the localized Bedrock platform by the end of the year.",
+          "status": "UNVERIFIABLE",
+          "detail": "While Anthropic is expanding its presence and partner network in India, search results mention certifying 5,000 professionals/partners, not a target of '500 enterprise clients' for onboarding by the end of the year.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Attention will also turn to see how competitors like OpenAI and Google respond, as they will likely face intense market pressure to offer similar in-country data guarantees soon.",
+          "status": "UNVERIFIABLE",
+          "detail": "This statement is a prediction or expectation about future market pressure and competitor responses, which cannot be fact-checked as of the publication date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Claude AI models can now process data entirely within India",
+          "status": "WRONG",
+          "detail": "This functionality is announced to be available 'in the coming weeks,' not 'now.'",
+          "correction": "Claude AI models will soon be able to process data entirely within India.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Latency for enterprise AI applications reduced by up to 40%",
+          "status": "UNVERIFIABLE",
+          "detail": "While sources mention 'significantly reduced network latency' as a benefit, none provide a specific quantitative figure like 'up to 40%'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Compared to 2023: When generative AI first went mainstream, nearly all enterprise queries from India had to travel to data centers in North America; today, Anthropic's local hosting keeps the entire data loop within the geopolitical boundaries of India.",
+          "status": "WRONG",
+          "detail": "The comparison with 2023 and the intent of local hosting is correct. However, the use of 'today' is incorrect as the local hosting is announced for 'in the coming weeks.'",
+          "correction": "Compared to 2023, when generative AI first went mainstream and nearly all enterprise queries from India had to travel to data centers in North America, Anthropic's upcoming local hosting will keep the entire data loop within the geopolitical boundaries of India.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Reduction in AI Latency = 40%",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source confirms a specific '40%' reduction in AI latency.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Target Enterprise Onboarding = 500 clients",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source confirms a target of '500 enterprise clients' for onboarding. Search results indicate a target of certifying 5,000 professionals/partners.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Anthropic launches secure in-country inference for Claude AI in India via AWS Bedrock.",
+          "status": "WRONG",
+          "detail": "This is the central event, which has been announced as becoming available 'in the coming weeks,' not that it has 'launched' as of the publication date.",
+          "correction": "Anthropic announces upcoming secure in-country inference for Claude AI in India via AWS Bedrock.",
+          "source": "Rediff.com (August 04 2026), Business Standard (August 03 2026), The Bridge Chronicle (August 03 2026), MediaNews4U (August 04 2026)",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "OpenAI and other major rivals are expected to establish similar local data nodes by early 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "This is an expectation or prediction about future actions of competitors, not a verifiable fact.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story's central premise, the launch of Anthropic's in-country data residency in India, is reported as a completed event ('has launched,' 'today's rollout') when multiple sources indicate it is an upcoming service to be available 'in the coming weeks.' This fundamental misrepresentation of the event's timing makes the story's core claim fabricated. Additionally, several specific numerical claims are unverifiable. (escalated from source mode — original links were unfetchable)"
     },
     {
-      "slug": "encube-ethicals-files-drhp",
-      "headline": "Why Is A Topical Cream Giant Chasing A ₹3,000 Crore Listing?",
+      "slug": "apple-india-sales-ten-billion",
+      "headline": "Why did Apple’s annual sales in India just hit eleven figures?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "Compared to 2021, when Apple's annual sales in India sat at roughly $4 billion, the current figure represents a massive surge of over 150% in just five years.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The source text mentions sales grew from about $9 billion a year earlier to over $10 billion, but it does not contain any data regarding 2021 sales or a $4 billion figure.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Apple is planning to open four more flagship retail stores across major Indian metros, including Bengaluru and Pune, within the next eighteen months.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Apple currently has six stores in India but does not mention plans for four additional stores or specific locations like Bengaluru and Pune.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "High import duties made iPhones prohibitively expensive, costing up to 40% more than in the US.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text notes that high taxes make iPhones pricey and provides a specific comparison for the iPhone 17 ($870 in India vs $799 in the US), but it does not state a 40% price difference.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This strategy is highly reminiscent of the Japanese automotive migration of the 1980s, when companies like Toyota and Honda set up massive manufacturing bases in North America to bypass trade barriers and hedge against geopolitical tensions.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the Japanese automotive migration or Toyota and Honda.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The central claim regarding Apple's $10 billion sales milestone is verified by the source. However, the story includes several specific historical and future-looking figures (2021 sales, specific expansion plans, price percentage differences, and historical analogies) that are not present in the provided source text."
+    },
+    {
+      "slug": "jupiter-wagons-lucchini-partnership",
+      "headline": "Why is this Indian railway giant partnering with an Italian master?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The partnership comes at a critical time as Indian Railways executes a massive ₹2.5 lakh crore infrastructure upgrade.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a ₹2.5 lakh crore infrastructure upgrade figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Compared to current local manufacturing, which is mostly limited to slower, heavy-freight train wheels, this facility will produce precision-engineered wheels capable of supporting speeds above 160 km/h.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the partnership aims to manufacture railway wheels, axles and wheelsets, but does not specify the 160 km/h speed capability or compare it to existing local manufacturing limitations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Commercial production of the high-speed wheels is targeted to begin by late 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a timeline for the commencement of commercial production.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 1982, the government partnered with Japan's Suzuki to form Maruti Udyog",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Maruti Udyog or the 1982 partnership with Suzuki.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the core partnership between Jupiter Wagons and Lucchini RS, but includes several specific figures and historical comparisons that are not present in the provided source text."
+    },
+    {
+      "slug": "dabur-fssai-misleading-claims",
+      "headline": "Why did regulators just ban this brand's '100%' pure claims?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "FSSAI's investigation revealed that these products, while marketed as completely pure, contained reconstituted juices, concentrates, and stabilizing additives.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the FSSAI found the claims 'ambiguous, unverifiable and likely to mislead consumers' and that the products were marketed with claims like '100% Natural' or '100% Pure', but it does not explicitly state that the investigation revealed the presence of 'reconstituted juices, concentrates, and stabilizing additives' as the basis for the ban.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Under FSSAI's updated labeling regulations, brands cannot use \"100%\" claims if the product undergoes chemical processing or contains any non-primary ingredients.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source mentions the 'Food Safety and Standards (Advertising and Claims) Regulations, 2018', but does not provide the specific regulatory criteria regarding 'chemical processing' or 'non-primary ingredients' as the reason for the ban.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "It closely echoes the US Federal Trade Commission (FTC) actions of 2010, which cracked down on major food companies for making unproven health and purity claims on cereal boxes and yogurt containers.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no mention of the US Federal Trade Commission (FTC) or actions taken in 2010.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the core event (FSSAI ban on Dabur's '100%' claims) and the stock market impact. However, it includes specific details about the FSSAI's investigative findings and historical comparisons to the US FTC that are not present in the provided source text."
     }
   ]
 }
