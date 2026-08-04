@@ -48,6 +48,23 @@ const path = require("path");
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3.1-flash-lite";
+// 2026-08-04: verifyStory()'s google_search grounded call needs a
+// DIFFERENT model family than MODEL/FALLBACK_MODEL above — same finding
+// that already drove regenerate-story.js's GROUNDED_MODEL: the real usage
+// dashboard confirmed "Gemini 3" family (gemini-3.5-flash/
+// gemini-3.1-flash-lite) has a hard 0/0 grounding quota on the free tier,
+// while "Gemini 2.5" family has real headroom. This wasn't consequential
+// on its own — a quota-exhausted grounded call used to just fall back to
+// an honest "couldn't verify" placeholder — but became one the moment
+// neverVerified started always auto-removing regardless of issue count:
+// every story whose own cited links were unfetchable escalates to
+// grounded verification, immediately hits this 0/0 cap on the Gemini 3
+// family, and gets permanently removed — not because it's wrong, but
+// because escalation could never have succeeded in the first place. A
+// real run (2026-08-04) lost 9 of 15 stories to exactly this, only 2 to
+// genuine fact errors.
+const GROUNDED_MODEL = process.env.GEMINI_GROUNDED_MODEL || "gemini-2.5-flash";
+const GROUNDED_FALLBACK_MODEL = process.env.GEMINI_GROUNDED_FALLBACK_MODEL || "gemini-2.5-pro";
 const API_KEY = process.env.GEMINI_API_KEY;
 const SPACING_MS = Number(process.env.VERIFY_SPACING_MS || 15000);
 
@@ -546,7 +563,7 @@ List ONLY problem claims in "issues" — verified claims are omitted. Be strict:
 
 async function verifyStory(story, editionDate, maxRetries = 3) {
   let attempt = 0;
-  let currentModel = MODEL;
+  let currentModel = GROUNDED_MODEL;
   const deadModels = new Set();
 
   const userPrompt =
@@ -592,8 +609,8 @@ async function verifyStory(story, editionDate, maxRetries = 3) {
     } catch (err) {
       if (err.status === 404) {
         deadModels.add(currentModel);
-        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
-        if (deadModels.has(other)) throw new Error(`Both ${MODEL} and ${FALLBACK_MODEL} return 404 — set GEMINI_MODEL to a current model.`);
+        const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
+        if (deadModels.has(other)) throw new Error(`Both ${GROUNDED_MODEL} and ${GROUNDED_FALLBACK_MODEL} return 404 — set GEMINI_GROUNDED_MODEL to a current model.`);
         console.warn(`  ${currentModel} retired (404) — switching to ${other}.`);
         currentModel = other;
         continue;
@@ -621,7 +638,7 @@ async function verifyStory(story, editionDate, maxRetries = 3) {
         console.warn(`  attempt ${attempt} failed (${err.message}) — retrying...`);
       }
       if (err.status === 429 || err.status === 503 || err.status === 500) {
-        const other = currentModel === MODEL ? FALLBACK_MODEL : MODEL;
+        const other = currentModel === GROUNDED_MODEL ? GROUNDED_FALLBACK_MODEL : GROUNDED_MODEL;
         if (!deadModels.has(other)) currentModel = other;
       }
     }
@@ -735,8 +752,8 @@ async function main() {
 
   console.log(`Verifying ${stories.length} stories from ${editionFile} (edition ${editionDate}).`);
   console.log(`Mode: ${mode} — ${mode === "source"
-    ? "fetching each story's own sources; plain Gemini calls, ZERO grounding quota"
-    : "google_search grounding (uses grounding quota)"} via ${MODEL} (fallback ${FALLBACK_MODEL}), ${SPACING_MS / 1000}s between stories.\n`);
+    ? `fetching each story's own sources; plain Gemini calls, ZERO grounding quota, via ${MODEL} (fallback ${FALLBACK_MODEL}), escalating unfetchable stories to grounded verification via ${GROUNDED_MODEL} (fallback ${GROUNDED_FALLBACK_MODEL})`
+    : `google_search grounding (uses grounding quota) via ${GROUNDED_MODEL} (fallback ${GROUNDED_FALLBACK_MODEL})`}, ${SPACING_MS / 1000}s between stories.\n`);
 
   const results = [];
   let quotaExhausted = false;
