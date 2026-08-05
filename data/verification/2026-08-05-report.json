@@ -1,156 +1,22 @@
 {
   "date": "2026-08-05",
-  "generatedAt": "2026-08-05T02:35:13.813Z",
+  "generatedAt": "2026-08-05T03:55:45.253Z",
   "results": [
     {
-      "slug": "hormuz-reopening-oil-prices",
-      "headline": "Why did global oil prices suddenly fall after weeks of panic?",
+      "slug": "india-banking-coverage-nears-universal",
+      "headline": "Wait, 99.92% Of Villages Have Bank Access? How?",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "14 days: The average shipping delay added when vessels are forced to bypass the Persian Gulf.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention any specific duration for shipping delays caused by bypassing the Persian Gulf.",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
           "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "$12.5 billion: The estimated hit to India's trade balance for every sustained ten-dollar jump in oil.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain this figure or any estimate regarding the impact of oil price fluctuations on India's trade balance.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
+          "source": null
         }
       ],
-      "notes": "The story accurately reflects the diplomatic developments regarding the Strait of Hormuz as reported in the source texts. However, it includes two specific quantitative claims regarding shipping delays and trade balance impacts that are not supported by the provided source material.",
-      "digestHash": "0baa2a4744a57abb"
-    },
-    {
-      "slug": "adani-power-promoter-share-swap-august-2026",
-      "headline": "Adani Power Stock Sees ₹2,627 Crore Promoter Share Swap. What Now?",
-      "verdict": "WARN",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Adani Power's promoter group entity, Worldwide Emerging Market Holding, sold 12.48 crore shares worth ₹2,627 crore, which were subsequently acquired by another promoter firm, Adani Infra (India) Ltd",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any information regarding Adani Power, share sales, or promoter transactions. It is a list of unrelated headlines.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The provided source text is a generic list of headlines from Business Standard and contains no information about the Adani Power transaction described in the story. Therefore, all specific claims regarding the transaction are unverifiable based on the provided source.",
-      "digestHash": "06f87bd37e6491ba"
-    },
-    {
-      "slug": "world-bank-ai-impact-india-outsourcing-jobs",
-      "headline": "AI Is 'Chipping Away' At India's Outsourcing Jobs, Says World Bank.",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "The story accurately reflects the core findings attributed to the World Bank report as mentioned in the provided source texts. All specific claims regarding the impact of AI on outsourcing and the hiring trends of multinational firms are supported by the source material.",
-      "digestHash": "8e9c90c2e06a0241"
-    },
-    {
-      "slug": "sc-rbi-digital-fraud",
-      "headline": "Digital Scams Soar: Supreme Court Demands RBI Fight Back!",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Cyber Frauds Reported (2024-25) = Over 1.5 Lakh (previous: 1.1 Lakh — 2023-24)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these statistics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Average Loss per Case = ₹50,000 (previous: ₹35,000 — 2023-24)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain these statistics.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The central event regarding the Supreme Court's directive to the RBI is supported by the source text. However, the 'Key Number Cards' provided in the story are not mentioned in the source material and are therefore unverifiable.",
-      "digestHash": "0568bb0638d87e98"
-    },
-    {
-      "slug": "nabard-cancels-bond-issue",
-      "headline": "NABARD Cancels ₹8,000 Crore Bond Sale: Who Got Cold Feet?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "What is a potential consequence of NABARD's higher borrowing costs? — stated correct answer: \"Higher interest rates on agricultural loans.\"",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the cancellation of the bond issue due to high yield bids, but it does not contain any information or analysis regarding the impact on interest rates for agricultural loans.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core event (cancellation of the ₹8,000 crore bond issue by NABARD due to high yield bids) is verified by the source. However, the quiz claim regarding the consequence of higher borrowing costs on agricultural loans is not supported by the provided text.",
-      "digestHash": "395b4511e224202d"
-    },
-    {
-      "slug": "upi-mdr-above-2000",
-      "headline": "Pay More for UPI? Government Eyes Fees Over ₹2,000",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "UPI Transactions (FY26) = 130 billion (previous: 94 billion — FY25)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text provides data for July 2026 only (23.66 billion transactions) and does not contain annual figures for FY26 or FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Total Value (FY26) = ₹200 lakh crore (previous: ₹150 lakh crore — FY25)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text provides data for July 2026 only (₹29.88 trillion) and does not contain annual value figures for FY26 or FY25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reflects the current policy discussions regarding potential UPI merchant fees as reported in the source. However, it includes annual transaction volume and value figures for FY26 and FY25 that are not present in the provided source text.",
-      "digestHash": "eb158558f3592ec6"
-    },
-    {
-      "slug": "supreme-court-uninsured-vehicles-challan-fuel",
-      "headline": "Why does the Supreme Court want to deny your car fuel?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Mandated Third-party Insurance Term for New Two-Wheelers = 5 years",
-          "status": "STALE",
-          "detail": "While 5 years was the mandated term following a 2018 Supreme Court order, the new Supreme Court directives issued on August 4, 2026, extended this mandatory period for new two-wheelers to six years.",
-          "correction": "Mandated Third-party Insurance Term for New Two-Wheelers = 6 years",
-          "source": "The Times of India, Mint, Hindustan Times, ETAuto, India Today, The Hindu, Indiablooms, LiveLaw, Whalesbook",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central event and most factual claims, including the percentage of uninsured vehicles and the proposed 'no-fuel' rule. However, one key number card provides a stale figure for mandated insurance terms, as the Supreme Court's new directives, reported within the same story, updated this term. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "1ea96babaedc6830"
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
