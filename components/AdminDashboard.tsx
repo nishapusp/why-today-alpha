@@ -171,6 +171,7 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   const [snippet, setSnippet] = useState(item.snippet);
 
   async function handleDelete() {
@@ -188,6 +189,42 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
       onChanged();
     } catch (e) {
       setError(e instanceof Error ? e.message : "Delete failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // 2026-08-05: added per explicit request — an admin picking a Quick
+  // Read (already screened by the extractive/enrichment pipeline, plus
+  // whatever the admin personally noticed while browsing) and turning it
+  // into a full flagship story, without waiting for the automatic
+  // pipeline to independently rediscover and select the same event.
+  // Reuses /api/admin/regenerate's existing "--new" mode exactly as the
+  // Stories tab's own regenerate button does — this route already just
+  // hands the topic off to regenerate-story.yml, so no new backend logic
+  // is needed, only a topic string built from what this Quick Read
+  // already has on hand (headline, snippet, source, and the original
+  // article link so the writer has a concrete starting point).
+  async function handlePromote() {
+    if (!confirm(`Generate a full detailed story from "${item.headline}"?`)) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const topic = [
+        item.headline,
+        item.snippet,
+        `(Source: ${item.source}${item.link ? ` — ${item.link}` : ""})`,
+      ].filter(Boolean).join("\n\n");
+      const res = await fetch("/api/admin/regenerate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slugOrMode: "--new", feedbackOrTopic: topic }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Promotion trigger failed");
+      setMessage(data.message);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Promotion trigger failed");
     } finally {
       setBusy(false);
     }
@@ -218,6 +255,7 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
       <p className="text-[13px] font-mono opacity-60">{item.category} &middot; {item.source}</p>
       <p className="font-medium text-[15px]">{item.headline}</p>
       {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
+      {message && <p className="text-sm text-green-700 mt-2">{message}</p>}
 
       {editing ? (
         <div className="mt-2 space-y-2">
@@ -230,7 +268,10 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
           </div>
         </div>
       ) : (
-        <div className="flex gap-2 mt-2">
+        <div className="flex gap-2 mt-2 flex-wrap">
+          <button onClick={handlePromote} disabled={busy} className="text-xs px-3 py-1.5 rounded-full bg-black text-white">
+            {busy ? "Triggering..." : "Promote to full story"}
+          </button>
           <button onClick={() => setEditing(true)} disabled={busy} className="text-xs px-3 py-1.5 rounded-full border">Edit</button>
           <button onClick={handleDelete} disabled={busy} className="text-xs px-3 py-1.5 rounded-full border border-red-300 text-red-600">
             {busy ? "..." : "Delete"}

@@ -466,7 +466,19 @@ async function fetchRssHeadlines() {
   // block for a confirmed bad actor, not a general policy — add more
   // domains here only when a specific site is caught doing this, not
   // preemptively.
-  const BLOCKED_DOMAINS = [/bankingfinance\.in/i];
+  // 2026-08-05: News on AIR (All India Radio's news portal) — added per
+  // explicit request after repeated real reports of stale/rebroadcast
+  // government-wire content surfacing as if it were fresh (see
+  // GOVERNMENT_WIRE_ONLY_DOMAINS in verify-edition.js's checkSourceRecency
+  // for the existing soft, post-generation version of this same problem:
+  // a story whose own cited sources turn out to be AIR-only gets held
+  // back as likely-stale). Blocking it here too, at RSS candidate
+  // discovery, stops it from ever being offered as a headline to write
+  // about in the first place — both this file's own generation AND
+  // generate-quick-reads.js (which imports and calls this exact
+  // function) benefit, rather than only catching it after a wasted
+  // generation attempt.
+  const BLOCKED_DOMAINS = [/bankingfinance\.in/i, /newsonair\.gov\.in/i, /newsonair\.com/i];
 
   // One shared parser for both the Google News search feeds and the direct
   // publisher feeds below — both are standard RSS 2.0 <item> blocks.
