@@ -726,34 +726,63 @@ function tagBroaderConnectionsIssues(story, issues) {
   });
 }
 
-// ---------- main ----------
+// ---------- per-day verification cache ----------
+//
+// 2026-08-05: every re-trigger of the daily pipeline (manual or scheduled
+// top-up) used to re-verify EVERY story already in the edition from
+// scratch — even ones a run earlier that same day already checked and
+// kept. On a day with 5 pipeline runs (a real day this happened), an
+// early story could get fully re-verified 3-4 times for an answer that
+// couldn't have changed, since nothing about the story or its sources
+// changed between checks minutes/hours apart. That's real, avoidable
+// spend against the exact daily request quota that ran out and blocked
+// generation entirely. A cache keyed on a hash of the verified content
+// (not just the slug) means an edited/regenerated story is never served
+// a stale verdict — only a byte-for-byte-unchanged story reuses its
+// earlier-today result.
+const crypto = require("crypto");
 
-async function main() {
-  if (!API_KEY) {
-    console.error("GEMINI_API_KEY is not set.");
-    process.exit(1);
-  }
-  const args = process.argv.slice(2);
-  const fileIdx = args.indexOf("--file");
-  const editionFile = fileIdx !== -1 ? args[fileIdx + 1] : "data/edition.json";
-  const slugsIdx = args.indexOf("--slugs");
-  const onlySlugs = slugsIdx !== -1 ? new Set(args[slugsIdx + 1].split(",").map((s) => s.trim())) : null;
-  const modeIdx = args.indexOf("--mode");
-  const mode = modeIdx !== -1 ? args[modeIdx + 1] : "source";
-  if (!["source", "grounded"].includes(mode)) {
-    console.error(`Unknown --mode "${mode}" — use "source" or "grounded".`);
-    process.exit(1);
-  }
+function digestHash(story) {
+  return crypto.createHash("sha256").update(buildClaimDigest(story)).digest("hex").slice(0, 16);
+}
 
+function loadTodaysCache(editionDate, outDir) {
+  const cache = new Map();
+  try {
+    const jsonPath = path.join(outDir, `${editionDate}-report.json`);
+    const prior = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+    for (const r of prior.results || []) {
+      if (r.digestHash) cache.set(r.slug, r);
+    }
+  } catch {
+    // No report yet today, or it's unreadable — fine, just means no cache hits.
+  }
+  return cache;
+}
+
+// ---------- core verification (no process.exit — safe to call from
+// generate-edition.js in-process, not just from this file's own CLI) ----------
+
+async function verifyEdition({
+  editionFile,
+  mode = "source",
+  onlySlugs = null,
+  useCache = true,
+  outDir = "data/verification",
+  autoRemove = false,
+  warnThreshold = parseInt(process.env.VERIFY_WARN_ISSUE_THRESHOLD || "3", 10),
+}) {
   const edition = JSON.parse(fs.readFileSync(editionFile, "utf8"));
   const editionDate = edition.date || path.basename(editionFile, ".json");
   let stories = edition.stories || [];
   if (onlySlugs) stories = stories.filter((s) => onlySlugs.has(s.slug));
 
+  const cache = useCache ? loadTodaysCache(editionDate, outDir) : new Map();
+
   console.log(`Verifying ${stories.length} stories from ${editionFile} (edition ${editionDate}).`);
   console.log(`Mode: ${mode} — ${mode === "source"
     ? `fetching each story's own sources; plain Gemini calls, ZERO grounding quota, via ${MODEL} (fallback ${FALLBACK_MODEL}), escalating unfetchable stories to grounded verification via ${GROUNDED_MODEL} (fallback ${GROUNDED_FALLBACK_MODEL})`
-    : `google_search grounding (uses grounding quota) via ${GROUNDED_MODEL} (fallback ${GROUNDED_FALLBACK_MODEL})`}, ${SPACING_MS / 1000}s between stories.\n`);
+    : `google_search grounding (uses grounding quota) via ${GROUNDED_MODEL} (fallback ${GROUNDED_FALLBACK_MODEL})`}, ${SPACING_MS / 1000}s between stories.${cache.size ? ` ${cache.size} cached verdict(s) available from earlier today.` : ""}\n`);
 
   const results = [];
   let quotaExhausted = false;
@@ -761,7 +790,17 @@ async function main() {
   for (let i = 0; i < stories.length; i++) {
     const story = stories[i];
     const label = `[${i + 1}/${stories.length}] ${story.slug}`;
+    const hash = digestHash(story);
+    const cached = cache.get(story.slug);
+    if (cached && cached.digestHash === hash) {
+      results.push({ ...cached });
+      console.log(`${label} — using cached verdict from earlier today (${cached.verdict})`);
+      continue;
+    }
     if (quotaExhausted) {
+      // No digestHash on quota-exhausted placeholders — this is a transient
+      // infrastructure failure, not a real verdict, so it must never be
+      // cached; the next run should always get a fresh real attempt.
       results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", neverVerified: true, issues: [], notes: "Grounding quota exhausted earlier in this run." });
       continue;
     }
@@ -791,6 +830,7 @@ async function main() {
               slug: story.slug, headline: story.headline, verdict: gv.verdict,
               centralEventConfirmed: gv.centralEventConfirmed, issues: taggedIssues,
               notes: `${gv.notes || ""} (escalated from source mode — original links were unfetchable)`.trim(),
+              digestHash: hash,
             });
             console.log(`${label} — ${gv.verdict}${gv.issues.length ? ` (${gv.issues.length} issue(s))` : ""} [escalated]`);
           } catch (escErr) {
@@ -805,10 +845,10 @@ async function main() {
                 claim: "(entire story)", status: "UNVERIFIABLE",
                 detail: "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
                 correction: null, source: null,
-              }], notes: "Re-run with --mode grounded once quota resets." });
+              }], notes: "Re-run with --mode grounded once quota resets." }); // no digestHash — transient, always retry
             } else {
               console.error(`  escalation failed: ${escErr.message}`);
-              results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", issues: [], error: `Escalation failed: ${escErr.message}` });
+              results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", issues: [], error: `Escalation failed: ${escErr.message}` }); // no digestHash — transient
             }
           }
           if (i < stories.length - 1) await sleep(SPACING_MS);
@@ -819,22 +859,22 @@ async function main() {
       } else {
         v = await verifyStory(story, editionDate);
       }
-      results.push({ slug: story.slug, headline: story.headline, verdict: v.verdict, centralEventConfirmed: v.centralEventConfirmed, issues: tagBroaderConnectionsIssues(story, v.issues), notes: v.notes });
+      results.push({ slug: story.slug, headline: story.headline, verdict: v.verdict, centralEventConfirmed: v.centralEventConfirmed, issues: tagBroaderConnectionsIssues(story, v.issues), notes: v.notes, digestHash: hash });
       console.log(`${label} — ${v.verdict}${v.issues.length ? ` (${v.issues.length} issue(s))` : ""}`);
     } catch (err) {
       if (err.isGroundingQuota) {
         console.error(`\nGrounding quota exhausted at story ${i + 1}. Stopping — this verifier never runs ungrounded.`);
         quotaExhausted = true;
-        results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", neverVerified: true, issues: [], notes: "Grounding quota exhausted — story not verified." });
+        results.push({ slug: story.slug, headline: story.headline, verdict: "SKIPPED", neverVerified: true, issues: [], notes: "Grounding quota exhausted — story not verified." }); // no digestHash — transient
         continue;
       }
       console.error(`${label} — ERROR: ${err.message}`);
-      results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", neverVerified: true, issues: [], error: err.message });
+      results.push({ slug: story.slug, headline: story.headline, verdict: "ERROR", neverVerified: true, issues: [], error: err.message }); // no digestHash — transient
     }
     if (i < stories.length - 1 && !quotaExhausted) await sleep(SPACING_MS);
   }
 
-  const { mdPath } = writeReports(editionDate, results, "data/verification");
+  const { mdPath } = writeReports(editionDate, results, outDir);
   console.log(`\nReport written to ${mdPath}`);
 
   const bad = results.filter((r) => r.verdict === "FAIL" || r.verdict === "FABRICATED");
@@ -846,6 +886,7 @@ async function main() {
     for (const r of bad) console.error(`  - ${r.slug}: ${r.verdict}`);
   }
 
+  let removed = [];
   // 2026-07-21: added after a real report showed the actual gap in this
   // whole system — verify-edition.js was sophisticated and genuinely
   // catching problems (a real run found 14/15 stories WARN, including a
@@ -868,8 +909,7 @@ async function main() {
   // isn't one soft edge, this is substantially made up." Configurable
   // via env var rather than hardcoded, since the right number is a
   // judgment call worth revisiting as real data comes in.
-  if (args.includes("--auto-remove")) {
-    const warnThreshold = parseInt(process.env.VERIFY_WARN_ISSUE_THRESHOLD || "3", 10);
+  if (autoRemove) {
     // 2026-07-22: a single unverifiable claim inside Broader Connections
     // (the historical-precedent feature — this publication's actual
     // differentiator) now removes a story on its own, regardless of the
@@ -913,16 +953,47 @@ async function main() {
       fs.writeFileSync(editionFile, JSON.stringify(edition, null, 2));
       console.log(`\n--auto-remove: pulled ${toRemove.length} story(ies) from ${editionFile} (${before} -> ${edition.stories.length}):`);
       for (const r of toRemove) console.log(`  - ${r.slug} (${r.verdict}, ${r.issues.length} issue(s)): ${r.headline}`);
+      removed = toRemove;
     }
   }
+
+  return { edition, results, bad, removed, quotaExhausted, liveCount: edition.stories.length };
+}
+
+// ---------- thin CLI wrapper ----------
+
+async function main() {
+  if (!API_KEY) {
+    console.error("GEMINI_API_KEY is not set.");
+    process.exit(1);
+  }
+  const args = process.argv.slice(2);
+  const fileIdx = args.indexOf("--file");
+  const editionFile = fileIdx !== -1 ? args[fileIdx + 1] : "data/edition.json";
+  const slugsIdx = args.indexOf("--slugs");
+  const onlySlugs = slugsIdx !== -1 ? new Set(args[slugsIdx + 1].split(",").map((s) => s.trim())) : null;
+  const modeIdx = args.indexOf("--mode");
+  const mode = modeIdx !== -1 ? args[modeIdx + 1] : "source";
+  if (!["source", "grounded"].includes(mode)) {
+    console.error(`Unknown --mode "${mode}" — use "source" or "grounded".`);
+    process.exit(1);
+  }
+  // --no-cache: force a full re-verify, bypassing today's cached verdicts —
+  // useful when debugging the verifier itself, or after a prompt change
+  // where cached results from earlier today no longer reflect current logic.
+  const useCache = !args.includes("--no-cache");
+
+  const { bad, quotaExhausted } = await verifyEdition({
+    editionFile, mode, onlySlugs, useCache, autoRemove: args.includes("--auto-remove"),
+  });
 
   process.exit(quotaExhausted ? 2 : bad.length ? 1 : 0);
 }
 
 // Only auto-run when invoked directly (`node scripts/verify-edition.js`).
-// generate-edition.js requires fetchStorySources/verifyStoryAgainstSources
-// as a pre-publish gate — requiring this file must NOT also kick off a full
-// CLI verification run (and must NOT call process.exit on the parent).
+// generate-edition.js requires verifyEdition (and fetchStorySources/etc as
+// a pre-publish recency gate) — requiring this file must NOT also kick off
+// a full CLI verification run (and must NOT call process.exit on the parent).
 if (require.main === module) {
   main().catch((err) => {
     console.error("Fatal:", err.message);
@@ -1038,4 +1109,5 @@ module.exports = {
   decodeGoogleNewsUrl,
   buildClaimDigest,
   checkSourceRecency,
+  verifyEdition,
 };

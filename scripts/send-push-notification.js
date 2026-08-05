@@ -21,6 +21,7 @@
  *     mailto: address works.
  */
 
+const crypto = require("crypto");
 const { getStore } = require("@netlify/blobs");
 const webpush = require("web-push");
 
@@ -38,10 +39,41 @@ function subscriptionStore() {
   });
 }
 
+// 2026-08-05: generate-edition.yml can now legitimately succeed more than
+// once in a day — a scheduled run followed by a manual (or automated
+// top-up) re-dispatch — and each success used to call this script again,
+// sending the exact "today's edition is live" push a second time for the
+// same day's edition. A separate tiny Blobs store (not the subscription
+// list itself, so this marker is never mistaken for a subscription and
+// sent push data) records whether THIS EXACT message already went out
+// today; only a genuine repeat of the same message on the same IST day
+// gets skipped, so a real future different notification is never
+// wrongly suppressed.
+function notificationStateStore() {
+  return getStore({
+    name: "why-today-notification-state",
+    siteID: requireEnv("NETLIFY_SITE_ID"),
+    token: requireEnv("NETLIFY_AUTH_TOKEN"),
+  });
+}
+
 async function main() {
   const title = process.argv[2] || "Why Today";
   const body = process.argv[3] || "A new story just went live.";
   const url = process.argv[4] || "/";
+
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  const dedupeKey = crypto.createHash("sha256").update(`${today}|${title}|${body}|${url}`).digest("hex").slice(0, 24);
+  const stateStore = notificationStateStore();
+  try {
+    const alreadySent = await stateStore.get(dedupeKey, { type: "text" });
+    if (alreadySent) {
+      console.log(`This exact notification already went out today (${today}) — skipping duplicate send.`);
+      return;
+    }
+  } catch (err) {
+    console.warn(`Could not check notification dedupe state (${err.message}) — sending anyway.`);
+  }
 
   webpush.setVapidDetails(
     `mailto:${requireEnv("VAPID_CONTACT_EMAIL")}`,
@@ -88,6 +120,14 @@ async function main() {
   }
 
   console.log(`Sent: ${sent} | Pruned dead subscriptions: ${pruned} | Total on file: ${blobs.length}`);
+
+  try {
+    // One key per distinct (date, message) combo — a handful of keys a
+    // day at most, not worth adding expiry logic for.
+    await stateStore.set(dedupeKey, "1", { metadata: { sentAt: new Date().toISOString() } });
+  } catch (err) {
+    console.warn(`Could not record notification dedupe state (${err.message}) — a same-day re-run may send this again.`);
+  }
 }
 
 main().catch((err) => {

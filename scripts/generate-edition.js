@@ -40,7 +40,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 const { execSync } = require("child_process");
-const { fetchStorySources, verifyStoryAgainstSources, enrichStoryWithSourceFigures, checkSourceRecency } = require("./verify-edition.js");
+const { fetchStorySources, enrichStoryWithSourceFigures, checkSourceRecency, verifyEdition } = require("./verify-edition.js");
 const { archiveOutgoingEdition } = require("./archive-edition.js");
 
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
@@ -1218,8 +1218,43 @@ async function main() {
   const isCI = process.env.CI === "true";
   const today = getTodayISO();
 
+  // --- Round loop -----------------------------------------------------------
+  // 2026-08-05: generation used to have its OWN inline LLM fact-check that
+  // held back and replaced bad stories batch-by-batch, within this same
+  // run — but that duplicated the post-generation verify-edition.js pass
+  // that runs right after (see the recency-gate comment further down for
+  // the full story on why that duplication got removed). Losing that
+  // inline replacement meant a run could end short of TOTAL_STORIES more
+  // often, since nothing backfilled what the (now sole) fact-check pass
+  // removed. This loop restores that backfill property WITHOUT the
+  // duplicate cost: generate -> verify once -> if short of a healthy
+  // floor, generate exactly the shortfall -> verify again (cheap, thanks
+  // to verifyEdition's per-day cache — only the new top-up stories are
+  // actually new to check) -> stop. Bounded at 2 rounds total so a
+  // systematically bad news day (or a real quota wall) can't turn into an
+  // unbounded retry loop; a shortfall after that just waits for the next
+  // scheduled/manual run, same as the pre-existing "partial edition"
+  // behavior already did for the previously-uncompensated final pass.
+  const MAX_ROUNDS = 2;
+  let publishedBatches = 0;
+  let failedBatches = 0;
+  const allSoftIssues = [];
+  let hitHardQuotaWall = false;
+  let edition;
+  let liveCount = 0;
+  // GROUNDING_MODE: 'search' (google_search tool only), 'rss' (RSS headlines
+  // only), or 'auto' (default): try search, fall back to RSS for the rest of
+  // the run the first time a grounded call is quota-blocked. Declared
+  // outside the round loop so a fallback to RSS in round 1 carries into
+  // round 2's top-up instead of retrying "search" mode into the same wall.
+  const GROUNDING_MODE = (process.env.GROUNDING_MODE || "auto").toLowerCase();
+  let effectiveMode = GROUNDING_MODE === "rss" ? "rss" : "search";
+
+  for (let round = 1; round <= MAX_ROUNDS; round++) {
+  if (hitHardQuotaWall) break;
+
   // --- Resume support -----------------------------------------------------
-  let edition = loadExistingEdition();
+  edition = loadExistingEdition();
 
   // loadExistingEdition() silently discards whatever is on disk if its date
   // isn't today — that happens whenever this run fires before roll-date.js
@@ -1287,15 +1322,6 @@ async function main() {
     }
   }
 
-  let publishedBatches = 0;
-  let failedBatches = 0;
-  const allSoftIssues = [];
-  // GROUNDING_MODE: 'search' (google_search tool only), 'rss' (RSS headlines
-  // only), or 'auto' (default): try search, fall back to RSS for the rest of
-  // the run the first time a grounded call is quota-blocked.
-  const GROUNDING_MODE = (process.env.GROUNDING_MODE || "auto").toLowerCase();
-  let effectiveMode = GROUNDING_MODE === "rss" ? "rss" : "search";
-
   for (let b = 0; b < numBatches; b++) {
     const count = Math.min(BATCH_SIZE, TOTAL_STORIES - publishedCount);
     if (count <= 0) break;
@@ -1322,6 +1348,7 @@ async function main() {
             console.error(`\nBatch ${b + 1} failed in BOTH modes: even ungrounded requests are quota-blocked.`);
             console.error("That means the API key's project has no usable free-tier quota at all right now — not just grounding.");
             console.error("Fixes: (1) create a fresh API key in a NEW Google AI Studio project (aistudio.google.com → Get API key) and update the GEMINI_API_KEY secret in the repo settings, or (2) enable billing on the current project.");
+            hitHardQuotaWall = true;
             break;
           }
           console.error(`Batch ${b + 1} failed in RSS mode too: ${err2.message}`);
@@ -1339,6 +1366,7 @@ async function main() {
         console.error("Stopping here instead of burning the rest of today's quota on batches that would also fail.");
         console.error("Stories published so far stay live. Wait for the quota to reset (per-minute limits reset within a minute; daily limits reset at midnight Pacific time), then re-run — it will resume from where it left off.");
         console.error("If this keeps happening, the free tier (15 req/min, 1,500 req/day for gemini-3.5-flash; 5,000 grounded prompts/month on Gemini 3.x) may be too low — consider enabling billing on the Gemini API project to move to a paid tier.");
+        hitHardQuotaWall = true;
         break; // stop the loop entirely — further batches will just fail the same way
         }
         console.error(`Batch ${b + 1} failed permanently: ${err.message}`);
@@ -1433,36 +1461,45 @@ async function main() {
       soft.forEach((i) => console.warn(`  - ${i}`));
     }
 
-    // --- Fact verification gate --------------------------------------------
-    // Every story's OWN cited sources are fetched and its claims checked
-    // against them — plain ungrounded Gemini calls, zero grounding quota
-    // (see scripts/verify-edition.js, --mode source). A story whose central
-    // event can't be confirmed, or that contains a claim its own sources
-    // contradict, is held back and NEVER published — this is what stops a
-    // fabricated story (like the SBI Q1 "results" that never happened) or a
-    // wrong figure (wrong IPO dates, invented growth numbers) from reaching
-    // the site. WARN (unverifiable but not contradicted) and PASS stories
-    // publish normally; WARNs are logged for visibility.
-    console.log(`Verifying ${batchStories.length} stor${batchStories.length === 1 ? "y" : "ies"} against their own sources before publishing...`);
+    // --- Recency gate (free — no Gemini call) -------------------------------
+    // 2026-08-05: this used to also run a full LLM fact-check
+    // (verifyStoryAgainstSources) here, per-story, on top of the SAME check
+    // verify-edition.js's post-generation --auto-remove step runs again on
+    // every story in the whole edition minutes later. That was a genuine,
+    // confirmed duplicate: two full Gemini calls per story for a claims
+    // check whose answer can't change in the few minutes between them,
+    // multiplied further on any day the pipeline gets re-triggered (a
+    // re-trigger re-verified stories that were already checked and kept
+    // hours earlier that same day). This is exactly what exhausted the
+    // shared daily request quota and stopped generation outright on
+    // 2026-08-04/05. Only the recency gate stays here — it's pure date
+    // parsing on the already-fetched source text, zero Gemini cost — since
+    // verify-edition.js's own pass has no staleness check of its own (the
+    // original motivating bug: a 3-month-old "Operation SAKSHM" story
+    // passed fact-checking cleanly because it wasn't wrong, just old). The
+    // real fact-check now runs exactly once, in the post-generation
+    // verifyEdition() call below (after the batch loop, still inside the
+    // round loop) — see there for the "what if a bad story would have
+    // been caught here" answer: it still gets caught, just in that one
+    // pass, and a top-up round backfills the shortfall afterward instead
+    // of this loop replacing it inline.
+    console.log(`Checking recency of ${batchStories.length} stor${batchStories.length === 1 ? "y" : "ies"}' own sources before publishing...`);
     const verifiedStories = [];
     for (const story of batchStories) {
       const shortHeadline = (story.headline || "(no headline)").slice(0, 65);
       try {
         const sources = await fetchStorySources(story);
         if (sources.length === 0) {
-          console.warn(`  WARN  "${shortHeadline}" — no fetchable sources, publishing but flagged for manual check.`);
-          allSoftIssues.push(`"${story.headline}": published with no fetchable sources to verify against.`);
+          allSoftIssues.push(`"${story.headline}": published with no fetchable sources — verify-edition.js's post-generation pass will check it.`);
           verifiedStories.push(story);
           continue;
         }
 
-        // --- Recency gate ---------------------------------------------------
         // Checks the story's own cited sources' actual publish dates —
         // independent of whether the model followed the prompt's recency
         // instructions. A story can be 100% factually accurate and still be
-        // months old (the original bug: a 3-month-old "Operation SAKSHM"
-        // passed fact-checking cleanly because it wasn't wrong, just stale).
-        // This gate catches that regardless of the accuracy verdict below.
+        // months old. This is the ONE check that must stay inline, since
+        // nothing downstream re-checks staleness.
         const recency = checkSourceRecency(sources, today);
         if (!recency.ok) {
           console.error(`  STALE  "${shortHeadline}" — HELD BACK, not published. ${recency.reason}`);
@@ -1472,32 +1509,19 @@ async function main() {
           allSoftIssues.push(`"${story.headline}": ${recency.reason} — recency unverified, publishing but flagged for manual check.`);
         }
 
-        const result = await verifyStoryAgainstSources(story, today, sources);
-        if (result.verdict === "FAIL" || result.verdict === "FABRICATED") {
-          console.error(`  ${result.verdict}  "${shortHeadline}" — HELD BACK, not published.`);
-          if (result.notes) console.error(`         ${result.notes}`);
-          (result.issues || []).forEach((iss) =>
-            console.error(`         - [${iss.status}] ${iss.claim}${iss.detail ? ` — ${iss.detail}` : ""}`)
-          );
-          continue; // dropped — never enters verifiedStories
-        }
-        if (result.verdict === "WARN") {
-          console.warn(`  WARN  "${shortHeadline}" — ${(result.issues || []).length} unverifiable claim(s), publishing.`);
-          allSoftIssues.push(`"${story.headline}": verification WARN — ${(result.issues || []).length} unverifiable claim(s) (not contradicted, just unconfirmed).`);
-        } else {
-          console.log(`  PASS  "${shortHeadline}"`);
-        }
-
         // --- Figure enrichment (RSS mode only) -----------------------------
         // RSS mode has no live search tool, so the story was deliberately
         // written to avoid inventing figures it couldn't verify at write
         // time — see the RSS-mode prompt override's "describe qualitatively
         // instead" instruction. Now that this story's own sources are
-        // fetched in full for the fact-check above, that same text can fill
-        // in real figures the writer had to skip. Only ever uses text
-        // that's already been fetched and verified against — same
-        // discipline as the fact-check itself, just adding instead of
-        // subtracting.
+        // fetched in full, that same text can fill in real figures the
+        // writer had to skip. Only ever uses text that's already been
+        // fetched — same "never invent, only fill from a real fetched
+        // document" discipline the fact-check itself relies on, just
+        // adding instead of checking. No longer gated on a fact-check
+        // verdict computed in this same loop (that verdict doesn't exist
+        // here anymore) — enrichment's own internal safety (never inserts
+        // anything beyond the fetched text) makes that gate unnecessary.
         if (effectiveMode === "rss") {
           try {
             const changes = await enrichStoryWithSourceFigures(story, sources);
@@ -1513,17 +1537,13 @@ async function main() {
 
         verifiedStories.push(story);
       } catch (err) {
-        // Verification itself errored (network hiccup, malformed JSON, etc.)
-        // — publish rather than silently dropping a possibly-fine story, but
-        // flag it loudly so it gets a human look.
-        console.warn(`  ERROR verifying "${shortHeadline}" (${err.message}) — publishing unverified, flagged.`);
-        allSoftIssues.push(`"${story.headline}": verification step errored (${err.message}) — published WITHOUT fact-checking.`);
+        // Recency check itself errored (network hiccup, etc.) — publish
+        // rather than silently dropping a possibly-fine story; the
+        // post-generation fact-check pass still gets a look at it.
+        console.warn(`  ERROR checking recency of "${shortHeadline}" (${err.message}) — publishing, flagged.`);
+        allSoftIssues.push(`"${story.headline}": recency check errored (${err.message}) — published without a recency check.`);
         verifiedStories.push(story);
       }
-      // Gentle spacing between per-story verification calls within a batch —
-      // these are ungrounded calls (no grounding-quota risk) but still count
-      // against the per-minute request cap.
-      await sleep(3000);
     }
     batchStories = verifiedStories;
     if (batchStories.length === 0) {
@@ -1633,25 +1653,53 @@ async function main() {
     }
   }
 
+  // --- Post-generation fact-check — the ONE authoritative verification pass
+  // for everything generated so far (see the recency-gate comment above for
+  // why the old per-batch inline check was removed). Runs in-process, not
+  // as a spawned CLI, so its own per-day cache (see verify-edition.js)
+  // means a same-day top-up round below only actually pays for whatever's
+  // genuinely new since the last check — not a full re-verify of stories
+  // this exact run (or an earlier run today) already confirmed.
+  liveCount = publishedCount;
+  if (fs.existsSync(EDITION_PATH)) {
+    console.log(`\nVerifying today's edition against its own sources (auto-remove any fabricated/unverifiable stories)...`);
+    try {
+      const vr = await verifyEdition({ editionFile: EDITION_PATH, mode: "source", autoRemove: true, useCache: true });
+      liveCount = vr.liveCount;
+      if (vr.removed.length) {
+        allSoftIssues.push(`Post-generation fact-check removed ${vr.removed.length} stor${vr.removed.length === 1 ? "y" : "ies"} this round: ${vr.removed.map((r) => r.slug).join(", ")}.`);
+      }
+    } catch (err) {
+      console.error(`Post-generation verification failed to run (${err.message}) — edition left as generated, unverified this round.`);
+    }
+  }
+
+  const healthyFloor = Math.ceil(TOTAL_STORIES * 0.8);
+  if (liveCount >= healthyFloor || round === MAX_ROUNDS || hitHardQuotaWall) {
+    break; // done: healthy, out of top-up rounds, or quota's fully gone — no point trying more
+  }
+  console.log(`\nAfter fact-check, ${liveCount}/${TOTAL_STORIES} stories remain — generating a top-up batch to backfill the shortfall (round ${round + 1}/${MAX_ROUNDS})...`);
+  } // end roundLoop
+
   // --- Summary -------------------------------------------------------------
   console.log("\n=== SUMMARY ===");
-  console.log(`Stories live: ${publishedCount}/${TOTAL_STORIES}  |  batches published: ${publishedBatches}, failed: ${failedBatches}`);
+  console.log(`Stories live: ${liveCount}/${TOTAL_STORIES}  |  batches published: ${publishedBatches}, failed: ${failedBatches}`);
   if (edition) {
     console.log(`Number of the day: ${edition.numberValue || "?"} — ${edition.themeTitle || "?"}`);
   }
   if (allSoftIssues.length > 0) {
     console.log(`${allSoftIssues.length} minor quality issue(s) were logged above — consider regenerate-story.js for specific stories.`);
   }
-  if (publishedCount < TOTAL_STORIES) {
-    console.log(`Edition is partial — re-run this script (or wait for the next scheduled run) to generate the remaining ${TOTAL_STORIES - publishedCount}; it will resume, not restart.`);
+  if (liveCount < TOTAL_STORIES) {
+    console.log(`Edition is partial — re-run this script (or wait for the next scheduled run) to generate the remaining ${TOTAL_STORIES - liveCount}; it will resume, not restart.`);
     // Only mark the CI run red when the day is BADLY short (<80% of target).
     // A 12/15 or 13/15 day is a healthy edition that the next scheduled run
     // will top up — flagging it as a failure was just alert noise. Everything
     // generated so far is ALREADY live either way.
-    const healthyFloor = Math.ceil(TOTAL_STORIES * 0.8);
-    if (isCI && publishedCount < healthyFloor) process.exit(1);
+    const finalHealthyFloor = Math.ceil(TOTAL_STORIES * 0.8);
+    if (isCI && liveCount < finalHealthyFloor) process.exit(1);
     if (isCI) {
-      console.log(`(${publishedCount} >= ${healthyFloor} healthy floor — exiting green; next run tops up the rest.)`);
+      console.log(`(${liveCount} >= ${finalHealthyFloor} healthy floor — exiting green; next run tops up the rest.)`);
     }
   }
 }

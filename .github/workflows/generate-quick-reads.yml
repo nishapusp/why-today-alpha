@@ -29,13 +29,20 @@ on:
   # install + RSS fetch + Gemini call + Blobs write), 72 runs/day alone
   # could be ~2,000+ min/month — potentially the entire private-repo
   # budget from this one workflow, before the flagship pipeline, the
-  # feedback digest, or any manual regenerations. Hitting that cap stops
-  # EVERY workflow in the repo, not just this one, until next month's
-  # reset (unless overage billing is set up) — hourly (24 runs/day)
-  # lands around ~700-900 min/month, comfortably safe alongside
-  # everything else sharing the same budget.
+  # feedback digest, or any manual regenerations.
+  #
+  # 2026-08-05: reduced again, hourly -> every 3 hours (24/day -> 8/day).
+  # This shares the EXACT same Gemini quota pool (MODEL/FALLBACK_MODEL,
+  # imported straight from generate-edition.js) as the flagship pipeline's
+  # own ungrounded verification calls — the pool that hit
+  # GenerateRequestsPerDayPerProjectPerModel-FreeTier and stopped
+  # generation outright on 2026-08-04/05. This workflow fires on its own
+  # clock regardless of how much quota the flagship pipeline has already
+  # used that day, so cutting it to 8/day meaningfully lowers how much of
+  # the shared daily budget a secondary, nice-to-have feed can consume
+  # before the flagship edition itself gets a turn.
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */3 * * *"
 
 jobs:
   generate:
