@@ -1,22 +1,43 @@
 {
   "date": "2026-08-05",
-  "generatedAt": "2026-08-05T03:55:45.253Z",
+  "generatedAt": "2026-08-05T07:48:46.366Z",
   "results": [
     {
-      "slug": "india-banking-coverage-nears-universal",
-      "headline": "Wait, 99.92% Of Villages Have Bank Access? How?",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "slug": "rbi-mpc-august-2026-repo-rate-unchanged",
+      "headline": "Why did RBI keep interest rates steady?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "This 'neutral' policy stance, which it adopted in December 2025 after a rate cut.",
+          "status": "WRONG",
+          "detail": "Source 1 explicitly states the neutral stance has been maintained since June 2025, not December 2025.",
+          "correction": "The neutral stance has been maintained since June 2025.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "retail inflation in June 2026 touched 4.4%",
+          "status": "WRONG",
+          "detail": "Source 1 explicitly states June 2026 inflation was 4.38%.",
+          "correction": "4.38%",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Reuters poll showing 68 out of 72 economists expecting the status quo.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source texts do not contain any mention of a Reuters poll or the number of economists surveyed.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story contains factual errors regarding the start date of the neutral stance and the specific June 2026 inflation figure. Additionally, it cites a Reuters poll that is not present in the provided source material.",
+      "digestHash": "393a8518ba004066"
     }
   ]
 }
