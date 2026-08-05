@@ -1,6 +1,6 @@
 {
   "date": "2026-08-05",
-  "generatedAt": "2026-08-05T01:05:18.060Z",
+  "generatedAt": "2026-08-05T02:35:13.813Z",
   "results": [
     {
       "slug": "hormuz-reopening-oil-prices",
@@ -11,7 +11,7 @@
         {
           "claim": "14 days: The average shipping delay added when vessels are forced to bypass the Persian Gulf.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any mention of a 14-day shipping delay or any specific duration for delays caused by bypassing the Persian Gulf.",
+          "detail": "The provided source texts do not mention any specific duration for shipping delays caused by bypassing the Persian Gulf.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
@@ -20,30 +20,15 @@
         {
           "claim": "$12.5 billion: The estimated hit to India's trade balance for every sustained ten-dollar jump in oil.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any mention of this specific financial impact figure for India's trade balance.",
+          "detail": "The provided source texts do not contain this figure or any estimate regarding the impact of oil price fluctuations on India's trade balance.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the ongoing diplomatic efforts regarding the Strait of Hormuz as reported in the source texts. However, it includes specific quantitative claims regarding shipping delays and the impact on India's trade balance that are not supported by the provided source material."
-    },
-    {
-      "slug": "nabard-cancels-bond-issue-august-2026",
-      "headline": "NABARD Cancels ₹8,000 Crore Bond Issue. Why Did Investors Balk?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story accurately reflects the diplomatic developments regarding the Strait of Hormuz as reported in the source texts. However, it includes two specific quantitative claims regarding shipping delays and trade balance impacts that are not supported by the provided source material.",
+      "digestHash": "0baa2a4744a57abb"
     },
     {
       "slug": "adani-power-promoter-share-swap-august-2026",
@@ -61,7 +46,8 @@
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The provided source text is a generic list of headlines from Business Standard and contains no information about the Adani Power transaction described in the story. Therefore, all specific claims regarding the transaction are unverifiable based on the provided source."
+      "notes": "The provided source text is a generic list of headlines from Business Standard and contains no information about the Adani Power transaction described in the story. Therefore, all specific claims regarding the transaction are unverifiable based on the provided source.",
+      "digestHash": "06f87bd37e6491ba"
     },
     {
       "slug": "world-bank-ai-impact-india-outsourcing-jobs",
@@ -69,176 +55,102 @@
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "The story accurately reflects the core findings attributed to the World Bank report as described in the provided source texts, specifically regarding the impact of AI on outsourcing and hiring trends for multinational firms in India."
+      "notes": "The story accurately reflects the core findings attributed to the World Bank report as mentioned in the provided source texts. All specific claims regarding the impact of AI on outsourcing and the hiring trends of multinational firms are supported by the source material.",
+      "digestHash": "8e9c90c2e06a0241"
     },
     {
-      "slug": "dabur-fssai-labeling-ban",
-      "headline": "Why did the government suddenly ban Dabur's '100% pure' labels?",
+      "slug": "sc-rbi-digital-fraud",
+      "headline": "Digital Scams Soar: Supreme Court Demands RBI Fight Back!",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "15,000: The approximate number of retail outlets that will need inventory updates.",
+          "claim": "Cyber Frauds Reported (2024-25) = Over 1.5 Lakh (previous: 1.1 Lakh — 2023-24)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any specific number of retail outlets affected by the order.",
+          "detail": "The provided source text does not contain these statistics.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Analysts estimate that repackaging costs and potential sales disruptions could shave off up to 1.5% from Dabur's near-term operating profit margin",
+          "claim": "Average Loss per Case = ₹50,000 (previous: ₹35,000 — 2023-24)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any analyst estimates regarding the impact on operating profit margins.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "In 2015, the US Federal Trade Commission (FTC) cracked down on several major food corporations for misleading 'natural' claims",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the US FTC or any events from 2015.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Dabur had just recorded a healthy 15% growth in its Q1 net profit.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention Dabur's Q1 net profit growth figures.",
+          "detail": "The provided source text does not contain these statistics.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the FSSAI order and the 4% stock drop, but includes several specific figures (retail outlet count, profit margin impact, historical FTC actions, and Q1 profit growth) that are not present in the provided source text."
+      "notes": "The central event regarding the Supreme Court's directive to the RBI is supported by the source text. However, the 'Key Number Cards' provided in the story are not mentioned in the source material and are therefore unverifiable.",
+      "digestHash": "0568bb0638d87e98"
     },
     {
-      "slug": "closing-auction-session-volatility",
-      "headline": "Why is India's new stock market timing making prices swing wildly?",
+      "slug": "nabard-cancels-bond-issue",
+      "headline": "NABARD Cancels ₹8,000 Crore Bond Sale: Who Got Cold Feet?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "arbitrage funds hold over ₹1.5 lakh crore in assets under management in India",
+          "claim": "What is a potential consequence of NABARD's higher borrowing costs? — stated correct answer: \"Higher interest rates on agricultural loans.\"",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the total assets under management (AUM) for arbitrage funds in India.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "leading asset management companies to issue emergency advisories",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention any asset management companies issuing emergency advisories regarding the closing auction system.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The NSE and SEBI are closely monitoring the price divergence and may introduce circuit filters or price bands within the closing auction by the end of August 2026.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention SEBI or NSE planning to introduce circuit filters or price bands by the end of August 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This shift closely mirrors 2018, when the London Stock Exchange (LSE) faced severe criticism after its newly modified closing auction caused unprecedented price spikes",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any information regarding the London Stock Exchange or events in 2018.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Arbitrage Fund Assets = ₹1.5 lakh crore (previous: ₹1.2 lakh crore — Year-ago assets)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide data on arbitrage fund assets or year-ago comparisons.",
+          "detail": "The provided source text mentions the cancellation of the bond issue due to high yield bids, but it does not contain any information or analysis regarding the impact on interest rates for agricultural loans.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the market volatility and the mechanics of the new closing auction system as described in the source. However, it includes several specific figures and claims regarding arbitrage fund AUM, asset manager advisories, regulatory plans, and historical LSE comparisons that are not supported by the provided source text."
+      "notes": "The core event (cancellation of the ₹8,000 crore bond issue by NABARD due to high yield bids) is verified by the source. However, the quiz claim regarding the consequence of higher borrowing costs on agricultural loans is not supported by the provided text.",
+      "digestHash": "395b4511e224202d"
     },
     {
-      "slug": "milky-mist-ipo-size-cut",
-      "headline": "Why did India's favorite curd maker suddenly shrink its IPO?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "h1b-visa-fee-surcharge",
-      "headline": "Why is the US planning to charge more for H-1B visas?",
+      "slug": "upi-mdr-above-2000",
+      "headline": "Pay More for UPI? Government Eyes Fees Over ₹2,000",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The policy draft was leaked on Wednesday",
+          "claim": "UPI Transactions (FY26) = 130 billion (previous: 94 billion — FY25)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states the proposal is included in the DHS's latest regulatory agenda and has reappeared in the Unified Agenda, but it does not mention a leak occurring on Wednesday.",
+          "detail": "The source text provides data for July 2026 only (23.66 billion transactions) and does not contain annual figures for FY26 or FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Compared to local hiring, which can be 30% more expensive, utilizing foreign talent has been a key driver of profitability.",
+          "claim": "Total Value (FY26) = ₹200 lakh crore (previous: ₹150 lakh crore — FY25)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 30% cost difference between local and foreign talent.",
+          "detail": "The source text provides data for July 2026 only (₹29.88 trillion) and does not contain annual value figures for FY26 or FY25.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Indian IT giants like TCS, Infosys, and Wipro employ thousands of H-1B visa holders in the US.",
-          "status": "UNVERIFIABLE",
-          "detail": "While the source mentions large technology, consulting, and outsourcing firms, it does not name these specific companies.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "accounting for over 50% of their total export revenue",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not provide revenue breakdown percentages for Indian IT firms.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This mirrors the 2017 \"Buy American and Hire American\" executive order",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2017 executive order.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the core proposal regarding H-1B/L-1 surcharges as described in the source. However, it includes several specific figures and claims (such as the 30% hiring cost premium, the leak on Wednesday, and specific company mentions) that are not supported by the provided source text."
+      "notes": "The story accurately reflects the current policy discussions regarding potential UPI merchant fees as reported in the source. However, it includes annual transaction volume and value figures for FY26 and FY25 that are not present in the provided source text.",
+      "digestHash": "eb158558f3592ec6"
+    },
+    {
+      "slug": "supreme-court-uninsured-vehicles-challan-fuel",
+      "headline": "Why does the Supreme Court want to deny your car fuel?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Mandated Third-party Insurance Term for New Two-Wheelers = 5 years",
+          "status": "STALE",
+          "detail": "While 5 years was the mandated term following a 2018 Supreme Court order, the new Supreme Court directives issued on August 4, 2026, extended this mandatory period for new two-wheelers to six years.",
+          "correction": "Mandated Third-party Insurance Term for New Two-Wheelers = 6 years",
+          "source": "The Times of India, Mint, Hindustan Times, ETAuto, India Today, The Hindu, Indiablooms, LiveLaw, Whalesbook",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event and most factual claims, including the percentage of uninsured vehicles and the proposed 'no-fuel' rule. However, one key number card provides a stale figure for mandated insurance terms, as the Supreme Court's new directives, reported within the same story, updated this term. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1ea96babaedc6830"
     }
   ]
 }
