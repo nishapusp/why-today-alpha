@@ -1,6 +1,6 @@
 {
   "date": "2026-08-06",
-  "generatedAt": "2026-08-05T19:51:34.157Z",
+  "generatedAt": "2026-08-05T22:29:42.391Z",
   "results": [
     {
       "slug": "aurobindo-pharma-q1-results",
@@ -93,6 +93,53 @@
       "issues": [],
       "notes": "All factual claims regarding the RBI's liquidity absorption amount (₹1.5 trillion) and the level of surplus liquidity (over ₹3 trillion) are directly supported by the provided source texts.",
       "digestHash": "ba2613bf4f43b64f"
+    },
+    {
+      "slug": "google-deepmind-ai-leadership-shakeup",
+      "headline": "Google's AI Brain Trust Shifts; DeepMind Boss Gets New Role.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the leadership changes, stock market reaction, project delays, and researcher departures, are consistent with information from reliable sources published on August 5, 2026. The reported 4% fall in Alphabet shares is well within the range cited by multiple financial news outlets for the day, and Demis Hassabis's new role as 'Chief Scientist for Google AI' accurately reflects his confirmed title as 'Chief Scientist of Alphabet' given the context of his AI focus within the parent company. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fed2c9299c6f3b37"
+    },
+    {
+      "slug": "india-gas-levy-strategic-reserves",
+      "headline": "Government Eyes Gas Levy To Finance $42 Billion Strategic Reserves",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Implementation of the levy will likely begin after legislative processes are completed in 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the proposal has not yet received final approval from the cabinet and does not provide a timeline for legislative processes or implementation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the details provided in the source text regarding the proposed levy and strategic reserves. The only issue is a speculative timeline regarding implementation in 2027, which is not mentioned in the source.",
+      "digestHash": "3fb0b96312d5106e"
+    },
+    {
+      "slug": "e-commerce-export-units",
+      "headline": "Government Mandates Separate Export-Only Units for Foreign E-commerce",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Companies will begin the registration of new export-focused legal entities over the next 90 days.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the DGFT notification requirements but does not specify a 90-day deadline for registration.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the DGFT notification regarding separate legal entities for inventory-based exports. However, the specific '90-day' timeline for registration is not mentioned in the provided source text.",
+      "digestHash": "bf21c81cefb243ec"
     }
   ]
 }
