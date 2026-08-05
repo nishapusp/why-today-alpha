@@ -61,11 +61,15 @@ const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 
 const SYSTEM_PROMPT = `You are regenerating ONE story's complete JSON object for Why Today, a daily briefing for readers who follow India's economy, markets, banking, corporate news, and economy-relevant technology. Do not produce top-level edition fields — only the one story object.
 
-Write like a sharp friend explaining why something matters over chai, not a press release. Open every field with the single most surprising or relevant fact. Every keyNumbers value must be an actual figure (₹ amount, %, date, count), never a vague phrase — omit the entry if you don't have a real number.
+Write like a sharp friend explaining why something matters over chai, not a press release. Open every field with the single most surprising or relevant fact.
+
+keyNumbers (REQUIRED — do not return an empty or missing array): extract 2-5 real figures from your own research into the structured keyNumbers list, not just embedded in prose. 2026-08-05: a real, confirmed case wrote genuine sourced figures (branch counts, coverage percentages) throughout whatHappened/deepDiveRead but left keyNumbers completely empty — the story published with no number cards at all. If you have researched even ONE concrete figure (₹ amount, %, date, count) anywhere in the story, it belongs in keyNumbers too, not only in prose. Every keyNumbers value must be an actual figure, never a vague phrase — only omit an individual entry if you genuinely have no real number for that specific point, never omit the whole array when real figures exist elsewhere in your research.
 
 Headlines — the Curiosity Engine: "headline" max 11 words, language a Class 8 student understands, must make the reader think "Wait… why?" — surprise, curiosity, or a direct stake; NEVER clickbait (the story must deliver everything the headline promises); no bulletin language or jargon. Score it on curiosity /10 — rewrite until it's at least 9. Also include "whatsappHeadline" (max 9 words, punchier, at most one emoji, truthful) and "notificationHeadline" (max 7 words, hook first).
 
 timeMachine (required): "today" (one crisp line) and "future" (most likely next step, with timeframe if known) as fixed anchors, plus "pastEvents": an array of 3-6 {"period","headline","detail"} objects — the events from roughly the last decade that ACTUALLY shaped this story's thread, "period" a real date/year label (not a fixed "1 month ago"-style slot), "detail" 1-3 researched sentences with a real figure or outcome. Don't pad in a weak event just to fill a slot — 3 strong events beat 6 invented ones. Order chronologically, oldest first. Run dedicated date-qualified searches for the actual historical data — never invent precise figures, honest era context beats a fake number.
+
+quiz (required): exactly 3 multiple-choice questions testing whether a reader UNDERSTOOD the story (not trivia recall). Each has "question" (one sentence), "options" (exactly 4 short strings, one correct + three plausible-but-wrong distractors that reflect common misconceptions), "answerIndex" (integer 0-3, position of the correct option — vary it across questions, don't always use 0), and "explanation" (1-2 sentences on why the answer is right, reinforcing the concept). Question 1 should test the core fact, question 2 the "why it matters" reasoning, question 3 a concept/term the story relies on. 2026-08-05: this field was missing from this file's schema entirely (unlike generate-edition.js, which has always required it) — a real promoted story shipped with no quiz block as a direct result, not because the model dropped it but because it was never asked for.
 
 chart (OPTIONAL — only when the story centers on a measurable series): {"title","unit?","labels" (3-6 short strings),"values" (same count of plain numbers, consistent units, chronological),"takeaway" (one sentence)}. All values must be real, from your sources. If you don't have 3+ real comparable numbers, OMIT chart entirely.
 
@@ -96,6 +100,7 @@ Return ONLY valid JSON matching this shape:
   "knowledgeChain": ["..."],
   "ifYoureWondering": [{"q","a"}],
   "officialSources": [{"label","url"}],
+  "quiz": [{"question","options","answerIndex","explanation"}],
   "readMinutes",
   "sentiment" (positive|caution|critical|neutral)
 }`;
@@ -208,16 +213,22 @@ async function main() {
           system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents: [{ role: "user", parts: [{ text: userPrompt }] }],
           tools: [{ google_search: {} }],
-          // 2026-07-16: raised from 8192 — likely the actual cause of the
-          // "syntax error" failures (a JSON.parse SyntaxError is exactly
-          // what a truncated response produces). generate-edition.js
-          // allocates roughly 6500 tokens PER STORY for this same schema;
-          // 8192 was already tight for a full deep dive + timeMachine +
-          // chart + keyNumbers, and the quarterly-results guidance added
-          // in the same session asks for meaningfully more content
-          // (segment-level analysis, peer comparison data) without this
-          // budget ever being revisited.
-          generationConfig: { maxOutputTokens: 20000 },
+          // 2026-08-05: raised again, from 20000 — a real promoted story
+          // came back with every field AFTER deepDiveRead in the schema
+          // (timeMachine, keyNumbers, knowledgeChain, ifYoureWondering,
+          // officialSources, readMinutes, sentiment) silently missing,
+          // exactly the fields listed later in this prompt's documented
+          // shape — a truncation signature. 20000 was already ~3x
+          // generate-edition.js's own ~6500/story budget, but this call
+          // carries overhead that one doesn't: grounding tool-call
+          // exchanges and Gemini 2.5's default "thinking" both draw from
+          // the same output-token budget before the visible JSON is
+          // written. generate-edition.js caps its own per-request budget
+          // at 65536 (the model's actual ceiling) when it needs the room;
+          // using that same ceiling here too, since this call is always
+          // exactly one story — there's no cost in setting the ceiling
+          // higher than typically needed, only in setting it too low.
+          generationConfig: { maxOutputTokens: 65536 },
         }),
       });
 
@@ -316,6 +327,21 @@ async function main() {
     // file was the one place still missing it.
     const text = candidate.content?.parts?.filter((p) => !p.thought).map((p) => p.text || "").join("") ?? "";
     try {
+      // 2026-08-05: this check was missing entirely — a MAX_TOKENS
+      // finishReason means the response was cut off mid-object, but
+      // extractJson's balanced-brace scanner falls back to the last "}"
+      // it can find when the braces never re-balance, which can still
+      // produce something JSON.parse accepts (just missing every field
+      // after the cutoff point). That's exactly what shipped a real
+      // promoted story with keyNumbers/timeMachine/quiz/etc. all silently
+      // undefined instead of erroring. Surfacing this explicitly here
+      // routes it into the same outer generation-retry loop as a parse
+      // failure, so a fresh attempt (now with a much higher token
+      // ceiling too) gets a chance to complete instead of shipping a
+      // partial story.
+      if (candidate.finishReason === "MAX_TOKENS") {
+        throw new Error(`Response was cut off (finishReason: MAX_TOKENS) after ${text.length} chars — the model ran out of output budget before finishing the JSON.`);
+      }
       newStory = JSON.parse(extractJson(text));
       // 2026-07-16: a real run crashed here — newStory.deepDiveRead came
       // back as something other than a plain string (most likely an
@@ -377,6 +403,41 @@ async function main() {
   // right after a successful generation (which is what happened here —
   // the story data was already fine, only this log line crashed).
   console.log(`Deep dive length: ${String(newStory.deepDiveRead || "").split(/\s+/).filter(Boolean).length} words`);
+
+  // 2026-08-05: this file has no equivalent of generate-edition.js's
+  // validateStories() — nothing else catches a schema gap before
+  // publishing. Free (no extra Gemini call), so this stays a warning, not
+  // a blocking/auto-retrying check: retrying automatically would double
+  // the real cost (one more grounded generation call, plus the
+  // workflow's own follow-up fact-check) every time it fires, for fields
+  // that are cosmetic-but-not-safety-critical (missing number cards or
+  // timeline, not a wrong fact). Flagging it loudly here means whoever
+  // triggered this (including the admin's "Promote to full story"
+  // button) sees it immediately and can decide whether it's worth a
+  // manual follow-up regeneration with feedback.
+  //
+  // Originally only checked keyNumbers — broadened after a real promoted
+  // story ("Even timelines are not mentioned") turned out to be missing
+  // EVERY field the schema lists after deepDiveRead, not just keyNumbers:
+  // timeMachine, knowledgeChain, ifYoureWondering, officialSources,
+  // readMinutes, sentiment, and quiz all came back undefined too. That
+  // was a truncation (addressed above via the MAX_TOKENS check + higher
+  // ceiling), but this check exists precisely so any FUTURE incomplete
+  // generation — truncation or otherwise — is loudly visible in the logs
+  // no matter which fields it happens to hit, rather than only the one
+  // field a previous incident happened to surface.
+  const missingFields = [];
+  if (!Array.isArray(newStory.keyNumbers) || newStory.keyNumbers.length === 0) missingFields.push("keyNumbers (no number cards)");
+  if (!newStory.timeMachine || !newStory.timeMachine.today || !Array.isArray(newStory.timeMachine.pastEvents) || newStory.timeMachine.pastEvents.length === 0) missingFields.push("timeMachine (no timeline)");
+  if (!Array.isArray(newStory.knowledgeChain) || newStory.knowledgeChain.length === 0) missingFields.push("knowledgeChain");
+  if (!Array.isArray(newStory.ifYoureWondering) || newStory.ifYoureWondering.length === 0) missingFields.push("ifYoureWondering");
+  if (!Array.isArray(newStory.officialSources) || newStory.officialSources.length === 0) missingFields.push("officialSources");
+  if (!Array.isArray(newStory.quiz) || newStory.quiz.length === 0) missingFields.push("quiz");
+  if (!newStory.readMinutes) missingFields.push("readMinutes");
+  if (!newStory.sentiment) missingFields.push("sentiment");
+  if (missingFields.length > 0) {
+    console.warn(`\n⚠ ${missingFields.length} field(s) came back empty/missing: ${missingFields.join(", ")}. If the research clearly found this content (check the fields above), consider a follow-up regeneration with feedback naming what's missing.`);
+  }
 
   const confirmPrompt = isNew
     ? `\nAdd this as a new story (position 1, alongside the existing ${edition.stories.length}) and push? (y/n): `
