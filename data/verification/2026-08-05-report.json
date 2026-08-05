@@ -1,205 +1,7 @@
 {
   "date": "2026-08-05",
-  "generatedAt": "2026-08-04T22:48:45.800Z",
+  "generatedAt": "2026-08-05T01:05:18.060Z",
   "results": [
-    {
-      "slug": "indian-ship-sunk-yemen-red-sea",
-      "headline": "Projectile Sinks Indian Ship Off Yemen; All Crew Rescued. Why?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "14 crew members (13 Indian and 1 Yemeni)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text confirms 13 Indian crew members were rescued but does not mention a 14th crew member or their nationality.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "transported to the Port of Mokha",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the Port of Mokha.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "India's Ministry of External Affairs swiftly condemned the incident as an 'unprovoked' attack",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions a statement from the Ministry of Foreign Affairs regarding the need for free navigation, but does not contain the specific quote 'unprovoked'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Yemen's government pointed fingers at the Iran-backed Houthi rebels",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text states that the Yemeni government's coast guard rescued the crew, but does not report the government blaming the Houthis for this specific attack.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "In February 2026, the Strait of Hormuz itself was effectively closed due to escalating US-Iran conflict",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no information regarding a closure of the Strait of Hormuz in February 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story correctly identifies the sinking of the vessel and the rescue of the Indian crew, but includes several specific details (the 14th crew member, the destination port, specific government accusations, and historical events) that are not supported by the provided source text."
-    },
-    {
-      "slug": "aramco-q2-2026-results",
-      "headline": "Aramco Profit Surges 44% To $32.69 Billion. Is It Oil Prices Or Something Else?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The company's sales revenue also saw a robust increase of 28%, totaling $139.15 billion for the quarter.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text states sales rose 28% YoY to $139.15 billion, but the source does not provide the specific Q2 2025 revenue figure of $108.57 billion cited in the 'KEY NUMBER CARD'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "They might also point out that Aramco's dividend payouts, like the announced $21.9 billion for Q2, benefit its shareholders",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any dividend payout figures for Q2 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This critical chokepoint, through which approximately 20% of global oil supplies pass",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the 20% figure regarding global oil supplies passing through the Strait of Hormuz.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Aramco itself is focusing on strategic expansion projects, including the Zuluf crude oil increment and the Fadhili Gas Plant expansion",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the Fadhili Gas Plant expansion but does not mention the 'Zuluf crude oil increment'.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core financial figures regarding Aramco's Q2 2026 performance (net profit, revenue, and realized oil price) are correctly sourced. However, the story includes several specific figures and project details not present in the provided source text."
-    },
-    {
-      "slug": "bse-q1-fy27-results",
-      "headline": "India's Stock Exchange BSE Profit Jumps 62%. What's Powering The Surge?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This marks the 14th consecutive quarter of record revenue for the exchange.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts report the Q1 FY27 financial results but do not contain any information regarding the number of consecutive quarters of record revenue.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The near-doubling of revenue from equity derivatives, reaching ₹11,550 million",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention revenue figures for equity derivatives.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "the rise in unique client codes to 11.2 million",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention the number of unique client codes.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "from just 0.1 million in Q1 FY24",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention historical unique client code data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Compared to FY26, when BSE's full-year net income was ₹24.9 billion (an 88% increase YoY) and total revenue was ₹51.2 billion (up 60% YoY)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain full-year FY26 financial data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Equity Derivatives Revenue = ₹11,550 million (previous: ₹5,980 million — Q1 FY26)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention equity derivatives revenue figures.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core financial results (net profit and revenue) are verified against the provided sources. However, the story includes several specific figures regarding equity derivatives revenue, unique client codes, and historical performance that are not present in the source texts."
-    },
-    {
-      "slug": "us-china-data-center-tech-ban-india-implications",
-      "headline": "US Eyes Ban On Chinese Data Center Tech: What Does It Mean For India?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "companies like Zhongji Innolight estimated to control around 27% of the global market for optical transceivers",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions that China's optical transceiver industry controls a majority of the global market and that Zhongji Innolight is one of the biggest sellers, but it does not provide a specific 27% market share figure for the company.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "India's data center market projected to reach $4.30 billion in 2026 and $7.92 billion by 2032",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no data regarding the valuation or projections of the Indian data center market.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "recent US bans on other Chinese components like foreign-made drones (December 2025) and routers (April 2026)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention specific US bans on drones in December 2025 or routers in April 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the core news regarding the FCC's potential ban on Chinese optical transceivers as described in the source. However, it includes several specific market statistics and historical regulatory claims that are not supported by the provided source text."
-    },
     {
       "slug": "hormuz-reopening-oil-prices",
       "headline": "Why did global oil prices suddenly fall after weeks of panic?",
@@ -228,44 +30,8 @@
       "notes": "The story correctly identifies the ongoing diplomatic efforts regarding the Strait of Hormuz as reported in the source texts. However, it includes specific quantitative claims regarding shipping delays and the impact on India's trade balance that are not supported by the provided source material."
     },
     {
-      "slug": "us-states-sue-trump-tariffs",
-      "headline": "Why are twenty-five American states suing their own president?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "$120+ billion: The annual bilateral trade volume between India and the United States at risk.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any specific dollar amount regarding the bilateral trade volume between India and the United States.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "On Tuesday, a coalition of 25 US states sued the Trump administration",
-          "status": "WRONG",
-          "detail": "The source text states the lawsuit was filed on Monday, not Tuesday.",
-          "correction": "The lawsuit was filed on Monday.",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The lawsuit, filed in federal court on Tuesday",
-          "status": "WRONG",
-          "detail": "The source text states the lawsuit was filed on Monday, not Tuesday.",
-          "correction": "The lawsuit was filed on Monday.",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The central event (25 states suing the Trump administration over Section 301 tariffs) is confirmed by the source. However, the story incorrectly identifies the filing day as Tuesday instead of Monday, and includes a trade volume figure that is not present in the provided source text."
-    },
-    {
-      "slug": "ai-impact-it-outsourcing",
-      "headline": "Why is artificial intelligence slowing down hiring at India's tech giants?",
+      "slug": "nabard-cancels-bond-issue-august-2026",
+      "headline": "NABARD Cancels ₹8,000 Crore Bond Issue. Why Did Investors Balk?",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -278,10 +44,135 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "adani-power-promoter-share-swap-august-2026",
+      "headline": "Adani Power Stock Sees ₹2,627 Crore Promoter Share Swap. What Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Adani Power's promoter group entity, Worldwide Emerging Market Holding, sold 12.48 crore shares worth ₹2,627 crore, which were subsequently acquired by another promoter firm, Adani Infra (India) Ltd",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Adani Power, share sales, or promoter transactions. It is a list of unrelated headlines.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a generic list of headlines from Business Standard and contains no information about the Adani Power transaction described in the story. Therefore, all specific claims regarding the transaction are unverifiable based on the provided source."
+    },
+    {
+      "slug": "world-bank-ai-impact-india-outsourcing-jobs",
+      "headline": "AI Is 'Chipping Away' At India's Outsourcing Jobs, Says World Bank.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the core findings attributed to the World Bank report as described in the provided source texts, specifically regarding the impact of AI on outsourcing and hiring trends for multinational firms in India."
+    },
+    {
+      "slug": "dabur-fssai-labeling-ban",
+      "headline": "Why did the government suddenly ban Dabur's '100% pure' labels?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "15,000: The approximate number of retail outlets that will need inventory updates.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any specific number of retail outlets affected by the order.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Analysts estimate that repackaging costs and potential sales disruptions could shave off up to 1.5% from Dabur's near-term operating profit margin",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any analyst estimates regarding the impact on operating profit margins.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2015, the US Federal Trade Commission (FTC) cracked down on several major food corporations for misleading 'natural' claims",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the US FTC or any events from 2015.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Dabur had just recorded a healthy 15% growth in its Q1 net profit.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Dabur's Q1 net profit growth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the FSSAI order and the 4% stock drop, but includes several specific figures (retail outlet count, profit margin impact, historical FTC actions, and Q1 profit growth) that are not present in the provided source text."
+    },
+    {
+      "slug": "closing-auction-session-volatility",
+      "headline": "Why is India's new stock market timing making prices swing wildly?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "arbitrage funds hold over ₹1.5 lakh crore in assets under management in India",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the total assets under management (AUM) for arbitrage funds in India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "leading asset management companies to issue emergency advisories",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any asset management companies issuing emergency advisories regarding the closing auction system.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The NSE and SEBI are closely monitoring the price divergence and may introduce circuit filters or price bands within the closing auction by the end of August 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention SEBI or NSE planning to introduce circuit filters or price bands by the end of August 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This shift closely mirrors 2018, when the London Stock Exchange (LSE) faced severe criticism after its newly modified closing auction caused unprecedented price spikes",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any information regarding the London Stock Exchange or events in 2018.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Arbitrage Fund Assets = ₹1.5 lakh crore (previous: ₹1.2 lakh crore — Year-ago assets)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide data on arbitrage fund assets or year-ago comparisons.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the market volatility and the mechanics of the new closing auction system as described in the source. However, it includes several specific figures and claims regarding arbitrage fund AUM, asset manager advisories, regulatory plans, and historical LSE comparisons that are not supported by the provided source text."
     },
     {
       "slug": "milky-mist-ipo-size-cut",
-      "headline": "Why did South India's favorite curd giant suddenly shrink its IPO?",
+      "headline": "Why did India's favorite curd maker suddenly shrink its IPO?",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -296,117 +187,58 @@
       "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "lic-share-sale-oversubscribed",
-      "headline": "Why the government just scored a massive ₹36,400 crore win",
+      "slug": "h1b-visa-fee-surcharge",
+      "headline": "Why is the US planning to charge more for H-1B visas?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The transaction is valued at approximately $3.3 billion",
+          "claim": "The policy draft was leaked on Wednesday",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the bid value in rupees (Rs 36,400 crore) but does not provide a conversion to USD.",
+          "detail": "The source text states the proposal is included in the DHS's latest regulatory agenda and has reappeared in the Unified Agenda, but it does not mention a leak occurring on Wednesday.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "The government is targeting a strict fiscal deficit of 4.8% of GDP for the current fiscal year.",
+          "claim": "Compared to local hiring, which can be 30% more expensive, utilizing foreign talent has been a key driver of profitability.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the government's fiscal deficit target for the current fiscal year.",
+          "detail": "The source text does not mention a 30% cost difference between local and foreign talent.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Indian IT giants like TCS, Infosys, and Wipro employ thousands of H-1B visa holders in the US.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the source mentions large technology, consulting, and outsourcing firms, it does not name these specific companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "accounting for over 50% of their total export revenue",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide revenue breakdown percentages for Indian IT firms.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This mirrors the 2017 \"Buy American and Hire American\" executive order",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 2017 executive order.",
           "correction": null,
           "source": null,
           "inBroaderConnections": true,
           "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "listed entities must eventually maintain a minimum twenty-five percent public shareholding",
-          "status": "WRONG",
-          "detail": "The source text states that Sebi had given LIC time to achieve a minimum 10 per cent public shareholding, not 25 per cent.",
-          "correction": "10 per cent",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This massive transaction recalls the 2014 disinvestment of Coal India",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2014 Coal India disinvestment.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story correctly identifies the core event and the primary bid figure (Rs 36,400 crore). However, it includes several figures and historical comparisons (fiscal deficit target, USD conversion, 25% shareholding requirement, and the 2014 Coal India reference) that are not supported by the provided source text."
-    },
-    {
-      "slug": "sc-insurance-petrol-mandate",
-      "headline": "Why you might soon need insurance to buy petrol",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The government is expected to present its initial feasibility report to the Supreme Court within the next three months",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text states the court directed the IRDAI and MoRTH to deliberate and evolve a pilot project, but it does not mention a three-month deadline for a feasibility report.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Pilot Feasibility Deadline = 3 months",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not specify a three-month deadline for the feasibility report.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The Ministry of Road Transport will submit its technical feasibility study and pilot project blueprint to the Supreme Court within three months.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a three-month deadline for the submission of a feasibility study or blueprint.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the Supreme Court's directive regarding the 'no insurance, no fuel' pilot project and the 16.54 crore figure. However, it invents a 'three-month' deadline for the feasibility report, which is not present in the provided source text."
-    },
-    {
-      "slug": "hsbc-india-h1-earnings",
-      "headline": "Why corporate giants are driving HSBC India to record profits",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "leap-india-ipo-results",
-      "headline": "Why a low-profile supply chain company is chasing a massive IPO",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story correctly identifies the core proposal regarding H-1B/L-1 surcharges as described in the source. However, it includes several specific figures and claims (such as the 30% hiring cost premium, the leak on Wednesday, and specific company mentions) that are not supported by the provided source text."
     }
   ]
 }
