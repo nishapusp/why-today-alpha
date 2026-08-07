@@ -1,10 +1,11 @@
-import { getLatestEdition, getHomeStories } from "@/lib/getData";
+import { getLatestEdition, getHomeStories, getCategoryArchiveHighlights } from "@/lib/getData";
 import { getTermOfTheDay } from "@/lib/termOfDay";
 import ThreadBanner from "@/components/ThreadBanner";
 import ContinueLearning from "@/components/ContinueLearning";
 import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
+import CategoryArchive from "@/components/CategoryArchive";
 import PersonalizedName from "@/components/PersonalizedName";
 import ShareWebsiteButton from "@/components/ShareWebsiteButton";
 
@@ -22,6 +23,9 @@ export default async function Home() {
   const edition = await getLatestEdition();
   const homeStories = await getHomeStories();
   const termOfDay = getTermOfTheDay();
+  const categoryArchive = await getCategoryArchiveHighlights(
+    new Set(homeStories.map((s) => s.slug))
+  );
 
   // 2026-07-17: removed the auth()/currentUser()/recordVisitAndGetStreak/
   // getPreferences block that used to be here — Clerk's auth() is a
@@ -85,6 +89,8 @@ export default async function Home() {
           </h2>
           <Top10List stories={homeStories} />
         </div>
+
+        <CategoryArchive byCategory={categoryArchive} />
 
         {(termOfDay || homeStories.length > 0) && (
           <div className="space-y-3">

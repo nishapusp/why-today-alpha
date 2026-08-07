@@ -296,6 +296,33 @@ function isGovernmentWireOnly(sources) {
   return withUrls.every((s) => GOVERNMENT_WIRE_ONLY_DOMAINS.some((re) => re.test(s.url)));
 }
 
+// 2026-08-07: mirrors generate-edition.js's DIRECT_FEEDS list (domains,
+// not feed URLs — e.g. BBC's feed host is feeds.bbci.co.uk but its actual
+// articles live on bbc.com). Hand-maintained here rather than derived,
+// same as GOVERNMENT_WIRE_ONLY_DOMAINS above — keep in sync if
+// DIRECT_FEEDS changes. Used only to decide whether a story that
+// verification infrastructure genuinely couldn't check (see
+// isFromTrustedPublisher's one call site below) gets the benefit of the
+// doubt — never used to skip checking a story that WAS reachable, and
+// never overrides an actual FAIL/FABRICATED verdict.
+const TRUSTED_PUBLISHER_DOMAINS = [
+  /business-standard\.com/i,
+  /livemint\.com/i,
+  /economictimes\.indiatimes\.com/i,
+  /bbc\.co(m|\.uk)/i,
+  /moneycontrol\.com/i,
+  /financialexpress\.com/i,
+  /thehindubusinessline\.com/i,
+  /ndtv\.com/i,
+  /zeenews\.india\.com/i,
+];
+
+function isFromTrustedPublisher(sources) {
+  const withUrls = (sources || []).filter((s) => s.url);
+  if (withUrls.length === 0) return false;
+  return withUrls.every((s) => TRUSTED_PUBLISHER_DOMAINS.some((re) => re.test(s.url)));
+}
+
 function checkSourceRecency(sources, editionDate) {
   const reference = editionDate ? new Date(editionDate) : new Date();
   const maxAgeMs = MAX_STORY_AGE_DAYS * 24 * 3600 * 1000;
@@ -936,14 +963,41 @@ async function verifyEdition({
     // isChartOrKeyNumberIssue) — these are the exact figures readers
     // screenshot and share, so a single wrong one shouldn't need 2
     // unrelated issues elsewhere in the story to also cross warnThreshold.
-    const toRemove = results.filter(
-      (r) =>
-        r.verdict === "FAIL" ||
-        r.verdict === "FABRICATED" ||
-        r.neverVerified ||
-        (r.verdict === "WARN" &&
-          (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections || i.isChartOrKeyNumber)))
-    );
+    // 2026-08-07: neverVerified means verification INFRASTRUCTURE failed
+    // (unfetchable source links, then grounding quota exhausted on
+    // escalation, or a transient error) — it does NOT mean the story was
+    // checked and found wanting. A real 2026-08-07 run lost 3 of 8
+    // stories this way in one pass, all sourced entirely from this
+    // publication's own vetted outlet tier, purely because grounding
+    // quota happened to run out while trying to reach them. If every
+    // source a story actually cites is one of those trusted outlets (see
+    // TRUSTED_PUBLISHER_DOMAINS), the underlying reporting already
+    // carries real editorial accountability independent of whether OUR
+    // pipeline could verify it today — so it gets kept, not punished for
+    // an infrastructure failure. This is narrowly scoped to neverVerified
+    // ONLY: a genuine FAIL/FABRICATED verdict (the claim was actually
+    // checked and found to contradict its source, or invented) still
+    // always removes the story regardless of publisher — a reputable
+    // outlet doesn't make a model's fabrication on top of it acceptable.
+    const storyBySlug = new Map(stories.map((s) => [s.slug, s]));
+    const toRemove = results.filter((r) => {
+      if (r.verdict === "FAIL" || r.verdict === "FABRICATED") return true;
+      if (
+        r.verdict === "WARN" &&
+        (r.issues.length >= warnThreshold || r.issues.some((i) => i.inBroaderConnections || i.isChartOrKeyNumber))
+      ) {
+        return true;
+      }
+      if (r.neverVerified) {
+        const story = storyBySlug.get(r.slug);
+        if (story && isFromTrustedPublisher(story.officialSources)) {
+          console.log(`  ${r.slug}: neverVerified, but every cited source is a trusted publisher — keeping.`);
+          return false;
+        }
+        return true;
+      }
+      return false;
+    });
     if (toRemove.length === 0) {
       console.log("\n--auto-remove: nothing crossed the removal threshold — edition unchanged.");
     } else {

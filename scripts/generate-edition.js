@@ -84,6 +84,13 @@ const EDITION_PATH = path.join(__dirname, "..", "data", "edition.json");
 // Gemini free-tier daily quota. Bump back up later via STORY_TARGET env var
 // once billing is enabled, without needing a code change.
 const TOTAL_STORIES = parseInt(process.env.STORY_TARGET || "9", 10);
+// 2026-08-07: the real, product-level commitment is "at least this many
+// live stories a day" — distinct from TOTAL_STORIES (the ideal full
+// edition size). Previously the round loop's stop/continue decision used
+// an 80%-of-target heuristic (12 of 15) with no connection to any actual
+// promised minimum. Explicit and env-overridable so it can move without a
+// code change, same as TOTAL_STORIES.
+const MIN_DAILY_STORIES = parseInt(process.env.MIN_DAILY_STORIES || "10", 10);
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || "3", 10);
 // 2026-08-03: raised from 3 — a real, confirmed repeat slipped through at
 // exactly this gap. "RBI launches Mission SAKSHAM" (retraining co-op bank
@@ -1686,9 +1693,8 @@ async function main() {
     }
   }
 
-  const healthyFloor = Math.ceil(TOTAL_STORIES * 0.8);
-  if (liveCount >= healthyFloor || round === MAX_ROUNDS || hitHardQuotaWall) {
-    break; // done: healthy, out of top-up rounds, or quota's fully gone — no point trying more
+  if (liveCount >= MIN_DAILY_STORIES || round === MAX_ROUNDS || hitHardQuotaWall) {
+    break; // done: hit the daily minimum, out of top-up rounds, or quota's fully gone — no point trying more
   }
   console.log(`\nAfter fact-check, ${liveCount}/${TOTAL_STORIES} stories remain — generating a top-up batch to backfill the shortfall (round ${round + 1}/${MAX_ROUNDS})...`);
   } // end roundLoop

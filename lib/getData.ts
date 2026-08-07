@@ -179,6 +179,54 @@ export async function getArchivedStoryBySlug(date: string, slug: string): Promis
   return edition?.stories.find((s) => s.slug === slug);
 }
 
+export interface CategoryHighlight {
+  headline: string;
+  slug: string;
+  date: string; // archive date this story belongs to — needed for /archive/[date]/[slug]
+  summary: string;
+}
+
+// Bounded lookback and per-category cap — same reasoning as
+// scripts/generate-share-cards.js's ARCHIVE_DAYS_TO_COVER: keeps this
+// bounded rather than scanning the whole, ever-growing archive on every
+// call. Dates are read newest-first and each category stops accepting
+// once full, so this naturally returns each category's most recent
+// stories without needing a separate sort step.
+const CATEGORY_ARCHIVE_LOOKBACK_DAYS = 30;
+const CATEGORY_ARCHIVE_PER_CATEGORY = 4;
+
+/**
+ * Groups recent archived stories by category, for the homepage's
+ * "Browse by category" section — added 2026-08-07 so the home page still
+ * looks full on a day the live edition falls short of its target, and
+ * gives readers a way into older coverage in a category they follow.
+ * `excludeSlugs` should be today's live slugs, so a story isn't shown
+ * twice on the same page.
+ */
+export async function getCategoryArchiveHighlights(
+  excludeSlugs: Set<string> = new Set()
+): Promise<Partial<Record<Category, CategoryHighlight[]>>> {
+  const index = await getArchiveIndex();
+  const recentDates = index
+    .map((e) => e.date)
+    .sort()
+    .reverse()
+    .slice(0, CATEGORY_ARCHIVE_LOOKBACK_DAYS);
+
+  const byCategory: Partial<Record<Category, CategoryHighlight[]>> = {};
+  for (const date of recentDates) {
+    const edition = await getArchivedEdition(date);
+    if (!edition) continue;
+    for (const story of edition.stories) {
+      if (excludeSlugs.has(story.slug)) continue;
+      const list = byCategory[story.category] || (byCategory[story.category] = []);
+      if (list.length >= CATEGORY_ARCHIVE_PER_CATEGORY) continue;
+      list.push({ headline: story.headline, slug: story.slug, date, summary: story.summary });
+    }
+  }
+  return byCategory;
+}
+
 // Quick Reads / Pulse feed is served by app/api/quick-reads/route.ts,
 // reading from Netlify Blobs — not from a file here, since (per the
 // 2026-07-15 redesign) that content updates independently of deploys and
