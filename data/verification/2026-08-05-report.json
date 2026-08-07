@@ -1,22 +1,174 @@
 {
   "date": "2026-08-05",
-  "generatedAt": "2026-08-05T03:55:45.253Z",
+  "generatedAt": "2026-08-05T10:31:43.018Z",
   "results": [
     {
-      "slug": "india-banking-coverage-nears-universal",
-      "headline": "Wait, 99.92% Of Villages Have Bank Access? How?",
+      "slug": "hormuz-reopening-oil-prices",
+      "headline": "Why did global oil prices suddenly fall after weeks of panic?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "14 days: The average shipping delay added when vessels are forced to bypass the Persian Gulf.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source texts do not mention any specific duration for shipping delays caused by bypassing the Persian Gulf.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "$12.5 billion: The estimated hit to India's trade balance for every sustained ten-dollar jump in oil.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain this specific economic estimate regarding India's trade balance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story correctly identifies the diplomatic progress regarding the Strait of Hormuz as reported in the source texts. However, it includes specific quantitative claims regarding shipping delays and trade balance impacts that are not supported by the provided source material.",
+      "digestHash": "0baa2a4744a57abb"
+    },
+    {
+      "slug": "adani-power-promoter-share-swap-august-2026",
+      "headline": "Adani Power Stock Sees ₹2,627 Crore Promoter Share Swap. What Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the Adani Power share transfer (12.48 crore shares, ₹2,627 crore value, and the nature of the inter-se transfer) are supported by the provided source text.",
+      "digestHash": "06f87bd37e6491ba"
+    },
+    {
+      "slug": "world-bank-ai-impact-india-outsourcing-jobs",
+      "headline": "AI Is 'Chipping Away' At India's Outsourcing Jobs, Says World Bank.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "A World Bank analysis warns that artificial intelligence (AI) is eroding India's traditional outsourcing edge, with multinational and globally-linked firms hiring at a significantly slower pace.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any report, analysis, or statement from the World Bank regarding AI's impact on India's outsourcing edge or hiring patterns.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The study found that multinational corporations (MNCs) and firms with strong international connections are expanding their workforce in India at a significantly slower rate compared to domestic companies.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention any study or data comparing hiring rates between MNCs and domestic companies in the context of AI.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story attributes its central premise to a World Bank analysis, but neither of the provided source texts mentions such a report or any findings related to AI's impact on India's outsourcing sector.",
+      "digestHash": "8e9c90c2e06a0241"
+    },
+    {
+      "slug": "sc-rbi-digital-fraud",
+      "headline": "Digital Scams Soar: Supreme Court Demands RBI Fight Back!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Cyber Frauds Reported (2024-25) = Over 1.5 Lakh (previous: 1.1 Lakh — 2023-24)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these statistics regarding the number of cyber frauds reported.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Average Loss per Case = ₹50,000 (previous: ₹35,000 — 2023-24)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these statistics regarding the average loss per case.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the Supreme Court's directive to the RBI is supported by the source text. However, the 'KEY NUMBER CARD' statistics are not mentioned in the provided source material and are therefore unverifiable.",
+      "digestHash": "0568bb0638d87e98"
+    },
+    {
+      "slug": "nabard-cancels-bond-issue",
+      "headline": "NABARD Cancels ₹8,000 Crore Bond Sale: Who Got Cold Feet?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "What is a potential consequence of NABARD's higher borrowing costs? — stated correct answer: \"Higher interest rates on agricultural loans.\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention or discuss the potential impact of NABARD's borrowing costs on the interest rates of agricultural loans.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the cancellation of the ₹8,000 crore bond issue is supported by the source. However, the quiz claim regarding the consequence of higher borrowing costs on agricultural loan interest rates is not mentioned in the provided source text.",
+      "digestHash": "395b4511e224202d"
+    },
+    {
+      "slug": "supreme-court-uninsured-vehicles-challan-fuel",
+      "headline": "Why does the Supreme Court want to deny your car fuel?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "State governments will integrate the Vahan database with fuel retail networks to automate compliance checks by mid-2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the Supreme Court has directed the Centre and IRDAI to 'examine a pilot project' linking fuel supply to insurance status and ordered integration of ANPR cameras with the Vahan database for e-challans, there is no confirmed report or directive from the Supreme Court or a government body explicitly stating that state governments 'will integrate' the Vahan database with fuel retail networks nationwide by 'mid-2027'. The directive is for assessing a pilot project, not a firm, timed commitment for full national implementation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Supreme Court's directives and proposals concerning uninsured vehicles, including the percentage of uninsured vehicles and the suggestion for a 'no fuel' pilot project. Most factual claims are verified by multiple recent news sources. However, the specific timeline for the full nationwide integration of the Vahan database with fuel retail networks is presented as a definite future event when current reports only indicate a directive to explore a pilot project, rendering that particular claim unverified as a firm commitment. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1ea96babaedc6830"
+    },
+    {
+      "slug": "freshworks-q2-earnings-2026",
+      "headline": "Freshworks Just Beat Its Forecasts: Is SaaS The New Hot Sector?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including Freshworks' Q2 2026 revenue growth, GAAP profitability, upward revision of guidance, and historical context claims, have been thoroughly verified against reliable sources published on or before the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ad1f777bbd427744"
+    },
+    {
+      "slug": "tamil-nadu-announces-arivagam-ai-innovation-city",
+      "headline": "Tamil Nadu Unveils 'Arivagam': India's First AI & Innovation City",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Tamil Nadu announcing 'Arivagam' as India's first AI and innovation city in its 2026-27 state budget, are verified by multiple reliable sources published on the story's publication date (2026-08-05). Historical context points regarding Silicon Valley and China's AI initiatives are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "daf4bcf1bcf280ff"
+    },
+    {
+      "slug": "dpiit-issues-guidelines-startup-india-fund-of-funds",
+      "headline": "Startups Get ₹10,000 Crore Boost: New Fund Guidelines Issued",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Department for Promotion of Industry and Internal Trade (DPIIT) has officially issued guidelines for the ₹10,000 crore Startup India Fund of Funds 2.0",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from Business Standard (Source 2) mentions the headline 'Govt issues guidelines for 10,000 cr Startup India Fund of Funds 2.0' in its list of links, but the actual content of the article is not provided in the source text. The source text provided is a collection of headlines and snippets regarding RBI policy and other news, and does not contain the body text or confirmation of the DPIIT guidelines issuance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the headline appears in the source list, the actual text of the article detailing the guidelines is missing from the provided source material. Therefore, the specific claims regarding the issuance of these guidelines cannot be verified against the provided text.",
+      "digestHash": "4751c1f7da87695e"
     }
   ]
 }
