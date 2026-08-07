@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-08",
+  "generatedAt": "2026-08-07T19:11:01.216Z",
+  "results": [
+    {
+      "slug": "ai-job-creation-india-nomura-report",
+      "headline": "AI Creates More Indian Jobs Than It Destroys: Nomura Report",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the release and key findings of the Nomura report, are consistently supported by multiple reliable news sources published around the story's publication date. The general historical context and definitions provided are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "848f0b7b798f841b"
+    },
+    {
+      "slug": "sbi-q1-results-bad-loans-low",
+      "headline": "Why India’s biggest bank just hit a 20-year bad loan milestone",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Friday, State Bank of India reported a 10.2% growth in Q1 standalone net profit to ₹21,121 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is exclusively about India's forex reserves and contains no information regarding State Bank of India's Q1 financial results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bank's gross NPA ratio fell significantly, reaching a multi-decade low of under 2.5%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding SBI's NPA ratios.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Advances grew by over 14% year-on-year, while deposits grew at a slightly slower pace of 11%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding SBI's advances or deposit growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. It discusses RBI forex reserve data and does not mention State Bank of India's earnings, NPA ratios, or growth figures.",
+      "digestHash": "2e3a9a30c63e7bd7"
+    },
+    {
+      "slug": "sebi-clears-nine-ipos",
+      "headline": "Why SEBI just unleashed a massive wave of nine IPO approvals",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Blackstone-backed AGS Health also updated its draft papers for a proposed $500 million public issue.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the approval of nine IPOs and details regarding Ardee Industries, but it contains no mention of AGS Health or a $500 million public issue.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the SEBI IPO approvals and the Ardee Industries subscription data as per the source. However, it includes a claim about AGS Health that is not supported by the provided source text.",
+      "digestHash": "0ba48d25a764af98"
+    },
+    {
+      "slug": "lt-q1-profit-energy-realty-growth",
+      "headline": "Why L&T is booking massive profits despite West Asia tensions",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The company's ability to maintain a healthy operating margin of around 11% in its core segments",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (L&T Q1 FY27 Investor Presentation) does not contain any information regarding the company's operating margins.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q1 FY25 = 3116",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain financial data for Q1 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial figures for Q1 FY27 (net profit of ₹4,123 crore and the 14% growth rate) are supported by the source text. However, the story includes specific operating margin figures and historical data points (Q1 FY25) that are not present in the provided source material.",
+      "digestHash": "2f1cf7d2c4ce4d62"
+    },
+    {
+      "slug": "ola-electric-q1-results-losses-narrow",
+      "headline": "Can Ola Electric survive its narrowing but stubborn quarterly losses?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Ola Electric Mobility reported a consolidated net loss of ₹336 crore for the first quarter of FY27",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a product/marketing page for Ola Electric and contains no financial earnings data, quarterly results, or net loss figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Ola Electric Mobility reported a consolidated net loss of ₹426 crore in the first quarter of the previous financial year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no financial earnings data or historical loss figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's broader EV sector hit a record 3.28 lakh retail sales in July",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no industry-wide sales data or market statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is exclusively a marketing and product information page for Ola Electric vehicles and does not contain any of the financial results, quarterly loss figures, or industry-wide sales data cited in the story.",
+      "digestHash": "5efdaf2cc33918d0"
+    },
+    {
+      "slug": "saudi-turkey-pakistan-defence-pact",
+      "headline": "Why did three massive Muslim powers just sign a secret defence pact?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The pact outlines deep cooperation in military technology transfer, joint production, and strategic intelligence sharing",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states that the detailed terms, force commitments, and command arrangements remain undisclosed.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Regional Trade Finance Gap = $2.5 trillion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any trade finance gap figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (the signing of the pact in Mecca) is supported by the source. However, the story includes specific details about the pact's contents (technology transfer, intelligence sharing) and a trade finance figure that are not present in the provided source text.",
+      "digestHash": "5453b901b7df6af8"
+    },
+    {
+      "slug": "motherson-q1-results-growth",
+      "headline": "How a global buying spree just sent Motherson's profits up 70%",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Samvardhana Motherson reported a massive 70.1% surge in its Q1 net profit to ₹1,032 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is the NSE India homepage, which contains no financial results or earnings data for Samvardhana Motherson.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "consolidated revenue of ₹35,244 crore, marking a 17% growth compared to the ₹30,123 crore reported in the same quarter last year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no financial results or earnings data for Samvardhana Motherson.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Operating profit, or EBITDA, jumped 30% to ₹3,412 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no financial results or earnings data for Samvardhana Motherson.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Motherson's stock surged over 7% on the National Stock Exchange",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no market performance data or stock price movement for Samvardhana Motherson.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "integrating 15 recent global acquisitions",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding the company's acquisition history or count.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a generic landing page for the National Stock Exchange of India and does not contain any of the specific financial figures, earnings reports, or market data cited in the story.",
+      "digestHash": "ff1112b63b07ce03"
+    },
+    {
+      "slug": "indusind-bank-stock-broking",
+      "headline": "Why is IndusInd Bank suddenly rushing into the stock broking business?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Friday, August 7, 2026, private sector lender IndusInd Bank announced that the Reserve Bank of India had granted it formal approval to establish a wholly-owned stock broking subsidiary.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from the Reserve Bank of India does not mention IndusInd Bank, nor any approval for a stock broking subsidiary for said bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Indian retail investor demat accounts have crossed 16 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding the number of demat accounts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The move aims to capture a share of India's ₹5,000 crore annual retail brokerage fee pool.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding the size of the retail brokerage fee pool.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CASA Ratio Squeeze = 4.5%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding a 4.5% CASA ratio squeeze.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports a specific regulatory approval for IndusInd Bank, but the provided RBI source text contains no mention of this event. Consequently, the central event and all associated figures are unverifiable based on the provided source.",
+      "digestHash": "601ddbb00f711fc7"
+    },
+    {
+      "slug": "ags-health-india-ipo",
+      "headline": "Why is a US healthcare giant chasing a massive Indian IPO?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Friday, August 7, 2026, AGS Health, a portfolio company of global private equity giant Blackstone, filed updated draft documents with the Securities and Exchange Board of India (SEBI) for a $500 million, or approximately ₹4,200 crore, Initial Public Offering (IPO).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided SEBI source text does not contain any mention of AGS Health, Blackstone, or an IPO filing by this company.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "SEBI is expected to review AGS Health's updated draft red herring prospectus over the next six to eight weeks.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided SEBI source text does not mention AGS Health or any pending review of its prospectus.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes specific claims about a regulatory filing with SEBI, but the provided source text from the SEBI website contains no information regarding AGS Health or this IPO. Consequently, these claims are unverifiable based on the provided source.",
+      "digestHash": "46d9eb1112a4c4e1"
+    }
+  ]
+}
