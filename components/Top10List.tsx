@@ -13,16 +13,22 @@ export default function Top10List({
   readSlugs: initialReadSlugs = [],
   linkBase = "/story",
   trackReads = true,
+  previewCount,
 }: {
   stories: Story[];
   readSlugs?: string[];
   linkBase?: string; // "/story" for today, "/archive/2026-07-08" for an archived day
   trackReads?: boolean; // false for archived days — no point marking old stories "read" against today's streak
+  previewCount?: number; // 2026-08-08: cap the initial render (home page uses this — a
+  // full 15-story list stacked above several other new sections made the
+  // page unreasonably long) with a "Show all" expand. Omit for the
+  // uncapped behavior every existing caller (archive days, etc.) still gets.
 }) {
   const { isSignedIn, isLoaded } = useUser();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [newlyRead, setNewlyRead] = useState<Set<string>>(new Set());
   const [showRead, setShowRead] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   // 2026-07-17: readSlugs is now fetched client-side (below), not passed
   // pre-resolved from a server-side auth() call — that auth() call in
   // app/page.tsx was forcing the whole home page to skip ISR caching and
@@ -52,7 +58,10 @@ export default function Top10List({
   // Stories read in a PAST session are hidden by default (feed feels fresh).
   // Stories opened just now, in THIS session, stay visible with a ✓ badge —
   // never yanked out from under someone actively reading it.
-  const visible = showRead ? all : all.filter((s) => !alreadyReadSet.has(s.slug));
+  const unread = showRead ? all : all.filter((s) => !alreadyReadSet.has(s.slug));
+  const cappedCount = previewCount && !expanded ? Math.max(previewCount, 1) : unread.length;
+  const visible = unread.slice(0, cappedCount);
+  const remainingCount = unread.length - visible.length;
 
   async function markRead(slug: string, terms?: string[]) {
     if (!trackReads) return;
@@ -267,6 +276,16 @@ export default function Top10List({
           </div>
         );
       })}
+
+      {remainingCount > 0 && (
+        <button
+          onClick={() => setExpanded(true)}
+          className="text-sm font-semibold text-center py-2.5 rounded-xl"
+          style={{ color: "var(--navy)", background: "var(--surface)", border: "1px solid var(--border)" }}
+        >
+          View all {unread.length} stories ({remainingCount} more) ↓
+        </button>
+      )}
 
       {hiddenCount > 0 && !showRead && (
         <button

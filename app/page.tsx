@@ -102,7 +102,7 @@ export default async function Home() {
           <h2 className="font-display text-lg text-[var(--text-primary)] mb-3">
             Today&apos;s stories ({homeStories.length})
           </h2>
-          <Top10List stories={homeStories} />
+          <Top10List stories={homeStories} previewCount={6} />
         </div>
 
         <TopStoriesBySector stories={todaysOnly} />
