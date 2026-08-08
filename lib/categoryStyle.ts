@@ -67,8 +67,52 @@ export const CATEGORY_STYLE: Record<Category, CategoryStyle> = {
     tint: "#ECEFFB",
     deep: "#333F8C",
   },
+  "Personal Finance": {
+    icon: "💰",
+    accent: "#2E7D32",
+    tint: "#E9F5EA",
+    deep: "#1E5C22",
+  },
+  "Real Estate": {
+    icon: "🏗️",
+    accent: "#946A3E",
+    tint: "#F5EEE4",
+    deep: "#6D4C28",
+  },
+  "Auto & EV": {
+    icon: "🚗",
+    accent: "#C24B2E",
+    tint: "#FBEBE5",
+    deep: "#8F361F",
+  },
 };
 
 export function getCategoryStyle(category: Category | string): CategoryStyle {
   return CATEGORY_STYLE[category as Category] ?? CATEGORY_STYLE.Policy;
 }
+
+// URL-safe anchor id for a category name — several categories now contain
+// spaces/ampersands ("Personal Finance", "Auto & EV") that aren't valid
+// as-is in a fragment link.
+export function categoryAnchor(category: Category | string): string {
+  return category.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+// Fixed order so every category-grouped section (today's stories, archive,
+// sector nav) reads the same way every day, rather than shuffling with
+// whatever order Object.keys happened to return. Single source of truth —
+// shared across all category-grouped homepage sections.
+export const CATEGORY_ORDER: Category[] = [
+  "Banking",
+  "Economy",
+  "Personal Finance",
+  "Real Estate",
+  "Technology",
+  "AI",
+  "Auto & EV",
+  "World",
+  "Policy",
+  "Corporate",
+  "IPO",
+  "Startups",
+];

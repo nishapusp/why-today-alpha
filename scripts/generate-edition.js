@@ -211,7 +211,7 @@ Return ONLY valid JSON matching this shape:
  "vocabulary":[{"term","definition"}],
  "stories":[{
    "headline","whatsappHeadline","notificationHeadline",
-   "slug","category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
+   "slug","category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI|Personal Finance|Real Estate|Auto & EV),
    "summary","quickRead","whatHappened","whyToday","whyCare","whatNext","deepDiveRead",
    "timeMachine":{"today","future","pastEvents":[{"period","headline","detail"}]},
    "chart":{"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
@@ -661,6 +661,9 @@ const CATEGORY_SEARCH_TERMS = {
   IPO: "stock exchange listing bell india",
   Startups: "startup office team india fintech",
   AI: "artificial intelligence technology digital",
+  "Personal Finance": "savings money wallet india rupee",
+  "Real Estate": "apartment building construction india skyline",
+  "Auto & EV": "car electric vehicle india road",
 };
 
 // Turn a headline into a Pexels-friendly 2-3 keyword query, so different

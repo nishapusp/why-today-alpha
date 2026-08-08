@@ -6,6 +6,11 @@ import ListenNow from "@/components/ListenNow";
 import TermOfTheDay from "@/components/TermOfTheDay";
 import Top10List from "@/components/Top10List";
 import CategoryArchive from "@/components/CategoryArchive";
+import SectorNav from "@/components/SectorNav";
+import VisualStoryStrip from "@/components/VisualStoryStrip";
+import TopStoriesBySector from "@/components/TopStoriesBySector";
+import DeepDiveStories from "@/components/DeepDiveStories";
+import TopQuestions from "@/components/TopQuestions";
 import PersonalizedName from "@/components/PersonalizedName";
 import ShareWebsiteButton from "@/components/ShareWebsiteButton";
 
@@ -54,6 +59,12 @@ export default async function Home() {
     homeStories.map((s) => [s.slug, { headline: s.headline, slug: s.slug }])
   );
 
+  // Strictly today's live stories (no carried-over padding) — used by
+  // sections below that link into /visual-preview/[slug], which only
+  // resolves today's edition and would 404 on a carried-over story.
+  const todaysOnly = edition.stories;
+  const categoriesToday = new Set(todaysOnly.map((s) => s.category));
+
   return (
     <>
       <main className="max-w-2xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden">
@@ -83,12 +94,22 @@ export default async function Home() {
           </div>
         </div>
 
+        <SectorNav categoriesToday={categoriesToday} />
+
+        <VisualStoryStrip stories={todaysOnly} />
+
         <div>
           <h2 className="font-display text-lg text-[var(--text-primary)] mb-3">
             Today&apos;s stories ({homeStories.length})
           </h2>
           <Top10List stories={homeStories} />
         </div>
+
+        <TopStoriesBySector stories={todaysOnly} />
+
+        <DeepDiveStories stories={todaysOnly} />
+
+        <TopQuestions stories={todaysOnly} />
 
         <CategoryArchive byCategory={categoryArchive} />
 

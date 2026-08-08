@@ -10,7 +10,10 @@ export type Category =
   | "Corporate"
   | "IPO"
   | "Startups"
-  | "AI";
+  | "AI"
+  | "Personal Finance"
+  | "Real Estate"
+  | "Auto & EV";
 
 export interface KeyNumber {
   label: string;

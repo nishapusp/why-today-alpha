@@ -92,7 +92,7 @@ QUARTERLY RESULTS STORIES — special handling (this readership includes bankers
 Return ONLY valid JSON matching this shape:
 {
   "headline", "whatsappHeadline", "notificationHeadline",
-  "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI),
+  "slug", "category" (Banking|Economy|Technology|World|Policy|Corporate|IPO|Startups|AI|Personal Finance|Real Estate|Auto & EV),
   "summary", "quickRead", "whatHappened", "whyToday", "whyCare", "whatNext", "deepDiveRead",
   "timeMachine": {"today","future","pastEvents":[{"period","headline","detail"}]},
   "chart": {"title","unit?","labels":["..."],"values":[numbers],"takeaway"} (OPTIONAL — omit if not genuinely numeric),
