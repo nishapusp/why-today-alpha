@@ -1,0 +1,79 @@
+{
+  "date": "2026-08-09",
+  "generatedAt": "2026-08-08T21:31:55.881Z",
+  "results": [
+    {
+      "slug": "us-h1b-visa-grace-period-cut",
+      "headline": "US May Cut H-1B Grace Period: Is Your Job At Risk?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-stricter-loan-recovery-rules",
+      "headline": "RBI Unleashes Tougher Loan Recovery Rules For Banks",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "canada-deportation-drive-hits-indians",
+      "headline": "Canada Just Deported Over 3,300 Indians In Half A Year. Why?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "apollo-micro-systems-q1-results-fy27",
+      "headline": "Apollo Micro Systems Q1 Profit Surges 45% On Robust Sales",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All financial figures, including the consolidated net profit and sales growth percentages for Q1 FY27, are fully supported by the provided source text.",
+      "digestHash": "e16cb726a3fb9d3c"
+    },
+    {
+      "slug": "rbi-rejects-religare-demerger-proposal",
+      "headline": "Why did the RBI just block Religare's massive restructuring?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
