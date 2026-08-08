@@ -1,6 +1,6 @@
 {
   "date": "2026-08-07",
-  "generatedAt": "2026-08-07T02:08:49.782Z",
+  "generatedAt": "2026-08-07T08:53:18.198Z",
   "results": [
     {
       "slug": "rbi-holds-rates-inflation-risks",
@@ -94,6 +94,98 @@
       "issues": [],
       "notes": "All specific factual claims regarding Shipping Corporation of India's Q1 FY27 results and historical freight rate trends are accurately reported and verified by reliable sources. The central event, the announcement of Q1 FY27 results, is confirmed to have occurred as stated. (escalated from source mode — original links were unfetchable)",
       "digestHash": "3d04c4c794aed38f"
+    },
+    {
+      "slug": "microsoft-opens-india-largest-data-center",
+      "headline": "Microsoft Opens India's Largest Data Center Hub, Fuels AI Ambition",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been thoroughly verified against reliable sources published around the story's date. The central event of Microsoft launching its newest and largest data center in Hyderabad is confirmed to have occurred on August 6, 2026, the day prior to the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "766ee8a998319ed5"
+    },
+    {
+      "slug": "rbi-overhauls-rural-cooperative-bank-norms",
+      "headline": "RBI Proposes Major Lending Changes for Rural Co-op Banks",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in Source 1 regarding the RBI's draft regulations for Rural Co-operative Banks. The historical references to the 2020 PMC Bank crisis and the 2002 Madhavpura Mercantile Co-operative Bank scandal are consistent with general financial history, and the story correctly identifies the current status of the norms as 'draft' and 'open for public consultation'.",
+      "digestHash": "a49efec4ee907fad"
+    },
+    {
+      "slug": "supreme-court-seeks-centre-response-data-protection-law",
+      "headline": "Supreme Court Challenges Government's Data Protection Law",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of the Supreme Court seeking a response from the government on the DPDP Act on August 7, 2026, have been verified by reliable sources. The historical timeline and key concerns raised by petitioners are also accurately reported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "c78799e864844df3"
+    },
+    {
+      "slug": "rbi-rules-could-force-tata-sons-listing",
+      "headline": "RBI May Force Tata Sons to List on Stock Exchanges",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Number of Listed Tata Group Companies = 29",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the number of listed Tata Group companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the regulatory context regarding Tata Sons' classification as an 'upper layer' NBFC as described in the source. However, the specific figure regarding the number of listed Tata Group companies is not supported by the provided source text.",
+      "digestHash": "bcf718474a746b8b"
+    },
+    {
+      "slug": "no-standalone-environmental-clearance-ai-data-centers",
+      "headline": "No Separate Environment Clearances for AI Data Centres",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims in the news story, including the central policy announcement by India's Ministry of Environment, Forest and Climate Change regarding AI data centres' environmental clearances, are accurately verified by reliable sources as of the publication date. The background information, historical context, and key figures cited are also correct. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fe3125a314f83ebf"
+    },
+    {
+      "slug": "rbi-proposes-ban-revolving-credit-nbfcs",
+      "headline": "RBI Plans To Bar Most NBFCs From 'Revolving Credit'",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India has proposed new draft norms that would restrict most Non-Banking Financial Companies (NBFCs) to offering only term loans, barring them from providing revolving credit facilities.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a list of headlines and snippets from a news aggregator. While the title of the source link mentions 'RBI's new draft norms for NBFCs to restrict revolving credit', the actual content of the source text does not contain any information, details, or confirmation regarding the existence of such draft norms or their specific contents.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Draft Norms Issued: August 7, 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the issuance of any draft norms on this date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Prior to this, in 2024, the RBI had already tightened rules regarding loan recovery practices for NBFCs",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any information regarding RBI regulations issued in 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of unrelated news headlines and does not contain the body text or details necessary to verify the claims made in the story. Consequently, the central event and all specific details are unverifiable based on the provided source.",
+      "digestHash": "40583f41631fada0"
     }
   ]
 }
