@@ -1,6 +1,6 @@
 {
   "date": "2026-08-10",
-  "generatedAt": "2026-08-09T18:50:43.692Z",
+  "generatedAt": "2026-08-09T21:13:28.300Z",
   "results": [
     {
       "slug": "rbi-maintains-repo-rate-forecasts-strong-gdp",
@@ -152,17 +152,20 @@
       "slug": "thoothukudi-spaceport-private-operators",
       "headline": "India Invites Private Firms To Operate New Spaceport In Thoothukudi",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
+          "claim": "strengthening its position in the projected $1 trillion global space economy.",
+          "status": "STALE",
+          "detail": "As of August 2026, the global space economy is estimated at approximately $626 billion in 2025. Projections for it to reach $1 trillion typically fall into the early-to-mid 2030s, such as Novaspace projecting $1.01 trillion by 2034, or the World Economic Forum and McKinsey & Company projecting $1.8 trillion by 2035. The claim implies a more immediate or current state of being a $1 trillion economy, which is not accurate for the publication date.",
+          "correction": "strengthening its position in the global space economy, which is projected to reach $1 trillion by the early-to-mid 2030s.",
+          "source": "Orbital Radar, World Economic Forum, PwC, Global Market Insights",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story accurately reports the central event of IN-SPACe inviting private players to operate the new Thoothukudi spaceport for SSLVs, and most factual claims are verified. One claim regarding the global space economy's size is materially outdated, as the $1 trillion figure is a future projection for the next decade, not the current or immediate future as implied. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "45b61282431cd95c"
     },
     {
       "slug": "sebi-unclaimed-mutual-funds",
@@ -188,6 +191,22 @@
       "issues": [],
       "notes": "All claims regarding the Pentagon's directive to defense firms, the depletion of stockpiles, and the link to the war with Iran are supported by the provided source texts.",
       "digestHash": "809f2dbf0a17a002"
+    },
+    {
+      "slug": "july-veg-thali-cost-rises",
+      "headline": "Your Veg Thali Just Got 4% Pricier In July.",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
