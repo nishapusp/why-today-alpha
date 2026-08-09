@@ -1,42 +1,10 @@
 {
   "date": "2026-08-09",
-  "generatedAt": "2026-08-08T21:31:55.881Z",
+  "generatedAt": "2026-08-09T00:24:20.002Z",
   "results": [
-    {
-      "slug": "us-h1b-visa-grace-period-cut",
-      "headline": "US May Cut H-1B Grace Period: Is Your Job At Risk?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
     {
       "slug": "rbi-stricter-loan-recovery-rules",
       "headline": "RBI Unleashes Tougher Loan Recovery Rules For Banks",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "canada-deportation-drive-hits-indians",
-      "headline": "Canada Just Deported Over 3,300 Indians In Half A Year. Why?",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
@@ -62,6 +30,22 @@
     {
       "slug": "rbi-rejects-religare-demerger-proposal",
       "headline": "Why did the RBI just block Religare's massive restructuring?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "cupid-profit-triples-q1-sales-surge",
+      "headline": "Cupid Ltd.'s Profit Nearly Triples in Q1, Sales Surge 35%",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
