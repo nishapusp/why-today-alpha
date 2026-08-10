@@ -1,69 +1,7 @@
 {
   "date": "2026-08-10",
-  "generatedAt": "2026-08-10T00:18:38.336Z",
+  "generatedAt": "2026-08-10T09:13:47.050Z",
   "results": [
-    {
-      "slug": "rbi-maintains-repo-rate-forecasts-strong-gdp",
-      "headline": "RBI Keeps Rates Steady, Projects Strong 6.9% GDP Growth",
-      "verdict": "UNVERIFIABLE",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "The Reserve Bank of India (RBI) decided to keep its key lending rate, the repo rate, unchanged at 5.25%",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text is a blank template/archive page for RBI press releases and contains no information regarding an August 2026 monetary policy decision.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "RBI upwardly revised its real GDP growth projection for the current fiscal year (FY27) to 6.9%",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no information regarding GDP growth projections.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "FY27 CPI inflation projection at 4.6%",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no information regarding CPI inflation projections.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Repo Rate trend chart data points (May 2022 = 4.4, April 2024 = 6.25, June 2025 = 5.5, etc.)",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no historical repo rate data or charts.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The provided source text is a generic RBI archive landing page and does not contain any of the specific monetary policy data, GDP projections, or historical rate trends cited in the story.",
-      "digestHash": "90f0bf2d7e219f1a"
-    },
-    {
-      "slug": "nasscom-warns-ai-impact-on-it-services",
-      "headline": "AI Could Force 25% Of IT Firms To Reshape Or Struggle: Nasscom",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
     {
       "slug": "ed-director-rahul-navin-extension",
       "headline": "ED Director Rahul Navin Gets Another One-Year Tenure Extension",
@@ -177,20 +115,31 @@
       "digestHash": "809f2dbf0a17a002"
     },
     {
-      "slug": "july-veg-thali-cost-rises",
-      "headline": "Your Veg Thali Just Got 4% Pricier In July.",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "slug": "mithila-makhana-first-sea-export-australia",
+      "headline": "Bihar's Special Makhana Reaches Australia For The First Time!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event, shipment size, farmer returns, product origin, GI tag status and award date, and APEDA establishment year, have been verified by multiple reliable sources. The quiz claims are also accurate based on the search results. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "36f68721d38969d0"
+    },
+    {
+      "slug": "uttar-pradesh-massive-semiconductor-investment",
+      "headline": "UP Lands ₹45,000 Crore Tech & Green Energy Investment!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding investment amounts, job creation figures, and company names are supported by the provided source text. The story correctly attributes the aggregate investment figure and the specific sectoral breakdowns.",
+      "digestHash": "31bc4ab453bb128c"
+    },
+    {
+      "slug": "india-investments-data-centers-nuclear-ai",
+      "headline": "India Sees ₹26.75 Trillion In New Investments: Is AI The Driver?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the headline and core data points provided in the cited Business Standard source regarding the ₹26.75 trillion investment report.",
+      "digestHash": "2b0150a23f69e318"
     }
   ]
 }
