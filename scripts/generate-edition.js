@@ -158,6 +158,8 @@ The following outlets are this publication's own vetted, trusted tier (the same 
 
 2026-07-29: extend the SAME scope-precision discipline above to EVERY entry in "keyNumbers", not just the single central/headline statistic — found necessary after a real, confirmed error where a story's headline profit figure was correctly sourced but its keyNumbers "Revenue" card was not (₹2,605 cr reported vs. an actual ~₹3,144 cr consolidated figure). A keyNumbers card is presented to the reader as a standalone hard fact, scanned in isolation — it gets the same trust as the headline number, so it needs the same rigor. Before writing each keyNumbers value: confirm which basis it's on (consolidated vs. standalone, YoY vs. QoQ, gross vs. net) and that this matches what the source you're citing actually reports, not an assumption carried over from a different figure in the same story.
 
+2026-08-10: apply the same "don't trust a source's phrasing blindly" discipline to anyone's ROLE, TITLE, or INCUMBENCY status — found necessary after a real, confirmed error: a story described a sitting head of state as a "former President," because that phrasing was copied faithfully from an older article that was accurate when IT was written, before an election changed who held the office. Having a search tool available in this run does NOT automatically prevent this — search can surface a correctly-cited, on-topic, otherwise-reliable source that is simply older than the story you're writing today, and a source being older than your story is invisible unless you specifically check for it. Before writing "current," "former," "outgoing," "newly appointed," or any other status word next to a named minister, CEO, chairperson, governor, or head of state, run a fresh, date-qualified search ("[name] [role] [current year]") to confirm that status as of TODAY specifically — do not infer it from how an older cited article phrased it, no matter how reliable that outlet generally is. When you cannot independently confirm the current status, use the role/title alone without the qualifier ("the RBI Governor announced..." not "outgoing RBI Governor announced...") rather than asserting a status you're not certain is still accurate.
+
 ## Recency is mandatory, not a preference
 Every one of the ${storyCount} stories must be about something that was reported or happened within the last 24-48 hours specifically — not a general/recurring topic dressed up as news. When searching, use date-qualified queries: include words like "today," "this week," the actual current date, or "latest" in your search terms rather than generic topic searches, which tend to surface older, more established articles instead of breaking ones.
 Reject any story candidate that is really an evergreen or recurring theme (e.g. "RBI's ongoing approach to liquidity management" without a specific new trigger event) — if you can't find a genuinely fresh news hook for a topic, search again with different terms or pick a different story entirely. It is better to search harder than to include a stale story.
@@ -1012,6 +1014,50 @@ async function generateBatch(storyCount, excludeHeadlines, recentDaysHeadlines, 
   }
 }
 
+// 2026-08-10: free (no API cost — plain string matching), added alongside
+// the prompt fix after a real, confirmed error where a story called a
+// sitting head of state "former President" (copied faithfully from an
+// older, correctly-sourced article that predated an election). The prompt
+// fix reduces how often this happens; this catches it if it happens
+// anyway, flagging it in the Actions log for a human glance rather than
+// silently shipping. Deliberately NOT auto-removed or auto-escalated to
+// grounded verification — that would cost real quota on every story that
+// happens to mention a role/title, most of which are perfectly fine.
+// (?:\w+\s+){0,2} allows a short qualifier between the status word and the
+// role ("former US President", "former Reserve Bank Governor") — without
+// it, the exact real sentence that prompted this check ("former US
+// President Trump") doesn't match at all, since "former" and "President"
+// aren't adjacent.
+const TIME_SENSITIVE_ROLE_PATTERN =
+  /\b(former|outgoing|ex-|current|sitting|incumbent|newly[- ]appointed|newly[- ]elected)\s+(?:\w+\s+){0,2}(president|prime minister|governor|ceo|chief executive|chairman|chairperson|chairwoman|minister|secretary|director|head of state)\b/gi;
+
+function gatherStoryText(story) {
+  const parts = [
+    story.headline, story.whatsappHeadline, story.notificationHeadline,
+    story.summary, story.quickRead, story.whatHappened, story.whyToday,
+    story.whyCare, story.whatNext, story.deepDiveRead,
+  ].map((f) => asText(f));
+  if (Array.isArray(story.knowledgeChain)) parts.push(story.knowledgeChain.map(asText).join(" "));
+  if (Array.isArray(story.ifYoureWondering)) {
+    parts.push(story.ifYoureWondering.map((item) => `${asText(item?.q)} ${asText(item?.a)}`).join(" "));
+  }
+  if (story.timeMachine && typeof story.timeMachine === "object") {
+    parts.push(asText(story.timeMachine.today), asText(story.timeMachine.future));
+    if (Array.isArray(story.timeMachine.pastEvents)) {
+      parts.push(story.timeMachine.pastEvents.map((e) => `${asText(e?.headline)} ${asText(e?.detail)}`).join(" "));
+    }
+  }
+  return parts.join(" \n ");
+}
+
+function checkTimeSensitiveLanguage(story) {
+  const text = gatherStoryText(story);
+  const matches = [...text.matchAll(TIME_SENSITIVE_ROLE_PATTERN)].map((m) => m[0]);
+  if (matches.length === 0) return null;
+  const unique = [...new Set(matches.map((m) => m.toLowerCase()))];
+  return `contains role/incumbency language worth a manual check: ${unique.map((m) => `"${m}"`).join(", ")} — confirm this status is still accurate as of today, not just accurate as of whatever source it was drawn from.`;
+}
+
 // Validates a list of stories (per-batch or whole edition). Returns
 // { hard, soft } — hard issues block publishing that batch, soft issues
 // are logged but don't stop the stories from going live.
@@ -1166,6 +1212,9 @@ function validateStories(stories, startIndex = 0) {
         soft.push(`${label}: all quiz answers are in the same position (${story.quiz[0].answerIndex}).`);
       }
     }
+
+    const timeSensitiveIssue = checkTimeSensitiveLanguage(story);
+    if (timeSensitiveIssue) soft.push(`${label}: ${timeSensitiveIssue}`);
   });
   return { hard, soft };
 }
