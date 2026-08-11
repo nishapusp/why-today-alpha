@@ -21,7 +21,17 @@ const EDITABLE_STORY_FIELDS: { key: keyof Story; label: string; multiline?: bool
   { key: "deepDiveRead", label: "Deep dive", multiline: true },
 ];
 
-function StoryRow({ story, onChanged }: { story: Story; onChanged: () => void }) {
+function StoryRow({
+  story,
+  onChanged,
+  selected,
+  onToggleSelect,
+}: {
+  story: Story;
+  onChanged: () => void;
+  selected: boolean;
+  onToggleSelect: () => void;
+}) {
   const [mode, setMode] = useState<"view" | "edit" | "regenerate">("view");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -94,11 +104,20 @@ function StoryRow({ story, onChanged }: { story: Story; onChanged: () => void })
   }
 
   return (
-    <div className="border rounded-xl p-3 mb-3" style={{ borderColor: "var(--border)" }}>
+    <div className="border rounded-xl p-3 mb-3" style={{ borderColor: "var(--border)", background: selected ? "rgba(0,0,0,0.03)" : "transparent" }}>
       <div className="flex items-start justify-between gap-2">
-        <div>
-          <p className="text-[13px] font-mono opacity-60">{story.category} &middot; {story.slug}</p>
-          <p className="font-medium text-[15px]">{story.headline}</p>
+        <div className="flex items-start gap-2.5 min-w-0">
+          <input
+            type="checkbox"
+            checked={selected}
+            onChange={onToggleSelect}
+            className="mt-1 shrink-0"
+            aria-label={`Select "${story.headline}"`}
+          />
+          <div className="min-w-0">
+            <p className="text-[13px] font-mono opacity-60">{story.category} &middot; {story.slug}</p>
+            <p className="font-medium text-[15px]">{story.headline}</p>
+          </div>
         </div>
       </div>
 
@@ -167,7 +186,17 @@ function StoryRow({ story, onChanged }: { story: Story; onChanged: () => void })
   );
 }
 
-function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => void }) {
+function QuickReadRow({
+  item,
+  onChanged,
+  selected,
+  onToggleSelect,
+}: {
+  item: QuickRead;
+  onChanged: () => void;
+  selected: boolean;
+  onToggleSelect: () => void;
+}) {
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -251,9 +280,20 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
   }
 
   return (
-    <div className="border rounded-xl p-3 mb-3" style={{ borderColor: "var(--border)" }}>
-      <p className="text-[13px] font-mono opacity-60">{item.category} &middot; {item.source}</p>
-      <p className="font-medium text-[15px]">{item.headline}</p>
+    <div className="border rounded-xl p-3 mb-3" style={{ borderColor: "var(--border)", background: selected ? "rgba(0,0,0,0.03)" : "transparent" }}>
+      <div className="flex items-start gap-2.5 min-w-0">
+        <input
+          type="checkbox"
+          checked={selected}
+          onChange={onToggleSelect}
+          className="mt-1 shrink-0"
+          aria-label={`Select "${item.headline}"`}
+        />
+        <div className="min-w-0 flex-1">
+          <p className="text-[13px] font-mono opacity-60">{item.category} &middot; {item.source}</p>
+          <p className="font-medium text-[15px]">{item.headline}</p>
+        </div>
+      </div>
       {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
       {message && <p className="text-sm text-green-700 mt-2">{message}</p>}
 
@@ -282,8 +322,28 @@ function QuickReadRow({ item, onChanged }: { item: QuickRead; onChanged: () => v
   );
 }
 
+// 2026-08-11: bulk actions — added per explicit request after selecting
+// and deleting/promoting stories one at a time turned N admin actions
+// into N separate commits (deletes/edits) or N separate workflow runs
+// (regenerate/promote), each its own Netlify deploy. Bulk delete is a
+// genuine single-push win (see the DELETE handlers in
+// app/api/admin/story and app/api/admin/quick-read — one read, one
+// write, however many items). Bulk regenerate/promote is NOT a
+// single-push win — each one is its own full generate-then-verify
+// pipeline run (regenerate-story.yml), and consolidating those into one
+// run would mean restructuring that already-hardened, trust-critical
+// script to loop internally, which is real regression risk for a
+// feature used occasionally, not daily. This still fires all of them
+// from one click, so the ADMIN action is one step — the UI copy below
+// says so plainly rather than implying it's one deploy when it isn't.
 export default function AdminDashboard({ stories, quickReads }: { stories: Story[]; quickReads: QuickRead[] }) {
   const [tab, setTab] = useState<"stories" | "quickReads">("stories");
+  const [selectedSlugs, setSelectedSlugs] = useState<Set<string>>(new Set());
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [bulkBusy, setBulkBusy] = useState(false);
+  const [bulkError, setBulkError] = useState<string | null>(null);
+  const [bulkFeedback, setBulkFeedback] = useState("");
+  const [showBulkFeedback, setShowBulkFeedback] = useState(false);
 
   // Full page reload after any change — simplest way to guarantee the
   // list reflects the actual current state (this is an admin tool used
@@ -291,6 +351,136 @@ export default function AdminDashboard({ stories, quickReads }: { stories: Story
   // annoying; correctness over polish here).
   function onChanged() {
     window.location.reload();
+  }
+
+  function toggleSlug(slug: string) {
+    setSelectedSlugs((prev) => {
+      const next = new Set(prev);
+      next.has(slug) ? next.delete(slug) : next.add(slug);
+      return next;
+    });
+  }
+
+  function toggleId(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
+
+  async function bulkDeleteStories() {
+    const slugs = [...selectedSlugs];
+    if (!confirm(`Delete ${slugs.length} stor${slugs.length === 1 ? "y" : "ies"}? This is ONE combined push.`)) return;
+    setBulkBusy(true);
+    setBulkError(null);
+    try {
+      const res = await fetch("/api/admin/story", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slugs }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Bulk delete failed");
+      onChanged();
+    } catch (e) {
+      setBulkError(e instanceof Error ? e.message : "Bulk delete failed");
+    } finally {
+      setBulkBusy(false);
+    }
+  }
+
+  async function bulkDeleteQuickReads() {
+    const ids = [...selectedIds];
+    if (!confirm(`Delete ${ids.length} Quick Read${ids.length === 1 ? "" : "s"}?`)) return;
+    setBulkBusy(true);
+    setBulkError(null);
+    try {
+      const res = await fetch("/api/admin/quick-read", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Bulk delete failed");
+      onChanged();
+    } catch (e) {
+      setBulkError(e instanceof Error ? e.message : "Bulk delete failed");
+    } finally {
+      setBulkBusy(false);
+    }
+  }
+
+  async function bulkRegenerate() {
+    if (!bulkFeedback.trim()) {
+      setBulkError("Add feedback describing what should change across all selected stories.");
+      return;
+    }
+    const slugs = [...selectedSlugs];
+    if (!confirm(`Trigger regeneration for ${slugs.length} stor${slugs.length === 1 ? "y" : "ies"}? Each runs as its own separate pipeline run and deploy — this fires them all from one click, but it is NOT one combined push.`)) return;
+    setBulkBusy(true);
+    setBulkError(null);
+    try {
+      const results = await Promise.allSettled(
+        slugs.map((slug) =>
+          fetch("/api/admin/regenerate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ slugOrMode: slug, feedbackOrTopic: bulkFeedback }),
+          }).then(async (res) => {
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || `Failed for ${slug}`);
+          })
+        )
+      );
+      const failed = results.filter((r) => r.status === "rejected");
+      if (failed.length > 0) {
+        setBulkError(`${slugs.length - failed.length}/${slugs.length} triggered — ${failed.length} failed to trigger. Check the Actions tab.`);
+      } else {
+        setBulkFeedback("");
+        setShowBulkFeedback(false);
+        setSelectedSlugs(new Set());
+        setBulkError(null);
+        alert(`${slugs.length} regeneration(s) triggered — check the Actions tab for progress.`);
+      }
+    } finally {
+      setBulkBusy(false);
+    }
+  }
+
+  async function bulkPromote() {
+    const ids = [...selectedIds];
+    const items = quickReads.filter((it) => ids.includes(it.id));
+    if (!confirm(`Promote ${items.length} Quick Read${items.length === 1 ? "" : "s"} to full stories? Each runs as its own separate pipeline run and deploy.`)) return;
+    setBulkBusy(true);
+    setBulkError(null);
+    try {
+      const results = await Promise.allSettled(
+        items.map((item) => {
+          const topic = [item.headline, item.snippet, `(Source: ${item.source}${item.link ? ` — ${item.link}` : ""})`]
+            .filter(Boolean)
+            .join("\n\n");
+          return fetch("/api/admin/regenerate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ slugOrMode: "--new", feedbackOrTopic: topic }),
+          }).then(async (res) => {
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || `Failed for ${item.id}`);
+          });
+        })
+      );
+      const failed = results.filter((r) => r.status === "rejected");
+      if (failed.length > 0) {
+        setBulkError(`${items.length - failed.length}/${items.length} triggered — ${failed.length} failed to trigger. Check the Actions tab.`);
+      } else {
+        setSelectedIds(new Set());
+        setBulkError(null);
+        alert(`${items.length} promotion(s) triggered — check the Actions tab for progress.`);
+      }
+    } finally {
+      setBulkBusy(false);
+    }
   }
 
   return (
@@ -312,8 +502,69 @@ export default function AdminDashboard({ stories, quickReads }: { stories: Story
         </button>
       </div>
 
-      {tab === "stories" && stories.map((s) => <StoryRow key={s.slug} story={s} onChanged={onChanged} />)}
-      {tab === "quickReads" && quickReads.map((it) => <QuickReadRow key={it.id} item={it} onChanged={onChanged} />)}
+      {tab === "stories" && selectedSlugs.size > 0 && (
+        <div className="sticky top-0 z-10 mb-3 rounded-xl border p-3" style={{ borderColor: "var(--navy)", background: "var(--surface)" }}>
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <p className="text-sm font-medium">{selectedSlugs.size} selected</p>
+            <div className="flex gap-2 flex-wrap">
+              <button onClick={() => setShowBulkFeedback((s) => !s)} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full border">
+                Regenerate selected
+              </button>
+              <button onClick={bulkDeleteStories} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full border border-red-300 text-red-600">
+                {bulkBusy ? "..." : "Delete selected (1 push)"}
+              </button>
+              <button onClick={() => setSelectedSlugs(new Set())} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full border">
+                Clear
+              </button>
+            </div>
+          </div>
+          {showBulkFeedback && (
+            <div className="mt-2.5 space-y-2">
+              <textarea
+                value={bulkFeedback}
+                onChange={(e) => setBulkFeedback(e.target.value)}
+                placeholder="What should change across all selected stories? Applied identically to each."
+                className="w-full text-sm border rounded p-2"
+                rows={2}
+              />
+              <button onClick={bulkRegenerate} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full bg-black text-white">
+                {bulkBusy ? "Triggering..." : `Trigger ${selectedSlugs.size} regeneration(s) — separate runs`}
+              </button>
+              <p className="text-xs opacity-60">Fires one workflow run per story, all from this one click — not one combined push.</p>
+            </div>
+          )}
+          {bulkError && <p className="text-sm text-red-600 mt-2">{bulkError}</p>}
+        </div>
+      )}
+
+      {tab === "quickReads" && selectedIds.size > 0 && (
+        <div className="sticky top-0 z-10 mb-3 rounded-xl border p-3" style={{ borderColor: "var(--navy)", background: "var(--surface)" }}>
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <p className="text-sm font-medium">{selectedIds.size} selected</p>
+            <div className="flex gap-2 flex-wrap">
+              <button onClick={bulkPromote} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full bg-black text-white">
+                {bulkBusy ? "Triggering..." : "Promote selected — separate runs"}
+              </button>
+              <button onClick={bulkDeleteQuickReads} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full border border-red-300 text-red-600">
+                {bulkBusy ? "..." : "Delete selected (1 write)"}
+              </button>
+              <button onClick={() => setSelectedIds(new Set())} disabled={bulkBusy} className="text-xs px-3 py-1.5 rounded-full border">
+                Clear
+              </button>
+            </div>
+          </div>
+          {bulkError && <p className="text-sm text-red-600 mt-2">{bulkError}</p>}
+        </div>
+      )}
+
+      {tab === "stories" &&
+        stories.map((s) => (
+          <StoryRow key={s.slug} story={s} onChanged={onChanged} selected={selectedSlugs.has(s.slug)} onToggleSelect={() => toggleSlug(s.slug)} />
+        ))}
+      {tab === "quickReads" &&
+        quickReads.map((it) => (
+          <QuickReadRow key={it.id} item={it} onChanged={onChanged} selected={selectedIds.has(it.id)} onToggleSelect={() => toggleId(it.id)} />
+        ))}
     </div>
   );
 }
