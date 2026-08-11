@@ -1,35 +1,7 @@
 {
   "date": "2026-08-11",
-  "generatedAt": "2026-08-11T00:13:23.853Z",
+  "generatedAt": "2026-08-11T08:41:15.332Z",
   "results": [
-    {
-      "slug": "trump-rejects-iran-war-compensation-demands",
-      "headline": "Trump Rejects Iran War Claims, Demands Billions For US",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The Iranian side, through its foreign minister Abbas Araghchi, had reportedly been seeking compensation for damages sustained during the conflict",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the appointment of Mohsen Rezaei but contains no information regarding Abbas Araghchi or any Iranian demand for war compensation.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Iran reportedly nearing a deal with Oman to restore shipping through the Strait of Hormuz",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention any negotiations or deals between Iran and Oman regarding the Strait of Hormuz.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story relies on external claims about diplomatic negotiations and specific Iranian government actions that are not supported by the provided source text. While the appointment of Mohsen Rezaei is mentioned in the source's headline, the rest of the geopolitical narrative lacks verification.",
-      "digestHash": "d80395479a39290c"
-    },
     {
       "slug": "india-warns-meta-on-ai-generated-content",
       "headline": "India Warns Meta: Curb AI Content Or Face Action",
@@ -187,6 +159,52 @@
       ],
       "notes": "The provided source text is a collection of headlines and snippets from a news website and does not contain the actual article or data confirming the HDFC Bank MCLR cut or the specific interest rate figures mentioned in the story.",
       "digestHash": "22eabb32e58622a2"
+    },
+    {
+      "slug": "rbi-governor-ai-lending-potential",
+      "headline": "RBI Governor: AI Could Transform Indian Lending Like UPI Did Payments",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the statements made by RBI Governor Sanjay Malhotra at the FIBAC 2026 event regarding AI in banking, the comparison to UPI, and the requirement for meaningful human oversight. The historical dates provided for Aadhaar, Digital India, and UPI are factually correct.",
+      "digestHash": "297be72305d58dfc"
+    },
+    {
+      "slug": "aarti-pharmalabs-q1-fy27-results",
+      "headline": "Aarti Pharmalabs Q1 Profit Jumps 65% Amid ₹149 Crore Expansion Plan",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Aarti Pharmalabs reported a robust 65.4% year-on-year surge in net profit for Q1 FY27, reaching ₹147.6 crore, alongside a 38.7% revenue growth to ₹2,243.6 crore. The company also announced a ₹149 crore capital expenditure plan to support its expansion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts (Source 1 and Source 2) contain no information regarding Aarti Pharmalabs' financial results or capital expenditure plans. Source 1 discusses IndusInd Bank, and Source 2 discusses JSW Steel.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes specific financial claims about Aarti Pharmalabs, but the provided source texts do not contain any data regarding this company. The sources provided are entirely unrelated to the subject matter of the story.",
+      "digestHash": "ae6cbbb63bc236a4"
+    },
+    {
+      "slug": "indusind-bank-lightstorm-ai-funding",
+      "headline": "IndusInd Bank Fuels India's AI 'Superhighway' With ₹2,500 Crore",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims regarding the IndusInd Bank credit facility to Lightstorm and the launch date of the Digital India initiative are verified by multiple reliable sources. The central event is confirmed to have occurred as reported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "7103d2f65661448e"
+    },
+    {
+      "slug": "larsen-and-toubro-rare-earth-magnets",
+      "headline": "L&T Joins India's Strategic Race for Rare-Earth Magnets",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been successfully verified against reliable sources as of the publication date. The central event of L&T bidding for the rare-earth magnet incentive scheme is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a5a3e13c79cb759c"
     }
   ]
 }
