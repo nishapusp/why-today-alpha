@@ -1,6 +1,6 @@
 {
   "date": "2026-08-11",
-  "generatedAt": "2026-08-10T21:49:14.570Z",
+  "generatedAt": "2026-08-11T00:13:23.853Z",
   "results": [
     {
       "slug": "trump-rejects-iran-war-compensation-demands",
@@ -159,6 +159,34 @@
       ],
       "notes": "The story accurately reflects the core findings of the cited Business Standard article regarding the shift in debt fund portfolios. However, it includes an unverifiable claim regarding foodgrain reserves which is not supported by the provided source text.",
       "digestHash": "3dc5f41bc2e89351"
+    },
+    {
+      "slug": "hdfc-bank-cuts-mclr",
+      "headline": "Did HDFC Bank Just Make Your Home Loan Cheaper?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "HDFC Bank, India's largest private sector bank, has lowered its Marginal Cost of Funds-based Lending Rate (MCLR) by 5 basis points across various tenures, effective August 11, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a list of headlines and snippets from a news aggregator page. It does not contain any article or report confirming that HDFC Bank has actually implemented an MCLR cut on August 11, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the overnight MCLR now stands at 8.80%, while the one-year MCLR... is at 9.05%",
+          "status": "UNVERIFIABLE",
+          "detail": "These specific interest rate figures do not appear in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of headlines and snippets from a news website and does not contain the actual article or data confirming the HDFC Bank MCLR cut or the specific interest rate figures mentioned in the story.",
+      "digestHash": "22eabb32e58622a2"
     }
   ]
 }
