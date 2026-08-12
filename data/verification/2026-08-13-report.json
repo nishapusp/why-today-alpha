@@ -1,0 +1,71 @@
+{
+  "date": "2026-08-13",
+  "generatedAt": "2026-08-12T22:28:19.696Z",
+  "results": [
+    {
+      "slug": "tata-stocks-chandrasekaran-succession",
+      "headline": "Why did Tata stocks just lose ₹68,000 crore in one day?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Shares of Tata Consultancy Services and Tata Motors led the declines.",
+          "status": "WRONG",
+          "detail": "The source text explicitly states that Tata Motors added Rs 1,786 crore to its market value, meaning it gained value rather than leading the declines.",
+          "correction": "Shares of Tata Consultancy Services led the declines, while Tata Motors saw an increase in market value.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "₹17 lakh crore: The massive increase in Tata Group's listed valuation during N. Chandrasekaran's tenure.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the valuation rose from around ₹10 lakh crore to nearly ₹27 lakh crore, but it does not explicitly state or calculate the '₹17 lakh crore' figure as the specific increase attributed to his tenure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the market cap loss and the primary reason for the sell-off. However, it incorrectly identifies Tata Motors as a leader of the decline when the source text lists it as a gainer. The '₹17 lakh crore' figure is a calculation derived from the source's provided 'then vs now' figures but is not explicitly stated in the text.",
+      "digestHash": "68ebb6a26e2e1f2e"
+    },
+    {
+      "slug": "astrotalk-unicorn-esop-buyback-startup",
+      "headline": "Why did an Indian astrology app just become a unicorn?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Astrotalk has officially crossed a $1 billion valuation milestone.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a corporate website for Astrotalk that contains no mention of a $1 billion valuation, unicorn status, or an ESOP buyback program.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Astrotalk executed a significant ESOP buyback program that valued the company at exactly $1 billion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any ESOP buyback or valuation figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Astrotalk's digital-only consultation model enjoys high gross margins of over 70%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain financial performance data or margin percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a generic landing page for the Astrotalk platform and does not contain any of the financial or corporate news claims made in the story. Consequently, all claims regarding valuation, ESOP buybacks, and profit margins are unverifiable.",
+      "digestHash": "6ffc8a509802cbe4"
+    }
+  ]
+}
