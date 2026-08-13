@@ -1,6 +1,6 @@
 {
   "date": "2026-08-13",
-  "generatedAt": "2026-08-12T22:28:19.696Z",
+  "generatedAt": "2026-08-13T00:25:35.348Z",
   "results": [
     {
       "slug": "tata-stocks-chandrasekaran-succession",
@@ -66,6 +66,95 @@
       ],
       "notes": "The provided source text is a generic landing page for the Astrotalk platform and does not contain any of the financial or corporate news claims made in the story. Consequently, all claims regarding valuation, ESOP buybacks, and profit margins are unverifiable.",
       "digestHash": "6ffc8a509802cbe4"
+    },
+    {
+      "slug": "avenuesai-q1-fy27-results",
+      "headline": "AvenuesAI Profit Jumps 45%, Eyes ₹13,000 Crore Revenue by FY27",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-inflation-rises-july-2026",
+      "headline": "Food Prices Push India's Inflation Back Above RBI Target.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's retail inflation rose to 4.45% in July 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a PIB press release from August 2022 regarding a badminton player, Srikanth Kidambi. It contains no economic data, inflation figures, or RBI policy information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Retail inflation was 4.28% in June 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no economic data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Food inflation was 5.52% in July 2026 and 5.17% in June 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no economic data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The RBI has kept the repo rate unchanged at 5.25%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no economic data or information regarding the RBI repo rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Chart data points for Feb 2023, Feb 2024, June 2026, and July 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no economic data or chart information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. It is a press release about a badminton player, making all economic claims in the story unverifiable.",
+      "digestHash": "f70c90a580b3ab4f"
+    },
+    {
+      "slug": "india-exports-gasoline-russia",
+      "headline": "India Exports First Gasoline Cargo to Russia Amid Outages.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the gasoline shipment, cargo size, arrival date, and the context of Russian refinery outages are directly supported by the provided source text.",
+      "digestHash": "76761e44414c1a5c"
+    },
+    {
+      "slug": "devas-antrix-us-court-judgment-upheld",
+      "headline": "Why did a US court just uphold a $1.2 billion blow to India?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the Ninth Circuit's ruling on the Devas-Antrix dispute, including the judgment amount, the history of the contract, and the current legal status of the case.",
+      "digestHash": "ff35fe024362e13d"
     }
   ]
 }
