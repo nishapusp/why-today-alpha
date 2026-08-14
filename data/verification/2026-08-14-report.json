@@ -1,6 +1,6 @@
 {
   "date": "2026-08-14",
-  "generatedAt": "2026-08-13T22:32:32.416Z",
+  "generatedAt": "2026-08-14T00:22:26.977Z",
   "results": [
     {
       "slug": "sebi-sme-ipo-rules-relaxation",
@@ -73,6 +73,89 @@
       ],
       "notes": "The story accurately reflects the core negotiations and the strategic rationale described in the source. However, it includes specific details regarding the arrival timeline of shipments and the nature of the government's directive that are not present in the provided source text.",
       "digestHash": "6bd1f5e0871d76f0"
+    },
+    {
+      "slug": "l&t-builds-india-largest-ai-factory",
+      "headline": "India Building HUGE AI Supercomputer: Why Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims within the news story, including the order value, GPU capacity, partners, location, and the existence of the NVIDIA B300 GPU by the publication date, have been thoroughly verified against multiple reliable sources published around the story's date. The central event of L&T securing the mega order is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d202f0ed0b6d548a"
+    },
+    {
+      "slug": "sbi-raises-500m-overseas-bonds",
+      "headline": "SBI Just Raised $500 Million Overseas. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The issue priced at the tightest spread among all Indian public bond issuances since the RBI swap window announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the 'RBI swap window announcement' or any comparative analysis of bond spreads relative to such an event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This 5.25% coupon rate with a tight spread of 88 basis points over the 5-year US Treasury is a testament to the current positive sentiment surrounding India",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts confirm the $500 million amount and the 5.25% coupon rate, but they do not mention the '88 basis points' spread figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the $500 million bond issuance, the 5.25% coupon rate, and the $2.46 billion order book are verified by the provided sources. However, the story includes specific details about bond spreads and historical comparisons that are not supported by the source texts.",
+      "digestHash": "764f46727327387b"
+    },
+    {
+      "slug": "china-optical-fibre-tariffs",
+      "headline": "Why did China just block India’s super-fast internet cables?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Thursday, China's Ministry of Commerce announced that it has completed its expiry review and decided to extend anti-dumping duties on single-mode optical fibre imports originating from India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from the China Ministry of Commerce (MOFCOM) does not contain any mention of anti-dumping duties on optical fibre or any such announcement.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The tax rates will stay unchanged, varying between 7.4% and 30.6% depending on the specific Indian exporter.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention these tariff rates or the existence of such duties.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2014, China introduced these tariffs as a temporary measure to protect its nascent domestic fibre industry",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the history of these tariffs or their introduction in 2014.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "China accounts for over 50% of global optical fibre demand and consumption.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain statistics regarding global optical fibre demand or consumption.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text from the China Ministry of Commerce contains no information regarding anti-dumping duties on optical fibre. Consequently, all claims regarding this specific trade action are unverifiable based on the provided source material.",
+      "digestHash": "3aa51b9cc4420539"
     }
   ]
 }
