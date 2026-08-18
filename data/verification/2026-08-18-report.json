@@ -1,0 +1,62 @@
+{
+  "date": "2026-08-18",
+  "generatedAt": "2026-08-18T10:13:34.077Z",
+  "results": [
+    {
+      "slug": "india-defence-indigenisation-list",
+      "headline": "India bans 405 defense imports: A ₹3,000 crore push?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Ministry of Defence has released its sixth Positive Indigenisation List, banning the import of 405 strategically important defence items",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any information regarding a sixth Positive Indigenisation List or a ban on 405 defence items.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This indigenisation drive is estimated to channel contracts worth approximately ₹3,000 crore to Indian industries.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure or the indigenisation drive.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story claims to report on a major government announcement regarding a 'sixth Positive Indigenisation List' and a ₹3,000 crore procurement push. However, the provided source text (a Business Standard news summary from 2026-08-18) contains no mention of this event, despite the headline of the source article appearing to reference it. Because the source text provided is truncated or missing the actual body content regarding this specific announcement, the claims cannot be verified.",
+      "digestHash": "5dec3705d36c40a3"
+    },
+    {
+      "slug": "india-semiconductor-mission-advances",
+      "headline": "India's chip dream: ₹1.64 lakh crore projects take off.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the number of approved projects, total investment, and operational projects, are consistently verified by multiple reliable sources published around the story's publication date. The dates for the India Semiconductor Mission, US CHIPS Act, and European Chips Act are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d43b9d324764a0c2"
+    },
+    {
+      "slug": "dpiit-startup-india-fund-of-funds-2.0-guidelines",
+      "headline": "Government Unveils New ₹10,000 Crore Startup India Fund Guidelines.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Department for Promotion of Industry and Internal Trade (DPIIT) has issued comprehensive guidelines for the ₹10,000 crore Startup India Fund of Funds 2.0.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a search results page from Business Standard that contains no article content confirming the issuance of these guidelines; the search result for 'startups' explicitly states 'No Result Found'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text does not contain the article or any confirmation that the DPIIT has issued guidelines for a 'Startup India Fund of Funds 2.0'. The source is a search results page that shows no results for the query.",
+      "digestHash": "3a464ee55a3b8762"
+    }
+  ]
+}
