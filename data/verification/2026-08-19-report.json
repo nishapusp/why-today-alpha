@@ -1,0 +1,43 @@
+{
+  "date": "2026-08-19",
+  "generatedAt": "2026-08-18T18:57:53.346Z",
+  "results": [
+    {
+      "slug": "tata-sons-agm-adjourned-quorum-issue",
+      "headline": "Tata Sons' AGM Adjourned First Time Ever Due To Quorum Issue",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Tata Sons, the flagship holding company of the sprawling Tata Group, had its Annual General Meeting (AGM) adjourned today due to a failure to meet the required quorum.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) mentions 'Tata Sons postpones AGM' in its headline list, but the article body does not contain any details confirming the adjournment, the reason (quorum), or the specific involvement of Sir Ratan Tata Trusts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Tata Sons sits at the apex of the Tata Group... with a market capitalization exceeding ₹30 lakh crore ($360 billion).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the market capitalization of the Tata Group.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on an event (the AGM adjournment) that is mentioned in the headline of the provided source, but the source text itself does not provide the details regarding the quorum, the specific trusts involved, or the market capitalization figures cited in the story.",
+      "digestHash": "d8ccc634e34832f6"
+    },
+    {
+      "slug": "anthropic-ipo-credit-expansion",
+      "headline": "Anthropic Pre-IPO Credit Facility Set to Climb Past $10 Billion",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in the source text regarding Anthropic's revolving credit facility expansion and its context as a pre-IPO move. All figures and claims align with the provided Economic Times article.",
+      "digestHash": "2530f6ac9664c60f"
+    }
+  ]
+}
