@@ -1,6 +1,6 @@
 {
   "date": "2026-08-20",
-  "generatedAt": "2026-08-19T21:32:41.003Z",
+  "generatedAt": "2026-08-19T23:54:18.670Z",
   "results": [
     {
       "slug": "india-may-import-sugar-after-decade",
@@ -215,6 +215,34 @@
       ],
       "notes": "The story reports on a specific brokerage action (CLSA downgrades) that is mentioned in the headline of the provided source text, but the source text itself contains no content confirming the details of these downgrades, the reasoning, or the comparative view on mid-tier firms.",
       "digestHash": "68fcd5b42c1b8537"
+    },
+    {
+      "slug": "lic-hdfc-bank-stake-increase",
+      "headline": "LIC Just Gained Much More Control Of HDFC Bank",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "LIC now has up to one year to acquire the additional shares to reach the 10% limit.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a LinkedIn post header that does not contain any information regarding a one-year deadline for the acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Time to Acquire = 1 year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a one-year timeframe for the acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event (RBI approval for LIC to increase stake in HDFC Bank to 10%) is confirmed by the source. However, the specific detail regarding the 'one-year' deadline for the acquisition is not present in the provided source text.",
+      "digestHash": "42ddd7d2a10434ba"
     }
   ]
 }
