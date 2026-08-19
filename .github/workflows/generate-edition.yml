@@ -41,7 +41,17 @@ on:
   #   1:15 PM IST  = 07:45 UTC  (quota resets ~07:00 UTC / 12:30 PM IST)
   schedule:
     - cron: "30 23 * * *"
-    - cron: "45 7 * * *"
+    # 2026-08-19: temporarily disabled the 1:15 PM IST top-up run for one
+    # occurrence only, at explicit request — a string of manual
+    # workflow_dispatch runs earlier on 2026-08-18 (while diagnosing an
+    # unrelated GH Actions minutes issue) drained the quota bucket that
+    # today's 5 AM IST run needed, leaving the edition at 2/15 stories.
+    # Rather than top up today off a bucket that's already been touched by
+    # today's incident, skip today's top-up entirely and let tomorrow's
+    # 5 AM IST run start clean. RESTORE this line ("45 7 * * *") once
+    # today's 07:45 UTC window has passed — do not leave it disabled
+    # permanently.
+    # - cron: "45 7 * * *"
 
 permissions:
   contents: write # needed so the script can git push the updated edition.json
