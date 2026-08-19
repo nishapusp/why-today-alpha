@@ -1,6 +1,6 @@
 {
   "date": "2026-08-20",
-  "generatedAt": "2026-08-19T19:24:08.694Z",
+  "generatedAt": "2026-08-19T21:32:41.003Z",
   "results": [
     {
       "slug": "india-may-import-sugar-after-decade",
@@ -169,6 +169,52 @@
       ],
       "notes": "The story relies on information regarding the Tempsens Instruments IPO and Lalithaa Jewellery that is entirely absent from the provided source text. While the story is internally consistent, it fails the verification requirement as the source text provided is unrelated to the claims made.",
       "digestHash": "b416d98a4104d5e8"
+    },
+    {
+      "slug": "bofa-poll-india-stocks-least-favoured",
+      "headline": "Global Funds See India Stocks As Asia's \"Least Favored.\" Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the Bank of America (BofA) poll, its publication date, findings on Indian equities, the percentage of underweight fund managers, and the reasons cited, have been thoroughly verified by multiple reliable sources published on or around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "9ea0668f51eb68cf"
+    },
+    {
+      "slug": "clsa-downgrades-indian-it-stocks-ai-impact",
+      "headline": "CLSA Downgrades India IT Giants, Warns Of 'Crash' Due To AI",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "CLSA has downgraded major Indian IT companies like TCS, Infosys, and Wipro",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline 'CLSA downgrades major IT stocks amid AI concerns' but does not contain any report, article body, or confirmation that CLSA actually issued such downgrades or downgraded these specific companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CLSA's report and downgrades, released today",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text lists the headline as a news item but does not confirm the release of a report or the occurrence of downgrades today.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Maintained bullish view on some mid-tier IT firms.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding CLSA's view on mid-tier IT firms.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a specific brokerage action (CLSA downgrades) that is mentioned in the headline of the provided source text, but the source text itself contains no content confirming the details of these downgrades, the reasoning, or the comparative view on mid-tier firms.",
+      "digestHash": "68fcd5b42c1b8537"
     }
   ]
 }
