@@ -1,0 +1,174 @@
+{
+  "date": "2026-08-20",
+  "generatedAt": "2026-08-19T19:24:08.694Z",
+  "results": [
+    {
+      "slug": "india-may-import-sugar-after-decade",
+      "headline": "India May Import Sugar After A Decade. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Price Increase (YoY) = 12%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a 12% year-on-year price increase for sugar.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding the potential for sugar imports is supported by the headline of Source 1, but the specific figure of a 12% YoY price increase is not present in the provided source material.",
+      "digestHash": "4b8b961371c84d07"
+    },
+    {
+      "slug": "sebi-bans-firms-market-manipulation-cas",
+      "headline": "SEBI Bans Firms Over 'First-Ever' Market Manipulation",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "SEBI Chairman Tuhin Kanta Pandey had earlier warned against attempts to 'defame' the CAS through manipulation",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention SEBI Chairman Tuhin Kanta Pandey or any such warning attributed to him.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the details of the SEBI interim order, including the disgorgement amounts, the entities involved, and the dates. However, it includes an unverified claim regarding a statement by the SEBI Chairman which is not present in the provided source material.",
+      "digestHash": "fd49d6469157fa75"
+    },
+    {
+      "slug": "cabinet-approves-infrastructure-projects",
+      "headline": "Cabinet Greenlights ₹13,041 Crore Infrastructure Boost",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All key financial figures, project details, locations, and timelines are fully supported and verified by the provided source texts.",
+      "digestHash": "5cb036d56faed91a"
+    },
+    {
+      "slug": "india-oil-import-bill-jumps-global-prices",
+      "headline": "India's Oil Bill Soars 56% Amid Global Price Spike",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Brent crude hit around $91.44 per barrel yesterday [August 19, 2026]",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 2 states Brent crude was around $91.5 a barrel on August 19. Source 3 states Brent crude was back above $90 a barrel in August. No source confirms the specific figure of $91.44.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Additionally, recent Ukrainian drone attacks on Russian oil refineries have tightened global supplies, further pushing prices higher.",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the provided source texts mention Ukrainian drone attacks on Russian oil refineries.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the primary financial figures (import bill, percentages, trade deficit, and crude basket prices) as supported by the provided sources. However, it includes specific details regarding Brent crude pricing and the cause of supply tightening (Ukrainian drone attacks) that are not present in the source texts.",
+      "digestHash": "0879ef217b561f55"
+    },
+    {
+      "slug": "rbi-monetary-policy-committee-minutes-hawkish-outlook",
+      "headline": "RBI Hints Rates Could Rise: Is Hike Coming Sooner Than Expected?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "FY27 Growth Forecast (Ind-Ra) = 6.8%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Ind-Ra's growth forecast for FY27.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Crude Import Bill (Apr-Jul) = $63.4 billion (previous: 57% — YoY increase)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the crude import bill or its year-on-year increase.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the release of the RBI MPC minutes and the repo rate of 5.25%. However, it includes specific data points in the 'KEY NUMBER CARD' section that are not present in the provided source text.",
+      "digestHash": "1c7d43f944ceb61d"
+    },
+    {
+      "slug": "lalithaa-jewellery-mart-ipo-subscription-gmp",
+      "headline": "Lalithaa Jewellery IPO Sees 63x Oversubscription, Signals Big Listing",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Lalithaa Jewellery Mart's initial public offering (IPO) was oversubscribed by a massive 63 times",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Lalithaa Jewellery Mart or its IPO; it only discusses unrelated topics like BSE/MSCI and general market news.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The grey market premium (GMP) suggests a potential listing gain of around 25%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Lalithaa Jewellery Mart or any GMP figures related to it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "a recent IPO of a prominent engineering firm also saw over 60x subscription",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions 'Shiprocket-Behari Lal Engineering' in a headline but provides no subscription data for it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. None of the specific figures regarding the Lalithaa Jewellery Mart IPO can be verified against the source provided.",
+      "digestHash": "9059450987dba368"
+    },
+    {
+      "slug": "tempsens-instruments-ipo-opens",
+      "headline": "Tempsens Instruments IPO Opens Today: What To Know?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Tempsens Instruments (India) Ltd., a prominent manufacturer of temperature measurement instruments and heating elements, launched its Initial Public Offering (IPO) today, August 20, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-08-19) does not mention Tempsens Instruments or its IPO. There is no source text provided that confirms this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Lalithaa Jewellery's recent IPO was oversubscribed by 62.97 times",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Lalithaa Jewellery's IPO or its subscription figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story relies on information regarding the Tempsens Instruments IPO and Lalithaa Jewellery that is entirely absent from the provided source text. While the story is internally consistent, it fails the verification requirement as the source text provided is unrelated to the claims made.",
+      "digestHash": "b416d98a4104d5e8"
+    }
+  ]
+}
