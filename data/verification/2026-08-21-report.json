@@ -1,6 +1,6 @@
 {
   "date": "2026-08-21",
-  "generatedAt": "2026-08-20T19:05:01.057Z",
+  "generatedAt": "2026-08-20T21:22:56.464Z",
   "results": [
     {
       "slug": "us-iran-sanctions-india-dilemma",
@@ -122,6 +122,135 @@
       ],
       "notes": "The story's central claim regarding new agreements between India and Singapore is entirely absent from the provided source text, which focuses on domestic Indian economic news and other unrelated international trade developments.",
       "digestHash": "18761b883db8127f"
+    },
+    {
+      "slug": "hdfc-bank-raising-senior-notes",
+      "headline": "Why is HDFC Bank raising $1.75 billion in overseas markets?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "15% to 16% is the average credit growth rate private banks are attempting to sustain.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention specific credit growth rates for private banks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "3 to 4 percentage points is the persistent gap between credit growth and deposit growth in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a specific percentage point gap between credit and deposit growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding HDFC Bank's $1.75 billion bond issuance and the Moody's Baa3 rating is verified by the source. However, the story includes specific figures regarding credit growth rates and the gap between credit and deposit growth that are not present in the provided source text.",
+      "digestHash": "f1883255ee8631cb"
+    },
+    {
+      "slug": "retail-derivatives-cooling",
+      "headline": "Why are India’s thrill-seeking options traders suddenly quitting the game?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "For the first time in four years, India's retail derivatives trader base has shrunk in the 2025-2026 fiscal year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is an article about democratic socialism in the U.S. and contains no information regarding SEBI, derivatives traders, or Indian market statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "active accounts grew by 30% or more annually",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding SEBI or Indian market statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the government hiked the Securities Transaction Tax (STT) on options by 60%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Indian tax policy or SEBI regulations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "raising the minimum contract size for index derivatives from ₹5 lakh to ₹15 lakh",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding SEBI regulations or contract sizes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "active derivatives trader count was under 10 lakh",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Indian market statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "peak of the boom saw over 50 lakh active individual traders",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Indian market statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Average Retail Loss Rate = Over 90%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding retail trading losses.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. It discusses U.S. politics and democratic socialism, providing no verification for any of the financial claims.",
+      "digestHash": "088588c20fb7e656"
+    },
+    {
+      "slug": "luxury-car-ev-disruption",
+      "headline": "Why are smart electric SUVs suddenly terrifying India’s oldest luxury carmakers?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Premium EV Growth Rate = 35% annually",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 35% annual growth rate for premium EVs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "German luxury brands will locally assemble high-end EVs in India to bypass the 100% import duty within the next year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions BMW already locally assembles the iX1 LWB in Chennai, but it does not state that German luxury brands generally plan to localize assembly of their flagship electric SUVs within the next year to bypass duties.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the competitive dynamics described in the source text, but includes specific figures (35% growth rate) and future strategic plans (localization of flagship EVs within the next year) that are not supported by the provided source.",
+      "digestHash": "50d8aeabe477cbc0"
     }
   ]
 }
