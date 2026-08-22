@@ -1,6 +1,6 @@
 {
   "date": "2026-08-23",
-  "generatedAt": "2026-08-22T19:30:53.054Z",
+  "generatedAt": "2026-08-22T21:33:52.293Z",
   "results": [
     {
       "slug": "manipal-health-q1-results",
@@ -10,6 +10,78 @@
       "issues": [],
       "notes": "All factual claims regarding Manipal Health Enterprises' Q1 FY27 financial results, including the specific profit figures, percentage declines, and the context of the Sahyadri Hospitals acquisition, are supported by the provided source text.",
       "digestHash": "8300fd273616c656"
+    },
+    {
+      "slug": "india-mauritius-exclusive-energy-deal",
+      "headline": "Why is India suddenly supplying all of Mauritius' fuel?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "which controls over 32% of India's domestic refining capacity",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the percentage of India's domestic refining capacity controlled by Indian Oil Corporation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "If successful, this model could be fully operational by early 2027",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the agreement is for five years but does not provide a timeline for the model being 'fully operational' by early 2027.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the supply agreement between IOC and the State Trading Corporation of Mauritius is verified by the source. However, the story includes specific figures regarding IOC's market share and a future operational timeline that are not supported by the provided text.",
+      "digestHash": "154b33bf8566d56b"
+    },
+    {
+      "slug": "amethi-ak203-rifle-fully-indigenous-milestone",
+      "headline": "Why Amethi’s new indigenous rifle changes India's military strategy",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Reaching 100% localization is a significant upgrade from the early batches produced in 2021, which relied on Russia for over 90% of their components.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention 2021 production figures or the specific 90% dependency rate for that year.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2021, local content in the manufactured rifles was under 10%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention 2021 production figures or the 10% localization rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the successful test-firing of the 100% indigenous AK-203 'Sher' is verified by the source. However, the story includes specific historical localization percentages for 2021 that are not present in the provided source text.",
+      "digestHash": "a13b3b4d1130072a"
+    },
+    {
+      "slug": "rbi-announces-sgb-premature-redemption-calendar",
+      "headline": "Why the RBI's new gold bond calendar matters to your savings",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
