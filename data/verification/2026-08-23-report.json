@@ -1,6 +1,6 @@
 {
   "date": "2026-08-23",
-  "generatedAt": "2026-08-22T23:56:34.458Z",
+  "generatedAt": "2026-08-23T08:25:22.651Z",
   "results": [
     {
       "slug": "manipal-health-q1-results",
@@ -68,41 +68,32 @@
       "digestHash": "a13b3b4d1130072a"
     },
     {
-      "slug": "rbi-announces-sgb-premature-redemption-calendar",
-      "headline": "Why the RBI's new gold bond calendar matters to your savings",
-      "verdict": "FAIL",
+      "slug": "modi-space-startups-india-space-economy",
+      "headline": "Modi Met Space Startups As India Eyes a $45 Billion Space Economy!",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "Investors holding any of the 32 listed tranches must approach their respective banks, post offices, or agents at least ten days before the scheduled redemption date.",
-          "status": "WRONG",
-          "detail": "While some general guidance might mention 10 days, official sources and common advice typically state investors should submit redemption requests at least 30 days before the coupon payment date. The RBI's own premature redemption calendar for 2026-27 provides specific, varying 'Request From' and 'Request To' date windows for each tranche, which are often longer than 10 days and indicate a specific period, rather than just a minimum notice.",
-          "correction": "Investors holding any of the 32 listed tranches must approach their respective banks, post offices, or agents according to the specific request window published by RBI for each tranche, generally advised to be at least 30 days before the scheduled redemption date, or as per the official calendar.",
-          "source": "RBI (official website/press releases)",
+          "claim": "India's space economy, currently valued at around $9 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) mentions the meeting with 20 startups and the government's ambitions, but it does not contain any financial valuation figures for the current or projected space economy.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "capital gains tax completely waived upon maturity at eight years.",
-          "status": "STALE",
-          "detail": "As per new tax rules effective April 1, 2026, the capital gains tax exemption upon maturity of Sovereign Gold Bonds applies only to original subscribers who hold the bonds continuously until their full 8-year maturity. If the bonds were acquired from the secondary market, capital gains on maturity are now taxable.",
-          "correction": "capital gains tax completely waived upon maturity at eight years for original subscribers holding the bonds continuously till maturity, but not for bonds acquired from the secondary market after April 1, 2026.",
-          "source": "GoldenPi, Value Research, ICICI Direct",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Today, global gold prices are hovering near record highs due to geopolitical tensions and interest rate uncertainties.",
-          "status": "WRONG",
-          "detail": "As of the publication date (August 23, 2026), gold prices were indeed rallying and had hit a three-month high, but analysts generally did not expect a swift return to the all-time record highs seen earlier in the year (e.g., January). Stating they are 'hovering near record highs' is an overstatement.",
-          "correction": "Today, global gold prices are rallying, hitting a three-month high, due to geopolitical tensions and interest rate uncertainties, though analysts do not expect a swift return to record highs.",
-          "source": "Forbes, Moneycontrol, The Economic Times",
+          "claim": "targeting a substantial expansion to $40-45 billion by the year 2035",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not mention the $40-45 billion figure or the 2035 target date.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately reports the central event of the RBI releasing the SGB premature redemption calendar for 2026-27 and correctly states several key characteristics of SGBs like tenure, early exit period, and interest rate. However, it contains two factual errors regarding the notice period for redemption and the current status of gold prices, and a stale claim regarding capital gains tax exemption due to recent tax law changes, leading to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "76ba7e8ea564e58a"
+      "notes": "The story correctly reports the meeting between PM Modi and 20 space startup leaders as described in Source 1. However, the financial figures ($9 billion current value and $40-45 billion 2035 target) are not present in the provided source texts and are therefore unverifiable.",
+      "digestHash": "2443159767188e7e"
     }
   ]
 }
