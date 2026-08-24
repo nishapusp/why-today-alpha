@@ -1,5 +1,43 @@
 {
   "date": "2026-08-24",
-  "generatedAt": "2026-08-23T21:32:39.266Z",
-  "results": []
+  "generatedAt": "2026-08-24T00:01:27.835Z",
+  "results": [
+    {
+      "slug": "indian-banks-net-npa-below-1-percent",
+      "headline": "Indian Banks Hit Major Milestone: Net NPAs Below 1% For All Listed Banks.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story's central claim regarding the sub-1% Net NPA milestone for all listed banks is directly supported by the provided source text. All historical figures and context provided in the story align with the information contained in the source.",
+      "digestHash": "a922ac212889877e"
+    },
+    {
+      "slug": "india-space-station-2035-isro",
+      "headline": "India Eyes Space Station By 2035; First Module Already Approved!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including dates, names, and approvals, are accurately reported and confirmed by reliable sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f709d264a266637a"
+    },
+    {
+      "slug": "amazon-skill-ministry-cloud-ai-skilling",
+      "headline": "Amazon And Skill Ministry Launch Massive Cloud & AI Skilling Program.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "a specialized, intensive, job-ready skills program will be offered to 10,000 selected participants",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the launch of the program but does not contain any information regarding a specific target of 10,000 participants for an intensive, job-ready program.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text confirms the partnership between the Ministry of Skill Development and Entrepreneurship and Amazon to launch a nationwide cloud and AI skilling program, but it does not mention the specific figure of 10,000 participants for a job-ready program.",
+      "digestHash": "6a61420e0b67e249"
+    }
+  ]
 }
