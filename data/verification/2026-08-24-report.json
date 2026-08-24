@@ -1,6 +1,6 @@
 {
   "date": "2026-08-24",
-  "generatedAt": "2026-08-24T00:01:27.835Z",
+  "generatedAt": "2026-08-24T08:45:32.239Z",
   "results": [
     {
       "slug": "indian-banks-net-npa-below-1-percent",
@@ -38,6 +38,98 @@
       ],
       "notes": "The source text confirms the partnership between the Ministry of Skill Development and Entrepreneurship and Amazon to launch a nationwide cloud and AI skilling program, but it does not mention the specific figure of 10,000 participants for a job-ready program.",
       "digestHash": "6a61420e0b67e249"
+    },
+    {
+      "slug": "godrej-haryana-investment",
+      "headline": "Why Godrej Just Pledged ₹20,000 Crore To Haryana's Future.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the investment amount, job creation figures, and the signing of the MoU by Godrej Industries Group with the Haryana government, are verified by multiple reliable news sources published on the story's publication date. The RBI repo rate also matches current confirmed figures. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e6d7a6c588d016cd"
+    },
+    {
+      "slug": "tvs-sankyu-partnership",
+      "headline": "Japanese Giant Partners TVS Supply Chain: Shares Jump 16%. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "TVS Supply Chain Solutions (TVS SCS) saw its share price surge by 16% today after announcing a strategic partnership with Japan's Sankyu Inc.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard) does not mention TVS Supply Chain Solutions, Sankyu Inc., or any share price movement related to them. The source text is a list of unrelated headlines and search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Open = 0",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no data regarding TVS Supply Chain Solutions' share price performance or chart data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Mid-Day = 10",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no data regarding TVS Supply Chain Solutions' share price performance or chart data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Close = 16",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no data regarding TVS Supply Chain Solutions' share price performance or chart data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text is a generic news feed that does not contain any information about the partnership between TVS Supply Chain Solutions and Sankyu Inc. or the associated stock market performance. Consequently, all claims regarding this event are unverifiable.",
+      "digestHash": "6ca9908c2ea1770a"
+    },
+    {
+      "slug": "tata-power-commissions-huge-solar-project",
+      "headline": "Tata Power Commissions Huge New Solar Project In Rajasthan",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This approach reduces reliance on fossil fuels, cutting carbon emissions by an estimated 9 lakh tonnes annually",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the provided source texts mention carbon emission reduction figures or the '9 lakh tonnes' estimate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the project commissioning, capacity, BESS size, and operational capacity figures as confirmed by the provided sources. However, it includes a specific claim regarding carbon emission reductions that is not supported by any of the provided source texts.",
+      "digestHash": "52abadd18c6199ec"
+    },
+    {
+      "slug": "india-eyes-trade-deals-new-nations",
+      "headline": "India Eyes Trade Deals With 9 New Nations, $15 Trillion Economy",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including numbers, amounts, percentages, and locations of announcements, are consistently verified by multiple reliable news sources published on the stated date of 2026-08-24. The central event of Minister Piyush Goyal's announcement from Tokyo is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "9911e59789275c51"
+    },
+    {
+      "slug": "bank-unions-strike-september-11",
+      "headline": "Bank Unions Call September 11 Strike: Why Your Bank May Close!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the strike date, key demands, and historical context, are accurately reported and verified by multiple reliable news sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "df6d26035dbd0510"
     }
   ]
 }
