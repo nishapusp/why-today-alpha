@@ -1,0 +1,34 @@
+{
+  "date": "2026-08-25",
+  "generatedAt": "2026-08-24T21:13:48.861Z",
+  "results": [
+    {
+      "slug": "upi-ten-years-milestone",
+      "headline": "How UPI grew from a simple experiment to India's economic spine",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the Reserve Bank of India keeps the benchmark repo rate frozen at 5.25%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the current RBI repo rate or its status.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Enforcement Directorate to recently uncover a massive ₹27,850 crore illicit banking network",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Enforcement Directorate or any illicit banking network figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding UPI's 10-year growth, transaction volumes, and values are verified by the provided source. However, the story includes external macroeconomic and legal figures (repo rate and ED investigation) that are not present in the provided source text.",
+      "digestHash": "0ccd33aae7e8f517"
+    }
+  ]
+}
