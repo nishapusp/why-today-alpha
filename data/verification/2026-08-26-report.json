@@ -1,0 +1,118 @@
+{
+  "date": "2026-08-26",
+  "generatedAt": "2026-08-25T21:54:16.479Z",
+  "results": [
+    {
+      "slug": "india-merchant-ship-fleet-expansion",
+      "headline": "India To Add 100 Ships To Fleet; Boosts Maritime Power?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's Union Minister for Ports, Shipping and Waterways, Sarbananda Sonowal, announced today a strategic plan to increase the nation's merchant ship fleet by 100 vessels over the next half-decade.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) contains a headline mentioning this claim, but the body of the article text is missing from the provided source material. The headline alone does not confirm the details of the announcement, the minister's specific quotes, or the strategic plan details.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the headline of the provided source mentions the 100-ship target, the actual text of the article is not included in the source material provided. Therefore, the specific details regarding the minister's announcement, the strategy, and the 'what next' sections cannot be verified against the provided text.",
+      "digestHash": "7df2d1b320587b00"
+    },
+    {
+      "slug": "india-ease-bis-certification-high-tech",
+      "headline": "India to Ease Import Rules for High-Tech Firms",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The government expects India's first new semiconductor fabrication plant to be commissioned by 2028",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline and summary of the announcement regarding BIS certification but does not contain any information regarding a 2028 timeline for the commissioning of a semiconductor fabrication plant.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the BIS certification announcement is supported by the source. However, the specific timeline for the semiconductor fabrication plant (2028) is not mentioned in the provided source text.",
+      "digestHash": "38a0f123b387e78d"
+    },
+    {
+      "slug": "tcs-porsche-ai-deal",
+      "headline": "TCS Lands $1.5 Billion AI Deal with Porsche",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including dates, monetary values, durations, and details of the companies involved, have been verified against reliable sources. The conversion rates for EUR to USD are accurate approximations based on the reported exchange rate for the announcement date. The central event of the announcement is also confirmed to have occurred on the stated date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "11b62cd896e0b7be"
+    },
+    {
+      "slug": "canada-us-tariff-war",
+      "headline": "Why did Canada just slap 50% tariffs on US goods?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Total trade between the US and Canada exceeded $770 billion annually before this escalation.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the $770 billion figure for annual bilateral trade.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the core events described in the source text, including the 50% tariff rate and the nature of the retaliatory measures. However, the $770 billion trade figure is not supported by the provided source.",
+      "digestHash": "ff72d4fcf5928c27"
+    },
+    {
+      "slug": "sbi-nri-deposits-rbi-swap-window",
+      "headline": "Why is SBI rushing to collect $10 billion from NRIs?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "State Bank of India is aiming to raise $10 billion from non-resident Indians as the Reserve Bank of India's concessional dollar-rupee swap window approaches its deadline.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided RBI source text does not mention any such $10 billion fundraising target by SBI, nor does it mention a 'concessional dollar-rupee swap window' scheduled to close on August 31, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The special RBI concessional swap window is closing on August 31.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided RBI source text contains no mention of a concessional swap window or any deadline of August 31, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India’s diaspora sends home over $100 billion annually, leading global remittances.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided RBI source text does not contain data regarding annual remittance totals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Foreign currency deposits help bridge a 4% gap between bank credit and deposit growth.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided RBI source text does not mention a 4% gap between credit and deposit growth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story relies on specific claims regarding an SBI fundraising target and an RBI swap window that are entirely absent from the provided source text. While the source text mentions 'Data on Forex inflows via FCNR(B) Deposits... under Reserve Bank’s Swap facility', it does not confirm the existence of a $10 billion target or an August 31 deadline.",
+      "digestHash": "e947ec5d9c41c060"
+    }
+  ]
+}
