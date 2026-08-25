@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T00:04:23.251Z",
+  "generatedAt": "2026-08-25T08:38:05.166Z",
   "results": [
     {
       "slug": "upi-ten-years-milestone",
@@ -94,6 +94,109 @@
       ],
       "notes": "The provided source text is a search results page that does not contain the actual news article or any confirmation of the claims made in the story. While the story's central event is plausible, it cannot be verified by the provided source.",
       "digestHash": "8b19537714c02f20"
+    },
+    {
+      "slug": "india-to-revise-semiconductor-rules",
+      "headline": "India Ready To Supercharge Chip Industry: New Rules Coming Soon?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "$30 trillion economy by 2047",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a $30 trillion economy target for 2047.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding the revision of semiconductor rules within two months is supported by the provided source. However, the story includes a specific economic projection ($30 trillion by 2047) that is not present in the source text.",
+      "digestHash": "50e9b917a2c3a3a2"
+    },
+    {
+      "slug": "rbi-appoints-new-board-directors",
+      "headline": "RBI Board Gets New Directors: What Does This Mean for Policy?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Total Board Members = 21",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the total number of board members on the RBI Central Board.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event regarding the appointment of the three new directors is verified by the source. However, the claim regarding the total number of board members (21) is not supported by the provided source text.",
+      "digestHash": "f1f5fc6dfa23b3f5"
+    },
+    {
+      "slug": "wazirx-ai-trading-assistant-crypto",
+      "headline": "WazirX Launches AI Trading Assistant: Will Crypto Get Smarter?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Indian cryptocurrency exchange WazirX has launched 'WazirX AI', an artificial intelligence trading assistant designed to integrate market research, portfolio analysis, and trade execution.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-08-25) does not contain any information regarding WazirX launching an AI trading assistant. The source text lists various news headlines, but none mention WazirX or an AI product launch.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story claims a specific product launch by WazirX, but the provided source text is a collection of unrelated news headlines that do not mention this event. Consequently, the central event is unverified.",
+      "digestHash": "48666314a3231c39"
+    },
+    {
+      "slug": "fertiliser-stocks-rally-putin-assurance",
+      "headline": "Fertiliser Stocks Soar 13% After Putin's India Assurance",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been successfully verified against reliable sources published on the story's publication date. The central event of President Putin's assurance and the resulting rally in fertiliser stocks is well-supported by contemporaneous news reports. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "adda5a97f9f694e5"
+    },
+    {
+      "slug": "rbi-rupee-intervention-forex",
+      "headline": "Rupee Jumps As RBI Steps In To Calm Forex Market",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The central bank likely sold US Dollars from its foreign exchange reserves to infuse liquidity into the market and counter depreciation pressures.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the RBI's possible intervention in the spot and Non-Deliverable Forwards (NDFs) market, but it does not explicitly state that the RBI sold US Dollars from its foreign exchange reserves to infuse liquidity.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any historical data points or a list of past events corresponding to this claim.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the core news regarding the RBI's likely intervention and the factors influencing the Rupee. However, it includes an unverified claim about the specific mechanism of the intervention (selling reserves) and contains a placeholder object for past events that is not supported by the source text.",
+      "digestHash": "978103efc862961c"
+    },
+    {
+      "slug": "indian-banks-fy27-outlook",
+      "headline": "Indian Banks Set For Strong FY27 Growth: Bernstein Predicts",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the content of the cited Business Standard article regarding the Bernstein report on Indian banking growth for FY27.",
+      "digestHash": "b7895e4c9996ab7f"
     }
   ]
 }
