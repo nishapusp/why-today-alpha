@@ -1,0 +1,170 @@
+{
+  "date": "2026-08-27",
+  "generatedAt": "2026-08-26T19:15:45.148Z",
+  "results": [
+    {
+      "slug": "india-japan-deep-tech-fund",
+      "headline": "India, Japan Seek $1 Billion Fund For Deep Tech Startups",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the proposed fund size, areas of cooperation, named individuals, historical agreements, and contextual figures, were verified with reliable sources published around the story's publication date. The central event of Union Minister Piyush Goyal proposing the fund and startup series during his visit to Japan is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "53d7e4bba86db336"
+    },
+    {
+      "slug": "bharat-electronics-new-order",
+      "headline": "Bharat Electronics Bags ₹730 Crore Order: What's It For?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the order values, dates, and company metrics are supported by the provided source texts. The story accurately reflects the information provided in the source articles.",
+      "digestHash": "ffd88e08e0dcd49c"
+    },
+    {
+      "slug": "sugar-prices-ease-government-intervention",
+      "headline": "Your Sugar Just Got Cheaper: Government Steps In. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Ministry of Consumer Affairs announced the approval of 1 million tonnes of duty-free raw sugar imports",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding sugar imports, stock limits, or price movements; it is a general news landing page.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "sugar prices had seen a significant increase, rising from ₹48.18 per kg in July to ₹55.70 per kg by mid-August",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these price figures or any mention of sugar market trends.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Late Aug 2026 (Est.) = 52.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this data point.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a generic news aggregator page that does not contain any of the specific claims made in the story regarding sugar prices, government policy, or import volumes.",
+      "digestHash": "9e329ddadbba2087"
+    },
+    {
+      "slug": "hal-safran-helicopter-engine-deal",
+      "headline": "India & France To Power Helicopters Together: Big Defence Deal?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Hindustan Aeronautics Limited (HAL) and France's Safran Helicopter Engines have signed a major contract to jointly develop and produce helicopter engines in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any information regarding a contract between HAL and Safran. The source text lists various news headlines from August 26, 2026, but none of them mention this deal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This collaboration focuses on creating a powerful 3,500-4,000 shp engine.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this engine or its specifications.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The deal specifies equal sharing of development responsibilities and outlines a production facility in Tumakuru, Karnataka.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this deal, its terms, or the location of a production facility.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The joint development work for the Aravalli engine is expected to commence soon",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention an 'Aravalli' engine.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on a claim about a HAL-Safran contract that is completely absent from the provided source text. The source text provided is a list of unrelated news headlines from August 26, 2026.",
+      "digestHash": "61ef39978428afee"
+    },
+    {
+      "slug": "infineon-bengaluru-lease",
+      "headline": "German Tech Giant Infineon Bets Big On Bengaluru: ₹750 Crore Lease!",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "indian-rice-exporters-iran-sanctions",
+      "headline": "Indian Rice Exporters Defy US Sanctions, See Iran Demand Soar!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Rice currently accounts for nearly two-thirds, or approximately $825 million, of India's $1.25 billion total exports to Iran in the fiscal year ending March.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any data regarding the total value of India's exports to Iran, the specific value of rice exports to Iran, or the percentage breakdown of such trade.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Rice constitutes a significant 66% of India's total exports to Iran, which amounted to $1.25 billion in the fiscal year ending March.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any data regarding the total value of India's exports to Iran or the percentage breakdown of such trade.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes specific claims about trade volumes and percentages between India and Iran that are not supported by the provided source texts. The sources focus on MTAR Tech's order book and general international news, including US-Iran tensions, but do not provide the trade statistics cited in the story.",
+      "digestHash": "4fbd3d20a4c5e675"
+    },
+    {
+      "slug": "banks-nbfc-fintech-partnership-rules",
+      "headline": "Banks & NBFCs Forced To Rewire Fintech Deals: New Rules?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Indian banks and Non-Banking Financial Companies (NBFCs) are in the process of fundamentally altering their engagement terms with fintech companies. This widespread renegotiation is a direct response to the Reserve Bank of India’s (RBI) recently issued draft data governance norms and the newly enacted Digital Personal Data Protection (DPDP) rules.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-08-26) does not contain any information regarding banks or NBFCs resetting partnership terms with fintech firms due to RBI draft data governance norms or DPDP rules. The source text is a list of headlines and snippets, none of which mention this topic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story claims to be based on a specific Business Standard article, but the provided source text does not contain the information described in the story. The story's central premise is entirely unsupported by the provided source.",
+      "digestHash": "f99fa694fab25933"
+    }
+  ]
+}
