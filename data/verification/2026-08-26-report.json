@@ -1,6 +1,6 @@
 {
   "date": "2026-08-26",
-  "generatedAt": "2026-08-26T00:02:00.852Z",
+  "generatedAt": "2026-08-26T08:48:54.262Z",
   "results": [
     {
       "slug": "india-merchant-ship-fleet-expansion",
@@ -113,6 +113,62 @@
       ],
       "notes": "The story relies on specific claims regarding an SBI fundraising target and an RBI swap window that are entirely absent from the provided source text. While the source text mentions 'Data on Forex inflows via FCNR(B) Deposits... under Reserve Bank’s Swap facility', it does not confirm the existence of a $10 billion target or an August 31 deadline.",
       "digestHash": "e947ec5d9c41c060"
+    },
+    {
+      "slug": "india-commercial-sector-funding-surge",
+      "headline": "India's Businesses Get 138% More Funding: What's Driving It?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India’s August 2026 Bulletin, released this week, highlighted this dramatic increase",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided Source 1 is an index/table of contents for the RBI Bulletin, but it does not contain the specific figures (Rs 10.65 lakh crore, 138% growth, etc.) mentioned in the story.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story cites the RBI Bulletin as the source for its specific data points, but the provided source text is only a table of contents for the bulletin and does not contain the actual data. Therefore, the figures are unverifiable based on the provided source material.",
+      "digestHash": "607a0826909ca927"
+    },
+    {
+      "slug": "us-sanctions-indian-firms-iran-oil",
+      "headline": "US Sanctions Hit Four Indian Firms Over Iran Oil",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the sanctioned entities, the specific dollar amounts of imports, the individuals named, and the context of 'Operation Economic Outcast' are supported by the provided source texts.",
+      "digestHash": "f25200d157ef8ee9"
+    },
+    {
+      "slug": "nestle-india-h1-performance",
+      "headline": "Nestle India Soars: Global CEO Eyes Top 5 Market Spot",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Nestle SA's global net profit fell 31.4% to CHF 3.5 billion in H1 2026 from CHF 5.1 billion in H1 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 3 states sales for the first six months were CHF 43.1 billion, down 2.5% from CHF 44.2 billion, but does not provide the net profit figures of CHF 3.5 billion or CHF 5.1 billion, nor the 31.4% decline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Nestle SA Global Organic Growth (H1 2026) = 3.6% (previous: 2.9% — H1 2025)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 3 confirms H1 2026 organic growth was 3.6%, but it does not state the H1 2025 figure was 2.9%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies India's performance and the CEO's stated ambitions. However, it includes specific global financial figures (net profit and prior-year organic growth) that are not present in the provided source texts.",
+      "digestHash": "11970cb00b6eb01a"
     }
   ]
 }
