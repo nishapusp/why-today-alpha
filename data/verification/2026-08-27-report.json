@@ -1,6 +1,6 @@
 {
   "date": "2026-08-27",
-  "generatedAt": "2026-08-26T19:15:45.148Z",
+  "generatedAt": "2026-08-26T21:50:45.166Z",
   "results": [
     {
       "slug": "india-japan-deep-tech-fund",
@@ -58,66 +58,59 @@
       "digestHash": "9e329ddadbba2087"
     },
     {
-      "slug": "hal-safran-helicopter-engine-deal",
-      "headline": "India & France To Power Helicopters Together: Big Defence Deal?",
-      "verdict": "UNVERIFIABLE",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "Hindustan Aeronautics Limited (HAL) and France's Safran Helicopter Engines have signed a major contract to jointly develop and produce helicopter engines in India.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Source 1) does not contain any information regarding a contract between HAL and Safran. The source text lists various news headlines from August 26, 2026, but none of them mention this deal.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This collaboration focuses on creating a powerful 3,500-4,000 shp engine.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this engine or its specifications.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The deal specifies equal sharing of development responsibilities and outlines a production facility in Tumakuru, Karnataka.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention this deal, its terms, or the location of a production facility.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The joint development work for the Aravalli engine is expected to commence soon",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an 'Aravalli' engine.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The entire story is based on a claim about a HAL-Safran contract that is completely absent from the provided source text. The source text provided is a list of unrelated news headlines from August 26, 2026.",
-      "digestHash": "61ef39978428afee"
-    },
-    {
       "slug": "infineon-bengaluru-lease",
       "headline": "German Tech Giant Infineon Bets Big On Bengaluru: ₹750 Crore Lease!",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "The finalization of this massive lease agreement today underscores Infineon's growing confidence...",
+          "status": "WRONG",
+          "detail": "News reports indicate the finalization of the lease agreement was reported on August 26, 2026, not on the story's publication date of August 27, 2026. The event was already news by the story's 'today'.",
+          "correction": "The finalization of this massive lease agreement, reported yesterday, underscores Infineon's growing confidence...",
+          "source": "Hindustan Times, NoBroker Times, The Economic Times, Business Standard, BW Businessworld",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: FY23 = 10.8",
+          "status": "WRONG",
+          "detail": "FDI inflows in India's Computer Software & Hardware sector for FY23 were US$9.39 billion.",
+          "correction": "FY23 = 9.39",
+          "source": "India FDI Inflow FY 2023: Latest Data Analysis on Investment Landscape - India Briefing",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: FY24 = 9.6",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "Specific, directly cited data for FDI in India's Computer Software & Hardware sector for FY24 (April 2023 - March 2024) could not be definitively confirmed from reliable sources matching or clearly contradicting this figure. Some sources suggest a figure around $7.8 billion for FY25, implying FY24 might be lower or similar, making 9.6 potentially inconsistent, but without direct confirmation, it remains unverified.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: FY25 = 12.3",
+          "status": "WRONG",
+          "detail": "FDI equity inflows into India's Computer Software & Hardware sector for FY 2024-25 were US$7.8 billion.",
+          "correction": "FY25 = 7.8",
+          "source": "The India FDI Story: Top Sectors Attracting Foreign Investment - Invest India, Communications Today, EMSNow",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: FY26 = 15.7",
+          "status": "WRONG",
+          "detail": "FDI equity inflows into India's Computer Software & Hardware sector for FY 2025-26 were US$13.9 billion (or US$13.95 billion).",
+          "correction": "FY26 = 13.9",
+          "source": "India FDI Report FY 2025-26: Sustained Capital Inflows Amid Global Reallocations - India Briefing, The India FDI Story: Top Sectors Attracting Foreign Investment - Invest India, FDI Report FY 2025-26: Top 10 Countries and Sectors Driving Foreign Investment in India - Make in India, Communications Today, FDI equity flows up 18% in FY 26; US doubles its investment - The Financial Express, EMSNow",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "While the core event regarding Infineon's lease in Bengaluru is largely accurate and confirmed by multiple sources just prior to the publication date, several key financial figures related to Foreign Direct Investment (FDI) in the Computer Software & Hardware sector are incorrect. The story also misrepresents the timing of the lease finalization as 'today' when news reports indicate it was finalized and reported the previous day. These inaccuracies, particularly in financial data, lead to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "60c5d63f0df13f49"
     },
     {
       "slug": "indian-rice-exporters-iran-sanctions",
@@ -165,6 +158,43 @@
       ],
       "notes": "The story claims to be based on a specific Business Standard article, but the provided source text does not contain the information described in the story. The story's central premise is entirely unsupported by the provided source.",
       "digestHash": "f99fa694fab25933"
+    },
+    {
+      "slug": "purple-style-labs-ipo-valuation",
+      "headline": "Why a luxury fashion startup is chasing a ₹4,604 crore valuation",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Purple Style Labs has set its IPO price band, targeting a ₹4,604 crore valuation.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Purple Style Labs, its IPO, its valuation, or its fundraising plans.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The company will raise ₹680 crore in fresh capital.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Purple Style Labs or its fundraising plans.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bidding process will open from August 31 to September 2.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding Purple Style Labs or its IPO schedule.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news digest from Business Standard that does not mention Purple Style Labs or any IPO related to it. Consequently, all specific claims regarding the company's valuation, fundraising, and IPO dates are unverifiable based on the provided source.",
+      "digestHash": "5eec755bdc03c57d"
     }
   ]
 }
