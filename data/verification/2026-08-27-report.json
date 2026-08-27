@@ -1,6 +1,6 @@
 {
   "date": "2026-08-27",
-  "generatedAt": "2026-08-26T21:50:45.166Z",
+  "generatedAt": "2026-08-27T04:57:13.066Z",
   "results": [
     {
       "slug": "india-japan-deep-tech-fund",
@@ -56,61 +56,6 @@
       ],
       "notes": "The provided source text is a generic news aggregator page that does not contain any of the specific claims made in the story regarding sugar prices, government policy, or import volumes.",
       "digestHash": "9e329ddadbba2087"
-    },
-    {
-      "slug": "infineon-bengaluru-lease",
-      "headline": "German Tech Giant Infineon Bets Big On Bengaluru: ₹750 Crore Lease!",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The finalization of this massive lease agreement today underscores Infineon's growing confidence...",
-          "status": "WRONG",
-          "detail": "News reports indicate the finalization of the lease agreement was reported on August 26, 2026, not on the story's publication date of August 27, 2026. The event was already news by the story's 'today'.",
-          "correction": "The finalization of this massive lease agreement, reported yesterday, underscores Infineon's growing confidence...",
-          "source": "Hindustan Times, NoBroker Times, The Economic Times, Business Standard, BW Businessworld",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: FY23 = 10.8",
-          "status": "WRONG",
-          "detail": "FDI inflows in India's Computer Software & Hardware sector for FY23 were US$9.39 billion.",
-          "correction": "FY23 = 9.39",
-          "source": "India FDI Inflow FY 2023: Latest Data Analysis on Investment Landscape - India Briefing",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: FY24 = 9.6",
-          "status": "UNVERIFIABLE",
-          "detail": "Specific, directly cited data for FDI in India's Computer Software & Hardware sector for FY24 (April 2023 - March 2024) could not be definitively confirmed from reliable sources matching or clearly contradicting this figure. Some sources suggest a figure around $7.8 billion for FY25, implying FY24 might be lower or similar, making 9.6 potentially inconsistent, but without direct confirmation, it remains unverified.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: FY25 = 12.3",
-          "status": "WRONG",
-          "detail": "FDI equity inflows into India's Computer Software & Hardware sector for FY 2024-25 were US$7.8 billion.",
-          "correction": "FY25 = 7.8",
-          "source": "The India FDI Story: Top Sectors Attracting Foreign Investment - Invest India, Communications Today, EMSNow",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: FY26 = 15.7",
-          "status": "WRONG",
-          "detail": "FDI equity inflows into India's Computer Software & Hardware sector for FY 2025-26 were US$13.9 billion (or US$13.95 billion).",
-          "correction": "FY26 = 13.9",
-          "source": "India FDI Report FY 2025-26: Sustained Capital Inflows Amid Global Reallocations - India Briefing, The India FDI Story: Top Sectors Attracting Foreign Investment - Invest India, FDI Report FY 2025-26: Top 10 Countries and Sectors Driving Foreign Investment in India - Make in India, Communications Today, FDI equity flows up 18% in FY 26; US doubles its investment - The Financial Express, EMSNow",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "While the core event regarding Infineon's lease in Bengaluru is largely accurate and confirmed by multiple sources just prior to the publication date, several key financial figures related to Foreign Direct Investment (FDI) in the Computer Software & Hardware sector are incorrect. The story also misrepresents the timing of the lease finalization as 'today' when news reports indicate it was finalized and reported the previous day. These inaccuracies, particularly in financial data, lead to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "60c5d63f0df13f49"
     },
     {
       "slug": "indian-rice-exporters-iran-sanctions",
@@ -195,6 +140,15 @@
       ],
       "notes": "The provided source text is a news digest from Business Standard that does not mention Purple Style Labs or any IPO related to it. Consequently, all specific claims regarding the company's valuation, fundraising, and IPO dates are unverifiable based on the provided source.",
       "digestHash": "5eec755bdc03c57d"
+    },
+    {
+      "slug": "acme-solar-project-funding",
+      "headline": "ACME Solar Secures ₹1,571 Crore Funding For Peak Power Project",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the funding amount, the lender (IIFCL), the project capacity (300 MW), and the project location (Rajasthan) are directly supported by the provided source text.",
+      "digestHash": "8ed4bd39c53a6a20"
     }
   ]
 }
