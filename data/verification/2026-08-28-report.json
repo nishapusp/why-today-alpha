@@ -1,0 +1,118 @@
+{
+  "date": "2026-08-28",
+  "generatedAt": "2026-08-27T21:25:54.448Z",
+  "results": [
+    {
+      "slug": "sembcorp-green-infra-files-ipo",
+      "headline": "Sembcorp Green Infra Files For ₹3,750 Crore IPO",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Sembcorp Green Infra, the Indian renewable energy arm of Singapore's Sembcorp Industries, has filed a Draft Red Herring Prospectus (DRHP) with SEBI for an Initial Public Offering (IPO) of up to ₹3,750 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) discusses capital raising trends in India and mentions a 'Temasek-backed Sembcorp Green Infra' filing for an IPO, but the source text itself does not contain the specific figure of ₹3,750 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "IPO Size = ₹3,750 Crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the specific IPO size of ₹3,750 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the story reports on a Sembcorp Green Infra IPO filing, the specific financial figure of ₹3,750 crore is not present in the provided source text. The source text mentions the company name in the headline but does not provide the IPO valuation details.",
+      "digestHash": "46aa0a10b636a717"
+    },
+    {
+      "slug": "wipro-google-cloud-ai-partnership",
+      "headline": "Wipro & Google Cloud Deepen AI Partnership for Enterprise Adoption",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the expanded partnership between Wipro and Google Cloud.",
+      "digestHash": "e393bbc166a2bda4"
+    },
+    {
+      "slug": "government-subsidized-onions-price-rise",
+      "headline": "Why the government is selling cheap onions at ₹35",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Ministry of Consumer Affairs is utilizing its Price Stabilisation Fund to distribute onions directly from its national buffer stock of 1.21 lakh tonnes",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the government is releasing onions from the buffer stock, but it does not state the total size of the buffer stock is 1.21 lakh tonnes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the government's intervention, the retail price of ₹62, and the subsidized price of ₹35. However, the figure of 1.21 lakh tonnes for the national buffer stock is not present in the provided source text.",
+      "digestHash": "743dee8bca7e0fc9"
+    },
+    {
+      "slug": "symbiotec-pharmalab-ipo",
+      "headline": "Why did a low-profile pharma IPO get booked seventy-one times over?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Symbiotec Pharmalab's Initial Public Offering concluded with bids for 93.52 crore shares, representing a staggering 71.26 times oversubscription of the 1.31 crore shares initially offered to the public.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a generic NSE landing page and contains no information regarding Symbiotec Pharmalab or its IPO subscription data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Hy Tech Engineers getting booked over 244 times.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Hy Tech Engineers or its IPO subscription data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes numerous specific claims about an IPO subscription, but the provided source text is a generic NSE homepage that does not contain any of the cited data points. As the source text is insufficient to verify the claims, they are marked as UNVERIFIABLE.",
+      "digestHash": "9f08d9b0d4767fe9"
+    },
+    {
+      "slug": "retail-margin-lending-risks",
+      "headline": "Why is a billionaire broker warning about India's 'scary' leverage surge?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "A prominent billionaire broker has warned that the rapid expansion of margin trading facility (MTF) books in India is becoming dangerous.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a general SEBI departmental overview and does not contain any news, reports, or mentions of a billionaire broker issuing warnings about MTF books.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Retail Demat Accounts = 15 crore+",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding the number of retail demat accounts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story relies on external claims about a billionaire broker's warning and specific market statistics that are entirely absent from the provided SEBI source text. The source text is limited to administrative information about SEBI departments and upcoming events.",
+      "digestHash": "6e5c63730d4bc1e0"
+    }
+  ]
+}
