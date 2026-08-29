@@ -1,6 +1,6 @@
 {
   "date": "2026-08-29",
-  "generatedAt": "2026-08-29T08:34:25.142Z",
+  "generatedAt": "2026-08-29T13:32:23.285Z",
   "results": [
     {
       "slug": "jio-platforms-ipo-sebi-approval",
@@ -148,6 +148,34 @@
       "issues": [],
       "notes": "The story accurately reflects the details provided in the source text regarding the acquisition of soda ash customer contracts by Tata Chemicals North America Inc. from Searles Valley Minerals Inc. All claims, including the context of the bankruptcy proceedings and the strategic rationale, are supported by the provided source.",
       "digestHash": "7fa66d7e6d314c46"
+    },
+    {
+      "slug": "h1b-grace-period-threat",
+      "headline": "Why is the US proposing a sudden crackdown on H-1B tech workers?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The 60-day grace period has allowed over 10,000 laid-off workers to successfully find new jobs annually",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any statistics regarding the number of workers who successfully utilize the grace period to find new jobs annually.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Remittance impact: Threatens flows to India, which reached $115 billion globally last year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any data regarding global remittance flows to India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the current status of the DHS proposal as described in the source. However, it includes specific statistics regarding annual job transitions and remittance totals that are not present in the provided source text.",
+      "digestHash": "1a7a009eea502de2"
     }
   ]
 }
