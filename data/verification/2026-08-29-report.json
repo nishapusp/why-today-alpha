@@ -1,6 +1,6 @@
 {
   "date": "2026-08-29",
-  "generatedAt": "2026-08-29T04:34:34.840Z",
+  "generatedAt": "2026-08-29T08:34:25.142Z",
   "results": [
     {
       "slug": "jio-platforms-ipo-sebi-approval",
@@ -84,6 +84,70 @@
       ],
       "notes": "The core facts regarding the ₹30,000 crore buyback and the September 3 date are supported by the provided source. However, the story includes specific technical details about the auction method and specific bond identifiers that are not present in the provided source text.",
       "digestHash": "2d1cda3a60e007f0"
+    },
+    {
+      "slug": "us-venezuela-oil-deal-global-impact",
+      "headline": "US Strikes 'World History' Oil Deal With Venezuela; What Does It Mean?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the US-Venezuela oil deal, the reserve figures, and the context of India's oil import dependency are supported by the provided source text.",
+      "digestHash": "b40428def58c2bef"
+    },
+    {
+      "slug": "nepal-floods-isha-foundation-pilgrims-missing",
+      "headline": "Nepal Floods: 77 Isha Foundation Pilgrims Missing Amid Rescue Efforts.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the number of missing pilgrims, their affiliation, the number of nationalities, the duration they have been missing, the location of the floods, and the number of people trapped at hydropower sites, are consistently verified by multiple reliable news sources published on or around the story's publication date of August 29, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "7449681fa34442c3"
+    },
+    {
+      "slug": "india-us-javelin-missile-deal",
+      "headline": "India Bolsters Defense With ₹292 Crore US Missile Deal. Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India has finalized a ₹292 crore deal with the US to acquire Javelin anti-tank guided missiles.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) contains a headline mentioning a 'Rs 292 crore deal' for Javelin missiles, but the actual body of the article does not contain any text or details regarding this deal. The headline appears to be a placeholder or a mislabeled link in the provided source text, and no corroborating information exists in the article content.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The agreement, concluded yesterday, will supply the Indian Army with these advanced, shoulder-launched weapon systems.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any information confirming the conclusion of this deal or its terms.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Following the agreement, the Javelin missiles are expected to be delivered to the Indian Army in phases over the next 12-18 months.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provides no information regarding delivery timelines or training schedules.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the headline of the provided source mentions the deal, the actual content of the source text is entirely unrelated to the Javelin missile procurement, consisting instead of a list of unrelated news snippets. Consequently, all specific details regarding the deal's finalization, delivery, and features are unsupported by the provided text.",
+      "digestHash": "39688f517e8a484b"
+    },
+    {
+      "slug": "tata-chemicals-us-acquisition",
+      "headline": "Tata Chemicals Just Acquired Key US Soda Ash Contracts. What Does It Mean?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the acquisition of soda ash customer contracts by Tata Chemicals North America Inc. from Searles Valley Minerals Inc. All claims, including the context of the bankruptcy proceedings and the strategic rationale, are supported by the provided source.",
+      "digestHash": "7fa66d7e6d314c46"
     }
   ]
 }
