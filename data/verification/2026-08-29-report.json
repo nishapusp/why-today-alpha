@@ -1,6 +1,6 @@
 {
   "date": "2026-08-29",
-  "generatedAt": "2026-08-29T01:33:58.673Z",
+  "generatedAt": "2026-08-29T04:34:34.840Z",
   "results": [
     {
       "slug": "jio-platforms-ipo-sebi-approval",
@@ -65,6 +65,25 @@
       "issues": [],
       "notes": "All factual claims regarding the RBI fortnightly data, including the specific contraction figures and the credit-deposit ratio, are accurately supported by the provided source text.",
       "digestHash": "23fb4d675088d821"
+    },
+    {
+      "slug": "rbi-bond-buyback-liquidity-management",
+      "headline": "RBI To Buy Back ₹30,000 Crore Bonds. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The auction will be conducted using a multiple price method on the RBI's E-Kuber platform and will target specific securities, including those maturing in 2026 and 2027, including specific bonds like the 7.33% GS 2026 and 8.24% GS 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the buyback amount and date but does not provide the specific auction method (multiple price), the platform (E-Kuber), or the specific bond ISINs/coupons (7.33% GS 2026 and 8.24% GS 2027) mentioned in the story.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the ₹30,000 crore buyback and the September 3 date are supported by the provided source. However, the story includes specific technical details about the auction method and specific bond identifiers that are not present in the provided source text.",
+      "digestHash": "2d1cda3a60e007f0"
     }
   ]
 }
