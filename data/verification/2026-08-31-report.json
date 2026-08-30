@@ -1,53 +1,7 @@
 {
   "date": "2026-08-31",
-  "generatedAt": "2026-08-30T19:15:46.822Z",
+  "generatedAt": "2026-08-30T22:01:27.783Z",
   "results": [
-    {
-      "slug": "india-unified-time-mandate",
-      "headline": "India mandates unified time standard to end costly transaction disputes",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The Indian government issued a landmark directive making Indian Standard Time (IST) the mandatory common reference clock across key economic sectors on Sunday.",
-          "status": "WRONG",
-          "detail": "The Legal Metrology (Indian Standard Time) Rules, 2026, were officially notified by the Ministry of Consumer Affairs on August 27, 2026, which was a Friday, not Sunday. News reports announcing this notification were widely published on Sunday, August 30, 2026.",
-          "correction": "The Indian government notified the Legal Metrology (Indian Standard Time) Rules, 2026, making Indian Standard Time (IST) the mandatory common reference clock across key economic sectors on August 27, 2026.",
-          "source": "ET Online, Swarajya, The Pioneer, NDTV Profit News, The Statesman, IANS",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "digital payment volumes in India have grown by over 1,000%",
-          "status": "WRONG",
-          "detail": "UPI transaction volumes increased by almost 13,000-fold from FY 2016-17 to FY 2025-26. A 13,000-fold increase translates to a growth of nearly 1,300,000%, making 'over 1,000%' a significant understatement.",
-          "correction": "digital payment volumes in India have grown by over 1,000,000% (or almost 13,000-fold).",
-          "source": "PIB, BFSI News, IBEF, The Economic Times, Press Information Bureau, BusinessToday, DD News, Rediff",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "which handles over 10 billion transactions monthly.",
-          "status": "STALE",
-          "detail": "While technically correct, this figure is materially understated. Latest available data for July 2026 shows monthly UPI transactions reached 23.66 billion (2,366 crore transactions), which is significantly higher than 10 billion.",
-          "correction": "which handles over 23 billion transactions monthly.",
-          "source": "IBEF, Press Information Bureau, BusinessToday, DD News, Rediff",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Today, with the country processing over 13 billion digital transactions every month",
-          "status": "STALE",
-          "detail": "While technically correct, this figure is materially understated. Latest available data for July 2026 shows monthly UPI transactions reached 23.66 billion (2,366 crore transactions), which is significantly higher than 13 billion.",
-          "correction": "Today, with the country processing over 23 billion digital transactions every month",
-          "source": "IBEF, Press Information Bureau, BusinessToday, DD News, Rediff",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central event of India mandating a unified time standard and many of its details. However, it contains a factual error regarding the exact date of the directive's notification and uses significantly understated figures for current digital payment volumes and growth, which were more precise and higher as of the publication date. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "34b898051baecbe4"
-    },
     {
       "slug": "hdfc-bank-mutual-fund-holdings-cut",
       "headline": "Why are mutual funds slashing their bets on HDFC Bank?",
