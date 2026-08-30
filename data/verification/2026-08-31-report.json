@@ -1,0 +1,108 @@
+{
+  "date": "2026-08-31",
+  "generatedAt": "2026-08-30T19:15:46.822Z",
+  "results": [
+    {
+      "slug": "india-unified-time-mandate",
+      "headline": "India mandates unified time standard to end costly transaction disputes",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Indian government issued a landmark directive making Indian Standard Time (IST) the mandatory common reference clock across key economic sectors on Sunday.",
+          "status": "WRONG",
+          "detail": "The Legal Metrology (Indian Standard Time) Rules, 2026, were officially notified by the Ministry of Consumer Affairs on August 27, 2026, which was a Friday, not Sunday. News reports announcing this notification were widely published on Sunday, August 30, 2026.",
+          "correction": "The Indian government notified the Legal Metrology (Indian Standard Time) Rules, 2026, making Indian Standard Time (IST) the mandatory common reference clock across key economic sectors on August 27, 2026.",
+          "source": "ET Online, Swarajya, The Pioneer, NDTV Profit News, The Statesman, IANS",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "digital payment volumes in India have grown by over 1,000%",
+          "status": "WRONG",
+          "detail": "UPI transaction volumes increased by almost 13,000-fold from FY 2016-17 to FY 2025-26. A 13,000-fold increase translates to a growth of nearly 1,300,000%, making 'over 1,000%' a significant understatement.",
+          "correction": "digital payment volumes in India have grown by over 1,000,000% (or almost 13,000-fold).",
+          "source": "PIB, BFSI News, IBEF, The Economic Times, Press Information Bureau, BusinessToday, DD News, Rediff",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "which handles over 10 billion transactions monthly.",
+          "status": "STALE",
+          "detail": "While technically correct, this figure is materially understated. Latest available data for July 2026 shows monthly UPI transactions reached 23.66 billion (2,366 crore transactions), which is significantly higher than 10 billion.",
+          "correction": "which handles over 23 billion transactions monthly.",
+          "source": "IBEF, Press Information Bureau, BusinessToday, DD News, Rediff",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Today, with the country processing over 13 billion digital transactions every month",
+          "status": "STALE",
+          "detail": "While technically correct, this figure is materially understated. Latest available data for July 2026 shows monthly UPI transactions reached 23.66 billion (2,366 crore transactions), which is significantly higher than 13 billion.",
+          "correction": "Today, with the country processing over 23 billion digital transactions every month",
+          "source": "IBEF, Press Information Bureau, BusinessToday, DD News, Rediff",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event of India mandating a unified time standard and many of its details. However, it contains a factual error regarding the exact date of the directive's notification and uses significantly understated figures for current digital payment volumes and growth, which were more precise and higher as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "34b898051baecbe4"
+    },
+    {
+      "slug": "hdfc-bank-mutual-fund-holdings-cut",
+      "headline": "Why are mutual funds slashing their bets on HDFC Bank?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over 40,000 crore of mutual fund assets are linked directly to the bank's stock movement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a figure of 40,000 crore regarding mutual fund assets linked to HDFC Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "For over two decades, under the founding leadership of Aditya Puri, the bank delivered consistent 20% profit growth quarter after quarter",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding the specific percentage of profit growth delivered under Aditya Puri.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the multi-year low in active mutual fund exposure and the context of the 2023 merger. However, it includes specific financial figures (40,000 crore and 20% profit growth) that are not present in the provided source text.",
+      "digestHash": "ca250a9b0b8dcd27"
+    },
+    {
+      "slug": "young-founder-deep-tech-drone-startup",
+      "headline": "Why did a 21-year-old skip college to build a $50M startup?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The company's total funding to nearly $50 million",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the company has raised $37 million in Series A funding, taking the total funding to nearly $50 million. The story uses this $50 million figure as a 'valuation' throughout the text, whereas the source identifies it as 'total funding'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The startup has achieved an estimated valuation of $50 million",
+          "status": "WRONG",
+          "detail": "The source text identifies $50 million as the company's 'total funding', not its valuation.",
+          "correction": "The company has raised nearly $50 million in total funding.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story conflates 'total funding' with 'valuation' throughout the text. While the $50 million figure appears in the source, it is explicitly labeled as total funding, not company valuation.",
+      "digestHash": "d4c45979fdff6bbd"
+    }
+  ]
+}
