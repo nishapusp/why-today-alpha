@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-01",
+  "generatedAt": "2026-08-31T19:49:06.126Z",
+  "results": [
+    {
+      "slug": "us-treasury-yield-spike",
+      "headline": "US 10-Year Treasury Yield Tops 19-Month High",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the data points and context provided in the source texts, including the 10-year Treasury yield, the 19-month high, and the drivers of market sentiment.",
+      "digestHash": "3da96d3f0d006810"
+    },
+    {
+      "slug": "pvr-inox-share-buyback",
+      "headline": "Why Did PVR Inox Just Approve a ₹300 Crore Share Buyback?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Buyback Price per Share = ₹1,450 (previous: ₹1,400 — Average market price in prior weeks)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the buyback price of ₹1,450, but it does not provide or confirm the figure of ₹1,400 as the average market price in prior weeks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the details of the PVR Inox buyback as stated in the source. The only issue is an unverifiable claim regarding the prior average market price included in the 'KEY NUMBER CARD' section.",
+      "digestHash": "a936c671f8b043c8"
+    },
+    {
+      "slug": "purple-style-labs-ipo-plans",
+      "headline": "Why is a Luxury Wedding Platform Racing to the Public Markets?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "999 IPOs have successfully launched in India since 2002, raising over ₹9.83 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding the total number of IPOs since 2002 or the total amount raised.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Total Raised via Indian IPOs since 2002 = ₹9.83 lakh crore (previous: ₹5 lakh crore — In the prior decade)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding IPO totals or historical comparisons.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly cites the PE/VC investment figure from the provided source. However, it includes specific historical IPO data that is not present in the source text, rendering those claims unverifiable.",
+      "digestHash": "763835452f3200f3"
+    },
+    {
+      "slug": "mahindra-battery-as-a-service-ev-pricing",
+      "headline": "Why is Mahindra selling electric SUVs without batteries?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Batteries account for roughly 40% of an electric vehicle's total production cost.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the percentage of an electric vehicle's production cost attributed to the battery.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Mahindra's dealership network will begin taking test-drive bookings for the new BaaS-enabled electric SUVs this week, with initial customer deliveries planned for late September.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention test-drive bookings or delivery timelines for late September.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the BaaS model, the specific vehicle models, and the pricing/usage costs are verified by the source. However, the story includes claims about battery cost percentages and specific dealership/delivery timelines that are not present in the provided source text.",
+      "digestHash": "8f1902cd24392564"
+    }
+  ]
+}
