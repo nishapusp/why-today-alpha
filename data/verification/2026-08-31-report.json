@@ -1,6 +1,6 @@
 {
   "date": "2026-08-31",
-  "generatedAt": "2026-08-30T22:01:27.783Z",
+  "generatedAt": "2026-08-31T01:42:45.929Z",
   "results": [
     {
       "slug": "hdfc-bank-mutual-fund-holdings-cut",
@@ -57,6 +57,34 @@
       ],
       "notes": "The story conflates 'total funding' with 'valuation' throughout the text. While the $50 million figure appears in the source, it is explicitly labeled as total funding, not company valuation.",
       "digestHash": "d4c45979fdff6bbd"
+    },
+    {
+      "slug": "us-weekly-secondary-sanctions-iran-banks",
+      "headline": "Why is the US launching weekly sanctions on Iranian banks?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The first wave of banking-specific sanctions under the new weekly schedule is expected to be announced within days.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states that the Treasury is 'likely to unveil' weekly sanctions and that Bessent said 'You're going to see a lot more of these every week', but it does not provide a specific timeline or confirm that a 'first wave' is expected within days.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The first wave of specific foreign banks blacklisted under the weekly schedule will be published on Friday.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that penalties were imposed on UAE branches of Egypt's Banque Misr on a Friday, but it does not state that a new list of banks will be published on a specific upcoming Friday.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the core news regarding the US Treasury's intent to implement weekly secondary sanctions and the recent military strikes. However, it includes speculative timelines regarding the announcement of the 'first wave' of sanctions that are not supported by the provided source text.",
+      "digestHash": "1b9dbe32216f5604"
     }
   ]
 }
