@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "generatedAt": "2026-09-01T02:11:13.809Z",
+  "generatedAt": "2026-09-01T12:55:32.280Z",
   "results": [
     {
       "slug": "us-treasury-yield-spike",
@@ -149,6 +149,71 @@
       ],
       "notes": "The story describes a significant regulatory change regarding cross-border payments, but none of the claims regarding these rules, their implementation date, or their historical context are supported by the provided RBI source text.",
       "digestHash": "f9f8fa9d4ec7c864"
+    },
+    {
+      "slug": "upi-transactions-hit-record-august-2026",
+      "headline": "Indians Made 24.5 Billion UPI Transactions Last Month! Why It Matters.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "volumes growing by 3.6% compared to July 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provides the August 2026 transaction volume (24.51 billion) and the July 2026 volume (23.6 billion), but it does not explicitly state the 3.6% growth figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "previous: 28.77 — Jul 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the July 2026 transaction value of ₹28.77 trillion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core figures for August 2026 (24.51 billion transactions and ₹29.82 trillion value) are verified by the source. However, the story includes specific growth percentages and July 2026 comparative figures that are not present in the provided source text.",
+      "digestHash": "0d5892644e8b64de"
+    },
+    {
+      "slug": "india-manufacturing-pmi-august-2026",
+      "headline": "Indian Factory Output Hits 5-Year Low. Is The Economy Slowing?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Aug 2025 = 54.6",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical PMI data points for August 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Apr 2026 = 53.8",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical PMI data points for April 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the August 2026 PMI of 50.8 is supported by the source. However, the chart data points for August 2025 and April 2026 are not mentioned in the provided source text and are therefore unverifiable.",
+      "digestHash": "9686683fbcf18da3"
+    },
+    {
+      "slug": "itc-infotech-acquires-happiest-minds",
+      "headline": "Why did IT giant ITC Infotech just buy Happiest Minds?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been verified by reliable sources, and the central event of the acquisition and merger announcement is confirmed to have occurred on or around the publication date. The figures and details provided are consistent with available public information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fe12db4e0db610ef"
     }
   ]
 }
