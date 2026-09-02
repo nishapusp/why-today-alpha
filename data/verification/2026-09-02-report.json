@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "generatedAt": "2026-09-01T22:33:07.932Z",
+  "generatedAt": "2026-09-02T01:33:33.808Z",
   "results": [
     {
       "slug": "hy-tech-engineers-ipo-lists-premium",
@@ -50,52 +50,6 @@
       "digestHash": "9ca8df9790e23d3c"
     },
     {
-      "slug": "blackstone-epl-stake-sale",
-      "headline": "Blackstone Exits EPL, Sells Entire ₹2,032 Crore Stake. What's Next?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Today, global private equity giant Blackstone completed its full exit from EPL Limited, the specialty packaging company.",
-          "status": "WRONG",
-          "detail": "Sources indicate that Blackstone completed its full exit from EPL Limited on September 1, 2026, not September 2, 2026 (the publication date).",
-          "correction": "On September 1, 2026, global private equity giant Blackstone completed its full exit from EPL Limited, the specialty packaging company.",
-          "source": "Blackstone exits EPL with ₹2032 crore stake sale; Quant MF raises holding to 6.95%, Blackstone-backed Epsilon Bidco exits EPL for Rs 2032 crore; HDFC Life buys Rs 74 crore worth shares in SBFC Finance",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Blackstone's complete exit from EPL today is a significant corporate event, signaling a strategic move by one of the world's largest private equity firms.",
-          "status": "WRONG",
-          "detail": "Sources indicate that Blackstone completed its full exit from EPL Limited on September 1, 2026, not September 2, 2026 (the publication date), making the use of 'today' incorrect.",
-          "correction": "Blackstone's complete exit from EPL on September 1, 2026, is a significant corporate event, signaling a strategic move by one of the world's largest private equity firms.",
-          "source": "Blackstone exits EPL with ₹2032 crore stake sale; Quant MF raises holding to 6.95%, Blackstone-backed Epsilon Bidco exits EPL for Rs 2032 crore; HDFC Life buys Rs 74 crore worth shares in SBFC Finance",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Today, the firm offloaded its entire remaining 26.38% stake in the specialty packaging company, garnering approximately ₹2,032 crore from the transaction.",
-          "status": "WRONG",
-          "detail": "Sources state that the transaction occurred on September 1, 2026, making the reference to 'Today' (September 2, 2026) inaccurate.",
-          "correction": "On September 1, 2026, the firm offloaded its entire remaining 26.38% stake in the specialty packaging company, garnering approximately ₹2,032 crore from the transaction.",
-          "source": "Blackstone exits EPL with ₹2032 crore stake sale; Quant MF raises holding to 6.95%, Blackstone-backed Epsilon Bidco exits EPL for Rs 2032 crore; HDFC Life buys Rs 74 crore worth shares in SBFC Finance",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This mirrors the global trend of private equity funds 'harvesting' their investments, such as Carlyle Group's divestment from various Indian companies in 2024-25, to return capital to their limited partners and free up funds for new investment cycles.",
-          "status": "UNVERIFIABLE",
-          "detail": "While Carlyle Group is active in India, search results did not provide specific evidence of 'divestment from various Indian companies in 2024-25' to support this claim as a trend example. One relevant search result indicated Carlyle Group *acquired* a stake in BASF India Coatings Private Limited on June 30, 2026, which is an acquisition and slightly outside the stated timeframe, not a divestment by Carlyle from an Indian company in 2024-25.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the key figures and entities involved in Blackstone's exit from EPL Limited, and the ongoing merger plans for EPL. However, it incorrectly states the timing of Blackstone's exit as 'today' (September 2, 2026), when sources confirm it occurred on September 1, 2026. Additionally, the specific example of Carlyle Group's divestment activity in 2024-25 could not be independently verified to support the broader trend claimed. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "4b79bf2c94a7553d"
-    },
-    {
       "slug": "reliance-enters-icecream-market",
       "headline": "Can a ₹10 ice cream freeze India’s biggest dairy brands?",
       "verdict": "WARN",
@@ -122,6 +76,43 @@
       ],
       "notes": "The story accurately reflects the core details regarding Reliance's entry into the ice cream market, the investment figures, and the distribution network scale as provided in the source. However, it includes specific historical revenue data and a 'past events' section that are not supported by the provided source text.",
       "digestHash": "3c2e153f6e85aa88"
+    },
+    {
+      "slug": "niyo-remitx-forex-acquisition",
+      "headline": "Why is a fintech player buying physical forex branches across India?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Niyo is acquiring the foreign exchange assets of RemitX for ₹11.4 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is exclusively from the Ministry of Corporate Affairs (MCA) website and contains no information regarding Niyo, RemitX, or any acquisition deal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The deal adds a network of thirty-two physical branches to Niyo's digital travel banking platform.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Niyo, RemitX, or any branch network acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2017, e-commerce pioneer Amazon acquired physical grocery chain Whole Foods for $13.7 billion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Amazon or Whole Foods.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a static page from the Ministry of Corporate Affairs website containing regulatory updates and statistics. It does not mention Niyo, RemitX, or any of the business transactions described in the story.",
+      "digestHash": "6c17aa5ad6ad5b44"
     }
   ]
 }
