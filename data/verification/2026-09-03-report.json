@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-03",
+  "generatedAt": "2026-09-02T20:26:51.587Z",
+  "results": [
+    {
+      "slug": "mahanadi-coalfields-ipo-drhp",
+      "headline": "Coal India Subsidiary Files IPO Plan: Is a Mining Giant Going Public?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Mahanadi Coalfields Ltd filing its DRHP and Coal India's intended 10% stake offload, as well as the historical Coal India IPO figure, have been verified by reliable sources published on or before the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1be9f2f448922934"
+    },
+    {
+      "slug": "food-safety-crackdown",
+      "headline": "Maharashtra FDA Cracks Down: Popular Food Outlets Lose Licenses",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any data or list corresponding to 'pastEvents' or the object structure provided in the story.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the FDA actions described in the source text. However, the 'TIME MACHINE (pastEvents)' section contains placeholder object references that are not supported by the source text.",
+      "digestHash": "45cad4a2059fae4a"
+    },
+    {
+      "slug": "cdpq-la-caisse-altius-telecom-investment-invit",
+      "headline": "Why Did a Canadian Pension Fund Just Buy Indian Telecom?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "For India to achieve its target of a $20 trillion economy by 2046",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a $20 trillion economy target for 2046.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the details of the CDPQ investment in Altius Telecom as described in the source. However, it includes a claim regarding a $20 trillion economy target for 2046 which is not supported by the provided source text.",
+      "digestHash": "2e81d28124d3e9dc"
+    }
+  ]
+}
