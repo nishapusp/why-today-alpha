@@ -1,6 +1,6 @@
 {
   "date": "2026-09-02",
-  "generatedAt": "2026-09-02T01:33:33.808Z",
+  "generatedAt": "2026-09-02T12:36:11.628Z",
   "results": [
     {
       "slug": "hy-tech-engineers-ipo-lists-premium",
@@ -113,6 +113,115 @@
       ],
       "notes": "The provided source text is a static page from the Ministry of Corporate Affairs website containing regulatory updates and statistics. It does not mention Niyo, RemitX, or any of the business transactions described in the story.",
       "digestHash": "6c17aa5ad6ad5b44"
+    },
+    {
+      "slug": "coforge-launches-ai-launchpad-enterprise-tech",
+      "headline": "Coforge Launches AI Platform: Will It Change Enterprise Tech?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the launch of 'Coforge AI Launchpad' and its core technology, 'Coforge Nuuron'.",
+      "digestHash": "d07587982e70c440"
+    },
+    {
+      "slug": "rupee-depreciates-us-treasury-yields",
+      "headline": "Rupee Slips Past 94.97: US Yields and Oil Spark Investor Jitters?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Indian Rupee depreciated by 2 paise to close at 94.97 against the US dollar today",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the Rupee's closing rate, its daily movement, US Treasury yields, or crude oil prices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "10-year US Treasury yields above 4.8%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding US Treasury yields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Crude oil prices also surged due to Middle East tensions",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding crude oil prices or Middle East tensions affecting them.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Aug 31 = 94.92",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data points for the USD/INR exchange rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Sep 1 = 94.95",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data points for the USD/INR exchange rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Sep 2 = 94.97",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data points for the USD/INR exchange rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text is a list of unrelated news headlines and does not contain any of the financial data or market movements reported in the story.",
+      "digestHash": "f4625e3c512b0de5"
+    },
+    {
+      "slug": "ibm-lending-labs-ai-sovereign-lending-solution",
+      "headline": "IBM Brings 'Sovereign AI' To Indian Banks. Will Your Data Be Safer?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All claims regarding the partnership between IBM and Lending Labs and the nature of the 'AI Ready, Sovereign Lending Solution' are supported by the provided source text.",
+      "digestHash": "1898bb3d36fcb1f1"
+    },
+    {
+      "slug": "swish-startup-funding",
+      "headline": "Rapid Food Delivery Startup Swish To Raise $20-25 Million",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the funding amount, lead investor, company location, and funding stage, are verified by reliable sources published on or around the story's publication date. The central event of Swish finalising a new funding round is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "bd5fd1cc8e92e1bb"
+    },
+    {
+      "slug": "kfintech-arya-platform",
+      "headline": "KFintech Unveils AI-Powered Investor Service Platform ARYA",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the launch of KFintech's ARYA platform on September 2, 2026.",
+      "digestHash": "924fb5882f4dcaa5"
+    },
+    {
+      "slug": "beml-vande-bharat-sleeper-order",
+      "headline": "Vande Bharat Sleepers Get ₹180 Crore Boost: Who Wins?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the order value, the awarding entity, the type of trainsets, the positive movement of BEML shares, and background information about Vande Bharat Express and BEML's ministerial oversight, have been verified by reliable sources published on or around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d7e84709fadddc22"
     }
   ]
 }
