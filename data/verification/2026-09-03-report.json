@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-02T20:26:51.587Z",
+  "generatedAt": "2026-09-02T23:08:34.943Z",
   "results": [
     {
       "slug": "mahanadi-coalfields-ipo-drhp",
@@ -48,6 +48,34 @@
       ],
       "notes": "The story accurately reports the details of the CDPQ investment in Altius Telecom as described in the source. However, it includes a claim regarding a $20 trillion economy target for 2046 which is not supported by the provided source text.",
       "digestHash": "2e81d28124d3e9dc"
+    },
+    {
+      "slug": "fcnrb-forex-inflow-record",
+      "headline": "Why Indian banks just secured a record $127 billion forex windfall",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This liquidity flood has caused the weighted average call rate—the rate at which banks lend to one another overnight—to drop to 5.02%, down significantly compared to the previous week's average of 5.16%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention the weighted average call rate or these specific percentage figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "banks have until September 11 to swap any deposits that were contracted before the deadline.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention a September 11 deadline for swapping deposits.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the primary figures regarding FCNR(B) deposits and total swap inflows as confirmed by the source texts. However, it includes specific details regarding interbank lending rates and a September 11 swap deadline that are not present in the provided source material.",
+      "digestHash": "b1e7a2c8f9f6ad50"
     }
   ]
 }
