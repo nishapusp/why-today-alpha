@@ -1,6 +1,6 @@
 {
   "date": "2026-09-03",
-  "generatedAt": "2026-09-03T01:31:16.921Z",
+  "generatedAt": "2026-09-03T12:33:05.194Z",
   "results": [
     {
       "slug": "mahanadi-coalfields-ipo-drhp",
@@ -76,6 +76,98 @@
       ],
       "notes": "The story accurately reports the primary figures regarding FCNR(B) deposits and total swap inflows as confirmed by the source texts. However, it includes specific details regarding interbank lending rates and a September 11 swap deadline that are not present in the provided source material.",
       "digestHash": "b1e7a2c8f9f6ad50"
+    },
+    {
+      "slug": "india-tops-global-ai-adoption-workforce-redesign",
+      "headline": "India Tops Global AI Adoption: Is Your Job Next To Be Redesigned?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the Microsoft Work Trend Index 2026 for India, including percentages, definitions, and the India-specific release date, are consistently supported by multiple reliable sources. Historical claims about NITI Aayog and iCET are also accurate. The story accurately characterizes the findings and their context. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ba9b05239d5e4c76"
+    },
+    {
+      "slug": "whatsapp-bill-payments-india-upi",
+      "headline": "WhatsApp Rolls Out Bill Payments In India. Will It Change Everything?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of WhatsApp launching bill payments in India on 2026-09-03, are consistently verified by multiple reliable sources. The details regarding the number of categories, supported payment methods, and historical timelines for UPI and WhatsApp Pay's previous launches are accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "84b516b19fc745c3"
+    },
+    {
+      "slug": "india-gdp-data-controversy-q1-fy27",
+      "headline": "Government Battles Claims Q1 GDP is Actually 2.6%, Not 7.8%.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Ministry of Statistics and Programme Implementation (MoSPI) expects no substantial further revisions to the April-June quarter GDP number, beyond minor adjustments that typically occur.",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the provided source texts contain any statement from MoSPI or any other entity regarding expectations for future revisions to the Q1 FY2026-27 GDP number.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the controversy and the figures cited in the source texts. However, the 'What Next' section includes a claim about MoSPI's expectations for future revisions that is not supported by the provided source material.",
+      "digestHash": "9edd962044c23473"
+    },
+    {
+      "slug": "fssai-nationwide-ban-non-dairy-paneer",
+      "headline": "Fake Paneer On Its Way Out? FSSAI Eyes Nationwide Ban.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central premise of FSSAI considering a nationwide ban on analogue paneer and drafting new guidelines for junk food near schools, are verified by multiple reliable sources published on or very close to the story's publication date (2026-09-03). The number of states where analogue paneer is already banned, the establishment and operational years of FSSAI, the composition of analogue paneer, and the year of the Maggi noodle controversy are all accurately stated. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "4430cfae20f7f9d4"
+    },
+    {
+      "slug": "india-widens-uranium-push-nuclear-goal",
+      "headline": "India Needs More Uranium: Why The Global Push?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India is actively expanding its uranium supply agreements with countries like Australia and Uzbekistan",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions India's 100 GW target and the need for uranium, but it does not contain any information regarding active expansion or renewal of uranium supply agreements with Australia or Uzbekistan.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India is expected to finalize new long-term uranium supply agreements with its chosen partners in the coming months and years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any expected finalization of new uranium supply agreements.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the 100 GW by 2047 target and the current 7.48 GW capacity as mentioned in the source text. However, the specific claims regarding active negotiations or agreements with Australia and Uzbekistan are not supported by the provided source material.",
+      "digestHash": "fa0907ffadea9bab"
+    },
+    {
+      "slug": "swiggy-enters-travel-segment-with-crew",
+      "headline": "Food Delivery Giant Swiggy Now Booking Your Next Trip?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the launch of Swiggy's CREW travel concierge service, its pilot duration, and the historical dates for WeChat and Gojek, are accurate and confirmed by reliable sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "8e4cab6984dc618b"
+    },
+    {
+      "slug": "india-bank-liquidity-surplus-fcnrb-inflows",
+      "headline": "Indian Banks Drowning in Cash? Liquidity Hits Record High.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the central premise of an all-time high liquidity surplus driven by FCNR(B) inflows and its various implications, are consistently verified by multiple reliable financial news sources and reports published around the story's date. Historical references and definitions are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "145c849971c6f969"
     }
   ]
 }
