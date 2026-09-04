@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-04T01:25:06.590Z",
+  "generatedAt": "2026-09-04T12:31:04.979Z",
   "results": [
     {
       "slug": "iran-strikes-kuwait-gulf-tensions",
@@ -20,22 +20,6 @@
       ],
       "notes": "The story's central claim regarding the Iran-Kuwait conflict is supported by the provided source text. However, the specific figure regarding India's oil import dependence (85%) is not mentioned in the source text and is therefore unverifiable.",
       "digestHash": "4e05ce88bbd198f7"
-    },
-    {
-      "slug": "rentomojo-ipo-price-band",
-      "headline": "Rental Startup Rentomojo Sets IPO Price Band: Will It Fly?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
       "slug": "tata-chemicals-kenya-exit",
@@ -73,6 +57,89 @@
       "issues": [],
       "notes": "The story accurately reflects the data provided in the source text regarding the August 2026 HSBC India Services PMI, employment trends, and the context of the sector's performance.",
       "digestHash": "278ec7ca36a61193"
+    },
+    {
+      "slug": "india-germany-green-ai-healthcare",
+      "headline": "India And Germany Team Up For 'Green AI' In Healthcare?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "[object Object],[object Object],[object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "This appears to be placeholder text or a malformed data structure within the input, and does not represent a verifiable claim from the news story. No specific content could be extracted or verified.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The news story accurately reports on a collaborative initiative between India and Germany focusing on 'Green AI' in healthcare, with an associated workshop concluding on the publication date. All specific factual claims within the narrative, including the focus, aims, and anticipated next steps, are consistent with available search results. The only issue identified is a non-substantive placeholder in the 'TIME MACHINE (pastEvents)' section of the provided input. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "cbaadcfc0183c704"
+    },
+    {
+      "slug": "india-belgium-trade-defence-pacts",
+      "headline": "India & Belgium Eye Double Trade, Sign Defence Pacts. Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India and Belgium have announced plans to double their bilateral trade within the next five years and have signed new defence pacts.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-09-03) does not contain any information regarding an agreement between India and Belgium to double trade or sign defence pacts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Target trade volume: over $30 billion in 5 years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this trade target or any bilateral trade agreement with Belgium.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "New defence pacts include joint weapons production.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any defence pacts between India and Belgium.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news summary from Business Standard that does not mention India-Belgium trade or defence agreements. The story appears to be fabricated as it lacks any supporting evidence in the provided source.",
+      "digestHash": "31e69c9ef40e2ebd"
+    },
+    {
+      "slug": "openai-new-ai-model-beats-anthropic",
+      "headline": "OpenAI's New AI Model Claims To Beat Anthropic: What Changed?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the OpenAI announcement, the areas of superiority, and the competitive context are supported by the provided source text.",
+      "digestHash": "24a93cdbd66529a4"
+    },
+    {
+      "slug": "sterlite-technologies-ai-revenue-target",
+      "headline": "Can Sterlite Technologies Hit ₹20,000 Crore Revenue On AI Demand?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the revenue target, capital expenditure approval, and stock market reaction, are consistently verified by multiple reliable financial news sources published on the story's publication date. The central event of Sterlite Technologies announcing its growth roadmap and capex approval is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "577a4b1af44a8051"
+    },
+    {
+      "slug": "hyderabad-startup-develops-interceptor-drone",
+      "headline": "India's New Drone Can Fly At 498 Kmph. What Is It For?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the startup's location, the drone's name, its speed, and its classification as India's fastest interceptor drone, are verified by multiple recent and reliable sources. The historical context provided (Prithvi missile development, 'Make in India' initiative, and Indian Army's focus on UAS) is also accurate and consistent with public information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "9874871bf45b9ee1"
     }
   ]
 }
