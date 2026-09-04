@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-05",
+  "generatedAt": "2026-09-04T20:37:22.196Z",
+  "results": [
+    {
+      "slug": "us-sanctions-turkish-bank-iran",
+      "headline": "Turkish Bank Blacklisted By US. Why It Matters To India.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India's Forex Reserves (Aug 28) = $740.803 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding India's foreign exchange reserves.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the US sanctions against the three Turkish entities mentioned in the source. However, it includes a specific figure for India's forex reserves that is not supported by the provided source material.",
+      "digestHash": "f7f77182e1282e4a"
+    },
+    {
+      "slug": "fosun-pharma-sells-gland-pharma-stake",
+      "headline": "Fosun Pharma Sells ₹2,800 Crore Gland Pharma Stake. Why Exit?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the details of the block deal, historical acquisitions, IPO figures, and mentions of geopolitical events, have been verified with reliable sources published around the story's date or the respective historical dates. The numbers and characterizations are accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a81d11faf1ac6f6c"
+    },
+    {
+      "slug": "rabies-vaccine-substandard",
+      "headline": "India Flags Abhayrab Vaccine Batch as Substandard",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Internal documents reveal that Indian regulatory bodies identified a batch of the Abhayrab rabies vaccine as failing to meet standard potency and purity specifications.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source states the batch failed potency tests and was classified as 'not of standard quality' and 'misbranded', but it explicitly notes the sample passed 'sterility, moisture and identity tests'. The story's claim that it failed 'purity' specifications is not supported by the source.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The field contains a placeholder object rather than factual historical data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the core event regarding the Abhayrab vaccine batch KE25012. However, it incorrectly includes 'purity' as a failed specification when the source specifically lists other tests that were passed, and it contains a technical error in the 'pastEvents' field.",
+      "digestHash": "0b58550eadb50499"
+    },
+    {
+      "slug": "india-forex-reserves-record",
+      "headline": "India's Foreign Exchange Reserves Hit New Record High",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This follows a trend of consistent growth throughout the year, driven by foreign institutional investment, remittances, and corporate foreign debt raisings.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts attribute the recent surge in reserves primarily to the RBI's special dollar swap scheme and FCNR(B) deposits, not specifically to foreign institutional investment, remittances, or corporate foreign debt raisings.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The RBI has been strategically buying dollars to prevent the rupee from appreciating too rapidly, which in turn feeds into this massive reserve build-up.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts state the RBI has been intervening to support the rupee (prevent depreciation) and that the swap window is the primary driver of the reserve increase, not dollar buying to prevent appreciation.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core figures regarding the record forex reserves and the weekly increase are verified against the provided source. However, the story attributes the growth to factors (FII, remittances) not mentioned in the source texts, which instead highlight the RBI's special swap window and FCNR(B) deposits.",
+      "digestHash": "c744045690b1a8c8"
+    },
+    {
+      "slug": "us-sanctions-turkey-entities",
+      "headline": "US Targets Three Turkish Entities for Iran-Related Sanctions",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the US sanctions on the three Turkey-based entities, their names, and the context of the Treasury Department's actions are supported by the provided source text.",
+      "digestHash": "db129fadba492ef0"
+    }
+  ]
+}
