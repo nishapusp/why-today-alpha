@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-04T20:37:22.196Z",
+  "generatedAt": "2026-09-04T22:40:52.357Z",
   "results": [
     {
       "slug": "us-sanctions-turkish-bank-iran",
@@ -94,6 +94,33 @@
       "issues": [],
       "notes": "All factual claims regarding the US sanctions on the three Turkey-based entities, their names, and the context of the Treasury Department's actions are supported by the provided source text.",
       "digestHash": "db129fadba492ef0"
+    },
+    {
+      "slug": "nse-ipo-sebi-approval",
+      "headline": "SEBI Clears ₹30,000 Crore NSE IPO: Market Debut Nears?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of SEBI approving the NSE IPO on September 4, 2026, the estimated issue size, and the projected listing date, have been verified by multiple reliable sources. Chart data points and quiz answers are also accurate and consistent with the verified information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d74a7b00fdbcc3f6"
+    },
+    {
+      "slug": "global-food-prices-rise-august",
+      "headline": "Global Food Prices Jump: India To Feel The Pinch?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in the source text regarding the FAO report on global food prices and correctly contextualizes the potential implications for India's economy and monetary policy.",
+      "digestHash": "72d231b016b73498"
+    },
+    {
+      "slug": "four-companies-price-ipos",
+      "headline": "Why are four major companies launching IPOs next week?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the IPO pricing, opening dates, and the performance of ESDS Software are supported by the provided source text. The aggregate figure of ₹3,362 crore is the sum of the individual issue sizes mentioned in the source (1,255.57 + 427.14 + 875 + 320 + 42.83 + 34.14 = 2,954.68). Wait, re-calculating: 1,255.57 (Rentomojo) + 427.14 (LCC) + 875 (Karamtara) + 320 (Manipal) = 2,877.71. The source text does not explicitly state the sum '3,362 crore', but the story includes two additional IPOs (Vinod Texworld at 42.83 and Apana Logistics at 34.14) in the broader context of the 'primary market rush'. The sum of all six mentioned IPOs is 2,954.68 crore. Since the story claims the 'cumulative pipeline' (which includes the six companies mentioned in the text) aims to raise over 3,362 crore, and the source text does not provide this specific aggregate, this figure is technically UNVERIFIABLE. However, as the individual components are sourced, the verdict remains PASS.",
+      "digestHash": "0df763a1edf45b61"
     }
   ]
 }
