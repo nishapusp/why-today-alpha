@@ -1,0 +1,156 @@
+{
+  "date": "2026-09-06",
+  "generatedAt": "2026-09-05T19:49:00.641Z",
+  "results": [
+    {
+      "slug": "adani-defence-bags-5-year-ammunition-deal-for-ak-203-rifles",
+      "headline": "Adani Defence Bags 5-Year Ammunition Deal For AK-203 Rifles",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story's central claim regarding the Adani Defence agreement is fully supported by the provided source text, which explicitly mentions the five-year ammunition supply pact for AK-203 rifles.",
+      "digestHash": "b5d22c3a4b7db0b2"
+    },
+    {
+      "slug": "us-envoys-russia-ukraine-peace-talks-india-impact",
+      "headline": "US Envoys Meet Putin, Kyiv Strikes Pause: What Does It Mean for India?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "US envoys Steve Witkoff and Jared Kushner met with Russian President Vladimir Putin in Moscow, leading to a 72-hour pause in strikes on Kyiv",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard) contains no mention of Steve Witkoff, Jared Kushner, a meeting with Vladimir Putin, or a 72-hour pause in strikes on Kyiv. The source text is a list of unrelated headlines.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's Oil Import Bill (FY26 est.) = ~$170 Billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding India's oil import bill for FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's Oil Import Bill (FY25) = ~$150 Billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding India's oil import bill for FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a major geopolitical event involving US envoys and a strike pause in Kyiv, but the provided source text is entirely unrelated to these claims. Consequently, all specific claims regarding the meeting and the economic figures are unverifiable based on the provided source.",
+      "digestHash": "df41e4adecf8b8c0"
+    },
+    {
+      "slug": "morgan-stanley-sensex-forecast",
+      "headline": "Morgan Stanley Sees Sensex Soaring: 89,000 By Mid-2027?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This marks a substantial upgrade from their previous forecast of 80,000 for the same period.",
+          "status": "UNVERIFIABLE",
+          "detail": "While Morgan Stanley indeed upgraded its Sensex target to 89,000 by June 2027, and previous targets around 80,000 for different periods or scenarios exist, no reliable source explicitly states that their *previous base-case forecast for June 2027* was specifically 80,000. The sources generally refer to the 89,000 target as an upgrade without providing the exact prior base-case figure for the same June 2027 timeframe.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports Morgan Stanley's updated Sensex target and India's latest GDP and inflation figures, which are all verifiable as of the publication date. However, the precise value of Morgan Stanley's *previous* Sensex target for the specific June 2027 period could not be independently confirmed, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "607ab64307821935"
+    },
+    {
+      "slug": "us-iran-banking-sanctions",
+      "headline": "US Expands Iran Sanctions: New Banking Squeeze Ahead?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims in the story, including the central event of expanded US sanctions on Iran focusing on banking restrictions, are verified by reliable sources published around the story's publication date. The implementation of 'Operation Economic Outcast' and the sanctioning of a Turkish bank on September 4, 2026, directly support the story's premise and details. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "87898d877b560f9b"
+    },
+    {
+      "slug": "jsw-steel-output-up-3-percent",
+      "headline": "JSW Steel Output Up 3%: Are India's Factories Revving Up?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "23.82 lakh tonnes produced in August 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text only mentions the August 2026 production figure of 24.65 lakh tonnes. It does not provide the August 2025 production figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Aug 2024 = 23.08",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain production data for August 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly reports the August 2026 production figure from the source, but it includes historical data points (August 2025 and August 2024) that are not present in the provided source text.",
+      "digestHash": "20db35c4a0b7d09e"
+    },
+    {
+      "slug": "cleaner-cars-outsell-petrol-india",
+      "headline": "Cleaner Cars Outsell Petrol Models; Auto Market Takes New Turn?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "isro-units-seek-privatisation-clarity",
+      "headline": "ISRO Units Unsure of Future As Private Space Explodes?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "jio-global-ai-connectivity-push",
+      "headline": "Jio Wants India-Built Tech To Conquer The World.",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
