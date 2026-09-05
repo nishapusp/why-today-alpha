@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-04T22:40:52.357Z",
+  "generatedAt": "2026-09-05T01:27:24.921Z",
   "results": [
     {
       "slug": "us-sanctions-turkish-bank-iran",
@@ -121,6 +121,53 @@
       "issues": [],
       "notes": "All factual claims regarding the IPO pricing, opening dates, and the performance of ESDS Software are supported by the provided source text. The aggregate figure of ₹3,362 crore is the sum of the individual issue sizes mentioned in the source (1,255.57 + 427.14 + 875 + 320 + 42.83 + 34.14 = 2,954.68). Wait, re-calculating: 1,255.57 (Rentomojo) + 427.14 (LCC) + 875 (Karamtara) + 320 (Manipal) = 2,877.71. The source text does not explicitly state the sum '3,362 crore', but the story includes two additional IPOs (Vinod Texworld at 42.83 and Apana Logistics at 34.14) in the broader context of the 'primary market rush'. The sum of all six mentioned IPOs is 2,954.68 crore. Since the story claims the 'cumulative pipeline' (which includes the six companies mentioned in the text) aims to raise over 3,362 crore, and the source text does not provide this specific aggregate, this figure is technically UNVERIFIABLE. However, as the individual components are sourced, the verdict remains PASS.",
       "digestHash": "0df763a1edf45b61"
+    },
+    {
+      "slug": "deepa-jewellers-ipo-subscription-update",
+      "headline": "Jewellery IPO Subscribed 42 Times: What's Driving Investor Excitement?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "For instance, other IPOs, like Steamhouse India, are also opening in early September",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention an IPO for 'Steamhouse India' opening in early September.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the subscription figures, issue size, and key dates for the Deepa Jewellers IPO as confirmed by the provided source texts. However, it includes a reference to a 'Steamhouse India' IPO which is not mentioned in any of the source materials.",
+      "digestHash": "5819c9b223bb7dca"
+    },
+    {
+      "slug": "tata-motors-iveco-takeover-bid-approved",
+      "headline": "Tata Motors Nears €3.8 Billion Iveco Takeover. What Happens Next?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Expected Revenue Boost: $35-40 billion over 5 years",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention any projected revenue growth figures for the acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "projected $35-40 billion revenue growth in its commercial vehicle sector over the next five years",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention any projected revenue growth figures for the acquisition.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the regulatory approval, offer price, and timeline as per the provided sources. However, it includes specific revenue growth projections that are not present in the source texts.",
+      "digestHash": "aadb6fa48172681d"
     }
   ]
 }
