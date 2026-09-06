@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-06T19:12:10.686Z",
+  "generatedAt": "2026-09-06T21:01:40.755Z",
   "results": [
     {
       "slug": "india-ipo-market-16-companies-next-week",
@@ -121,6 +121,71 @@
       ],
       "notes": "The story's central premise regarding the government's consideration of FDI liberalisation in the plantation sector is supported by the source. However, specific historical and economic figures included in the 'Deep Dive' and 'Backstory' sections are not present in the provided source text.",
       "digestHash": "4d6a40e55b6b543f"
+    },
+    {
+      "slug": "lic-gets-rbi-nod-icici-bank-stake",
+      "headline": "Why did the government’s insurance giant just buy more of ICICI Bank?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India has permitted Life Insurance Corporation to increase its shareholding in ICICI Bank to 9.99%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is the RBI website's landing page, which lists current rates, recent notifications, and press releases. It contains no mention of an approval for LIC to increase its stake in ICICI Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "It follows a similar regulatory approval granted to LIC in late August to raise its stake in HDFC Bank to 9.99%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding an approval for LIC to raise its stake in HDFC Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "LIC manages a massive investment portfolio with assets under management totaling ₹59.39 trillion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention LIC's assets under management.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on specific regulatory approvals and corporate actions that are not mentioned in the provided RBI source text. As the source text is the only information provided, these claims cannot be verified.",
+      "digestHash": "7c0523c387c819ad"
+    },
+    {
+      "slug": "rajnath-singh-sri-lanka-defense-visit",
+      "headline": "Why is India’s defence minister rushing to Sri Lanka this week?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Defence Minister Rajnath Singh will embark on a critical three-day official visit to Sri Lanka starting Tuesday.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text, which is the official website of the High Commission of Sri Lanka in India, contains no mention of a visit by the Indian Defence Minister.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "On Sunday, the Ministry of Defence confirmed that Defence Minister Rajnath Singh will undertake a strategic three-day visit to Sri Lanka from September 8 to September 10, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any confirmation or mention of this visit.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on a diplomatic visit that is not mentioned in the provided source text. While the source text contains historical and background information (such as the Hambantota port lease and the SAGAR policy), it provides no evidence for the central event of the story.",
+      "digestHash": "0c3f7baa8346696e"
     }
   ]
 }
