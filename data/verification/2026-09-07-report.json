@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "generatedAt": "2026-09-07T01:20:30.863Z",
+  "generatedAt": "2026-09-07T13:59:06.127Z",
   "results": [
     {
       "slug": "india-ipo-market-16-companies-next-week",
@@ -186,6 +186,44 @@
       ],
       "notes": "The entire story is based on a diplomatic visit that is not mentioned in the provided source text. While the source text contains historical and background information (such as the Hambantota port lease and the SAGAR policy), it provides no evidence for the central event of the story.",
       "digestHash": "0c3f7baa8346696e"
+    },
+    {
+      "slug": "india-pushes-global-cooperation-for-ai-chips-at-g20",
+      "headline": "India Pushes Global Cooperation For AI, Chips At G20.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Semiconductor Mission Outlay = ₹76,000 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the specific financial outlay for the India Semiconductor Mission.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the G20 Innovation Ministers' Meeting and India's participation. However, the specific figure for the Semiconductor Mission outlay is not present in the provided source texts.",
+      "digestHash": "d0591e83aad180a0"
+    },
+    {
+      "slug": "assam-ai-phygital-bank-branch",
+      "headline": "Assam Unveils India's First AI-Powered 'Phygital' Bank Branch",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Assam Chief Minister Himanta Biswa Sarma has inaugurated India's first AI-powered 'phygital' banking branch.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding the inauguration of an AI-powered 'phygital' banking branch by the Assam Chief Minister. Source 2 mentions various finance news headlines but does not include this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claim regarding the inauguration of an AI-powered banking branch in Assam is not supported by the provided source texts. Source 1 discusses a different topic entirely, and Source 2 is a list of unrelated finance headlines.",
+      "digestHash": "f1bf5db174e0232c"
     }
   ]
 }
