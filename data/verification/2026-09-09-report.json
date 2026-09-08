@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-09",
+  "generatedAt": "2026-09-08T21:13:41.435Z",
+  "results": [
+    {
+      "slug": "slice-fintech-secures-funding-bank",
+      "headline": "Why a $100 million funding shows fintech's race to buy banks",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Indian Enterprise AI Adoption Rate = High",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding Indian Enterprise AI adoption rates.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claims regarding the Slice and North East Small Finance Bank merger and funding are not contradicted by the provided source, but the source text is entirely unrelated to the story's content (it is a generic advertisement for an IPO consultancy firm). Consequently, all specific claims in the story are technically unverifiable against the provided source text.",
+      "digestHash": "3f2f5298457bd7e5"
+    },
+    {
+      "slug": "fintech-banking-shift",
+      "headline": "Fintech moves from digital payments to bank-like services",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the timing and content of the RBI Governor's speech at the Global Fintech Fest 2026, the specific percentage increases in AI investment, IT budget allocation, and the cyber fraud savings figures for August 2026 and August 2025, were independently verified by reliable sources. The future expectation of regulatory guidelines for AI-led lending is also consistent with current regulatory activities by the RBI. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "24ddc4dce03c92ec"
+    }
+  ]
+}
