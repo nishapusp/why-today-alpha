@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "generatedAt": "2026-09-09T01:36:54.097Z",
+  "generatedAt": "2026-09-09T12:53:19.898Z",
   "results": [
     {
       "slug": "slice-fintech-secures-funding-bank",
@@ -31,40 +31,82 @@
       "digestHash": "24ddc4dce03c92ec"
     },
     {
-      "slug": "nse-ipo-size-reduced-to-25000-crore",
-      "headline": "India's Biggest IPO Just Got Smaller. Why?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "dac-clears-rs-110-lakh-crore-defence-acquisitions",
-      "headline": "India Approves ₹1.1 Lakh Crore Defence Boost. Who Benefits?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "fpi-selloff-indian-stocks-and-bonds",
       "headline": "Foreign Investors Dump Indian Stocks: $1.6 Billion Gone. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the specific figures for FPI outflows from Indian equities and bonds, India's oil import dependency, and the historical details of the 2013 'taper tantrum,' are verified by contemporary and historical news sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d081b0bc92866bad"
+    },
+    {
+      "slug": "tcs-launches-indias-first-lights-out-ai-factory-lab",
+      "headline": "TCS Builds \"Lights-Out\" AI Factory: Humans No Longer Needed?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of TCS launching India's first 'lights-out' factory lab, have been verified by multiple reliable sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a60bcb6017667f75"
+    },
+    {
+      "slug": "nse-cuts-ipo-price-range",
+      "headline": "India's Biggest IPO Just Got Smaller. What Changed?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "NSE Market Share (Derivatives) = 99.9% (previous: 99.9% (FY25) — Previous Year)",
+          "status": "UNVERIFIABLE",
+          "detail": "While the National Stock Exchange (NSE) holds a dominant market share in various derivatives segments, no single reliable source directly states a 99.9% market share for 'Derivatives' generally for FY25. Reports provide more granular figures, such as 99.79% in equity futures, 74.71% in equity options, 99.48% in exchange-traded currency futures, and 100% for exchange-traded currency options, based on its DRHP and FY26 data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports on the expected adjustments to the NSE IPO price range and size, as widely covered by multiple financial news outlets on the publication date. The central event regarding the IPO recalibration is well-supported. However, a specific market share figure for derivatives as a whole could not be directly verified for FY25. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2cfa0d1428f88ea9"
+    },
+    {
+      "slug": "sfio-recommends-probe-into-xiaomi-india-business",
+      "headline": "Xiaomi India Under Deep Probe: Did It Break Foreign Investment Rules?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Xiaomi ... holding 20% market share in India (holding 20% market share in Q2 2026)",
+          "status": "WRONG",
+          "detail": "Multiple reliable sources provide a different, lower market share for Xiaomi in Q2 2026. Counterpoint Research reported Xiaomi (including POCO) at 13% market share, while IDC reported 9.6%.",
+          "correction": "Xiaomi holding approximately 13% (Counterpoint Research) or 9.6% (IDC) market share in India in Q2 2026.",
+          "source": "Counterpoint Research, IDC",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Market Share (Q2 2026) = 20% (previous: 21% (Q1 2026) — Previous Quarter)",
+          "status": "WRONG",
+          "detail": "Xiaomi's market share for Q2 2026 was reported as approximately 13% (Counterpoint Research) or 9.6% (IDC), not 20%. For Q1 2026, Counterpoint Research reported Xiaomi's market share as approximately 13%, not 21%.",
+          "correction": "Market Share (Q2 2026) = ~13% (previous: ~13% (Q1 2026))",
+          "source": "Counterpoint Research, IDC",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "KEY NUMBER CARD: India Smartphone Shipments (Q2 2026) = 39 million units (previous: 37.5 million units (Q2 2025) — Previous Year)",
+          "status": "WRONG",
+          "detail": "India's smartphone shipments in Q2 2026 were reported as 33.9 million units by Omdia and 33.2 million units by IDC, which is significantly lower than 39 million units. For Q2 2025, Omdia reported 39.0 million units and IDC reported 37 million units; 37.5 million is within a reasonable range for Q2 2025 but the Q2 2026 figure is incorrect.",
+          "correction": "India Smartphone Shipments (Q2 2026) = ~33.2-33.9 million units (previous: ~37-39 million units (Q2 2025) — Previous Year)",
+          "source": "Omdia, IDC",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story accurately reports the central event of the SFIO recommending a probe into Xiaomi's India operations and correctly identifies historical events such as Xiaomi's entry year, the ED seizure, border clashes, and app bans. However, its figures for Xiaomi's market share and overall India smartphone shipments in recent quarters (Q1 and Q2 2026) are incorrect, significantly impacting the credibility of the quantitative analysis. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e8bdf3d3177cb24f"
+    },
+    {
+      "slug": "niti-aayog-credit-to-gdp-ratio",
+      "headline": "India's Credit-to-GDP Needs Doubling, Says NITI Aayog VC",
       "verdict": "WARN",
       "neverVerified": true,
       "issues": [
