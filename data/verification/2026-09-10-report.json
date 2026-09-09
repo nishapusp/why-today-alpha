@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-10",
+  "generatedAt": "2026-09-09T19:01:17.810Z",
+  "results": [
+    {
+      "slug": "cognizant-green-card-suspended-us",
+      "headline": "Why the US blocked a major IT giant's green cards",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Local US hiring costs command a 40% salary premium over visa-sponsored roles.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any specific percentage or salary premium for local US hiring versus visa-sponsored roles.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "onshore employee costs already account for over 50% of total IT service delivery expenses.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide any financial breakdown or percentage regarding onshore employee costs as a share of total IT service delivery expenses.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the suspension of Cognizant's PERM filings is accurately reported based on the provided source. However, the story includes specific financial figures (40% salary premium and 50% delivery cost share) that are not present in the source text.",
+      "digestHash": "6c3c1fa4337f3804"
+    }
+  ]
+}
