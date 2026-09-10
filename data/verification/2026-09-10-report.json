@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-09T21:19:16.711Z",
+  "generatedAt": "2026-09-10T01:34:20.319Z",
   "results": [
     {
       "slug": "cognizant-green-card-suspended-us",
@@ -48,6 +48,34 @@
       ],
       "notes": "The story accurately reflects the US and EU criticism of India's trade policies as reported in Source 1. However, the specific export target of $1 trillion by FY27 is not mentioned in any of the provided source texts.",
       "digestHash": "75ed880564e4ab06"
+    },
+    {
+      "slug": "uk-recognises-india-carbon-credits",
+      "headline": "Why did the UK just boost Indian carbon credits?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Protects over $8 billion worth of annual Indian metal and mineral exports",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions total merchandise trade between India and the UK was $25.1 billion in 2025-26, but it does not provide a specific figure of $8 billion for metal and mineral exports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Prevents Indian exporters from facing a 20-35% import tax penalty",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions specific tariff reductions under the CETA agreement (e.g., 70% on processed food, 18% on engineering goods), but it does not mention a 20-35% carbon tax penalty figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the UK's recognition of India's CCTS, but includes specific financial impact figures ($8 billion in exports and 20-35% tax penalties) that are not supported by the provided source text.",
+      "digestHash": "3777d8f8ad2909ed"
     }
   ]
 }
