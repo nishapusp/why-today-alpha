@@ -1,6 +1,6 @@
 {
   "date": "2026-09-10",
-  "generatedAt": "2026-09-10T01:34:20.319Z",
+  "generatedAt": "2026-09-10T12:47:34.563Z",
   "results": [
     {
       "slug": "cognizant-green-card-suspended-us",
@@ -76,6 +76,52 @@
       ],
       "notes": "The story correctly identifies the UK's recognition of India's CCTS, but includes specific financial impact figures ($8 billion in exports and 20-35% tax penalties) that are not supported by the provided source text.",
       "digestHash": "3777d8f8ad2909ed"
+    },
+    {
+      "slug": "union-bank-dollar-bond",
+      "headline": "India's Union Bank Raises Half-Billion Dollars Overseas. How?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the Union Bank of India's USD 500 million AT1 bond issuance, the 7.8x subscription rate, and the listing at GIFT City are directly supported by the provided source text.",
+      "digestHash": "5a08d2909518ab86"
+    },
+    {
+      "slug": "india-joins-6g-global-initiative",
+      "headline": "India Teams Up For 6G: What's Next For Your Internet?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India has officially joined a global initiative alongside 24 other countries to accelerate the development of 6G technology.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding a global 6G initiative or India joining such a group. Source 1 discusses a fake news report about an attack in Ganderbal, and Source 2 discusses hospital infrastructure in Gujarat.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The government launched a 'Bharat 6G Mission' in 2023.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a 'Bharat 6G Mission' or any events from 2023.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The establishment of the ITU (International Telecommunication Union) in 1865 (originally the International Telegraph Union) was crucial for standardizing telegraphy.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the ITU or its history.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes numerous specific claims about a 6G initiative and historical telecommunications facts that are entirely absent from the provided source texts. The sources provided are unrelated to the subject matter of the story.",
+      "digestHash": "c25a2b513729b043"
     }
   ]
 }
