@@ -1,0 +1,89 @@
+{
+  "date": "2026-09-12",
+  "generatedAt": "2026-09-11T19:27:51.995Z",
+  "results": [
+    {
+      "slug": "houthi-red-sea-threat",
+      "headline": "Houthi Advances Threaten Red Sea Shipping; India's Trade at Risk?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Houthi forces in Yemen are reportedly making significant advances towards the strategically vital Bab el-Mandeb Strait",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is exclusively about the resignation of a Coforge director and internal company governance; it contains no information regarding Houthi forces, Yemen, or the Bab el-Mandeb Strait.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "12% of global trade",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention global trade statistics or the Bab el-Mandeb Strait.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "80% of India's crude oil imports transit through this region",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention India's oil import routes or percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "1-2 weeks to transit",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention shipping transit times or rerouting logistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's trade with the EU was valued at over $120 billion in FY26",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention India-EU trade values.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. The story discusses geopolitical events in the Red Sea, while the source text is a report on the resignation of a director at the IT firm Coforge.",
+      "digestHash": "7d6d5ecaf62a821b"
+    },
+    {
+      "slug": "bankers-books-evidence-act-2026",
+      "headline": "Why your digital bank records are getting a massive upgrade",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India is expected to issue a detailed set of operational guidelines to banks next week to prevent any transition issues.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text makes no mention of the Reserve Bank of India issuing operational guidelines or any timeline for such an event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Legal experts predict that the new rules will cut the resolution time for commercial banking disputes by up to thirty percent over the next year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any predictions or statistics regarding the reduction of resolution time for commercial banking disputes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the core legislative change and the effective date as per the source. However, it includes specific claims regarding RBI guidelines and a 30% reduction in dispute resolution time that are not supported by the provided source text.",
+      "digestHash": "1747681917015605"
+    }
+  ]
+}
