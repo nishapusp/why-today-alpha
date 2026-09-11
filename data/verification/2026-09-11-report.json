@@ -1,5 +1,135 @@
 {
   "date": "2026-09-11",
-  "generatedAt": "2026-09-11T01:35:41.048Z",
-  "results": []
+  "generatedAt": "2026-09-11T12:39:24.569Z",
+  "results": [
+    {
+      "slug": "rbi-fintech-regulation-risk-based-approach",
+      "headline": "RBI: Fintech Rules Must Not Force Them To Become Banks. Why?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Fintech Market Growth = 25% CAGR",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any mention of a 25% CAGR for the fintech market.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story contains a placeholder object array instead of actual historical data points.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding RBI Executive Director Vivek Murmu's comments is supported by Source 1. However, the story includes a 'Key Number Card' and a 'Time Machine' section containing data points that are not present in the provided source texts.",
+      "digestHash": "a918f50ed8d096c7"
+    },
+    {
+      "slug": "brics-private-capital-infrastructure",
+      "headline": "BRICS Pushes Private Money Into Infrastructure Projects",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been verified. The central event, the endorsement by BRICS finance ministers and central bank governors for private capital in infrastructure, is confirmed to have occurred as of the publication date, with outcomes reported by reliable sources. The overall BRICS Leaders' Summit is scheduled to commence on the day after publication, but the specific finance track events discussed in the story have concluded. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "45aab3adb1086c57"
+    },
+    {
+      "slug": "nse-downsizes-mega-ipo",
+      "headline": "Why did India's biggest stock exchange downsize its mega IPO?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The National Stock Exchange set its IPO price band at ₹1,700–1,785 to raise up to ₹22,562 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (NSE India Prospectus) contains no information regarding an IPO, price bands, or issue size.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The issue is scheduled to open on September 17, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding an IPO schedule.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The exchange controls nearly 100% of equity derivatives trading in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no market share statistics for the exchange.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Listed competitor BSE's stock fell 3% immediately following the announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding BSE stock performance or an IPO announcement.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes numerous specific claims about an NSE IPO, including pricing, dates, and market share. None of these claims are supported by the provided source texts, which are generic landing pages for the NSE and SEBI websites.",
+      "digestHash": "4004c73e38eda18c"
+    },
+    {
+      "slug": "boi-raises-billions-nri",
+      "headline": "Why did Bank of India just secure $2.2 billion from NRIs?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Bank of India raised $2.2 billion through Foreign Currency Non-Resident (Bank) deposits",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from the RBI website mentions 'Data on Forex inflows via FCNR(B) Deposits' as a topic, but does not contain any report, press release, or data confirming that Bank of India specifically raised $2.2 billion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This massive harvest of $2.2 billion represents one of the largest single-season collections by a public sector bank in recent years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this collection or provide any comparative data on historical FCNR(B) collections by public sector banks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Credit-Deposit Ratio = 80% (previous: 75% — Average Two Years Ago)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide current or historical credit-to-deposit ratio figures for the banking industry.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Other major public-sector peers are expected to launch similar large-scale NRI deposit mobilization drives in the coming weeks to match this success.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no information regarding the future plans of other public-sector banks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports a specific $2.2 billion fundraise by Bank of India as a fact, but the provided RBI source text contains no mention of this event, the bank's involvement, or the specific amount. Consequently, the central event and all associated figures are unverifiable.",
+      "digestHash": "feaf6538f69f7dee"
+    }
+  ]
 }
