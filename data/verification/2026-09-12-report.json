@@ -1,6 +1,6 @@
 {
   "date": "2026-09-12",
-  "generatedAt": "2026-09-12T01:33:55.416Z",
+  "generatedAt": "2026-09-12T12:19:40.486Z",
   "results": [
     {
       "slug": "houthi-red-sea-threat",
@@ -112,6 +112,52 @@
       ],
       "notes": "The core event (the launch of Bodhan AI's open-weight models) is verified by the source. However, the story includes specific details about supported languages and future application launch timelines that are not present in the provided source text.",
       "digestHash": "f8d53bbfc63118ff"
+    },
+    {
+      "slug": "rbi-liquidity-drain-omo-bond-sales",
+      "headline": "RBI Drains ₹1 Lakh Crore to Control Market Cash Flood",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including specific numbers, dates, and event descriptions, have been rigorously verified against multiple reliable sources published around the story's publication date. The central event of the RBI's OMO sale and its details are accurately reported, and the context provided aligns with market conditions and previous RBI actions. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "9ad0d917a5fed12c"
+    },
+    {
+      "slug": "us-duties-indian-solar-imports",
+      "headline": "US Slaps Heavy Duties on Indian Solar Products",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims, including the specific duty percentages, the timeline for the ITC decision, and the historical context regarding the 2012 China tariffs, are fully supported by the provided source text.",
+      "digestHash": "65e81c1cc4158a47"
+    },
+    {
+      "slug": "brics-delhi-declaration-2026",
+      "headline": "BRICS Summit Reaches Consensus, India Bridges Iran-UAE Divide",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "BRICS nations successfully adopted the Delhi Declaration 2026 with consensus, notably overcoming sharp divisions between Iran and the UAE regarding the West Asia conflict.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Delhi Declaration 2026, the adoption of any declaration, or any mediation between Iran and the UAE.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India hosted the BRICS Summit for the fourth time.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding the number of times India has hosted the BRICS summit.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news aggregator snippet that does not contain any of the specific claims made in the story regarding the BRICS summit, the Delhi Declaration, or India's diplomatic role.",
+      "digestHash": "b4b24a4d47ea67dc"
     }
   ]
 }
