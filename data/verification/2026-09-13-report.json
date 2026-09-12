@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-13",
+  "generatedAt": "2026-09-12T19:10:05.102Z",
+  "results": [
+    {
+      "slug": "hdfc-succession-shortlist",
+      "headline": "Who will lead India's biggest private bank after a sudden exit?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "26: Years of leadership under the bank's founding chief before the last transition.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention the duration of the founding chief's tenure or the figure 26 in this context.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "2%: threshold post-merger (referring to return on assets)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention the bank's return on assets or a 2% threshold.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the board's decision to shortlist two candidates and the re-appointment of V Srinivasa Rangan. However, it includes specific figures regarding the founding CEO's tenure and the bank's return on assets that are not supported by the provided source texts.",
+      "digestHash": "dd3e02a02a2d08ac"
+    },
+    {
+      "slug": "anthropic-ai-slowdown-warning",
+      "headline": "Why the creator of Claude wants to slow down AI",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Anthropic valuation = $35 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the valuation of Anthropic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "International policymakers are expected to convene a special security summit in late 2026 to discuss unified testing standards for frontier models.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any planned international security summit in late 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the content of the provided source regarding Dario Amodei's essay and the general industry sentiment. However, it includes specific figures and future event claims that are not supported by the provided source text.",
+      "digestHash": "9ec987fae1ab7a6b"
+    },
+    {
+      "slug": "india-eu-fta-auto-quota",
+      "headline": "Why did India just hand Europe a massive auto trade shortcut?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the India-EU FTA automotive quotas, price thresholds, and the nature of the agreement. All figures and claims align with the provided Business Standard report.",
+      "digestHash": "49d53e4c79d2e0e9"
+    },
+    {
+      "slug": "zomato-cash-on-delivery-handling-fee",
+      "headline": "Why is Zomato charging you extra to pay with cash?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over 80% of food orders in India are already paid for via digital channels like UPI.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the percentage of food orders paid via digital channels.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Zomato processes over 20 lakh food orders across India every single day.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Zomato has 'millions of orders a day' but does not specify a figure of 20 lakh.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the new COD fee range and the company's rationale as reported in the source. However, it includes specific statistics regarding the percentage of digital payments and the daily order volume that are not supported by the provided source text.",
+      "digestHash": "1a62415d0d15c5ac"
+    }
+  ]
+}
