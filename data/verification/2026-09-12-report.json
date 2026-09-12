@@ -1,6 +1,6 @@
 {
   "date": "2026-09-12",
-  "generatedAt": "2026-09-11T21:28:22.561Z",
+  "generatedAt": "2026-09-12T01:33:55.416Z",
   "results": [
     {
       "slug": "houthi-red-sea-threat",
@@ -84,6 +84,34 @@
       ],
       "notes": "The story accurately reports the core legislative change and the effective date as per the source. However, it includes specific claims regarding RBI guidelines and a 30% reduction in dispute resolution time that are not supported by the provided source text.",
       "digestHash": "1747681917015605"
+    },
+    {
+      "slug": "bodhan-ai-indic-language-models",
+      "headline": "Can open-source AI models conquer India's local languages?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The models support major Indian languages including Hindi, Tamil, Telugu, and Marathi",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the models are for 'Indic languages' generally, but does not list specific languages like Hindi, Tamil, Telugu, or Marathi.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Dozens of rural banking and administrative AI voice assistants will launch by mid-2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no mention of future launch timelines for banking or administrative applications.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (the launch of Bodhan AI's open-weight models) is verified by the source. However, the story includes specific details about supported languages and future application launch timelines that are not present in the provided source text.",
+      "digestHash": "f8d53bbfc63118ff"
     }
   ]
 }
