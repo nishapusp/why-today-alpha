@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-12T21:22:45.489Z",
+  "generatedAt": "2026-09-13T01:32:30.610Z",
   "results": [
     {
       "slug": "hdfc-succession-shortlist",
@@ -94,6 +94,107 @@
       ],
       "notes": "The story correctly identifies the new COD fee range and the company's rationale as reported in the source. However, it includes specific statistics regarding the percentage of digital payments and the daily order volume that are not supported by the provided source text.",
       "digestHash": "1a62415d0d15c5ac"
+    },
+    {
+      "slug": "rbi-repo-rate-gdp-inflation-outlook",
+      "headline": "RBI Holds Repo Rate, Projects Strong 6.9% GDP Growth for FY27",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "On Saturday, September 12, 2026, RBI Governor Sanjay Malhotra announced that the Monetary Policy Committee (MPC) unanimously voted to keep the policy repo rate unchanged at 5.25%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding an RBI announcement on September 12, 2026, or any policy decisions made on that date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "real GDP growth for the current fiscal year (FY27) is now expected to be 6.9%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a 6.9% GDP growth projection for FY27.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Consumer Price Index (CPI) inflation for FY27 is projected at 4.6%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a 4.6% CPI inflation projection for FY27.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The last full policy statement on August 5, 2026, also kept the repo rate at 5.25%, but projected FY27 GDP growth at 6.7% and CPI inflation at 5.0%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain information regarding an August 5, 2026, policy statement or its specific projections.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a specific RBI policy announcement dated September 12, 2026, and specific economic projections that are entirely absent from the provided source texts. The source texts provided are unrelated to the claims made in the story.",
+      "digestHash": "dd4d45034bebf6e6"
+    },
+    {
+      "slug": "us-india-strengthen-security-undersea-cable-networks",
+      "headline": "India, US Unite to Protect Undersea Internet Cables",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India and the United States have officially partnered to bolster the security and resilience of undersea cable networks",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding a partnership between India and the US to secure undersea cable networks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Global Data Traffic = 95%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "2008 South Asia cable damage",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "European Union (early 2020s) emphasized digital sovereignty",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "US-Japan alliance on secure 5G networks (late 2010s)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text provided is a collection of headlines and snippets from a news website that does not contain any information about an India-US partnership on undersea cables. Consequently, all claims regarding this partnership and its historical context are unverifiable based on the provided source.",
+      "digestHash": "c9091056714f8eb1"
     }
   ]
 }
