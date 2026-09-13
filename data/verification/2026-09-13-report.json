@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generatedAt": "2026-09-13T01:32:30.610Z",
+  "generatedAt": "2026-09-13T13:05:03.382Z",
   "results": [
     {
       "slug": "hdfc-succession-shortlist",
@@ -195,6 +195,43 @@
       ],
       "notes": "The source text provided is a collection of headlines and snippets from a news website that does not contain any information about an India-US partnership on undersea cables. Consequently, all claims regarding this partnership and its historical context are unverifiable based on the provided source.",
       "digestHash": "c9091056714f8eb1"
+    },
+    {
+      "slug": "india-semiconductor-funding-surge",
+      "headline": "India's chip sector grabs $1.4 billion funding: What's next?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including funding amounts, company counts, and policy dates, have been independently verified by multiple reliable sources published on or around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e8db04684c819b83"
+    },
+    {
+      "slug": "a-one-steels-india-ipo",
+      "headline": "New Steel Company IPO: Can investors make big gains?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The IPO will consist of a fresh issue of shares, with the proceeds likely earmarked for business expansion, capital expenditure, or debt reduction.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provides the IPO size and opening date but does not contain information regarding the composition of the issue (fresh issue vs. offer for sale) or the specific use of proceeds.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the IPO size (₹405 crore) and the opening date (September 24) are verified by the source. However, the story includes speculative details about the IPO structure and use of proceeds that are not present in the provided source text.",
+      "digestHash": "ca20fc5c8e838259"
+    },
+    {
+      "slug": "pwc-india-ai-restructuring",
+      "headline": "PwC India reshapes itself: Is AI forcing the change?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims in the news story, including the central event of PwC India's restructuring in response to AI, are accurately reported and verified by reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3e8b9392e925e171"
     }
   ]
 }
