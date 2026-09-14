@@ -1,5 +1,75 @@
 {
   "date": "2026-09-14",
-  "generatedAt": "2026-09-14T01:27:11.849Z",
-  "results": []
+  "generatedAt": "2026-09-14T15:01:54.846Z",
+  "results": [
+    {
+      "slug": "solar-industries-omnia-acquisition",
+      "headline": "Indian Explosives Giant Buys African Firm For ₹12,951 Cr",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Solar Industries India's acquisition offer for Omnia Holdings, including the value, nature of the offer, and details about both companies, are confirmed by multiple reliable sources published on the story's date. The historical reference to Tata Motors' acquisition of Jaguar Land Rover is also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f769b990ef87b96c"
+    },
+    {
+      "slug": "tata-sons-ipo-plans-and-challenges",
+      "headline": "Tata Sons IPO: Will This Mega Listing Reshape India's Market?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Current market cap of listed Tata Group entities: Over ₹30 lakh crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the market capitalization of Tata Group entities.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Estimated Valuation = ₹11 lakh crore - ₹16 lakh crore (approx.)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any valuation estimates for Tata Sons.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the regulatory context regarding Tata Sons' classification as an Upper Layer NBFC and the associated listing mandate. However, it includes specific financial figures (market cap and valuation) that are not supported by the provided source text.",
+      "digestHash": "ea56a7db4e04e678"
+    },
+    {
+      "slug": "mobile-phone-gst-cut-demand-india",
+      "headline": "Phone Makers Demand 13% GST Cut: Will Your Next Mobile Be Cheaper?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "jaypee-infratech-invests-3000-cr-stalled-projects",
+      "headline": "Jaypee Infratech Pledges ₹3,000 Crore To Finish Stalled Projects",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
 }
