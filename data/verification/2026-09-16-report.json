@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-15T20:48:44.966Z",
+  "generatedAt": "2026-09-15T23:22:36.974Z",
   "results": [
     {
       "slug": "union-bank-of-india-ai-powered-sudarshan-hub",
@@ -47,6 +47,131 @@
       "issues": [],
       "notes": "All specific claims, including the central event of the RBI absorbing ₹3.93 lakh crore via a VRRR auction on September 15, 2026, have been verified. The contextual information and the functional descriptions of VRRR auctions are also accurate and consistent with general financial understanding and available search results. The RBI repo rate was also confirmed as stable at 5.25% as of the publication date. (escalated from source mode — original links were unfetchable)",
       "digestHash": "e48f1ca866606124"
+    },
+    {
+      "slug": "hdfc-bank-ceo-candidates-rbi",
+      "headline": "HDFC Bank Finally Narrows CEO Race to Two Candidates",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "HDFC Bank has formally submitted two names to the Reserve Bank of India (RBI) for the crucial CEO position",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a search results page that does not contain the article content or any mention of HDFC Bank submitting CEO candidates.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bank also secured RBI approval for Jimmy Tata to serve as an Executive Director.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Jimmy Tata or any RBI approval regarding his appointment.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a generic search results page from Business Standard and does not contain the article content required to verify the claims about HDFC Bank's CEO succession or the appointment of Jimmy Tata.",
+      "digestHash": "cdbf0c95d7ac7e38"
+    },
+    {
+      "slug": "bharat-forge-pratt-whitney-canada-uav",
+      "headline": "Can Bharat Forge Build India's Next-Gen Spy Drones?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Bharat Forge is partnering with Pratt & Whitney Canada to explore integrating advanced turboprop engines into the Defence Research and Development Organisation's (DRDO) High Altitude Long Endurance (HALE) Unmanned Aerial Vehicle (UAV) program.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is an article about India-China trade relations and does not mention Bharat Forge, Pratt & Whitney Canada, or any UAV programs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2016, India heavily relied on imports for high-altitude reconnaissance capabilities... These imports for surveillance drones could cost upwards of $100 million per unit.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding 2016 drone import costs or unit prices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the government's blacklisting of 405 specific defence imports in 2022 and the commitment of ₹3,000 crore to promote domestic defence production",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding a 2022 import blacklist or a ₹3,000 crore commitment.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on a partnership between Bharat Forge and Pratt & Whitney Canada, which is not mentioned in the provided source text. The source text is exclusively about India-China trade discussions and other trade-related news.",
+      "digestHash": "3d366dbcfe190ccc"
+    },
+    {
+      "slug": "rbi-proposes-60-day-hold-money-mule-accounts",
+      "headline": "Is RBI Freezing Suspicious Accounts for 60 Days?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "saudi-arabia-uranium-rare-earths-discovery",
+      "headline": "Why Saudi's massive uranium discovery is a game-changer for India",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India's Nuclear Power Target Year = 2031",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of India's nuclear power target year or any specific timeline for India's nuclear goals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Joint mining and refining ventures between India and Saudi Arabia are expected to begin operations within five years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text discusses Saudi Arabia's internal plans and existing partnerships with the US and France, but makes no mention of India-Saudi joint mining ventures or a five-year timeline for such operations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Saudi discovery details as per the source, but includes specific claims regarding India's nuclear targets and future joint ventures that are not supported by the provided text.",
+      "digestHash": "779bac92f35dfd0e"
+    },
+    {
+      "slug": "fibe-fintech-lender-sebi-ipo-nod",
+      "headline": "Why is this consumer lending fintech racing to the stock market?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
