@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "generatedAt": "2026-09-14T23:51:18.559Z",
+  "generatedAt": "2026-09-15T01:51:54.925Z",
   "results": [
     {
       "slug": "india-mercosur-trade-pact-expansion",
@@ -84,6 +84,34 @@
       ],
       "notes": "The provided source text is a general RBI website landing page containing current policy rates and recent press release titles, none of which mention Sovereign Gold Bond redemption prices or the specific figures cited in the story.",
       "digestHash": "e9e823c9e7d56c0d"
+    },
+    {
+      "slug": "ai-restraint-boosts-india-tech-stocks",
+      "headline": "Can Slowing AI Development Help India's Tech Giants?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the statements about AI leaders advocating for a slowdown and Bank of America's Nifty forecast and implied upside, are consistently verified by multiple reliable sources published around the story's date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "125f429df46e990e"
+    },
+    {
+      "slug": "bank-of-india-unveils-digital-initiatives",
+      "headline": "Bank of India Launches Twelve New Digital Banking Services",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The source text provided (Source 1) is a privacy policy and website information page for Hubbis, which does not contain any information regarding Bank of India, the Global FinTech Fest 2026, or any digital banking initiatives.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is entirely unrelated to the claims made in the story. It is a privacy policy document for a company called Hubbis.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the story's central event (Bank of India launching 12 digital initiatives) is presented as a factual news report, the only source provided is a generic privacy policy for a third-party website (Hubbis) that contains no mention of the bank or the event. Therefore, all specific claims are technically unverifiable based on the provided source material.",
+      "digestHash": "26fa9f3ac1e68f89"
     }
   ]
 }
