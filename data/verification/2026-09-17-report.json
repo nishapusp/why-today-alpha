@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-16T20:30:05.152Z",
+  "generatedAt": "2026-09-16T23:29:25.767Z",
   "results": [
     {
       "slug": "fujifilm-semiconductor-investment-india",
@@ -194,6 +194,25 @@
       "issues": [],
       "notes": "The story accurately reflects the information provided in the source text regarding China's Defence Minister Dong Jun's call for AI oversight and governance. All historical and contextual claims are consistent with the provided source material.",
       "digestHash": "25adfe5995663bf4"
+    },
+    {
+      "slug": "fed-hikes-rates",
+      "headline": "US Fed Hikes Rates First Time In Three Years",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "US Administrative Leave Cost = 9.5 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts contain no mention of US administrative leave costs or any figure of 9.5 billion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Federal Reserve's rate hike decision and the context provided in the source texts. However, it includes a 'Key Number Card' regarding 'US Administrative Leave Cost' which is entirely absent from the provided source material.",
+      "digestHash": "5161ffc8cae8fb01"
     }
   ]
 }
