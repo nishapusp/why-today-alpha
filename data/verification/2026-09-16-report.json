@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "generatedAt": "2026-09-15T23:22:36.974Z",
+  "generatedAt": "2026-09-16T01:56:39.322Z",
   "results": [
     {
       "slug": "union-bank-of-india-ai-powered-sudarshan-hub",
@@ -172,6 +172,34 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "tata-sons-ipo-trusts-control",
+      "headline": "Tata Sons IPO: Will Trusts Lose Control Over India's Giant Conglomerate?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Tata Group's market capitalization is approximately ₹25 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the total market capitalization of the Tata Group.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Shapoorji Pallonji Group, which holds an 18.4% stake in Tata Sons, valued at over ₹1.8 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the 18.4% stake figure or the ₹1.8 lakh crore valuation for the Shapoorji Pallonji Group.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the 66% stake held by Tata Trusts as mentioned in the source text. However, the figures regarding the Tata Group's total market capitalization and the specific valuation of the Shapoorji Pallonji Group's stake are not supported by the provided source material.",
+      "digestHash": "38303baf83a4e61e"
     }
   ]
 }
