@@ -1,0 +1,125 @@
+{
+  "date": "2026-09-18",
+  "generatedAt": "2026-09-17T20:18:59.736Z",
+  "results": [
+    {
+      "slug": "canada-india-trade-talks",
+      "headline": "Canada's Minister Rushes To India For Major Trade Talks.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Canada's Trade Minister is in Mumbai for the fourth round of Comprehensive Economic Partnership Agreement (CEPA) talks.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions a visit by Canada's trade minister for the fourth round of CEPA talks, but it does not specify that the location of these talks is Mumbai.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The goal is to double bilateral trade to C$70 billion by 2030.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the fourth round of CEPA talks but does not contain any information regarding a specific bilateral trade target of C$70 billion by 2030.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the source confirms the occurrence of the fourth round of CEPA talks, it does not verify the specific location (Mumbai) or the stated trade target (C$70 billion by 2030). These figures appear to be external to the provided source text.",
+      "digestHash": "3ca27ece461d2fcb"
+    },
+    {
+      "slug": "record-ipo-debuts",
+      "headline": "Investors Cheer As Six New Companies Soar On Listing Day.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Thursday marked a record day for mainboard IPO listings in India, with six companies debuting on the stock exchanges.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention six IPOs listing on Thursday, nor does it mention Karamtara Engineering or Rentomojo.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Five of these six new listings ended the day above their issue prices, led by strong gains from companies like Karamtara Engineering and Rentomojo.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding the performance of these specific companies or the number of IPOs that closed above their issue price.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Rentomojo, another key debutant, surged 9% after listing at a 19% premium to its IPO price of approximately ₹440-450.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention Rentomojo or its listing performance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Company A = 10",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this data point.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Company B = 12",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this data point.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text discusses the NSE IPO and general market news but contains no information regarding the six IPOs, Karamtara Engineering, or Rentomojo mentioned in the story.",
+      "digestHash": "bbd6d0d28be7ccc7"
+    },
+    {
+      "slug": "rbi-plans-outright-debt-sales-to-drain-liquidity",
+      "headline": "RBI Plans Major Bond Sales, First Time In 9 Years?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story's claims regarding the RBI's potential use of outright bond sales to manage liquidity and the '9-year' timeframe are supported by the provided source text.",
+      "digestHash": "a0304509a206a9ba"
+    },
+    {
+      "slug": "india-files-eu-cbam-verification-body-applications",
+      "headline": "India Files For EU Carbon Tax Relief; Protects Exports?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in Source 1 regarding India's submission of applications for CBAM verification bodies and the timeline of the EU's CBAM financial phase.",
+      "digestHash": "0a8a74be283653cd"
+    },
+    {
+      "slug": "sebi-bars-kore-digital-promoters-fraud",
+      "headline": "SEBI Bans Kore Digital Promoters Over ₹541 Crore Revenue Misstatement",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of SEBI barring Kore Digital and its executives, are thoroughly verified by multiple reliable sources published on the story's publication date or very close to it. The numbers, dates, names, and actions reported are consistent with the search results. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "88c4d0b0e85adf82"
+    },
+    {
+      "slug": "india-us-yudh-abhyas-2026-drones-robotic-dogs",
+      "headline": "India, US Troops Use Robotic Dogs In Major Joint Exercise",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including dates, participant numbers, locations, and technological focus, have been thoroughly verified by multiple reliable news sources and official statements published around the story's publication date of 2026-09-18. The central event, 'Yudh Abhyas 2026', is confirmed to have commenced on September 15, 2026, as stated. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "61bceb1fd66e0a8d"
+    }
+  ]
+}
