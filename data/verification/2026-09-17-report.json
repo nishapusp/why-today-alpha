@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generatedAt": "2026-09-17T01:45:43.326Z",
+  "generatedAt": "2026-09-17T12:51:24.200Z",
   "results": [
     {
       "slug": "fujifilm-semiconductor-investment-india",
@@ -174,17 +174,20 @@
       "slug": "adidas-cuts-india-tech-jobs-global-streamlining",
       "headline": "Adidas Cuts India Tech Jobs: Is Global Streamlining Next?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "The company began a worldwide review of its operational efficiency in early 2026.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "While Adidas has continuous efforts towards operational efficiency and global streamlining, and reports from late 2024/early 2025 indicate restructuring at its headquarters, there is no specific confirmation or announcement in search results that a *new worldwide review* of operational efficiency *began* specifically in early 2026. The job cuts are described as part of 'ongoing efforts' and aligning the operating model, rather than the start of a new, distinct review period.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The core claims about Adidas cutting tech jobs in India and the reported percentage impact are verified by multiple recent news sources. The story correctly links these actions to Adidas's broader 'Own the Game' strategy and earlier restructuring reports. However, the claim that a new 'worldwide review of operational efficiency' specifically began in early 2026 could not be independently confirmed, as the company's efforts appear to be continuous and ongoing rather than a newly initiated review at that specific time. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "4125b00df2450d35"
     },
     {
       "slug": "china-urges-global-ai-oversight-is-india-ready-to-lead",
@@ -232,106 +235,6 @@
       ],
       "notes": "The core policy change regarding the EPFO wage ceiling increase is verified by Source 1. However, the specific figure of 51 lakh additional employees is not mentioned in the provided source text.",
       "digestHash": "7a27396fd8dd8480"
-    },
-    {
-      "slug": "government-cuts-export-levies-fuel",
-      "headline": "Government Slashes Export Levies on Petrol, Diesel, ATF For Next Fortnight",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The export duty on domestically produced crude oil was cut from ₹6,000 per tonne to ₹5,000 per tonne",
-          "status": "WRONG",
-          "detail": "Search results for September 16-17, 2026, only mention changes to export duties on petrol, diesel, and ATF, not crude oil. Furthermore, a July 2026 source indicates that the Special Additional Excise Duty (SAED) on domestically produced crude oil was 'nil' in the 2026 version of the windfall tax, contradicting the notion of a ₹6,000 or ₹5,000 per tonne duty.",
-          "correction": "The export duty on domestically produced crude oil was not mentioned in the September 16, 2026, notification, and its SAED was previously reported as nil as of July 2026.",
-          "source": "NDTV Profit, The Economic Times, IndiaFilings, Finowings",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "the levy on diesel exports was entirely removed from its previous rate of ₹0.5 per liter, effectively making it zero",
-          "status": "WRONG",
-          "detail": "The export duty on diesel was reduced from ₹25 per litre to ₹20 per litre, not to zero. The previous rate for diesel was ₹25 per litre.",
-          "correction": "The levy on diesel exports was reduced to ₹20 per litre from its previous rate of ₹25 per litre.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "the export duties on petrol and Aviation Turbine Fuel (ATF) were also brought down to zero, from their previous charges",
-          "status": "WRONG",
-          "detail": "The export duty on petrol was reduced to ₹0.5 per litre from ₹1.5 per litre, not to zero. The export duty on ATF was reduced to ₹15 per litre from ₹19 per litre, not to zero.",
-          "correction": "The export duty on petrol was reduced to ₹0.5 per litre from ₹1.5 per litre, and the export duty on Aviation Turbine Fuel (ATF) was reduced to ₹15 per litre from ₹19 per litre.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Crude oil export duty cut from ₹6,000 to ₹5,000 per tonne.",
-          "status": "WRONG",
-          "detail": "As stated above, this specific cut for crude oil was not reported in the September 16-17, 2026, announcements. Earlier information from July 2026 suggested the SAED on domestic crude oil was nil.",
-          "correction": "The government's September 16, 2026, announcement did not include a change in crude oil export duty from ₹6,000 to ₹5,000 per tonne; the SAED on domestically produced crude oil was previously reported as nil.",
-          "source": "NDTV Profit, The Economic Times, IndiaFilings, Finowings",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Diesel export duty reduced to zero from ₹0.5 per liter.",
-          "status": "WRONG",
-          "detail": "The diesel export duty was reduced from ₹25 per litre to ₹20 per litre, not to zero from ₹0.5 per liter.",
-          "correction": "Diesel export duty was reduced to ₹20 per litre from ₹25 per litre.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Petrol and ATF export duties also brought down to zero.",
-          "status": "WRONG",
-          "detail": "Petrol export duty was reduced to ₹0.5 per litre from ₹1.5 per litre, and ATF export duty was reduced to ₹15 per litre from ₹19 per litre. Neither was brought down to zero.",
-          "correction": "Petrol export duty was reduced to ₹0.5 per litre, and ATF export duty was reduced to ₹15 per litre.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Crude Export Duty = ₹5,000 per tonne (previous: ₹6,000 per tonne — Previous)",
-          "status": "WRONG",
-          "detail": "This specific change for crude oil was not announced on September 16, 2026, and contradicts information from July 2026 stating crude oil SAED was nil.",
-          "correction": "No change in crude oil export duty from ₹6,000 to ₹5,000 per tonne was reported on September 16, 2026; crude oil SAED was previously reported as nil.",
-          "source": "NDTV Profit, The Economic Times, IndiaFilings, Finowings",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "KEY NUMBER CARD: Diesel Export Duty = ₹0 per liter (previous: ₹0.5 per liter — Previous)",
-          "status": "WRONG",
-          "detail": "The diesel export duty was reduced to ₹20 per liter from ₹25 per liter, not to ₹0 from ₹0.5 per liter.",
-          "correction": "Diesel Export Duty = ₹20 per liter (previous: ₹25 per liter).",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "KEY NUMBER CARD: Petrol/ATF Export Duty = ₹0",
-          "status": "WRONG",
-          "detail": "Petrol export duty was set at ₹0.5 per liter and ATF at ₹15 per liter, not ₹0.",
-          "correction": "Petrol Export Duty = ₹0.5 per liter; ATF Export Duty = ₹15 per liter.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "QUIZ CLAIM: \"What is the new export duty on diesel?\" — stated correct answer: \"₹0 per liter\"",
-          "status": "WRONG",
-          "detail": "The new export duty on diesel is ₹20 per liter, not ₹0.",
-          "correction": "The new export duty on diesel is ₹20 per liter.",
-          "source": "NDTV Profit, The Hindu, The Economic Times, Centre Cuts Export Levies on Petrol, Diesel, ATF; Diesel Duty Lowered by Rs 5/Litre, Govt cuts windfall tax on petrol, diesel, ATF exports - ThePrint, Centre Cuts Windfall Tax On Petrol, Diesel, ATF Exports Amid West Asia Tensions",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central event of the government reducing export levies for the next fortnight, effective around September 16-17, 2026, and correctly identifies the fortnightly review cycle. However, all specific numerical claims regarding the new export duty rates for crude oil, petrol, diesel, and ATF are incorrect. The story falsely states that diesel, petrol, and ATF duties were reduced to zero, when they were in fact reduced to specific non-zero rates. The crude oil claim is also contradicted by available information. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "be5ee0086082d012"
     }
   ]
 }
