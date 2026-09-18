@@ -1,6 +1,6 @@
 {
   "date": "2026-09-19",
-  "generatedAt": "2026-09-18T20:48:03.381Z",
+  "generatedAt": "2026-09-18T23:00:19.764Z",
   "results": [
     {
       "slug": "nse-ipo-fully-subscribed",
@@ -19,6 +19,62 @@
       "issues": [],
       "notes": "All factual claims regarding the VRRR auction, the amount absorbed, the date of the operation, and the context of liquidity management are supported by the provided source text.",
       "digestHash": "54fd0ae99785acb8"
+    },
+    {
+      "slug": "direct-tax-collections-surge-india",
+      "headline": "Tax Mop-up Hits ₹12 Trillion: Who Is Paying the Government?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Fiscal deficit target for FY26: 4.5% of GDP",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) contains no mention of the fiscal deficit target for FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the ₹12.12 trillion tax collection and the 13% growth rate is verified by the provided source. However, the story includes a specific fiscal deficit target (4.5% of GDP) which is not mentioned in the provided source text.",
+      "digestHash": "f8218a86e05c5a75"
+    },
+    {
+      "slug": "disney-hires-ai-ceo-first-cto",
+      "headline": "Disney Hires an AI Boss: What Is the Plan?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Content cost reduction target via AI: 20-30%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any specific percentage target for content cost reduction.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Estimated global streaming market size: $100+ billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the global streaming market size.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Character AI Users = 20+ million",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the number of users for Character AI.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event regarding the appointment of Karandeep Anand as Disney's first CTO is verified. However, the story includes several specific figures (market size, cost reduction targets, and user counts) that are not present in the provided source text.",
+      "digestHash": "b4ae5216fe35d5b9"
     }
   ]
 }
