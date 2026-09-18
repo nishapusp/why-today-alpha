@@ -1,6 +1,6 @@
 {
   "date": "2026-09-18",
-  "generatedAt": "2026-09-17T23:12:59.401Z",
+  "generatedAt": "2026-09-18T01:44:33.915Z",
   "results": [
     {
       "slug": "canada-india-trade-talks",
@@ -120,6 +120,34 @@
       "issues": [],
       "notes": "All specific factual claims in the story, including dates, participant numbers, locations, and technological focus, have been thoroughly verified by multiple reliable news sources and official statements published around the story's publication date of 2026-09-18. The central event, 'Yudh Abhyas 2026', is confirmed to have commenced on September 15, 2026, as stated. (escalated from source mode — original links were unfetchable)",
       "digestHash": "61bceb1fd66e0a8d"
+    },
+    {
+      "slug": "rbi-omo-liquidity-drain",
+      "headline": "RBI Open Market Operation Sale Absorbs Surplus Liquidity",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the OMO sale amount, bid amounts, and the RBI's liquidity management objectives are supported by the provided source text.",
+      "digestHash": "b036fc707eb52959"
+    },
+    {
+      "slug": "upi-mdr-us-influence",
+      "headline": "Government Rejects US Influence Claims in UPI Merchant Charge Debate",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "UPI’s rapid adoption, reaching 24.5 billion transactions in August",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any transaction volume data for August or any other period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the government's stance on the UPI merchant fee as reported in the source. However, the specific transaction volume figure (24.5 billion) is not mentioned in the provided source text.",
+      "digestHash": "69bb712fdb2a5079"
     }
   ]
 }
