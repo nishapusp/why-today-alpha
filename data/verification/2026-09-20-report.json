@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-20",
+  "generatedAt": "2026-09-19T19:28:34.576Z",
+  "results": [
+    {
+      "slug": "rvnl-bags-405-crore-railway-order",
+      "headline": "Railway Company Bags ₹405 Crore Order: More Tracks Coming?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Q4 FY26 Order Book = ₹65,000+ crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding the company's order book size or financial figures for Q4 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the ₹405.67 crore contract and the 24-month timeline is presented as fact, but the provided source text is a generic landing page for Moneycontrol's RVNL section and does not contain the specific details of the contract or the order book figure.",
+      "digestHash": "17efe2643eaeeff7"
+    },
+    {
+      "slug": "rbi-removes-latur-dccb-officials",
+      "headline": "RBI Removes Maharashtra Minister, Others From Latur Bank.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the central event of the RBI removing the minister and directors from the Latur DCCB board, dates of legislative amendments and crises, and the ongoing RBI conference, have been verified by reliable sources published on or around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "67f0e00e8604f0f4"
+    },
+    {
+      "slug": "sfal-semiconductor-startup-mous",
+      "headline": "Can 7 New Deals Supercharge India’s Chip Startups?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Semiconductor Mission Budget = ₹76,000 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Semiconductor Mission budget or any specific financial figure for the mission.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The first batch of SFAL-supported chip designs is expected to go into fabrication by late 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a timeline for fabrication or the year 2027.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event regarding the signing of seven MoUs by SFAL is verified by the source. However, the story includes specific figures regarding the Semiconductor Mission budget and a future timeline for fabrication that are not present in the provided source text.",
+      "digestHash": "f6f6de5d8dab89dd"
+    }
+  ]
+}
