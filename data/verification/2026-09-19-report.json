@@ -1,6 +1,6 @@
 {
   "date": "2026-09-19",
-  "generatedAt": "2026-09-19T01:42:09.752Z",
+  "generatedAt": "2026-09-19T12:12:49.962Z",
   "results": [
     {
       "slug": "nse-ipo-fully-subscribed",
@@ -78,20 +78,170 @@
       "digestHash": "16eb530f3d82d113"
     },
     {
-      "slug": "bank-credit-growth-eight-quarter-high",
-      "headline": "Bank lending just hit a two-year high. Why is it speeding up?",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "slug": "rbi-delays-capital-market-exposure-rules",
+      "headline": "RBI Delays Strict New Capital Market Rules By Three Months",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "The Reserve Bank of India (RBI) has postponed the implementation of its stricter new rules on banks' capital market exposure by three months.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source texts do not contain any information regarding an RBI postponement of capital market exposure rules. Source 2 mentions various financial news items but does not report this specific regulatory action.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The new deadline is December 31, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "There is no mention of this deadline or the associated regulatory change in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2023, the implementation of new guidelines for the Expected Credit Loss (ECL) framework for provisioning was also postponed.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the ECL framework or any 2023 postponement related to it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story reports a specific regulatory event (RBI postponing capital market exposure rules) that is entirely absent from the provided source texts. As the sources do not mention this event, the claims are classified as UNVERIFIABLE.",
+      "digestHash": "af1c306436b476e1"
+    },
+    {
+      "slug": "factrika-seed-funding",
+      "headline": "Factrika Secures ₹8.9 Crore Seed Funding To Boost Industrial Workforce",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Industrial workforce startup Factrika has successfully raised ₹8.9 crore in a seed funding round, with Info Edge leading the investment.",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable sources confirm that Factrika, an industrial workforce management startup, has raised ₹8.9 crore in seed funding led by Info Edge as of the publication date (2026-09-19). There is no information about a startup named 'Factrika' in the context of this funding event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "₹8.9 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable sources confirm this funding amount for Factrika as of the publication date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Factrika, an emerging startup specializing in industrial workforce management",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable sources confirm the existence or business focus of a startup named 'Factrika' as of the publication date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The funding initiative was prominently led by Info Edge",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable sources confirm Info Edge leading a seed funding round for a startup named 'Factrika' as of the publication date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Compared to 2023, when many early-stage startups struggled for capital, this round demonstrates renewed confidence in specialized industrial tech.",
+          "status": "UNVERIFIABLE",
+          "detail": "While general market sentiment regarding startup funding can fluctuate, the specific comparison tied to 'this round' for Factrika is unverifiable as the round itself is unconfirmed. The broader claim about 2023 is a general statement that is hard to definitively verify or contradict without more specific parameters, but the context makes it unsupportable.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The 2021 rise of platforms like TeamLease Digital focused on gig workers and staffing solutions, which demonstrated the immense potential for tech to organize previously fragmented labor markets.",
+          "status": "UNVERIFIABLE",
+          "detail": "While TeamLease Digital is a known entity, and there was certainly growth in digital staffing solutions, the specific claim of 'the 2021 rise' and its precise demonstration of 'immense potential' is too vague and lacks specific metrics or events to be confirmed as stated for that exact year. TeamLease Digital focuses on staffing and HR services, including gig work, but linking its 'rise' specifically and solely to 2021 and this exact demonstration of potential without further context is not concretely verifiable.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding Factrika's funding round is entirely unconfirmed by any available public information as of the publication date. All claims related to Factrika, its funding, and its lead investor (Info Edge) are unverifiable. This raises significant concerns about the story's factual basis. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ce5022e5e127a64b"
+    },
+    {
+      "slug": "hazoor-multi-projects-work-order",
+      "headline": "Hazoor Multi Projects Bags ₹207 Crore Construction Work Order",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the contract value and the awarding entity.",
+      "digestHash": "21d4bc636a94cb07"
+    },
+    {
+      "slug": "uidai-aadhaar-global-expansion",
+      "headline": "Aadhaar's Global Ambition: UIDAI Plans Worldwide Expansion",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "For the estimated 6 million OCIs",
+          "status": "UNVERIFIABLE",
+          "detail": "While general numbers for the Indian diaspora and NRIs were found, a specific, recent figure for '6 million OCIs' could not be independently verified in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the UIDAI's announcement regarding Aadhaar's global expansion, its stated goals, and the primary beneficiaries. Most factual claims, including Aadhaar's launch year, total enrollments, and the growth of India's IT sector, are well-supported by recent sources. However, the specific figure for '6 million OCIs' could not be definitively confirmed from available public information as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "0d6be3987ce1451a"
+    },
+    {
+      "slug": "odisha-silicon-valley-semiconductor",
+      "headline": "Odisha's 'Silicon Valley': Can It Spark India's Next Chip Hub?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "approved a ₹452 crore National Industry Co-Development Hub on Integrated Power Electronics at IIT Bhubaneswar",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a ₹452 crore National Industry Co-Development Hub at IIT Bhubaneswar.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Union Cabinet's approval of Semicon 2.0 in July 2026, allocating ₹1,27,500 crore to bolster the ecosystem",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain information regarding a 'Semicon 2.0' approval or a specific allocation of ₹1,27,500 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the 870-acre project, the ₹23,600 crore investment, and the 25% fiscal support are verified by Source 2. However, the story includes specific details about a ₹452 crore hub at IIT Bhubaneswar and a ₹1,27,500 crore national allocation that are not present in the provided source materials.",
+      "digestHash": "4ba7744557cec2ed"
+    },
+    {
+      "slug": "kalyan-jewellers-candere-investment",
+      "headline": "Kalyan Jewellers Fuels Online Arm: Is ₹350 Crore Enough?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Kalyan Jewellers' investment in Candere Lifestyle Jewellery, including amounts, dates, purpose, ownership, and Candere's FY26 financials, are consistently verified by multiple reliable sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "414c95ac87554c59"
     }
   ]
 }
