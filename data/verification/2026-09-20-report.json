@@ -1,6 +1,6 @@
 {
   "date": "2026-09-20",
-  "generatedAt": "2026-09-20T01:43:33.439Z",
+  "generatedAt": "2026-09-20T12:50:32.668Z",
   "results": [
     {
       "slug": "rvnl-bags-405-crore-railway-order",
@@ -57,22 +57,6 @@
       ],
       "notes": "The core event regarding the signing of seven MoUs by SFAL is verified by the source. However, the story includes specific figures regarding the Semiconductor Mission budget and a future timeline for fabrication that are not present in the provided source text.",
       "digestHash": "f6f6de5d8dab89dd"
-    },
-    {
-      "slug": "trump-xi-summit-tech-giants-global-trade",
-      "headline": "Trump-Xi Summit Looms: Will Tech Giants Steer Global Trade?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
       "slug": "houthis-strike-saudi-capital-oil-markets-edge",
@@ -148,6 +132,62 @@
       ],
       "notes": "The story accurately reflects the data provided in the source text regarding Q1 FY27 credit growth, deposit levels, and the credit-deposit gap. The only issue is an unverifiable historical data point included in a 'Key Number Card'.",
       "digestHash": "813063e863b87f25"
+    },
+    {
+      "slug": "liqvd-digital-india-ipo-opens-september-23",
+      "headline": "New Digital Marketing IPO Opens Soon: Can Investors Find Big Gains?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Liqvd Digital India's upcoming IPO, including the opening date, price band, type of IPO, and listing platform, are consistently confirmed by multiple reliable sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "03d03fe746a3e3d0"
+    },
+    {
+      "slug": "foreign-investors-dump-20974-crore-from-india-why",
+      "headline": "Foreign Investors Dump ₹20,974 Crore From India: Why?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "bringing total outflows this month to over ₹23,000 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the ₹20,974 crore figure but does not contain any data supporting a total September outflow of over ₹23,000 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "August, when FPIs were net buyers, injecting over ₹22,000 crore into the Indian market",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any data regarding FPI inflows for the month of August.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The headline figure of ₹20,974 crore is supported by the source, but the story includes additional aggregate figures (total September outflows of ₹23,000 crore and August inflows of ₹22,000 crore) that are not present in the provided source text.",
+      "digestHash": "739b8481e9515f46"
+    },
+    {
+      "slug": "welspun-arm-bags-351-crore-sewer-project-whats-next",
+      "headline": "Welspun Arm Bags ₹351 Crore Sewer Project: What's Next?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "World Health Organization (WHO) estimates that inadequate sanitation costs India billions of dollars annually in health-related expenses and lost productivity.",
+          "status": "STALE",
+          "detail": "While the WHO and other organizations have published estimates on the economic cost of inadequate sanitation in India, the specific figures cited in reliable sources are from 2006 (US$53.8 billion, equivalent to 6.4% of GDP) and 2015 (US$106.7 billion, 5.2% of GDP). There is no recent (as of the 2026-09-20 publication date) WHO estimate for 'billions of dollars annually' that corroborates this as a current figure.",
+          "correction": "The World Health Organization (WHO) and other bodies have previously estimated that inadequate sanitation costs India billions of dollars annually. For example, a 2006 study referenced by WHO estimated a loss of US$53.8 billion (6.4% of India's GDP) and a 2015 report indicated a cost of US$106.7 billion (5.2% of India's GDP).",
+          "source": "World Health Organization (WHO), Water and Sanitation Program (WSP), UNICEF, Down To Earth",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims about Welspun Enterprises securing contracts from Ahmedabad Municipal Corporation for sewer projects, including the value and number of orders, are all accurately reported and verified. The only issue is that the economic cost of inadequate sanitation, attributed as a current WHO estimate, refers to materially older figures. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "98d4987e7676a4ba"
     }
   ]
 }
