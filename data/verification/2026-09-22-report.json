@@ -1,0 +1,89 @@
+{
+  "date": "2026-09-22",
+  "generatedAt": "2026-09-21T21:44:25.573Z",
+  "results": [
+    {
+      "slug": "varmora-granito-ipo-anchor-investors",
+      "headline": "Varmora Granito Raises ₹212 Crore from Anchor Investors: IPO Ready?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Varmora Granito's anchor investor funding, IPO price band, and IPO dates are consistently supported by multiple reliable sources. The background information on Clean Science and Technology's 2021 IPO is also accurate. The story accurately reports events as of its publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "337880933f4f6b23"
+    },
+    {
+      "slug": "kas-group-semiconductor-expansion-india",
+      "headline": "Indian Tech Firm Aims for ₹2,500 Crore Semiconductor Boost",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "KAS Group is targeting a significant expansion in the semiconductor equipment sector, aiming for a ₹2,500 crore order book within the next three years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) mentions 'KAS Group eyes ₹2,500 crore order book in 3 years as semicon equipment demand rises' in the title, but the actual body of the source text provided contains no information about KAS Group, instead focusing entirely on a Lenskart block deal and Bitcoin/Ethereum market performance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The company plans to make a substantial investment of ₹250 crore in Dholera, Gujarat, to set up advanced manufacturing capabilities for quartz parts.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of KAS Group's investment plans or Dholera.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claims regarding KAS Group are not supported by the provided source text, which instead discusses a Lenskart block deal and cryptocurrency market trends. While the headline of Source 1 matches the story's claim, the body text of that source does not contain the information required to verify the details.",
+      "digestHash": "22f7dd93a50faca2"
+    },
+    {
+      "slug": "adia-sells-lenskart-solutions-stake",
+      "headline": "Major Investor Exits Lenskart: What Happens Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including details of the ADIA stake sale, SoftBank's previous divestments, Lenskart's stock performance, IPO price, and quarterly PAT decline, have been successfully verified against reliable financial news sources. Lenskart Solutions is confirmed to have gone public in November 2025, validating references to its stock performance and IPO price. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "64b76080bce8e851"
+    },
+    {
+      "slug": "el-nino-record-intensity-india-monsoon-risk",
+      "headline": "El Niño Reaches Record Strength: India's Monsoon Risk Rises?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of El Niño reaching record intensity and the Pacific sea surface temperature anomaly, as well as historical monsoon data, have been verified against reliable sources published around the story's date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fce4a5564c1d34c6"
+    },
+    {
+      "slug": "google-eu-fine-location-data-privacy",
+      "headline": "Google Fined $463 Million In Europe: Is Your Data Safe In India?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Google has been fined €403 million (approximately $463 million) by EU regulators for mishandling users' location data on September 21, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding a fine imposed on Google by EU regulators or the Irish Data Protection Commission.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: 2024 (Ireland) = 75",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a 2024 fine of 75 million euros.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The source text provided is a news summary from Business Standard that does not mention the Google fine described in the story. Consequently, the central event and all associated figures are unverifiable based on the provided source.",
+      "digestHash": "52e8cad5bc8025a7"
+    }
+  ]
+}
