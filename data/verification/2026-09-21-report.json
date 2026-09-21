@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-21T01:39:16.267Z",
+  "generatedAt": "2026-09-21T14:59:48.863Z",
   "results": [
     {
       "slug": "nabfid-overseas-bonds",
@@ -29,6 +29,81 @@
       ],
       "notes": "The story accurately reports the inauguration of India's first AI-powered 'phygital' bank branch in Assam by CM Himanta Biswa Sarma, a fact confirmed by multiple recent sources. Most factual claims regarding AI's utility, the 'phygital' model, and connections to national initiatives like Digital India and PM Jan Dhan Yojana are verified. Only a single forward-looking claim about the specific scale of future rollouts by national banks remains unverified. (escalated from source mode — original links were unfetchable)",
       "digestHash": "41858718b8375115"
+    },
+    {
+      "slug": "microsoft-ai-hub-hyderabad",
+      "headline": "Microsoft Unleashes Frontier AI Power in Hyderabad",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Microsoft's AI infrastructure hub launch in Hyderabad, are confirmed by reliable sources published on the story's publication date. The characterization of AI capabilities, investments, and broader market context also aligns with search results. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "baf02c1d66752f1d"
+    },
+    {
+      "slug": "india-russian-oil-imports-us-tariffs",
+      "headline": "US Tariffs Loom: India's Russian Oil Imports At Risk?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "increasing its Russian oil imports from less than 2% of its total basket before 2022 to over 40% by early 2024",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain data regarding the specific percentage share of Russian oil in India's import basket for the periods before 2022 or in early 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the US tariff threat and the potential impact on Indian refiners as described in the source texts. However, the specific historical percentages regarding India's Russian oil import share are not supported by the provided source material.",
+      "digestHash": "6e6b8f2b1bb05a3f"
+    },
+    {
+      "slug": "ongc-strikes-gas-mahanadi-basin",
+      "headline": "ONGC Strikes Gas in Mahanadi Basin: Energy Future Boost?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The first gas production from this field could be several years away, likely by the early 2030s",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text reports the discovery but does not provide any timeline or estimate for when production might commence.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India is the world's third-largest energy consumer",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention India's global ranking in energy consumption.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (ONGC gas discovery in Mahanadi Basin) is verified by the provided source. However, the story includes specific projections regarding production timelines and global rankings that are not present in the source text.",
+      "digestHash": "cd2cebce9ff6eb09"
+    },
+    {
+      "slug": "sp-global-ratings-india-banks-foreign-currency-deposits",
+      "headline": "S&P: $127 Billion Inflow Boosts Indian Banks. Why?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "approximately ₹10.6 lakh crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the $127 billion figure but does not provide the rupee conversion of ₹10.6 lakh crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the $127 billion figure and the S&P assessment as reported in the source. However, the conversion to ₹10.6 lakh crore is not present in the provided source text.",
+      "digestHash": "0bc524b0e32f435d"
     }
   ]
 }
