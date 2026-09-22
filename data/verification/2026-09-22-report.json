@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T02:05:38.100Z",
+  "generatedAt": "2026-09-22T12:59:13.944Z",
   "results": [
     {
       "slug": "varmora-granito-ipo-anchor-investors",
@@ -104,22 +104,6 @@
       "digestHash": "efd5449590d93bd3"
     },
     {
-      "slug": "bandhan-bank-promoter-stake-reduction",
-      "headline": "Bandhan Bank Promoter To Cut Stake To Meet RBI Norms by 2030",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "kas-group-semiconductor-dholera-quartz",
       "headline": "Why is a Bengaluru firm spending ₹250 crore on Dholera quartz?",
       "verdict": "WARN",
@@ -148,22 +132,6 @@
       "digestHash": "955e2cbb67683510"
     },
     {
-      "slug": "rbi-bulk-deposit-rate-disclosure-diktat",
-      "headline": "Why is the RBI forcing banks to reveal bulk deposit rates?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
       "slug": "pace-digitek-bess-order-ntpc",
       "headline": "Why did a local firm bag a ₹488 crore battery order?",
       "verdict": "WARN",
@@ -190,6 +158,15 @@
       ],
       "notes": "The core factual claim regarding the contract value and the parties involved is verified by the source. However, the story includes specific details (the 2028 completion date and the 500 GW target) that are not present in the provided source text.",
       "digestHash": "8cd6e5798d90d72b"
+    },
+    {
+      "slug": "rbi-amends-invit-reit-valuation-rules",
+      "headline": "RBI Tightens How Banks Value Crucial Infrastructure Investments",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of the RBI issuing new Amendment Directions, 2026, for the valuation norms of InvIT and REIT units, have been independently verified as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fa65eeff32ca693e"
     }
   ]
 }
