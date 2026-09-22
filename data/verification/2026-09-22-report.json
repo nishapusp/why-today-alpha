@@ -1,6 +1,6 @@
 {
   "date": "2026-09-22",
-  "generatedAt": "2026-09-22T00:26:52.164Z",
+  "generatedAt": "2026-09-22T02:05:38.100Z",
   "results": [
     {
       "slug": "varmora-granito-ipo-anchor-investors",
@@ -93,6 +93,103 @@
       "issues": [],
       "notes": "The story accurately reflects the RBI's new market-risk capital framework as detailed in the provided source, including the implementation date and the specific provisions regarding structural FX positions and investment reclassification.",
       "digestHash": "ab2078e640cbd283"
+    },
+    {
+      "slug": "rbi-weighs-anup-bagchi-hdfc-bank-ceo",
+      "headline": "RBI Weighs Anup Bagchi for HDFC Bank's Top Job, Seeks Feedback",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of the RBI considering Anup Bagchi for HDFC Bank's CEO role and seeking feedback on his career gap, have been verified by multiple reliable news sources published around the story's publication date. Historical context details are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "efd5449590d93bd3"
+    },
+    {
+      "slug": "bandhan-bank-promoter-stake-reduction",
+      "headline": "Bandhan Bank Promoter To Cut Stake To Meet RBI Norms by 2030",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "kas-group-semiconductor-dholera-quartz",
+      "headline": "Why is a Bengaluru firm spending ₹250 crore on Dholera quartz?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The establishment of this Dholera plant represents a rapid, direct response to the government's ₹1.25 lakh crore semiconductor support program.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the KAS Group's investment and the Dholera location, but it does not mention or quantify a ₹1.25 lakh crore government semiconductor support program.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Quartz parts, while seemingly simple, require extreme chemical purity of over 99.99% to survive the highly corrosive gases and intense heat inside a chip fabrication chamber.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text discusses the sensitivity and importance of quartz parts but does not specify a purity percentage of 99.99%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the ₹250 crore investment and the ₹2,500 crore order book target are verified by the source. However, the story includes specific figures regarding government support programs and technical purity percentages that are not present in the provided source text.",
+      "digestHash": "955e2cbb67683510"
+    },
+    {
+      "slug": "rbi-bulk-deposit-rate-disclosure-diktat",
+      "headline": "Why is the RBI forcing banks to reveal bulk deposit rates?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "pace-digitek-bess-order-ntpc",
+      "headline": "Why did a local firm bag a ₹488 crore battery order?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The battery systems are expected to be fully integrated into the regional grid by early 2028",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the scope of the contract (supply, delivery, testing, commissioning, and a 12-year CMC) but does not provide a specific completion date or timeline for grid integration.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India has set an ambitious target of reaching 500 gigawatts of non-fossil fuel energy capacity by 2030.",
+          "status": "UNVERIFIABLE",
+          "detail": "While this is a widely cited government target, it does not appear in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core factual claim regarding the contract value and the parties involved is verified by the source. However, the story includes specific details (the 2028 completion date and the 500 GW target) that are not present in the provided source text.",
+      "digestHash": "8cd6e5798d90d72b"
     }
   ]
 }
