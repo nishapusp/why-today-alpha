@@ -1,0 +1,118 @@
+{
+  "date": "2026-09-25",
+  "generatedAt": "2026-09-24T21:31:13.459Z",
+  "results": [
+    {
+      "slug": "india-ai-combat-drone-milestone",
+      "headline": "India's Stealth AI Combat Drone Hits 100 Flight Hours. Is It Export Ready?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "25-30 knot gusts over the Bay of Bengal",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts mention the aircraft's performance in demanding wind conditions but do not specify '25-30 knot gusts' or the 'Bay of Bengal' as a testing location.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Indigenization Rate: 80%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts do not mention an 80% indigenization rate for the Kaal Bhairava Lite.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the 100-hour flight milestone and the aircraft's specifications as provided in the source texts. However, it includes specific figures regarding wind speed, location, and indigenization percentage that are not supported by the provided source material.",
+      "digestHash": "baa14e3c0baa71b4"
+    },
+    {
+      "slug": "snapdeal-acevector-ipo",
+      "headline": "Snapdeal Parent AceVector Raises ₹189 Crore from Anchors Before IPO",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any information regarding 'pastEvents' or the content represented by the object placeholders.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the financial details of the AceVector IPO as provided in the source text. The only issue is the inclusion of placeholder text in the 'TIME MACHINE (pastEvents)' section, which is not supported by the source.",
+      "digestHash": "8143f0a499632476"
+    },
+    {
+      "slug": "nse-listing-market-debut",
+      "headline": "NSE Stock Exchange Lists on BSE, Market Capitalization Hits ₹4.5 Lakh Crore",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "shares closing only 1.8% higher at ₹1,818",
+          "status": "WRONG",
+          "detail": "The source states the shares listed at ₹1,800, which was up 0.84% from the issue price of ₹1,785. The story incorrectly reports the closing percentage and price.",
+          "correction": "Shares listed at ₹1,800, up 0.84% from the issue price of ₹1,785.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Market Capitalization Hits ₹4.5 Lakh Crore",
+          "status": "WRONG",
+          "detail": "The source states the NSE's valuation is ₹4.45 trillion, which is ₹4.45 lakh crore, not ₹4.5 lakh crore.",
+          "correction": "₹4.45 lakh crore",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "IPO Size = $2.4 billion",
+          "status": "WRONG",
+          "detail": "The source states the IPO size was ₹22,569 crore. At current exchange rates, this does not equate to $2.4 billion.",
+          "correction": "₹22,569 crore",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story contains multiple factual inaccuracies regarding the IPO size, the listing price/percentage, and the market capitalization figure. While the central event of the NSE listing is confirmed, the specific financial data points are inconsistent with the provided source.",
+      "digestHash": "11cfe50665c5bf0c"
+    },
+    {
+      "slug": "upi-mdr-charges-october",
+      "headline": "India Pushes Ahead With UPI Payment Fees for Large Transactions",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "retail inflation recently rising to 4.82%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding retail inflation rates.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "surpassing 20 billion per month",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a monthly UPI transaction volume of 20 billion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the government's policy on UPI MDR as described in the source. However, it includes specific economic figures (inflation rate and transaction volume) that are not supported by the provided source text.",
+      "digestHash": "a555e7398ff029a3"
+    }
+  ]
+}
