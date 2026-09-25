@@ -1,6 +1,6 @@
 {
   "date": "2026-09-25",
-  "generatedAt": "2026-09-24T21:31:13.459Z",
+  "generatedAt": "2026-09-25T00:06:51.461Z",
   "results": [
     {
       "slug": "india-ai-combat-drone-milestone",
@@ -50,43 +50,6 @@
       "digestHash": "8143f0a499632476"
     },
     {
-      "slug": "nse-listing-market-debut",
-      "headline": "NSE Stock Exchange Lists on BSE, Market Capitalization Hits ₹4.5 Lakh Crore",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "shares closing only 1.8% higher at ₹1,818",
-          "status": "WRONG",
-          "detail": "The source states the shares listed at ₹1,800, which was up 0.84% from the issue price of ₹1,785. The story incorrectly reports the closing percentage and price.",
-          "correction": "Shares listed at ₹1,800, up 0.84% from the issue price of ₹1,785.",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Market Capitalization Hits ₹4.5 Lakh Crore",
-          "status": "WRONG",
-          "detail": "The source states the NSE's valuation is ₹4.45 trillion, which is ₹4.45 lakh crore, not ₹4.5 lakh crore.",
-          "correction": "₹4.45 lakh crore",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "IPO Size = $2.4 billion",
-          "status": "WRONG",
-          "detail": "The source states the IPO size was ₹22,569 crore. At current exchange rates, this does not equate to $2.4 billion.",
-          "correction": "₹22,569 crore",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story contains multiple factual inaccuracies regarding the IPO size, the listing price/percentage, and the market capitalization figure. While the central event of the NSE listing is confirmed, the specific financial data points are inconsistent with the provided source.",
-      "digestHash": "11cfe50665c5bf0c"
-    },
-    {
       "slug": "upi-mdr-charges-october",
       "headline": "India Pushes Ahead With UPI Payment Fees for Large Transactions",
       "verdict": "WARN",
@@ -113,6 +76,15 @@
       ],
       "notes": "The story accurately reflects the government's policy on UPI MDR as described in the source. However, it includes specific economic figures (inflation rate and transaction volume) that are not supported by the provided source text.",
       "digestHash": "a555e7398ff029a3"
+    },
+    {
+      "slug": "up-international-trade-show-growth-ambitions",
+      "headline": "Union Minister Highlights Growth Ambitions at Trade Show",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the U.P. International Trade Show 2026, including its goals, the involvement of government officials, and the focus on MSMEs and global sourcing.",
+      "digestHash": "aeac23cc5515a4e0"
     }
   ]
 }
