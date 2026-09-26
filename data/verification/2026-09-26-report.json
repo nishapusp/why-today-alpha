@@ -1,6 +1,6 @@
 {
   "date": "2026-09-26",
-  "generatedAt": "2026-09-25T22:06:33.919Z",
+  "generatedAt": "2026-09-26T02:01:34.576Z",
   "results": [
     {
       "slug": "zee-jiostar-legal-dispute",
@@ -20,6 +20,44 @@
       ],
       "notes": "The story accurately reports the core legal dispute and the merger value. However, it includes a specific market share figure (35%) that is not supported by the provided source text.",
       "digestHash": "e010b21defb2b2a8"
+    },
+    {
+      "slug": "forex-reserves-drop",
+      "headline": "Why did India's forex reserves just drop by $14.88 billion?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Analysts predict that if crude oil remains above $85 per barrel, the RBI may draw down another $15 billion to $20 billion by the end of the year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of analyst predictions regarding future reserve drawdowns or specific oil price thresholds for such actions.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core factual claims regarding the weekly decline in forex reserves and the composition of the change are verified against the source. The verdict is WARN due to the inclusion of speculative analyst predictions that do not appear in the provided source text.",
+      "digestHash": "5146b24e765fdea7"
+    },
+    {
+      "slug": "pb-fintech-stock-plunge-commission-cuts",
+      "headline": "Why did Policybazaar's parent company see its stock plunge 33%?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over a decade, it captured over 90% of India's online insurance aggregator market.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any market share percentage for Policybazaar.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the core news regarding the IRDAI proposal and the potential 30% revenue impact as reported in the source. However, the claim regarding a 90% market share is not supported by the provided source text.",
+      "digestHash": "ab8afec38aa01980"
     }
   ]
 }
