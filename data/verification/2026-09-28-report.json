@@ -1,0 +1,117 @@
+{
+  "date": "2026-09-28",
+  "generatedAt": "2026-09-27T21:00:21.147Z",
+  "results": [
+    {
+      "slug": "google-gemini-flipkart-integration-india",
+      "headline": "Google Gemini To Offer Direct Flipkart Shopping In India",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Google Gemini testing direct Flipkart shopping in India, the market size figures, and historical context details, were verified against reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3b4a8dfaf4286a1b"
+    },
+    {
+      "slug": "nine-companies-file-ipo-papers",
+      "headline": "India Sees IPO Rush: Nine Companies Submit Papers For Market Debut",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been verified by reliable sources. The central event of nine companies filing DRHPs, including Trans ACNR Solutions, in late September 2026 is strongly confirmed. Historical context and market trend claims are also accurate as characterized. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "60c969a25673f424"
+    },
+    {
+      "slug": "australia-ai-breach-india-warning",
+      "headline": "Australia AI Breach: A Sobering Warning For India's Digital Future?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims within the story, including the central event of the AI agent breach in Australia and the summoning of AI CEOs to the Australian Senate, as well as the reference to India's External Affairs Minister Jaishankar's statements at the UN General Assembly, have been verified by reliable sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1d0e8077d5294e31"
+    },
+    {
+      "slug": "holding-companies-nbfc-rejig",
+      "headline": "Why Are Large Companies Hiding From RBI Scrutiny?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "9,496: Estimated number of NBFCs as of March 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "While sources indicate 'about 9,400' registered NBFCs as of April 2026, the specific figure '9,496' for March 2026 could not be independently confirmed with that level of precision from reliable sources as of the publication date. Official counts are noted to change frequently and often refer to specific reporting dates (e.g., Dec 31, 2025, or June 30, 2026), rather than a precise 'estimated' figure for March 2026.",
+          "correction": null,
+          "source": "cite: 3, 18, 39",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding companies restructuring to avoid RBI scrutiny is well-supported by recent news. Most factual claims, including dates related to the SBR framework and historical contexts, are accurately presented and verified. Only one claim regarding the precise estimated number of NBFCs could not be verified to the specific digit and month mentioned. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "27a2075b036f878d"
+    },
+    {
+      "slug": "india-first-e-methanol-plant",
+      "headline": "India Launches First E-Methanol Plant: A Green Shift?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "₹2,300 crore project",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of the ₹2,300 crore figure or the specific project details regarding the e-methanol plant at Deendayal Port Authority.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "joint venture between DPA and Assam Petro-Chemicals",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this joint venture or the involvement of Assam Petro-Chemicals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a list of news headlines and snippets from Business Standard and does not contain the article text or factual details regarding the e-methanol plant project mentioned in the story.",
+      "digestHash": "48e5d72ef1b6b332"
+    },
+    {
+      "slug": "supreme-court-upi-mdr-plea",
+      "headline": "Supreme Court To Hear Plea Against UPI Payment Charges",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the Supreme Court hearing, the specific MDR threshold, and the nature of the legal challenge.",
+      "digestHash": "8d9cdf26a2a046d9"
+    },
+    {
+      "slug": "rbi-forex-intervention-record",
+      "headline": "RBI Net Dollar Purchases Hit Record $18.65 Billion In July",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Any potential change in the interest rate environment in the October policy meet could also provide clues on whether the RBI intends to shift its focus from currency defense to more traditional inflation-targeting measures.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention an October policy meeting or any analyst expectations regarding interest rate shifts in October.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the figures from the RBI monthly bulletin. However, it includes a speculative claim about an 'October policy meet' which is not supported by the provided source text.",
+      "digestHash": "31b6b92f304ae495"
+    },
+    {
+      "slug": "bank-strike-deferred-september",
+      "headline": "Bank Strike Deferred: Employees Stay on Duty After Late Talks",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the deferment of the bank strike, the dates involved, the parties (IBA and UFBU), and the operational status of banks on Sunday, September 27, are supported by the provided source text.",
+      "digestHash": "6d2784b04ec4db3f"
+    }
+  ]
+}
