@@ -1,6 +1,6 @@
 {
   "date": "2026-09-27",
-  "generatedAt": "2026-09-27T02:01:10.713Z",
+  "generatedAt": "2026-09-27T13:23:20.194Z",
   "results": [
     {
       "slug": "jaishankar-un-terrorism-pakistan",
@@ -121,6 +121,53 @@
       ],
       "notes": "The story attributes a specific economic paper and theoretical stance to the RBI's September 2026 bulletin, but the provided source text (which lists the bulletin's contents) does not contain such a paper. Consequently, the central event and the supporting data points are unverifiable.",
       "digestHash": "f945276e27bb269e"
+    },
+    {
+      "slug": "india-flags-off-first-lng-train",
+      "headline": "India Flags Off First LNG Train; Targets Zero Diesel By 2030",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the central event of the LNG train flag-off, the target year for zero diesel, diesel consumption reduction, and other background initiatives, are confirmed by reliable sources as of the publication date. The story is accurate and well-supported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "6affb1a70b8733ec"
+    },
+    {
+      "slug": "nine-companies-file-ipo-papers",
+      "headline": "Nine Companies File IPO Papers With SEBI, Expanding Market",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Total IPOs Listed (August 2026) = 16+",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the number of IPOs listed in August 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding the nine companies filing DRHPs is supported by the headline of the provided source. However, the 'Key Number Card' regarding August 2026 IPO listings is not mentioned in the source text.",
+      "digestHash": "38310f295a175dfd"
+    },
+    {
+      "slug": "rbi-net-dollar-purchases-record",
+      "headline": "RBI's Net Dollar Purchases Hit Record $18.65 Billion in July",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Previous Month (June): ~$5.5 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts mention the July figure of $18.65 billion but do not contain any data regarding the net dollar purchase figure for June 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding the $18.65 billion record purchase and the NRI deposit figures are supported by the source texts. However, the story includes a specific figure for June 2026 ($5.5 billion) which is not present in the provided source material.",
+      "digestHash": "fbbc5dcced638081"
     }
   ]
 }
