@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "generatedAt": "2026-09-28T22:48:46.880Z",
+  "generatedAt": "2026-09-29T02:24:57.705Z",
   "results": [
     {
       "slug": "tata-sons-avoids-listing",
@@ -177,6 +177,34 @@
       "issues": [],
       "notes": "All specific factual claims, including the central figure of ₹3.86 lakh crore for India's mainboard IPO pipeline as of September 2026, are consistently verified by multiple reliable sources published on September 28, 2026. The story accurately characterizes the scope of this figure as including companies with SEBI approval or awaiting clearance. The role of SEBI as the regulatory body is also accurate. (escalated from source mode — original links were unfetchable)",
       "digestHash": "1afe472e8928b111"
+    },
+    {
+      "slug": "iran-us-indirect-peace-talks",
+      "headline": "Iran Awaits US Response After New Indirect Peace Talks",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the occurrence of indirect talks, the role of Qatar as mediator, Foreign Minister Araghchi's statements, the expectation of a US response by the publication date, the use of the term 'Iran war' to describe the tensions, and global oil prices, are accurately reported and verified by multiple contemporary sources. The central event, the expectation of a US response, is correctly characterized as an unfolding development as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "331fd301642e0197"
+    },
+    {
+      "slug": "trai-ai-spam-call-regulations",
+      "headline": "TRAI Mandates Telecom Operators To Tackle AI-Flagged Spam",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over the next 3-6 months, consumers should expect a noticeable reduction in unsolicited calls and messages as these measures take full effect.",
+          "status": "UNVERIFIABLE",
+          "detail": "This claim refers to a future outcome and cannot be factually confirmed as of the publication date. While the implementation of AI-flagging mechanisms and new procedures is mandated, the extent and timeline of consumer-perceived reduction in spam calls are speculative.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding TRAI's new mandate for telecom operators to use AI-driven systems against spam calls are thoroughly verified. The regulations were indeed notified on September 18-19, 2026. The story accurately details the mandate's procedures, objectives, and context. Only a forward-looking prediction about consumer experience could not be verified as a present fact. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a29b96b660ae7aac"
     }
   ]
 }
