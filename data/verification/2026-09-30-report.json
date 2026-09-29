@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-30",
+  "generatedAt": "2026-09-29T20:25:49.116Z",
+  "results": [
+    {
+      "slug": "mos-murugan-ai-empower-creators",
+      "headline": "AI Should Empower Creators, Not Replace Them, Says MoS Murugan",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the statement by MoS L. Murugan, the YouTube ecosystem's economic contribution, India's Deep Tech investment aim, and historical IT sector promotion, have been verified by reliable sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "c2e7ebc893345d8d"
+    },
+    {
+      "slug": "india-four-semiconductor-plants-2026",
+      "headline": "Semiconductor Boom: India To Get Four New Plants This Year!",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Union Minister Ashwini Vaishnaw announced that India will have four operational semiconductor manufacturing plants by the end of 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of Ashwini Vaishnaw, semiconductor plant operational timelines, or the India Semiconductor Mission.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Micron Investment = $2.75 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Micron or any specific investment figures related to semiconductor companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news summary from Business Standard that covers various topics such as the Asian Games, market updates, and corporate news, but it contains zero information regarding the India Semiconductor Mission or semiconductor manufacturing plants. Consequently, all claims regarding these topics are unverifiable based on the provided source.",
+      "digestHash": "69a2c55f0b36b644"
+    },
+    {
+      "slug": "india-investor-growth-2035",
+      "headline": "India Aims to Add 100 Million Long-Term Investors by 2035",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the existence and findings of the EY report, are accurately reported and corroborated by multiple recent news sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "92d730ef86e57a24"
+    },
+    {
+      "slug": "coinswitch-profitability-fintech",
+      "headline": "India's Fintech Sector Hits Record Highs as CoinSwitch Turns Profitable",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "27%: The target EBITDA margin reached by the firm.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states that the adjusted EBITDA margin 'expanded to 27%', but it does not describe this as a 'target' margin.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the financial figures from the source text, but incorrectly characterizes the achieved 27% margin as a 'target' margin.",
+      "digestHash": "c6180f1b54af672c"
+    }
+  ]
+}
