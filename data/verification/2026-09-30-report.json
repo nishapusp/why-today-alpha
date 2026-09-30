@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T02:27:14.896Z",
+  "generatedAt": "2026-09-30T14:24:10.560Z",
   "results": [
     {
       "slug": "mos-murugan-ai-empower-creators",
@@ -131,6 +131,153 @@
       ],
       "notes": "The story reports on a specific RBI panel recommendation and historical WMA figures that are entirely absent from the provided source text. While the Nomura repo rate projection is correctly sourced, the central event of the article is unsupported.",
       "digestHash": "77e5f4164471319a"
+    },
+    {
+      "slug": "reliance-raises-13000-crore-bonds",
+      "headline": "Reliance raises ₹13,000 crore via 10-year bonds in September.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This latest fundraising contributes to its total rupee bond issues of ₹25,000 crore in September.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the ₹13,000 crore issuance but does not mention any other bond issuances by Reliance in September or a total of ₹25,000 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Earlier Sept 2026 = 12000",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention an earlier bond issuance of ₹12,000 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The primary event (the ₹13,000 crore bond issuance at 7.90%) is verified by the source. However, the story includes claims about a total of ₹25,000 crore raised in September and a specific earlier issuance of ₹12,000 crore which are not supported by the provided source text.",
+      "digestHash": "993ca4270a93ddc4"
+    },
+    {
+      "slug": "india-external-debt-june-quarter",
+      "headline": "India's external debt hits $778.2 billion in June quarter.",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "up from $749.5 billion in March 2026.",
+          "status": "WRONG",
+          "detail": "India's external debt at the end of March 2026 was $762.8 billion, not $749.5 billion.",
+          "correction": "up from $762.8 billion in March 2026.",
+          "source": "Reserve Bank of India (RBI) Press Release, 'India's External Debt as at the end of June 2026' dated September 30, 2026, RBI Press Release, 'India's External Debt as at the end of March 2026'",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This rise reflects a combination of increased commercial borrowings and non-resident Indian (NRI) deposits.",
+          "status": "UNVERIFIABLE",
+          "detail": "While commercial borrowings and NRI deposits are components of external debt and contributed to capital flows, the RBI's official press release on external debt for June 2026 does not explicitly state these as the *primary* factors or a 'surge' contributing to the *increase* from March to June 2026. The increase in external debt was $15.4 billion. While NRI deposits and External Commercial Borrowings contributed to capital flows (e.g., $2.8 billion and $1.0 billion respectively in April-June 2026 as per RBI's 'Sources of Variation in Foreign Exchange Reserves'), the strong attribution as 'primary' drivers for the entire increase is not explicitly made by the RBI in its main external debt report.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This marks an increase from the $749.5 billion recorded at the end of March 2026.",
+          "status": "WRONG",
+          "detail": "India's external debt at the end of March 2026 was $762.8 billion, not $749.5 billion.",
+          "correction": "This marks an increase from the $762.8 billion recorded at the end of March 2026.",
+          "source": "Reserve Bank of India (RBI) Press Release, 'India's External Debt as at the end of June 2026' dated September 30, 2026, RBI Press Release, 'India's External Debt as at the end of March 2026'",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The primary factors contributing to this rise were an increase in commercial borrowings by Indian entities from international sources and a growth in deposits made by Non-Resident Indians (NRIs).",
+          "status": "UNVERIFIABLE",
+          "detail": "While commercial borrowings and NRI deposits are components of external debt and contributed to capital flows, the RBI's official press release on external debt for June 2026 does not explicitly state these as the *primary* factors or a 'surge' contributing to the *increase* from March to June 2026. The increase in external debt was $15.4 billion. While NRI deposits and External Commercial Borrowings contributed to capital flows (e.g., $2.8 billion and $1.0 billion respectively in April-June 2026 as per RBI's 'Sources of Variation in Foreign Exchange Reserves'), the strong attribution as 'primary' drivers for the entire increase is not explicitly made by the RBI in its main external debt report.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "rise of over $28 billion in a single quarter",
+          "status": "WRONG",
+          "detail": "The actual increase in external debt from March 2026 ($762.8 billion) to June 2026 ($778.2 billion) was $15.4 billion, not over $28 billion. The figure in the claim is based on an incorrect March 2026 debt value.",
+          "correction": "rise of $15.4 billion in a single quarter",
+          "source": "Reserve Bank of India (RBI) Press Release, 'India's External Debt as at the end of June 2026' dated September 30, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Reserve Bank of India (RBI) attributed this increase primarily to a surge in commercial borrowings by Indian entities and a healthy inflow of deposits from Non-Resident Indians (NRIs).",
+          "status": "UNVERIFIABLE",
+          "detail": "While commercial borrowings and NRI deposits are components of external debt and contributed to capital flows, the RBI's official press release on external debt for June 2026 does not explicitly state these as the *primary* factors or a 'surge' contributing to the *increase* from March to June 2026. The increase in external debt was $15.4 billion. While NRI deposits and External Commercial Borrowings contributed to capital flows (e.g., $2.8 billion and $1.0 billion respectively in April-June 2026 as per RBI's 'Sources of Variation in Foreign Exchange Reserves'), the strong attribution as 'primary' drivers for the entire increase is not explicitly made by the RBI in its main external debt report.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "External Debt (March 2026): $749.5 billion",
+          "status": "WRONG",
+          "detail": "India's external debt at the end of March 2026 was $762.8 billion, not $749.5 billion.",
+          "correction": "External Debt (March 2026): $762.8 billion",
+          "source": "Reserve Bank of India (RBI) Press Release, 'India's External Debt as at the end of June 2026' dated September 30, 2026, RBI Press Release, 'India's External Debt as at the end of March 2026'",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Quarterly Increase: $28.7 billion",
+          "status": "WRONG",
+          "detail": "The actual quarterly increase from March 2026 ($762.8 billion) to June 2026 ($778.2 billion) was $15.4 billion, not $28.7 billion. This claim is based on an incorrect March 2026 debt value.",
+          "correction": "Quarterly Increase: $15.4 billion",
+          "source": "Reserve Bank of India (RBI) Press Release, 'India's External Debt as at the end of June 2026' dated September 30, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Key drivers: Commercial borrowings, NRI deposits",
+          "status": "UNVERIFIABLE",
+          "detail": "While commercial borrowings and NRI deposits are components of external debt and contributed to capital flows, the RBI's official press release on external debt for June 2026 does not explicitly state these as the *primary* factors or a 'surge' contributing to the *increase* from March to June 2026. The increase in external debt was $15.4 billion. While NRI deposits and External Commercial Borrowings contributed to capital flows (e.g., $2.8 billion and $1.0 billion respectively in April-June 2026 as per RBI's 'Sources of Variation in Foreign Exchange Reserves'), the strong attribution as 'primary' drivers for the entire increase is not explicitly made by the RBI in its main external debt report.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Which factors primarily contributed to the increase in external debt? — stated correct answer: 'Higher commercial borrowings and NRI deposits'",
+          "status": "UNVERIFIABLE",
+          "detail": "The RBI's official press release on external debt for June 2026 does not explicitly state that commercial borrowings and NRI deposits were the *primary* factors for the *increase* from March to June 2026. While they are components of debt and contributed to capital flows, the strong attribution as 'primary' drivers for the entire increase is an interpretation not explicitly confirmed by the RBI's primary data release.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports India's external debt for June 2026 and the timing of the RBI release. However, it contains multiple factual errors regarding the external debt figure for March 2026 and the calculated quarterly increase, leading to a 'FAIL' verdict. Additionally, the strong attribution of 'primary' drivers for the increase is not explicitly supported by the RBI's direct statements. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2b9720894f8f15da"
+    },
+    {
+      "slug": "everbrands-india-ipo-filing",
+      "headline": "Subway Operator EverBrands India Eyes ₹600 Crore IPO",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Subway first entered India in 2001",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the year Subway entered India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the IPO details, financial figures, and store counts as provided in the source texts. The only issue is an unverifiable historical claim regarding the year Subway entered India, which is not mentioned in the provided source material.",
+      "digestHash": "68a67bda5ff3b9fe"
     }
   ]
 }
