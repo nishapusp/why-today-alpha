@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T00:06:50.355Z",
+  "generatedAt": "2026-09-30T02:27:14.896Z",
   "results": [
     {
       "slug": "mos-murugan-ai-empower-creators",
@@ -84,6 +84,53 @@
       "issues": [],
       "notes": "All specific factual claims regarding YouTube's economic contribution and job creation in India for 2025 are consistently verified by multiple reliable news outlets, all citing a recent report by Oxford Economics. The qualitative claims about the evolution of YouTube and the gig economy are also supported by the search results and general industry understanding. (escalated from source mode — original links were unfetchable)",
       "digestHash": "3b05a9561451f37b"
+    },
+    {
+      "slug": "rbi-rejection-mounts-pressure-on-tata-sons-listing",
+      "headline": "RBI Already Rejected Tata Sons' Avoid-Listing Plan? What Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Estimated Market Cap = Over $150 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the market capitalization of Tata Sons.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the regulatory context and deadlines regarding Tata Sons' NBFC-UL status as per the provided source. However, it includes a specific market capitalization figure that is not supported by the source text.",
+      "digestHash": "00dfbe3a9cd6231b"
+    },
+    {
+      "slug": "rbi-raises-wma-limit-for-states",
+      "headline": "States Get ₹67,839 Crore More From RBI: Why Is It Needed?",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "An RBI-appointed panel has recommended an 11.2% increase in the Ways and Means Advances (WMA) limit for states, raising it to ₹67,839 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard) does not contain any information regarding an RBI-appointed panel, a recommendation for an 11.2% increase in WMA limits, or the figure ₹67,839 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The WMA limit for states was set at ₹51,560 crore for FY23 and further increased to ₹61,000 crore for FY25.",
+          "status": "UNVERIFIABLE",
+          "detail": "These historical figures are not mentioned in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a specific RBI panel recommendation and historical WMA figures that are entirely absent from the provided source text. While the Nomura repo rate projection is correctly sourced, the central event of the article is unsupported.",
+      "digestHash": "77e5f4164471319a"
     }
   ]
 }
