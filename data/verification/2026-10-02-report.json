@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-02",
+  "generatedAt": "2026-10-01T19:12:18.562Z",
+  "results": [
+    {
+      "slug": "rural-work-demand-jumps-september",
+      "headline": "Rural Work Demand Soars 34% In September",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Demand for work under the Mahatma Gandhi National Rural Employment Guarantee Scheme (MGNREGS) surged by 34% year-on-year in September 2026, reaching 15.64 million households.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding MGNREGS, rural work demand, or household employment figures for September 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This figure represents a 26% increase compared to the demand observed in August 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding MGNREGS, rural work demand, or household employment figures for August 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news summary from Business Standard that covers various topics such as market performance, GST revenue, and corporate news, but it contains no mention of MGNREGS or rural employment statistics. Consequently, all claims regarding MGNREGS demand are unverifiable based on the provided source.",
+      "digestHash": "4cad5ef131174d4c"
+    },
+    {
+      "slug": "reliance-home-finance-cbi",
+      "headline": "Reliance Home Finance: CBI Files Second Charge Sheet In Fraud Case",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the filing of the second charge sheet by the CBI in the Reliance Home Finance case, including the number of accused and the nature of the allegations.",
+      "digestHash": "2549a888985a7f4f"
+    },
+    {
+      "slug": "accenture-earnings-impact",
+      "headline": "Accenture Beats Earnings Guidance, Projecting Growth for Indian IT",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding Accenture's Q4 revenue, growth percentages, and FY27 guidance are supported by the provided source text. The narrative correctly contextualizes these figures as a bellwether for the IT industry.",
+      "digestHash": "d32c5f06bfa401f9"
+    },
+    {
+      "slug": "axis-bank-data-center-loans",
+      "headline": "Axis Bank To Double Data Center Loans, Riding AI Push",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Axis Bank will likely look to partner with major global and local tech conglomerates that are currently planning large-scale facility rollouts in Hyderabad, Pune, and Chennai.",
+          "status": "UNVERIFIABLE",
+          "detail": "While Hyderabad and Chennai are consistently cited as major data center hubs with ongoing large-scale build-outs and investments by major players, specific evidence for 'major global and local tech conglomerates currently planning large-scale facility rollouts' specifically in Pune, for which Axis Bank is 'likely to partner', is not explicitly supported by the search results as of the publication date. The general expansion of data centers in India is confirmed, but this particular detail about Pune in the context of specific large-scale planning by major conglomerates remains unconfirmed.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claim regarding Axis Bank's plan to double its loan exposure to the data center sector is well-supported by multiple recent sources. Most other factual claims about India's data center growth and the analogy to the fiber-optic network expansion are also verified. However, a specific detail about planned facility rollouts in Pune by major tech conglomerates could not be independently confirmed, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1df47feff2be6937"
+    }
+  ]
+}
