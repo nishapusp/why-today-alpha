@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "generatedAt": "2026-10-01T00:28:18.983Z",
+  "generatedAt": "2026-10-01T02:30:35.331Z",
   "results": [
     {
       "slug": "modi-trump-meet-us-russia-sanctions",
@@ -66,6 +66,25 @@
       "issues": [],
       "notes": "All factual claims regarding the interest rates for the October-December 2026 quarter, including the specific rates for the Sukanya Samriddhi Scheme and 3-year term deposits, are consistent with the provided source text.",
       "digestHash": "213592121f2e627a"
+    },
+    {
+      "slug": "india-cuts-fuel-windfall-tax",
+      "headline": "India Slashes Windfall Tax on Diesel and Aviation Fuel",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Global gasoline stockpiles have hit a 12-year low",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of global gasoline stockpiles or their historical levels.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the windfall tax rate changes are verified by the source. However, the story includes a claim about global gasoline stockpiles that is not supported by the provided source text.",
+      "digestHash": "904eede3e994408a"
     }
   ]
 }
