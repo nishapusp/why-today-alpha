@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generatedAt": "2026-10-01T19:12:18.562Z",
+  "generatedAt": "2026-10-01T23:33:05.207Z",
   "results": [
     {
       "slug": "rural-work-demand-jumps-september",
@@ -66,6 +66,90 @@
       ],
       "notes": "The story's central claim regarding Axis Bank's plan to double its loan exposure to the data center sector is well-supported by multiple recent sources. Most other factual claims about India's data center growth and the analogy to the fiber-optic network expansion are also verified. However, a specific detail about planned facility rollouts in Pune by major tech conglomerates could not be independently confirmed, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
       "digestHash": "1df47feff2be6937"
+    },
+    {
+      "slug": "india-us-trade-deal-not-imminent",
+      "headline": "India-US Trade Deal Not 'Imminent,' Despite Talks.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This assessment follows India's Commerce Minister Piyush Goyal's recent visit to Washington, where he advocated for an early interim trade agreement.",
+          "status": "WRONG",
+          "detail": "While India's Commerce Minister Piyush Goyal recently visited the US and advocated for an early interim trade agreement, his key meetings with US Trade Representative Jamieson Greer were held in Milwaukee, Wisconsin, on the sidelines of the G20 Trade Ministers' Meeting, not specifically in Washington D.C.",
+          "correction": "This assessment follows India's Commerce Minister Piyush Goyal's recent visit to the US, where he met with US Trade Representative Jamieson Greer in Milwaukee and advocated for an early interim trade agreement.",
+          "source": "The Economic Times, Mint, Swarajya, The Hindu",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding the US statement on the India-US trade deal not being 'imminent' is well-verified. Most factual claims, including the duration of negotiations, key sticking points, and India's objective for an interim deal, are accurate and supported by recent news reports. A minor inaccuracy was found regarding the specific location of the Commerce Minister's recent US meetings. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d6862174a2fa1a27"
+    },
+    {
+      "slug": "tcs-best-buy-india-gcc-acquisition-ai",
+      "headline": "TCS to Acquire Best Buy India, Build AI Hub.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "TCS to Acquire Best Buy India, Build AI Hub",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding an acquisition of Best Buy's India GCC by TCS. The source text mentions various market news, including IPO pipelines and RBI expectations, but contains no mention of this transaction.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "over 1,500 Best Buy employees join TCS",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any employee transition or acquisition involving Best Buy and TCS.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on an acquisition event that is not mentioned in the provided source text. The source text focuses on market updates, RBI expectations, and other corporate news, but contains no reference to a TCS-Best Buy deal.",
+      "digestHash": "606048453cfb6e72"
+    },
+    {
+      "slug": "maxivision-eye-hospitals-files-confidential-ipo",
+      "headline": "Eye Hospital Chain Files Secret IPO: Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Maxivision Eye Hospitals has confidentially filed for an Initial Public Offering (IPO) in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Maxivision Eye Hospitals or any confidential IPO filing by the company.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "September record the highest fundraising so far in CY26, with an average listing gain of 19%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions total vehicle sales and RBI norms, but contains no data regarding IPO fundraising records for September or average listing gains.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "H1 CY26 Equity Fundraising = $25 Billion",
+          "status": "UNVERIFIABLE",
+          "detail": "While the source text mentions a record $25 billion equity fundraise in H1, it does not provide the comparative H1 CY25 figure of $14.2 billion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claim regarding Maxivision Eye Hospitals is entirely absent from the provided source text. Additionally, the source text does not contain the comparative data points cited in the 'Key Number Card' or the 'Broader Connections' section.",
+      "digestHash": "797bdc58736b0731"
     }
   ]
 }
