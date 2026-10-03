@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "generatedAt": "2026-10-03T08:16:35.558Z",
+  "generatedAt": "2026-10-03T18:42:52.058Z",
   "results": [
     {
       "slug": "bank-of-baroda-pension-fund-sponsor",
@@ -29,6 +29,43 @@
       ],
       "notes": "The central event regarding Bank of Baroda's appointment as a pension fund sponsor is verified by the source. However, the story includes specific figures regarding NPS AUM and Bank of Baroda's branch count that are not present in the provided source text.",
       "digestHash": "0c1a75053c72269c"
+    },
+    {
+      "slug": "vishakha-renewables-ipo-drhp",
+      "headline": "Another Green Energy Giant Files ₹1,250 Cr IPO.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the IPO size, the filing of the DRHP, and the company's background are supported by the provided source text. The broader context regarding India's 500 GW renewable energy target is consistent with standard industry reporting.",
+      "digestHash": "5a073d414380df0a"
+    },
+    {
+      "slug": "india-forex-record-weekly-decline",
+      "headline": "Why did India’s forex reserves suffer a record-breaking weekly plunge?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the forex reserve decline, the specific dollar amounts, the timeframes, and the context of RBI intervention are supported by the provided source text.",
+      "digestHash": "aa510484c9d8fc8b"
+    },
+    {
+      "slug": "softbank-starfish-acevector-ipo-exit",
+      "headline": "Why did SoftBank just walk away with ₹88 crore from an IPO?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Why did Snapdeal's parent company rename itself to AceVector? — stated correct answer: \"To reflect its structural pivot from a single e-commerce site to a multi-brand portal\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions AceVector is the parent of Snapdeal and Unicommerce, but it does not state the reason for the name change or that it was a rename from Snapdeal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the financial figures and IPO details provided in the source. The only issue is a quiz claim regarding the reason for the company's name, which is not supported by the provided source text.",
+      "digestHash": "d93f6be0e3a9b954"
     }
   ]
 }
