@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-03",
+  "generatedAt": "2026-10-03T08:16:35.558Z",
+  "results": [
+    {
+      "slug": "bank-of-baroda-pension-fund-sponsor",
+      "headline": "Why is Bank of Baroda suddenly entering your retirement fund?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "National Pension System assets under management have crossed the ₹10 lakh crore threshold.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the total assets under management (AUM) for the National Pension System.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Bank of Baroda operates a massive network of over 8,000 domestic branches.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the number of branches operated by Bank of Baroda.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding Bank of Baroda's appointment as a pension fund sponsor is verified by the source. However, the story includes specific figures regarding NPS AUM and Bank of Baroda's branch count that are not present in the provided source text.",
+      "digestHash": "0c1a75053c72269c"
+    }
+  ]
+}
