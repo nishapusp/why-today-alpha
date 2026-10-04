@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-04",
+  "generatedAt": "2026-10-04T08:12:29.718Z",
+  "results": [
+    {
+      "slug": "g7-oil-release-india-fuel-impact",
+      "headline": "G7 Dumps 100 Million Barrels of Oil: Why Your Fuel Bill Could Drop?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Group of Seven (G7) nations will release 100 million barrels of diesel and oil from their strategic reserves over the next four months",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any G7 decision to release 100 million barrels of oil. The source headline mentions 'G7 to release 100 million barrels of diesel and oil', but the actual article text provided contains no such report; it focuses on other news items like the Jio IPO, Opec output targets, and various market reports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This coordinated G7 action, announced today",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any report or announcement regarding a G7 oil release.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: 1991 (Gulf War) = 17.3",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data points for historical SPR releases.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2005 (Katrina) = 60",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data points for historical SPR releases.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2011 (Libya) = 60",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data points for historical SPR releases.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2022 (Ukraine) = 120",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data points for historical SPR releases.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Oct 2026 (G7) = 100",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data points for historical SPR releases.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story's central premise regarding a G7 oil release is not supported by the provided source text. While the source headline mentions the topic, the body of the source text does not contain any information confirming such an event, making the entire report unverifiable.",
+      "digestHash": "37939ac3160c93a9"
+    },
+    {
+      "slug": "rbi-governor-warns-cyberattack-financial-crisis",
+      "headline": "RBI Chief: Next Crisis Could Start Online, Not in Banks.",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Malhotra identified cyberattacks as one of the top five threats to financial stability, alongside factors like global debt, geopolitical tensions, and climate-related risks.",
+          "status": "WRONG",
+          "detail": "While RBI Governor Sanjay Malhotra identified five major financial stability threats including cyber risks and elevated global debt, the other three identified threats were consistently 'stretched asset valuations (particularly AI-linked assets),' 'high leverage (especially in non-bank financial intermediaries),' and 'private credit risks.' Geopolitical tensions and climate-related risks were mentioned as broader environmental factors or potential triggers for crises, but not as part of the five specific enumerated financial vulnerabilities.",
+          "correction": "Malhotra identified cyberattacks as one of the top five financial stability threats, alongside elevated global debt, stretched asset valuations (particularly AI-linked assets), high leverage (especially in non-bank financial intermediaries), and private credit risks.",
+          "source": "Finin2min, Hindustan Times, The420.in, ETV Bharat",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "With platforms like the Unified Payments Interface (UPI) facilitating billions of transactions annually – over 12 billion transactions in September 2026 alone – the scale of potential disruption from a cyberattack is immense.",
+          "status": "WRONG",
+          "detail": "UPI actually processed 24.07 billion transactions in September 2026, making 'over 12 billion' a significant understatement.",
+          "correction": "With platforms like the Unified Payments Interface (UPI) facilitating billions of transactions annually – 24.07 billion transactions in September 2026 alone – the scale of potential disruption from a cyberattack is immense.",
+          "source": "StartupTalky, The New Indian Express, BusinessToday, NDTV Profit, Entrackr",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Cyberattacks on Finance = 300% more",
+          "status": "WRONG",
+          "detail": "The statistic is mischaracterized. A reliable source states that 'financial services firms are reportedly hit by security incidents a staggering 300 times more frequently than businesses in other industries,' which is a comparison of attack frequency across sectors, not a percentage increase in attacks over time. '300 times more' is also not equivalent to '300% more.'",
+          "correction": "Financial services firms are reportedly hit by security incidents 300 times more frequently than businesses in other industries.",
+          "source": "Iris Identity Protection",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story accurately reports the central warning from RBI Governor Sanjay Malhotra regarding cyberattacks. However, it contains several factual errors in specific numbers and classifications of risks, including misrepresenting the volume of UPI transactions, incorrectly listing some of the top five financial stability threats, and mischaracterizing a cybersecurity statistic regarding the frequency of attacks on the financial sector. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "94f14778ef0b6ebe"
+    },
+    {
+      "slug": "gravity-startup-funding-home-interior",
+      "headline": "Home Decor Startup Bags ₹125 Crore: Why Investors Are Betting Big?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Gravity has successfully raised $15 million (approximately ₹125 crore) in a seed funding round led by 3one4 Capital and Info Edge Ventures.",
+          "status": "WRONG",
+          "detail": "While Gravity did raise $15 million in funding led by 3one4 Capital and Info Edge Ventures, the approximate conversion to Indian Rupees is incorrect. As of October 4, 2026, with an exchange rate of approximately 1 USD = 96.36 INR, $15 million converts to approximately ₹144.54 crore.",
+          "correction": "Gravity has successfully raised $15 million (approximately ₹144.5 crore) in a seed funding round led by 3one4 Capital and Info Edge Ventures.",
+          "source": "BookMyForex.com, nstartup",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The funding announcement is notable today because it underscores the continued appetite of institutional investors...",
+          "status": "WRONG",
+          "detail": "The funding announcement for Gravity raising $15 million was widely reported on September 30, 2026, and October 1, 2026, not on October 4, 2026 (the publication date of the story).",
+          "correction": "The funding announcement was notable because it underscores the continued appetite of institutional investors...",
+          "source": "ETRetail, Entrackr, India Business News, Inc42, AngelLinx, nstartup, YouTube, Entrepreneur India, Press Network of India, WorkNation, Tracxn",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's home interior market, which is projected to grow significantly, potentially exceeding $40 billion by 2030.",
+          "status": "WRONG",
+          "detail": "Projections for the Indian home interior or home decor market by 2030 are generally lower than $40 billion. Magicbricks projected $24.52 billion by 2030 for the 'home interiors market', and Grand View Research projected $27.6 billion for the 'home decor market' by 2030. While Deloitte projects India's broader 'home and household market' to reach $260 billion by 2030, this is a much wider scope than 'home interior market'.",
+          "correction": "India's home interior market, which is projected to grow significantly, potentially exceeding $24-28 billion by 2030.",
+          "source": "Magicbricks, Grand View Research, Deloitte",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2023, the D2C market in India was valued at approximately $60 billion",
+          "status": "WRONG",
+          "detail": "Multiple sources indicate that the India D2C market value in 2023 was significantly lower. UnivDatos valued it at approximately $16.85 billion in 2023. Other sources project the D2C market to reach $60 billion in future years (e.g., by 2027 or 2030), not in 2023.",
+          "correction": "In 2023, the D2C market in India was valued at approximately $16.85 billion, with projections to reach $60 billion by 2027-2030.",
+          "source": "UnivDatos, KPMG International, IBEF, McKinsey & Company",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: 2022 = 45",
+          "status": "WRONG",
+          "detail": "Reliable sources state that the India D2C market value in 2022 was approximately $12 billion, not $45 billion.",
+          "correction": "2022 = 12",
+          "source": "KPMG International",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2023 = 60",
+          "status": "WRONG",
+          "detail": "Reliable sources state that the India D2C market value in 2023 was approximately $16.85 billion, not $60 billion.",
+          "correction": "2023 = 16.85",
+          "source": "UnivDatos",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2024 = 78",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source was found that specifically states the India D2C market value for 2024 as $78 billion. Some sources mention D2C funding figures for 2024, but not market value at this specific amount.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story accurately reports the central event of Gravity's funding, including the amount and lead investors. However, it contains multiple incorrect figures regarding market size projections, historical market values for the D2C sector, and even a currency conversion. The publication date also inaccurately states the funding announcement as 'today' when it was reported days prior. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f7b7b65907b4adc9"
+    }
+  ]
+}
