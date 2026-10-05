@@ -1,190 +1,107 @@
 {
   "date": "2026-10-05",
-  "generatedAt": "2026-10-05T03:54:51.936Z",
+  "generatedAt": "2026-10-05T16:54:09.656Z",
   "results": [
     {
-      "slug": "rbi-rate-hike-october-2026-inflation-concerns",
-      "headline": "Why Is India's Central Bank Likely Hiking Rates This Week?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "at the conclusion of its Monetary Policy Committee (MPC) meeting on October 8",
-          "status": "WRONG",
-          "detail": "Multiple sources indicate that the RBI's Monetary Policy Committee (MPC) meeting is scheduled to conclude, and its decision announced, on October 7, 2026, not October 8.",
-          "correction": "at the conclusion of its Monetary Policy Committee (MPC) meeting on October 7",
-          "source": "Mint, Business Standard, N18L, Times Now, Bajaj Finance, WTVB",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The consensus among a poll of bank economists indicated that 7 out of 10 expect a rate increase this week",
-          "status": "WRONG",
-          "detail": "Multiple Reuters polls cited in different publications indicate that 'nearly 60%' of economists (e.g., 35 out of 61) expect a rate hike, which is closer to 6 out of 10, not 7 out of 10 (70%).",
-          "correction": "The consensus among a poll of bank economists indicated that nearly 6 out of 10 (or nearly 60%) expect a rate increase this week",
-          "source": "Mint, The Economic Times, StreetInsider, WTVB",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "MPC Meeting Conclusion = October 8, 2026",
-          "status": "WRONG",
-          "detail": "Multiple sources indicate that the RBI's Monetary Policy Committee (MPC) meeting is scheduled to conclude, and its decision announced, on October 7, 2026, not October 8.",
-          "correction": "MPC Meeting Conclusion = October 7, 2026",
-          "source": "Mint, Business Standard, N18L, Times Now, Bajaj Finance, WTVB",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately identifies the central event as an upcoming, expected repo rate hike and correctly states the current repo rate and the anticipated hike amount. However, it misstates the exact conclusion date of the MPC meeting and slightly overstates the consensus percentage among economists for a rate hike. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "b8747e2a5c3c0b96"
-    },
-    {
-      "slug": "india-fiscal-deficit-august-2026",
-      "headline": "Why Is India's Fiscal Deficit Growing Faster This Year?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "India's fiscal deficit hit 41.9% of its full-year target by August 2026",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any fiscal deficit data; it is a news aggregator page about AI, migration, and corporate news.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "₹6.5 lakh crore of a projected total deficit of ₹15.5 lakh crore for FY27",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any fiscal deficit data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "36% by August 2025",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any fiscal deficit data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "FY27 target of 5.2% of GDP",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any fiscal deficit data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Aug 2024 = 33",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any fiscal deficit data.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The provided source text is a generic news aggregator page and contains no financial data regarding India's fiscal deficit. Consequently, all specific figures cited in the story are unverifiable based on the provided source.",
-      "digestHash": "cca09fb7c75e1fe6"
-    },
-    {
-      "slug": "gst-council-reforms-october-2026",
-      "headline": "Why Is India's GST Council Planning Sweeping Reforms?",
-      "verdict": "FAIL",
+      "slug": "hdfc-bank-ceo-q2-update",
+      "headline": "HDFC Bank Names New CEO, Reports Strong Q2 Business Growth",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "GST Council to consider reforms on October 7, 2026",
-          "status": "WRONG",
-          "detail": "The source texts state the GST Council is likely to consider reforms on Wednesday, which is October 7, 2026, but the source texts themselves are dated October 4 and October 5, 2026, and refer to the meeting as occurring on 'Wednesday'. October 7, 2026, is a Wednesday, but the source texts do not explicitly confirm the date as October 7; more importantly, the story presents the meeting as a future event while the source texts are dated October 4/5, making the 'Wednesday' reference ambiguous or potentially misaligned with the publication date.",
-          "correction": "The source texts refer to a meeting on 'Wednesday' without explicitly naming October 7, 2026.",
-          "source": "Source 1 and Source 2",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Key proposals include provisions to allow small e-commerce sellers to register for GST using their platform warehouses",
+          "claim": "HDFC Bank has officially appointed Anup Bagchi as its new MD & CEO",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts mention that the GST Council is likely to consider 'coordinated audits for businesses with multiple state registrations' and 'sweeping process reforms' to 'simplify registration and return filing', but they do not mention the specific proposal regarding 'small e-commerce sellers' or 'platform warehouses'.",
+          "detail": "The provided source text mentions 'HDFC Bank gets new CEO' in a headline list, but does not confirm the name of the CEO or that Anup Bagchi has been appointed.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Another significant area of focus is safeguarding the Input Tax Credit (ITC) for suppliers",
+          "claim": "Deposits soared by 19% year-on-year to reach ₹33.27 trillion",
           "status": "UNVERIFIABLE",
-          "detail": "The source texts do not mention safeguarding Input Tax Credit (ITC) as a specific focus of the upcoming GST Council meeting.",
+          "detail": "The source text mentions HDFC Bank mobilised over 1.5 trillion in deposits in the September quarter, but does not provide the specific 19% growth figure or the 33.27 trillion total.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Gross advances also demonstrated strong performance, growing by 16.3% year-on-year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain information regarding gross advances growth percentages.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Shares rose 2% following the announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 2% rise in share price following an announcement.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story fabricates specific policy proposals (e-commerce warehouse registration and ITC safeguarding) that are not present in the provided source texts. Additionally, the date 'October 7, 2026' is not explicitly mentioned in the source texts, which only refer to 'Wednesday'.",
-      "digestHash": "8c90ed041c60f78e"
+      "notes": "The source text provided is a news aggregator page that mentions HDFC Bank has a new CEO and mobilised 1.5 trillion in deposits, but it does not contain the specific figures (19% growth, 33.27 trillion total, 16.3% advances growth) or the name of the new CEO (Anup Bagchi) cited in the story.",
+      "digestHash": "5cfe8cf4a9c4e165"
     },
     {
-      "slug": "sme-ipo-underperformance-mainboard-returns",
-      "headline": "Why Are Small IPOs Losing Money While Big Ones Soar?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "slug": "bharat-forge-pratt-whitney-canada-contract",
+      "headline": "Bharat Forge Bags Major Aerospace Engine Contract",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "Out of 151 SME IPOs that have debuted so far in 2026, a substantial 70 are now in negative territory, and 21 of these have seen their values plummet by 50% or more.",
+          "claim": "Bharat Forge has secured a long-term contract from Pratt & Whitney Canada to supply critical aerospace engine components.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text (Business Standard) does not contain these specific figures (151, 70, 21).",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Mainboard IPO index, which has delivered healthy annual returns of over 10%",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions the headline 'sme-listings-sink-as-mainboard-ipo-index-delivers-over-10-annual-return', but the body of the text does not contain the data or confirmation of this figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: SME IPOs (< Issue Price) = 46.36",
-          "status": "UNVERIFIABLE",
-          "detail": "This data point is not present in the provided source text.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: SME IPOs (<-50% Value) = 13.9",
-          "status": "UNVERIFIABLE",
-          "detail": "This data point is not present in the provided source text.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "What is one reason for the underperformance of SME IPOs compared to mainboard listings? — stated correct answer: 'Lack of significant institutional investor participation and inflated valuations'",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain this analysis or explanation.",
+          "detail": "The provided source text (Source 1) is a list of news headlines and snippets. While it contains a headline 'HAL to add second Shakti engine line as India boosts aero-engine capacity', it does not contain any mention of a contract between Bharat Forge and Pratt & Whitney Canada.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story cites a headline that mentions a 10% return, but the body of the source text is empty of the specific data points (151, 70, 21, 46.36, 13.9) and the analytical reasoning provided in the story.",
-      "digestHash": "5962e8295c6fa4b3"
+      "notes": "The story claims a specific contract win for Bharat Forge, but the provided source text does not contain this information. The source text appears to be a general news feed that does not mention this specific deal.",
+      "digestHash": "56cc99a20647d9c9"
+    },
+    {
+      "slug": "jbl-ai-powered-easysing-microphones-india",
+      "headline": "JBL Launches AI-Powered Microphones For India's Party Scene",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the product launch details, features, and market context provided in the source text. All claims regarding the JBL PartyBox expansion and the EasySing microphone functionality are supported by the source.",
+      "digestHash": "31a0c45a0745ea52"
+    },
+    {
+      "slug": "jio-platforms-ipo-date-set",
+      "headline": "Jio Platforms IPO Set For October 21: A Telecom Giant's Public Debut?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the Jio Platforms IPO, its historical investments, valuation, and subscriber numbers are verified by reliable sources as of the publication date. The story correctly portrays the IPO launch as an anticipated future event, not one that has already occurred. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2f87191f28aade1f"
+    },
+    {
+      "slug": "central-bank-india-q2-results-credit",
+      "headline": "Central Bank of India's Credit Soars 30% In Q2",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the bank's provisional Q2 FY27 performance, including the 30% YoY credit growth, the ₹3.81 lakh crore gross advances, the 8.43% deposit growth, and the 48.74% CASA ratio, are supported by the provided source text.",
+      "digestHash": "5b9755a86235bc42"
+    },
+    {
+      "slug": "sebi-chandigarh-office-investor-outreach",
+      "headline": "SEBI Just Opened New Office: Why Does It Matter For You?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of SEBI inaugurating a new local office in Chandigarh on October 5, 2026, and details regarding SEBI's chairman, historical office numbers, and RBI's financial literacy initiatives, have been thoroughly verified with reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f98d2aa935b41a1b"
     }
   ]
 }
