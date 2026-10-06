@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-07",
+  "generatedAt": "2026-10-06T21:14:48.140Z",
+  "results": [
+    {
+      "slug": "trent-q2-results-stock-jump",
+      "headline": "Trent Shares Jump 12%: What Drove Retailer's Stellar Q2?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Q4 FY26 = 18.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical revenue growth data for Q4 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q1 FY27 = 20.1",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical revenue growth data for Q1 FY27.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the 12.4% stock jump and 22.5% revenue growth are supported by the source. However, the chart data points for Q4 FY26 and Q1 FY27 are not mentioned in the provided source text and are therefore unverifiable.",
+      "digestHash": "2e856a19b6e33bfd"
+    },
+    {
+      "slug": "bank-stocks-q2-rally",
+      "headline": "Why are bank stocks suddenly rallying on new business updates?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "18.8%: The system-wide credit growth rate across Indian commercial banks.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text provides specific credit growth figures for individual banks (Kotak, Axis, IndusInd, RBL) but does not mention a system-wide credit growth rate of 18.8%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "10%: The estimated decline in CASA ratio momentum feared by sector analysts.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that CASA growth is 10-11% for certain banks, but it does not state that there is a 10% decline in CASA ratio momentum.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the individual bank performance metrics found in the source text. However, it includes two specific 'Key Number' statistics (18.8% system-wide credit growth and 10% CASA decline) that are not present in the provided source material.",
+      "digestHash": "b80497fc14520262"
+    }
+  ]
+}
