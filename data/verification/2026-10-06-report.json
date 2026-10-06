@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-06",
+  "generatedAt": "2026-10-06T09:53:50.972Z",
+  "results": [
+    {
+      "slug": "hdfc-bank-ceo-q2-update",
+      "headline": "HDFC Bank Names New CEO, Reports Strong Q2 Business Growth",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "HDFC Bank has officially appointed Anup Bagchi as its new MD & CEO",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Anup Bagchi or any leadership change at HDFC Bank; it focuses on general market news and other corporate updates.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Deposits soared by 19% year-on-year to reach ₹33.27 trillion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these figures for HDFC Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Gross advances also demonstrated strong performance, growing by 16.3% year-on-year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Shares rose 2% following the announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this stock movement.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story is entirely fabricated. The provided source text contains no information regarding HDFC Bank's leadership or its Q2 FY27 business performance.",
+      "digestHash": "5cfe8cf4a9c4e165"
+    },
+    {
+      "slug": "bharat-forge-pratt-whitney-canada-contract",
+      "headline": "Bharat Forge Bags Major Aerospace Engine Contract",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Bharat Forge has secured a long-term contract from Pratt & Whitney Canada to supply critical aerospace engine components.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a list of headlines and news snippets. While the headline of the source link mentions 'Bharat Forge wins Pratt Whitney Canada contract', the actual content of the source text provided does not contain the article body or any confirmation of this specific contract, its terms, or the nature of the components.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text provided is a collection of headlines and snippets from a news feed. While the headline of the cited link mentions the contract, the actual text of the article is missing, making the specific details of the contract (long-term, engine components, etc.) unverifiable based strictly on the provided source material.",
+      "digestHash": "56cc99a20647d9c9"
+    },
+    {
+      "slug": "jbl-ai-powered-easysing-microphones-india",
+      "headline": "JBL Launches AI-Powered Microphones For India's Party Scene",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the product launch details, features, and market context provided in the source text.",
+      "digestHash": "31a0c45a0745ea52"
+    },
+    {
+      "slug": "jio-platforms-ipo-date-set",
+      "headline": "Jio Platforms IPO Set For October 21: A Telecom Giant's Public Debut?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "a staggering ₹1.52 lakh crore in investments from 13 marquee global investors (between April and June 2020)",
+          "status": "WRONG",
+          "detail": "While Jio Platforms raised ₹1.52 lakh crore from global investors in 2020, and many investments occurred between April and June, key investments from Intel Capital, Qualcomm Ventures, and Google were announced in July 2020, meaning the fundraising period extended beyond June.",
+          "correction": "a staggering ₹1.52 lakh crore in investments from 13 marquee global investors (between April and July 2020)",
+          "source": "Dazeinfo, Jio Platforms - Wikipedia",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the anticipated IPO launch date of Jio Platforms on October 21, 2026, as widely covered by financial news outlets on the publication date. Most factual claims, including the total investments and valuation in 2020, and Jio's historical market disruption, are verified. However, the specific timeframe for the 2020 investments is incorrectly limited to 'between April and June', as some significant investments concluded in July of that year. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2f87191f28aade1f"
+    },
+    {
+      "slug": "central-bank-india-q2-results-credit",
+      "headline": "Central Bank of India's Credit Soars 30% In Q2",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Central Bank of India reported a robust 30% year-on-year growth in gross advances for Q2 FY27, reaching ₹3.81 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a list of headlines and snippets from Business Standard. While it contains a headline 'Central bank of India sees 30% yoy credit growth in q2 fy27', the actual content of the article is not provided in the source text. The source text provided is a collection of unrelated headlines and snippets, none of which contain the specific financial figures (₹3.81 lakh crore, 8.43% deposit growth, 48.74% CASA ratio) cited in the story.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bank's gross advances surged by a remarkable 30% year-on-year, climbing to ₹3.81 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain the body of the article or the data points mentioned.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "On the deposits front, the bank also registered a healthy increase of 8.43% year-on-year, reaching ₹5.50 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Furthermore, the crucial CASA (Current Account Savings Account) ratio, which reflects low-cost funding, remained robust at 48.74% as of September 30, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Compared to Q2 FY26, when Central Bank of India reported 18.25% credit growth",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of headlines and snippets from a news aggregator page. It does not contain the actual article content or the specific financial data points (advances, deposits, CASA ratio) cited in the story. Therefore, all specific financial claims are unverifiable based on the provided source.",
+      "digestHash": "5b9755a86235bc42"
+    },
+    {
+      "slug": "sebi-chandigarh-office-investor-outreach",
+      "headline": "SEBI Just Opened New Office: Why Does It Matter For You?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Securities and Exchange Board of India (SEBI) inaugurated a new local office in Chandigarh today",
+          "status": "WRONG",
+          "detail": "SEBI inaugurated its new local office in Chandigarh on October 5, 2026, not October 6, 2026 (the publication date of the story).",
+          "correction": "The Securities and Exchange Board of India (SEBI) inaugurated a new local office in Chandigarh on October 5, 2026.",
+          "source": "LiveLawBiz, India Today, Rediff Money, HT Correspondent, Chandigarh, Vaquill News",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event of SEBI inaugurating a new office in Chandigarh is confirmed, as are most other factual claims. However, the story incorrectly states that the inauguration happened 'today' (October 6, 2026), when it actually occurred on October 5, 2026. This significant error regarding the timing of the central event makes the story's core premise misleading. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f98d2aa935b41a1b"
+    }
+  ]
+}
