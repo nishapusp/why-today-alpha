@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "generatedAt": "2026-10-06T21:14:48.140Z",
+  "generatedAt": "2026-10-07T06:20:58.489Z",
   "results": [
     {
       "slug": "trent-q2-results-stock-jump",
@@ -57,6 +57,310 @@
       ],
       "notes": "The story accurately reports the individual bank performance metrics found in the source text. However, it includes two specific 'Key Number' statistics (18.8% system-wide credit growth and 10% CASA decline) that are not present in the provided source material.",
       "digestHash": "b80497fc14520262"
+    },
+    {
+      "slug": "rbi-monetary-policy-committee-meeting-october-2026",
+      "headline": "Central Bank Begins Crucial Rate-Setting Talks Amid Global Uncertainties",
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's central bank has commenced its latest Monetary Policy Committee (MPC) meeting",
+          "status": "WRONG",
+          "detail": "The source texts indicate that the RBI MPC meeting concluded on October 7, 2026, and the repo rate was already hiked to 5.5%. The story presents the meeting as currently ongoing.",
+          "correction": "The MPC meeting concluded on October 7, 2026, and the repo rate was hiked to 5.5%.",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The current repo rate, the rate at which banks borrow from the RBI, stands at 5.25%",
+          "status": "WRONG",
+          "detail": "The repo rate was hiked to 5.5% by the MPC in the meeting that concluded on October 7, 2026.",
+          "correction": "5.5%",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The MPC's decision on the repo rate and its forward guidance will be announced at the end of the three-day meeting, likely on October 9.",
+          "status": "WRONG",
+          "detail": "The meeting concluded on October 7, 2026, and the decision was already announced.",
+          "correction": "The decision was announced on October 7, 2026.",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Financial analysts widely anticipate the committee to maintain the current repo rate",
+          "status": "WRONG",
+          "detail": "The committee has already hiked the repo rate to 5.5%.",
+          "correction": "The committee hiked the repo rate by 25 bps to 5.5%.",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Current Repo Rate = 5.25%",
+          "status": "WRONG",
+          "detail": "The repo rate is 5.5% following the October 2026 MPC meeting.",
+          "correction": "5.5%",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "What is the current repo rate the RBI is expected to maintain? — stated correct answer: 5.25%",
+          "status": "WRONG",
+          "detail": "The repo rate is 5.5%.",
+          "correction": "5.5%",
+          "source": "Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The US Energy Information Administration recently revised its Brent crude forecast to $98 per barrel for 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "This figure does not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story is fundamentally flawed as it reports on an MPC meeting as if it were ongoing and the repo rate as 5.25%, whereas the source texts confirm the meeting concluded on October 7, 2026, with a rate hike to 5.5%.",
+      "digestHash": "c2ddacf7abd55720"
+    },
+    {
+      "slug": "swara-baby-products-ipo-sebi-nod",
+      "headline": "FirstCry-Backed Baby Product Maker Gets Nod For ₹1,000 Crore IPO",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This follows a period where the mainboard IPO pipeline has swelled to ₹3.86 lakh crore in recent months",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of a ₹3.86 lakh crore IPO pipeline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the SEBI approval for Swara Baby Products is supported by the source. However, the figure regarding the IPO pipeline size is not mentioned in the provided source text.",
+      "digestHash": "9c961ea99a6a0169"
+    },
+    {
+      "slug": "world-bank-raises-india-gdp-forecast-fy27",
+      "headline": "World Bank Sees India's Economy Growing Faster Than Expected",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Other global agencies like the OECD and Asian Development Bank have also recently increased their FY27 forecasts for India",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the OECD or the Asian Development Bank, nor do they contain information regarding recent forecast changes by these specific agencies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's role in driving South Asia's overall growth, projected at 6.9% in 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a 6.9% growth projection for South Asia in 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the World Bank's GDP forecast upgrade and the supporting data points found in the source texts. However, it includes claims about other global agencies and regional growth projections that are not supported by the provided source material.",
+      "digestHash": "9fb8b478bb7505a8"
+    },
+    {
+      "slug": "black-sea-tanker-attack-indian-crew-rescued",
+      "headline": "Indian Crew Rescued After Drone Strikes Oil Tanker Off Russia",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Aframax Rio had been placed under Ukrainian sanctions in February 2026, suspected of being part of Russia's 'shadow fleet' used to bypass international restrictions",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the name of the tanker, its history, its sanctions status, or its involvement in a 'shadow fleet'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This tanker, capable of carrying between 700,000-750,000 barrels of oil, had routinely transported Russian oil to various international destinations, including India, between 2024 and 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the tanker's capacity or its transport history.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the US Energy Information Administration recently raising its Brent crude forecast to $98 a barrel for 2026",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the US Energy Information Administration or any Brent crude price forecasts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (the attack on a tanker with 23 Indian crew members near Sochi) is verified by the source texts. However, the story includes specific details about the tanker's name, its history of sanctions, its cargo capacity, and external economic forecasts that are not present in the provided source material.",
+      "digestHash": "866c9e040b1782f2"
+    },
+    {
+      "slug": "gst-council-expedites-refunds-automates-registration",
+      "headline": "GST Council Plans To Fast-Track Refunds To Just 17 Days",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The primary proposal is to drastically cut the GST refund processing period to approximately 17 days. This streamlined process will include a maximum of 10 days for acknowledging refund applications... followed by 7 days for actual processing.",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 states that the proposed framework would provide for acknowledgement within 10 days, with 90 per cent of eligible refunds released after a risk check. It does not mention a 7-day processing window or a total 17-day target.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the 39% of applications that currently face delays beyond the standard three-day approval.",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 states that 61% of registrations are approved within three working days, but it does not state that the remaining 39% face delays or define them as such.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "acknowledgement alone can take 21-45 days",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 states that claims currently take an average of about 25 days to process. It does not mention a 21-45 day range for acknowledgement.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "some extending up to 60 days in some cases.",
+          "status": "UNVERIFIABLE",
+          "detail": "Source 1 does not mention a 60-day figure for refund processing.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "For instance, releasing a ₹50 lakh refund 28 days faster (from 45 days to 17 days) provides substantial financial flexibility.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this example or these figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Acknowledgement Current = 21",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention 21 days as the current acknowledgement time.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story fabricates specific timelines (17 days, 7 days, 21-45 days, 60 days) and an example calculation that are not present in the provided source text. While the source mentions a 10-day acknowledgement target and a 61% registration rate, the other figures are unsupported.",
+      "digestHash": "ba402f8f32bab3bd"
+    },
+    {
+      "slug": "startup-policy-forum-launches-deepverse",
+      "headline": "Startup Policy Forum Launches 'DeepVerse' For India's Tech Future",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "SPF's combined valuation: Over $100 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that SPF represents more than 75 new-age companies, but it does not provide a combined valuation figure for these companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "These include high-impact areas such as semiconductors, quantum technology, spacetech, defence technology, biotech, electric vehicles, and robotics.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text lists 'quantum tech, semiconductors, spacetech, and defence tech' as sectors, but does not mention biotech, electric vehicles, or robotics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The initiative is guided by an 18-member advisory board",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text lists 7 specific members of the advisory board but does not state the total number of members is 18.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "DeepVerse builds on SPF’s previous ' #100DesiDeepTechs ' initiative, launched in 2025 in collaboration with MeitY Startup Hub, Startup India, and IIT Madras",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the #100DesiDeepTechs initiative but does not specify a 2025 launch date or the collaboration with Startup India and IIT Madras.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The initiative is also connected to the broader 'National Deep Tech Startup Policy Framework (NDTSP)' which was recommended by the Prime Minister's Science, Technology & Innovation Advisory Council.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the National Deep Tech Startup Policy Framework (NDTSP) or the Prime Minister's Science, Technology & Innovation Advisory Council.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the launch of DeepVerse and the investment figures provided by Tracxn. However, it includes several specific details—such as the advisory board size, the SPF valuation, and the involvement of specific government frameworks—that are not present in the provided source text.",
+      "digestHash": "9b4c5fe5974b24a9"
+    },
+    {
+      "slug": "drdo-flight-tests-high-altitude-airship",
+      "headline": "DRDO Airship Soars 20 KM High, Boosting India's Surveillance",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Defence Minister Rajnath Singh emphasized that this achievement is a crucial step towards 'Aatmanirbhar Bharat', enhancing India's self-reliance in advanced aerospace technologies.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any statement or quote from Defence Minister Rajnath Singh regarding this specific flight test or the 'Aatmanirbhar Bharat' initiative in this context.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's Defence Acquisition Council (DAC) has already cleared a ₹15,000 crore Airship-based High Altitude Pseudo Satellite (AS-HAPS) programme, inviting private companies to develop prototypes",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the Defence Acquisition Council (DAC) or a ₹15,000 crore AS-HAPS programme.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the DRDO flight test (altitudes and duration) are verified by the source texts. However, the story includes specific claims about a ₹15,000 crore DAC-approved programme and quotes from the Defence Minister that are not present in the provided source material.",
+      "digestHash": "e6dd215edb41e459"
     }
   ]
 }
