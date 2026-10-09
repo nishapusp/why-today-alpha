@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-09",
+  "generatedAt": "2026-10-09T10:51:09.042Z",
+  "results": [
+    {
+      "slug": "tcs-q2-fy27-results-ai-revenue-surges",
+      "headline": "TCS Profit Jumps 15% Despite Weak Tech Demand. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding TCS's Q2 FY27 results, including profit, revenue, AI revenue, operating margins, client additions, geographic growth, TCV, dividend, and comparative Q2 FY26 and Q1 FY27 figures, are accurately reported and verified by multiple reliable sources published on the announcement date of October 8, 2026. The central event of the results announcement is also confirmed. The story is factually sound. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "cc869c29769c158a"
+    },
+    {
+      "slug": "india-floats-tenders-13000-gpus-ai-regulation",
+      "headline": "India Boosts AI Power: 13,000 New GPUs Coming. Why Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including numbers, dates, and policy shifts, are consistently confirmed by multiple reliable sources published on or around the story's publication date of October 9, 2026. The central event of India announcing tenders for 13,000 new GPUs and a shift towards a dedicated AI regulatory model is well-supported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "38529918ec33c144"
+    },
+    {
+      "slug": "us-freezes-perm-green-card-indian-it-firms",
+      "headline": "US Freezes Green Cards for Indian IT Giants. What Does It Mean?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Earlier actions included a steep one-time fee of $100,000 on new H-1B petitions in September 2025.",
+          "status": "STALE",
+          "detail": "While the $100,000 H-1B fee was indeed imposed by the Trump administration starting September 2025, it was subsequently blocked by federal courts in June and September 2026 due to procedural issues. As of the publication date (October 9, 2026), the fee is not actively being collected, making the claim materially outdated if it implies current enforcement.",
+          "correction": "Earlier actions included a steep one-time fee of $100,000 on new H-1B petitions in September 2025, though this fee was later blocked by federal court rulings as of June and September 2026.",
+          "source": "Clark Hill, Law Commentary, Forbes",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event of the US suspending PERM green card processing for several IT firms, including Indian giants, as of October 8-9, 2026. Key figures, statements, and the list of affected companies are largely verified. The only issue is a claim about a past H-1B fee that, while historically accurate in its imposition, is no longer in effect due to court interventions, making its portrayal as a current 'earlier action' misleadingly stale. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d0a08c2b119ec5ff"
+    }
+  ]
+}
