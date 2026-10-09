@@ -1,6 +1,6 @@
 {
   "date": "2026-10-09",
-  "generatedAt": "2026-10-09T10:51:09.042Z",
+  "generatedAt": "2026-10-09T14:56:55.242Z",
   "results": [
     {
       "slug": "tcs-q2-fy27-results-ai-revenue-surges",
@@ -38,6 +38,209 @@
       ],
       "notes": "The story accurately reports the central event of the US suspending PERM green card processing for several IT firms, including Indian giants, as of October 8-9, 2026. Key figures, statements, and the list of affected companies are largely verified. The only issue is a claim about a past H-1B fee that, while historically accurate in its imposition, is no longer in effect due to court interventions, making its portrayal as a current 'earlier action' misleadingly stale. (escalated from source mode — original links were unfetchable)",
       "digestHash": "d0a08c2b119ec5ff"
+    },
+    {
+      "slug": "can-fin-homes-q2-results",
+      "headline": "Can Fin Homes Profit Jumps 9%. But What's The Full Story?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Project Tejas' being a multi-year effort launched in February 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "While 'Project Tejas' is confirmed as a multi-year digital transformation initiative aimed at modernizing technology and enhancing efficiency, no reliable source confirms its specific launch date as 'February 2025'. Public announcements about 'Project Tejas' unveiling occurred in September 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Q2 FY27 financial results for Can Fin Homes, along with comparative figures and other key financial metrics. The central event, the results announcement, is confirmed to have occurred on the publication date. Most claims are well-supported by multiple sources. However, the specific launch date for 'Project Tejas' could not be independently verified, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ccd70b0952a5a607"
+    },
+    {
+      "slug": "gst-council-reforms",
+      "headline": "GST Council Eases Business Rules. Will You Save Money?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "A major decision was the complete removal of arrest powers for tax officers under GST law.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions 'GST Council unveils major reforms, eases penalties and speeds up refunds' but does not contain any information regarding the removal of arrest powers.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The threshold for initiating prosecution for GST offenses has been dramatically increased five-fold, from ₹1 crore to ₹5 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any changes to the prosecution threshold.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The maximum general penalty under Section 125 of the CGST Act has been reduced from ₹25,000 to ₹10,000.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any changes to the maximum general penalty under Section 125.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The expansion of Input Tax Credit (ITC) to include employee welfare expenses like health and life insurance, and critical infrastructure components like telecom towers",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the expansion of ITC to include these specific items.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Refund Acknowledgment Period (New) = 10 days (previous: 15 days)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any changes to the refund acknowledgment period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "90% provisional refunds for exports",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention 90% provisional refunds for exports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the source confirms the 57th GST Council meeting took place and discussed reforms, it does not provide the specific details regarding arrest powers, prosecution thresholds, penalty reductions, or specific ITC expansions cited in the story.",
+      "digestHash": "5e9ab90a9fad518c"
+    },
+    {
+      "slug": "life-insurers-premium-growth-fy26",
+      "headline": "Life Insurers See Double-Digit Growth: Is Your Policy Worth More?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's life insurance sector saw a robust 20.6% increase in first-year premiums during the first half of FY26, reaching ₹2.46 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any data regarding life insurance sector premiums, growth rates, or performance for H1 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "LIC registered a 19.3% increase to ₹1.44 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Private insurers collectively achieved a 22.5% surge in new business premiums.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this data.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news aggregator page that contains no information about the life insurance sector's performance in H1 FY26. All specific figures and claims regarding insurance growth are unsupported by the provided source.",
+      "digestHash": "53c1639b57d6e906"
+    },
+    {
+      "slug": "mod-seeks-steepest-defence-budget-hike-fy28",
+      "headline": "Defence Ministry Seeks Record Budget Boost. Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's Ministry of Defence plans to request a 35% hike in its modernisation budget for FY28",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any information regarding a 35% hike in the Ministry of Defence's modernisation budget for FY28. The source text focuses on unrelated news items such as protests, airport renaming, and internet shutdowns.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Defence Secretary, Rajesh Kumar Singh, indicated that the decision comes after the ministry successfully utilised its previous allocations",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Defence Secretary Rajesh Kumar Singh or any statements regarding the utilisation of defence budgets.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes specific claims about a 35% defence budget hike and statements by a Defence Secretary, but the provided source text contains no such information. The source text is a collection of unrelated news headlines from October 9, 2026.",
+      "digestHash": "5be03d41941530e6"
+    },
+    {
+      "slug": "life-insurers-premium-growth",
+      "headline": "Life Insurers See ₹2.46 Lakh Crore Premium Surge. Are Policies Growing Faster?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's life insurance sector recorded a robust 20.6% year-on-year growth in first-year premiums, reaching ₹2.46 lakh crore for the first half of fiscal year 2026 (H1 FY26).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding life insurance premiums, growth rates, or IRDAI reports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "LIC recorded a 19.3% increase in its first-year premium, reaching ₹1.44 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding LIC's financial performance or premium collections.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Private life insurers collectively outperformed, seeing their first-year premiums rise by 22.5% during the same period.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding private life insurers' performance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news summary covering various topics such as protests, bank margins, and corporate news, but it contains zero information regarding the life insurance sector or the specific figures cited in the story.",
+      "digestHash": "2d2a717d3ad49b2c"
+    },
+    {
+      "slug": "quest-global-domicile-shift-india-ipo",
+      "headline": "Quest Global Shifts Domicile To India Ahead Of IPO",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the central event of Quest Global's domicile shift from Singapore to India, are verified by reliable sources published around or before the story's publication date. The connection to an anticipated Indian IPO and the characterization of the move as 'reverse flipping' are also well-supported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f29a0f62a5efa2f6"
+    },
+    {
+      "slug": "jio-satellite-internet-leo-connectivity",
+      "headline": "Jio Eyes Satellite Internet: Will Remote India Get Online?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the numbers for LEO satellites and ground stations, the timeline for LEO satellite market traction, and the historical reference to Telstar, have been accurately verified by recent and reliable sources, consistent with the story's publication date. The central event, Reliance Jio's reported plans for satellite internet, is confirmed as a proposed initiative showcased at the India Mobile Congress 2026 on October 8, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "77d35d954f45dbce"
     }
   ]
 }
