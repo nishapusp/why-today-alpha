@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-10",
+  "generatedAt": "2026-10-10T03:38:15.187Z",
+  "results": [
+    {
+      "slug": "gst-reform-updates",
+      "headline": "GST Reforms Ease Business Rules; Refunds Face New Scrutiny",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the Entrepreneurs Association of India (EAI)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the GST Council's decisions and industry reactions generally, but does not mention an organization called the 'Entrepreneurs Association of India' or any specific praise from such a body.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "E-way Bill Volume = 141.53 million (previous: 132 million — August)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the September e-way bill generation figure of 141.53 million, but it does not provide the August figure of 132 million.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the Finance Ministry's clarification regarding GST refunds under appeal as reported in the source. However, it includes specific details (the EAI and the August e-way bill figure) that are not present in the provided source text.",
+      "digestHash": "b2d6e0a5b9bb957f"
+    },
+    {
+      "slug": "musk-ambani-starlink-row",
+      "headline": "Elon Musk Labels Mukesh Ambani 'Prime Minister' in Starlink Spat",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This comment, made on October 9, reflects the high-stakes lobbying occurring in New Delhi.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states Musk's posts occurred on 'Friday' (October 9, 2026, based on the article date of October 10), but does not explicitly confirm the specific date of the 'Prime Minister Ambani' comment as October 9, nor does it provide a timeline of lobbying activities.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text contains no information regarding a 'pastEvents' list or the content represented by the object placeholders.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately captures the core conflict and the specific 'Prime Minister Ambani' jibe reported in the source. However, it includes placeholder objects and specific date claims that are not supported by the provided text.",
+      "digestHash": "6d011026e803650c"
+    },
+    {
+      "slug": "rbi-rate-hike-liquidity-squeeze",
+      "headline": "RBI Tightens Liquidity as Rates Rise to 5.50%",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "retail inflation has been climbing, with reports suggesting it might have hit a 23-month high of 5.6% in September",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention retail inflation figures for September or a 23-month high of 5.6%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The RBI hiked the repo rate to 5.50% and shifted to 'calibrated tightening' to curb inflation.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the repo rate hike to 5.50%, but does not use the phrase 'calibrated tightening'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the repo rate hike, the CRR maintenance change, and the OMO bond sale details as per the source. However, it includes specific inflation data (5.6% for September) that is not present in the provided source text.",
+      "digestHash": "48202822ee3e1899"
+    },
+    {
+      "slug": "jio-platforms-ipo-valuation",
+      "headline": "Reliance's Jio Platforms Targets $106 Billion Valuation for IPO",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims in the news story about Jio Platforms' IPO, including the target valuation, price band, and tentative IPO date, are consistent with reports published on or around the story's publication date of October 10, 2026. The information about previous investments by Google and Meta, and the historical reference to Google's 2004 IPO, are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e92d8bbc70623808"
+    }
+  ]
+}
