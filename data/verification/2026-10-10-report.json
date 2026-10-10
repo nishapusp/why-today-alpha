@@ -1,6 +1,6 @@
 {
   "date": "2026-10-10",
-  "generatedAt": "2026-10-10T03:38:15.187Z",
+  "generatedAt": "2026-10-10T14:12:21.910Z",
   "results": [
     {
       "slug": "gst-reform-updates",
@@ -94,6 +94,34 @@
       "issues": [],
       "notes": "All specific claims in the news story about Jio Platforms' IPO, including the target valuation, price band, and tentative IPO date, are consistent with reports published on or around the story's publication date of October 10, 2026. The information about previous investments by Google and Meta, and the historical reference to Google's 2004 IPO, are also accurate. (escalated from source mode — original links were unfetchable)",
       "digestHash": "e92d8bbc70623808"
+    },
+    {
+      "slug": "india-ai-regulation-gpu-expansion",
+      "headline": "India Plans AI Rules, Boosts GPU Power. Is It Enough?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims regarding India's AI regulation paper, GPU deployment, the US-China AI rivalry, and India's historical IT rise are corroborated by multiple reliable sources published around the story's date. The central premise of the story, India's dual focus on AI regulation and infrastructure, is fully confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "76d59ccb377395d7"
+    },
+    {
+      "slug": "adani-green-energy-h1fy27-results",
+      "headline": "Adani Green Powers Up 24% More. Is India's Energy Shift Accelerating?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Energy Sales (H1 FY27): 25,747 million units (+32% YoY). (previous: 19,505 million units — H1 FY26)",
+          "status": "WRONG",
+          "detail": "While the H1 FY27 energy sales (25,747 million units) and the year-on-year increase (32%) are correct and verified, the stated previous figure for H1 FY26 energy sales (19,505 million units) is incorrect. Multiple reliable sources report Adani Green Energy's energy sales for H1 FY26 as 19,569 million units.",
+          "correction": "The previous energy sales figure for H1 FY26 should be 19,569 million units.",
+          "source": "The Economic Times, Business Standard",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports Adani Green Energy's H1 FY27 operational capacity and energy sales, along with the year-on-year percentage increases, which are corroborated by multiple news outlets published on the same day. Key national and company targets are also correctly stated. However, the reported previous year's (H1 FY26) energy sales figure is inconsistent with external reports, making one specific claim inaccurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "4361d1a55886828f"
     }
   ]
 }
