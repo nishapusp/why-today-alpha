@@ -1,90 +1,144 @@
 {
   "date": "2026-10-11",
-  "generatedAt": "2026-10-11T02:05:41.531Z",
+  "generatedAt": "2026-10-11T14:41:30.948Z",
   "results": [
     {
-      "slug": "gst-reform-updates",
-      "headline": "GST Reforms Ease Business Rules; Refunds Face New Scrutiny",
-      "verdict": "WARN",
+      "slug": "ai-threat-indian-jobs-great-lakes-study",
+      "headline": "AI Could Threaten 197 Million Indian Jobs. Are You Ready?",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "industry bodies such as the Entrepreneurs Association of India (EAI)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 'Entrepreneurs Association of India' or any industry body by name.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "E-way Bill Volume = 141.53 million (previous: 132 million — August)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text confirms the September e-way bill generation of 141.53 million, but it does not provide the August figure of 132 million.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reflects the Finance Ministry's clarification regarding GST refunds and the GST Council's decisions as reported in the source. However, it includes specific details (the name of an industry body and a comparative e-way bill figure) that are not present in the provided source text.",
-      "digestHash": "b2d6e0a5b9bb957f"
+      "issues": [],
+      "notes": "The story accurately reflects the findings of the Great Lakes Institute of Management study as reported in the source text. All figures and claims regarding the 197 million workers and the nature of the risks are consistent with the provided source.",
+      "digestHash": "c9cf43dc4e2afda0"
     },
     {
-      "slug": "musk-ambani-starlink-row",
-      "headline": "Elon Musk Labels Mukesh Ambani 'Prime Minister' in Starlink Spat",
+      "slug": "e-commerce-festive-sales-boom",
+      "headline": "Festive Shopping Frenzy: E-commerce Sales Hit ₹24,000 Crore!",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "This comment, made on October 9, reflects the high-stakes lobbying occurring in New Delhi.",
+          "claim": "Nearly two-thirds",
           "status": "UNVERIFIABLE",
-          "detail": "The source text states Musk's posts occurred on 'Friday' (October 9, 2026) and 'Thursday', but does not explicitly confirm the 'Prime Minister Ambani' comment was made on October 9 specifically, nor does it provide a timeline of lobbying activities.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object]",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text contains no information regarding a 'pastEvents' list or the content of the objects mentioned.",
+          "detail": "The provided source text mentions that Tier 2 cities and rural areas account for nearly two-thirds of shoppers, but this specific figure is not present in the provided source text.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately captures the essence of the Starlink-Jio dispute as reported in the source. However, it includes placeholder text ('[object Object]') and makes specific claims about the date of the social media post that are not explicitly confirmed by the provided source text.",
-      "digestHash": "6d011026e803650c"
+      "notes": "The story accurately reflects the core figures (₹24,000 crore, order volumes, and category shares) reported in the source text. However, the claim regarding the percentage of shoppers from Tier 2 and rural areas is not supported by the provided source.",
+      "digestHash": "ffe9ef6ece1074d6"
     },
     {
-      "slug": "rbi-rate-hike-liquidity-squeeze",
-      "headline": "RBI Tightens Liquidity as Rates Rise to 5.50%",
+      "slug": "japan-fdi-india-q1-fy27",
+      "headline": "Japan Leads India's FDI Inflows with $5.71 Billion in Q1 FY27. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including numerical values, percentages, dates, named entities, and transaction details for Q1 FY27 FDI inflows, are consistently supported by multiple reliable financial news sources and government data releases published around the publication date of this story (October 2026). The reporting accurately reflects the context and scope of the figures. The central event of Japan leading India's FDI inflows in Q1 FY27 is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ffe646ecc8cf3da2"
+    },
+    {
+      "slug": "flipkart-esop-liquidity-walmart",
+      "headline": "Flipkart Staff Seek Liquidity for Stock Options From Walmart.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the number of employees, the companies involved, the parent company, and the 2018 acquisition value are supported by the provided source text.",
+      "digestHash": "c8dedb906d188812"
+    },
+    {
+      "slug": "fusion-cx-ipo-anchor-investment",
+      "headline": "Fusion CX IPO Opens This Week After ₹120 Crore Anchor Investment.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the Fusion CX IPO, including its size, anchor investment, key investors, and opening date, have been accurately verified against reliable sources as of the publication date. General contextual claims were also found to be consistent with available information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ca4bcaf6050f531f"
+    },
+    {
+      "slug": "claude-ai-data-localization-india",
+      "headline": "Claude AI Now Processes Indian Data In India, Boosting Trust.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in Source 1 regarding Anthropic's new in-country inference capabilities for Claude via Amazon Bedrock. The historical context regarding the RBI's 2018 data localization mandate is also correctly cited.",
+      "digestHash": "9e41d0ef3bd81585"
+    },
+    {
+      "slug": "coreweave-india-240mw-data-center",
+      "headline": "US AI Giant CoreWeave Plans Massive 240MW Data Center Campus in India. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding CoreWeave's data center campus in India, its capacity, location, purpose, and timeline are consistently verified by multiple reliable sources published on or around the story's publication date. The central event of the announcement is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "cd4a03d059094373"
+    },
+    {
+      "slug": "chennai-metro-phase-2-inauguration",
+      "headline": "PM Modi Flags Off Chennai Metro Phase 2: Will It Speed Up Economy?",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "retail inflation has been climbing, with reports suggesting it might have hit a 23-month high of 5.6% in September",
+          "claim": "Delhi Metro Phase 1 led to a 10-15% appreciation in property values along its corridor.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention retail inflation figures for September or a 23-month high of 5.6%.",
+          "detail": "While metro expansions generally boost property values, no specific, reliable source was found to confirm that Delhi Metro Phase 1 led to an appreciation of precisely 10-15% along its corridor.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "shifted to 'calibrated tightening' to curb inflation",
+          "claim": "Property values potentially increasing by 15-20% in newly connected areas, as observed in other Indian cities like Bengaluru following metro expansions.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the RBI tightened liquidity and raised the repo rate, but it does not use the specific phrase 'calibrated tightening'.",
+          "detail": "While metro expansions are known to increase property values, a specific, reliable source confirming a 15-20% appreciation due to metro expansions in Bengaluru or other Indian cities (as a general observation with this specific percentage) could not be found.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately reports the repo rate hike, the CRR maintenance change, and the OMO bond sale as described in the source. However, it includes claims regarding retail inflation statistics that are not present in the provided source text.",
-      "digestHash": "48202822ee3e1899"
+      "notes": "The core event of Prime Minister Modi inaugurating projects worth ₹13,000 crore, including a stretch of the Chennai Metro Phase 2 Yellow Line, on October 11, 2026, is thoroughly verified by multiple reliable sources. Most other specific factual claims are also verified. However, two claims regarding specific percentages of property value appreciation linked to metro projects (Delhi Metro Phase 1 and Bengaluru metro expansions) could not be definitively confirmed with the exact figures mentioned, rendering them UNVERIFIABLE. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "c77a445cf97f249a"
+    },
+    {
+      "slug": "hsbc-leads-india-corporate-financing",
+      "headline": "HSBC Dominates India's Corporate Finance. Why Is This Important?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "HSBC has emerged as the leading international bank in financing Indian corporations across both debt and equity markets.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a list of headlines and snippets from Business Standard; it does not contain any article or data confirming HSBC's ranking or leadership in debt and equity financing.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bank achieved the top rank in G3 bonds (bonds issued in US Dollar, Euro, and Japanese Yen) and syndicated loans",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data or report regarding HSBC's ranking in G3 bonds or syndicated loans.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "it was recognized as one of the leading international investment banks for equity fundraising",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding HSBC's role or ranking in equity fundraising.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of news headlines and summaries from Business Standard (dated 2026-10-11) that does not contain the article or data supporting the specific claims made in the story.",
+      "digestHash": "3a8498fa35135cc6"
     }
   ]
 }
