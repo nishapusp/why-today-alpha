@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-13",
+  "generatedAt": "2026-10-13T12:47:12.127Z",
+  "results": [
+    {
+      "slug": "rbi-forex-hedging-rules",
+      "headline": "RBI Just Tightened Rules On Bank Forex Hedging. Why?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "notably strengthening to 94.96 against the dollar today",
+          "status": "WRONG",
+          "detail": "The source text mentions the rupee hit a 'one-month high' but does not provide a specific exchange rate of 94.96. Furthermore, the source text does not state the rupee strengthened to that specific figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Current Rupee Value: 94.96 against the dollar",
+          "status": "WRONG",
+          "detail": "The source text does not contain the figure 94.96 as the current rupee value.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Rupee Value (against USD) = 94.96",
+          "status": "WRONG",
+          "detail": "The source text does not contain the figure 94.96 as the current rupee value.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "While the central event regarding the RBI's new forex derivative rules is supported by the source, the specific exchange rate figure of 94.96 is not present in the provided source text and is therefore factually unsupported.",
+      "digestHash": "d3d5cd1ada844423"
+    },
+    {
+      "slug": "zoho-ai-cost-impact",
+      "headline": "AI Costs Just Froze Zoho's Pay Hikes. Is Your Job Safe?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Zoho freezing pay hikes and cutting marketing spend due to rising AI costs, and CEO Sridhar Vembu's statements, are comprehensively verified by multiple reliable sources published on the story's publication date of 2026-10-13. Historical claims and general industry trends mentioned are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "96c6921ce8dc6006"
+    },
+    {
+      "slug": "tonbo-imaging-ipo-gmp",
+      "headline": "Defense Tech IPO Heats Up: Tonbo GMP Jumps 61%!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story's claims regarding the IPO opening date and the Grey Market Premium (GMP) are consistent with the provided source text, which is a Moneycontrol article titled 'Tonbo Imaging India IPO GMP jumps to 61% ahead of issue opening on October 15'.",
+      "digestHash": "71f7bc7d0d22c6a1"
+    }
+  ]
+}
