@@ -1,68 +1,116 @@
 {
   "date": "2026-10-14",
-  "generatedAt": "2026-10-14T06:05:24.609Z",
+  "generatedAt": "2026-10-14T13:33:04.043Z",
   "results": [
     {
-      "slug": "zoho-ai-cost-impact",
-      "headline": "AI Costs Just Froze Zoho's Pay Hikes. Is Your Job Safe?",
+      "slug": "sebi-sme-ipo-reforms",
+      "headline": "Small IPO Rules Relaxed: Easier Market Entry for SMEs?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the minimum application size for SME IPOs is suggested to be reduced from ₹2 lakh to ₹1 lakh",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any proposal to change the minimum application size for SME IPOs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the SEBI consultation paper's proposals regarding market capitalization thresholds and profitability requirements. However, it includes a claim about reducing the minimum application size for SME IPOs which is not supported by the provided source text.",
+      "digestHash": "e3ebc2fecaac1f51"
+    },
+    {
+      "slug": "cabinet-social-assistance-scheme",
+      "headline": "₹53,428 Crore Boost for India's Social Safety Net!",
       "verdict": "PASS",
       "centralEventConfirmed": true,
       "issues": [],
-      "notes": "All specific claims in the story, including Zoho's actions, the CEO's statements, the reasons cited (rising AI costs, particularly server prices and AI usage), and the timeline of the announcement, are consistent with multiple reliable news reports published on October 13, 2026. The historical reference to the dot-com bubble burst dates is also accurate. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "96c6921ce8dc6006"
+      "notes": "All factual claims regarding the Cabinet approval, the financial outlay, the renaming of the schemes, the revised disability pension criteria, and the implementation timeline are fully supported by the provided source texts.",
+      "digestHash": "c5b25e673b4a4968"
     },
     {
-      "slug": "tonbo-imaging-ipo-gmp",
-      "headline": "Defense Tech IPO Heats Up: Tonbo GMP Jumps 61%!",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "jabil-adani-ai-data-center-venture-india",
-      "headline": "Apple Supplier Jabil Teams With Adani For India AI Data Centres.",
-      "verdict": "WARN",
+      "slug": "bank-of-baroda-br-shetty-lawsuit",
+      "headline": "Bank of Baroda Sued for $15 Billion! What Now?",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the lawsuit value, parties, court, dates, allegations, bank's response, recovery amounts, share price movement, and background details on NMC Healthcare's collapse and prior settlements, have been accurately verified by multiple reliable news sources published around the given date. The story correctly characterizes the events and numbers. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3c56ba5d5336edc0"
+    },
+    {
+      "slug": "india-inc-salary-hikes-attrition-2027",
+      "headline": "Your 2027 Salary Hike? Only 9.1%, Says Report.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims, including salary projections, attrition rates, and sector-specific data, are supported by the provided source texts.",
+      "digestHash": "c03813ebef3f4981"
+    },
+    {
+      "slug": "rbi-special-forex-facility-oil-psus",
+      "headline": "RBI Gives Oil Giants Special Forex Pass. What Does It Mean?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "2022 = 650",
+          "claim": "The Reserve Bank of India has opened a special dollar window for three public sector oil marketing companies (OMCs) to meet their daily foreign currency needs.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any data regarding India's data center capacity growth or specific MW figures for 2022, 2024, or 2026.",
+          "detail": "The provided source text does not mention the RBI opening a special dollar window for oil marketing companies.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "2024 = 1000",
+          "claim": "This facility became effective on October 12, 2026",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any data regarding India's data center capacity growth or specific MW figures for 2022, 2024, or 2026.",
+          "detail": "The source text does not mention this facility or its effective date.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "2026E = 1500",
+          "claim": "rupee, which had depreciated to nearly 97 against the US dollar on the previous Friday",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain any data regarding India's data center capacity growth or specific MW figures for 2022, 2024, or 2026.",
+          "detail": "The source text does not mention the rupee reaching 97 against the US dollar.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "crude oil prices, recently surging above $100 a barrel",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not state that crude oil prices have surged above $100 a barrel.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Forex Reserves (Oct 2, 2026) = $734.60 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain data regarding India's forex reserves.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Pre-Oct 10, 2026 = 96.73; Oct 10, 2026 = 96.96; Oct 12, 2026 = 94.92",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any data points regarding the rupee's exchange rate on these dates.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
         }
       ],
-      "notes": "The central event regarding the Jabil-Adani joint venture is supported by the provided source. However, the chart data points regarding India's data center capacity growth are not mentioned in the source text and are therefore unverifiable.",
-      "digestHash": "79d9a0c0977bebb1"
+      "notes": "The story reports on a major RBI policy intervention that is entirely absent from the provided source text. Consequently, all specific figures and claims regarding this event are unverifiable.",
+      "digestHash": "278d69bb9a1aa1b3"
     }
   ]
 }
