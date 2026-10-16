@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-16",
+  "generatedAt": "2026-10-16T03:02:34.455Z",
+  "results": [
+    {
+      "slug": "qnu-labs-quantum-key-distribution-free-space",
+      "headline": "India's QNu Labs Achieves Quantum Security Breakthrough Beyond Fibre.",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "QNu Labs' successful demonstration today of a 5.56-km free-space QKD link is a substantial step forward for India's quantum technology capabilities.",
+          "status": "WRONG",
+          "detail": "The field trial of the 5.56-km free-space QKD link was conducted on the night of September 27-28, 2026, and the results were announced by the Ministry of Electronics and Information Technology on October 3, 2026. It did not happen 'today' (October 16, 2026), the publication date of the story.",
+          "correction": "QNu Labs' successful demonstration, announced on October 3, 2026, of a 5.56-km free-space QKD link is a substantial step forward for India's quantum technology capabilities.",
+          "source": "PIB (via The Qubit Report), Gadgets Now, QNews_channel, Instagram, The Qubit Report",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (today): QNu Labs successfully demonstrated a 5.56-km free-space Quantum Key Distribution (QKD) link, extending quantum security beyond optical fiber.",
+          "status": "WRONG",
+          "detail": "The demonstration itself took place on September 27-28, 2026, and the announcement of its success was made on October 3, 2026. Therefore, the event did not occur 'today' (October 16, 2026).",
+          "correction": "TIME MACHINE (recent past): QNu Labs successfully demonstrated a 5.56-km free-space Quantum Key Distribution (QKD) link, extending quantum security beyond optical fiber, with the results announced on October 3, 2026.",
+          "source": "PIB (via The Qubit Report), Gadgets Now, QNews_channel, Instagram, The Qubit Report",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the key technical achievement of QNu Labs, including the distance of the QKD link and the company's Indian origin, as well as contextual information about China's Micius satellite. However, it incorrectly states that the demonstration occurred 'today' (on the publication date), when it was actually announced almost two weeks prior. This timing error appears multiple times and is a significant factual inaccuracy for a news report. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ccafef122819cb77"
+    },
+    {
+      "slug": "pernod-ricard-india-ipo-2026",
+      "headline": "Absolut Vodka Maker Pernod Ricard Eyes Mumbai IPO. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Pernod Ricard is reportedly preparing for a potential Initial Public Offering (IPO) in Mumbai.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of Pernod Ricard, an IPO, or any plans regarding a Mumbai listing.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on a claim about Pernod Ricard's IPO that is completely absent from the provided source text. The source text focuses on banking, insurance, and economic policy news, with no mention of the spirits industry or this specific company.",
+      "digestHash": "2e42b7fa1d91de9a"
+    }
+  ]
+}
