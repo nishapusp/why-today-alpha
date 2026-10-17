@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "generatedAt": "2026-10-16T13:25:07.309Z",
+  "generatedAt": "2026-10-17T02:23:20.766Z",
   "results": [
     {
       "slug": "cert-in-ai-security-alert-indian-firms",
@@ -88,10 +88,30 @@
     {
       "slug": "yes-bank-bond-hit",
       "headline": "Yes Bank Faces CET1 Pressure Amid AT-1 Bond Reinstatement",
-      "verdict": "ERROR",
-      "neverVerified": true,
-      "issues": [],
-      "error": "Gemini API error (429) on gemini-3.5-flash: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota ex"
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The legal battle surrounding Yes Bank's Additional Tier-1 (AT-1) bonds reached a critical juncture on October 16, 2026, when the Supreme Court upheld a decision to quash the write-off of these instruments.",
+          "status": "WRONG",
+          "detail": "The source text states the Supreme Court ruling occurred on Thursday (October 15, 2026), not October 16, 2026.",
+          "correction": "The Supreme Court ruling occurred on Thursday, October 15, 2026.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "What kind of instruments are AT-1 bonds? — stated correct answer: \"Loss-absorbing debt instruments\"",
+          "status": "UNVERIFIABLE",
+          "detail": "While this is a general financial definition, the provided source text does not define AT-1 bonds as 'loss-absorbing debt instruments'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story incorrectly identifies the date of the Supreme Court ruling as October 16, 2026, whereas the source text explicitly states the ruling occurred on Thursday (October 15, 2026). Additionally, the quiz claim regarding the definition of AT-1 bonds is not supported by the provided source text.",
+      "digestHash": "b3776b953bb74787"
     }
   ]
 }
