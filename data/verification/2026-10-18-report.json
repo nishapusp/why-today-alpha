@@ -1,22 +1,80 @@
 {
   "date": "2026-10-18",
-  "generatedAt": "2026-10-18T01:25:48.762Z",
+  "generatedAt": "2026-10-18T12:33:28.678Z",
   "results": [
     {
       "slug": "hunger-pangs-limited-burma-burma-drhp-sebi",
       "headline": "Burma Burma Restaurants: IPO Alert! Is Food Sector Booming?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Hunger Pangs Limited filing its DRHP for an IPO on October 17, 2026, are consistently verified by multiple reliable sources. The story accurately reports the company, the restaurant chain, the nature of the cuisine, and the purpose and date of the filing. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "81f15bd9716e38f5"
+    },
+    {
+      "slug": "fpi-outflows-indian-equities-october-2026",
+      "headline": "Foreign Investors Pull ₹52,100 Crore From Indian Equities: Why?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "DIIs have invested over ₹5 lakh crore for the third consecutive calendar year in 2026",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source texts do not contain any data regarding DII (Domestic Institutional Investor) investment totals for 2026 or previous years.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story accurately reports the FPI outflow figures and macroeconomic drivers as stated in the provided sources. However, the claim regarding DII investment totals is not supported by the source texts.",
+      "digestHash": "5cc4206b791dc229"
+    },
+    {
+      "slug": "rbi-data-centre-bhubaneswar-inauguration",
+      "headline": "PM Modi To Open RBI's New High-Tech Data Centre: Will India's Financial Security Level Up?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "developed at a cost of ₹169 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the project cost of ₹169 crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The foundation stone for this Bhubaneswar facility was laid by then-RBI Governor Shaktikanta Das on March 22, 2023.",
+          "status": "WRONG",
+          "detail": "The source texts state that Shaktikanta Das was the RBI Governor who laid the foundation stone, but they do not refer to him as 'then-RBI Governor' in the context of that date; he was the incumbent Governor at that time.",
+          "correction": "The foundation stone was laid by RBI Governor Shaktikanta Das on March 22, 2023.",
+          "source": "Source 1, Source 2, Source 3",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the inauguration date, location, and purpose of the facility. However, the figure of ₹169 crore is not supported by any of the provided source texts, and the phrasing 'then-RBI Governor' for Shaktikanta Das in March 2023 is factually incorrect as he was the serving Governor.",
+      "digestHash": "bb0c29a3c3ea1375"
+    },
+    {
+      "slug": "zen-technologies-cogknit-acquisition",
+      "headline": "Zen Technologies Buys Defence Tech Firm: Boosts AI Capabilities?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the acquisition details, company specializations, historical context, and policy initiatives, have been verified by reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "aa055b749cb84bb1"
+    },
+    {
+      "slug": "sarvam-ai-bulbul-v4-flash-launch",
+      "headline": "Sarvam AI's 'Bulbul V4 Flash' Promises Faster Indian Voice Tech!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story have been verified by reliable sources as of the publication date. The central event, the launch of 'Bulbul V4 Flash' by Sarvam AI, is confirmed to have occurred on October 18, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2d42de6126f0eca3"
     }
   ]
 }
