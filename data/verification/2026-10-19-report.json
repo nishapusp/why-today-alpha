@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-19",
+  "generatedAt": "2026-10-18T19:55:32.775Z",
+  "results": [
+    {
+      "slug": "nmdc-gaill-gas-pact",
+      "headline": "NMDC Secures Gas Supplies, Boosting Nagarnar Plant Efficiency and Emissions",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This represents a 100% switch in primary fuel source for the facility's heating processes.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the plant is transitioning from furnace oil to natural gas, but it does not quantify the transition as a '100% switch'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story contains placeholder text '[object Object]' instead of actual historical data points.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core news regarding the NMDC and GAIL agreement is verified by the source. However, the story includes placeholder text in the 'pastEvents' section and makes an unsubstantiated claim regarding a '100% switch' in fuel source.",
+      "digestHash": "f5622e74434195aa"
+    }
+  ]
+}
