@@ -1,34 +1,230 @@
 {
   "date": "2026-10-21",
-  "generatedAt": "2026-10-21T00:44:55.313Z",
+  "generatedAt": "2026-10-21T07:57:09.561Z",
   "results": [
     {
-      "slug": "apple-india-fy26-revenue-milestone",
-      "headline": "Apple India Revenue Doubles To ₹1 Lakh Crore In Three Years!",
-      "verdict": "WARN",
+      "slug": "jio-ipo-launch",
+      "headline": "Reliance's Jio Launches Record $3.2 Billion IPO for Public Bidding",
+      "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "FY25 Revenue: ₹80,500 crore (approx.)",
+          "claim": "As of yesterday, the offering has garnered attention from both retail and institutional bidders",
+          "status": "WRONG",
+          "detail": "As of yesterday (October 20, 2026), only institutional bidders had participated in the anchor book which opened on October 19, 2026. The public subscription window for retail investors opened on October 21, 2026, the publication date of the story. Therefore, retail bidders had not yet participated 'as of yesterday'.",
+          "correction": "As of today, October 21, 2026, the offering has garnered attention from both retail and institutional bidders, with institutional bidding having started on October 19, 2026.",
+          "source": "CNA, KuCoin, CIO Bulletin, The Guardian",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event of Jio's IPO launch on the publication date, along with its size and significance. However, it incorrectly states that retail bidders had participated 'as of yesterday' when their subscription window only opened on the day of publication. This factual error leads to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2b24330a0fd58168"
+    },
+    {
+      "slug": "oil-price-surge",
+      "headline": "Brent Crude Hits $111 Amid Renewed Middle East Supply Worries",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In August 2025, the US introduced specific tariff hurdles for Indian energy buyers",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions that Apple India's revenue crossed ₹1 lakh crore in FY26, but it does not contain data for FY25 revenue.",
+          "detail": "The provided source text contains no mention of US tariffs on Indian energy buyers in August 2025.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "FY23 Revenue: ₹49,900 crore (approx.)",
+          "claim": "What happened to US tariffs on Indian oil in early 2026? — stated correct answer: \"They were removed.\"",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain data for FY23 revenue.",
+          "detail": "The provided source text contains no mention of US tariffs on Indian oil or their removal in early 2026.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The central claim regarding Apple India's FY26 revenue of ₹1.02 lakh crore is supported by the source. However, the historical revenue figures for FY25 and FY23 are not present in the provided source text and are therefore unverifiable.",
-      "digestHash": "a1ca9d6007e01808"
+      "notes": "The story correctly reports the current Brent crude price as per the source, but includes claims regarding US tariffs on Indian energy that are entirely absent from the provided source text.",
+      "digestHash": "7b93920800142440"
+    },
+    {
+      "slug": "nse-listing-impact",
+      "headline": "Unlisted Share Trading Slows 50% Following NSE Listing",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This trend echoes the transition in global financial markets during the late 1990s, when fragmented regional exchanges in the US consolidated into the centralized electronic platforms we recognize today.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention global financial market transitions in the 1990s or the consolidation of US regional exchanges.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Similarly, this mirrors the 2014 regulatory shift in India, where transparency mandates for debt markets forced a similar migration of liquidity toward regulated platforms, ultimately benefiting the depth of the corporate bond market.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a 2014 regulatory shift in India regarding debt markets or corporate bond market depth.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the 50% drop in unlisted trading volume and the impact of the NSE listing are supported by the provided source. However, the story includes historical comparisons to 1990s global markets and 2014 Indian debt market regulations that are entirely absent from the source text.",
+      "digestHash": "e556da1e9fd3ea95"
+    },
+    {
+      "slug": "apple-india-revenue",
+      "headline": "Apple India Revenue Crosses ₹1 Lakh Crore Landmark in FY26",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Apple India's FY26 revenue and its growth trajectory have been verified against multiple reliable sources published around the story's publication date. The central event of Apple India reporting its FY26 financial results is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a448f34423896e6a"
+    },
+    {
+      "slug": "yamuna-riverfront-project",
+      "headline": "Delhi Government Plans 'Sabarmati-Style' Yamuna Riverfront Project",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The plan includes... implementing systems to monitor and reduce industrial and domestic waste dumping in the river.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the project involves parks, cycle tracks, open spaces, and sports facilities, and that the government is seeking guidance on infrastructure development, but it does not explicitly state that the project includes systems to monitor and reduce industrial and domestic waste dumping.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "It also echoes the Ganga riverfront redevelopment in Varanasi, which focused more on religious and historical aesthetics to drive public participation in river cleanup efforts",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Ganga riverfront redevelopment in Varanasi or its specific focus.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the core details regarding the 52-km Yamuna project and its inspiration from the Sabarmati model. However, it includes additional claims about waste monitoring systems and the Varanasi project that are not supported by the provided source text.",
+      "digestHash": "343f2bc5a27eefc1"
+    },
+    {
+      "slug": "hero-green-hydrogen",
+      "headline": "Hero Future Energies Plans ₹4,000-Crore Green Hydrogen Push",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "TIME MACHINE (future): Development of industrial-scale hydrogen pilot plants by early 2028.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the company expects green hydrogen to become a 'mainstay' in about four years and that they are evaluating projects, but it does not provide a specific timeline or commitment for 'industrial-scale hydrogen pilot plants' by early 2028.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided text contains no data for 'pastEvents' and the object notation is empty/malformed.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the ₹4,000 crore investment is verified by the source. However, the 'Time Machine' sections contain specific future dates and past event placeholders that are not supported by the provided source text.",
+      "digestHash": "a28ebc2ec0532d1f"
+    },
+    {
+      "slug": "india-new-zealand-fta",
+      "headline": "India-New Zealand Trade Pact Starts: Duty-Free Benefits Active",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "100% duty-free access for Indian exports",
+          "status": "WRONG",
+          "detail": "The source text states that Indian exports receive duty-free access to New Zealand, but it does not specify '100%' or 'all' goods; it notes that New Zealand's tariff concessions will expand over time and that India's own concessions vary by product.",
+          "correction": "The source states Indian exports receive duty-free access, but does not quantify this as 100% of all tariff lines.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "That agreement [India-Australia ECTA] proved successful in boosting trade numbers by over 15% in its first two years",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding the India-Australia ECTA or its impact on trade numbers.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story incorrectly characterizes the duty-free access as '100%', a figure not supported by the source text. Additionally, the claim regarding the India-Australia ECTA is entirely absent from the provided source material.",
+      "digestHash": "10914e927df64451"
+    },
+    {
+      "slug": "pricing-power-recovery",
+      "headline": "Datanomics: Goods Producers Gain Pricing Power as Demand Picks Up",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This echoes the early recovery phase of 2010, when Indian manufacturing bounced back post-crisis, showing that internal industrial demand is often the first sign of a sustained macroeconomic expansion cycle.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the 2010 recovery or historical comparisons to that period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story contains a placeholder object reference instead of actual historical data points.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core factual claims regarding the 10% price increase in H1FY27, the manufacturing/mining sector performance, and the electricity PPI index are verified by the source. The verdict is WARN due to the inclusion of an unverified historical comparison and a technical error in the 'TIME MACHINE' section.",
+      "digestHash": "b619344cc72c7207"
+    },
+    {
+      "slug": "axis-visa-festive-offers",
+      "headline": "Axis Bank and Visa Launch Festive Discount Offer",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "On October 20, 2026, Axis Bank and Visa announced a promotional campaign",
+          "status": "WRONG",
+          "detail": "The source text explicitly states the announcement was made on October 19, 2026, not October 20.",
+          "correction": "The campaign was announced on October 19, 2026.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The campaign launch on October 20, 2026",
+          "status": "WRONG",
+          "detail": "The source text states the announcement was made on October 19, 2026. There is no mention of an October 20 launch date.",
+          "correction": "The campaign was announced on October 19, 2026.",
+          "source": "SOURCE 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story incorrectly identifies the announcement date as October 20, 2026, whereas the source text clearly states the announcement occurred on October 19, 2026.",
+      "digestHash": "cf17e569ab62e5b5"
     }
   ]
 }
