@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-21",
+  "generatedAt": "2026-10-21T00:44:55.313Z",
+  "results": [
+    {
+      "slug": "apple-india-fy26-revenue-milestone",
+      "headline": "Apple India Revenue Doubles To ₹1 Lakh Crore In Three Years!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "FY25 Revenue: ₹80,500 crore (approx.)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions that Apple India's revenue crossed ₹1 lakh crore in FY26, but it does not contain data for FY25 revenue.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY23 Revenue: ₹49,900 crore (approx.)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data for FY23 revenue.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding Apple India's FY26 revenue of ₹1.02 lakh crore is supported by the source. However, the historical revenue figures for FY25 and FY23 are not present in the provided source text and are therefore unverifiable.",
+      "digestHash": "a1ca9d6007e01808"
+    }
+  ]
+}
