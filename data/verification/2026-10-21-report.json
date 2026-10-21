@@ -1,82 +1,7 @@
 {
   "date": "2026-10-21",
-  "generatedAt": "2026-10-21T07:57:09.561Z",
+  "generatedAt": "2026-10-21T13:45:35.433Z",
   "results": [
-    {
-      "slug": "jio-ipo-launch",
-      "headline": "Reliance's Jio Launches Record $3.2 Billion IPO for Public Bidding",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "As of yesterday, the offering has garnered attention from both retail and institutional bidders",
-          "status": "WRONG",
-          "detail": "As of yesterday (October 20, 2026), only institutional bidders had participated in the anchor book which opened on October 19, 2026. The public subscription window for retail investors opened on October 21, 2026, the publication date of the story. Therefore, retail bidders had not yet participated 'as of yesterday'.",
-          "correction": "As of today, October 21, 2026, the offering has garnered attention from both retail and institutional bidders, with institutional bidding having started on October 19, 2026.",
-          "source": "CNA, KuCoin, CIO Bulletin, The Guardian",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central event of Jio's IPO launch on the publication date, along with its size and significance. However, it incorrectly states that retail bidders had participated 'as of yesterday' when their subscription window only opened on the day of publication. This factual error leads to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "2b24330a0fd58168"
-    },
-    {
-      "slug": "oil-price-surge",
-      "headline": "Brent Crude Hits $111 Amid Renewed Middle East Supply Worries",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "In August 2025, the US introduced specific tariff hurdles for Indian energy buyers",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no mention of US tariffs on Indian energy buyers in August 2025.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "What happened to US tariffs on Indian oil in early 2026? — stated correct answer: \"They were removed.\"",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no mention of US tariffs on Indian oil or their removal in early 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story correctly reports the current Brent crude price as per the source, but includes claims regarding US tariffs on Indian energy that are entirely absent from the provided source text.",
-      "digestHash": "7b93920800142440"
-    },
-    {
-      "slug": "nse-listing-impact",
-      "headline": "Unlisted Share Trading Slows 50% Following NSE Listing",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This trend echoes the transition in global financial markets during the late 1990s, when fragmented regional exchanges in the US consolidated into the centralized electronic platforms we recognize today.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention global financial market transitions in the 1990s or the consolidation of US regional exchanges.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Similarly, this mirrors the 2014 regulatory shift in India, where transparency mandates for debt markets forced a similar migration of liquidity toward regulated platforms, ultimately benefiting the depth of the corporate bond market.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 2014 regulatory shift in India regarding debt markets or corporate bond market depth.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core claims regarding the 50% drop in unlisted trading volume and the impact of the NSE listing are supported by the provided source. However, the story includes historical comparisons to 1990s global markets and 2014 Indian debt market regulations that are entirely absent from the source text.",
-      "digestHash": "e556da1e9fd3ea95"
-    },
     {
       "slug": "apple-india-revenue",
       "headline": "Apple India Revenue Crosses ₹1 Lakh Crore Landmark in FY26",
@@ -85,34 +10,6 @@
       "issues": [],
       "notes": "All specific factual claims regarding Apple India's FY26 revenue and its growth trajectory have been verified against multiple reliable sources published around the story's publication date. The central event of Apple India reporting its FY26 financial results is confirmed. (escalated from source mode — original links were unfetchable)",
       "digestHash": "a448f34423896e6a"
-    },
-    {
-      "slug": "yamuna-riverfront-project",
-      "headline": "Delhi Government Plans 'Sabarmati-Style' Yamuna Riverfront Project",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The plan includes... implementing systems to monitor and reduce industrial and domestic waste dumping in the river.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions the project involves parks, cycle tracks, open spaces, and sports facilities, and that the government is seeking guidance on infrastructure development, but it does not explicitly state that the project includes systems to monitor and reduce industrial and domestic waste dumping.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "It also echoes the Ganga riverfront redevelopment in Varanasi, which focused more on religious and historical aesthetics to drive public participation in river cleanup efforts",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention the Ganga riverfront redevelopment in Varanasi or its specific focus.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reflects the core details regarding the 52-km Yamuna project and its inspiration from the Sabarmati model. However, it includes additional claims about waste monitoring systems and the Varanasi project that are not supported by the provided source text.",
-      "digestHash": "343f2bc5a27eefc1"
     },
     {
       "slug": "hero-green-hydrogen",
@@ -143,88 +40,190 @@
       "digestHash": "a28ebc2ec0532d1f"
     },
     {
-      "slug": "india-new-zealand-fta",
-      "headline": "India-New Zealand Trade Pact Starts: Duty-Free Benefits Active",
-      "verdict": "FAIL",
+      "slug": "sfc-environmental-technologies-ipo",
+      "headline": "Wastewater Tech Firm's ₹668 Crore IPO Opens October 27. Should You Dive In?",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "100% duty-free access for Indian exports",
-          "status": "WRONG",
-          "detail": "The source text states that Indian exports receive duty-free access to New Zealand, but it does not specify '100%' or 'all' goods; it notes that New Zealand's tariff concessions will expand over time and that India's own concessions vary by product.",
-          "correction": "The source states Indian exports receive duty-free access, but does not quantify this as 100% of all tariff lines.",
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "That agreement [India-Australia ECTA] proved successful in boosting trade numbers by over 15% in its first two years",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any information regarding the India-Australia ECTA or its impact on trade numbers.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story incorrectly characterizes the duty-free access as '100%', a figure not supported by the source text. Additionally, the claim regarding the India-Australia ECTA is entirely absent from the provided source material.",
-      "digestHash": "10914e927df64451"
+      "issues": [],
+      "notes": "All specific factual claims regarding the IPO opening date, price band, total issue size, and fresh issue component are supported by the provided source text.",
+      "digestHash": "e9f3227437bc1d9c"
     },
     {
-      "slug": "pricing-power-recovery",
-      "headline": "Datanomics: Goods Producers Gain Pricing Power as Demand Picks Up",
+      "slug": "hindustan-zinc-q2-fy27-results",
+      "headline": "Hindustan Zinc Profit DOUBLES, Yet Analysts Cut Target Price?",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "This echoes the early recovery phase of 2010, when Indian manufacturing bounced back post-crisis, showing that internal industrial demand is often the first sign of a sustained macroeconomic expansion cycle.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the 2010 recovery or historical comparisons to that period.",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
           "correction": null,
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
-          "status": "UNVERIFIABLE",
-          "detail": "The story contains a placeholder object reference instead of actual historical data points.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
+          "source": null
         }
       ],
-      "notes": "The core factual claims regarding the 10% price increase in H1FY27, the manufacturing/mining sector performance, and the electricity PPI index are verified by the source. The verdict is WARN due to the inclusion of an unverified historical comparison and a technical error in the 'TIME MACHINE' section.",
-      "digestHash": "b619344cc72c7207"
+      "notes": "Re-run with --mode grounded once quota resets."
     },
     {
-      "slug": "axis-visa-festive-offers",
-      "headline": "Axis Bank and Visa Launch Festive Discount Offer",
+      "slug": "l&t-technology-services-q2-fy27-results-ai-deals",
+      "headline": "AI Deals Power L&T Tech To Surprise 11% Stock Jump?",
       "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "On October 20, 2026, Axis Bank and Visa announced a promotional campaign",
+          "claim": "reported a net profit of ₹475 crore",
           "status": "WRONG",
-          "detail": "The source text explicitly states the announcement was made on October 19, 2026, not October 20.",
-          "correction": "The campaign was announced on October 19, 2026.",
-          "source": "SOURCE 1",
+          "detail": "L&T Technology Services reported a net profit (Net Income) of ₹548.2 crore (or ₹5,482 million) for Q2 FY27, which included a one-time gain. Net profit from continuing operations was around ₹380 crore.",
+          "correction": "reported a net profit of ₹548.2 crore (or ₹380 crore from continuing operations excluding one-time gain)",
+          "source": "L&T Technology Services Press Release",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "The campaign launch on October 20, 2026",
+          "claim": "a 15% increase year-on-year",
           "status": "WRONG",
-          "detail": "The source text states the announcement was made on October 19, 2026. There is no mention of an October 20 launch date.",
-          "correction": "The campaign was announced on October 19, 2026.",
-          "source": "SOURCE 1",
+          "detail": "The reported net profit of ₹548.2 crore represents a 66.8% increase year-on-year. Net profit from continuing operations (around ₹380 crore) was a 19.7% increase year-on-year.",
+          "correction": "a 66.8% increase year-on-year (or 19.7% increase from continuing operations)",
+          "source": "L&T Technology Services Press Release",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "revenue climbed 18% to ₹3,350 crore.",
+          "status": "WRONG",
+          "detail": "Revenue for Q2 FY27 was ₹3,040.4 crore (or ₹30,404 million), representing a 12.1% increase year-on-year.",
+          "correction": "revenue climbed 12.1% to ₹3,040.4 crore.",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "margin expansion, which improved by 120 basis points (1.2%) sequentially",
+          "status": "WRONG",
+          "detail": "EBIT margin improved by 60 basis points (0.6%) sequentially (QoQ).",
+          "correction": "margin expansion, which improved by 60 basis points (0.6%) sequentially",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "to 19.5%",
+          "status": "WRONG",
+          "detail": "The EBIT margin for Q2 FY27 was 16.3%. The net income margin was 18.0%.",
+          "correction": "to 16.3% (EBIT margin)",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Net profit up 15% YoY to ₹475 crore.",
+          "status": "WRONG",
+          "detail": "Net profit (Net Income) was ₹548.2 crore, up 66.8% YoY. Net profit from continuing operations was around ₹380 crore, up 19.7% YoY.",
+          "correction": "Net profit up 66.8% YoY to ₹548.2 crore (or net profit from continuing operations up 19.7% YoY to around ₹380 crore).",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Revenue grew 18% to ₹3,350 crore.",
+          "status": "WRONG",
+          "detail": "Revenue grew 12.1% YoY to ₹3,040.4 crore.",
+          "correction": "Revenue grew 12.1% to ₹3,040.4 crore.",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Margins improved by 120 basis points.",
+          "status": "WRONG",
+          "detail": "EBIT margins improved by 60 basis points sequentially.",
+          "correction": "Margins improved by 60 basis points.",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Net Profit (YoY) = ₹475 crore (previous: ₹415 crore — Q2 FY26)",
+          "status": "WRONG",
+          "detail": "The current reported net profit is ₹548.2 crore. The previous year's Q2 FY26 net profit from continuing operations was approximately ₹317.7-₹325.8 crore. The figure ₹415 crore for Q2 FY26 net profit is incorrect.",
+          "correction": "Net Profit (YoY) = ₹548.2 crore (previous: approximately ₹328.7 crore for Q2 FY26, or around ₹317.7-₹325.8 crore from continuing operations for Q2 FY26)",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Revenue (YoY) = ₹3,350 crore (previous: ₹2,839 crore — Q2 FY26)",
+          "status": "WRONG",
+          "detail": "Current revenue is ₹3,040.4 crore. Previous Q2 FY26 revenue was ₹2,713.3 crore.",
+          "correction": "Revenue (YoY) = ₹3,040.4 crore (previous: ₹2,713.3 crore — Q2 FY26)",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY25 = 300",
+          "status": "UNVERIFIABLE",
+          "detail": "Could not find specific net profit data for Q2 FY25 in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q4 FY25 = 360",
+          "status": "UNVERIFIABLE",
+          "detail": "Could not find specific net profit data for Q4 FY25 in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY26 = 415",
+          "status": "WRONG",
+          "detail": "Net profit from continuing operations for Q2 FY26 was approximately ₹317.7-₹325.8 crore. The figure ₹415 crore is incorrect.",
+          "correction": "CHART DATA POINT: Q2 FY26 = approximately ₹325.8 crore (net profit from continuing operations)",
+          "source": "Business Standard, Moneycontrol",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q4 FY26 = 450",
+          "status": "UNVERIFIABLE",
+          "detail": "Could not find specific net profit data for Q4 FY26 in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY27 = 475",
+          "status": "WRONG",
+          "detail": "The reported net profit (Net Income) for Q2 FY27 was ₹548.2 crore.",
+          "correction": "CHART DATA POINT: Q2 FY27 = 548.2",
+          "source": "L&T Technology Services Press Release",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
         }
       ],
-      "notes": "The story incorrectly identifies the announcement date as October 20, 2026, whereas the source text clearly states the announcement occurred on October 19, 2026.",
-      "digestHash": "cf17e569ab62e5b5"
+      "notes": "The story's central event, the announcement of LTTS's Q2 FY27 results and the subsequent stock jump, is confirmed. However, a significant number of specific numerical claims regarding net profit, revenue, and margins, as well as several chart data points, are incorrect or could not be verified, leading to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "638c2fe4b5268b35"
+    },
+    {
+      "slug": "sumitomo-chemical-tata-electronics-semiconductor-partnership",
+      "headline": "Sumitomo Chemical Partners Tata Electronics For India Semiconductor Push?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
