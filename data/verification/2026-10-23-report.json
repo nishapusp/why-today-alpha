@@ -1,6 +1,6 @@
 {
   "date": "2026-10-23",
-  "generatedAt": "2026-10-22T20:34:08.968Z",
+  "generatedAt": "2026-10-22T23:40:31.229Z",
   "results": [
     {
       "slug": "hpcl-q2-fy27-results",
@@ -134,18 +134,57 @@
     {
       "slug": "goa-landmark-ai-policy-2026",
       "headline": "Goa Unveils Bold AI Policy. Can It Become India's Tech Testbed?",
-      "verdict": "WARN",
-      "neverVerified": true,
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "creating a robust regulatory sandbox for AI startups.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "While the policy focuses on supporting startups and creating an innovation testbed, the specific term 'robust regulatory sandbox' is not explicitly found in reliable sources detailing the policy's pillars or initiatives. The policy introduces a 'four-tier, risk-based approach to AI governance' which is related but not the same as a regulatory sandbox.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The launch of Goa's AI Policy 2026 today is crucial...",
+          "status": "WRONG",
+          "detail": "The Goa AI Policy 2026 was launched on Thursday, October 22, 2026, at the Goa AI Tech Conclave 2026, not on October 23, 2026 ('today' relative to the publication date).",
+          "correction": "The launch of Goa's AI Policy 2026 yesterday was crucial...",
+          "source": "ET Government, Rediff Money, The Times of India, The Navhind Times, The Goan, Rediff Money",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The 'National Strategy for Artificial Intelligence' released by NITI Aayog in 2021",
+          "status": "WRONG",
+          "detail": "NITI Aayog's primary 'National Strategy for Artificial Intelligence' (titled #AIforAll) was released in 2018. While NITI Aayog did release follow-up documents like 'Towards Responsible AI for All' and 'Operationalizing Principles for Responsible AI' in February and August 2021 respectively, these were not the overarching 'National Strategy' itself.",
+          "correction": "The 'National Strategy for Artificial Intelligence' released by NITI Aayog in 2018 (with follow-up documents in 2021)",
+          "source": "NITI Aayog, Digital Watch Observatory, Observer Research Foundation, Access Partnership",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Karnataka AI Policy announced in March 2024",
+          "status": "WRONG",
+          "detail": "The Karnataka government announced plans for a Karnataka AI Policy in July 2026. While there were discussions about integrating AI into an MSME policy in March 2026, a standalone 'Karnataka AI Policy' was not announced in March 2024.",
+          "correction": "The Karnataka AI Policy announced in July 2026",
+          "source": "The Times of India, Facebook, Business Standard",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "'IndiaAI' mission launched in August 2025",
+          "status": "WRONG",
+          "detail": "The IndiaAI mission was launched by the Government of India in March 2024.",
+          "correction": "The 'IndiaAI' mission launched in March 2024",
+          "source": "ET Enterprise AI, Testbook, OECD, Press Information Bureau",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story accurately reports the launch of Goa's AI Policy 2026 and its main objectives. However, it incorrectly states the launch date as 'today' instead of 'yesterday' and contains several inaccuracies regarding the timelines of national and other state-level AI policies. One specific detail about a 'regulatory sandbox' could not be explicitly verified. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2bef26c4d54ba81f"
     },
     {
       "slug": "india-eu-free-trade-agreement",
@@ -171,6 +210,71 @@
         }
       ],
       "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "india-poland-defence-trade-boost",
+      "headline": "India & Poland Boost Defence, Double Trade by 2030",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "targeting a doubling of bilateral trade to over $12 billion by 2030",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding India-Poland trade targets, bilateral meetings between Prime Minister Modi and Prime Minister Donald Tusk, or any specific trade figures between the two nations.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "current $6.3 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure or any trade volume between India and Poland.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "compared to 2020, when bilateral trade stood at approximately $3.5 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure or any historical trade data between India and Poland.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a collection of news snippets covering various topics such as silver imports, GST, Indian Bank deposit rates, and core sector growth. None of the source texts mention India-Poland relations, trade targets, or the specific figures cited in the story.",
+      "digestHash": "b932d849c9881001"
+    },
+    {
+      "slug": "india-joins-global-6g-initiative",
+      "headline": "India Joins 24 Nations in Global 6G Technology Initiative",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India has joined 24 other nations in a global initiative to collaborate on research, development, and standardization of 6G wireless technology",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard) does not contain any information regarding India joining a global 6G consortium or initiative.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India officially joined a global alliance of 25 nations",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this alliance or India's participation in it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a Business Standard search results page that does not contain the news story described. Consequently, all claims regarding India joining a 6G initiative are unverifiable based on the provided source.",
+      "digestHash": "2dcaf5687fc0674c"
     }
   ]
 }
