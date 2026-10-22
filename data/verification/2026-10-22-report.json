@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-22",
+  "generatedAt": "2026-10-22T07:17:13.804Z",
+  "results": [
+    {
+      "slug": "vegafin-ai-lending-startup-raises-106-million-funding",
+      "headline": "New AI Lender Bags $106 Million: Is India's Fintech Market Booming?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "AI Lending Market Size (India) = $18 billion (2025 estimate)",
+          "status": "UNVERIFIABLE",
+          "detail": "Searches for 'AI lending market size India 2025' or similar terms did not yield a reliable source confirming this specific figure. While the broader 'digital lending' or 'AI in fintech' markets have various estimates, none directly matched '$18 billion' for 'AI lending' for 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Number of Fintech Startups (India) = 7,700+",
+          "status": "STALE",
+          "detail": "While a 2018 source mentioned 7,700+ 'tech startups' in India, more recent data as of September 2026 indicates the number of 'FinTech startups' in India is significantly higher at 18.7k. The claim is materially outdated and underreports the current figure.",
+          "correction": "Number of Fintech Startups (India) = 18,700+ (as of September 2026)",
+          "source": "Tracxn",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims about Vegafin's $106 million funding round and its lead investor are accurate and confirmed by multiple sources published around the story's date. However, two of the key number card claims are either unverifiable or stale, impacting the overall accuracy of the market context provided. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "fd1905af234c1bd4"
+    },
+    {
+      "slug": "pc-jeweller-q2-fy27-profit-surge",
+      "headline": "Jewellery Firm's Profit Jumps 58%: Is Gold Sector Shining Again?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the 58% profit growth and the 482% share price rally are directly supported by the provided source text.",
+      "digestHash": "3077fb70a522be51"
+    },
+    {
+      "slug": "midcap-correction-october",
+      "headline": "Midcaps Enter Correction Zone as Sell-off Deepens",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The recent rise in bond yields, now at 7.44%",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions yields generally as a potential driver of a relief rally, but does not mention a bond yield figure of 7.44%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the RBI's recent hawkish stance regarding liquidity",
+          "status": "UNVERIFIABLE",
+          "detail": "The cited source text contains no reference to the RBI or any recent hawkish stance regarding liquidity.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the Nifty Midcap 150 entering correction territory after dropping 10.2% from its August 31 high is fully verified by the source text. However, specific details introduced in the story, such as the 7.44% bond yield and RBI liquidity stance, do not appear in the source text.",
+      "digestHash": "01fa3891dd296049"
+    },
+    {
+      "slug": "ramayana-ott-ppv",
+      "headline": "Ranbir Kapoor’s 'Ramayana' to Stream on JioHotstar Pay-Per-View",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the pay-per-view streaming release of 'Ramayana: Rise of a Legend' on JioHotstar after its theatrical run are fully verified by the source text.",
+      "digestHash": "090c9ae3b2c9a6aa"
+    },
+    {
+      "slug": "persistent-systems-qip-oct-22",
+      "headline": "Persistent Systems Opens $450 Million QIP to Fuel Growth",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the QIP size, floor price, and the company's announcement are supported by the provided source text.",
+      "digestHash": "fc13f43e5da8db04"
+    },
+    {
+      "slug": "goldman-sachs-india-ai-oct-22",
+      "headline": "Goldman Sachs Predicts $100 Billion Gain for Listed AI Market",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims regarding the Goldman Sachs forecast for India's listed AI market, including the projected valuation gain ($50-100 billion), the timeframe (2-5 years), and the release date (October 21, 2026), are consistently confirmed by multiple reliable financial news sources. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "b395094471e7360d"
+    }
+  ]
+}
