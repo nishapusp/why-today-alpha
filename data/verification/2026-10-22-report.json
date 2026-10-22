@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "generatedAt": "2026-10-22T07:17:13.804Z",
+  "generatedAt": "2026-10-22T13:24:00.425Z",
   "results": [
     {
       "slug": "vegafin-ai-lending-startup-raises-106-million-funding",
@@ -93,6 +93,69 @@
       "issues": [],
       "notes": "All specific claims regarding the Goldman Sachs forecast for India's listed AI market, including the projected valuation gain ($50-100 billion), the timeframe (2-5 years), and the release date (October 21, 2026), are consistently confirmed by multiple reliable financial news sources. (escalated from source mode — original links were unfetchable)",
       "digestHash": "b395094471e7360d"
+    },
+    {
+      "slug": "adani-energy-solutions-q2-fy27-results",
+      "headline": "Adani Energy's Profit Surges 148%: Is Green Energy Sector Heating Up?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "adani-total-gas-q2-earnings",
+      "headline": "Adani Total Gas Profit Barely Grows While Revenue Jumps 34%",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "₹1,474 crore (approximately $177 million)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the revenue figure of ₹1,474 crore but does not provide the USD conversion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the financial results of Adani Total Gas as stated in the source text. The only issue is the inclusion of a USD conversion for revenue, which is not present in the provided source.",
+      "digestHash": "74907b8326c59756"
+    },
+    {
+      "slug": "nippon-india-mf-yes-bank-settlement",
+      "headline": "Nippon India AMC Settles Yes Bank Case, But Profit Still Dips 6%",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Nippon Life India Asset Management (NAM India) received SEBI's nod to settle the Yes Bank AT-1 bond case for ₹96.76 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline 'Nippon Life India AMC gets Sebi nod to settle Yes Bank AT-1 bond case' but does not contain the specific settlement amount of ₹96.76 crore or the financial performance figures (net profit of ₹205 crore/5.9% decline).",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "NAM India reported a 5.9% year-on-year decline in its standalone net profit for the September quarter (Q2 FY27), falling to ₹205 crore from ₹217.7 crore in Q2 FY26.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these financial results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the headline of the source confirms the settlement, the specific financial figures (settlement amount and quarterly profit data) are not present in the provided source text.",
+      "digestHash": "b9f1420e0f16ba82"
     }
   ]
 }
