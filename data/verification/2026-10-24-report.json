@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-24",
+  "generatedAt": "2026-10-23T21:04:34.303Z",
+  "results": [
+    {
+      "slug": "shriram-finance-q2-profit-jumps-59-percent",
+      "headline": "Shriram Finance Profit Soars 59% as Lending Boom Continues.",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "dr-reddys-q2-results",
+      "headline": "Dr. Reddy's Profit Plunges 36%, But Eyeing Comeback with New Drug",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "36% drop in net profit for Q2 FY27",
+          "status": "WRONG",
+          "detail": "While the percentage drop is reported as 36% in sources, the calculation in the story uses an incorrect previous year's figure and results in a different current profit figure.",
+          "correction": "Dr. Reddy's Laboratories reported a 36% year-on-year drop in consolidated net profit for Q2 FY27. This percentage is correct as reported by multiple sources. However, the exact figures used for the calculation in the story are incorrect.",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "settling at ₹780 crore",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
+          "correction": "settling at ₹925 crore",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "compared to ₹1,215 crore in the corresponding quarter last year",
+          "status": "WRONG",
+          "detail": "The consolidated net profit for Q2 FY26 (corresponding quarter last year) was ₹1,437 crore, not ₹1,215 crore.",
+          "correction": "compared to ₹1,437 crore in the corresponding quarter last year",
+          "source": "Goodreturns, UNI India, MarketBeat",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q2 FY27 Net Profit: ₹780 crore",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
+          "correction": "Q2 FY27 Net Profit: ₹925 crore",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "consolidated net profit for the second quarter of fiscal year 2026-27, bringing the figure down to ₹780 crore",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
+          "correction": "consolidated net profit for the second quarter of fiscal year 2026-27, bringing the figure down to ₹925 crore",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "decrease from the ₹1,215 crore reported in the same quarter last year.",
+          "status": "WRONG",
+          "detail": "The consolidated net profit for Q2 FY26 (same quarter last year) was ₹1,437 crore, not ₹1,215 crore.",
+          "correction": "decrease from the ₹1,437 crore reported in the same quarter last year.",
+          "source": "Goodreturns, UNI India, MarketBeat",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q2 FY27 Net Profit = ₹780 crore",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
+          "correction": "Q2 FY27 Net Profit = ₹925 crore",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "previous: ₹1,215 crore — Q2 FY26",
+          "status": "WRONG",
+          "detail": "The consolidated net profit for Q2 FY26 was ₹1,437 crore, not ₹1,215 crore.",
+          "correction": "previous: ₹1,437 crore — Q2 FY26",
+          "source": "Goodreturns, UNI India, MarketBeat",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY25 = 1050",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q2 FY25 was ₹1,255.3 crore, not ₹1,050 crore.",
+          "correction": "Q2 FY25 = 1255.3",
+          "source": "5paisa, Business Standard, Moneysukh",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q3 FY25 = 1120",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q3 FY25 was ₹1,413 crore (various sources report slightly different decimals like 1,413.3 or 1,413.7), not ₹1,120 crore.",
+          "correction": "Q3 FY25 = 1413",
+          "source": "5paisa, Bloomberg, Business Standard, Moneycontrol",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q4 FY25 = 1085",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q4 FY25 was ₹1,593.9 crore, not ₹1,085 crore.",
+          "correction": "Q4 FY25 = 1593.9",
+          "source": "Multibagg AI, moizz, SEC.gov",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q1 FY26 = 1180",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q1 FY26 was ₹1,417.8 crore, not ₹1,180 crore.",
+          "correction": "Q1 FY26 = 1417.8",
+          "source": "Business Wire, Kotak Neo, Kotak Neo",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY26 = 1215",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q2 FY26 was ₹1,437 crore, not ₹1,215 crore.",
+          "correction": "Q2 FY26 = 1437",
+          "source": "Goodreturns, UNI India, MarketBeat",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY27 = 780",
+          "status": "WRONG",
+          "detail": "Dr. Reddy's consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
+          "correction": "Q2 FY27 = 925",
+          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story correctly identifies the central event and the percentage drop in profit for Q2 FY27, along with the primary reason for the drop and future strategy. However, nearly all specific financial figures for net profit, including the current quarter's reported profit and all historical chart data points, are incorrect. This indicates a significant factual error in the reported numbers, despite the qualitative aspects being largely accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d5dde984cc00295f"
+    },
+    {
+      "slug": "offshore-oil-exploration-risk-sharing",
+      "headline": "India Opens Up Offshore Oil Hunt: Government to Share Risk",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India has unveiled new rules for offshore oil and gas exploration, under its 'Samudra Manthan' scheme, committing to share drilling risks with private energy companies.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention a 'Samudra Manthan' scheme or any government policy to share drilling risks with private companies. Source 1's headline mentions 'govt-sets-rules-for-84-084-cr-offshore-oil-hunt-to-share-drilling-risks', but the actual text of the article does not contain any information about this scheme or policy; it only lists the headline in the URL and then provides a list of unrelated news items.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This ₹84,084 crore initiative aims to boost domestic crude production and enhance energy security.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the figure ₹84,084 crore appears in the URL of Source 1, the content of the source text does not describe this figure as an initiative or scheme, nor does it provide any context for what this amount represents.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story references a 'Samudra Manthan' scheme and specific risk-sharing policies that are entirely absent from the provided source texts. The source texts contain only headlines and snippets of unrelated news, making the central claims of the story impossible to verify.",
+      "digestHash": "f3157d385af97cd5"
+    },
+    {
+      "slug": "bank-of-india-c-dac-quantum-banking",
+      "headline": "Bank of India Partners C-DAC for Quantum Banking Leap",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Cyberattack Incidents (2025) = 1.2 million",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any data regarding the number of cyberattack incidents in 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Quantum Computing Market (Global, 2026) = $1.5 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any data regarding the global quantum computing market size for 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event regarding the MoU between Bank of India and C-DAC is verified by Source 1. However, the story includes specific statistical claims in the 'Key Number Card' section that are not present in the provided source texts.",
+      "digestHash": "61a00de7a2ac9959"
+    }
+  ]
+}
