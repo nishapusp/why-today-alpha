@@ -1,158 +1,79 @@
 {
   "date": "2026-10-24",
-  "generatedAt": "2026-10-23T21:04:34.303Z",
+  "generatedAt": "2026-10-24T05:31:52.584Z",
   "results": [
     {
       "slug": "shriram-finance-q2-profit-jumps-59-percent",
       "headline": "Shriram Finance Profit Soars 59% as Lending Boom Continues.",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "dr-reddys-q2-results",
-      "headline": "Dr. Reddy's Profit Plunges 36%, But Eyeing Comeback with New Drug",
       "verdict": "FAIL",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "36% drop in net profit for Q2 FY27",
+          "claim": "Net Interest Income (NII) which grew to ₹9,810 crore",
           "status": "WRONG",
-          "detail": "While the percentage drop is reported as 36% in sources, the calculation in the story uses an incorrect previous year's figure and results in a different current profit figure.",
-          "correction": "Dr. Reddy's Laboratories reported a 36% year-on-year drop in consolidated net profit for Q2 FY27. This percentage is correct as reported by multiple sources. However, the exact figures used for the calculation in the story are incorrect.",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "detail": "Shriram Finance's Net Interest Income (NII) for Q2 FY27 was ₹8,661.04 crore.",
+          "correction": "Net Interest Income (NII) which grew to ₹8,661.04 crore",
+          "source": "Business Standard, Investing.com",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "settling at ₹780 crore",
+          "claim": "Its Assets Under Management (AUM) expanded by 17% to ₹2.75 lakh crore",
           "status": "WRONG",
-          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
-          "correction": "settling at ₹925 crore",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "detail": "Shriram Finance's Assets Under Management (AUM) for Q2 FY27 was ₹3.29 lakh crore (₹3,29,021 crore or ₹329,002.72 crore).",
+          "correction": "Its Assets Under Management (AUM) expanded by 17% to ₹3.29 lakh crore",
+          "source": "Business Standard, Investing.com",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "compared to ₹1,215 crore in the corresponding quarter last year",
+          "claim": "Gross NPAs declining to 5.8%",
           "status": "WRONG",
-          "detail": "The consolidated net profit for Q2 FY26 (corresponding quarter last year) was ₹1,437 crore, not ₹1,215 crore.",
-          "correction": "compared to ₹1,437 crore in the corresponding quarter last year",
-          "source": "Goodreturns, UNI India, MarketBeat",
+          "detail": "Shriram Finance's Gross Stage 3 assets (Gross NPAs) for Q2 FY27 stood at 4.65%.",
+          "correction": "Gross NPAs at 4.65%",
+          "source": "Investing.com",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "Q2 FY27 Net Profit: ₹780 crore",
+          "claim": "Net NPAs to 2.9%",
           "status": "WRONG",
-          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
-          "correction": "Q2 FY27 Net Profit: ₹925 crore",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "detail": "Shriram Finance's Net Stage 3 assets (Net NPAs) for Q2 FY27 stood at 2.31%.",
+          "correction": "Net NPAs at 2.31%",
+          "source": "Investing.com",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "consolidated net profit for the second quarter of fiscal year 2026-27, bringing the figure down to ₹780 crore",
+          "claim": "Interim Dividend: ₹20 per share declared.",
           "status": "WRONG",
-          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
-          "correction": "consolidated net profit for the second quarter of fiscal year 2026-27, bringing the figure down to ₹925 crore",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "detail": "Shriram Finance declared an interim dividend of ₹6.50 per share for Q2 FY27.",
+          "correction": "Interim Dividend: ₹6.50 per share declared.",
+          "source": "Business Standard, Investing.com, Multiple financial news sites",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         },
         {
-          "claim": "decrease from the ₹1,215 crore reported in the same quarter last year.",
+          "claim": "KEY NUMBER CARD: Net NPA = 2.9%",
           "status": "WRONG",
-          "detail": "The consolidated net profit for Q2 FY26 (same quarter last year) was ₹1,437 crore, not ₹1,215 crore.",
-          "correction": "decrease from the ₹1,437 crore reported in the same quarter last year.",
-          "source": "Goodreturns, UNI India, MarketBeat",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Q2 FY27 Net Profit = ₹780 crore",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's Laboratories' consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
-          "correction": "Q2 FY27 Net Profit = ₹925 crore",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "previous: ₹1,215 crore — Q2 FY26",
-          "status": "WRONG",
-          "detail": "The consolidated net profit for Q2 FY26 was ₹1,437 crore, not ₹1,215 crore.",
-          "correction": "previous: ₹1,437 crore — Q2 FY26",
-          "source": "Goodreturns, UNI India, MarketBeat",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: Q2 FY25 = 1050",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q2 FY25 was ₹1,255.3 crore, not ₹1,050 crore.",
-          "correction": "Q2 FY25 = 1255.3",
-          "source": "5paisa, Business Standard, Moneysukh",
+          "detail": "Shriram Finance's Net Stage 3 assets (Net NPAs) for Q2 FY27 stood at 2.31%.",
+          "correction": "Net NPA = 2.31%",
+          "source": "Investing.com",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": true
         },
         {
-          "claim": "CHART DATA POINT: Q3 FY25 = 1120",
+          "claim": "CHART DATA POINT: Q1 FY27 = 3105",
           "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q3 FY25 was ₹1,413 crore (various sources report slightly different decimals like 1,413.3 or 1,413.7), not ₹1,120 crore.",
-          "correction": "Q3 FY25 = 1413",
-          "source": "5paisa, Bloomberg, Business Standard, Moneycontrol",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q4 FY25 = 1085",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q4 FY25 was ₹1,593.9 crore, not ₹1,085 crore.",
-          "correction": "Q4 FY25 = 1593.9",
-          "source": "Multibagg AI, moizz, SEC.gov",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY26 = 1180",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q1 FY26 was ₹1,417.8 crore, not ₹1,180 crore.",
-          "correction": "Q1 FY26 = 1417.8",
-          "source": "Business Wire, Kotak Neo, Kotak Neo",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q2 FY26 = 1215",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q2 FY26 was ₹1,437 crore, not ₹1,215 crore.",
-          "correction": "Q2 FY26 = 1437",
-          "source": "Goodreturns, UNI India, MarketBeat",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q2 FY27 = 780",
-          "status": "WRONG",
-          "detail": "Dr. Reddy's consolidated net profit for Q2 FY27 was ₹925 crore, not ₹780 crore.",
-          "correction": "Q2 FY27 = 925",
-          "source": "Goodreturns, Business Standard, UNI India, Torrent Pharma, Investing.com, The Motley Fool, KSL.com, MarketScreener, Today News, MarketBeat, ET Now",
+          "detail": "Shriram Finance's Net Profit for Q1 FY27 was ₹3,444.56 crore (or ₹3,447 crore).",
+          "correction": "Q1 FY27 = 3444.56",
+          "source": "Investing.com, Financial Express, TradingView",
           "inBroaderConnections": false,
           "isChartOrKeyNumber": true
         }
       ],
-      "notes": "The story correctly identifies the central event and the percentage drop in profit for Q2 FY27, along with the primary reason for the drop and future strategy. However, nearly all specific financial figures for net profit, including the current quarter's reported profit and all historical chart data points, are incorrect. This indicates a significant factual error in the reported numbers, despite the qualitative aspects being largely accurate. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "d5dde984cc00295f"
+      "notes": "While the central event of the Q2 FY27 results announcement is correctly reported, the story contains multiple inaccuracies regarding key financial metrics such as Net Interest Income, Assets Under Management, Gross NPAs, Net NPAs, and the interim dividend declared. A chart data point for Q1 FY27 net profit is also incorrect. These errors are significant for a financial publication targeting professionals. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "74c59f8a1d3f8d68"
     },
     {
       "slug": "offshore-oil-exploration-risk-sharing",
@@ -209,6 +130,163 @@
       ],
       "notes": "The core event regarding the MoU between Bank of India and C-DAC is verified by Source 1. However, the story includes specific statistical claims in the 'Key Number Card' section that are not present in the provided source texts.",
       "digestHash": "61a00de7a2ac9959"
+    },
+    {
+      "slug": "jio-platforms-ipo-record-bids",
+      "headline": "Jio Platforms IPO: ₹7.5 Lakh Crore Bids, 1.3 Crore Investors — Why So Big?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "₹7.5 lakh crore in total bids",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the IPO size was $3.1 billion (approx. ₹26,000 crore), but it does not mention a total bid value of ₹7.5 lakh crore.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "1.3 crore individual investors",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the number of individual investors or applicants.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Coal India (2010) = 0.15",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide historical data for Coal India or LIC IPOs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "LIC (2022) = 0.21",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide historical data for Coal India or LIC IPOs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story fabricates specific figures regarding the total bid value and the number of investors, which are not present in the provided source text. Additionally, the chart data points for historical IPOs are entirely absent from the source.",
+      "digestHash": "6105e21c2840441a"
+    },
+    {
+      "slug": "rbi-governor-clarifies-nbfc-listing-rules",
+      "headline": "RBI Governor: Big NBFCs MUST List. Tata Sons Implicated?",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "RBI Governor Sanjay Malhotra, speaking today, unequivocally clarified that all Non-Banking Financial Companies (NBFCs) classified under the 'Upper Layer' (UL-NBFCs) category are mandated to list on stock exchanges.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of RBI Governor Sanjay Malhotra, NBFC listing mandates, or any financial policy announcements. The source is exclusively about a speech by Prime Minister Narendra Modi at the Chinmaya Amrit Mahotsav.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "RBI Governor Sanjay Malhotra explicitly stated today that all Non-Banking Financial Companies (NBFCs) designated as 'Upper Layer' (UL-NBFCs) must mandatorily list on stock exchanges.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is fabricated. The provided source text is a news report about Prime Minister Narendra Modi's speech at a spiritual event and contains zero information regarding the RBI, NBFCs, or Tata Sons.",
+      "digestHash": "d579d82b10e4c355"
+    },
+    {
+      "slug": "india-uk-trade-deal-scotch-whisky-dispute",
+      "headline": "Scotch Whisky Spat Threatens India-UK Trade Deal. Why?",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "A tariff dispute over bulk Scotch whisky is threatening to undermine the ongoing Free Trade Agreement (FTA) negotiations between India and the UK.",
+          "status": "WRONG",
+          "detail": "The India-UK Free Trade Agreement (FTA) officially came into force on July 15, 2026. Therefore, the dispute is not threatening 'ongoing negotiations' to finalize the deal, but rather concerns the implementation and interpretation of the already effective agreement.",
+          "correction": "A tariff dispute over bulk Scotch whisky is threatening to undermine the benefits and implementation of the already effective Free Trade Agreement (FTA) between India and the UK.",
+          "source": "Business Growth Service, KuCoin, Wikipedia, India FTA Tracker 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Scotch Whisky Association (SWA), a prominent industry group, has publicly voiced its apprehension, stating that the current impasse could fundamentally undermine the broader trade deal.",
+          "status": "WRONG",
+          "detail": "While the Scotch Whisky Association (SWA) did issue a warning around October 22, 2026, it primarily focused on non-tariff barriers (like sampling and testing requirements) limiting the benefits of the *already effective* FTA. The specific tariff classification dispute regarding bulk Scotch whisky (being subjected to 150% duty despite the reduced 75% rate in the FTA) and its potential to undermine market access benefits was prominently raised by the International Spirits and Wines Association of India (ISWAI).",
+          "correction": "The Scotch Whisky Association (SWA) has publicly voiced apprehension regarding non-tariff barriers limiting the benefits of the already effective trade deal. The International Spirits and Wines Association of India (ISWAI) has warned that the dispute over bulk Scotch whisky tariff classification could undermine market-access benefits.",
+          "source": "Aabkari Times, The Economic Times, The Times of India, KuCoin, Euronext Markets",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "They have called for immediate clarification from the Indian government, arguing that existing tariffs create significant barriers to market access and deter further investment by UK-based distillers.",
+          "status": "WRONG",
+          "detail": "Industry groups (SWA and ISWAI) have indeed called for clarification/intervention. However, the claim that 'existing tariffs create significant barriers' is misleading. The FTA reduced tariffs from 150% to 75% for eligible Scotch whisky. The current issue is that Indian authorities are reportedly *denying* the reduced 75% tariff for bulk concentrates, effectively subjecting them to the original 150% duty, which is an interpretation dispute rather than tariffs generally creating new barriers.",
+          "correction": "Industry groups have called for immediate clarification from the Indian government, arguing that either non-tariff barriers or the interpretation of tariff concessions for bulk whisky create significant barriers to market access and deter further investment.",
+          "source": "Aabkari Times, The Economic Times, The Times of India, Euronext Markets",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The warning issued by the Scotch Whisky Association today highlights a significant, fresh hurdle in the India-UK FTA negotiations, which are in their advanced stages.",
+          "status": "WRONG",
+          "detail": "The Scotch Whisky Association's (SWA) warning (around October 22, 2026) was primarily about non-tariff barriers. Crucially, the India-UK FTA officially came into force on July 15, 2026. Therefore, the issue is not a hurdle in 'FTA negotiations which are in their advanced stages' (as the negotiations for the agreement are concluded), but rather an implementation challenge for an already effective trade deal.",
+          "correction": "Recent warnings from industry groups highlight significant hurdles in the implementation of the India-UK FTA, which came into force in July 2026, rather than in ongoing negotiations.",
+          "source": "Aabkari Times, The Economic Times, Business Growth Service, Wikipedia, India FTA Tracker 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Annual India-UK Trade (Pre-FTA) = £36 Billion",
+          "status": "WRONG",
+          "detail": "Total UK and India trade was £48 billion in 2025 (or in the 12 months to March 2026). The FTA came into force in July 2026, so figures from 2025 or early 2026 would represent 'Pre-FTA' trade.",
+          "correction": "Annual India-UK Trade (Pre-FTA) = £48 Billion",
+          "source": "Business Growth Service, Dalimss News",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Which industry group has raised concerns about this tariff dispute? — stated correct answer: Scotch Whisky Association (SWA)",
+          "status": "WRONG",
+          "detail": "While the SWA has raised concerns about non-tariff barriers related to the FTA, the specific tariff dispute regarding the classification of bulk Scotch whisky and its exclusion from reduced duties has been prominently raised by the International Spirits and Wines Association of India (ISWAI).",
+          "correction": "International Spirits and Wines Association of India (ISWAI)",
+          "source": "The Times of India, KuCoin, Euronext Markets",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story fundamentally misrepresents the status of the India-UK Free Trade Agreement, reporting it as still 'in negotiations' when it came into force months ago. It also misattributes the primary warning regarding the bulk Scotch whisky tariff dispute to the wrong industry group and mischaracterizes the nature of the tariff issue. These are significant factual errors. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d06912e8a5e62fd5"
+    },
+    {
+      "slug": "coforge-q2-results-profit-surge-ai-led-deals",
+      "headline": "Coforge Profit Jumps 56% Thanks to AI Deals. What's Next?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Coforge's Q2 FY27 results, announced today",
+          "status": "WRONG",
+          "detail": "Coforge announced its Q2 FY27 financial results on October 23, 2026, not October 24, 2026 (the publication date of the story).",
+          "correction": "Coforge's Q2 FY27 results, announced yesterday (October 23, 2026)",
+          "source": "Investing.com, Business Standard, The Hindu, Rediff Money, Trendlyne.com, Coforge Newsroom",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports Coforge's Q2 FY27 net profit figures and the primary drivers. However, it incorrectly states that the results were announced 'today' when they were announced the day prior to the story's publication. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "2423e80cfd8d0b71"
     }
   ]
 }
