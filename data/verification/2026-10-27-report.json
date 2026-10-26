@@ -1,69 +1,7 @@
 {
   "date": "2026-10-27",
-  "generatedAt": "2026-10-26T19:03:59.078Z",
+  "generatedAt": "2026-10-26T23:10:35.712Z",
   "results": [
-    {
-      "slug": "paytm-profit-rockets-q2",
-      "headline": "Paytm Profit Soars 976% This Quarter! What's Driving The Surge?",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "ather-energy-q2-profit",
-      "headline": "Ather Energy Suddenly Profits, Plans Expansion: Is EV Market Maturing?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The company's revenue from operations also saw a substantial increase, reaching ₹1,048 crore",
-          "status": "WRONG",
-          "detail": "Ather Energy's Q2 FY27 revenue from operations was ₹1,464 crore (or ₹1,464.24 crore), not ₹1,048 crore.",
-          "correction": "₹1,464 crore",
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "up from ₹682 crore in Q2 FY26",
-          "status": "WRONG",
-          "detail": "Ather Energy's Q2 FY26 revenue from operations was ₹899 crore (or ₹898.88 crore), not ₹682 crore.",
-          "correction": "₹899 crore",
-          "source": null,
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: Q3 FY26 = -120",
-          "status": "WRONG",
-          "detail": "Ather Energy reported a consolidated net loss of ₹85 crore (or ₹84.6 crore) for Q3 FY26, not ₹120 crore.",
-          "correction": "₹-85 crore",
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q4 FY26 = -90",
-          "status": "WRONG",
-          "detail": "Ather Energy reported a consolidated net loss of ₹100 crore (or ₹100.23 crore) for Q4 FY26, not ₹90 crore.",
-          "correction": "₹-100 crore",
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "The story correctly identifies Ather Energy's first-ever consolidated quarterly profit in Q2 FY27 and the related share surge, which was announced on the specified date. However, several specific financial figures for revenue and historical net losses in earlier quarters are incorrect, leading to a 'FAIL' verdict. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "b609477fa8c43d58"
-    },
     {
       "slug": "meta-ai-equity-raise",
       "headline": "Meta Plans Record $95 Billion Equity Raise for AI Infrastructure",
@@ -110,6 +48,146 @@
       ],
       "notes": "The provided source text is a news summary from Business Standard that discusses various topics such as the BFSI Summit, market trends, and specific company results (e.g., Tamilnad Mercantile Bank, Brigade Hotel Ventures), but it contains no mention of a Jio Platforms IPO, its size, or the fees associated with it. Consequently, all claims regarding the Jio Platforms IPO are unverifiable based on the provided source.",
       "digestHash": "c17e7921f2ebc505"
+    },
+    {
+      "slug": "india-us-trade-deal-nears-conclusion",
+      "headline": "India, US \"Fine-Tuning\" Trade Deal? Most Talks Done.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India-US bilateral trade reached $128.55 billion in FY23.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the India-US trade agreement status but does not contain the specific $128.55 billion figure for FY23.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Bilateral Trade (FY23) = ₹10.70 lakh crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain this figure or any conversion of bilateral trade into rupees.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the headline news regarding the status of India-US trade talks as reported in the source. However, the specific trade volume figures ($128.55 billion and ₹10.70 lakh crore) are not present in the provided source text.",
+      "digestHash": "86c6bbabbd70c6f5"
+    },
+    {
+      "slug": "tata-motors-iveco-takeover",
+      "headline": "Tata Motors' Iveco Bid Clears 80% Threshold, Acquisition Nears!",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Tata Motors' takeover bid for Iveco Group has successfully cleared the crucial 80% acceptance threshold from shareholders.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any takeover bid by Tata Motors for Iveco Group, nor any shareholder acceptance thresholds or results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bid has secured acceptance from shareholders representing 87.8% of Iveco's outstanding shares",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure or any acquisition activity involving Tata Motors and Iveco.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY23 = 3.97",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding Tata Motors' global commercial vehicle sales for FY23.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY24 = 4.35",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding Tata Motors' global commercial vehicle sales for FY24.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY25 = 4.62",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data regarding Tata Motors' global commercial vehicle sales for FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story regarding the Tata Motors acquisition of Iveco is completely absent from the provided source text. The source text focuses on BFSI Summit topics, RBI rate outlooks, and various unrelated corporate news, none of which mention an Iveco takeover.",
+      "digestHash": "f8f562f62d8446f7"
+    },
+    {
+      "slug": "noel-tata-chandrasekaran-reappointment",
+      "headline": "Noel Tata Challenges Chandrasekaran’s Leadership Reappointment",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Tata Sons' market cap: over ₹21 lakh crore ($250 billion).",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Tata Sons in the headline and body but does not provide a market capitalization figure for the company.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the reported internal challenge regarding N. Chandrasekaran's reappointment and accurately cites the 66% ownership stake of Tata Trusts and the 2017 start date of Chandrasekaran's tenure. However, the market capitalization figure for Tata Sons is not present in the provided source text.",
+      "digestHash": "2b03dadc42af44d9"
+    },
+    {
+      "slug": "indian-banks-forex-deals-rbi-caution",
+      "headline": "Indian Banks Step Back From Forex Deals Amid RBI Caution",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Finance Minister Nirmala Sitharaman recently reiterated the RBI's commitment to preventing sudden rupee fluctuations",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of Finance Minister Nirmala Sitharaman or any statement made by her regarding the RBI's commitment to the rupee.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story makes a specific claim about a recent statement by the Finance Minister which is not supported by the provided source text. The source text focuses on general market news and does not mention the Finance Minister or her stance on the rupee.",
+      "digestHash": "8453c4589734fc65"
+    },
+    {
+      "slug": "anthropic-ipo-ai-risks",
+      "headline": "Anthropic Files For IPO: Will AI Risks Stall Its Market Debut?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The company has secured backing from major players like Amazon, Google, and Fidelity",
+          "status": "UNVERIFIABLE",
+          "detail": "The source texts mention Amazon and Google as major backers, but they do not mention Fidelity.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the revenue and the nature of the IPO filing. However, it includes Fidelity as a major backer without support from the provided source texts.",
+      "digestHash": "417355cb4c781fd3"
     }
   ]
 }
