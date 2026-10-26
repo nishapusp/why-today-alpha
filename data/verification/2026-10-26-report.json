@@ -1,6 +1,6 @@
 {
   "date": "2026-10-26",
-  "generatedAt": "2026-10-25T20:27:40.882Z",
+  "generatedAt": "2026-10-26T04:46:11.239Z",
   "results": [
     {
       "slug": "senco-gold-acquires-melorra-jewellery",
@@ -29,6 +29,34 @@
       ],
       "notes": "The core facts regarding the acquisition of August Jewellery (Melorra) by Senco Gold for ₹68 crore and the 68% stake are verified by the source. However, the story includes specific financial projections and market share figures that are not present in the provided source text.",
       "digestHash": "ccfe1b07f081b684"
+    },
+    {
+      "slug": "nbfcs-rural-lending-monsoon-impact",
+      "headline": "Bad Monsoon Makes Lenders Nervous About Rural Loans!",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "NBFC GNPA (March 2026) = 4.2%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a 2022 RBI press release regarding Reserve Money and contains no data on NBFC GNPA ratios or 2026 financial statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "NBFC credit growth (Q1 FY27 YoY) = 20.8%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a 2022 RBI press release regarding Reserve Money and contains no data on NBFC credit growth or FY27 financial statistics.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely irrelevant to the claims made in the story, as it is a 2022 RBI press release about Reserve Money. Consequently, all specific financial figures cited in the story are unverifiable based on the provided source.",
+      "digestHash": "685c0664a8386954"
     }
   ]
 }
