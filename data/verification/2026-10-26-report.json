@@ -1,6 +1,6 @@
 {
   "date": "2026-10-26",
-  "generatedAt": "2026-10-26T04:46:11.239Z",
+  "generatedAt": "2026-10-26T14:59:16.170Z",
   "results": [
     {
       "slug": "senco-gold-acquires-melorra-jewellery",
@@ -57,6 +57,61 @@
       ],
       "notes": "The provided source text is entirely irrelevant to the claims made in the story, as it is a 2022 RBI press release about Reserve Money. Consequently, all specific financial figures cited in the story are unverifiable based on the provided source.",
       "digestHash": "685c0664a8386954"
+    },
+    {
+      "slug": "anthropic-ipo-risks-to-humanity",
+      "headline": "AI Giant Anthropic Files IPO: Why Does It Warn Of 'Risks to Humanity'?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including financial figures, dates, and details about the IPO prospectus, have been consistently verified by multiple reliable sources as of the publication date. The central event of Anthropic filing for its IPO on Nasdaq is confirmed to have occurred on October 26, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "989085719bd0a9bc"
+    },
+    {
+      "slug": "india-defence-deal-indigenization-push",
+      "headline": "India Approves ₹2.12 Lakh Crore Defence Deal. Who Profits Most?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the total value of the defence deal, the percentage earmarked for domestic industries, the date of approval, and the types of equipment covered, are consistently corroborated by multiple reliable news sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "8253d015dc9f3aac"
+    },
+    {
+      "slug": "central-bank-of-india-cyber-fraud",
+      "headline": "Central Bank of India Loses ₹14 Crore To Hackers! How Did It Happen?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including amounts, number of transfers, dates, affected entities, and the police investigation, are consistently verified across multiple reliable news sources published on or around the story's publication date. The central event of the Central Bank of India reporting a cyber fraud is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3b9e68d7979dcaa6"
+    },
+    {
+      "slug": "iit-kharagpur-physical-ai-school",
+      "headline": "IIT-Kharagpur Launches India's First School For 'Physical AI'",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All claims in the story, including the central event of IIT-Kharagpur establishing India's first dedicated School of Physical AI, are confirmed by recent and credible sources. Specifics about the school's focus, curriculum, and admissions, as well as the global robotics market projection and historical context regarding Japan's robotics leadership, align with verifiable information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "7fffde33490961c1"
+    },
+    {
+      "slug": "sebi-amends-invit-regulations",
+      "headline": "SEBI Tweaks InvIT Rules: Depository Receipts Now Allowed, Voting Simplified",
+      "verdict": "WARN",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "SEBI has amended the Infrastructure Investment Trusts (InvITs) Regulations, 2014, allowing InvITs to issue Depository Receipts (DRs) and simplifying unitholder approval thresholds for certain transactions.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-10-26) does not contain any information regarding SEBI amending InvIT regulations or allowing Depository Receipts. The source text focuses on the BFSI Insight Summit, corporate earnings, and other market news.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding SEBI amendments to InvIT regulations is entirely absent from the provided source text. The source text is a collection of headlines and snippets from a Business Standard article that does not mention the claimed regulatory changes.",
+      "digestHash": "20de35987d56176a"
     }
   ]
 }
