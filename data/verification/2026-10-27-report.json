@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "generatedAt": "2026-10-27T07:11:33.680Z",
+  "generatedAt": "2026-10-27T13:41:08.437Z",
   "results": [
     {
       "slug": "meta-ai-equity-raise",
@@ -197,6 +197,52 @@
       "issues": [],
       "notes": "All factual claims, including the number of districts under red alert (7 of 28 in Andhra Pradesh), wind speed forecasts (115-125 kmph gusting up to 140 kmph), and disaster response measures, are accurately supported by the source text.",
       "digestHash": "6c7099d5338d86b9"
+    },
+    {
+      "slug": "uttar-pradesh-ai-robotics-park",
+      "headline": "Uttar Pradesh to Build India's First Massive AI-Robotics Park!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding the Uttar Pradesh AI-Robotics Park, including its area, location, projected job creation, annual economic contribution, and its designation as India's first dedicated park of its kind, are consistently verified by multiple reliable sources published on the story's publication date. The description of shared infrastructure facilities is also confirmed. The historical context provided for the growth of IT hubs in Bengaluru and Hyderabad is accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "35e73ed60fcef24d"
+    },
+    {
+      "slug": "mankind-pharma-q2-fy27-results",
+      "headline": "Mankind Pharma Profit Jumps 38%! What Drove Growth?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Mankind Pharma reported a robust 38% year-on-year increase in its Q2 FY27 net profit, reaching ₹716 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a Moneycontrol stock page for 'Magnus Retail Ltd.' and contains no financial data, earnings reports, or news regarding Mankind Pharma.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Revenue from operations grew by a healthy 17% compared to the same quarter last year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no financial data for Mankind Pharma.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "EBITDA margins increased by 210 basis points.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no financial data for Mankind Pharma.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to Mankind Pharma, as it pertains to a company called 'Magnus Retail Ltd.' Consequently, all financial claims regarding Mankind Pharma's Q2 FY27 performance are unverifiable based on the provided source.",
+      "digestHash": "b53aa3d750790ce7"
     }
   ]
 }
