@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-28",
+  "generatedAt": "2026-10-28T06:46:25.664Z",
+  "results": [
+    {
+      "slug": "jio-platforms-ipo-listing-day",
+      "headline": "Jio Platforms Shares Jump 20% on Market Debut: A Telecom Titan's Roar!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the market debut date, IPO size, debut day gain, and post-listing valuation for Jio Platforms, are consistently verified by reliable sources as of the publication date. The chart data points are also accurate within reasonable rounding for estimates. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "20af1f6d494a902e"
+    },
+    {
+      "slug": "sarvam-ai-defence-ministry-mou",
+      "headline": "India's Defence Ministry Teams with Sarvam AI for Military AI Adoption",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's Ministry of Defence (MoD) and Sarvam AI... have officially entered a five-year Memorandum of Understanding (MoU)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text discusses Jaypee Institute of Information Technology (JIIT) and contains no mention of the Ministry of Defence, Sarvam AI, or any such partnership.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is fabricated. The provided source text is an advertorial about a private university (JIIT) and contains no information regarding a partnership between the Ministry of Defence and Sarvam AI.",
+      "digestHash": "062fbc7ed205b1db"
+    },
+    {
+      "slug": "tata-capital-q2-fy27-results",
+      "headline": "Tata Capital's Profit Soars 51% in Q2, Driven by Strong Loan Growth",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Tata Capital reported a 51% year-on-year jump in its net profit to ₹1,660 crore for the second quarter of FY27.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) contains no financial data for Tata Capital's Q2 FY27 results. The source is a landing page for company results that lists no specific figures for Tata Capital.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Assets Under Management (AUM) grew by 26% year-on-year to ₹3.08 lakh crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this figure or any mention of Tata Capital's AUM.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q1 FY27 net profit = 1400 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Net Interest Income (NII) = ₹2,780 crore (previous: ₹1,950 crore — Q2 FY26)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports specific financial results for Tata Capital, but the provided source text is a generic results-portal page that does not contain any of the cited figures. Consequently, all financial claims are unverifiable based on the provided source.",
+      "digestHash": "fb7bc4e3aae8f06b"
+    },
+    {
+      "slug": "rbi-liquidity-tightening",
+      "headline": "RBI Quietly Tightens Liquidity to Counter Rupee Slide, Oil Surge",
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "95.11",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding the Indian rupee's exchange rate against the US dollar in October 2026. The only exchange data provided is from March 2021.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Current Repo Rate = 5.25%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the current repo rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a central event (liquidity tightening) and specific financial figures (rupee exchange rate, repo rate) that are not supported by the provided source texts. The source texts provided are limited to a 2021 RBI press release and a generic, non-factual snippet, neither of which validates the claims made in the story.",
+      "digestHash": "d741d0699d9af325"
+    }
+  ]
+}
