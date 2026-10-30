@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-30",
+  "generatedAt": "2026-10-30T08:50:14.893Z",
+  "results": [
+    {
+      "slug": "coal-india-q2-net-profit-surges",
+      "headline": "How did Coal India boost its quarterly profit by 57%?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Increased operational efficiency and higher coal realisations helped the miner beat analyst estimates despite monsoon disruptions.",
+          "status": "WRONG",
+          "detail": "While operational efficiency, higher realisations, and monsoon disruptions are supported, the claim that Coal India 'beat analyst estimates' is contradicted by several sources stating it either missed expectations or was in line, not consistently above.",
+          "correction": "Increased operational efficiency and higher coal realisations helped the miner perform strongly despite monsoon disruptions, though analyst estimates were mixed.",
+          "source": "Menafn, TradingView, Motilal Oswal Financial Services Ltd, Traders Union",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Compared to the previous quarter when heavy rainfall restricted pithead movement, improved logistics and dedicated rail corridors enabled faster coal evacuation from major fields in Odisha and Chhattisgarh.",
+          "status": "UNVERIFIABLE",
+          "detail": "While 'improved logistics' and 'enhanced rail freight availability' are mentioned as contributing factors, specific details about 'dedicated rail corridors' and their impact on 'faster coal evacuation from major fields in Odisha and Chhattisgarh' are not explicitly confirmed in the search results for this period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "With power consumption rising across industrial belts, thermal power plants maintained higher fuel stockpiles than in prior years to avoid peak-demand outages.",
+          "status": "UNVERIFIABLE",
+          "detail": "While rising power consumption and efforts to avoid outages are plausible, specific comparative data to confirm 'higher fuel stockpiles than in prior years' is not available in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "However, earlier this year, Coal India undertook pre-monsoon overburden removal and expanded conveyor belt infrastructure across major mining blocks in Odisha and Jharkhand.",
+          "status": "UNVERIFIABLE",
+          "detail": "Pre-monsoon overburden removal is confirmed. However, the specific expansion of 'conveyor belt infrastructure across major mining blocks in Odisha and Jharkhand' and its direct impact during Q2 FY27 is not explicitly detailed in the search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Coal India reports Q2 FY27 net profit of ₹6,547 crore on October 30, 2026, up 57% YoY.",
+          "status": "WRONG",
+          "detail": "Coal India reported its Q2 FY27 results on Thursday, October 29, 2026, not October 30, 2026. The story's publication date is October 30, implying it's reporting on 'today's' announcement, but the actual event occurred the day prior.",
+          "correction": "Coal India reported Q2 FY27 net profit of ₹6,547 crore on October 29, 2026, up 57% YoY.",
+          "source": "ETEnergyworld, Menafn, TradingView, Business Standard, Mint, Rediff Money, The Economic Times, Asian News International, The Free Press Journal, Asianet Newsable, The Tribune",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Miner targets peak daily production rates above 2.5 million tonnes during the dry Q3 winter season.",
+          "status": "UNVERIFIABLE",
+          "detail": "While Coal India aims to step up production in the dry winter months to meet its annual targets, a specific target for 'peak daily production rates above 2.5 million tonnes' was not found in the provided search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the key financial figures for Coal India's Q2 FY27 results, including net profit and percentage increase, which are widely confirmed. However, it contains several unverified claims regarding specific operational details, comparative stockpiles, and misses the correct announcement date for the results. One claim about beating analyst estimates is also contradicted by multiple sources. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "349f1ecbd9622ab5"
+    },
+    {
+      "slug": "cognizant-ai-code-cut",
+      "headline": "Cognizant Trims 'Project Leap' Costs as AI-Assisted Coding Rises",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The company's headcount has grown by 10,100 roles compared to last year.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source states headcount rose by 10,100 from September 30, 2025, to September 30, 2026. The story refers to this as 'compared to last year' in a general sense, but the specific phrasing 'grown by 10,100 roles' is accurate to the source. However, the claim 'The company is shifting to high-skill roles, not just cutting staff' as a factual answer to a quiz is an editorial interpretation not explicitly stated in the source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "What is the primary goal of the 'Project Leap' initiative? — stated correct answer: 'To restructure and reduce legacy software development costs'",
+          "status": "UNVERIFIABLE",
+          "detail": "The source defines Project Leap as a restructuring programme designed to accelerate the transition to 'the operating model of the future' by funding investments in integrated offerings, AI capabilities, and partnerships, and reshaping productivity. It does not explicitly define the primary goal as 'reducing legacy software development costs'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the financial figures and the AI-assisted code percentage provided in the source. The 'WARN' verdict is issued because the quiz claims include editorial interpretations of the company's strategy that are not explicitly stated in the provided source text.",
+      "digestHash": "ccfbc1f356e56452"
+    }
+  ]
+}
