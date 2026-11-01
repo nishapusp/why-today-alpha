@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "generatedAt": "2026-11-01T20:20:54.420Z",
+  "generatedAt": "2026-11-01T23:28:33.688Z",
   "results": [
     {
       "slug": "us-midterm-elections-h1b-visa-impact-india",
@@ -101,6 +101,25 @@
       ],
       "notes": "The story accurately reports on the G20 plenary event described in the source. However, the 'Key Number Card' section includes figures (G20 membership and renewable energy targets) that are not present in the provided source text.",
       "digestHash": "b6a9a8e8ecabedf7"
+    },
+    {
+      "slug": "india-decent-work-deficit",
+      "headline": "India's Job Market Grows, But 'Decent Work' Still Lags Behind",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Unemployment rates have fallen.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions that an Icrier study finds women's workforce participation nearly doubled, but it does not contain any data or claims regarding the trend of India's overall unemployment rate.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the Icrier study findings regarding women's workforce participation and the 'decent work' deficit. However, it includes a claim about falling unemployment rates which is not supported by the provided source text.",
+      "digestHash": "ba5d42847e6c02ac"
     }
   ]
 }
