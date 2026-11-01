@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-02",
+  "generatedAt": "2026-11-01T20:20:54.420Z",
+  "results": [
+    {
+      "slug": "us-midterm-elections-h1b-visa-impact-india",
+      "headline": "US Midterm Elections Could Tighten H-1B Visas for Indians",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "binance-crypto-outflows-post-hack",
+      "headline": "Binance Sees $3.6 Billion Outflow After Massive Crypto Hack",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Cryptocurrency exchange Binance experienced a net outflow of approximately $3.6 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of a $3.6 billion net outflow or any specific withdrawal figures following the hack.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "representing 2.1% of its total assets under management",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Binance's total assets under management (AUM) or any percentage of AUM withdrawn.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly reports the details of the hack, the amount stolen, the frozen assets, and the alleged perpetrators as per the source. However, the figures regarding a $3.6 billion net outflow and the 2.1% AUM withdrawal are not present in the provided source text.",
+      "digestHash": "ead485983dba75ac"
+    },
+    {
+      "slug": "india-depa-ai-training",
+      "headline": "India Wants to Unlock Your Data for AI: What's DEPA?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "India's Ministry of Electronics and Information Technology (MeitY) launched the \"Handbook on Data Empowerment and Protection Architecture (DEPA) for AI Training\" on October 31, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2023) does not contain any information regarding a DEPA handbook launch in 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This strategic move is projected to contribute a substantial $500 billion in AI-driven value to India's GDP by 2030.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this projection or the $500 billion figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a news summary from October 2023 and contains no information regarding the events described in the story, which are dated October 2026. Consequently, all claims regarding the launch of the handbook and the associated economic projections are unverifiable based on the provided source.",
+      "digestHash": "93b78b39abe554f7"
+    },
+    {
+      "slug": "india-g20-supply-chain-resilience-plea",
+      "headline": "Why Is India Warning World Leaders About Weak Supply Chains?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "G20 Member Countries = 19 countries + EU",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the number of G20 member countries.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "2030 Renewable Target = 500 GW",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a 2030 renewable energy target.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports on the G20 plenary event described in the source. However, the 'Key Number Card' section includes figures (G20 membership and renewable energy targets) that are not present in the provided source text.",
+      "digestHash": "b6a9a8e8ecabedf7"
+    }
+  ]
+}
