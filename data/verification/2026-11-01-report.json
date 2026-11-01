@@ -1,6 +1,6 @@
 {
   "date": "2026-11-01",
-  "generatedAt": "2026-11-01T07:29:14.353Z",
+  "generatedAt": "2026-11-01T14:49:51.701Z",
   "results": [
     {
       "slug": "govt-revises-windfall-tax-on-fuel",
@@ -94,85 +94,69 @@
       "digestHash": "38650569f0adf27b"
     },
     {
-      "slug": "secret-us-iran-draft-reopen-strait-of-hormuz",
-      "headline": "Could a Secret Seven-Day Deal Reopen the World’s Oil Chokepoint?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": false,
+      "slug": "sebi-mii-data-tech-businesses",
+      "headline": "SEBI Could Let Stock Exchanges Start New Businesses. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reports SEBI's proposal regarding MIIs expanding into data and technology-related businesses as a current proposal (not a finalized decision). All key claims, including the entities involved, the objectives, the conditions, and the international comparisons, are supported by reliable search results from around the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "bf38b1d9d367e5fd"
+    },
+    {
+      "slug": "gst-reforms-decriminalization-november-2026",
+      "headline": "Government Just Decriminalised Minor GST Offences. What Changes For You?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in the source texts regarding the GST reforms effective November 1, 2026, including the decriminalization of minor offenses and the CII's positive reception.",
+      "digestHash": "08294c9b7f4a3ecb"
+    },
+    {
+      "slug": "fpi-october-outflow-net-buyers",
+      "headline": "FPIs Pull Out ₹34,843 Crore In October, But Buying Resumes Late",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "diplomatic envoys confirmed that draft terms were finalized during secret talks in Atlanta during recent G20 meetings",
-          "status": "WRONG",
-          "detail": "The source states the G20 ministerial gathering was hosted in the United States, but it does not mention Atlanta, nor does it state that draft terms were finalized there; it describes the meeting as between the Turkish Foreign Minister and US Secretary of State.",
-          "correction": null,
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The draft agreement landed on Saturday",
+          "claim": "previous: ₹17,211 Crore — Oct 2025",
           "status": "UNVERIFIABLE",
-          "detail": "The source article is dated October 31, 2026 (a Saturday), but it reports on the draft as having been obtained by Al Arabiya English; it does not state the draft 'landed' on that day.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Compared to last month's severe maritime blockades that pushed global freight insurance costs up by 40%",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention a 40% increase in global freight insurance costs.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Compared to the 2019 Gulf shipping crisis when negotiations dragged on for over nine months",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention the duration of 2019 negotiations.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "If both sides fulfill initial draft conditions by November 8, global energy analysts expect crude oil benchmark prices to cool by $5 to $8 per barrel",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention November 8 or any specific price cooling expectations of $5 to $8.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "What is the primary trade corridor covered under the new US-Iran draft agreement? — stated correct answer: Strait of Hormuz",
-          "status": "VERIFIED",
-          "detail": "The source confirms the draft proposes reopening the Strait of Hormuz.",
-          "correction": null,
-          "source": "SOURCE 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Why is the Strait of Hormuz critical to India's national economy? — stated correct answer: Over half of India's crude imports pass through it",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not state that over half of India's crude imports pass through the Strait of Hormuz.",
+          "detail": "While general FPI outflow figures for calendar year 2025 are mentioned in sources (e.g., ₹1.66 lakh crore), a specific FPI outflow figure of ₹17,211 crore for October 2025 could not be found or confirmed by the provided search results.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story contains multiple fabricated details regarding the location of negotiations (Atlanta), specific economic impacts (40% insurance hike), and future price predictions that are not present in the provided source text.",
-      "digestHash": "2d3735690730005a"
+      "notes": "The story accurately reports the FPI outflow for October 2026 and the trend of FPIs turning net buyers in the last week of October, with several financial news outlets confirming these details on the publication date. However, the specific FPI outflow figure for October 2025 could not be independently verified from the search results. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "14511506678d0bb3"
     },
     {
-      "slug": "scotch-whisky-tariff-dispute-india-uk-fta",
-      "headline": "Why Is a Whisky Tariff Row Threatening the India-UK Deal?",
-      "verdict": "ERROR",
-      "neverVerified": true,
+      "slug": "cci-approves-major-deals-prosus-navi",
+      "headline": "CCI Clears Five Major Deals, Including Prosus Investment In Navi",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Competition Commission of India (CCI) has cleared five significant mergers and acquisitions across the food, energy, fintech, and telecom sectors, including Prosus's investment in Sachin Bansal's Navi Technologies.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding CCI approvals, Prosus, or Navi Technologies. The source text is a list of unrelated market news headlines.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story claims that the CCI approved five deals, including a Prosus-Navi investment, but the provided source text contains no mention of these events. The source text is a collection of unrelated market news headlines and does not support the central premise of the article.",
+      "digestHash": "dc54f231bfd4b1bf"
+    },
+    {
+      "slug": "binance-recovers-assets-after-hack",
+      "headline": "Binance Recovers 90% of $6.3 Billion From North Korean Hack",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
       "issues": [],
-      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+      "notes": "All factual claims regarding the Binance hack, the recovery percentage, the total amount, the attribution to North Korea, and the funding source (corporate treasury) are supported by the provided source text.",
+      "digestHash": "a4e63a1e77be6558"
     }
   ]
 }
