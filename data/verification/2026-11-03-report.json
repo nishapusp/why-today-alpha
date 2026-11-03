@@ -1,0 +1,155 @@
+{
+  "date": "2026-11-03",
+  "generatedAt": "2026-11-03T08:36:05.923Z",
+  "results": [
+    {
+      "slug": "google-dreambeans-ai-india",
+      "headline": "Google Launches 'Dreambeans' AI App in India for Personalized Stories",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Google launching 'Dreambeans' in India on November 3, 2026, and the number of Indian languages supported, have been verified against multiple reliable sources. Historical context and strategic initiatives mentioned are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "0c352d44618f0e9d"
+    },
+    {
+      "slug": "coal-india-mcl-ipo",
+      "headline": "Coal India Subsidiary May Launch $1 Billion IPO Soon",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This IPO size is substantial, equivalent to over ₹8,000 crore at current exchange rates",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the $1 billion figure but does not provide an exchange rate or a conversion to Indian Rupees.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Target Raise: ~$1 billion (approx. ₹8,300 crore).",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the $1 billion figure but does not provide an exchange rate or a conversion to Indian Rupees.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the $1 billion IPO and the timeline is supported by the provided source. However, the story includes specific Rupee conversions (₹8,000 crore and ₹8,300 crore) that are not present in the source text.",
+      "digestHash": "1fc76ba5b4509207"
+    },
+    {
+      "slug": "nseix-24-hour-trading-gift-city",
+      "headline": "Indian Stock Exchange Now Trades Almost 24 Hours Daily!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "shift aims to bring back the estimated $30-40 billion in trading volumes of Nifty derivatives that historically occurred offshore.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the general aim to attract offshore Nifty derivative trading volumes to GIFT City is widely reported, the specific estimate of '$30-40 billion' in historical offshore volumes that this move aims to repatriate could not be independently verified with a clear, reliable source in the search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "Most factual claims in the story are accurate and well-supported by recent financial news articles concerning the NSE International Exchange's extended trading hours. However, one specific financial estimate related to historical offshore trading volumes could not be independently verified. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "916688cb04957aad"
+    },
+    {
+      "slug": "india-startup-funding-winter",
+      "headline": "Indian Startups Face Funding Winter As Global Investors Pull Back",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The Indian startup ecosystem witnessed unprecedented growth and a funding frenzy, particularly in 2021, when venture capital investments surged to a record high of $42 billion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the total funding amount for 2021.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This slowdown is particularly acute compared to 2021, when India produced a record 44 unicorns (startups valued over $1 billion).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the number of unicorns produced in 2021.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly reports the October 2026 funding data from the source. However, it includes specific historical figures (the $42 billion funding total and 44 unicorns for 2021) that are not present in the provided source text, rendering them unverifiable.",
+      "digestHash": "3d3df3be7a19df48"
+    },
+    {
+      "slug": "india-prolonged-food-inflation",
+      "headline": "India Faces Prolonged Food Inflation: Will Your Grocery Bill Soar?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The primary drivers behind this concerning trend are the weak monsoon rains, which severely threaten the yields of the upcoming winter (rabi) crops",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) mentions that India faces prolonged food inflation, but it does not contain any information regarding the performance of the monsoon or its impact on winter (rabi) crop yields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Weak monsoon rains threaten winter crop yields.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not mention monsoon performance or its impact on winter crop yields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the topic of food inflation as reported in the source, but it attributes the cause to 'weak monsoon rains' and threats to 'winter crop yields,' neither of which are mentioned in the provided source text.",
+      "digestHash": "5d5473245fcb21e9"
+    },
+    {
+      "slug": "rbi-edf-rules-freelancers",
+      "headline": "RBI Relaxes Rules for Service Exporters: Big Relief for Freelancers?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India has significantly simplified foreign exchange regulations for service exporters and freelancers, raising the self-declaration threshold for export proceeds to ₹10 lakh.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text from the RBI website does not contain any mention of an amendment to the Export of Goods and Services (EDF) rules or an increase in the self-declaration threshold for export proceeds.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The previous ₹1 lakh threshold was often deemed too low.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a previous ₹1 lakh threshold for self-declaration of export proceeds.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a specific regulatory change regarding export proceeds and self-declaration thresholds that is entirely absent from the provided RBI source text. Consequently, the central event and all associated figures are unverifiable.",
+      "digestHash": "a41fd5e1e75c4206"
+    },
+    {
+      "slug": "sfc-environmental-tech-ipo-listing",
+      "headline": "New Waste Management IPO Lists 7.6% Above Issue Price!",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the IPO listing price, subscription rates, and use of proceeds were verified against the provided source texts.",
+      "digestHash": "9d0c940257289717"
+    }
+  ]
+}
