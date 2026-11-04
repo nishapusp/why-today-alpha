@@ -1,6 +1,6 @@
 {
   "date": "2026-11-04",
-  "generatedAt": "2026-11-04T08:17:15.965Z",
+  "generatedAt": "2026-11-04T16:03:46.726Z",
   "results": [
     {
       "slug": "rbi-curbs-revolving-credit-nbfcs",
@@ -57,6 +57,62 @@
       ],
       "notes": "The story accurately reports Happiest Minds' Q2 FY27 profit growth and its context. The core financial figures and the timing of the announcement are verified. However, specific framing around 'elongated sales cycles' being highlighted by management could not be explicitly confirmed through the search results for the stated period. (escalated from source mode — original links were unfetchable)",
       "digestHash": "a1558d0dc85efe61"
+    },
+    {
+      "slug": "india-critical-mineral-processing-scheme",
+      "headline": "Government Unveils ₹2,814 Crore Push for Critical Mineral Processing!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Estimated Import Dependency = >90%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the scheme outlay and duration but does not contain any data regarding the percentage of India's import dependency for critical minerals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the Cabinet approval of the ₹2,814 crore scheme is verified by Source 1. However, the specific figure regarding import dependency is not mentioned in the provided source text.",
+      "digestHash": "938f4171228d8ee6"
+    },
+    {
+      "slug": "kotak-mahindra-bank-deutsche-bank-cci-approval",
+      "headline": "Kotak Bank Gets Green Light For Deutsche India Retail Business!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "approximately ₹5,000 crore in assets under management (AUM)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the CCI approval but does not contain any financial figures regarding the AUM of the acquired business.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Number of branches (acquired) = 15 branches",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the CCI approval but does not specify the number of branches being acquired.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (CCI approval) is verified by the source text. However, the specific figures regarding AUM and the number of branches are not mentioned in the provided source and are therefore unverifiable.",
+      "digestHash": "142c6748fa4cb09b"
+    },
+    {
+      "slug": "bls-polymers-shares-rally-after-strong-debut",
+      "headline": "New IPO Soars 65% On Debut, Then Jumps Another 6%",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the IPO listing premium, first-day gain, oversubscription rate for BLS Polymers, and historical figures for Zomato, have been verified by reliable sources as of the publication date. The central event of the BLS Polymers IPO debut is accurately reported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "4189e7880482927b"
     }
   ]
 }
