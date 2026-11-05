@@ -1,6 +1,6 @@
 {
   "date": "2026-11-05",
-  "generatedAt": "2026-11-05T11:09:26.548Z",
+  "generatedAt": "2026-11-05T16:03:05.542Z",
   "results": [
     {
       "slug": "mahanadi-coalfields-ipo-sebi-approval",
@@ -78,70 +78,6 @@
       "digestHash": "f07b68b66a82a06d"
     },
     {
-      "slug": "sensex-rallies-on-oil-drop",
-      "headline": "Sensex Zooms As Global Oil Prices Tumble On Wednesday",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "HEADLINE: Sensex Zooms As Global Oil Prices Tumble On Wednesday",
-          "status": "WRONG",
-          "detail": "The source states the market surge occurred on Thursday, November 5, 2026, not Wednesday.",
-          "correction": "Sensex Zooms As Global Oil Prices Tumble On Thursday",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The Sensex surged over 1,600 points intraday",
-          "status": "WRONG",
-          "detail": "The source states the Sensex rose 1,544 points.",
-          "correction": "The Sensex rose 1,544 points.",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "The Sensex is now hovering above the 77,300 mark",
-          "status": "WRONG",
-          "detail": "The source states the Sensex rose to 78,845.",
-          "correction": "The Sensex is at 78,845.",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "KEY NUMBER CARD: Brent crude price = 99",
-          "status": "WRONG",
-          "detail": "The source states Brent crude fell to $93.82 per barrel.",
-          "correction": "Brent crude price = 93.82",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "KEY NUMBER CARD: Sensex intraday gain = 1600 (previous: 383 — Sensex close on Wednesday)",
-          "status": "UNVERIFIABLE",
-          "detail": "The source does not mention a previous close of 383 for the Sensex.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "What does a 'combined ratio' of 105% mean for an insurance company? — stated correct answer: 'The company is losing money on its underwriting activities'",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text contains no information regarding insurance company combined ratios.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story contains multiple factual inaccuracies regarding the Sensex point gain, the specific Brent crude price, and the day of the market rally. It also includes quiz claims that are not supported by the provided source text.",
-      "digestHash": "a628ee30f0493f7a"
-    },
-    {
       "slug": "private-sector-nuclear-energy",
       "headline": "AERB Chief: Private Players Welcome In Nuclear Energy Sector",
       "verdict": "WARN",
@@ -207,23 +143,151 @@
       "digestHash": "1bba40fbed096294"
     },
     {
-      "slug": "shipping-corp-earnings",
-      "headline": "Shipping Corp Profit Triples As Tankers Lead Earnings",
-      "verdict": "FAIL",
+      "slug": "titan-q2-fy27-results",
+      "headline": "Titan Profit Doubles, But One-Off Gain Masks Slower Core Business Growth",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The results were confirmed Thursday",
-          "status": "WRONG",
-          "detail": "November 4, 2026, the day the results were confirmed, was a Wednesday, not a Thursday.",
-          "correction": "The results were confirmed Wednesday.",
-          "source": "TrueCalendar, dateandtime.com, MarketScreener, PSU Connect, Time and Date, FailFlow",
+          "claim": "Titan Company Limited reported a net profit that more than doubled to ₹1,408 crore in Q2 FY27",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any information regarding Titan Company Limited's Q2 FY27 financial results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "one-off gain of ₹705 crore from the divestment of its stake in CaratLane",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Titan, CaratLane, or any financial results for Titan.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "adjusted Profit Before Tax (PBT) grew by 18% to ₹1,030 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Titan's adjusted PBT or any related growth figures.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Total income for the quarter stood at ₹21,430 crore, up 14% from ₹18,837 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Titan's total income or revenue figures.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The core financial results for Shipping Corporation of India's Q2 net profit and its growth are largely accurate. However, the story incorrectly states the day of the week on which these results were announced. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "906197da90f4d7f1"
+      "notes": "The provided source text (Business Standard) contains news about various companies like LIC, Airtel, ONGC, and Adani Ports, but it does not contain any information regarding Titan Company Limited's Q2 FY27 financial results. Consequently, all claims regarding Titan's performance are unverifiable based on the provided source.",
+      "digestHash": "d9d0a7f2621ba968"
+    },
+    {
+      "slug": "centre-advances-tax-transfer-states",
+      "headline": "Centre Pumps Another ₹1.09 Lakh Crore Into States for Festive Spending",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Union government has advanced another ₹1.09 trillion in tax devolution to state governments, bringing the total special transfers for the festive season to over ₹2.18 trillion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding a ₹1.09 trillion or ₹2.18 trillion tax devolution transfer to states.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY24 = 10.2",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for FY24 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY25 = 12.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for FY25 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q1 FY26 = 2.8",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for Q1 FY26 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q2 FY26 = 3.1",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for Q2 FY26 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q1 FY27 = 3.3",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for Q1 FY27 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q2 FY27 (incl. advances) = 5.45",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for Q2 FY27 tax devolution.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text provided is a collection of unrelated news headlines and snippets that do not mention the tax devolution transfers described in the story. Consequently, all specific figures and the central event are unverifiable.",
+      "digestHash": "4131cd5ef352b687"
+    },
+    {
+      "slug": "barclays-capital-infusion-india",
+      "headline": "Barclays Pumps ₹1,500 Crore More Into India, Eyeing Investment Banking Growth",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Barclays has maintained a presence in India for 37 years",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the duration of Barclays' presence in India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Barclays had previously injected substantial capital, including ₹3,000 crore in 2021 and ₹2,300 crore in March 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain information regarding specific past capital injections in 2021 or 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the ₹1,500 crore infusion and the total capital of ₹16,600 crore is supported by the provided source. However, the story includes historical context regarding the duration of the bank's presence and specific past capital injections that are not mentioned in the provided source texts.",
+      "digestHash": "a127ddfeaf913a59"
     }
   ]
 }
