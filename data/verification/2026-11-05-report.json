@@ -1,0 +1,229 @@
+{
+  "date": "2026-11-05",
+  "generatedAt": "2026-11-05T11:09:26.548Z",
+  "results": [
+    {
+      "slug": "mahanadi-coalfields-ipo-sebi-approval",
+      "headline": "Coal Giant Subsidiary Secures IPO Nod: What's Next?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Mahanadi Coalfields Limited (MCL), a major subsidiary of Coal India, has received regulatory approval from SEBI for its initial public offering.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-11-05) mentions the headline 'SEBI approves Mahanadi Coalfields IPO' in its title, but the actual body of the article does not contain any text confirming that SEBI has granted approval. The article body focuses on market trends, Samvat 2082 performance, and other unrelated news items.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Draft Red Herring Prospectus (DRHP) for the IPO was initially filed in September",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the filing of a DRHP for Mahanadi Coalfields Limited in September.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "generating substantial funds estimated to be in the range of ₹8,000-₹10,000 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any estimated fundraise amount for the Mahanadi Coalfields IPO.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the headline of the source article mentions the IPO approval, the body text is entirely unrelated to the details of the IPO, making the specific claims about the DRHP filing and the estimated fundraise amount unverified by the provided source.",
+      "digestHash": "0fae2f1281d4d228"
+    },
+    {
+      "slug": "rbi-technical-consultative-committee-formed",
+      "headline": "RBI Creates New Panel for Financial Market Risks",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Reserve Bank of India (RBI) has established a new Technical Consultative Committee to address emerging risks and critical policy and operational matters within the financial markets.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding the formation of a 'Technical Consultative Committee' by the RBI. Source 1 mentions various market news but does not report this event, and Source 2 is unrelated to this topic.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event of the story—the formation of a new RBI committee—is not supported by the provided source texts. The sources discuss market performance, IPOs, and other unrelated news, but contain no mention of this specific committee.",
+      "digestHash": "961dd6f9aa611a2f"
+    },
+    {
+      "slug": "india-ai-models-launch",
+      "headline": "India Launches Three New AI Models to Boost Local Tech",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Watch for the integration of these models into low-cost rural educational tablets in 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the models are intended for use in educational settings and low-connectivity areas, and general plans for future applications are mentioned, a specific, confirmed plan for integration into 'low-cost rural educational tablets in 2027' was not found as a definitive commitment as of the publication date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the launch of three new AI models by India, two of which offer offline functionality, aligning with the country's broader goals of technological self-reliance. Most claims are verified, with only one future prediction noted as unverified. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f07b68b66a82a06d"
+    },
+    {
+      "slug": "sensex-rallies-on-oil-drop",
+      "headline": "Sensex Zooms As Global Oil Prices Tumble On Wednesday",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "HEADLINE: Sensex Zooms As Global Oil Prices Tumble On Wednesday",
+          "status": "WRONG",
+          "detail": "The source states the market surge occurred on Thursday, November 5, 2026, not Wednesday.",
+          "correction": "Sensex Zooms As Global Oil Prices Tumble On Thursday",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Sensex surged over 1,600 points intraday",
+          "status": "WRONG",
+          "detail": "The source states the Sensex rose 1,544 points.",
+          "correction": "The Sensex rose 1,544 points.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Sensex is now hovering above the 77,300 mark",
+          "status": "WRONG",
+          "detail": "The source states the Sensex rose to 78,845.",
+          "correction": "The Sensex is at 78,845.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Brent crude price = 99",
+          "status": "WRONG",
+          "detail": "The source states Brent crude fell to $93.82 per barrel.",
+          "correction": "Brent crude price = 93.82",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "KEY NUMBER CARD: Sensex intraday gain = 1600 (previous: 383 — Sensex close on Wednesday)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source does not mention a previous close of 383 for the Sensex.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "What does a 'combined ratio' of 105% mean for an insurance company? — stated correct answer: 'The company is losing money on its underwriting activities'",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding insurance company combined ratios.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story contains multiple factual inaccuracies regarding the Sensex point gain, the specific Brent crude price, and the day of the market rally. It also includes quiz claims that are not supported by the provided source text.",
+      "digestHash": "a628ee30f0493f7a"
+    },
+    {
+      "slug": "private-sector-nuclear-energy",
+      "headline": "AERB Chief: Private Players Welcome In Nuclear Energy Sector",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "As India targets $400 billion in renewable energy investment by 2030",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a $400 billion investment target for renewable energy.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Investment target for renewable energy by 2030 = 2100000",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this figure or any specific investment target for renewable energy.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the AERB Chairperson's comments regarding private sector participation and safety. However, it includes specific investment figures and targets that are not supported by the provided source text.",
+      "digestHash": "a455307d2f6234c0"
+    },
+    {
+      "slug": "bse-q2-results-rally",
+      "headline": "BSE Shares Jump 4% After Strong Q2 Profit Surge",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the financial results and brokerage commentary provided in the source text. All figures, including the 44.9% profit growth and the ₹809 crore net profit, are correctly attributed.",
+      "digestHash": "a8bd12577bc6ef84"
+    },
+    {
+      "slug": "lenskart-q2-performance",
+      "headline": "Lenskart Stock Nears Double Since IPO, Up 11% Post Q2",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Today's movement is also driven by long-term investors adding to their positions after seeing that the company has maintained its growth momentum for four straight quarters now.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions Q2 FY27 results but does not provide data or confirmation regarding the company's growth momentum over four consecutive quarters.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Watch for expansion updates in the Q3 results as the company pushes further into Tier-II and Tier-III Indian cities.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text discusses management's long-term focus on scaling infrastructure and global expansion, but does not explicitly state that Q3 results will contain specific updates on Tier-II and Tier-III city expansion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial figures regarding the stock price, IPO performance, and Q2 results are verified against the provided source. The 'WARN' verdict is issued due to claims regarding the company's four-quarter growth history and the specific content of future Q3 results, which are not supported by the provided text.",
+      "digestHash": "1bba40fbed096294"
+    },
+    {
+      "slug": "shipping-corp-earnings",
+      "headline": "Shipping Corp Profit Triples As Tankers Lead Earnings",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The results were confirmed Thursday",
+          "status": "WRONG",
+          "detail": "November 4, 2026, the day the results were confirmed, was a Wednesday, not a Thursday.",
+          "correction": "The results were confirmed Wednesday.",
+          "source": "TrueCalendar, dateandtime.com, MarketScreener, PSU Connect, Time and Date, FailFlow",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial results for Shipping Corporation of India's Q2 net profit and its growth are largely accurate. However, the story incorrectly states the day of the week on which these results were announced. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "906197da90f4d7f1"
+    }
+  ]
+}
