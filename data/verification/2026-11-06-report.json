@@ -1,321 +1,117 @@
 {
   "date": "2026-11-06",
-  "generatedAt": "2026-11-06T07:02:15.184Z",
+  "generatedAt": "2026-11-06T15:49:50.119Z",
   "results": [
     {
-      "slug": "mahanadi-coalfields-ipo-sebi-approval",
-      "headline": "Coal Giant Subsidiary Secures IPO Nod: What's Next?",
-      "verdict": "FAIL",
+      "slug": "nbfc-credit-growth-accelerates",
+      "headline": "Your Gold Jewellery Fuels India's Fastest Loan Growth. Really?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Piramal Finance estimates that around ₹4.7 lakh crore of gold loan disbursals in FY26 went to borrowers who were already 90 days or more overdue on other loans.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any mention of Piramal Finance or this specific estimate regarding gold loan disbursals to overdue borrowers.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The RBI has been closely monitoring NBFC growth, previously noting in its Financial Stability Report (June 2026) that gold loans were the fastest-growing retail credit segment, with a compound annual growth rate of 42.4% since March 2024.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any mention of a June 2026 Financial Stability Report or a 42.4% CAGR for gold loans.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial data regarding the September 2026 RBI release is accurate and verified against the provided sources. However, the story includes specific claims about Piramal Finance and a June 2026 Financial Stability Report that are not supported by the provided source texts.",
+      "digestHash": "f75088b7dfe83d66"
+    },
+    {
+      "slug": "paras-broadpak-semiconductor",
+      "headline": "Can US Tech Help India Build Advanced Chips?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the partnership between Paras Semiconductors and BroadPak as reported in the source text. All specific claims regarding the nature of the facility (OSAT, heterogeneous integration, 3D packaging) are supported by the provided source.",
+      "digestHash": "678a37a73f627283"
+    },
+    {
+      "slug": "mobikwik-nbfc-license",
+      "headline": "Payments Giant Gets Green Light For Lending: What Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story's central claim regarding MobiKwik receiving RBI registration to operate as an NBFC and its projected 3-6 month launch timeline is fully supported by the provided source text.",
+      "digestHash": "dedb9829868d8268"
+    },
+    {
+      "slug": "fpi-inflows-diwali",
+      "headline": "Foreign Investors Pour Billions into India This Diwali!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "FPIs injected ₹48,000 crore (approximately $5.75 billion) into the market during the Diwali week",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any mention of a ₹48,000 crore or $5.75 billion FPI inflow.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FPIs were net sellers, withdrawing a record ₹4.55 trillion from Indian markets in Samvat 2082",
+          "status": "UNVERIFIABLE",
+          "detail": "While Source 1 mentions 'record FII selling of 4.55 trillion' in its headline, the body of the text does not contain this figure, and Source 2 does not mention it at all.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story relies on specific financial figures (₹48,000 crore and ₹4.55 trillion) that are not present in the provided source texts. While the headline of Source 1 mentions the ₹4.55 trillion figure, the body of the article does not, and the ₹48,000 crore figure is entirely absent from both sources.",
+      "digestHash": "6e8925f73d887cb4"
+    },
+    {
+      "slug": "gujarat-energy-adnoc-lng-deal",
+      "headline": "Gujarat Secures Massive Gas Deal, Boosting Future Energy",
+      "verdict": "UNVERIFIABLE",
       "centralEventConfirmed": false,
       "issues": [
         {
-          "claim": "The Draft Red Herring Prospectus (DRHP) for the IPO was initially filed in September",
+          "claim": "Gujarat Energy has inked a significant long-term agreement with UAE's Adnoc, securing up to 4 million tonnes of Liquefied Natural Gas (LNG) annually for ten years starting in 2028.",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention a DRHP filing date for Mahanadi Coalfields Limited.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Today, the Securities and Exchange Board of India (SEBI) officially granted its approval for the Initial Public Offering (IPO) of Mahanadi Coalfields Limited (MCL)",
-          "status": "WRONG",
-          "detail": "Source 1 reports that SEBI approved the IPO, but the story presents this as a confirmed, completed event. However, Source 2 (dated the same day) indicates the IPO is only 'likely to launch by March 2027', and the story's assertion that the approval happened 'today' is not supported by the provided text, which only mentions the approval in the context of a headline summary without confirming the timeline of the regulatory action.",
-          "correction": "The IPO is expected to launch by March 2027.",
-          "source": "Source 2",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story claims SEBI approval occurred 'today' (2026-11-06), but the source text provided for this claim (Source 1) is a headline that does not confirm the date of the approval, and Source 2 suggests a future timeline (March 2027). Additionally, the claim regarding the DRHP filing in September is not supported by the provided source texts.",
-      "digestHash": "0fae2f1281d4d228"
-    },
-    {
-      "slug": "rbi-technical-consultative-committee-formed",
-      "headline": "RBI Creates New Panel for Financial Market Risks",
-      "verdict": "FAIL",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "The Reserve Bank of India (RBI) has established a new Technical Consultative Committee to address emerging risks and critical policy and operational matters within the financial markets.",
-          "status": "UNVERIFIABLE",
-          "detail": "Source 1, which covers RBI news, does not mention the formation of a 'Technical Consultative Committee'. Source 2 is unrelated to this topic.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "For example, the Ministry of Home Affairs' I4C recently warned banks and fintech firms of AI-powered cyberattacks, highlighting the urgency of such committees.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any mention of the Ministry of Home Affairs' I4C or a warning regarding AI-powered cyberattacks.",
+          "detail": "The provided source text (Business Standard) contains no mention of a deal between Gujarat Energy and ADNOC. The source text is a search results page that lists other unrelated news items and does not contain the article referenced in the URL.",
           "correction": null,
           "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story reports the formation of a specific RBI committee as a fact, but this event is not mentioned in the provided source texts. The sources provided are unrelated to the central claim of the article.",
-      "digestHash": "961dd6f9aa611a2f"
+      "notes": "The provided source text does not contain the article described in the story. It is a search results page that does not mention the deal, the companies involved, or the figures cited.",
+      "digestHash": "14a24a42a9c304b4"
     },
     {
-      "slug": "india-ai-models-launch",
-      "headline": "India Launches Three New AI Models to Boost Local Tech",
-      "verdict": "FAIL",
+      "slug": "wipro-appoints-angan-guha",
+      "headline": "Wipro Shakes Up US Leadership: Who's the New Boss?",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "This echoes the 2016 JAM (Jan Dhan-Aadhaar-Mobile) trinity rollout",
-          "status": "WRONG",
-          "detail": "The JAM trinity concept was proposed in the Economic Survey of 2014-15, and the Pradhan Mantri Jan-Dhan Yojana (Jan Dhan accounts) was launched in August 2014. While the Aadhaar Act was passed in 2016, the 'rollout' of the trinity is generally associated with these earlier dates, not solely 2016.",
-          "correction": "This echoes the JAM (Jan Dhan-Aadhaar-Mobile) trinity, proposed in 2014-15 with the launch of Jan Dhan Yojana in 2014.",
-          "source": "Wikipedia, Economic Survey 2014-15, Drishti IAS, BYJU'S",
-          "inBroaderConnections": true,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Watch for the integration of these models into low-cost rural educational tablets in 2027.",
-          "status": "UNVERIFIABLE",
-          "detail": "This is a prediction for a future event in 2027 and cannot be verified as of the publication date (2026-11-06).",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central event of India launching three new AI models, two of which function offline, aligning with the country's broader tech self-reliance goals and 25-year roadmap. However, it contains an incorrect year for the JAM trinity rollout and a future prediction that cannot be verified. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "f07b68b66a82a06d"
+      "issues": [],
+      "notes": "All specific factual claims, including the central event of Angan Guha's appointment and its effective date, have been verified by reliable sources published on or before the story's publication date. Revenue figures and other details align with reported company information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "c5a48d1ea7d2ab94"
     },
     {
-      "slug": "private-sector-nuclear-energy",
-      "headline": "AERB Chief: Private Players Welcome In Nuclear Energy Sector",
-      "verdict": "WARN",
+      "slug": "ai-selloff-indian-power-stocks",
+      "headline": "Global AI Crash Hits Indian Power Stocks. Wait, Why?",
+      "verdict": "PASS",
       "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "As India targets $400 billion in renewable energy investment by 2030",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention a $400 billion investment target for renewable energy.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Investment target for renewable energy by 2030 = 2100000",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not mention this figure or any investment target for renewable energy.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reflects the AERB Chairperson's comments regarding private sector participation and safety. However, it includes specific investment figures for renewable energy that are not supported by the provided source text.",
-      "digestHash": "a455307d2f6234c0"
-    },
-    {
-      "slug": "bse-q2-results-rally",
-      "headline": "BSE Shares Jump 4% After Strong Q2 Profit Surge",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "KEY NUMBER CARD: Net Profit in ₹ = 809 (previous: 558 — BSE Net Profit Q2 FY26 (estimated))",
-          "status": "WRONG",
-          "detail": "The source text explicitly states the Q2 FY26 net profit was Rs 558.43 crore, not an estimate.",
-          "correction": "BSE Net Profit Q2 FY26 = Rs 558.43 crore",
-          "source": "Source 1",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
-          "status": "UNVERIFIABLE",
-          "detail": "The story contains a placeholder object array instead of actual historical data points.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the core financial results and brokerage stances. However, it incorrectly labels the prior-year profit as an 'estimate' when the source provides a precise figure, and it contains a technical error in the 'TIME MACHINE' section where data objects were not rendered.",
-      "digestHash": "a8bd12577bc6ef84"
-    },
-    {
-      "slug": "lenskart-q2-performance",
-      "headline": "Lenskart Stock Nears Double Since IPO, Up 11% Post Q2",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Today's movement is also driven by long-term investors adding to their positions after seeing that the company has maintained its growth momentum for four straight quarters now.",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text mentions Q2 FY27 results but does not provide data or confirmation regarding the company's growth momentum over the previous four consecutive quarters.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any data or list of past events corresponding to the 'pastEvents' field.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core financial figures (11% rally, 90% gain since IPO, Q2 profit and revenue growth) are accurately sourced from the Business Standard article. However, the story includes unsubstantiated claims regarding the company's four-quarter growth history and contains an empty/malformed object in the 'pastEvents' section.",
-      "digestHash": "1bba40fbed096294"
-    },
-    {
-      "slug": "titan-q2-fy27-results",
-      "headline": "Titan Profit Doubles, But One-Off Gain Masks Slower Core Business Growth",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Excluding this extraordinary item, the company's adjusted Profit Before Tax (PBT) grew by 18% to ₹1,030 crore.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the figures ₹1,030 crore or the 18% growth rate for adjusted PBT.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Total income for the quarter stood at ₹21,430 crore, up 14% from ₹18,837 crore in the corresponding period last year.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the figures ₹21,430 crore, ₹18,837 crore, or the 14% growth rate.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This impressive profit figure was significantly boosted by a one-off gain of ₹705 crore from the divestment of its stake in CaratLane",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain the figure ₹705 crore regarding a CaratLane divestment gain.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "While the headline figure of ₹1,408 crore is verified by Source 1, the supporting financial metrics (adjusted PBT, total income, and the specific one-off gain amount) are not present in the provided source texts and are therefore unverifiable.",
-      "digestHash": "d9d0a7f2621ba968"
-    },
-    {
-      "slug": "centre-advances-tax-transfer-states",
-      "headline": "Centre Pumps Another ₹1.09 Lakh Crore Into States for Festive Spending",
-      "verdict": "FAIL",
-      "centralEventConfirmed": false,
-      "issues": [
-        {
-          "claim": "The Union government has advanced another ₹1.09 trillion in tax devolution to state governments, bringing the total special transfers for the festive season to over ₹2.18 trillion.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text mentions 'Centre advances ₹1.09 trillion tax devolution to states for November' as a headline, but does not contain any information regarding a second, identical transfer of ₹1.09 trillion or a cumulative total of ₹2.18 trillion.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "This transfer comes just five days after a similar allocation of ₹1.09 trillion on October 31, 2026",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not mention an October 31, 2026, transfer or any previous festive season advance.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "CHART DATA POINT: FY24 = 10.2",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: FY25 = 12.5",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY26 = 2.8",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q2 FY26 = 3.1",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q1 FY27 = 3.3",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        },
-        {
-          "claim": "CHART DATA POINT: Q2 FY27 (incl. advances) = 5.45",
-          "status": "UNVERIFIABLE",
-          "detail": "The source text does not contain data points for tax devolution by fiscal year or quarter.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": true
-        }
-      ],
-      "notes": "The story fabricates a second transfer of ₹1.09 trillion and a cumulative total of ₹2.18 trillion, which are not supported by the provided source text. Additionally, the entire chart data section is completely absent from the source material.",
-      "digestHash": "4131cd5ef352b687"
-    },
-    {
-      "slug": "barclays-capital-infusion-india",
-      "headline": "Barclays Pumps ₹1,500 Crore More Into India, Eyeing Investment Banking Growth",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Barclays has maintained a presence in India for 37 years",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention the duration of Barclays' presence in India.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "Barclays had previously injected substantial capital, including ₹3,000 crore in 2021 and ₹2,300 crore in March 2025",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not mention these specific historical capital injection figures or dates.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The central claim regarding the ₹1,500 crore infusion is supported by the source texts. However, the story includes specific historical figures regarding the duration of the bank's presence and past capital injections that are not present in the provided source material.",
-      "digestHash": "a127ddfeaf913a59"
+      "issues": [],
+      "notes": "All specific factual claims regarding market movements, stock performance, and historical events are consistently verified by multiple reliable sources dated around the publication date. The article accurately reports a significant global AI sell-off impacting Indian stocks on November 6, 2026, driven by the outcome of the US midterm elections on November 3, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "4e1d75ccd456bcf1"
     }
   ]
 }
