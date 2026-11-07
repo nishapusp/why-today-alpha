@@ -1,128 +1,22 @@
 {
   "date": "2026-11-07",
-  "generatedAt": "2026-11-07T07:46:48.228Z",
+  "generatedAt": "2026-11-07T14:34:02.648Z",
   "results": [
     {
-      "slug": "nbfc-credit-growth-accelerates",
-      "headline": "Your Gold Jewellery Fuels India's Fastest Loan Growth. Really?",
+      "slug": "avenuesai-q2-profit-rise-boosted-by-demand",
+      "headline": "AI Services Company Sees Profit Climb 6% in Q2",
       "verdict": "WARN",
-      "centralEventConfirmed": true,
+      "neverVerified": true,
       "issues": [
         {
-          "claim": "Piramal Finance estimates that around ₹4.7 lakh crore of gold loan disbursals in FY26 went to borrowers who were already 90 days or more overdue on other loans.",
+          "claim": "(entire story)",
           "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any mention of Piramal Finance or this specific estimate regarding gold loan disbursals to overdue borrowers.",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
           "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
+          "source": null
         }
       ],
-      "notes": "The story accurately reports the RBI data regarding NBFC credit growth, retail lending, and gold loan performance. However, it includes a specific claim about Piramal Finance and gold loan delinquency estimates that is not supported by the provided source texts.",
-      "digestHash": "f75088b7dfe83d66"
-    },
-    {
-      "slug": "paras-broadpak-semiconductor",
-      "headline": "Can US Tech Help India Build Advanced Chips?",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "The story accurately reflects the partnership between Paras Semiconductors and BroadPak as reported in the source text. All technical details regarding the OSAT facility and the strategic significance of the collaboration are consistent with the provided source.",
-      "digestHash": "678a37a73f627283"
-    },
-    {
-      "slug": "mobikwik-nbfc-license",
-      "headline": "Payments Giant Gets Green Light For Lending: What Now?",
-      "verdict": "PASS",
-      "centralEventConfirmed": true,
-      "issues": [],
-      "notes": "The story accurately reflects the information provided in Source 1 regarding MobiKwik's RBI registration and its timeline for commencing NBFC operations.",
-      "digestHash": "dedb9829868d8268"
-    },
-    {
-      "slug": "fpi-inflows-diwali",
-      "headline": "Foreign Investors Pour Billions into India This Diwali!",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "FPIs injected ₹48,000 crore (approx. $5.75 billion) in early November.",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source texts do not contain any mention of a ₹48,000 crore or $5.75 billion FPI inflow in November 2026.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        },
-        {
-          "claim": "FPIs were net sellers, withdrawing a record ₹4.55 trillion from Indian markets in Samvat 2082.",
-          "status": "UNVERIFIABLE",
-          "detail": "While Source 1 mentions 'record FII selling of 4.55 trillion' in Samvat 2082, the source text does not confirm this figure as a net withdrawal or net outflow; it only mentions the selling figure.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story correctly identifies the record selling figure for Samvat 2082 mentioned in Source 1, but the specific claim of a ₹48,000 crore inflow in November 2026 is not supported by either provided source.",
-      "digestHash": "6e8925f73d887cb4"
-    },
-    {
-      "slug": "gujarat-energy-adnoc-lng-deal",
-      "headline": "Gujarat Secures Massive Gas Deal, Boosting Future Energy",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "The agreement is also ADNOC's fifth major LNG supply pact with an Indian entity",
-          "status": "UNVERIFIABLE",
-          "detail": "The provided source text does not contain any information regarding the number of previous LNG supply pacts between ADNOC and Indian entities.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The core details of the deal (4 million tonnes, 10 years, 2028 start) are presented as facts, but the source text provided is a search results page that does not actually contain the article content confirming these specific figures or the claim about it being the 'fifth' pact.",
-      "digestHash": "14a24a42a9c304b4"
-    },
-    {
-      "slug": "wipro-appoints-angan-guha",
-      "headline": "Wipro Shakes Up US Leadership: Who's the New Boss?",
-      "verdict": "WARN",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "managing a $2.9 billion business with 45,000 employees in his previous Wipro stint",
-          "status": "UNVERIFIABLE",
-          "detail": "While Angan Guha has over three decades of experience and previously led Wipro's Americas 2 unit, and Birlasoft is associated with the larger CK Birla Group (mentioned as USD 2.9 billion), there is no readily available source that attributes a '$2.9 billion business with 45,000 employees' directly to his previous management role within Wipro's Americas 2 unit.",
-          "correction": null,
-          "source": null,
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the appointment of Angan Guha to Wipro's Americas 2 unit, including his effective date, reporting structure, and previous roles. Most factual claims are verified by multiple recent news sources and Wipro's official announcements. One specific historical figure related to the size of a business unit he previously managed at Wipro could not be independently confirmed from the search results. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "c5a48d1ea7d2ab94"
-    },
-    {
-      "slug": "ai-selloff-indian-power-stocks",
-      "headline": "Global AI Crash Hits Indian Power Stocks. Wait, Why?",
-      "verdict": "FAIL",
-      "centralEventConfirmed": true,
-      "issues": [
-        {
-          "claim": "Leading the fall were companies such as TD Power Systems and Thermax, both plunging by 15%.",
-          "status": "WRONG",
-          "detail": "While both companies experienced significant plunges on November 6, 2026, the specific '15% each' figure is not consistently accurate across reliable sources. TD Power Systems dropped around 13.61% to 16.59%, and Thermax dropped between approximately 16.59% and 18.8%.",
-          "correction": "Leading the fall were companies such as TD Power Systems, which plunged by approximately 13.6-16.6%, and Thermax, which plunged by approximately 16.6-18.8%.",
-          "source": "BusinessToday, Mint, Univest, Global Banking & Finance Review",
-          "inBroaderConnections": false,
-          "isChartOrKeyNumber": false
-        }
-      ],
-      "notes": "The story accurately reports the central events: the US midterm elections occurred on November 3, 2026, with significant Democratic gains, which triggered a global sell-off in AI-linked stocks on November 5, 2026, impacting Indian markets on November 6, 2026. The Nasdaq Composite's drop and the market value loss are correctly stated, as are the lower circuits for HFCL and Sterlite Technologies. The historical context provided is also accurate. The only discrepancy found is the precise percentage drop for TD Power Systems and Thermax, where the story states '15% each,' but sources indicate slightly different, though still substantial, declines. (escalated from source mode — original links were unfetchable)",
-      "digestHash": "4e1d75ccd456bcf1"
+      "notes": "Re-run with --mode grounded once quota resets."
     }
   ]
 }
