@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-09",
+  "generatedAt": "2026-11-08T21:36:19.544Z",
+  "results": [
+    {
+      "slug": "yemen-seafarers-evacuation-2026",
+      "headline": "19 Stranded Indian Sailors Rescued From War-Torn Yemen Coast",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Over $100 billion worth of commercial goods transit through vulnerable West Asian sea lanes weekly.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any monetary value regarding commercial goods transiting through West Asian sea lanes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Domestic shipping lines and international charterers rely heavily on Indian sailors to move over 80% of India's bulk freight trade by volume.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not contain any statistics regarding the percentage of India's bulk freight trade moved by Indian sailors.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event regarding the evacuation of 19 Indian seafarers is verified by the source. However, the story includes specific economic statistics (the $100 billion weekly transit figure and the 80% bulk freight figure) that are not present in the provided source text.",
+      "digestHash": "df22af1df83974ae"
+    },
+    {
+      "slug": "anthropic-energy-deal",
+      "headline": "Anthropic Secures $3.4 Billion for Data Center Power Generators",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the $3.4 billion deal, the 1.7 gigawatt capacity, the counterparty (OnePWR Solutions), and the timing (late September/November 8, 2026) are supported by the provided source text.",
+      "digestHash": "1829c1e670aeb77b"
+    },
+    {
+      "slug": "iraq-gas-field-drone-strike-energy-impact",
+      "headline": "A Drone Strike Just Shut Down a Major Middle East Gas Hub",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "50%: Approximate share of natural gas India imports to meet domestic demand.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding India's natural gas import dependency or percentage of domestic demand met by imports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India LNG Import Reliance = ~50%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding India's natural gas import dependency or percentage of domestic demand met by imports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the drone attack and production suspension at the Khor Mor gas field as described in the source. However, it includes specific statistics regarding India's natural gas import reliance that are not mentioned in the provided source text.",
+      "digestHash": "b138c7f209e499c3"
+    },
+    {
+      "slug": "railways-consumer-compensation",
+      "headline": "Passenger Misses Train Due to Timings Change; Consumer Commission Orders Compensation",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the consumer commission's order, the compensation amount, the parties involved, and the circumstances of the incident are supported by the provided source text.",
+      "digestHash": "f038187b1435e015"
+    }
+  ]
+}
