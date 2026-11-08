@@ -1,6 +1,6 @@
 {
   "date": "2026-11-08",
-  "generatedAt": "2026-11-08T02:51:31.373Z",
+  "generatedAt": "2026-11-08T14:52:44.328Z",
   "results": [
     {
       "slug": "rbi-cybersecurity-rules-non-bank-payment-operators",
@@ -38,6 +38,61 @@
       ],
       "notes": "The story accurately reports the core figures from the source text but includes an unverifiable claim regarding historical inspection comparisons and incorrectly identifies the day of the announcement.",
       "digestHash": "823176cf74785567"
+    },
+    {
+      "slug": "anthropic-3-4-billion-data-center-generators",
+      "headline": "AI Startup Anthropic Secures $3.4 Billion For Data Center Power. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Anthropic's $3.4 billion deal for 1.7 gigawatts of generators from OnePWR Solutions, including the deal's closing date in late September 2026, are consistently reported and verified by multiple reliable financial and news outlets on the publication date. Supporting claims about Bill Gates' warnings and MillenniumPost's article are also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "07a035658315b2ea"
+    },
+    {
+      "slug": "solar-industries-india-q2-fy27-results",
+      "headline": "Solar Industries India Sees Revenue Skyrocket 69% in Q2. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding Solar Industries India's Q2 FY27 results and the government's defence policy were confirmed by multiple reliable sources published on or before the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "250241c6db7ec1c1"
+    },
+    {
+      "slug": "hindustan-coca-cola-beverages-ipo-filing",
+      "headline": "Coca-Cola's India Bottling Arm Files IPO Papers: What's Next?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the central event of Hindustan Coca-Cola Holdings (HCCH) filing its DRHP for an IPO as an Offer For Sale (OFS) with SEBI, are accurately reported and verified by reliable sources as of the publication date. The filing date, issue type, market segment, and the implications of an OFS are all consistent with the search results. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e87223c0c8376a1d"
+    },
+    {
+      "slug": "india-commonwealth-ai-readiness-index-gdp",
+      "headline": "India Ranks 11th in Global AI Readiness. Will GDP Grow $79 Billion?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "2025 = 25",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the $79 billion figure for 2035 but does not provide data points for 2025 or 2030.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "2030 = 50",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the $79 billion figure for 2035 but does not provide data points for 2025 or 2030.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The headline and core claims regarding the $79 billion GDP projection and the 11th rank are supported by the provided source. However, the chart data points for 2025 and 2030 are not mentioned in the source text and are therefore unverifiable.",
+      "digestHash": "acafe2c9cd717c42"
     }
   ]
 }
