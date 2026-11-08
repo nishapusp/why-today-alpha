@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-08",
+  "generatedAt": "2026-11-08T02:51:31.373Z",
+  "results": [
+    {
+      "slug": "rbi-cybersecurity-rules-non-bank-payment-operators",
+      "headline": "RBI Tightens Digital Payments Security: Your Money Just Got Safer?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the RBI's Master Directions, including the six-hour reporting window, the 12-hour cooling period, and compliance timelines for different categories of PSOs, are fully supported by the provided source texts.",
+      "digestHash": "affe99d2c280e972"
+    },
+    {
+      "slug": "fssai-seizes-food-cancels-licences-nationwide-drive-2026",
+      "headline": "Food Safety Watchdog Seizes 3,280 Tonnes of Food Ahead of Festivals",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Compared to last year's festive enforcement drive which audited roughly 35,000 facilities, this operation expanded inspection coverage by over 60%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention the number of facilities audited in the previous year's festive drive or provide a comparison to previous years' coverage.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FSSAI announced the seizure of 3,280 tonnes of food items and 52 licence cancellations on Sunday.",
+          "status": "WRONG",
+          "detail": "The source text states the FSSAI made the announcement in a social media post on Saturday (November 7, 2026), not Sunday.",
+          "correction": "FSSAI announced the seizure of 3,280 tonnes of food items and 52 licence cancellations on Saturday.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the core figures from the source text but includes an unverifiable claim regarding historical inspection comparisons and incorrectly identifies the day of the announcement.",
+      "digestHash": "823176cf74785567"
+    }
+  ]
+}
