@@ -1,6 +1,6 @@
 {
   "date": "2026-11-09",
-  "generatedAt": "2026-11-08T21:36:19.544Z",
+  "generatedAt": "2026-11-09T06:58:31.831Z",
   "results": [
     {
       "slug": "yemen-seafarers-evacuation-2026",
@@ -75,6 +75,170 @@
       "issues": [],
       "notes": "All factual claims regarding the consumer commission's order, the compensation amount, the parties involved, and the circumstances of the incident are supported by the provided source text.",
       "digestHash": "f038187b1435e015"
+    },
+    {
+      "slug": "saudi-oil-target-hit-iran-warning",
+      "headline": "Saudi Oil Target Hit After Iran Warning: New Conflict Brewing?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "a drone attack damaging Saudi Aramco facilities in Riyadh",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a Business Standard search results page that does not contain any article or report confirming a drone attack on Saudi Aramco facilities in Riyadh or an ultimatum from Iran.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Iran's Foreign Minister Abbas Araghchi issued a two-day ultimatum to the United States",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "a drone strike shutting down Iraq's Khor Mor gas field just yesterday",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a search results page from Business Standard and does not contain the news content described in the story. Consequently, all specific claims regarding the drone attack, the ultimatum, and the gas field strike are unverifiable.",
+      "digestHash": "6f264b3b6016e135"
+    },
+    {
+      "slug": "rbi-dismisses-cheque-book-rumours",
+      "headline": "Did RBI Change Cheque Rules? No, Says Central Bank.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The RBI's statement unequivocally clarifies that there have been no recent amendments to regulations concerning the number of cheque leaves, their validity period, or any additional charges associated with cheque book issuance or usage.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text only mentions that the RBI dismissed claims regarding 'new cheque books with updated security standards' and 'changes to the standard cheque books currently in use under the Cheque Truncation System'. It does not explicitly list or refute specific details about 'number of cheque leaves', 'validity period', or 'additional charges'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "For example, during the demonetisation drive in 2016, numerous false messages about new currency notes, exchange limits, and bank closures circulated, creating widespread confusion and anxiety, despite official clarifications.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding the 2016 demonetisation drive or the specific nature of rumours that circulated during that time.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Similarly, in 2019, rumours about bank mergers and the safety of deposits led to temporary unrest among customers of some smaller banks, which the RBI and the government had to address.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding bank mergers or deposit safety rumours in 2019.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the central event (the RBI's dismissal of cheque book rumours). However, it includes significant background information about historical events (2016 demonetisation and 2019 bank mergers) and specific details about the scope of the RBI's clarification that are not supported by the provided source texts.",
+      "digestHash": "7a5ea412f7dfbc51"
+    },
+    {
+      "slug": "ai-hackers-target-indian-fintechs",
+      "headline": "\"Crafty Falcon\" AI Hackers Target Indian Fintechs.",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "in 2023, the US Cybersecurity and Infrastructure Security Agency (CISA) warned about state-sponsored actors using AI to enhance their cyber espionage capabilities",
+          "status": "WRONG",
+          "detail": "While CISA released its 2023-2024 AI Roadmap in November 2023, which discussed deterring malicious use of AI and protecting AI systems from cyber threats, it did not explicitly issue a warning in 2023 focused on state-sponsored actors using AI to enhance their cyber espionage capabilities. This specific type of warning, particularly regarding foreign state-sponsored actors leveraging AI for espionage, became more explicit in CISA's advisories in 2026.",
+          "correction": "In 2026, the US Cybersecurity and Infrastructure Security Agency (CISA) has warned about state-sponsored actors using AI to enhance their cyber espionage capabilities, building on broader AI threat discussions from 2023.",
+          "source": "CISA (e.g., CISA Roadmap for Artificial Intelligence, 2023; Joint Cybersecurity Advisories, 2026)",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the central event of CERT-In's warning about 'Crafty Falcon' and the increased demand for cybersecurity talent. However, it mischaracterizes the specificity of CISA's warnings regarding AI-enhanced state-sponsored cyber espionage in 2023; such explicit warnings appeared more prominently in 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d5808d37958abaec"
+    },
+    {
+      "slug": "balkrishna-pirelli-partnership",
+      "headline": "Balkrishna Tyres Partners Pirelli: Big Global Growth Ahead?",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "indian-stocks-snap-winning-streak",
+      "headline": "Stock Market Takes a Breather: First Diwali Loss Since 2017.",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Strong FII inflows in November, totaling approximately ₹46,000 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding FII inflows for November or any specific monetary figure for such inflows.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Nifty 50... had recently surged past the crucial 25,000 mark",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Nifty 50 index level or the 25,000 milestone.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "analysts forecasting the Nifty to climb towards 25,300-25,600",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any analyst forecasts or price targets for the Nifty.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "snapping a remarkable seven-day winning streak",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a seven-day winning streak.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "first time since 2017 that both the Sensex and Nifty have registered losses during the auspicious Diwali Muhurat trading",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions that indices ended in the red, but does not provide historical context or data regarding Diwali Muhurat trading performance since 2017.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the source text confirms the headline event (indices ending in the red during Muhurat trading) and the sectors that bucked the trend, the story includes several specific numerical claims and historical comparisons that are entirely absent from the provided source material.",
+      "digestHash": "07594cdc46964dba"
     }
   ]
 }
