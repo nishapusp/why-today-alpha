@@ -1,6 +1,6 @@
 {
   "date": "2026-11-10",
-  "generatedAt": "2026-11-10T08:52:31.228Z",
+  "generatedAt": "2026-11-10T16:00:47.621Z",
   "results": [
     {
       "slug": "olectra-greentech-q2-results",
@@ -215,6 +215,62 @@
       ],
       "notes": "The core facts regarding the current extension of the Abhyudaya Co-operative Bank board supersession are supported by the source. However, the story includes specific claims about the history of extensions (a 'first extension' in 2025 and this being the 'second' extension) that are not present in the provided source text.",
       "digestHash": "1a8dee70c134e57c"
+    },
+    {
+      "slug": "sc-orders-rbi-compensation-digital-arrest-scams",
+      "headline": "Supreme Court Directs RBI: Full Payouts for Cyber Scam Victims?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the Supreme Court's directive to the RBI, the reported loss figure of ₹800 crore for 2026, and the instructions given to digital intermediaries like WhatsApp.",
+      "digestHash": "204e9a0bed45cabc"
+    },
+    {
+      "slug": "lic-reconsiders-banking-entry",
+      "headline": "LIC CEO: We Might Enter Banking. What's the Catch?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "LIC Market Cap (approx.) = ₹6 lakh crore (est.)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding LIC's market capitalization.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the IRDAI's formation of working groups to align risk-based capital norms with Ind AS as reported in the source. However, the specific figure for LIC's market capitalization is not mentioned in the provided source text.",
+      "digestHash": "35da9a491bce123c"
+    },
+    {
+      "slug": "amazon-ai-indian-sellers-digitization",
+      "headline": "Amazon Unleashes AI: 2 Million Indian Sellers to Get Robot Help?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "What is a key goal of deploying AI agents for sellers? — stated correct answer: \"Streamline operations and reduce selling costs\"",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions streamlining operations and enhancing the e-commerce experience, but it does not explicitly state 'reduce selling costs' as a key goal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "SMBs to be Digitized = 15 million (previous: 10 million — 2020 Target)",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the 15 million target but does not provide the historical context or the 10 million figure from 2020.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the 2 million AI agents and 15 million SMB digitization target are supported by the source text. However, the story includes additional context (historical targets and specific goals like 'reducing selling costs') that are not present in the provided source.",
+      "digestHash": "7c508d19a0d52211"
     }
   ]
 }
