@@ -1,14 +1,220 @@
 {
   "date": "2026-11-10",
-  "generatedAt": "2026-11-10T04:57:46.339Z",
+  "generatedAt": "2026-11-10T08:52:31.228Z",
   "results": [
     {
       "slug": "olectra-greentech-q2-results",
       "headline": "Electric Bus Maker's Profit Barely Grows. Is EV Boom Cooling?",
-      "verdict": "ERROR",
-      "neverVerified": true,
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Olectra Greentech reported a net profit of ₹52 crore for Q2 FY27.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a stock market profile page that does not contain any financial results for Q2 FY27 or any historical profit data for the company.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Olectra Greentech delivered 401 electric vehicles during Q2 FY27.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention vehicle delivery figures for any period.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Olectra Greentech's revenue from operations for Q2 FY27 stood at ₹345 crore.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain revenue figures for Q2 FY27.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY24 = 38.7",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical profit data for Q2 FY24.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Q2 FY25 = 42",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical profit data for Q2 FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text is a generic stock market data page for 'Om Galaxy Ltd.' (which appears to be a placeholder or unrelated entity) and contains no financial results, quarterly profit figures, or operational data for Olectra Greentech. Consequently, all specific financial and operational claims in the story are unverifiable.",
+      "digestHash": "02116d237f037fee"
+    },
+    {
+      "slug": "qantas-outsourcing-india-jobs",
+      "headline": "Qantas cuts 850 Australian jobs, moves them to India. Is this a trend?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Qantas Airways announced plans to cut 850 jobs in Australia and outsource the work, primarily in finance, HR, and marketing, to India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) does not contain any information regarding Qantas Airways, job cuts, or outsourcing plans. The headline of the source text is 'Qantas Airways to cut 850 Australian jobs, outsource work to India', but the actual body text of the source provided is a list of unrelated news headlines and snippets (e.g., Apple, Tata, COP31, etc.) and does not contain the article content itself.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text provided is a collection of unrelated news headlines and snippets from Business Standard and does not contain the actual article content regarding Qantas Airways. Therefore, all claims regarding the Qantas announcement are unverifiable based on the provided text.",
+      "digestHash": "da5c8a5b197e72c5"
+    },
+    {
+      "slug": "modi-zelenskyy-call-peace-efforts",
+      "headline": "India Ready for Peace: Modi Tells Ukraine President Zelenskyy",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Prime Minister Narendra Modi engaged in a phone conversation with Ukrainian President Volodymyr Zelenskyy today",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding a phone call between PM Modi and President Zelenskyy, nor does it mention peace talks in Abu Dhabi.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "fresh peace talks involving Ukraine, Russia, and the US are set to resume in Abu Dhabi",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any peace talks in Abu Dhabi.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a snippet from a Business Standard search results page that does not contain any of the factual claims made in the story. Consequently, all claims regarding the phone call and the Abu Dhabi peace talks are unverifiable.",
+      "digestHash": "26f2c9bd9e26e7bb"
+    },
+    {
+      "slug": "hsbc-upgrades-indian-equities",
+      "headline": "Why Did a Global Bank Just Bet Big on Indian Stocks?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "HSBC downgraded Chinese equities to 'neutral' (previous: Overweight — HSBC Rating China)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline 'HSBC upgrades Indian equities to overweight, cuts China to neutral', but it does not contain the specific detail that the previous rating for China was 'Overweight'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event (HSBC upgrading India and downgrading China) is confirmed by the provided source. However, the specific claim regarding China's previous rating is not supported by the text provided.",
+      "digestHash": "3612f6b53d138c36"
+    },
+    {
+      "slug": "india-cancer-drug-price-reduction",
+      "headline": "Cancer Drug Prices Crash by 96%! Will Your Treatment Cost Less?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
       "issues": [],
-      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+      "notes": "All factual claims in the story, including dates, percentages, numbers of formulations, and referenced policies/acts, are consistently verified by multiple reliable sources dated before or on the publication date of the story. The central event of cancer drug price reductions effective November 9, 2026, is confirmed. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1313ce1f4830de68"
+    },
+    {
+      "slug": "mahanadi-coalfields-ipo",
+      "headline": "Coal Giant Subsidiary To Launch IPO. What's the Catch?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Mahanadi Coalfields Ltd (MCL), a major subsidiary of Coal India Ltd, has received SEBI approval for its Initial Public Offering (IPO)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a 404 error page from Construction World and contains no information regarding MCL, SEBI, or an IPO.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a broken link (404 error page) and does not contain any of the factual claims made in the story. Therefore, all claims are unverifiable.",
+      "digestHash": "189714fb6b8604e0"
+    },
+    {
+      "slug": "andhra-cm-scrap-500-rupee-notes",
+      "headline": "Andhra CM Wants to Scrap ₹500 Notes. Is Another Demonetisation Coming?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including dates, proposed denominations, reasons, and historical context, have been verified by reliable sources as of the publication date. The central event of CM Naidu's statement is confirmed to have occurred on November 9, 2026, consistent with the story's publication on November 10, 2026. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "583e27740f15c2ea"
+    },
+    {
+      "slug": "india-eu-tech-investment-ties",
+      "headline": "India & EU Deepen Tech, Investment Ties Ahead of Trade Deal?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Bilateral trade between India and EU exceeded €120 billion in 2025.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the India-EU partnership but does not contain any data regarding the specific value of bilateral trade or exports for 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's merchandise exports to EU were around €65 billion in 2025.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding the specific value of India's merchandise exports to the EU for 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the ongoing cooperation between India and the EU as reported in the source text. However, the specific trade figures cited for 2025 are not present in the provided source material.",
+      "digestHash": "f4cf0573b09f4969"
+    },
+    {
+      "slug": "rbi-abhyudaya-bank-supersession-extended",
+      "headline": "RBI Takes Over Bank Again! What Does It Mean For Savers?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The first extension came in November 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the initial supersession in 2023 and the current extension, but it does not contain any information regarding a 'first extension' occurring in November 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This marks the second extension for the bank",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the initial supersession and the current extension, but does not provide a history of multiple extensions to verify that this is specifically the 'second' one.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the current extension of the Abhyudaya Co-operative Bank board supersession are supported by the source. However, the story includes specific claims about the history of extensions (a 'first extension' in 2025 and this being the 'second' extension) that are not present in the provided source text.",
+      "digestHash": "1a8dee70c134e57c"
     }
   ]
 }
