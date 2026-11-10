@@ -1,38 +1,14 @@
 {
   "date": "2026-11-10",
-  "generatedAt": "2026-11-10T01:11:55.037Z",
+  "generatedAt": "2026-11-10T04:57:46.339Z",
   "results": [
     {
-      "slug": "rbi-extends-abhyudaya-cooperative-bank-board-supersession",
-      "headline": "Co-operative Bank Still Not Fixed: RBI Extends Takeover.",
-      "verdict": "WARN",
+      "slug": "olectra-greentech-q2-results",
+      "headline": "Electric Bus Maker's Profit Barely Grows. Is EV Boom Cooling?",
+      "verdict": "ERROR",
       "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
-    {
-      "slug": "paras-semiconductors-broadpak-india-advanced-packaging",
-      "headline": "India Building Advanced Chips? New US Tie-Up Signals Progress.",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "issues": [],
+      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
     }
   ]
 }
