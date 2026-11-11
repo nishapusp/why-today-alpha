@@ -1,6 +1,6 @@
 {
   "date": "2026-11-11",
-  "generatedAt": "2026-11-11T08:14:43.169Z",
+  "generatedAt": "2026-11-11T15:59:31.459Z",
   "results": [
     {
       "slug": "ibm-stops-us-visa-sponsorship-consulting",
@@ -29,6 +29,127 @@
       ],
       "notes": "The story accurately reports the central event regarding IBM's visa sponsorship policy. However, it includes specific figures and predictions about competitors that are not supported by the provided source text.",
       "digestHash": "f841f1127b2c17e8"
+    },
+    {
+      "slug": "moodys-raises-india-gdp-forecast",
+      "headline": "Wait, India's Economy Will Grow Even FASTER Next Year?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The agency's revised outlook also positions India to achieve a growth rate that could surpass China's by 3 percentage points by 2028",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention China's growth rate or any comparison regarding a 3 percentage point lead by 2028.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY26 Actual GDP Growth: 7.7%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding India's actual GDP growth for FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Moody's FY27 GDP forecast revision. However, it includes specific figures regarding China's growth comparison and FY26 actual growth that are not present in the provided source text.",
+      "digestHash": "01a742f78df7720c"
+    },
+    {
+      "slug": "carbon-resources-cosmo-amt-battery-plant-ap",
+      "headline": "₹4,000 Crore Battery Plant: India's EV Future Just Got Charged?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "This announcement came during discussions ahead of the prominent CII Partnership Summit.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the investment but does not mention the CII Partnership Summit.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The project will proceed with land acquisition, environmental clearances, and construction, aiming to begin operations and supply battery materials to India's EV sector within the next 3-5 years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms the investment amount and the companies involved, but contains no information regarding project timelines, operational start dates, or specific construction milestones.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the investment amount, the companies involved, and the location are verified by the source. However, the story includes specific details about the CII Partnership Summit and project timelines that are not present in the provided source text.",
+      "digestHash": "58601637863c068f"
+    },
+    {
+      "slug": "moodys-raises-gdp-forecast",
+      "headline": "Moody's Just Raised India's Growth Forecast. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Moody's raising India's GDP growth forecast for the current fiscal year to 7% from 6.5%, are confirmed by multiple reliable sources dated November 11, 2026. The stated drivers for the upgrade are also consistently reported. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "7f2e8ce7d0cdb1ac"
+    },
+    {
+      "slug": "hdfc-bank-mclr-hike",
+      "headline": "HDFC Bank Just Raised Your Loan Costs. What Happens Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In early 2022, HDFC Bank's one-year MCLR was around 7.25%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the HDFC Bank MCLR hike but does not contain historical data regarding the bank's MCLR rates in early 2022.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim regarding the 15 bps hike and the effective date of November 7, 2026, is verified by the source. The historical comparison to 2022 is not supported by the provided text.",
+      "digestHash": "024ce225c3e29b48"
+    },
+    {
+      "slug": "air-india-reduces-losses",
+      "headline": "Air India Just Cut Losses By ₹2,000 Crore! What's Next?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the headline figure regarding the reduction in losses, the fiscal period, Singapore Airlines' stake, and its impact, are verified by multiple reliable sources published on the same day as the story. The narrative accurately reflects reported developments in Air India's financial performance and its implications for key stakeholders. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "db6e86d566857571"
+    },
+    {
+      "slug": "stand-up-india-scheme-extended",
+      "headline": "Government Extends 'Stand-Up India' Scheme. More Entrepreneurs Coming?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the extension of the 'Stand-Up India' scheme, the corpus amount, the target beneficiary count, and the extension year are directly supported by the provided source text.",
+      "digestHash": "63586ba7a6f36bff"
+    },
+    {
+      "slug": "nri-kyc-from-abroad",
+      "headline": "NRIs Can Now Do KYC From Abroad. Big Relief For Overseas Investors?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The story cites a Business Standard article (https://www.business-standard.com/nri/article/nris-can-complete-investment-kyc-from-abroad-starting-dec-3-what-changes-126111100918_1.html) as the source for the SEBI announcement.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text for the Business Standard article contains only a list of unrelated headlines and does not contain the text of the article regarding SEBI or NRI KYC requirements.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the story presents a coherent narrative, the provided source text is a search results page that does not contain the actual article content. Therefore, the specific claims regarding the SEBI announcement cannot be verified against the provided source.",
+      "digestHash": "ac129d9d9f5eb06b"
     }
   ]
 }
