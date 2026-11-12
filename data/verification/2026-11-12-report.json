@@ -1,5 +1,153 @@
 {
   "date": "2026-11-12",
-  "generatedAt": "2026-11-11T23:05:36.495Z",
-  "results": []
+  "generatedAt": "2026-11-12T08:24:45.029Z",
+  "results": [
+    {
+      "slug": "nvidia-ceo-jensen-huang-future",
+      "headline": "Nvidia's Board May Oust CEO. Will India's AI Ambitions Suffer?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including details about the board meeting, CEO's admissions, stock movements, company valuation, and ongoing investigations, were successfully verified against reliable sources published around the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e587a0be739461fa"
+    },
+    {
+      "slug": "india-visa-regime-simplified",
+      "headline": "Applying for an Indian Visa Just Got 70% Easier. Why Now?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Indian government has enacted a major simplification of its visa regime, effectively cutting the number of main visa categories from 13 to nine and sub-categories from 49 to 23.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a press release regarding the export of millets and contains no information about visa regime changes, visa categories, or application form fields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The most impactful change for applicants is the drastic reduction in required fields in visa application forms by 65-70%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a press release regarding the export of millets and contains no information about visa regime changes, visa categories, or application form fields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Announced by the Ministry of Home Affairs on November 11, 2026, this overhaul aims to create a 'compact, coherent, and responsive' visa system.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a press release regarding the export of millets and contains no information about visa regime changes, visa categories, or application form fields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "An earlier exercise in October 2025 saw the reduction of main visa categories from 22 to 13 and sub-categories from 63 to 49.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a press release regarding the export of millets and contains no information about visa regime changes, visa categories, or application form fields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: E-Visa Facility Countries = 172",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a press release regarding the export of millets and contains no information about visa regime changes, visa categories, or application form fields.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text is entirely unrelated to the claims made in the story. The source discusses the export of millets and the International Year of Millets 2023, whereas the story discusses changes to India's visa regime. Consequently, all claims regarding visa reforms are unverifiable based on the provided source.",
+      "digestHash": "2b8f48d35d7328f6"
+    },
+    {
+      "slug": "adani-chile-copper-investment",
+      "headline": "Adani to Fund Chile Copper Mine, Securing Key Metal Supply",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Adani Group's copper project financing in Chile, the commissioning of its Mundra smelter, Chile's status as the largest copper producer, and historical ONGC Videsh investments, have been verified by reliable sources published around the story's date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "16789de8de1af931"
+    },
+    {
+      "slug": "renew-ap-investment",
+      "headline": "ReNew to Invest ₹29,500 Crore in Andhra Pradesh Green Projects",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The move is part of a larger push by the Andhra Pradesh government to attract ₹10 trillion in investment commitments.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a ₹10 trillion investment target for the Andhra Pradesh government.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the ReNew investment are supported by the source. However, the claim regarding the ₹10 trillion investment target for the state government is not mentioned in the provided source text.",
+      "digestHash": "384c0bce64fd4845"
+    },
+    {
+      "slug": "moodys-india-growth-upgrade",
+      "headline": "Moody's Raises India's Growth Forecast to 7% for FY27",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Moody's has upgraded India's GDP growth forecast to 7% for FY27",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text only contains information regarding direct tax collections and does not mention Moody's, GDP growth forecasts, or any rating agency actions.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The estimate was previously capped at 6.5%",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention Moody's previous growth forecasts for India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India's growth is expected to outpace China's by 3 percentage points by 2028",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding China's growth or comparative projections for 2028.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a major economic event (a Moody's forecast upgrade) that is entirely absent from the provided source text. The source text only covers direct tax collection data.",
+      "digestHash": "6590daf20a22180c"
+    },
+    {
+      "slug": "direct-tax-growth",
+      "headline": "Direct Tax Collections Climb 11.8% to ₹14.42 Trillion",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the direct tax collection figures, growth percentages, budget target achievement, and component breakdowns are accurately supported by the provided source text.",
+      "digestHash": "bad5c8f9be524c1b"
+    },
+    {
+      "slug": "rbi-money-transfer-rules-consolidation",
+      "headline": "RBI Consolidates Money Transfer Rules for Non-Account Holders",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the central event of the RBI consolidating money transfer rules on November 11, 2026, have been thoroughly verified against reliable sources. The details regarding transaction limits, applicable channels, and the intent behind the consolidation are accurate as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3ff7295137c719fa"
+    }
+  ]
 }
