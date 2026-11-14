@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-14",
+  "generatedAt": "2026-11-14T07:46:38.476Z",
+  "results": [
+    {
+      "slug": "airtel-payments-bank-ipo-target-mittal",
+      "headline": "Airtel Payments Bank Eyes ₹10,000 Crore Deposits Before IPO?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Sunil Bharti Mittal announced that Airtel Payments Bank aims to reach ₹10,000 crore in deposits before launching its Initial Public Offering (IPO) in the next 3-4 years, targeting a significant scale-up from its current operations.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of Sunil Bharti Mittal, an IPO announcement, a ₹10,000 crore deposit target, or any future plans for Airtel Payments Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Currently, Airtel Payments Bank is nearing ₹4,000 crore in revenue",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this revenue figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The bank, which boasts a customer base of over 50 million",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention this customer base figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a search results page from Business Standard that does not contain any of the specific claims made in the story. The story appears to be fabricated as it lacks any supporting evidence in the provided source.",
+      "digestHash": "0d4ad0a5cb7a25a3"
+    },
+    {
+      "slug": "nse-gift-city-european-markets",
+      "headline": "NSE Opens European Stock Markets to Indian Investors via GIFT City",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "US ETFs (Mid-25) = 200",
+          "status": "UNVERIFIABLE",
+          "detail": "While NSE IFSC offers access to US securities, and ETFs are a mentioned category for international investment generally, no specific reliable source confirms that NSE IFSC offered exactly 200 US ETFs by mid-2025. Available information indicates NSE IFSC offered 50 US Equities (NSEIFSC Receipts) as of March 31, 2025, but not a specific count for ETFs.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central claims about NSE IFSC enabling access to over 8,200 European ETFs across seven markets via GIFT City are fully verified by multiple sources published on or around the story's date. The details regarding the Liberalised Remittance Scheme are also accurate. However, one data point in the chart, 'US ETFs (Mid-25) = 200', could not be independently verified with a reliable source for that specific number and time period. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "5228b8d312f551ec"
+    },
+    {
+      "slug": "vodafone-idea-q2-loss-widens",
+      "headline": "Vodafone Idea Loses ₹5,975 Crore. Can It Recover?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Q3 FY26 = -5200",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data for Q3 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Q4 FY26 = -5150",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data for Q4 FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core financial figures for Q2 FY27 (loss, revenue, ARPU) are supported by the source text. However, the chart includes data points for Q3 FY26 and Q4 FY26 which are not present in the provided source material.",
+      "digestHash": "15b8630adc217985"
+    },
+    {
+      "slug": "platinumrx-32m-funding-round",
+      "headline": "Online Pharmacy PlatinumRx Eyes $32 Million Funding. Why Now?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims regarding PlatinumRx's potential funding round, the lead investor, and the historical context of India's e-commerce and fintech sectors are independently verified by reliable sources published around the story's publication date. The story accurately reports ongoing discussions rather than finalized events for the funding round. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "9e7178207e225f57"
+    },
+    {
+      "slug": "paytm-wallet-revival-rbi-nod",
+      "headline": "Paytm Can Resume Wallet Services! What Does This Mean For Fintech?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "aiming to capture a larger slice of the estimated ₹400 billion Indian fintech market.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a ₹400 billion valuation or estimate for the Indian fintech market.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "India’s digital payments market is projected to reach $1 trillion by 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any projections regarding the size of India's digital payments market.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core news regarding Paytm's conditional RBI approval is verified by the provided Bloomberg source. However, the story includes specific market size figures that are not present in the source texts.",
+      "digestHash": "f311e653c71f5aae"
+    },
+    {
+      "slug": "sembcorp-green-infra-ipo-sebi-nod",
+      "headline": "Green Energy IPO Approved! Is India's Renewable Sector Heating Up?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "2022 = 119",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for 2022 or 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "2024 = 155",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain data points for 2022 or 2024.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central event regarding the SEBI approval for the IPO is verified by the source. However, the chart data points for 2022 and 2024 are not mentioned in the provided source text and are therefore unverifiable.",
+      "digestHash": "cef83a50b0addd13"
+    },
+    {
+      "slug": "adani-energy-solutions-intelli-smart-acquisition",
+      "headline": "Adani Completes ₹3,050 Crore IntelliSmart Acquisition. What's Next?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the target is to install 250 million smart meters by 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding a 250 million smart meter installation target or a 2025 deadline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Aggregate Technical & Commercial (AT&C) losses, which stood at around 17% in 2025",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding AT&C loss percentages for 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (the acquisition of IntelliSmart by Adani Energy Solutions for ₹3,050 crore) is verified by the provided source. However, the story includes specific statistics regarding smart meter targets and AT&C losses that are not mentioned in the source text.",
+      "digestHash": "94e2614b3f7fc2b4"
+    }
+  ]
+}
