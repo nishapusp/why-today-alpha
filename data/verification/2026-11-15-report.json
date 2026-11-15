@@ -1,6 +1,6 @@
 {
   "date": "2026-11-15",
-  "generatedAt": "2026-11-15T07:58:41.005Z",
+  "generatedAt": "2026-11-15T15:22:57.554Z",
   "results": [
     {
       "slug": "ai-retreat-india-stock-comeback",
@@ -85,6 +85,71 @@
       ],
       "notes": "The story correctly reports the net profit, revenue, and the primary driver (Mundra UMPP) as stated in the source. However, the EBITDA figure is not mentioned in the provided source text.",
       "digestHash": "099d199e5a5c8d25"
+    },
+    {
+      "slug": "india-egypt-explore-local-currency-trade-and-fta-options",
+      "headline": "India, Egypt Eye Local Currency Trade: Ditching the Dollar?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "India and Egypt are actively exploring options to facilitate trade in their respective local currencies",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions the headline 'India, Egypt look to strengthen trade, investment ties: Piyush Goyal' but does not contain any text confirming that local currency trade or de-dollarization discussions are taking place between India and Egypt.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Discussions also include the possibility of a Free Trade Agreement (FTA)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention an FTA between India and Egypt.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Bilateral trade (FY23) = $7.2 billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a list of headlines and snippets from a news website. While it mentions a headline about India and Egypt strengthening trade ties, it does not contain the body text or details regarding local currency trade, FTAs, or the $7.2 billion trade figure mentioned in the story.",
+      "digestHash": "e424217aded51730"
+    },
+    {
+      "slug": "fpis-pump-rs-84290-crore-into-indian-equities-in-november",
+      "headline": "Global Money Floods India! FPIs Pour in ₹84,290 Crore!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "₹34,843 crore being pulled out in October alone",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding FPI outflow figures for October 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "₹15,500 crore (approx) — Sep 2026 outflows",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no information regarding FPI outflow figures for September 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The headline figure of ₹84,290 crore is verified by the provided source. However, the specific monthly outflow figures for September and October 2026 are not mentioned in the source text and are therefore unverifiable.",
+      "digestHash": "1468b8c96f9ba253"
     }
   ]
 }
