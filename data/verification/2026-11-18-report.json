@@ -1,23 +1,7 @@
 {
   "date": "2026-11-18",
-  "generatedAt": "2026-11-18T02:43:51.787Z",
+  "generatedAt": "2026-11-18T10:39:26.565Z",
   "results": [
-    {
-      "slug": "sebi-revises-margin-requirements-commodity-derivatives",
-      "headline": "SEBI Tightens Margin Rules for Commodity Derivatives Trading",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
     {
       "slug": "bajaj-finance-institutional-placement-global-investors",
       "headline": "Global Giants Join Bajaj Finance's ₹11,700 Crore Share Sale",
@@ -72,6 +56,118 @@
       ],
       "notes": "The provided source text is a news aggregator page that does not mention Bajaj Finance or any capital raise. Consequently, all specific claims regarding the share sale and the loan book growth chart are unverifiable.",
       "digestHash": "134d0aa331377991"
+    },
+    {
+      "slug": "nvidia-stops-hopper-ai-chip-shipments-china",
+      "headline": "Nvidia Stops Shipping Hopper AI Chips to China, Impacting Revenue",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The chip giant had reported shipping $2.4 billion worth of these licensed Hopper products to China in the third quarter alone.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions Nvidia's decision to stop shipping chips but does not contain any financial data regarding $2.4 billion in Q3 revenue from China or Hopper products.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Nvidia Q3 FY27 Total Revenue = $24.3 Billion",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain this financial figure.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the source article confirms the headline news regarding Nvidia stopping shipments to China, the specific financial figures ($2.4 billion revenue and $24.3 billion total revenue) are not present in the provided source text.",
+      "digestHash": "bb05f2e19f91380f"
+    },
+    {
+      "slug": "rbi-remittance-rule-change",
+      "headline": "RBI Relaxes Remittance Rules for Walk-in Bank Customers",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Banks will standardize walk-in remittance procedures by Q1 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the RBI's Domestic Money Transfer Directions, 2026, were effective immediately on November 11, 2026, and will require banks to update their procedures, a specific deadline for 'standardizing walk-in remittance procedures by Q1 2027' is not explicitly mentioned in the search results as an RBI mandate or widely reported timeline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the RBI's issuance of new Domestic Money Transfer Directions and the key limit for walk-in NEFT transfers. Most factual claims are well-supported by multiple recent sources. One specific future timeline (Q1 2027 standardization) could not be definitively verified from the available information. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "65e0e12addf30d00"
+    },
+    {
+      "slug": "m3m-jacob-co-luxury-housing",
+      "headline": "M3M and Jacob & Co. Announce Second Ultra-Luxury Project",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The project, named M3M Jacob & Co. Residences, is projected to generate a topline of ₹3,300 crore",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text states the project is projected to generate a topline of ₹3,300 crore, but the story does not explicitly name the project 'M3M Jacob & Co. Residences' in the body text provided, though it is implied by the context of the partnership.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story contains a placeholder '[object Object]' in the 'TIME MACHINE (pastEvents)' section, which provides no factual information.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the core details of the M3M and Jacob & Co. partnership. The 'WARN' verdict is issued due to the inclusion of a technical placeholder error in the 'pastEvents' section and a minor ambiguity regarding the project name in the body text.",
+      "digestHash": "96914ac5b9ad0de5"
+    },
+    {
+      "slug": "ashoka-buildcon-nhai-win",
+      "headline": "Ashoka Buildcon Shares Soar 10% on NHAI Project Win",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Final contract signing will likely be completed in early Q1 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the order is scheduled to be executed over the next 18 months, but it does not provide a timeline or estimate for the formal contract signing phase.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story fails to provide the actual content for the past events, displaying a placeholder object reference instead.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core factual claims regarding the project value and share price movement are verified by the source. However, the story includes placeholder text for past events and makes an unsubstantiated claim regarding the timeline for the contract signing.",
+      "digestHash": "1e4c1d081f464203"
+    },
+    {
+      "slug": "tata-sons-rbi-listing",
+      "headline": "RBI Instructs Tata Sons on Listing Requirements",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story is accurate and timely. All specific claims regarding the RBI's instruction to Tata Sons on listing requirements, the historical context, regulatory rationale, and future implications are well-supported by multiple reliable sources published around the story's date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "1c5f3f194945b921"
     }
   ]
 }
