@@ -1,6 +1,6 @@
 {
   "date": "2026-11-18",
-  "generatedAt": "2026-11-18T10:39:26.565Z",
+  "generatedAt": "2026-11-18T17:05:54.566Z",
   "results": [
     {
       "slug": "bajaj-finance-institutional-placement-global-investors",
@@ -168,6 +168,71 @@
       "issues": [],
       "notes": "The story is accurate and timely. All specific claims regarding the RBI's instruction to Tata Sons on listing requirements, the historical context, regulatory rationale, and future implications are well-supported by multiple reliable sources published around the story's date. (escalated from source mode — original links were unfetchable)",
       "digestHash": "1c5f3f194945b921"
+    },
+    {
+      "slug": "spicejet-fundraise-cash-crunch",
+      "headline": "SpiceJet to Raise ₹5,500 Crore as Cash Crunch Intensifies",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the information provided in the source text regarding SpiceJet's board approval for a ₹5,500 crore fundraising plan and the context surrounding its financial situation.",
+      "digestHash": "9bbb0b0645e93f27"
+    },
+    {
+      "slug": "andhra-semiconductor-policy",
+      "headline": "Andhra Pradesh Unveils New Semiconductor Policy, 5,000-Acre Park",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Andhra Pradesh has amended its semiconductor policy, including plans for a sprawling 5,000-acre dedicated semiconductor park near Tirupati. The state will offer up to 80% capital support for eligible projects.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions 'Andhra launches semiconductor policy, offering up to 80% capital support' in the headline, but the actual content of the source text is missing/not provided in the input. The provided source text block only contains other unrelated news items.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The source text provided does not contain the body of the article regarding Andhra Pradesh's semiconductor policy; it only lists the headline in the title of the source link and then provides unrelated news snippets. Therefore, the specific details about the 5,000-acre park and the 80% support cannot be verified against the provided text.",
+      "digestHash": "9da634a59cfc9e6b"
+    },
+    {
+      "slug": "goldman-sachs-rbi-rate-hike-forecast",
+      "headline": "Goldman Sachs Forecasts 75 Basis Point RBI Rate Hike by Mid-2027",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Coming on the heels of today's higher-than-expected October CPI inflation data (6.09%)",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention October CPI inflation data or a figure of 6.09%.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: Early 2023 = 6.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain historical data regarding the repo rate in early 2023.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The story correctly reports the Goldman Sachs forecast as stated in the source text. However, it includes specific data points (October CPI inflation and historical 2023 repo rates) that are not present in the provided source material, rendering them unverifiable.",
+      "digestHash": "715ff63c42341ccb"
+    },
+    {
+      "slug": "sebi-extended-market-hours-not-priority",
+      "headline": "Extended Market Hours Not a Priority, Says SEBI Chief Madhabi Puri Buch",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims, including the SEBI Chairperson's stance and the current equity trading hours, are supported by the provided source text.",
+      "digestHash": "a89e4f6566ee378b"
     }
   ]
 }
