@@ -1,6 +1,6 @@
 {
   "date": "2026-11-19",
-  "generatedAt": "2026-11-18T19:27:30.700Z",
+  "generatedAt": "2026-11-19T07:16:16.512Z",
   "results": [
     {
       "slug": "us-green-card-rules-impact-india",
@@ -112,6 +112,71 @@
       ],
       "notes": "The provided source text is entirely unrelated to the claims made in the story. The source discusses the LIC IPO from 2022 and does not mention Mahanadi Coalfields Ltd or any of the specific financial figures or events described in the article.",
       "digestHash": "b40498fa0f65359e"
+    },
+    {
+      "slug": "fpi-inflows-india-november-record",
+      "headline": "Global Funds Pour ₹1 Trillion Into Indian Stocks This Month",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "FPIs were net sellers in Indian markets, withdrawing approximately ₹34,843 crore [in October 2026]",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any data regarding FPI net selling or outflow figures for October 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding the ₹1 trillion FPI inflow is supported by the headline of Source 1. However, the specific figure for October 2026 outflows is not mentioned in any of the provided source texts.",
+      "digestHash": "a74829aa62d95d97"
+    },
+    {
+      "slug": "gold-prices-fall-india-jewellery-impact",
+      "headline": "Why Global Gold Prices Just Tumbled, Hurting Indian Jewellers",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Analysts predict worst annual decline for gold in 13 years.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any mention of a 13-year forecast or historical comparison regarding gold's annual decline.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY24 = 65",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain data regarding India's gold imports for FY24.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FY25 = 68",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain data regarding India's gold imports for FY25.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "While the core figures regarding FY26 and FY27 gold imports are supported by the provided source text, the article includes historical claims and chart data points (FY24 and FY25) that are not present in the source material.",
+      "digestHash": "8f6ef1ab1f922214"
+    },
+    {
+      "slug": "bengaluru-ai-startup-hub-asia",
+      "headline": "Bengaluru Now Asia's Second-Biggest AI Startup Hub. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including Bengaluru's ranking as Asia's second-largest AI startup cluster, the $3.77 billion in deep-tech funding, the comparison with Delhi-NCR, and the 47% share of national venture funding, are consistently verified by multiple reliable sources, primarily the 'Bengaluru Innovation Report 2026' released on the publication date. The temporal scope for funding figures is generally from 2010 through 2026 year-to-date, which aligns with the story's overall characterization of established prominence. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "7f6538a2dd942a49"
     }
   ]
 }
