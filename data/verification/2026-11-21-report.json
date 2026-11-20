@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-21",
+  "generatedAt": "2026-11-20T23:07:07.442Z",
+  "results": [
+    {
+      "slug": "anthropic-shares-tumble-after-ipo",
+      "headline": "AI Giant Anthropic Shares Tumble After IPO. What Happened?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "the S&P 500 and Dow Jones Industrial Average entering correction territory",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the S&P 500 or the Dow Jones Industrial Average entering correction territory.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "the Nasdaq Composite crashing over 1,200 points, erasing its 2026 gains",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not mention the Nasdaq Composite crashing by 1,200 points or erasing its 2026 gains.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the Anthropic IPO valuation and the share price decline as reported in the source texts. However, it includes specific claims regarding the S&P 500, Dow Jones, and Nasdaq performance that are not present in the provided source material.",
+      "digestHash": "3433382438f63725"
+    },
+    {
+      "slug": "sebi-tenure-caps-exchange-md",
+      "headline": "SEBI Wants New Rules for Stock Exchange Bosses. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source article regarding SEBI's proposed governance norms for Market Infrastructure Institutions, including the 12-year tenure cap for MDs.",
+      "digestHash": "b770c6869d920253"
+    },
+    {
+      "slug": "nikhil-gupta-sentencing-us-murder-plot",
+      "headline": "Indian Man Gets 19.5 Years in US Murder Plot. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the sentence length, guilty plea details, allegations of Indian intelligence involvement, India's ongoing inquiry, and dates of referenced historical events, were accurately verified by multiple reliable sources as of the publication date. The central event of Nikhil Gupta's sentencing was confirmed to have occurred on November 20, 2026, aligning with the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "db5397ef8c886ac1"
+    },
+    {
+      "slug": "mca-nfra-recruitment-changes",
+      "headline": "MCA Proposes Extending NFRA Board Members' Deputation Tenure",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding the MCA's proposal to extend the NFRA deputation tenure from five to seven years, as well as the historical context of the NFRA's establishment.",
+      "digestHash": "9e1b4995240a1df7"
+    }
+  ]
+}
