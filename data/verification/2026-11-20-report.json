@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "generatedAt": "2026-11-20T00:32:30.098Z",
+  "generatedAt": "2026-11-20T04:17:32.181Z",
   "results": [
     {
       "slug": "india-japan-defence-cooperation",
@@ -178,6 +178,50 @@
       ],
       "notes": "The story attributes specific policy announcements to a SEBI official, but the provided source text contains no mention of this event, the official, or the framework described. The source text focuses on other market news and does not support the central claims of the story.",
       "digestHash": "42e8eb0a718a9652"
+    },
+    {
+      "slug": "delta-electronics-ai-data-centers",
+      "headline": "AI Demands Triple Revenue For This Indian Tech Giant.",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "sebi-plans-faster-ipo-timelines",
+      "headline": "SEBI Wants Your IPO Sooner: Will New Rules Speed Things Up?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "SEBI has announced plans to significantly cut down the time required for both Initial Public Offerings (IPOs) and rights issues.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Business Standard, 2026-11-19) discusses SEBI weighing global stock lending models and keeping trading hours on hold; it contains no mention of SEBI announcing plans to reduce IPO or rights issue timelines.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This announcement by SEBI today is crucial because it addresses a long-standing concern for companies looking to raise capital through the public markets.",
+          "status": "UNVERIFIABLE",
+          "detail": "There is no mention of such an announcement in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story claims SEBI has announced plans to expedite IPO timelines, but the provided source text is entirely unrelated to this topic, focusing instead on stock lending models and trading hours. Consequently, the central event is not supported by the source.",
+      "digestHash": "cf30909c6ce2ccf8"
     }
   ]
 }
