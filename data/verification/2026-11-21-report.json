@@ -1,6 +1,6 @@
 {
   "date": "2026-11-21",
-  "generatedAt": "2026-11-21T08:03:44.260Z",
+  "generatedAt": "2026-11-21T15:54:03.231Z",
   "results": [
     {
       "slug": "anthropic-shares-tumble-after-ipo",
@@ -112,6 +112,89 @@
       ],
       "notes": "The core facts regarding the tax demand amounts and the ITAT stay are accurate. However, the story incorrectly implies the stay was granted on the Friday of the publication week and speculates on a 2027 timeline for a final ruling, neither of which is supported by the provided source.",
       "digestHash": "09fae88b8d5497fd"
+    },
+    {
+      "slug": "adani-defence-anti-tank-missile-pokhran",
+      "headline": "Adani Defence Tests New Anti-Tank Missile. What It Means for India.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the central event of Adani Defence & Aerospace successfully testing a vehicle-mounted anti-tank guided missile system at Pokhran, are verified by multiple reliable sources dated November 21, 2026. Details regarding the system's features, its indigenous development, the location of trials, and historical context claims about India's defence imports and 'Make in India' initiatives are all accurate. Future-looking statements are appropriately framed as expectations. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "242a06ed561c3ce6"
+    },
+    {
+      "slug": "sebi-proposes-easing-offshore-fund-disclosure-rules",
+      "headline": "SEBI May Ease Disclosure Rules for Offshore Funds. Why That Helps India.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "SEBI has proposed eliminating additional disclosure requirements for certain Foreign Portfolio Investors (FPIs).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source texts do not contain any information regarding SEBI proposals or FPI disclosure requirements. Source 1 discusses a government denial of a fake news report about Kashmir, and Source 2 discusses various economic and political news items, none of which mention SEBI or FPI disclosure rules.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FPI Inflows (Nov 26, partial) = ₹1 Lakh Crore (previous: ₹34,843 Crore — Oct 26 outflows)",
+          "status": "UNVERIFIABLE",
+          "detail": "These figures do not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding SEBI's proposal is entirely absent from the provided source texts. The sources provided are unrelated to the subject matter of the article.",
+      "digestHash": "bc8c6afea5a43136"
+    },
+    {
+      "slug": "himachal-pradesh-local-employment-mandate",
+      "headline": "Himachal Pradesh Now Mandates 80% Local Jobs For New Industries. Why?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Himachal Pradesh passing a new Industrial Act with an 80% local job quota and a Single Window System, have been verified by reliable sources as of the publication date of 2026-11-21. Details regarding similar laws in other states like Haryana, Jharkhand, and Andhra Pradesh, and their legal challenges, are also accurately presented. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "f04f33d46149c786"
+    },
+    {
+      "slug": "rbi-mis-selling-warning-sales-targets",
+      "headline": "Banker Bonuses Hurting YOU? RBI Flags Mis-selling Root Cause.",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Delivering a speech at the 11th annual Gatekeepers of Governance Summit in Mumbai, Murmu specifically called on financial institutions to scrutinize their incentive programs.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a search result page that contains no article content, no mention of an RBI Deputy Governor named S.C. Murmu, and no mention of a 'Gatekeepers of Governance Summit'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In June 2026, the RBI issued new guidelines broadening the definition of mis-selling and holding banks accountable for third-party product sales.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding RBI guidelines issued in June 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Historically, high commissions for products like ULIPs, sometimes as high as 40% of the first year's premium, led to them being aggressively marketed",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention ULIP commission rates or historical marketing practices.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a blank search results page from Business Standard and does not contain any of the factual claims made in the story. Consequently, all specific claims regarding the RBI Deputy Governor's speech, specific dates, and historical figures are unverifiable.",
+      "digestHash": "e7c4b11e74a86271"
     }
   ]
 }
