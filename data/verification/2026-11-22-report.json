@@ -1,6 +1,6 @@
 {
   "date": "2026-11-22",
-  "generatedAt": "2026-11-21T19:12:00.219Z",
+  "generatedAt": "2026-11-21T23:54:33.400Z",
   "results": [
     {
       "slug": "cop31-climate-talks-deadlock-g77",
@@ -178,6 +178,43 @@
       ],
       "notes": "The entire story is based on an event (India-Singapore defence talks in Kochi) that is not mentioned in the provided source text. While the source text contains various news items, none of them relate to the subject of the story.",
       "digestHash": "5096d0afe52727a0"
+    },
+    {
+      "slug": "nielit-opens-ai-quantum-university",
+      "headline": "India's First AI & Quantum University Opens! Is This the Future?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the inauguration of India's first dedicated AI and Quantum University by NIELIT, the market projections for AI, funding for the National Quantum Mission, and historical context regarding IITs, have been verified against reliable sources as of the publication date. The future timelines for student admissions and establishing labs are also consistent with reported plans. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "887e3a2290135aac"
+    },
+    {
+      "slug": "gstn-adds-metro-rail-e-way-bill-system-2026",
+      "headline": "Why Are Freight Trains Running Underground Through City Metros?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "30 days testing window opened in the sandbox environment for logistics software developers.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions that the facility is released in the sandbox environment for testing, but it does not specify a 30-day duration for this window.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "20-30% reduction in urban delivery transit times projected for inner-city parcel logistics.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not provide any projections or statistics regarding the reduction in transit times.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core news regarding the addition of metro rail as a transport mode in the GST e-way bill system is accurately reported. However, the story includes specific quantitative projections and testing timelines that are not supported by the provided source text.",
+      "digestHash": "09d305f4bc323243"
     }
   ]
 }
