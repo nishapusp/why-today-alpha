@@ -1,6 +1,6 @@
 {
   "date": "2026-11-21",
-  "generatedAt": "2026-11-20T23:07:07.442Z",
+  "generatedAt": "2026-11-21T08:03:44.260Z",
   "results": [
     {
       "slug": "anthropic-shares-tumble-after-ipo",
@@ -56,6 +56,62 @@
       "issues": [],
       "notes": "The story accurately reflects the details provided in the source text regarding the MCA's proposal to extend the NFRA deputation tenure from five to seven years, as well as the historical context of the NFRA's establishment.",
       "digestHash": "9e1b4995240a1df7"
+    },
+    {
+      "slug": "indusind-bank-terminates-ex-ceo-seeks-pay-recovery",
+      "headline": "Former IndusInd CEO Fired, Bank Seeks Pay Recovery Since 2020!",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "IndusInd Bank has terminated its former Chief Executive Officer, Sumant Kathpalia, and is seeking to recover his pay dating back to 2020.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions 'IndusInd Bank invokes clawback provisions against Kathpalia from 2020' in a headline list, but the actual article content provided does not contain any text confirming the termination of Sumant Kathpalia or the details of the clawback.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "These discrepancies were severe enough to cause a $230 million (₹1,900 crore approx.) impact on the bank’s financial statements.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any $230 million or ₹1,900 crore financial impact related to IndusInd Bank.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story reports on a major corporate event (termination of a CEO and a $230 million financial impact) that is not supported by the provided source text. While the source headline mentions invoking clawback provisions, the body of the source text does not contain the details or confirmation of the claims made in the story.",
+      "digestHash": "3eb59dd295019149"
+    },
+    {
+      "slug": "itat-mumbai-stays-tax-demand-singapore-government",
+      "headline": "Tax Tribunal Stays Massive ₹8,520 Crore Tax Demand on Singapore Government",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "On Friday, ITAT Mumbai granted a comprehensive stay",
+          "status": "UNVERIFIABLE",
+          "detail": "The source states the order was issued on October 23, 2026, which was a Friday, but the story implies the event happened on the Friday immediately preceding the publication date (November 20, 2026), which would be November 20, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "a final binding ruling expected by mid-2027",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the next hearing is in December and that the stay is for 180 days, but it does not provide a timeline for a final binding ruling.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the tax demand amounts and the ITAT stay are accurate. However, the story incorrectly implies the stay was granted on the Friday of the publication week and speculates on a 2027 timeline for a final ruling, neither of which is supported by the provided source.",
+      "digestHash": "09fae88b8d5497fd"
     }
   ]
 }
