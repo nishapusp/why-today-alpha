@@ -1,6 +1,6 @@
 {
   "date": "2026-11-22",
-  "generatedAt": "2026-11-21T23:54:33.400Z",
+  "generatedAt": "2026-11-22T03:28:13.348Z",
   "results": [
     {
       "slug": "cop31-climate-talks-deadlock-g77",
@@ -215,6 +215,43 @@
       ],
       "notes": "The core news regarding the addition of metro rail as a transport mode in the GST e-way bill system is accurately reported. However, the story includes specific quantitative projections and testing timelines that are not supported by the provided source text.",
       "digestHash": "09d305f4bc323243"
+    },
+    {
+      "slug": "cii-proposes-15-financial-sector-reforms",
+      "headline": "India's Industry Body Proposes 15 Financial Sector Reforms",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The Confederation of Indian Industry (CII) has recommended 15 financial sector reforms to the government to help India achieve its ambitious USD 26.5 trillion economy target.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) is a list of headlines and summaries from Business Standard. While the URL in the source text mentions 'cii-proposes-15-financial-sector-reforms', the actual text provided does not contain any article content, details, or confirmation regarding the CII submitting these proposals.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: 2026E = 4.5",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data points or projections for a 2026 economy size of 4.5 trillion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2030 (CII Goal) = 7",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data points or projections for a 2030 economy size of 7 trillion.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        }
+      ],
+      "notes": "The provided source text is a collection of headlines and snippets from Business Standard. It does not contain the body of an article confirming the CII's submission of 15 reforms, nor does it provide the data points used in the story's chart.",
+      "digestHash": "d0d1cb496ac933ed"
     }
   ]
 }
