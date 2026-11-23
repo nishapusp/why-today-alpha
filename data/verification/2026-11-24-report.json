@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-24",
+  "generatedAt": "2026-11-23T20:10:41.837Z",
+  "results": [
+    {
+      "slug": "tata-steel-apl-apollo-block-deal",
+      "headline": "Tata Steel Buys ₹5,825 Crore Stake, Shaking Up Pipe Market",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The demand for steel pipes and tubes in India grew by an estimated 15% in the last fiscal year",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data or mention regarding the growth rate of the steel pipes and tubes market in India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "There's also the question of cultural integration between two distinct corporate entities, which can sometimes lead to operational inefficiencies if not managed carefully.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the deal and analyst reactions but does not discuss cultural integration or operational inefficiencies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core facts regarding the acquisition value, share count, and the mandatory open offer are supported by the source. However, the story includes specific market growth statistics and qualitative analysis regarding 'cultural integration' that are not present in the provided source text.",
+      "digestHash": "f57c984fd04fcc7b"
+    },
+    {
+      "slug": "sarvam-ai-multilingual-api",
+      "headline": "Indian AI Firm Unleashes Multilingual Voice Tech for 22 Languages",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims in the story, including the launch of Sarvam AI's multilingual dictation API, the number of supported Indian languages, the benchmarking against global models, and the details of Google's Project Euphonia, have been verified against reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "cddc3568b5459176"
+    },
+    {
+      "slug": "nsel-one-time-settlement-default-ends",
+      "headline": "₹1,950 Crore Payment Ends India's 14-Year Exchange Default Saga",
+      "verdict": "ERROR",
+      "neverVerified": true,
+      "issues": [],
+      "error": "Gemini API error (429) on gemini-3.5-flash: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceede"
+    },
+    {
+      "slug": "india-private-sector-pmi-november-2026",
+      "headline": "India's Private Sector Activity Hits 5-Month High in November",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Compared to June 2026, when the Composite PMI stood at 54.8, today's reading of 56.3 clearly demonstrates a re-acceleration of private sector activity...",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text confirms November's figure is a five-month high, but does not mention the June 2026 Composite PMI figure of 54.8.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINTS: Jun '26 = 54.8, Jul '26 = 55.1, Aug '26 = 55.3, Sep '26 = 55.9, Oct '26 = 55.5",
+          "status": "UNVERIFIABLE",
+          "detail": "None of the historical monthly PMI readings for June through October 2026 appear in the cited source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central reporting on India's November Flash Composite PMI rising to 56.3 and hitting a five-month high is verified by the source. However, the specific historical monthly PMI values included in the body text and chart are unsupported by the provided source text.",
+      "digestHash": "5aa63e1263e67928"
+    }
+  ]
+}
