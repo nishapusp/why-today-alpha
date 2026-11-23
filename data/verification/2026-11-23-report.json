@@ -1,6 +1,6 @@
 {
   "date": "2026-11-23",
-  "generatedAt": "2026-11-22T20:36:58.701Z",
+  "generatedAt": "2026-11-23T01:14:04.859Z",
   "results": [
     {
       "slug": "cop31-ends-without-pact",
@@ -121,6 +121,163 @@
       ],
       "notes": "The source text confirms the ESIC notification and the simplification of benefit claims, but it does not provide the figure of 40 million workers. This figure is treated as unverified as it is not present in the provided source.",
       "digestHash": "80eb0eda25f3e5d6"
+    },
+    {
+      "slug": "rbi-governor-urges-small-business-lending",
+      "headline": "RBI Chief Urges Banks: Lend More to Small Businesses!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "His remarks set the stage for a crucial meeting with executives from Non-Banking Financial Companies (NBFCs) and Microfinance Institutions (MFIs) scheduled for November 23, 2026.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text makes no mention of a scheduled meeting between the RBI Governor and NBFC/MFI executives on November 23, 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "MSME lending has already surpassed ₹40 lakh crore in India.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any data regarding the total volume of MSME lending in India.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the Governor's comments from the Pune event. However, it includes specific claims regarding a meeting with NBFC/MFI executives and a total MSME lending figure that are not supported by the provided source text.",
+      "digestHash": "9396a179c5c533c8"
+    },
+    {
+      "slug": "fssai-sanctions-prosecution-bisleri",
+      "headline": "Bisleri Under Fire: FSSAI Sanctions Prosecution Over Unsafe Water",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "FSSAI has sanctioned prosecution against Bisleri International Pvt Ltd",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions a headline 'Food regulator allows prosecution against Bisleri for 'unsafe' water' in a list of links, but the actual content of the article is not provided in the source text. The source text provided is a collection of headlines and snippets from a news aggregator page, not the full article detailing the FSSAI action.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "FSSAI has also initiated similar actions against several other food businesses, including Vasant Masala Pvt Ltd, Tit-Bit Foods (India) Pvt Ltd, Mimansa Industries Private Limited, and Asha Confectionery",
+          "status": "UNVERIFIABLE",
+          "detail": "These specific company names and the details of their alleged violations do not appear in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In October 2024, FSSAI removed the mandatory Bureau of Indian Standards (BIS) certification requirement for packaged drinking water",
+          "status": "UNVERIFIABLE",
+          "detail": "This historical claim regarding FSSAI policy changes does not appear in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "authorities analyzed 2.23 lakh food samples in 2025-26, with over 40,000 samples found non-conforming to safety standards",
+          "status": "UNVERIFIABLE",
+          "detail": "These statistics regarding FSSAI sample analysis do not appear in the provided source text.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a list of headlines and snippets from a news website. While one headline mentions Bisleri, the actual details of the prosecution, the other companies involved, and the historical data points cited in the story are not contained within the provided source text.",
+      "digestHash": "1220829c9adc5c08"
+    },
+    {
+      "slug": "india-eu-trade-pact-december-signing",
+      "headline": "Historic India-EU Trade Deal Likely Signed Next Month!",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Bilateral trade with EU currently stands at over $130 billion.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention a $130 billion figure for bilateral trade; the story's own chart data points to $118.7 billion for 2025.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Talks for an India-EU FTA... first began in 2007 but stalled in 2013 due to persistent disagreements on issues like market access for automobiles, intellectual property rights, and data security.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the history of the FTA negotiations, the start year of 2007, or the specific reasons for the 2013 stall.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim regarding the December 16 signing and the 93% duty-free access is verified by the source. However, the story includes historical and trade volume figures that are not supported by the provided source text.",
+      "digestHash": "e9aa56fb44f3d4b6"
+    },
+    {
+      "slug": "tata-sons-ipo-board-decision-2026",
+      "headline": "Tata Sons IPO Decision Expected THIS Week!",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "The board of Tata Sons... is expected to make a critical decision this week regarding its potential Initial Public Offering (IPO).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text mentions Tata Sons only in the context of a headline regarding regulatory uncertainty and does not contain any information about a board meeting occurring 'this week' or a decision on an IPO.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Valuation could exceed ₹11 lakh crore ($130 billion).",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention any valuation figures for Tata Sons.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The RBI introduced a new four-tiered regulatory framework for NBFCs in October 2021... Tata Sons... fell into this 'Upper Layer' category in September 2022.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the RBI's regulatory framework timeline or Tata Sons' classification date.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Reliance Group's strategy of listing individual operating companies while keeping the core holding entity private for many years allowed for focused growth in each business.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Reliance Group or its corporate structure strategy.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The Bajaj Group, for instance, has listed multiple entities but maintained a holding company structure.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention the Bajaj Group.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text is a general news summary that does not contain any of the specific claims made in the story regarding Tata Sons' board meetings, valuation, or historical regulatory timelines.",
+      "digestHash": "217d21b34e4e817a"
     }
   ]
 }
