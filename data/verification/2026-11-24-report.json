@@ -1,6 +1,6 @@
 {
   "date": "2026-11-24",
-  "generatedAt": "2026-11-23T20:10:41.837Z",
+  "generatedAt": "2026-11-23T20:41:57.463Z",
   "results": [
     {
       "slug": "tata-steel-apl-apollo-block-deal",
@@ -40,14 +40,6 @@
       "digestHash": "cddc3568b5459176"
     },
     {
-      "slug": "nsel-one-time-settlement-default-ends",
-      "headline": "₹1,950 Crore Payment Ends India's 14-Year Exchange Default Saga",
-      "verdict": "ERROR",
-      "neverVerified": true,
-      "issues": [],
-      "error": "Gemini API error (429) on gemini-3.5-flash: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceede"
-    },
-    {
       "slug": "india-private-sector-pmi-november-2026",
       "headline": "India's Private Sector Activity Hits 5-Month High in November",
       "verdict": "WARN",
@@ -74,6 +66,14 @@
       ],
       "notes": "The central reporting on India's November Flash Composite PMI rising to 56.3 and hitting a five-month high is verified by the source. However, the specific historical monthly PMI values included in the body text and chart are unsupported by the provided source text.",
       "digestHash": "5aa63e1263e67928"
+    },
+    {
+      "slug": "india-nepal-aid-package",
+      "headline": "India Promises Nepal ₹15,000 Crore Aid; Deepens Ties Beyond Disputes",
+      "verdict": "ERROR",
+      "neverVerified": true,
+      "issues": [],
+      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
     }
   ]
 }
