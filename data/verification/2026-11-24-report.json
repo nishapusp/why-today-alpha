@@ -1,6 +1,6 @@
 {
   "date": "2026-11-24",
-  "generatedAt": "2026-11-23T20:41:57.463Z",
+  "generatedAt": "2026-11-24T08:26:15.429Z",
   "results": [
     {
       "slug": "tata-steel-apl-apollo-block-deal",
@@ -68,12 +68,154 @@
       "digestHash": "5aa63e1263e67928"
     },
     {
-      "slug": "india-nepal-aid-package",
-      "headline": "India Promises Nepal ₹15,000 Crore Aid; Deepens Ties Beyond Disputes",
-      "verdict": "ERROR",
-      "neverVerified": true,
-      "issues": [],
-      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
+      "slug": "sbi-mf-south-indian-bank-stake",
+      "headline": "Why RBI allowed SBI Mutual Fund to acquire 9.99% of South Indian Bank",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Furthermore, if aggregate mutual fund shareholding drops below 5%, subsequent increases back up to 9.99% will require fresh RBI clearance.",
+          "status": "UNVERIFIABLE",
+          "detail": "The cited source text does not mention this specific regulatory condition regarding shareholding dropping below 5% and requiring fresh clearance.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event—RBI's approval for SBI Mutual Fund to acquire up to 9.99% in South Indian Bank—and all core shareholding numbers are accurately reported from the source. However, the detail regarding fresh clearance if shareholding falls below 5% does not appear in the source text.",
+      "digestHash": "ba7613f47a41ee77"
+    },
+    {
+      "slug": "cortexspark-sebi-approval-deeptech-fund",
+      "headline": "Why SEBI approved a ₹1,000 crore deeptech fund by CortexSpark",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Compared to 2021 when deeptech received less than 5% of total Indian venture funding",
+          "status": "UNVERIFIABLE",
+          "detail": "While general trends and deeptech funding figures for other years (e.g., 2025, 2026) were found, a specific percentage of total Indian venture funding attributed to deeptech in 2021 as 'less than 5%' could not be reliably confirmed from available sources.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event of CortexSpark Ventures receiving SEBI approval for its ₹1,000 crore Category II AIF on November 24, 2026, is well-supported by multiple recent news reports. Most other factual claims are also verified. However, the specific percentage of deeptech funding relative to total Indian venture funding in 2021 could not be independently confirmed, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "ca785bdaef9198b7"
+    },
+    {
+      "slug": "kolkata-police-anti-drone-shield",
+      "headline": "Kolkata Police Prepares Anti-Drone Shield Amid Rising Security Threats",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The police force is expected to complete the procurement process by late January 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source states the procurement is likely to be completed within two months from November 24, 2026, which would be late January 2027, but the source text itself does not explicitly mention or confirm the date 'January 2027'.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Full operational status of the anti-drone shield is expected by January 2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source mentions the procurement process is likely to be completed within two months, but it does not state that the system will be fully operational by January 2027.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reflects the source regarding the procurement timeline of two months. However, it extrapolates specific future dates (January 2027) for completion and operational status that are not explicitly stated in the provided source text.",
+      "digestHash": "00fcab719c102fda"
+    },
+    {
+      "slug": "ig-defence-jwala-mk1-micro-missile-pokhran-test-2026",
+      "headline": "Why a private Indian company tested micro-missiles in Pokhran",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Defense startup IG Defence successfully test-fired JWALA MK-1, India's first private-sector AI-powered micro-missile system, at Pokhran firing range on Monday.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of 'IG Defence', 'JWALA MK-1', or a missile test at Pokhran.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "On Monday, November 23, 2026, defense technologies manufacturer IG Defence conducted successful field trials of the JWALA MK-1 micro-missile system at the Pokhran field firing range.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any mention of 'IG Defence', 'JWALA MK-1', or a missile test at Pokhran.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is based on an event (the testing of the JWALA MK-1 missile by IG Defence) that is not mentioned in the provided source text. The source text focuses on other topics such as Nvidia, real estate, and various economic reports.",
+      "digestHash": "9ea4ee310de05d65"
+    },
+    {
+      "slug": "nse-market-cap-rank",
+      "headline": "NSE Becomes World’s Fifth-Largest Listed Exchange by Market Cap",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "In 2015, the NSE was a regional powerhouse",
+          "status": "UNVERIFIABLE",
+          "detail": "While the story's overall trajectory of NSE's growth is well-supported by its current ranking, specific data or a historical global ranking to verify NSE's status as a 'regional powerhouse' in 2015 could not be found in the search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claim that the National Stock Exchange (NSE) has become the world's fifth-largest listed exchange by market capitalization, overtaking Nasdaq and HKEX, is strongly verified by multiple reliable sources as of November 20-21, 2026. Most supporting claims regarding growth drivers, market milestones, and future strategies are also corroborated. One historical characterization for 2015 could not be specifically verified with data. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "a43ffb545a731661"
+    },
+    {
+      "slug": "corporate-debt-rush",
+      "headline": "India Inc Rushes to Raise $2.7 Billion Debt Before Expected RBI Rate Hike",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "ahead of an anticipated RBI repo rate hike / a decision many analysts expect the RBI to finalize soon to control inflationary pressures.",
+          "status": "WRONG",
+          "detail": "The Reserve Bank of India (RBI) already raised the repo rate by 25 basis points to 5.50% on October 7, 2026, following its Monetary Policy Committee (MPC) meeting held from October 5-7, 2026. The decision was not anticipated or expected soon as of the story's publication date, but had already been finalized over a month prior.",
+          "correction": "following the RBI's repo rate hike on October 7, 2026, and ahead of an anticipated further hike in December.",
+          "source": "5paisa, BookOfExams, Mint, Shriram Finance, BankBazaar, Bankersadda, Arthzo, TradingView, Utkarsh Classes, Dainik Jagran English",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "RBI repo rate = 5.25% — Confirmed as of 2026-08-03.",
+          "status": "STALE",
+          "detail": "While the RBI repo rate was indeed 5.25% as of August 3, 2026, and remained so until October 7, 2026, it was subsequently hiked to 5.50% on October 7, 2026. Therefore, 5.25% is a stale figure as of the story's publication date (November 24, 2026).",
+          "correction": "RBI repo rate = 5.50% as of October 7, 2026.",
+          "source": "5paisa, BookOfExams, Mint, Shriram Finance, BankBazaar, Bankersadda, Arthzo, TradingView, Utkarsh Classes, Dainik Jagran English",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This mirrors the corporate bond market frenzy of 2018, when firms anticipated a liquidity crunch and front-loaded their borrowing.",
+          "status": "WRONG",
+          "detail": "Sources suggest that while there was significant activity in the Indian corporate bond market leading up to 2018, the year 2018 itself was characterized by a fading of the bond issuance frenzy. The liquidity crunch that occurred later in 2018 (e.g., due to the IL&FS default in September) was more of a reaction to actual events, primarily impacting the NBFC sector, rather than a widespread 'frenzy' of firms proactively front-loading borrowing in anticipation of a general crunch throughout the year.",
+          "correction": "The IL&FS default in September 2018 triggered a liquidity crunch, primarily for the NBFC sector, leading to increased risk aversion in the corporate bond market.",
+          "source": "Mint, The Leap Blog, Crisil",
+          "inBroaderConnections": true,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise that the RBI repo rate hike is an anticipated future event is fundamentally incorrect, as the hike already occurred on October 7, 2026, over a month before the publication date. This makes the core narrative fabricated. Additionally, the reference repo rate is stale, and the historical analogy to the 2018 corporate bond market is inaccurately characterized. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "5096716c4db0547e"
     }
   ]
 }
