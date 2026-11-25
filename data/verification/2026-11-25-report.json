@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-25",
+  "generatedAt": "2026-11-25T01:06:46.840Z",
+  "results": [
+    {
+      "slug": "nse-global-rank-milestone",
+      "headline": "NSE Becomes World’s Fifth-Largest Exchange, Surpassing Nasdaq and HKEX",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "rbi-stop-switch-proposal",
+      "headline": "RBI Proposes 'Stop Switch' for Bank Accounts to Combat Fraud",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Implementation to be phased, starting with major public and private sector lenders before extending to all financial institutions.",
+          "status": "UNVERIFIABLE",
+          "detail": "While the draft rules cover multiple categories of banks (commercial, small finance, payments, regional rural, local area, urban and rural cooperative banks) and propose different implementation dates for parts of the framework (Jan 1, 2027 for negligence, July 1, 2027 for other safeguards, or earlier if banks choose), the specific detail of a phased rollout starting with 'major public and private sector lenders before extending to all financial institutions' is not explicitly confirmed in the search results.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "In 2020, security was primarily focused on multi-factor authentication (MFA) for the initial login.",
+          "status": "UNVERIFIABLE",
+          "detail": "While multi-factor authentication (MFA) has been a significant component of digital security for several years, including 2020, and was often applied at login, the claim that it was the *primary* focus specifically for the *initial login* in 2020 is a nuanced historical statement that could not be definitively confirmed or denied with readily available search results in the context of the current RBI proposal.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the RBI's proposal for a 'stop switch' and 'trusted person' mechanism are well-supported by numerous news reports published on November 23-24, 2026. The story correctly characterizes the nature of the proposals as draft regulations and their objectives. However, some specific details about the implementation phasing and historical security focus could not be independently verified with the provided search capabilities, leading to a 'WARN' verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "648cdf666195b197"
+    },
+    {
+      "slug": "india-ai-funding-growth",
+      "headline": "India AI Funding Doubled to $1.6 Billion in 2026",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    },
+    {
+      "slug": "axis-bank-credit-card-growth",
+      "headline": "Axis Bank Leads Credit Card Additions in October",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The primary risk banks are trying to manage by slowing down is the risk of having too many customers.",
+          "status": "WRONG",
+          "detail": "The source text explicitly states that the RBI's concern and the resulting regulatory tightening (risk weightings) are to prevent systemic shocks, massive defaults, and the buildup of subprime credit bubbles, not simply having 'too many customers'.",
+          "correction": "The primary risk is the potential for massive defaults and the buildup of subprime credit bubbles.",
+          "source": "Source 1",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story accurately reports the credit card addition figures and the general context of regulatory tightening. However, the quiz claim regarding the 'primary risk' is factually incorrect based on the provided source text, which identifies credit risk and systemic stability as the concerns, not the volume of customers.",
+      "digestHash": "c3da508a667428ee"
+    },
+    {
+      "slug": "iifcl-ipo-announcement",
+      "headline": "IIFCL Plans IPO as Government Eyes Partial Stake Sale",
+      "verdict": "WARN",
+      "neverVerified": true,
+      "issues": [
+        {
+          "claim": "(entire story)",
+          "status": "UNVERIFIABLE",
+          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "correction": null,
+          "source": null
+        }
+      ],
+      "notes": "Re-run with --mode grounded once quota resets."
+    }
+  ]
+}
