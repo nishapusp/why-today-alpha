@@ -1,6 +1,6 @@
 {
   "date": "2026-11-25",
-  "generatedAt": "2026-11-25T13:44:30.806Z",
+  "generatedAt": "2026-11-25T18:24:04.612Z",
   "results": [
     {
       "slug": "rbi-stop-switch-proposal",
@@ -159,6 +159,14 @@
       ],
       "notes": "The core claims regarding the 10 crore registration milestone and the 38% women-led enterprise share are verified by the source. However, the story includes additional claims about ONDC integration and specific economic contribution percentages that are not supported by the provided source text.",
       "digestHash": "fe3573002a324eb1"
+    },
+    {
+      "slug": "rbi-gold-repatriation",
+      "headline": "RBI brings back 60 tonnes of gold, boosts domestic holdings",
+      "verdict": "ERROR",
+      "neverVerified": true,
+      "issues": [],
+      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
     }
   ]
 }
