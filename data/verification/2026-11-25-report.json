@@ -1,23 +1,7 @@
 {
   "date": "2026-11-25",
-  "generatedAt": "2026-11-25T01:06:46.840Z",
+  "generatedAt": "2026-11-25T13:44:30.806Z",
   "results": [
-    {
-      "slug": "nse-global-rank-milestone",
-      "headline": "NSE Becomes World’s Fifth-Largest Exchange, Surpassing Nasdaq and HKEX",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
-    },
     {
       "slug": "rbi-stop-switch-proposal",
       "headline": "RBI Proposes 'Stop Switch' for Bank Accounts to Combat Fraud",
@@ -47,55 +31,134 @@
       "digestHash": "648cdf666195b197"
     },
     {
-      "slug": "india-ai-funding-growth",
-      "headline": "India AI Funding Doubled to $1.6 Billion in 2026",
-      "verdict": "WARN",
-      "neverVerified": true,
-      "issues": [
-        {
-          "claim": "(entire story)",
-          "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
-          "correction": null,
-          "source": null
-        }
-      ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "slug": "sebi-simplifies-kyc-norms",
+      "headline": "SEBI Simplifies Investor KYC Rules, Centralizing Client Data",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "The story accurately reflects the details provided in the source text regarding SEBI's new KYC norms, the centralization of client data, and the effective date of December 24.",
+      "digestHash": "6b89295d81c0ed49"
     },
     {
-      "slug": "axis-bank-credit-card-growth",
-      "headline": "Axis Bank Leads Credit Card Additions in October",
-      "verdict": "FAIL",
+      "slug": "india-uk-investment-treaty-talks-stall",
+      "headline": "Key India-UK Treaty Talks Unlikely To Conclude Soon",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims regarding the India-UK investment treaty status, the 2017 termination of BITs, the number of terminated treaties (58), and the context of the 1994 agreement are supported by the provided source text.",
+      "digestHash": "8c155d818fcb27ab"
+    },
+    {
+      "slug": "india-post-modernization-fund",
+      "headline": "Cabinet Clears ₹2,632 Crore For India Post Modernization",
+      "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "The primary risk banks are trying to manage by slowing down is the risk of having too many customers.",
-          "status": "WRONG",
-          "detail": "The source text explicitly states that the RBI's concern and the resulting regulatory tightening (risk weightings) are to prevent systemic shocks, massive defaults, and the buildup of subprime credit bubbles, not simply having 'too many customers'.",
-          "correction": "The primary risk is the potential for massive defaults and the buildup of subprime credit bubbles.",
-          "source": "Source 1",
+          "claim": "This investment is comparable to the ₹1,400 crore allocated for digital infrastructure upgrades across government services in 2024",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention a ₹1,400 crore allocation for digital infrastructure in 2024.",
+          "correction": null,
+          "source": null,
           "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately reports the credit card addition figures and the general context of regulatory tightening. However, the quiz claim regarding the 'primary risk' is factually incorrect based on the provided source text, which identifies credit risk and systemic stability as the concerns, not the volume of customers.",
-      "digestHash": "c3da508a667428ee"
+      "notes": "The central event regarding the ₹2,632 crore India Post scheme extension is verified by the source. However, the story includes a specific comparison figure (₹1,400 crore for 2024 digital infrastructure) that is not present in the provided source text.",
+      "digestHash": "e737ba82f3d15f4b"
     },
     {
-      "slug": "iifcl-ipo-announcement",
-      "headline": "IIFCL Plans IPO as Government Eyes Partial Stake Sale",
+      "slug": "riyadh-attack-india-condemns",
+      "headline": "Missiles Hit Saudi Financial Hub, Injuring Indians: What Now?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "Remittances from Gulf (Annual) = ~$35 billion",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The provided source text does not contain any data regarding the annual amount of remittances from the Gulf.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The story correctly reports the incident involving two injured Indians and the condemnation by India as per the source. However, the figure for annual remittances from the Gulf is not mentioned in the provided source text.",
+      "digestHash": "62658c0cfadf4d2c"
+    },
+    {
+      "slug": "auto-pli-payouts-double",
+      "headline": "Auto Firms Just Got Double the Incentives. What Does This Mean?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central premise about the projected doubling of auto PLI payouts in FY27, have been verified against reliable and recent sources. The figures for the PLI scheme's outlay, incentive rates, launch date, and the automotive sector's economic contributions are consistent across multiple sources. The historical data regarding India's wheat production during the Green Revolution era is also accurate. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "b4fe953850754c4e"
+    },
+    {
+      "slug": "ball-corp-invests-2900-crore-beverage-can-plant-meerut",
+      "headline": "Why a Beverage Packaging Titan Is Betting ₹2,900 Crore on Meerut",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Factory construction will proceed over the next 18 months, with machinery installation and trial production runs scheduled to begin in mid-2028.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the foundation stone laying but does not provide a timeline for construction, machinery installation, or trial production.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Localized production slashes freight costs for FMCG giants like Coca-Cola, PepsiCo, and domestic beverage bottlers by 15% to 20%.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention specific percentage savings on freight or logistics costs for these companies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (Ball Corporation's ₹2,900 crore investment in Meerut) is verified by the source. However, the story includes specific timelines for production and percentage-based logistics cost savings that are not present in the provided source text.",
+      "digestHash": "72930a0570c6ab8a"
+    },
+    {
+      "slug": "sarvam-ai-entire-partner-build-india-first-ai-coding-platform",
+      "headline": "Why Two Tech Pioneers Are Building India's First AI Coding Platform",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of the partnership announcement on the stated date, have been successfully verified by reliable sources. The numbers, features, and strategic motivations presented align with current reports. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "944e9ae1207f2173"
+    },
+    {
+      "slug": "msme-registrations-cross-10-crore-women-led-enterprises-growth",
+      "headline": "Why 10 Crore Small Businesses Are Reshaping India's Formal Economy",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The MSME Ministry plans to integrate the Udyam platform directly with the Open Network for Digital Commerce (ONDC) to help small vendors sell products directly to online buyers nationwide.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text contains no mention of the ONDC or any plans to integrate the Udyam platform with it.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Small businesses account for 30% of India's GDP and 45% of total manufacturing exports.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain these statistics regarding MSME contributions to GDP or manufacturing exports.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core claims regarding the 10 crore registration milestone and the 38% women-led enterprise share are verified by the source. However, the story includes additional claims about ONDC integration and specific economic contribution percentages that are not supported by the provided source text.",
+      "digestHash": "fe3573002a324eb1"
     }
   ]
 }
