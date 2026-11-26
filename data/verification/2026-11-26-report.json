@@ -1,33 +1,34 @@
 {
   "date": "2026-11-26",
-  "generatedAt": "2026-11-25T19:33:38.816Z",
+  "generatedAt": "2026-11-26T02:05:54.498Z",
   "results": [
     {
       "slug": "us-tariffs-india-trade-deal",
       "headline": "US Threatens Up To 25% Tariffs On Indian Goods. What Now?",
-      "verdict": "ERROR",
-      "neverVerified": true,
-      "issues": [],
-      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
-    },
-    {
-      "slug": "india-electronics-exports-growth",
-      "headline": "India's Electronics Exports Soar Past $38 Billion, Eyes $60 Billion FY27",
       "verdict": "WARN",
       "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "56%: Approximate growth required to hit target from current levels.",
+          "claim": "The US has threatened to impose tariffs of up to 25% on certain Indian goods under Section 301, while offering a lower 17% rate if a bilateral trade deal is finalized.",
           "status": "UNVERIFIABLE",
-          "detail": "The source text provides the current export figure ($38.4 billion) and the target ($60 billion), but it does not mention or calculate the percentage growth required to reach that target.",
+          "detail": "The provided source texts mention Section 301 and India's rejection of US claims regarding structural excess capacity, but they do not contain any mention of specific tariff percentages (25% or 17%) or an offer of a lower rate tied to a trade deal.",
           "correction": null,
           "source": null,
-          "inBroaderConnections": true,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "$301 million: Value of AI servers in China linked to suspected chip diversion, highlighting broader US trade concerns.",
+          "status": "UNVERIFIABLE",
+          "detail": "This figure and the context regarding AI servers and chip diversion do not appear in the provided source texts.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
           "isChartOrKeyNumber": false
         }
       ],
-      "notes": "The story accurately reports the export figures and projections provided in the source text. However, it includes a calculated percentage (56%) that is not present in the source material, rendering it unverifiable.",
-      "digestHash": "9290fa66852bced5"
+      "notes": "While the sources confirm the existence of a Section 301 probe and India's rejection of US claims, the specific tariff figures (25% and 17%) and the $301 million figure are not present in the provided source material.",
+      "digestHash": "3d1afd3ef97f92e8"
     },
     {
       "slug": "rbi-nbfc-bank-borrowings-caution",
@@ -75,14 +76,6 @@
       ],
       "notes": "The central event that MeitY's Secretary cleared Sarvam AI's hosting of Chinese models under the India AI Mission, as well as the progress on the upcoming AI consultation paper, are supported by the sources. However, specific details such as the Secretary's name and the 22 Indian languages figure do not appear in the provided text.",
       "digestHash": "96d1636eaa6ccfee"
-    },
-    {
-      "slug": "india-reports-net-fdi-outflow-september",
-      "headline": "India Sees $4.9 Billion Net FDI Outflow In September",
-      "verdict": "ERROR",
-      "neverVerified": true,
-      "issues": [],
-      "error": "Gemini API error (503) on gemini-3.1-flash-lite: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
     }
   ]
 }
