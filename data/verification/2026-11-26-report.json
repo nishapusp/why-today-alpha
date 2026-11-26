@@ -1,6 +1,6 @@
 {
   "date": "2026-11-26",
-  "generatedAt": "2026-11-26T05:20:53.483Z",
+  "generatedAt": "2026-11-26T18:19:17.103Z",
   "results": [
     {
       "slug": "us-tariffs-india-trade-deal",
@@ -76,6 +76,109 @@
       ],
       "notes": "The central event that MeitY's Secretary cleared Sarvam AI's hosting of Chinese models under the India AI Mission, as well as the progress on the upcoming AI consultation paper, are supported by the sources. However, specific details such as the Secretary's name and the 22 Indian languages figure do not appear in the provided text.",
       "digestHash": "96d1636eaa6ccfee"
+    },
+    {
+      "slug": "rbi-sgs-switch-auction",
+      "headline": "RBI Swaps ₹8,003 Crore Old State Bonds. What's The Big Idea?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Tamil Nadu was the largest beneficiary, with its bonds forming the bulk of the accepted securities.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions the auction occurred but does not provide a breakdown of which states participated or which state was the largest beneficiary.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The total outstanding state government debt is estimated to be over ₹55 lakh crore in FY26",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain information regarding the total outstanding state government debt for FY26.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The core event (the RBI switch auction) and the primary figures (₹8,003 crore accepted, ₹10,800 crore notified, 74% acceptance) are verified by the source. However, the story includes specific details about state-level participation and total outstanding debt figures that are not present in the provided source text.",
+      "digestHash": "0cf91d2d7bb237b4"
+    },
+    {
+      "slug": "nvidia-halts-ai-server-shipments-southeast-asia",
+      "headline": "Nvidia Stops AI Chip Exports To Four Asian Nations. Why?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Nvidia has instructed its manufacturing partners to halt shipments of AI servers to Malaysia, Singapore, Thailand, and Indonesia, following new US export controls on advanced AI chips.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text is a list of headlines and article snippets. While one headline mentions 'Nvidia halts shipments to four Southeast Asian countries', the actual content of that article is not provided in the source text, and no details regarding the specific countries or the nature of the 'new' US export controls are contained within the provided source material.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The provided source text contains a headline referencing Nvidia halting shipments, but the body of that article is missing. Consequently, the specific details regarding the countries involved and the context of the export controls cannot be verified against the provided text.",
+      "digestHash": "652112fee931f828"
+    },
+    {
+      "slug": "gadkari-west-bengal-infra-push",
+      "headline": "West Bengal Gets ₹1 Lakh Crore Infrastructure Push From Gadkari",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims in the story, including the central event of Union Minister Nitin Gadkari's announcement, the total investment figure, the Kolkata Ring Road allocation, the timeframe for road quality, and background program details, have been verified by multiple reliable sources published on the story's publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "3abccbc0a4f09afd"
+    },
+    {
+      "slug": "sap-ai-restructuring-job-cuts",
+      "headline": "Software Giant SAP Considers 10,000 Global Job Cuts Amid AI Shift",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "Departments like product, engineering, and sales are among those being assessed for potential cuts.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text mentions SAP is weighing cuts but does not specify which departments are under review.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The headline and core claim regarding the 10,000 job cuts are supported by the provided source. However, the story includes specific details about affected departments that are not present in the source text.",
+      "digestHash": "b1713653349b0699"
+    },
+    {
+      "slug": "mizuho-avendus-deal",
+      "headline": "Japanese Banking Giant Buys Into Avendus. Why India?",
+      "verdict": "UNVERIFIABLE",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Japanese banking major Mizuho has expanded its global footprint by investing in Indian financial advisory firm Avendus",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (The Japan Times, 2026-11-26) does not contain any mention of Mizuho investing in or partnering with Avendus.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Sumitomo Mitsui Financial Group's acquisition of a stake in Kotak Mahindra Bank in 2016",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not mention this event.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central claim of the story regarding Mizuho's investment in Avendus is not supported by the provided source text. The source text discusses various news items but contains no mention of this specific transaction.",
+      "digestHash": "4a1f8e1f557934c6"
     }
   ]
 }
