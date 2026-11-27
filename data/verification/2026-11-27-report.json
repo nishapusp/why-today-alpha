@@ -1,6 +1,6 @@
 {
   "date": "2026-11-27",
-  "generatedAt": "2026-11-26T20:47:46.619Z",
+  "generatedAt": "2026-11-27T08:31:19.984Z",
   "results": [
     {
       "slug": "uk-net-migration-plunges-indians-still-lead-newcomers",
@@ -40,20 +40,41 @@
       "digestHash": "de6608971055b74d"
     },
     {
-      "slug": "tapi-pipeline-reaches-afghanistan",
-      "headline": "Can Central Asian Gas Reach India Soon via Troubled Pipeline?",
+      "slug": "supreme-court-suggests-parliament-amend-sarfaesi-act-section-26e",
+      "headline": "Why Did the Supreme Court Ask Parliament to Fix Debt Laws?",
       "verdict": "WARN",
-      "neverVerified": true,
+      "centralEventConfirmed": true,
       "issues": [
         {
-          "claim": "(entire story)",
+          "claim": "The Supreme Court issued this observation on November 26 while ruling on complex asset recovery appeals involving contested commercial property auctions.",
           "status": "UNVERIFIABLE",
-          "detail": "Source links were unfetchable, and grounding-mode escalation also hit a quota limit.",
+          "detail": "The source text states the court made the suggestion while referring a specific legal question regarding the 'Maharashtra Protection of Interest of Depositors (in Financial Establishments) Act' to a larger bench. It does not describe the case as 'complex asset recovery appeals involving contested commercial property auctions' in the plural, nor does it confirm the nature of the property as a 'commercial property auction'.",
           "correction": null,
-          "source": null
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "TIME MACHINE (pastEvents): [object Object],[object Object],[object Object]",
+          "status": "UNVERIFIABLE",
+          "detail": "The story contains a placeholder '[object Object]' instead of actual historical data points.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
         }
       ],
-      "notes": "Re-run with --mode grounded once quota resets."
+      "notes": "The core reporting regarding the Supreme Court's suggestion to amend Section 26E of the SARFAESI Act is accurate. However, the story includes a technical error in the 'TIME MACHINE' section where it failed to render data, and it uses descriptive language ('complex asset recovery appeals involving contested commercial property auctions') that is not supported by the provided source text.",
+      "digestHash": "ae0eb4684820dda3"
+    },
+    {
+      "slug": "foodlink-fb-holdings-ipo-subscription-details",
+      "headline": "Why Are Investors Bidding for This Luxury Catering Giant IPO?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific claims in the story, including the IPO dates, use of proceeds, company operations, and historical comparisons, have been verified against reliable sources. The central event of Foodlink F&B Holdings' IPO being underway on its second day is accurate as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "e2f7f3b156c1700c"
     }
   ]
 }
