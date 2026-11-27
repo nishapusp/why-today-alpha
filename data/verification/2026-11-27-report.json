@@ -1,6 +1,6 @@
 {
   "date": "2026-11-27",
-  "generatedAt": "2026-11-27T08:31:19.984Z",
+  "generatedAt": "2026-11-27T23:41:53.038Z",
   "results": [
     {
       "slug": "uk-net-migration-plunges-indians-still-lead-newcomers",
@@ -75,6 +75,289 @@
       "issues": [],
       "notes": "All specific claims in the story, including the IPO dates, use of proceeds, company operations, and historical comparisons, have been verified against reliable sources. The central event of Foodlink F&B Holdings' IPO being underway on its second day is accurate as of the publication date. (escalated from source mode — original links were unfetchable)",
       "digestHash": "e2f7f3b156c1700c"
+    },
+    {
+      "slug": "rbi-eases-bank-reserve-rules-november-2026",
+      "headline": "RBI Eases Bank Reserve Rules. Why Now?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The daily minimum Cash Reserve Ratio (CRR) requirement has been reduced from 90% to 70% for the ongoing two-week reporting period.",
+          "status": "WRONG",
+          "detail": "The RBI reduced the daily minimum CRR maintenance requirement from 99% to 90%, effective from the fortnight beginning December 1, 2026. The story's values and effective period are incorrect.",
+          "correction": "The daily minimum Cash Reserve Ratio (CRR) requirement has been reduced from 99% to 90% effective from the fortnight beginning December 1, 2026.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Daily CRR minimum cut from 90% to 70%.",
+          "status": "WRONG",
+          "detail": "The daily CRR minimum was cut from 99% to 90%.",
+          "correction": "Daily CRR minimum cut from 99% to 90%.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Affects the current reporting fortnight.",
+          "status": "WRONG",
+          "detail": "The change is effective from the fortnight beginning December 1, 2026. As the publication date is November 27, 2026, this does not affect the *current* reporting fortnight, but the *next* one.",
+          "correction": "Affects the reporting fortnight beginning December 1, 2026.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "Effective immediately for the current reporting fortnight, banks now need to maintain only 70% of their total CRR on a daily basis, down from the 90% mandated in October.",
+          "status": "WRONG",
+          "detail": "The change is effective from the fortnight beginning December 1, 2026, not 'immediately for the current reporting fortnight'. The reduction was from 99% (mandated in October) to 90%, not from 90% to 70%. The 90% was the normal minimum *before* the October increase.",
+          "correction": "Effective from the reporting fortnight beginning December 1, 2026, banks now need to maintain only 90% of their total CRR on a daily basis, down from the 99% mandated in October.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The central bank introduced the 90% daily CRR rule to absorb surplus funds that had accumulated in the banking system, ensuring that the monetary policy stance remained effective.",
+          "status": "WRONG",
+          "detail": "The RBI introduced the 99% daily CRR rule in October 2026 to absorb surplus funds. The 90% daily CRR was the standard minimum before this temporary tightening.",
+          "correction": "The central bank introduced the 99% daily CRR rule in October to absorb surplus funds that had accumulated in the banking system, ensuring that the monetary policy stance remained effective.",
+          "source": "RBI Circular RBI/2026-27/290 dated October 9, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "While the overall CRR rate (currently at 4.50%) remains unchanged...",
+          "status": "WRONG",
+          "detail": "The overall CRR rate is 3.00% as of November 2026.",
+          "correction": "While the overall CRR rate (currently at 3.00%) remains unchanged...",
+          "source": "Various financial news outlets and RBI policy documents from October 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "...if a bank's total CRR obligation is ₹100 crore, previously it had to ensure ₹90 crore was with the RBI daily. Now, it only needs to maintain ₹70 crore, freeing up ₹20 crore for short-term lending or other uses.",
+          "status": "WRONG",
+          "detail": "Based on the actual figures, if a bank's total CRR obligation is ₹100 crore, previously (under the 99% daily minimum) it had to ensure ₹99 crore was with the RBI daily. Now (under the 90% daily minimum), it needs to maintain ₹90 crore, freeing up ₹9 crore, not ₹20 crore.",
+          "correction": "if a bank's total CRR obligation is ₹100 crore, previously it had to ensure ₹99 crore was with the RBI daily. Now, it only needs to maintain ₹90 crore, freeing up ₹9 crore for short-term lending or other uses.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "KEY NUMBER CARD: Daily CRR Maintenance = 70% (previous: 90% — October 2026)",
+          "status": "WRONG",
+          "detail": "The current daily CRR maintenance (effective Dec 1, 2026) is 90%. The previous (October 2026) daily CRR maintenance was 99%.",
+          "correction": "Daily CRR Maintenance = 90% (previous: 99% — October 2026)",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "KEY NUMBER CARD: Overall CRR = 4.50%",
+          "status": "WRONG",
+          "detail": "The overall CRR is 3.00% as of November 2026.",
+          "correction": "Overall CRR = 3.00%",
+          "source": "Various financial news outlets and RBI policy documents from October 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Pre-Oct 2026 = 70",
+          "status": "WRONG",
+          "detail": "The daily CRR maintenance requirement before October 2026 was 90%.",
+          "correction": "Pre-Oct 2026 = 90",
+          "source": "RBI Circular RBI/2026-27/290 dated October 9, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Oct 2026 = 90",
+          "status": "WRONG",
+          "detail": "In October 2026 (effective Oct 16), the daily CRR maintenance requirement was increased to 99%.",
+          "correction": "Oct 2026 = 99",
+          "source": "RBI Circular RBI/2026-27/290 dated October 9, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: Nov 2026 = 70",
+          "status": "WRONG",
+          "detail": "In November 2026 (effective Dec 1), the daily CRR maintenance requirement was reduced to 90%.",
+          "correction": "Nov 2026 = 90",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART TAKEAWAY: The RBI temporarily increased daily CRR maintenance to 90% in October before rolling it back to 70% in November to manage liquidity.",
+          "status": "WRONG",
+          "detail": "The RBI temporarily increased daily CRR maintenance to 99% in October (effective Oct 16) and rolled it back to 90% in November (effective Dec 1). The numbers stated are incorrect.",
+          "correction": "The RBI temporarily increased daily CRR maintenance to 99% in October before rolling it back to 90% in November to manage liquidity.",
+          "source": "RBI Circular RBI/2026-27/290 dated October 9, 2026, and RBI Circular RBI/2026-27/310 dated November 27, 2026",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "TIME MACHINE (today): RBI relaxed its daily minimum Cash Reserve Ratio (CRR) maintenance requirement from 90% to 70%.",
+          "status": "WRONG",
+          "detail": "The RBI relaxed its daily minimum CRR maintenance requirement from 99% to 90%.",
+          "correction": "RBI relaxed its daily minimum Cash Reserve Ratio (CRR) maintenance requirement from 99% to 90%.",
+          "source": "RBI Circular RBI/2026-27/310 dated November 27, 2026, and numerous news reports",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story contains numerous factual errors regarding the specific percentages of the daily CRR maintenance change and the overall CRR rate. While the central event of the RBI easing reserve rules on the stated date is correct, the core numerical details are consistently wrong, leading to a FAIL verdict. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "36719cb06428a8be"
+    },
+    {
+      "slug": "global-fashion-brands-shift-to-india",
+      "headline": "Global Fashion Brands Ditch Bangladesh for India. Why?",
+      "verdict": "FABRICATED",
+      "centralEventConfirmed": false,
+      "issues": [
+        {
+          "claim": "Leading global fashion retailers, including prominent names like Zara and H&M, have shifted approximately 10% of their monthly apparel orders away from Bangladesh.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text does not contain any information regarding global fashion brands shifting orders from Bangladesh to India, nor does it mention Zara, H&M, or any 10% shift in orders.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "This significant diversion of business occurred specifically during the first two weeks of November",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any diversion of business or events occurring in November 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "if the value of the 10% redirected orders amounts to $500 million",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention any $500 million figure or any redirected order values.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The entire story is fabricated. The provided source text is a Business Standard search results page that contains no articles or data supporting the claims made in the story.",
+      "digestHash": "d6ab9fbe35de2466"
+    },
+    {
+      "slug": "rbi-governor-ai-msme-potential",
+      "headline": "AI Can Unlock $685 Billion for India's Small Businesses. How?",
+      "verdict": "FAIL",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "RBI Governor Shaktikanta Das announced that Artificial Intelligence could unlock $685 billion in economic value for India's MSMEs by 2035.",
+          "status": "WRONG",
+          "detail": "On November 27, 2026, the Reserve Bank of India (RBI) Governor was Sanjay Malhotra, not Shaktikanta Das. Governor Malhotra stated that AI could unlock economic value for India's MSMEs in a range of $490-685 billion or $600-700 billion. However, the specific year '2035' was not explicitly linked to the Governor's statement regarding this figure in the available reliable sources.",
+          "correction": "RBI Governor Sanjay Malhotra announced that Artificial Intelligence could unlock economic value for India's MSMEs, with estimates ranging up to $685 billion.",
+          "source": "The Hindu, KNN India, DD India",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "MSMEs are often referred to as the backbone of the Indian economy, accounting for approximately 30% of the country's GDP",
+          "status": "WRONG",
+          "detail": "According to the Economic Survey 2025-26 and statements from the MSME Minister on November 27, 2026, MSMEs contribute 31.1% to India's GDP.",
+          "correction": "MSMEs are often referred to as the backbone of the Indian economy, accounting for approximately 31.1% of the country's GDP",
+          "source": "IBEF, Peko, SMEStreet, PIB, Growwh, ResolveAI, DD News",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "MSMEs are often referred to as the backbone of the Indian economy, accounting for approximately 45% of manufacturing output",
+          "status": "WRONG",
+          "detail": "As per the Economic Survey 2025-26 and statements from the MSME Minister on November 27, 2026, MSMEs account for 35.4% of manufacturing output.",
+          "correction": "MSMEs are often referred to as the backbone of the Indian economy, accounting for approximately 35.4% of manufacturing output",
+          "source": "IBEF, Peko, PIB, SMEStreet, Growwh, Screen Print India, DD News",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "MSMEs... provide employment to more than 11 crore people.",
+          "status": "WRONG",
+          "detail": "Latest reliable figures for MSME employment are significantly higher than 11 crore, with the Economic Survey 2025-26 and other reports indicating ranges from over 32.8 crore to over 40 crore people as of 2026.",
+          "correction": "MSMEs... provide employment to more than 32.8 crore people.",
+          "source": "IBEF, Peko, PIB, Apni Subsidy, Growwh, ResolveAI, DD News",
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "CHART DATA POINT: 2026 = 120 (Billion USD)",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source was found that specifically projects AI's economic value for Indian MSMEs at $120 billion for the year 2026.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2030 = 350 (Billion USD)",
+          "status": "UNVERIFIABLE",
+          "detail": "No reliable source was found that specifically projects AI's economic value for Indian MSMEs at $350 billion for the year 2030.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "CHART DATA POINT: 2035 = 685 (Billion USD)",
+          "status": "UNVERIFIABLE",
+          "detail": "While RBI Governor Malhotra mentioned a potential value up to $685 billion for MSMEs, and some other reports mention 2035 for broader AI impact, no single verifiable source explicitly projects AI's economic value for Indian MSMEs at precisely $685 billion by the year 2035 as a specific chart data point.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": true
+        },
+        {
+          "claim": "By which year is AI projected to unlock this economic value for MSMEs? — stated correct answer: 2035",
+          "status": "UNVERIFIABLE",
+          "detail": "While RBI Governor Malhotra mentioned a potential economic value for MSMEs up to $685 billion, the specific year '2035' was not explicitly and consistently linked to this particular figure from the Governor in reliable news sources as a definitive projection. Other reports might use 2035 for different projections or scopes.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story's central premise regarding an RBI Governor's statement on AI's potential for MSMEs is confirmed, but it contains a critical error in naming the Governor. Several key economic figures for MSMEs are also inaccurate or outdated compared to recent official data. Furthermore, several specific projections presented in a chart format could not be independently verified. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "dacdf3c5dbea129f"
+    },
+    {
+      "slug": "ananya-birla-svatantra-microfin-ipo-sebi-nod",
+      "headline": "Ananya Birla's Microfinance Firm Gets Green Light for ₹3,000 Crore IPO.",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All specific factual claims, including the central event of SEBI approval, IPO value, fresh issue and OFS amounts, company founding year, and historical context details (such as the Andhra Pradesh microfinance crisis year and other microfinance IPO dates), have been verified by reliable sources as of the publication date. (escalated from source mode — original links were unfetchable)",
+      "digestHash": "d8149d774d68909a"
+    },
+    {
+      "slug": "india-forex-reserves-drop-november-2026",
+      "headline": "India's Forex Reserves Drop $4.44 Billion. Why Now?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "The key driver of this decrease was a substantial $4.10 billion reduction in the value of the country's gold reserves during the reporting period.",
+          "status": "UNVERIFIABLE",
+          "detail": "The provided source text (Source 1) mentions the headline and the total decline/total reserves, but it does not contain the specific figure of $4.10 billion for the gold reserve reduction.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The story correctly identifies the headline figures for the total forex reserves and the total decline as reported in the source. However, the specific breakdown of the gold reserve decline ($4.10 billion) is not present in the provided source text.",
+      "digestHash": "e286c77d4bf03ba7"
     }
   ]
 }
