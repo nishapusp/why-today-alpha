@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-28",
+  "generatedAt": "2026-11-28T08:22:33.405Z",
+  "results": [
+    {
+      "slug": "tata-sons-files-caveats-after-bombay-high-court-ruling",
+      "headline": "Why Is Tata Sons Filing Caveats Against Its Own Trusts?",
+      "verdict": "PASS",
+      "centralEventConfirmed": true,
+      "issues": [],
+      "notes": "All factual claims, including the filing of caveats in the Bombay High Court and Supreme Court, the High Court's refusal of interim relief, and the 66% stake held by Tata Trusts, are fully supported by the source text.",
+      "digestHash": "6537ab81744df73d"
+    },
+    {
+      "slug": "zee-entertainment-announces-share-buyback-dates",
+      "headline": "Why Is Zee Buying Back Shares at a Premium Price?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "After the collapse of its proposed merger with Sony in early 2024, Zee's management pledged to streamline operations, cut debt, and return excess cash to equity investors.",
+          "status": "UNVERIFIABLE",
+          "detail": "The cited source text does not mention the Sony merger collapse, its timeframe, or management commitments regarding debt reduction and cash returns.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The central story about Zee Entertainment's ₹600-crore buyback schedule, share count, price, and settlement date is fully verified by the source. However, the background reference to the Sony merger collapse in early 2024 is not present in the provided source text.",
+      "digestHash": "9fca3a4468532ce2"
+    },
+    {
+      "slug": "uttar-pradesh-disburses-industrial-incentives-make-in-up",
+      "headline": "Why Is Uttar Pradesh Handing Out ₹8,500 Crore to Factories?",
+      "verdict": "WARN",
+      "centralEventConfirmed": true,
+      "issues": [
+        {
+          "claim": "State industry departments will process the remaining ₹5,000 crore subsidy pool across tier-2 industrial clusters over the next two quarters, with construction slated to commence by mid-2027.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text does not mention tier-2 industrial clusters, a two-quarter timeframe for ₹5,000 crore, or factory construction commencing by mid-2027. It only notes that the state will disburse more than ₹2,600 crore as incentives in the next few weeks.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        },
+        {
+          "claim": "The incentives cover interest subventions, land acquisition rebates, and capital equipment subsidies, facilitated by UP's single-window clearance portal.",
+          "status": "UNVERIFIABLE",
+          "detail": "The source text lists specific policies (such as the UP Industrial Investment & Employment Promotion Policy 2022 and UP FDI/FCI Policy 2023) but does not mention single-window clearance portals, interest subventions, land acquisition rebates, or capital equipment subsidies.",
+          "correction": null,
+          "source": null,
+          "inBroaderConnections": false,
+          "isChartOrKeyNumber": false
+        }
+      ],
+      "notes": "The primary figures regarding the ₹8,500 crore total incentive package, ₹3,500 crore disbursed to date, and the 41% disbursement ratio are accurate and verified. However, background details regarding single-window portals, specific rebate mechanisms, and mid-2027 timelines are not mentioned in the cited source.",
+      "digestHash": "3a495393692fcc63"
+    }
+  ]
+}
